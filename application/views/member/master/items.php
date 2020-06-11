@@ -53,7 +53,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <?php foreach ($dataperumahan as $value => $data): ?>
 
                         <div class="panel-body"> 
-                            <table class="table table-bordered table-hover table-striped" >
+                            <div class="table" style="overflow-x: auto;">
+                            <table class="table table-responsive table-bordered table-hover table-striped" >
                                 <thead>
                                     <tr>
                                         <th></th>
@@ -147,6 +148,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </tr>
                             </tbody>
                         </table> 
+                    </div>
                     </div>
 
                 <?php endforeach ?>
