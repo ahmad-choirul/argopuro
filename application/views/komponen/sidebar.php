@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             
                 <div class="nano">
-                    <div class="nano-content" style="background-color: #ab4e02;">
+                    <div class="nano-content" style="background-color: #003659;">
                         <nav id="menu" class="nav-main" role="navigation">
                             <ul class="nav nav-main">
                             <?php if( $this->session->userdata('kategori')==31){?>
