@@ -643,7 +643,14 @@ public function updatedatamerk()
     return $this->db->update("master_merk", $this, array('id' => $post['idd']));
 } 
 	//CRUD merk end
-
+public function getperumahan($id)
+{
+     $this->db->select('a.*,b.nama_regional');
+    $this->db->from('master_item a'); 
+    $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
+    $this->db->where('id_perumahan', $id);
+    return $this->db->get()->result();
+}
 	// datatable item start
 var $column_search_item = array('kode_item','nama_item','nama_penjual','nama_surat_tanah','nama_makelar'); 
 var $column_order_item = array(null, 'kode_item','nama_item','nama_penjual','nama_surat_tanah','nama_makelar');
