@@ -293,10 +293,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="col-sm-3">
                                 <input type="date" name="tanggal_pengalihan" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Tanggal Pengalihan" title="Tanggal Pengalihan"  />
                             </div>
-                             <div class="col-sm-3">
-                                <input type="text" name="akta_pengalihan" class="form-control" placeholder="Akta Pengalihan"  />
+                             <div class="col-sm-2">
+                                <input type="text" name="akta_pengalihan" class="form-control" placeholder="Akta"  />
                             </div>
-                             <div class="col-sm-3">
+                             <div class="col-sm-4">
                                 <input type="text" name="nama_pengalihan" class="form-control" placeholder="Nama Pengalihan" />
                             </div>
                         </div><!-- <div class="form-group akta_pengalihan">
