@@ -99,12 +99,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="panel-body">
 
                     <div class="form-group mt-lg kode_item">
-                        <label class="col-sm-3 control-label">Kode Item (Barcode)<span class="required">*</span></label>
+                        <label class="col-sm-3 control-label">Kode Tanah<span class="required">*</span></label>
                         <div class="col-sm-9">
                             <input type="text" name="kode_item" class="form-control" required/>
                         </div>
                     </div>
-
+                    <div class="form-group mt-lg nama_supplier">
+                        <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <select data-plugin-selectTwo class="form-control" required name="id_perumahan">  
+                                <option value="">Pilih Lokasi</option>
+                                <?php foreach ($perumahan as $supp): ?>
+                                    <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
+                                <?php endforeach; ?>
+                            </select> 
+                        </div>
+                    </div>
                     <div class="form-group mt-lg nama_item">
                         <label class="col-sm-3 control-label">Nama Item<span class="required">*</span></label>
                         <div class="col-sm-9">
@@ -243,12 +253,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <textarea rows="2" class="form-control" name="keterangan"></textarea>
                         </div>
                     </div>
-                    <div class="form-group Perumahan">
-                        <label class="col-sm-3 control-label">Perumahan</label>
-                        <div class="col-sm-9">
-                            <input type="text" name="id_perumahan" class="form-control"  />
-                        </div>
-                    </div>
                 </div>
                 <footer class="panel-footer">
                     <div class="row">
@@ -292,18 +296,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <?php echo form_open('master/itemsedit',' id="FormulirEdit"  enctype="multipart/form-data"');?>  
                 <input type="hidden" name="idd" id="idd">
                 <header class="panel-heading">
-                    <h2 class="panel-title">Edit Data Obat/Alkes</h2>
+                    <h2 class="panel-title">Edit Data Tanah/Aset</h2>
                 </header>
                 <div class="panel-body">
                    <div class="form-group mt-lg kode_item">
-                    <label class="col-sm-3 control-label">Kode Item (Barcode)<span class="required">*</span></label>
+                    <label class="col-sm-3 control-label">Kode Tanah<span class="required">*</span></label>
                     <div class="col-sm-9">
                         <input type="text" name="kode_item" id="kode_item" class="form-control" required/>
                     </div>
                 </div>
-
+                <div class="form-group mt-lg nama_supplier">
+                    <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
+                    <div class="col-sm-9">
+                        <select data-plugin-selectTwo class="form-control" required id="id_perumahan" name="id_perumahan">  
+                            <option value="">Pilih Lokasi</option>
+                            <?php foreach ($perumahan as $supp): ?>
+                                <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
+                            <?php endforeach; ?>
+                        </select> 
+                    </div>
+                </div>
                 <div class="form-group mt-lg nama_item">
-                    <label class="col-sm-3 control-label">Nama Item<span class="required">*</span></label>
+                    <label class="col-sm-3 control-label">Nama tanah<span class="required">*</span></label>
                     <div class="col-sm-9">
                         <input type="text" name="nama_item" id="nama_item" class="form-control" required/>
                     </div>
@@ -440,12 +454,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <textarea rows="2" class="form-control" name="keterangan" id="keterangan"></textarea>
                     </div>
                 </div>
-                <div class="form-group Perumahan">
-                    <label class="col-sm-3 control-label">Perumahan</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="id_perumahan" id="id_perumahan" class="form-control"  />
-                    </div>
-                </div>
+                
             </div>
             <footer class="panel-footer">
                 <div class="row">
@@ -598,7 +607,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     success: function(response) { 
         var datarow='';
         $.each(response, function(i, item) {
-                datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
+            datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
 
             datarow+="<tr><td>kode_item</td><td>: "+item.kode_item+"</td></tr>";
             datarow+="<tr><td>nama_item</td><td>: "+item.nama_item+"</td></tr>";
@@ -625,9 +634,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             datarow+="<tr><td>pbb</td><td>: "+item.pbb+"</td></tr>";
             datarow+="<tr><td>lain</td><td>: "+item.laintampil+"</td></tr>";
             datarow+="<tr><td>harga_perm</td><td>: "+item.harga_permtampil+"</td></tr>";
-            datarow+="<tr><td>waktu_update</td><td>: "+item.waktu_update+"</td></tr>";
             datarow+="<tr><td>keterangan</td><td>: "+item.keterangan+"</td></tr>";
-            datarow+="<tr><td>id_perumahan</td><td>: "+item.id_perumahan+"</td></tr>";
+            datarow+="<tr><td>Lokasi</td><td>: "+item.nama_regional+"</td></tr>";
             datarow+="</table>";
         });
         $('#showdetail').html(datarow);
@@ -647,34 +655,34 @@ function edit(elem){
     success: function(response) {  
         $.each(response, function(i, item) { 
            document.getElementById("kode_item").setAttribute('value', item.kode_item); 
-document.getElementById("nama_item").setAttribute('value', item.nama_item); 
-document.getElementById("tanggal_pembelian").setAttribute('value', item.tanggal_pembelian); 
-document.getElementById("nama_penjual").setAttribute('value', item.nama_penjual); 
-document.getElementById("nama_surat_tanah").setAttribute('value', item.nama_surat_tanah); 
-document.getElementById("status_surat_tanah").setAttribute('value', item.status_surat_tanah); 
-document.getElementById("no_gambar").setAttribute('value', item.no_gambar); 
-document.getElementById("jumlah_bidang").setAttribute('value', item.jumlah_bidang); 
-document.getElementById("luas_surat").setAttribute('value', item.luas_surat); 
-document.getElementById("luas_ukur").setAttribute('value', item.luas_ukur); 
-document.getElementById("no_pbb").setAttribute('value', item.no_pbb); 
-document.getElementById("luas_pbb").setAttribute('value', item.luas_pbb); 
-document.getElementById("njop").setAttribute('value', item.njop); 
-document.getElementById("satuan_harga_pengalihan").setAttribute('value', item.satuan_harga_pengalihan); 
-document.getElementById("total_harga_pengalihan").setAttribute('value', item.total_harga_pengalihan); 
-document.getElementById("nama_makelar").setAttribute('value', item.nama_makelar); 
-document.getElementById("nilai").setAttribute('value', item.nilai); 
-document.getElementById("tanggal_pengalihan").setAttribute('value', item.tanggal_pengalihan); 
-document.getElementById("akta_pengalihan").setAttribute('value', item.akta_pengalihan); 
-document.getElementById("nama_pengalihan").setAttribute('value', item.nama_pengalihan); 
-document.getElementById("pematangan").setAttribute('value', item.pematangan); 
-document.getElementById("ganti_rugi").setAttribute('value', item.ganti_rugi); 
-document.getElementById("pbb").setAttribute('value', item.pbb); 
-document.getElementById("lain").setAttribute('value', item.lain); 
-document.getElementById("harga_perm").setAttribute('value', item.harga_perm); 
-document.getElementById("waktu_update").setAttribute('value', item.waktu_update); 
-document.getElementById("id_perumahan").setAttribute('value', item.id_perumahan); 
-document.getElementById("keterangan").value = item.keterangan; 
-        }); 
+           document.getElementById("nama_item").setAttribute('value', item.nama_item); 
+           document.getElementById("tanggal_pembelian").setAttribute('value', item.tanggal_pembelian); 
+           document.getElementById("nama_penjual").setAttribute('value', item.nama_penjual); 
+           document.getElementById("nama_surat_tanah").setAttribute('value', item.nama_surat_tanah); 
+           document.getElementById("status_surat_tanah").setAttribute('value', item.status_surat_tanah); 
+           document.getElementById("no_gambar").setAttribute('value', item.no_gambar); 
+           document.getElementById("jumlah_bidang").setAttribute('value', item.jumlah_bidang); 
+           document.getElementById("luas_surat").setAttribute('value', item.luas_surat); 
+           document.getElementById("luas_ukur").setAttribute('value', item.luas_ukur); 
+           document.getElementById("no_pbb").setAttribute('value', item.no_pbb); 
+           document.getElementById("luas_pbb").setAttribute('value', item.luas_pbb); 
+           document.getElementById("njop").setAttribute('value', item.njop); 
+           document.getElementById("satuan_harga_pengalihan").setAttribute('value', item.satuan_harga_pengalihan); 
+           document.getElementById("total_harga_pengalihan").setAttribute('value', item.total_harga_pengalihan); 
+           document.getElementById("nama_makelar").setAttribute('value', item.nama_makelar); 
+           document.getElementById("nilai").setAttribute('value', item.nilai); 
+           document.getElementById("tanggal_pengalihan").setAttribute('value', item.tanggal_pengalihan); 
+           document.getElementById("akta_pengalihan").setAttribute('value', item.akta_pengalihan); 
+           document.getElementById("nama_pengalihan").setAttribute('value', item.nama_pengalihan); 
+           document.getElementById("pematangan").setAttribute('value', item.pematangan); 
+           document.getElementById("ganti_rugi").setAttribute('value', item.ganti_rugi); 
+           document.getElementById("pbb").setAttribute('value', item.pbb); 
+           document.getElementById("lain").setAttribute('value', item.lain); 
+           document.getElementById("harga_perm").setAttribute('value', item.harga_perm); 
+           document.getElementById("keterangan").value = item.keterangan; 
+                $("#id_perumahan").select2("val", item.id_perumahan);   
+
+       }); 
     }
 });  
   return false;

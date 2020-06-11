@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </li>
                                 <?php 
                                 }?> -->
-                                <?php if( $this->session->userdata('kategori')==31 || $this->session->userdata('kategori')==33){?>
+                                <!-- <?php if( $this->session->userdata('kategori')==31 || $this->session->userdata('kategori')==33){?>
                                 <li>
                                     <a href="<?php echo base_url()?>stok"> 
                                         <i class="fa fa-reorder" aria-hidden="true"></i>
@@ -81,8 +81,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </a>
                                 </li>
                                 <?php 
-                                }?>
-                                <?php if( $this->session->userdata('kategori')==31){?>
+                                }?> -->
+                              <!--   <?php if( $this->session->userdata('kategori')==31){?>
                                 <li>
                                     <a href="<?php echo base_url()?>user"> 
                                         <i class="fa fa-users" aria-hidden="true"></i>
@@ -90,8 +90,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </a>
                                 </li>
                                 <?php
-                                }?>
-                                <?php if( $this->session->userdata('kategori')==31){?>
+                                }?> -->
+                               <!--  <?php if( $this->session->userdata('kategori')==31){?>
                                 <li>
                                     <a href="<?php echo base_url()?>tools"> 
                                         <i class="fa fa-cog" aria-hidden="true"></i>
@@ -99,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </a>
                                 </li>
                                 <?php
-                                }?>
+                                }?> -->
                            
                             </ul>
                         </nav>

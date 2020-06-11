@@ -382,7 +382,8 @@ public function pembelihapus(){
 public function perumahan()
 {   
     level_user('master','perumahan',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
-    $this->load->view('member/master/perumahan');
+     $data['status'] = $this->db->order_by("id_status_regional","DESC")->get('master_status_regional')->result();
+    $this->load->view('member/master/perumahan',$data);
 }  
 public function datakategori()
 {   
@@ -405,6 +406,7 @@ public function datakategori()
         $row[] = $this->security->xss_clean($r->id); 
         $row[] = $this->security->xss_clean($r->nama_regional); 
         $row[] = $this->security->xss_clean($r->lokasi); 
+        $row[] = $this->security->xss_clean($r->nama_status); 
         $data[] = $row;
     } 
     $result = array(
@@ -433,11 +435,14 @@ public function kategoritambah(){
 
 public function kategoridetail(){  
     cekajax(); 
+    $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
     $query = $this->db->get_where('master_regional', array('id' => $this->input->get("id")),1);
     $result = array(  
         "id" => $this->security->xss_clean($query->row()->id), 
         "nama_regional" => $this->security->xss_clean($query->row()->nama_regional), 
         "lokasi" => $this->security->xss_clean($query->row()->lokasi), 
+        "nama_status" => $this->security->xss_clean($query->row()->nama_status), 
+        "status_regional" => $this->security->xss_clean($query->row()->status_regional), 
     );    
     echo'['.json_encode($result).']';
 } 
@@ -689,7 +694,9 @@ public function merkhapus(){
 public function items()
 {  
     level_user('master','items',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
-    $this->load->view('member/master/items');
+     $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+
+    $this->load->view('member/master/items',$data);
 }  
 public function dataitems()
 {   
@@ -783,6 +790,7 @@ echo json_encode($data);
 public function itemdetail(){  
     cekajax(); 
     $idd = $this->input->get("id"); 
+    $this->db->join('master_regional', 'master_item.id_perumahan = master_regional.id', 'left');
     $query = $this->db->get_where('master_item', array('kode_item' => $idd),1);
     $result = array(  
        "kode_item" => $this->security->xss_clean($query->row()->kode_item),
@@ -818,9 +826,9 @@ public function itemdetail(){
        "lain" => $this->security->xss_clean($query->row()->lain),
        "harga_permtampil" => $this->security->xss_clean(rupiah($query->row()->harga_perm)),
        "harga_perm" => $this->security->xss_clean($query->row()->harga_perm),
-       "waktu_update" => $this->security->xss_clean($query->row()->waktu_update),
        "keterangan" => $this->security->xss_clean($query->row()->keterangan),
        "id_perumahan" => $this->security->xss_clean($query->row()->id_perumahan),
+       "nama_regional" => $this->security->xss_clean($query->row()->nama_regional),
    );    
     echo'['.json_encode($result).']';
 }

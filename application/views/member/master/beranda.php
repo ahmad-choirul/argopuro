@@ -153,7 +153,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												</div>
 											</section>
 										</div>
-										<div class="col-md-12 col-lg-6 col-xl-6">
+										<!-- <div class="col-md-12 col-lg-6 col-xl-6">
 											<section class="panel panel-featured-left panel-featured-secondary">
 												<div class="panel-body">
 													<div class="widget-summary">
@@ -173,8 +173,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 													</div>
 												</div>
 											</section>
-										</div>
-										<div class="col-md-12 col-lg-6 col-xl-6">
+										</div> -->
+										<!-- <div class="col-md-12 col-lg-6 col-xl-6">
 											<section class="panel panel-featured-left panel-featured-tertiary">
 												<div class="panel-body">
 													<div class="widget-summary">
@@ -215,7 +215,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 													</div>
 												</div>
 											</section>
-										</div>
+										</div> -->
 										<div class="col-md-12 col-lg-6 col-xl-6">
 											<section class="panel panel-featured-left panel-featured-secondary">
 												<div class="panel-body">
@@ -249,7 +249,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 														</div>
 														<div class="widget-summary-col">
 															<div class="summary">
-																<h4 class="title">Jumlah Barang</h4>
+																<h4 class="title">Jumlah Tanah</h4>
 																<div class="info">
 																	<strong class="amount"><?php echo $total_item;?> Produk</strong>
 																</div>
@@ -264,7 +264,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									</div>
 								</div>
 							</div> 
-							<div class="row" style="margin-top:-30px;">  
+						<!-- 	<div class="row" style="margin-top:-30px;">  
 
 								<div class="col-md-12"> 
 									<section class="panel">
@@ -290,7 +290,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									</section>
 								</div> 
 
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</section>

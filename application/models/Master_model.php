@@ -395,6 +395,7 @@ private function _get_query_kategori()
 { 
     $get = $this->input->get();
     $this->db->from('master_regional'); 
+    $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
     $i = 0; 
     foreach ($this->column_search_kategori as $item)
     {
@@ -466,6 +467,7 @@ function simpandatakategori(){
     $array = array(
         'nama_regional'=>$post["nama_regional"], 
         'lokasi'=>$post["lokasi"], 
+        'status_regional'=>$post["status_regional"], 
     );
     return $this->db->insert("master_regional", $array);   
 } 
@@ -474,6 +476,7 @@ public function updatedatakategori()
     $post = $this->input->post();
     $this->nama_regional = $post["nama_regional"]; 
     $this->lokasi = $post["lokasi"]; 
+    $this->status_regional = $post["status_regional"]; 
     return $this->db->update("master_regional", $this, array('id' => $post['id']));
 } 
 public function hapusdatakategori()
