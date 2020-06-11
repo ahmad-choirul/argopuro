@@ -61,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 										<div class="sidebar-widget m-none"> 
 											<div class="widget-content">
-												<ul class="mg-folders" style="background-color: #023d16;">
+												<ul class="mg-folders" style="background-color: #ab4e02;">
 
 													<?php if( $this->session->userdata('kategori')==31){?>
 														<li>

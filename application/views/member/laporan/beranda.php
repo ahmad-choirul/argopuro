@@ -54,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<div class="inner-menu-content">  
 											<div class="sidebar-widget m-none"> 
 												<div class="widget-content">
-													<ul class="mg-folders" style="background-color: #023d16;">
+													<ul class="mg-folders" style="background-color: #ab4e02;">
                                                         <li>
                                                             <a href="<?php echo base_url()?>laporan/po" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Purchase Order</a>
                                                             <div class="item-options">
