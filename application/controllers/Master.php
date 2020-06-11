@@ -711,16 +711,16 @@ public function dataitems()
         </ul>
         </div>
         ';
-if ($r->tanggal_pengalihan!=null) {
-    $tgl_pengalihan = tgl_indo($r->tanggal_pengalihan);
-}else{
-    $tgl_pengalihan = '-';
-}
-if ($r->id_perumahan=='0') {
-    $perumahan = 'Tidak ada';
-}else{
-    $perumahan = $r->nama_regional;
-}
+        if ($r->tanggal_pengalihan!=null) {
+            $tgl_pengalihan = tgl_indo($r->tanggal_pengalihan);
+        }else{
+            $tgl_pengalihan = '-';
+        }
+        if ($r->id_perumahan=='0') {
+            $perumahan = 'Tidak ada';
+        }else{
+            $perumahan = $r->nama_regional;
+        }
 
         $row[] = $this->security->xss_clean($perumahan);
         $row[] = $this->security->xss_clean($r->kode_item); 
@@ -785,26 +785,43 @@ public function itemdetail(){
     $idd = $this->input->get("id"); 
     $query = $this->db->get_where('master_item', array('kode_item' => $idd),1);
     $result = array(  
-        "kode_item" => $this->security->xss_clean($query->row()->kode_item),
-
-        "nama_item" => $this->security->xss_clean($query->row()->nama_item),
-        "keterangan" => $this->security->xss_clean($query->row()->keterangan),
-
-        "harga_beli" => $this->security->xss_clean(rupiah($query->row()->harga_beli)),
-        "harga_jual1" => $this->security->xss_clean(rupiah($query->row()->harga_jual)),
-        "harga_jual2" => $this->security->xss_clean(rupiah($query->row()->harga_jual_distributor)),
-        "harga_jual3" => $this->security->xss_clean(rupiah($query->row()->harga_jual_3)),
-        "harga_jual4" => $this->security->xss_clean(rupiah($query->row()->harga_jual_4)),
-        "komisi" => $this->security->xss_clean($query->row()->komisi),
-        "stok_minimal" => $this->security->xss_clean($query->row()->stok_minimal),
-        "harga_beli_edit" => $this->security->xss_clean($query->row()->harga_beli),
-        "harga_jual1_edit" => $this->security->xss_clean($query->row()->harga_jual),
-        "harga_jual2_edit" => $this->security->xss_clean($query->row()->harga_jual_distributor),
-        "harga_jual3_edit" => $this->security->xss_clean($query->row()->harga_jual_3),
-        "harga_jual4_edit" => $this->security->xss_clean($query->row()->harga_jual_4),
-
-        "gambar" => $this->security->xss_clean($query->row()->gambar), 
-    );    
+       "kode_item" => $this->security->xss_clean($query->row()->kode_item),
+       "nama_item" => $this->security->xss_clean($query->row()->nama_item),
+       "tanggal_pembelian" => $this->security->xss_clean($query->row()->tanggal_pembelian),
+       "nama_penjual" => $this->security->xss_clean($query->row()->nama_penjual),
+       "nama_surat_tanah" => $this->security->xss_clean($query->row()->nama_surat_tanah),
+       "status_surat_tanah" => $this->security->xss_clean($query->row()->status_surat_tanah),
+       "no_gambar" => $this->security->xss_clean($query->row()->no_gambar),
+       "jumlah_bidang" => $this->security->xss_clean($query->row()->jumlah_bidang),
+       "luas_surat" => $this->security->xss_clean($query->row()->luas_surat),
+       "luas_ukur" => $this->security->xss_clean($query->row()->luas_ukur),
+       "no_pbb" => $this->security->xss_clean($query->row()->no_pbb),
+       "luas_pbb" => $this->security->xss_clean($query->row()->luas_pbb),
+       "njop" => $this->security->xss_clean($query->row()->njop),
+       "satuan_harga_pengalihantampil" => $this->security->xss_clean(rupiah($query->row()->satuan_harga_pengalihan)),
+       "satuan_harga_pengalihan" => $this->security->xss_clean($query->row()->satuan_harga_pengalihan),
+       "total_harga_pengalihantampil" => $this->security->xss_clean(rupiah($query->row()->total_harga_pengalihan)),
+       "total_harga_pengalihan" => $this->security->xss_clean($query->row()->total_harga_pengalihan),
+       "nama_makelar" => $this->security->xss_clean($query->row()->nama_makelar),
+       "nilaitampil" => $this->security->xss_clean(rupiah($query->row()->nilai)),
+       "nilai" => $this->security->xss_clean($query->row()->nilai),
+       "tanggal_pengalihan" => $this->security->xss_clean($query->row()->tanggal_pengalihan),
+       "akta_pengalihan" => $this->security->xss_clean($query->row()->akta_pengalihan),
+       "nama_pengalihan" => $this->security->xss_clean($query->row()->nama_pengalihan),
+       "pematangantampil" => $this->security->xss_clean(rupiah($query->row()->pematangan)),
+       "pematangan" => $this->security->xss_clean($query->row()->pematangan),
+       "ganti_rugitampil" => $this->security->xss_clean(rupiah($query->row()->ganti_rugi)),
+       "ganti_rugi" => $this->security->xss_clean($query->row()->ganti_rugi),
+       "pbbtampil" => $this->security->xss_clean(rupiah($query->row()->pbb)),
+       "pbb" => $this->security->xss_clean($query->row()->pbb),
+       "laintampil" => $this->security->xss_clean(rupiah($query->row()->lain)),
+       "lain" => $this->security->xss_clean($query->row()->lain),
+       "harga_permtampil" => $this->security->xss_clean(rupiah($query->row()->harga_perm)),
+       "harga_perm" => $this->security->xss_clean($query->row()->harga_perm),
+       "waktu_update" => $this->security->xss_clean($query->row()->waktu_update),
+       "keterangan" => $this->security->xss_clean($query->row()->keterangan),
+       "id_perumahan" => $this->security->xss_clean($query->row()->id_perumahan),
+   );    
     echo'['.json_encode($result).']';
 }
 

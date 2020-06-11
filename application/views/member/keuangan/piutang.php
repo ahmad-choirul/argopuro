@@ -145,7 +145,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</section>
 
 		
-        <div class="modal fade" id="tambahbayarPiutang" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" data-keyboard="false" data-backdrop="static"  id="tambahbayarPiutang" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <section class="panel">
@@ -268,7 +268,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div> 
        
-        <div class="modal fade" id="modalHapusPembayaran" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" data-keyboard="false" data-backdrop="static"  id="modalHapusPembayaran" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

@@ -251,7 +251,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</div>
 </section>
 
-<div class="modal fade" id="tambahData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" data-keyboard="false" data-backdrop="static"  id="tambahData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<section class="panel panel-primary">
@@ -294,7 +294,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 </div>
 
-<div class="modal fade" id="modal-pembeli"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" data-keyboard="false" data-backdrop="static"  id="modal-pembeli"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<section class="panel panel-primary">   
@@ -330,7 +330,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</div>
 </div>
 
-<div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" data-keyboard="false" data-backdrop="static"  id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 
@@ -360,7 +360,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 	</div>
 </div>
-<div class="modal fade" id="modalHold" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" data-keyboard="false" data-backdrop="static"  id="modalHold" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content"> 
 			<?php echo form_open('penjualan/holdtransaksi',' id="FormulirHold"');?>  
@@ -398,7 +398,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 </div>
 
-<div class="modal fade" id="modal-hold"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" data-keyboard="false" data-backdrop="static"  id="modal-hold"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<section class="panel panel-primary">   
