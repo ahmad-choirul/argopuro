@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php $this->load->view("komponen/sidebar.php") ?>
         <section role="main" class="content-body">
            <header class="page-header">  
-              <h2>Master Data Barang</h2>
+              <h2>Master Data Tanah</h2>
           </header>  
           <!-- start: page -->
           <section class="panel">
