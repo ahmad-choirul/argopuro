@@ -218,7 +218,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div><div class="form-group ganti_rugi">
                                 <label class="col-sm-3 control-label">Ganti Rugi</span></label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="" class="form-control"  />
+                                    <input type="text" name="ganti_rugi" class="form-control"  />
                                 </div>
                             </div><div class="form-group pbb">
                                 <label class="col-sm-3 control-label">PBB</span></label>
@@ -488,7 +488,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         text: "Request gagal, browser akan direload",
                         type: 'danger'
                     }); 
-                    window.setTimeout(function() {  location.reload();}, 2000);
+                    //window.settimeout(function() {  location.reload();}, 2000);
                 }); 
                 e.preventDefault(); 
             }); 
@@ -607,7 +607,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         text: "Request gagal, browser akan direload",
                         type: 'danger'
                     }); 
-                    window.setTimeout(function() {  location.reload();}, 2000);
+                    //window.settimeout(function() {  location.reload();}, 2000);
                 }); 
                 e.preventDefault(); 
             }); 
@@ -667,7 +667,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         text: "Request gagal, browser akan direload",
                         type: 'danger'
                     }); 
-                    window.setTimeout(function() {  location.reload();}, 2000);
+                    //window.settimeout(function() {  location.reload();}, 2000);
                 }); 
                 e.preventDefault(); 
             }); 
