@@ -352,7 +352,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             text: "Request gagal, browser akan direload",
             type: 'danger'
         });
-        //window.setTimeout(function() {  location.reload();}, 2000);
+        window.setTimeout(function() {  location.reload();}, 2000);
     });
     e.preventDefault();
 });
@@ -400,8 +400,8 @@ function edit(elem){
     success: function(response) {
         $.each(response, function(i, item) {
             document.getElementById("tgl_serah_terima").setAttribute('value', item.tgl_serah_terima);
+            document.getElementById("nama_regional").setAttribute('value', item.lokasi);
             document.getElementById("keterangan").value = item.keterangan;
-            document.getElementById("jumlah").value = item.jumlah;
         });
     }
 });
@@ -463,7 +463,7 @@ document.getElementById("FormulirEdit").addEventListener("submit", function (e) 
         text: "Request gagal, browser akan direload",
         type: 'danger'
     });
-    //window.setTimeout(function() {  location.reload();}, 2000);
+    window.setTimeout(function() {  location.reload();}, 2000);
 });
 e.preventDefault();
 });
@@ -523,7 +523,7 @@ document.getElementById("FormulirHapus").addEventListener("submit", function (e)
         text: "Request gagal, browser akan direload",
         type: 'danger'
     });
-    //window.setTimeout(function() {  location.reload();}, 2000);
+    window.setTimeout(function() {  location.reload();}, 2000);
 });
 e.preventDefault();
 });

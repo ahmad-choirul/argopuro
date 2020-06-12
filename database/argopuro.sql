@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2020 at 12:04 PM
+-- Generation Time: Jun 12, 2020 at 03:05 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -258,13 +258,12 @@ CREATE TABLE `master_item` (
   `nama_surat_tanah` varchar(100) NOT NULL,
   `status_surat_tanah` int(11) NOT NULL,
   `no_gambar` int(11) NOT NULL,
-  `jumlah_bidang` int(11) NOT NULL,
-  `luas_surat` int(11) NOT NULL,
-  `luas_ukur` int(11) NOT NULL,
+  `jumlah_bidang` int(11) DEFAULT '1',
+  `luas_surat` int(11) DEFAULT '1',
+  `luas_ukur` int(11) DEFAULT '1',
   `no_pbb` varchar(100) NOT NULL,
   `luas_pbb` int(11) NOT NULL,
   `njop` varchar(100) NOT NULL,
-  `satuan_harga_pengalihan` varchar(100) DEFAULT '0',
   `total_harga_pengalihan` varchar(100) DEFAULT '0',
   `nama_makelar` varchar(100) NOT NULL,
   `nilai` varchar(100) DEFAULT '0',
@@ -285,12 +284,13 @@ CREATE TABLE `master_item` (
 -- Dumping data for table `master_item`
 --
 
-INSERT INTO `master_item` (`kode_item`, `nama_item`, `tanggal_pembelian`, `nama_penjual`, `nama_surat_tanah`, `status_surat_tanah`, `no_gambar`, `jumlah_bidang`, `luas_surat`, `luas_ukur`, `no_pbb`, `luas_pbb`, `njop`, `satuan_harga_pengalihan`, `total_harga_pengalihan`, `nama_makelar`, `nilai`, `tanggal_pengalihan`, `akta_pengalihan`, `nama_pengalihan`, `pematangan`, `ganti_rugi`, `pbb`, `lain`, `harga_perm`, `waktu_update`, `keterangan`, `id_perumahan`) VALUES
-('11', '111', '0000-00-00', '', '', 5, 0, 0, 0, 0, '', 0, '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '2020-06-12 02:29:11', '', 1),
-('123', '134', '2020-06-12', '', '', 3, 0, 0, 0, 0, '', 0, '', '0', '0', '', '0', '2020-06-12', '', '', '0', '0', '0', '0', '0', '2020-06-12 01:50:28', '', 4),
-('123123', '111', '0000-00-00', '', '', 1, 0, 0, 0, 0, '', 0, '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '2020-06-12 02:23:00', '', 4),
-('1241241', '1231', '0000-00-00', '', '', 1, 0, 0, 0, 0, '', 0, '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '2020-06-12 02:23:02', '', 3),
-('tanah1', 'tanah 1', '2020-02-05', 'ach saubari', 'ach saubari', 1, 45, 1, 220, 220, '123/51.2/34/1998', 220, '34578', '0', '55000000', 'rahayu', '0', '2020-06-01', '', '', '1000', '0', '0', '0', '0', '2020-06-12 01:42:33', '', 1);
+INSERT INTO `master_item` (`kode_item`, `nama_item`, `tanggal_pembelian`, `nama_penjual`, `nama_surat_tanah`, `status_surat_tanah`, `no_gambar`, `jumlah_bidang`, `luas_surat`, `luas_ukur`, `no_pbb`, `luas_pbb`, `njop`, `total_harga_pengalihan`, `nama_makelar`, `nilai`, `tanggal_pengalihan`, `akta_pengalihan`, `nama_pengalihan`, `pematangan`, `ganti_rugi`, `pbb`, `lain`, `harga_perm`, `waktu_update`, `keterangan`, `id_perumahan`) VALUES
+('1', '2', '2020-06-01', '3', '4', 5, 5, 6, 7, 8, '9', 10, '11', '13', '14', '15', '2020-06-20', '16', '17', '18', '19', '20', '21', '22', '2020-06-12 12:52:11', '23', 4),
+('11', '111', '0000-00-00', '', '', 5, 0, 1, 1, 1, '', 0, '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '2020-06-12 13:02:20', '', 1),
+('123', '134', '2020-06-12', '', '', 3, 0, 1, 1, 1, '', 0, '', '0', '', '0', '2020-06-12', '', '', '0', '0', '0', '0', '0', '2020-06-12 13:02:22', '', 4),
+('123123', '111', '0000-00-00', '', '', 1, 0, 1, 1, 1, '', 0, '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '2020-06-12 13:02:25', '', 4),
+('1241241', '1231', '0000-00-00', '', '', 1, 0, 1, 1, 1, '', 0, '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '2020-06-12 13:02:26', '', 3),
+('tanah1', 'tanah 1', '2020-02-05', 'ach saubari', 'ach saubari', 1, 45, 1, 220, 220, '123/51.2/34/1998', 220, '34578', '55000000', 'rahayu', '0', '2020-06-01', '', '', '1000', '0', '0', '0', '0', '2020-06-12 01:42:33', '', 1);
 
 -- --------------------------------------------------------
 
@@ -392,14 +392,6 @@ CREATE TABLE `master_serah_terima` (
   `keterangan` varchar(200) DEFAULT NULL,
   `waktu_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `master_serah_terima`
---
-
-INSERT INTO `master_serah_terima` (`id_serah_terima`, `id_master_item`, `tgl_serah_terima`, `keterangan`, `waktu_update`) VALUES
-(1, 1241241, '2020-06-01', 'a', '2020-06-12 16:47:18'),
-(2, 0, '2020-06-05', 'a', '2020-06-12 16:48:38');
 
 -- --------------------------------------------------------
 
@@ -812,7 +804,7 @@ ALTER TABLE `tbl_absensi`
 -- AUTO_INCREMENT for table `tbl_sertifikat_tanah`
 --
 ALTER TABLE `tbl_sertifikat_tanah`
-  MODIFY `id_sertifikat_tanah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_sertifikat_tanah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
 --

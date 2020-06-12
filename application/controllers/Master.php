@@ -741,6 +741,9 @@ public function dataitems()
         }else{
             $perumahan = $r->nama_regional;
         }
+        $harga_satuan = $r->total_harga_pengalihan/$r->luas_surat;
+        $totalbiayalain = $r->lain+$r->pbb+$r->ganti_rugi+$r->pematangan;
+        $totalharga_biaya = $r->total_harga_pengalihan+$r->nilai+$totalbiayalain;
 
         $row[] = $this->security->xss_clean($perumahan);
         $row[] = $this->security->xss_clean($r->kode_item); 
@@ -756,7 +759,7 @@ public function dataitems()
         $row[] = $this->security->xss_clean($r->no_pbb);  
         $row[] = $this->security->xss_clean($r->luas_pbb);  
         $row[] = $this->security->xss_clean($r->njop);  
-        $row[] = $this->security->xss_clean(rupiah($r->satuan_harga_pengalihan));  
+        $row[] = $this->security->xss_clean(rupiah($harga_satuan));  
         $row[] = $this->security->xss_clean(rupiah($r->total_harga_pengalihan));  
         $row[] = $this->security->xss_clean($r->nama_makelar);  
         $row[] = $this->security->xss_clean(rupiah($r->nilai));  
@@ -767,6 +770,8 @@ public function dataitems()
         $row[] = $this->security->xss_clean(rupiah($r->ganti_rugi));  
         $row[] = $this->security->xss_clean(rupiah($r->pbb));  
         $row[] = $this->security->xss_clean(rupiah($r->lain));  
+        $row[] = $this->security->xss_clean(rupiah($totalbiayalain));  
+        $row[] = $this->security->xss_clean(rupiah($totalharga_biaya));  
         $row[] = $this->security->xss_clean(rupiah($r->harga_perm));  
         $row[] = $this->security->xss_clean($r->keterangan);
         $data[] = $row;
@@ -1215,7 +1220,7 @@ public function dataserah_terima()
         <div class="btn-group dropup">
         <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
         <ul class="dropdown-menu" role="menu">
-        <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($r->id).'">Detail</a></li>
+        <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($r->id_serah_terima).'">Detail</a></li>
         '.$tomboledit.'
         '.$tombolhapus.'
         </ul>
@@ -1264,10 +1269,11 @@ public function serah_terimatambah(){
 public function serah_terimadetail(){
     cekajax();
     $idd = intval($this->input->get("id"));
-     $this->db->select("*");
-     $this->db->from('master_serah_terima');
+     $this->db->select("a.*,b.luas_surat,b.luas_ukur,c.nama_regional");
+     $this->db->from('master_serah_terima a');
     $this->db->where('id_serah_terima' , $idd);
-    $this->db->join('master_item', 'master_item.kode_item = master_serah_terima.id_master_item', 'left');
+    $this->db->join('master_item b', 'b.kode_item = a.id_master_item', 'left');
+    $this->db->join('master_regional c', 'b.id_perumahan = c.id', 'left');
     $query = $this->db->get();
 
     $result = array(
@@ -1276,9 +1282,8 @@ public function serah_terimadetail(){
         "tgl_serah_terima_indo" => $this->security->xss_clean(tgl_indo($query->row()->tgl_serah_terima)),
         "keterangan" => $this->security->xss_clean($query->row()->keterangan),
         "lokasi" => $this->security->xss_clean($query->row()->nama_regional),
-        "luas_ukur" => $this->security->xss_clean($query->row()->jumlah),
-        "luas_surat" => $this->security->xss_clean($query->row()->jumlah),
-        "editor" => $this->security->xss_clean($query->row()->editor),
+        "luas_ukur" => $this->security->xss_clean($query->row()->luas_ukur),
+        "luas_surat" => $this->security->xss_clean($query->row()->luas_surat)
     );
     echo'['.json_encode($result).']';
 }
