@@ -30,12 +30,63 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      <?php $this->load->view("komponen/header.php") ?>
      <div class="inner-wrapper"> 
         <?php $this->load->view("komponen/sidebar.php") ?>
-        <section role="main" class="content-body" id="kontendata">
-
+        <section role="main" class="content-body">
+           <header class="page-header">  
+              <h2>Master Data Tanah</h2>
+          </header>  
+          <!-- start: page -->
+          <section class="panel">
+            <header class="panel-heading">    
+                <div class="row show-grid">
+                    <div class="col-md-6" align="left"><h2 class="panel-title">Data Tanah </h2></div>
+                    <?php  
+                    echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
+                    ?> 
+                </div>
+            </header>
+            <div class="panel-body"> 
+                <table class="table table-bordered table-hover table-striped" id="itemsdata">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Lokasi</th>
+                            <th>Kode Item </th>
+                            <th>Nama Item</th>
+                            <th>Tanggal Pembelian</th>
+                            <th>Nama Penjual</th>
+                            <th>nama Surat</th>
+                            <th>Status Surat</th>
+                            <th>No Gambar</th>
+                            <th>Jml Bidang</th>
+                            <th>Luas Surat</th>
+                            <th>Luas Ukur</th>
+                            <th>No PBB</th>
+                            <th>Luas PBB</th>
+                            <th>NJOP</th>
+                            <th>Sat Harga Pengalihan</th>
+                            <th>Tot Harga Pengalihan</th>
+                            <th>Nama Makelar</th>
+                            <th>Nilai</th>
+                            <th>Tgl Pengalihan</th>
+                            <th>Akta Pengalihan</th>
+                            <th>Nama Pengalihan</th>
+                            <th>Pematangan</th>
+                            <th>Ganti Rugi</th>
+                            <th>PBB</th>
+                            <th>Lain-lain</th>
+                            <th>Harga / M^2</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table> 
+            </div>
         </section>
-    </div>
+        <!-- end: page -->
+    </section>
+</div>
 </section>
-
 
 
 <div class="modal fade" data-keyboard="false" data-backdrop="static"  id="tambahData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -59,8 +110,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-9">
                             <select data-plugin-selectTwo class="form-control" required name="id_perumahan">  
                                 <option value="">Pilih Lokasi</option>
-                                <?php foreach ($perumahan2 as $aa): ?>
-                                    <option value="<?php echo $aa->id;?>"><?php echo $aa->nama_regional;?></option>
+                                <?php foreach ($perumahan as $supp): ?>
+                                    <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
                                 <?php endforeach; ?>
                             </select> 
                         </div>
@@ -78,12 +129,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                     <div class="form-group nama_penjual">
-                        <label class="col-sm-3 control-label">Data Surat Tanah</span></label>
-                        <div class="col-sm-5">
-                            <input type="text" name="nama_penjual" class="form-control" placeholder="Nama Penjual"  />
-                        </div>
-                        <div class="col-sm-4">
-                            <input type="text" name="status_surat_tanah" class="form-control" placeholder="Status Surat Tanah"  />
+                        <label class="col-sm-3 control-label">Nama Penjual</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nama_penjual" class="form-control"  />
                         </div>
                     </div>
                     <div class="form-group nama_surat_tanah">
@@ -92,10 +140,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="nama_surat_tanah" class="form-control"  />
                         </div>
                     </div>
-                 <!--    <div class="form-group status_surat_tanah">
+                    <div class="form-group status_surat_tanah">
                         <label class="col-sm-3 control-label">Status Surat Tanah</span></label>
-
-                    </div> -->
+                        <div class="col-sm-9">
+                            <input type="text" name="status_surat_tanah" class="form-control"  />
+                        </div>
+                    </div>
                     <div class="form-group no_gambar">
                         <label class="col-sm-3 control-label">No Gambar</span></label>
                         <div class="col-sm-9">
@@ -109,121 +159,114 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                     <div class="form-group luas_surat">
-                        <label class="col-sm-3 control-label">Luas (m2)</span></label>
-                        <div class="col-sm-5">
-                            <input type="number" name="luas_surat" class="form-control" placeholder="Luas surat"  />
-                        </div>
-                        <div class="col-sm-4">
-                            <input type="number" name="luas_ukur" class="form-control"  placeholder="Luas Ukur" />
-                        </div>
-                    </div><!-- 
-                    <div class="form-group luas_ukur">
-                        <label class="col-sm-3 control-label">Luas Ukur</span></label></div> -->
-
-                        <div class="form-group no_pbb">
-                            <label class="col-sm-3 control-label">PBB</span></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="no_pbb" class="form-control" placeholder="No PBB"  />
-                            </div>
-                            <div class="col-sm-2">
-                                <input type="text" name="luas_pbb" class="form-control" placeholder="Luas PBB (m2)"  />
-                            </div>
-                             <div class="col-sm-2">
-                                <input type="text" name="njop" class="form-control" placeholder="NJOP" />
-                            </div>
-                              <div class="col-sm-2">
-                                <input type="text" name="pbb" class="form-control" placeholder="PBB"  />
-                            </div>
-                        </div><!-- <div class="form-group luas_pbb">
-                            <label class="col-sm-3 control-label">Luas PBB</span></label>
-
-                        </div><div class="form-group njop">
-                            <label class="col-sm-3 control-label">njop</span></label>
-
-                        </div> -->
-                        <div class="form-group satuan_harga_pengalihan">
-                            <label class="col-sm-3 control-label">Harga Pengalihan Hak</span></label>
-                            <div class="col-sm-5">
-                                <input type="text" name="satuan_harga_pengalihan" class="form-control" placeholder="Satuan Harga Pengalihan"  />
-                            </div>
-                            <div class="col-sm-4">
-                                <input type="text" name="total_harga_pengalihan" class="form-control" placeholder="Total Harga Pengalihan" />
-                            </div>
-                        </div><!-- <div class="form-group total_harga_pengalihan">
-                            <label class="col-sm-3 control-label">Total Harga Pengalihan</span></label>
-                            
-                        </div> --><div class="form-group nama_makelar">
-                            <label class="col-sm-3 control-label">Makelar</span></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="nama_makelar" class="form-control"  />
-                            </div>
-                        </div><div class="form-group nilai">
-                            <label class="col-sm-3 control-label">Nilai</span></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="nilai" class="form-control"  />
-                            </div>
-                        </div><div class="form-group tanggal_pengalihan">
-                            <label class="col-sm-3 control-label"> Detail Pengalihan </span></label>
-                            <div class="col-sm-3">
-                                <input type="date" name="tanggal_pengalihan" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Tanggal Pengalihan" title="Tanggal Pengalihan"  />
-                            </div>
-                             <div class="col-sm-2">
-                                <input type="text" name="akta_pengalihan" class="form-control" placeholder="Akta"  />
-                            </div>
-                             <div class="col-sm-4">
-                                <input type="text" name="nama_pengalihan" class="form-control" placeholder="Nama Pengalihan" />
-                            </div>
-                        </div><!-- <div class="form-group akta_pengalihan">
-                            <label class="col-sm-3 control-label">Akta Pengalihan</span></label>
-                           
-                        </div>
-                        <div class="form-group nama_pengalihan">
-                            <label class="col-sm-3 control-label">Nama Pengalihan</span></label>
-                           
-                        </div> --><div class="form-group pematangan">
-                            <label class="col-sm-3 control-label">Pematangan</span></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="pematangan" class="form-control"  />
-                            </div>
-                        </div><div class="form-group ganti_rugi">
-                            <label class="col-sm-3 control-label">Ganti Rugi</span></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="ganti_rugi" class="form-control"  />
-                            </div>
-                        </div><!-- <div class="form-group pbb">
-                            <label class="col-sm-3 control-label">PBB</span></label>
-                          
-                        </div> -->
-                        <div class="form-group lain">
-                            <label class="col-sm-3 control-label">Lain-lain</span></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="lain" class="form-control"  />
-                            </div>
-                        </div><div class="form-group harga_perm">
-                            <label class="col-sm-3 control-label"></span>Harga / M^2</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="harga_perm" class="form-control"  />
-                            </div>
-                        </div>
-                        <div class="form-group keterangan">
-                            <label class="col-sm-3 control-label">Keterangan</label>
-                            <div class="col-sm-9">
-                                <textarea rows="2" class="form-control" name="keterangan"></textarea>
-                            </div>
+                        <label class="col-sm-3 control-label">Luas Surat</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="luas_surat" class="form-control"  />
                         </div>
                     </div>
-                    <footer class="panel-footer">
-                        <div class="row">
-                            <div class="col-md-12 text-right">
-                                <button class="btn btn-primary modal-confirm" type="submit" id="submitform">Submit</button>
-                                <button class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
+                    <div class="form-group luas_ukur">
+                        <label class="col-sm-3 control-label">Luas Ukur</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="luas_ukur" class="form-control"  />
                         </div>
-                    </footer>
-                </form>
-            </section>
-        </div>
+                    </div><div class="form-group no_pbb">
+                        <label class="col-sm-3 control-label">No PBB</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="no_pbb" class="form-control"  />
+                        </div>
+                    </div><div class="form-group luas_pbb">
+                        <label class="col-sm-3 control-label">Luas PBB</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="luas_pbb" class="form-control"  />
+                        </div>
+                    </div><div class="form-group njop">
+                        <label class="col-sm-3 control-label">njop</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="njop" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group satuan_harga_pengalihan">
+                        <label class="col-sm-3 control-label">Satuan Harga Pengalihan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="satuan_harga_pengalihan" class="form-control"  />
+                        </div>
+                    </div><div class="form-group total_harga_pengalihan">
+                        <label class="col-sm-3 control-label">Total Harga Pengalihan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="total_harga_pengalihan" class="form-control"  />
+                        </div>
+                    </div><div class="form-group nama_makelar">
+                        <label class="col-sm-3 control-label">Makelar</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nama_makelar" class="form-control"  />
+                        </div>
+                    </div><div class="form-group nilai">
+                        <label class="col-sm-3 control-label">Nilai</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nilai" class="form-control"  />
+                        </div>
+                    </div><div class="form-group tanggal_pengalihan">
+                        <label class="col-sm-3 control-label">Tanggal Pengalihan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="tanggal_pengalihan" class="form-control tanggal"  />
+                        </div>
+                    </div><div class="form-group akta_pengalihan">
+                        <label class="col-sm-3 control-label">Akta Pengalihan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="akta_pengalihan" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group nama_pengalihan">
+                        <label class="col-sm-3 control-label">Nama Pengalihan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nama_pengalihan" class="form-control"  />
+                        </div>
+                    </div><div class="form-group pematangan">
+                        <label class="col-sm-3 control-label">Pematangan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="pematangan" class="form-control"  />
+                        </div>
+                    </div><div class="form-group ganti_rugi">
+                        <label class="col-sm-3 control-label">Ganti Rugi</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="ganti_rugi" class="form-control"  />
+                        </div>
+                    </div><div class="form-group pbb">
+                        <label class="col-sm-3 control-label">PBB</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="pbb" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group lain">
+                        <label class="col-sm-3 control-label">Lain-lain</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="lain" class="form-control"  />
+                        </div>
+                    </div><div class="form-group harga_perm">
+                        <label class="col-sm-3 control-label"></span>Harga / M^2</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="harga_perm" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group keterangan">
+                        <label class="col-sm-3 control-label">Keterangan</label>
+                        <div class="col-sm-9">
+                            <textarea rows="2" class="form-control" name="keterangan"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <footer class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <button class="btn btn-primary modal-confirm" type="submit" id="submitform">Submit</button>
+                            <button class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </footer>
+            </form>
+        </section>
     </div>
+</div>
 </div>
 
 <div class="modal fade" data-keyboard="false" data-backdrop="static"  id="detailData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -268,7 +311,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-sm-9">
                         <select data-plugin-selectTwo class="form-control" required id="id_perumahan" name="id_perumahan">  
                             <option value="">Pilih Lokasi</option>
-                            <?php foreach ($perumahan2 as $supp): ?>
+                            <?php foreach ($perumahan as $supp): ?>
                                 <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
                             <?php endforeach; ?>
                         </select> 
@@ -475,29 +518,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url()?>assets/javascripts/admin.min.js"></script>
 <script src="<?php echo base_url()?>assets/vendor/pnotify/pnotify.custom.js"></script>
 <script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script> 
-<script type="text/javascript"> 
-    $(document).ready(function(){
-       refresh();
-   }); 
-    $('.tanggal').datepicker({
-        format: 'yyyy-mm-dd' 
-    });   
-    var tableitems = $('#itemsdata').DataTable({  
-        "serverSide": true, 
-        "order": [], 
-        "ajax": {
-            "url": "<?php echo base_url()?>master/dataitems",
-            "type": "GET"
-        }, 
-        "columnDefs": [
-        { 
-            "targets": [ 0 ], 
-            "orderable": false, 
-        },
-        ],  
-    }); 
+<script type="text/javascript">  
+ $('.tanggal').datepicker({
+    format: 'yyyy-mm-dd' 
+});   
+ var tableitems = $('#itemsdata').DataTable({  
+    "serverSide": true, 
+    "order": [], 
+    "ajax": {
+        "url": "<?php echo base_url()?>master/dataitems",
+        "type": "GET"
+    }, 
+    "columnDefs": [
+    { 
+        "targets": [ 0 ], 
+        "orderable": false, 
+    },
+    ],  
+}); 
 
-    document.getElementById("FormulirTambah").addEventListener("submit", function (e) {  
+ document.getElementById("FormulirTambah").addEventListener("submit", function (e) {  
      blurForm();       
      $('.help-block').hide();
      $('.form-group').removeClass('has-error');
@@ -506,15 +546,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      var form = $('#FormulirTambah')[0];
      var formData = new FormData(form);
      var xhrAjax = $.ajax({
-         type       : 'POST',
-         url        : $(this).attr('action'),
-         data       : formData, 
+         type 		: 'POST',
+         url 		: $(this).attr('action'),
+         data 		: formData, 
          processData: false,
          contentType: false,
          cache: false, 
-         dataType   : 'json'
+         dataType 	: 'json'
      }).done(function(data) { 
-         if ( ! data.success) {      
+         if ( ! data.success) {		 
             $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
             document.getElementById("submitform").removeAttribute('disabled');  
             $('#submitform').html('Submit');    
@@ -546,8 +586,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             text: data.message,
             type: 'success'
         });  
-           refresh();    
-
        }
    }).fail(function(data) { 
     new PNotify({
@@ -559,234 +597,219 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 }); 
    e.preventDefault(); 
 }); 
-    function detail(elem){
-      var dataId = $(elem).data("id");   
-      $('#detailData').modal();    
-      $('#showdetail').html('Loading...'); 
-      $.ajax({
-        type: 'GET',
-        url: '<?php echo base_url()?>master/itemdetail',
-        data: 'id=' + dataId,
-        dataType    : 'json',
-        success: function(response) { 
-            var datarow='';
-            $.each(response, function(i, item) {
-                datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
+ function detail(elem){
+  var dataId = $(elem).data("id");   
+  $('#detailData').modal();    
+  $('#showdetail').html('Loading...'); 
+  $.ajax({
+    type: 'GET',
+    url: '<?php echo base_url()?>master/itemdetail',
+    data: 'id=' + dataId,
+    dataType 	: 'json',
+    success: function(response) { 
+        var datarow='';
+        $.each(response, function(i, item) {
+            datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
 
-                datarow+="<tr><td>kode_item</td><td>: "+item.kode_item+"</td></tr>";
-                datarow+="<tr><td>nama_item</td><td>: "+item.nama_item+"</td></tr>";
-                datarow+="<tr><td>tanggal_pembelian</td><td>: "+item.tanggal_pembelian+"</td></tr>";
-                datarow+="<tr><td>nama_penjual</td><td>: "+item.nama_penjual+"</td></tr>";
-                datarow+="<tr><td>nama_surat_tanah</td><td>: "+item.nama_surat_tanah+"</td></tr>";
-                datarow+="<tr><td>status_surat_tanah</td><td>: "+item.status_surat_tanah+"</td></tr>";
-                datarow+="<tr><td>no_gambar</td><td>: "+item.no_gambar+"</td></tr>";
-                datarow+="<tr><td>jumlah_bidang</td><td>: "+item.jumlah_bidang+"</td></tr>";
-                datarow+="<tr><td>luas_surat</td><td>: "+item.luas_surat+"</td></tr>";
-                datarow+="<tr><td>luas_ukur</td><td>: "+item.luas_ukur+"</td></tr>";
-                datarow+="<tr><td>no_pbb</td><td>: "+item.no_pbb+"</td></tr>";
-                datarow+="<tr><td>luas_pbb</td><td>: "+item.luas_pbb+"</td></tr>";
-                datarow+="<tr><td>njop</td><td>: "+item.njop+"</td></tr>";
-                datarow+="<tr><td>satuan_harga_pengalihan</td><td>: "+item.satuan_harga_pengalihantampil+"</td></tr>";
-                datarow+="<tr><td>total_harga_pengalihan</td><td>: "+item.total_harga_pengalihantampil+"</td></tr>";
-                datarow+="<tr><td>nama_makelar</td><td>: "+item.nama_makelar+"</td></tr>";
-                datarow+="<tr><td>nilai</td><td>: "+item.nilaitampil+"</td></tr>";
-                datarow+="<tr><td>tanggal_pengalihan</td><td>: "+item.tanggal_pengalihan+"</td></tr>";
-                datarow+="<tr><td>akta_pengalihan</td><td>: "+item.akta_pengalihan+"</td></tr>";
-                datarow+="<tr><td>nama_pengalihan</td><td>: "+item.nama_pengalihan+"</td></tr>";
-                datarow+="<tr><td>pematangan</td><td>: "+item.pematangantampil+"</td></tr>";
-                datarow+="<tr><td>ganti_rugi</td><td>: "+item.ganti_rugitampil+"</td></tr>";
-                datarow+="<tr><td>pbb</td><td>: "+item.pbb+"</td></tr>";
-                datarow+="<tr><td>lain</td><td>: "+item.laintampil+"</td></tr>";
-                datarow+="<tr><td>harga_perm</td><td>: "+item.harga_permtampil+"</td></tr>";
-                datarow+="<tr><td>keterangan</td><td>: "+item.keterangan+"</td></tr>";
-                datarow+="<tr><td>Lokasi</td><td>: "+item.nama_regional+"</td></tr>";
-                datarow+="</table>";
-            });
-            $('#showdetail').html(datarow);
-        }
-    });  
-      return false;
-  }
-  function edit(elem){
-      var dataId = $(elem).data("id");   
-      document.getElementById("idd").setAttribute('value', dataId);
-      $('#editData').modal();        
-      $.ajax({
-        type: 'GET',
-        url: '<?php echo base_url()?>master/itemdetail',
-        data: 'id=' + dataId,
-        dataType    : 'json',
-        success: function(response) {  
-            $.each(response, function(i, item) { 
-               document.getElementById("kode_item").setAttribute('value', item.kode_item); 
-               document.getElementById("nama_item").setAttribute('value', item.nama_item); 
-               document.getElementById("tanggal_pembelian").setAttribute('value', item.tanggal_pembelian); 
-               document.getElementById("nama_penjual").setAttribute('value', item.nama_penjual); 
-               document.getElementById("nama_surat_tanah").setAttribute('value', item.nama_surat_tanah); 
-               document.getElementById("status_surat_tanah").setAttribute('value', item.status_surat_tanah); 
-               document.getElementById("no_gambar").setAttribute('value', item.no_gambar); 
-               document.getElementById("jumlah_bidang").setAttribute('value', item.jumlah_bidang); 
-               document.getElementById("luas_surat").setAttribute('value', item.luas_surat); 
-               document.getElementById("luas_ukur").setAttribute('value', item.luas_ukur); 
-               document.getElementById("no_pbb").setAttribute('value', item.no_pbb); 
-               document.getElementById("luas_pbb").setAttribute('value', item.luas_pbb); 
-               document.getElementById("njop").setAttribute('value', item.njop); 
-               document.getElementById("satuan_harga_pengalihan").setAttribute('value', item.satuan_harga_pengalihan); 
-               document.getElementById("total_harga_pengalihan").setAttribute('value', item.total_harga_pengalihan); 
-               document.getElementById("nama_makelar").setAttribute('value', item.nama_makelar); 
-               document.getElementById("nilai").setAttribute('value', item.nilai); 
-               document.getElementById("tanggal_pengalihan").setAttribute('value', item.tanggal_pengalihan); 
-               document.getElementById("akta_pengalihan").setAttribute('value', item.akta_pengalihan); 
-               document.getElementById("nama_pengalihan").setAttribute('value', item.nama_pengalihan); 
-               document.getElementById("pematangan").setAttribute('value', item.pematangan); 
-               document.getElementById("ganti_rugi").setAttribute('value', item.ganti_rugi); 
-               document.getElementById("pbb").setAttribute('value', item.pbb); 
-               document.getElementById("lain").setAttribute('value', item.lain); 
-               document.getElementById("harga_perm").setAttribute('value', item.harga_perm); 
-               document.getElementById("keterangan").value = item.keterangan; 
-               $("#id_perumahan").select2("val", item.id_perumahan);   
-
-           }); 
-        }
-    });  
-      return false;
-  }
-  document.getElementById("FormulirEdit").addEventListener("submit", function (e) {  
-     blurForm();       
-     $('.help-block').hide();
-     $('.form-group').removeClass('has-error');
-     document.getElementById("submitformEdit").setAttribute('disabled','disabled');
-     $('#submitformEdit').html('Loading ...');
-     var form = $('#FormulirEdit')[0];
-     var formData = new FormData(form);
-     var xhrAjax = $.ajax({
-         type       : 'POST',
-         url        : $(this).attr('action'),
-         data       : formData, 
-         processData: false,
-         contentType: false,
-         cache: false, 
-         dataType   : 'json'
-     }).done(function(data) { 
-         if ( ! data.success) {  
-            $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-            document.getElementById("submitformEdit").removeAttribute('disabled');  
-            $('#submitformEdit').html('Submit');    
-            var objek = Object.keys(data.errors);  
-            for (var key in data.errors) {
-                if (data.errors.hasOwnProperty(key)) { 
-                    var msg = '<div class="help-block" for="'+key+'">'+data.errors[key]+'</span>';
-                    $('.'+key).addClass('has-error');
-                    $('input[name="' + key + '"]').after(msg);  
-                }
-                if (key == 'fail') {   
-                    new PNotify({
-                        title: 'Notifikasi',
-                        text: data.errors[key],
-                        type: 'danger'
-                    }); 
-                }
-            }
-        } else { 
-            $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-            PNotify.removeAll();
-            tableitems.ajax.reload();    
-            document.getElementById("submitformEdit").removeAttribute('disabled'); 
-            $('#editData').modal('hide');        
-            document.getElementById("FormulirEdit").reset();    
-            $('#submitformEdit').html('Submit');   
-            new PNotify({
-                title: 'Notifikasi',
-                text: data.message,
-                type: 'success'
-            });  
-            refresh();    
-
-        }
-    }).fail(function(data) { 
-        new PNotify({
-            title: 'Notifikasi',
-            text: "Request gagal, browser akan direload",
-            type: 'danger'
-        }); 
-                    //window.settimeout(function() {  location.reload();}, 2000);
-                }); 
-    e.preventDefault(); 
-}); 
-  function hapus(elem){ 
-      var dataId = $(elem).data("id");
-      document.getElementById("idddelete").setAttribute('value', dataId);
-      $('#modalHapus').modal();    
-      refresh();    
-  }
-  document.getElementById("FormulirHapus").addEventListener("submit", function (e) {  
-     blurForm();       
-     $('.help-block').hide();
-     $('.form-group').removeClass('has-error');
-     document.getElementById("submitformHapus").setAttribute('disabled','disabled');
-     $('#submitformHapus').html('Loading ...');
-     var form = $('#FormulirHapus')[0];
-     var formData = new FormData(form);
-     var xhrAjax = $.ajax({
-         type       : 'POST',
-         url        : $(this).attr('action'),
-         data       : formData, 
-         processData: false,
-         contentType: false,
-         cache: false, 
-         dataType   : 'json'
-     }).done(function(data) { 
-         if ( ! data.success) {     
-            $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-            document.getElementById("submitformHapus").removeAttribute('disabled');  
-            $('#submitformHapus').html('Delete');     
-            var objek = Object.keys(data.errors);  
-            for (var key in data.errors) { 
-                if (key == 'fail') {   
-                    new PNotify({
-                        title: 'Notifikasi',
-                        text: data.errors[key],
-                        type: 'danger'
-                    }); 
-                }
-            }
-        } else { 
-            $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-            PNotify.removeAll();   
-            tableitems.ajax.reload();
-            document.getElementById("submitformHapus").removeAttribute('disabled'); 
-            $('#modalHapus').modal('hide');        
-            document.getElementById("FormulirHapus").reset();    
-            $('#submitformHapus').html('Delete'); 
-            new PNotify({
-                title: 'Notifikasi',
-                text: data.message,
-                type: 'success'
-            });  
-            refresh();    
-
-        }
-    }).fail(function(data) { 
-        new PNotify({
-            title: 'Notifikasi',
-            text: "Request gagal, browser akan direload",
-            type: 'danger'
-        }); 
-                    //window.settimeout(function() {  location.reload();}, 2000);
-                }); 
-    e.preventDefault(); 
-}); 
-  function refresh() { 
-
-    $.ajax({
-        type: 'GET',
-        url: '<?php echo base_url(); ?>Master/pageitem/',
-        // data: 'page='+page_num+'&kasir='+kasir+'&obat='+obat+'&costumer='+costumer+'&firstdate='+firstdate+'&lastdate='+lastdate,
-        success: function (html) { 
-            $('#kontendata').html(html); 
-        }
-    }); 
+            datarow+="<tr><td>kode_item</td><td>: "+item.kode_item+"</td></tr>";
+            datarow+="<tr><td>nama_item</td><td>: "+item.nama_item+"</td></tr>";
+            datarow+="<tr><td>tanggal_pembelian</td><td>: "+item.tanggal_pembelian+"</td></tr>";
+            datarow+="<tr><td>nama_penjual</td><td>: "+item.nama_penjual+"</td></tr>";
+            datarow+="<tr><td>nama_surat_tanah</td><td>: "+item.nama_surat_tanah+"</td></tr>";
+            datarow+="<tr><td>status_surat_tanah</td><td>: "+item.status_surat_tanah+"</td></tr>";
+            datarow+="<tr><td>no_gambar</td><td>: "+item.no_gambar+"</td></tr>";
+            datarow+="<tr><td>jumlah_bidang</td><td>: "+item.jumlah_bidang+"</td></tr>";
+            datarow+="<tr><td>luas_surat</td><td>: "+item.luas_surat+"</td></tr>";
+            datarow+="<tr><td>luas_ukur</td><td>: "+item.luas_ukur+"</td></tr>";
+            datarow+="<tr><td>no_pbb</td><td>: "+item.no_pbb+"</td></tr>";
+            datarow+="<tr><td>luas_pbb</td><td>: "+item.luas_pbb+"</td></tr>";
+            datarow+="<tr><td>njop</td><td>: "+item.njop+"</td></tr>";
+            datarow+="<tr><td>satuan_harga_pengalihan</td><td>: "+item.satuan_harga_pengalihantampil+"</td></tr>";
+            datarow+="<tr><td>total_harga_pengalihan</td><td>: "+item.total_harga_pengalihantampil+"</td></tr>";
+            datarow+="<tr><td>nama_makelar</td><td>: "+item.nama_makelar+"</td></tr>";
+            datarow+="<tr><td>nilai</td><td>: "+item.nilaitampil+"</td></tr>";
+            datarow+="<tr><td>tanggal_pengalihan</td><td>: "+item.tanggal_pengalihan+"</td></tr>";
+            datarow+="<tr><td>akta_pengalihan</td><td>: "+item.akta_pengalihan+"</td></tr>";
+            datarow+="<tr><td>nama_pengalihan</td><td>: "+item.nama_pengalihan+"</td></tr>";
+            datarow+="<tr><td>pematangan</td><td>: "+item.pematangantampil+"</td></tr>";
+            datarow+="<tr><td>ganti_rugi</td><td>: "+item.ganti_rugitampil+"</td></tr>";
+            datarow+="<tr><td>pbb</td><td>: "+item.pbb+"</td></tr>";
+            datarow+="<tr><td>lain</td><td>: "+item.laintampil+"</td></tr>";
+            datarow+="<tr><td>harga_perm</td><td>: "+item.harga_permtampil+"</td></tr>";
+            datarow+="<tr><td>keterangan</td><td>: "+item.keterangan+"</td></tr>";
+            datarow+="<tr><td>Lokasi</td><td>: "+item.nama_regional+"</td></tr>";
+            datarow+="</table>";
+        });
+        $('#showdetail').html(datarow);
+    }
+});  
+  return false;
 }
+function edit(elem){
+  var dataId = $(elem).data("id");   
+  document.getElementById("idd").setAttribute('value', dataId);
+  $('#editData').modal();        
+  $.ajax({
+    type: 'GET',
+    url: '<?php echo base_url()?>master/itemdetail',
+    data: 'id=' + dataId,
+    dataType 	: 'json',
+    success: function(response) {  
+        $.each(response, function(i, item) { 
+           document.getElementById("kode_item").setAttribute('value', item.kode_item); 
+           document.getElementById("nama_item").setAttribute('value', item.nama_item); 
+           document.getElementById("tanggal_pembelian").setAttribute('value', item.tanggal_pembelian); 
+           document.getElementById("nama_penjual").setAttribute('value', item.nama_penjual); 
+           document.getElementById("nama_surat_tanah").setAttribute('value', item.nama_surat_tanah); 
+           document.getElementById("status_surat_tanah").setAttribute('value', item.status_surat_tanah); 
+           document.getElementById("no_gambar").setAttribute('value', item.no_gambar); 
+           document.getElementById("jumlah_bidang").setAttribute('value', item.jumlah_bidang); 
+           document.getElementById("luas_surat").setAttribute('value', item.luas_surat); 
+           document.getElementById("luas_ukur").setAttribute('value', item.luas_ukur); 
+           document.getElementById("no_pbb").setAttribute('value', item.no_pbb); 
+           document.getElementById("luas_pbb").setAttribute('value', item.luas_pbb); 
+           document.getElementById("njop").setAttribute('value', item.njop); 
+           document.getElementById("satuan_harga_pengalihan").setAttribute('value', item.satuan_harga_pengalihan); 
+           document.getElementById("total_harga_pengalihan").setAttribute('value', item.total_harga_pengalihan); 
+           document.getElementById("nama_makelar").setAttribute('value', item.nama_makelar); 
+           document.getElementById("nilai").setAttribute('value', item.nilai); 
+           document.getElementById("tanggal_pengalihan").setAttribute('value', item.tanggal_pengalihan); 
+           document.getElementById("akta_pengalihan").setAttribute('value', item.akta_pengalihan); 
+           document.getElementById("nama_pengalihan").setAttribute('value', item.nama_pengalihan); 
+           document.getElementById("pematangan").setAttribute('value', item.pematangan); 
+           document.getElementById("ganti_rugi").setAttribute('value', item.ganti_rugi); 
+           document.getElementById("pbb").setAttribute('value', item.pbb); 
+           document.getElementById("lain").setAttribute('value', item.lain); 
+           document.getElementById("harga_perm").setAttribute('value', item.harga_perm); 
+           document.getElementById("keterangan").value = item.keterangan; 
+                $("#id_perumahan").select2("val", item.id_perumahan);   
+
+       }); 
+    }
+});  
+  return false;
+}
+document.getElementById("FormulirEdit").addEventListener("submit", function (e) {  
+ blurForm();       
+ $('.help-block').hide();
+ $('.form-group').removeClass('has-error');
+ document.getElementById("submitformEdit").setAttribute('disabled','disabled');
+ $('#submitformEdit').html('Loading ...');
+ var form = $('#FormulirEdit')[0];
+ var formData = new FormData(form);
+ var xhrAjax = $.ajax({
+     type 		: 'POST',
+     url 		: $(this).attr('action'),
+     data 		: formData, 
+     processData: false,
+     contentType: false,
+     cache: false, 
+     dataType 	: 'json'
+ }).done(function(data) { 
+     if ( ! data.success) {	 
+        $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+        document.getElementById("submitformEdit").removeAttribute('disabled');  
+        $('#submitformEdit').html('Submit');    
+        var objek = Object.keys(data.errors);  
+        for (var key in data.errors) {
+            if (data.errors.hasOwnProperty(key)) { 
+                var msg = '<div class="help-block" for="'+key+'">'+data.errors[key]+'</span>';
+                $('.'+key).addClass('has-error');
+                $('input[name="' + key + '"]').after(msg);  
+            }
+            if (key == 'fail') {   
+                new PNotify({
+                    title: 'Notifikasi',
+                    text: data.errors[key],
+                    type: 'danger'
+                }); 
+            }
+        }
+    } else { 
+        $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+        PNotify.removeAll();
+        tableitems.ajax.reload();    
+        document.getElementById("submitformEdit").removeAttribute('disabled'); 
+        $('#editData').modal('hide');        
+        document.getElementById("FormulirEdit").reset();    
+        $('#submitformEdit').html('Submit');   
+        new PNotify({
+            title: 'Notifikasi',
+            text: data.message,
+            type: 'success'
+        });  
+    }
+}).fail(function(data) { 
+    new PNotify({
+        title: 'Notifikasi',
+        text: "Request gagal, browser akan direload",
+        type: 'danger'
+    }); 
+                    //window.settimeout(function() {  location.reload();}, 2000);
+                }); 
+e.preventDefault(); 
+}); 
+function hapus(elem){ 
+  var dataId = $(elem).data("id");
+  document.getElementById("idddelete").setAttribute('value', dataId);
+  $('#modalHapus').modal();        
+}
+document.getElementById("FormulirHapus").addEventListener("submit", function (e) {  
+ blurForm();       
+ $('.help-block').hide();
+ $('.form-group').removeClass('has-error');
+ document.getElementById("submitformHapus").setAttribute('disabled','disabled');
+ $('#submitformHapus').html('Loading ...');
+ var form = $('#FormulirHapus')[0];
+ var formData = new FormData(form);
+ var xhrAjax = $.ajax({
+     type 		: 'POST',
+     url 		: $(this).attr('action'),
+     data 		: formData, 
+     processData: false,
+     contentType: false,
+     cache: false, 
+     dataType 	: 'json'
+ }).done(function(data) { 
+     if ( ! data.success) {		
+        $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+        document.getElementById("submitformHapus").removeAttribute('disabled');  
+        $('#submitformHapus').html('Delete');     
+        var objek = Object.keys(data.errors);  
+        for (var key in data.errors) { 
+            if (key == 'fail') {   
+                new PNotify({
+                    title: 'Notifikasi',
+                    text: data.errors[key],
+                    type: 'danger'
+                }); 
+            }
+        }
+    } else { 
+        $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+        PNotify.removeAll();   
+        tableitems.ajax.reload();
+        document.getElementById("submitformHapus").removeAttribute('disabled'); 
+        $('#modalHapus').modal('hide');        
+        document.getElementById("FormulirHapus").reset();    
+        $('#submitformHapus').html('Delete'); 
+        new PNotify({
+            title: 'Notifikasi',
+            text: data.message,
+            type: 'success'
+        });   
+    }
+}).fail(function(data) { 
+    new PNotify({
+        title: 'Notifikasi',
+        text: "Request gagal, browser akan direload",
+        type: 'danger'
+    }); 
+                    //window.settimeout(function() {  location.reload();}, 2000);
+                }); 
+e.preventDefault(); 
+}); 
+
 </script>
 </body>
 </html>

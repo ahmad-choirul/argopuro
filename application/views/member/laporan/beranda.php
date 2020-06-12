@@ -56,53 +56,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												<div class="widget-content">
 													<ul class="mg-folders" style="background-color: #003659;">
                                                         <li>
-                                                            <a href="<?php echo base_url()?>laporan/po" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Purchase Order</a>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Evaluasi Pembelian</a>
                                                             <div class="item-options">
-                                                                <a href="<?php echo base_url()?>laporan/po">
+                                                                <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian">
                                                                     <i class="fa fa-arrow-circle-o-left"></i>
                                                                 </a> 
                                                             </div>
                                                         </li>  
-                                                        <li>
-                                                            <a href="<?php echo base_url()?>laporan/pembelian" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Pembelian</a>
-                                                            <div class="item-options">
-                                                                <a href="<?php echo base_url()?>laporan/pembelian">
-                                                                    <i class="fa fa-arrow-circle-o-left"></i>
-                                                                </a> 
-                                                            </div>
-                                                        </li> 
-                                                        <li>
-                                                            <a href="<?php echo base_url()?>laporan/penerimaan" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Penerimaan</a>
-                                                            <div class="item-options">
-                                                                <a href="<?php echo base_url()?>laporan/penerimaan">
-                                                                    <i class="fa fa-arrow-circle-o-left"></i>
-                                                                </a> 
-                                                            </div>
-                                                        </li> 
-                                                        <li>
-                                                            <a href="<?php echo base_url()?>laporan/stok" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Stok</a>
-                                                            <div class="item-options">
-                                                                <a href="<?php echo base_url()?>laporan/stok">
-                                                                    <i class="fa fa-arrow-circle-o-left"></i>
-                                                                </a> 
-                                                            </div>
-                                                        </li> 
-                                                        <li>
-                                                            <a href="<?php echo base_url()?>laporan/penjualan" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Penjualan</a>
-                                                            <div class="item-options">
-                                                                <a href="<?php echo base_url()?>laporan/penjualan">
-                                                                    <i class="fa fa-arrow-circle-o-left"></i>
-                                                                </a> 
-                                                            </div>
-                                                        </li> 
-                                                        <li>
-                                                            <a href="<?php echo base_url()?>laporan/laba_rugi" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Laba Rugi</a>
-                                                            <div class="item-options">
-                                                                <a href="<?php echo base_url()?>laporan/laba_rugi">
-                                                                    <i class="fa fa-arrow-circle-o-left"></i>
-                                                                </a> 
-                                                            </div>
-                                                        </li> 
+                                                       
                                                     </ul>
 													</ul>
 												</div>
@@ -117,11 +78,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="col-md-12"> 
                                         <section class="panel">
                                             <header class="panel-heading"> 
-                                                <h2 class="panel-title">Produk Terlaris</h2>
+                                                <h2 class="panel-title"></h2>
                                             </header>
                                             <div class="panel-body">
                                                 <div class="table-responsive">
-                                                    <table class="table table-bordered table-striped table-condensed mb-none" id="produk_terlaris">
+                                                   <!--  <table class="table table-bordered table-striped table-condensed mb-none" id="produk_terlaris">
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
@@ -132,7 +93,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         </thead>
                                                         <tbody> 
                                                         </tbody>
-                                                    </table>
+                                                    </table> -->
                                                 </div>
                                             </div>
                                         </section>
@@ -145,7 +106,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                             <div class="col-md-12 col-xl-12">
                                                                 <section class="panel"> 
                                                                     <header class="panel-heading">  
-                                                                        <h2 class="panel-title">Jumlah Transaksi Penjualan 2 Minggu Terakhir</h2>
+                                                                        <h2 class="panel-title"></h2>
                                                                     </header>
                                                                     <div class="panel-body">  
                                                                         <div class="chart chart-md" id="GrafikPenjualan"></div> 
@@ -160,11 +121,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                         <section class="panel">
                                             <header class="panel-heading"> 
-                                                <h2 class="panel-title">Produk akan Kadaluarsa</h2>
+                                                <h2 class="panel-title"></h2>
                                             </header>
                                             <div class="panel-body">
                                                 <div class="table-responsive">
-                                                    <table class="table table-bordered table-striped table-condensed mb-none" id="kadaluarsa">
+                                                   <!--  <table class="table table-bordered table-striped table-condensed mb-none" id="kadaluarsa">
                                                         <thead>
                                                             <tr>
                                                                 <th>No</th>
@@ -175,14 +136,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         </thead>
                                                         <tbody> 
                                                         </tbody>
-                                                    </table>
+                                                    </table> -->
                                                 </div>
                                             </div>
                                         </section> 
                                     </div> 
 
                                 </div>
-                                <section class="panel" style="margin-top:-30px;"> 
+                              <!--   <section class="panel" style="margin-top:-30px;"> 
                                     <div class="panel-body">   
                                         <div class="row"> 
                                             <div class="col-md-12 col-lg-12">
@@ -255,8 +216,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             </div>
                                         </div>  
                                     </div>
-                                </section> 
-                                <section class="panel"> 
+                                </section>  -->
+                               <!--  <section class="panel"> 
                                     <div class="panel-body">     
                                         <div class="row"> 
                                             <div class="col-md-9 col-lg-12 col-xl-4">
@@ -275,7 +236,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             </div>
                                         </div> 
                                     </div>
-                                </section>
+                                </section> -->
 							</div>
 						</div>
 					</section>
@@ -294,7 +255,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<script src="<?php echo base_url()?>assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 		<script src="<?php echo base_url()?>assets/vendor/magnific-popup/magnific-popup.js"></script>
 		<script src="<?php echo base_url()?>assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
-		<script src="<?php echo base_url()?>assets/javascripts/theme.js"></script> 
+		<script src="<?php echo base_url()?>assets/javascripts/theme.js"></script>
+<script src="<?php echo base_url()?>assets/javascripts/admin.min.js"></script> 
 		<script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script>   
 		<script src="<?php echo base_url()?>assets/vendor/raphael/raphael.js"></script>
         <script src="<?php echo base_url()?>assets/vendor/morris/morris.js"></script>

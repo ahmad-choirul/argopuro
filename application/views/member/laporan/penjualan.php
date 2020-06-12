@@ -121,6 +121,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<script src="<?php echo base_url()?>assets/vendor/jquery-datatables/media/js/jquery.dataTables.js"></script>
 		<script src="<?php echo base_url()?>assets/vendor/jquery-datatables-bs3/assets/js/datatables.js"></script>
 		<script src="<?php echo base_url()?>assets/javascripts/theme.js"></script>
+<script src="<?php echo base_url()?>assets/javascripts/admin.min.js"></script>
 		<script src="<?php echo base_url()?>assets/vendor/pnotify/pnotify.custom.js"></script>
 		<script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script> 
 <script type="text/javascript">

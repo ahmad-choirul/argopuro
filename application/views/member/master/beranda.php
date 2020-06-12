@@ -227,7 +227,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 														</div>
 														<div class="widget-summary-col">
 															<div class="summary">
-																<h4 class="title">Jumlah Regional</h4>
+																<h4 class="title">Jumlah Lokasi Perumahan</h4>
 																<div class="info">
 																	<strong class="amount"><?php echo $total_regional;?></strong>
 																</div>
@@ -251,7 +251,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 															<div class="summary">
 																<h4 class="title">Jumlah Tanah</h4>
 																<div class="info">
-																	<strong class="amount"><?php echo $total_item;?> Produk</strong>
+																	<strong class="amount"><?php echo $total_item;?> Tanah</strong>
 																</div>
 															</div> 
 														</div>
@@ -309,7 +309,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo base_url()?>assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 	<script src="<?php echo base_url()?>assets/vendor/magnific-popup/magnific-popup.js"></script>
 	<script src="<?php echo base_url()?>assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
-	<script src="<?php echo base_url()?>assets/javascripts/theme.js"></script> 
+	<script src="<?php echo base_url()?>assets/javascripts/theme.js"></script>
+<script src="<?php echo base_url()?>assets/javascripts/admin.min.js"></script> 
 	<script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script>  
 	<script>
 

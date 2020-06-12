@@ -18,6 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<link rel="stylesheet" href="<?php echo base_url()?>/assets/stylesheets/theme.css" />
 		<link rel="stylesheet" href="<?php echo base_url()?>/assets/stylesheets/skins/default.css" />
         <link rel="stylesheet" href="<?php echo base_url()?>/assets/stylesheets/theme-custom.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>/assets/stylesheets/admin.min.css">
 		<link rel="stylesheet" href="<?php echo base_url()?>assets/vendor/pnotify/pnotify.custom.css" />
 
 		<!-- Head Libs -->
@@ -388,6 +389,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<script src="<?php echo base_url()?>assets/vendor/jquery-datatables/media/js/jquery.dataTables.js"></script>
 		<script src="<?php echo base_url()?>assets/vendor/jquery-datatables-bs3/assets/js/datatables.js"></script>
 		<script src="<?php echo base_url()?>assets/javascripts/theme.js"></script>
+<script src="<?php echo base_url()?>assets/javascripts/admin.min.js"></script>
 		<script src="<?php echo base_url()?>assets/vendor/pnotify/pnotify.custom.js"></script>
 		<script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script> 
 		<script type="text/javascript">

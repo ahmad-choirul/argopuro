@@ -309,7 +309,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<script src="<?php echo base_url()?>assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 		<script src="<?php echo base_url()?>assets/vendor/magnific-popup/magnific-popup.js"></script>
 		<script src="<?php echo base_url()?>assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
-		<script src="<?php echo base_url()?>assets/javascripts/theme.js"></script> 
+		<script src="<?php echo base_url()?>assets/javascripts/theme.js"></script>
+<script src="<?php echo base_url()?>assets/javascripts/admin.min.js"></script> 
 		<script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script>   
 		<script src="<?php echo base_url()?>assets/vendor/raphael/raphael.js"></script>
         <script src="<?php echo base_url()?>assets/vendor/morris/morris.js"></script>

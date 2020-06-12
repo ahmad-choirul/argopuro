@@ -697,8 +697,16 @@ public function items()
      $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
      $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
 
-    $this->load->view('member/master/items',$data);
-}  
+    $this->load->view('member/master/master_item',$data);
+} 
+public function pageitem()
+ {
+     $data['perumahandalamijin'] = $this->db->order_by("id","DESC")->where('status_regional','1')->get('master_regional')->result();
+     $data['perumahanluarijin'] = $this->db->order_by("id","DESC")->where('status_regional','2')->get('master_regional')->result();
+     $data['perumahanlokasi'] = $this->db->order_by("id","DESC")->where('status_regional','3')->get('master_regional')->result();
+     $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+    $this->load->view('member/master/items_view',$data);
+ } 
 
 public function dataitems()
 {   

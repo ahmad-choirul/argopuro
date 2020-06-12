@@ -12,6 +12,7 @@ class Laporan extends CI_Controller {
         if($this->session->userdata('login') != TRUE){    
             redirect(base_url('login'));
         }    
+        $this->load->model('master_model');
         $this->load->model('laporan_model');
         $this->load->library('form_validation');
         $this->load->helper(array('string','security','form'));
@@ -38,6 +39,14 @@ class Laporan extends CI_Controller {
         $data['data_operasional'] = $this->Master_model->getoperasionalarray($conditions);
         $this->load->view('member/laporan/laba_rugi',$data);
     }   
+    public function laporan_evaluasi_pembelian()
+{  
+    level_user('master','items',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
+     $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+     $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+
+    $this->load->view('member/master/items',$data);
+}  
 	public function po()
 	{    
         level_user('laporan','po',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
