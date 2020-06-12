@@ -826,8 +826,6 @@ public function itemdetail(){
        "no_pbb" => $this->security->xss_clean($query->row()->no_pbb),
        "luas_pbb" => $this->security->xss_clean($query->row()->luas_pbb),
        "njop" => $this->security->xss_clean($query->row()->njop),
-       "satuan_harga_pengalihantampil" => $this->security->xss_clean(rupiah($query->row()->satuan_harga_pengalihan)),
-       "satuan_harga_pengalihan" => $this->security->xss_clean($query->row()->satuan_harga_pengalihan),
        "total_harga_pengalihantampil" => $this->security->xss_clean(rupiah($query->row()->total_harga_pengalihan)),
        "total_harga_pengalihan" => $this->security->xss_clean($query->row()->total_harga_pengalihan),
        "nama_makelar" => $this->security->xss_clean($query->row()->nama_makelar),

@@ -645,9 +645,11 @@ public function updatedatamerk()
 	//CRUD merk end
 public function getperumahan($id)
 {
- $this->db->select('a.*,b.nama_regional');
+ $this->db->select('a.*,b.nama_regional,c.*');
  $this->db->from('master_item a'); 
  $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
+    $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
+
  $this->db->where('id_perumahan', $id);
  return $this->db->get()->result();
 }
