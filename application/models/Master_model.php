@@ -191,14 +191,14 @@ private function _get_query_distributor()
         $this->db->order_by(key($order), $order[key($order)]);
     }
 }
-public function getoperasionalarray()
+public function getserah_terimaarray()
 {
 
-    $this->db->from('master_operasional');
+    $this->db->from('master_serah_terima');
     $firstdate = $this->input->get('firstdate');
     $lastdate = $this->input->get('lastdate');
     if($firstdate!='' AND $lastdate!=''){
-        $this->db->where('tgl_operasional BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
+        $this->db->where('tgl_serah_terima BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
     }
     $hasil = $this->db->get();
     if ($hasil->num_rows()>0) {
@@ -1163,16 +1163,16 @@ public function hapusdatapenjual()
 }
     //CRUD penjual end 
 
-// datatable operasional start
-var $column_search_operasional = array('tgl_operasional','keterangan','jumlah','editor');
-var $column_order_operasional = array(null, 'tgl_operasional','keterangan','jumlah','editor');
-var $order_operasional = array('waktu_update' => 'DESC');
-private function _get_query_operasional()
+// datatable serah_terima start
+var $column_search_serah_terima = array('tgl_serah_terima','keterangan','jumlah','editor');
+var $column_order_serah_terima = array(null, 'tgl_serah_terima','keterangan','jumlah','editor');
+var $order_serah_terima = array('waktu_update' => 'DESC');
+private function _get_query_serah_terima()
 {
     $get = $this->input->get();
-    $this->db->from('master_operasional');
+    $this->db->from('master_serah_terima');
     $i = 0;
-    foreach ($this->column_search_operasional as $item)
+    foreach ($this->column_search_serah_terima as $item)
     {
         if($get['search']['value'])
         {
@@ -1186,26 +1186,26 @@ private function _get_query_operasional()
                 $this->db->or_like($item, $get['search']['value']);
             }
 
-            if(count($this->column_search_operasional) - 1 == $i)
+            if(count($this->column_search_serah_terima) - 1 == $i)
                 $this->db->group_end();
         }
         $i++;
     }
     if(isset($get['order']))
     {
-        $this->db->order_by($this->column_order_operasional[$get['order']['0']['column']], $get['order']['0']['dir']);
+        $this->db->order_by($this->column_order_serah_terima[$get['order']['0']['column']], $get['order']['0']['dir']);
     }
-    else if(isset($this->order_operasional))
+    else if(isset($this->order_serah_terima))
     {
-        $order = $this->order_operasional;
+        $order = $this->order_serah_terima;
         $this->db->order_by(key($order), $order[key($order)]);
     }
 }
 
-function get_operasional_datatable()
+function get_serah_terima_datatable()
 {
     $get = $this->input->get();
-    $this->_get_query_operasional();
+    $this->_get_query_serah_terima();
     // $this->db->where('jenis_pembeli','2');
     if($get['length'] != -1)
         $this->db->limit($get['length'], $get['start']);
@@ -1213,57 +1213,57 @@ function get_operasional_datatable()
     return $query->result();
 }
 
-function count_filtered_datatable_operasional()
+function count_filtered_datatable_serah_terima()
 {
-    $this->_get_query_operasional();
+    $this->_get_query_serah_terima();
     $query = $this->db->get();
     return $query->num_rows();
 }
 
-public function count_all_datatable_operasional()
+public function count_all_datatable_serah_terima()
 {
-    $this->db->from('master_operasional');
+    $this->db->from('master_serah_terima');
     return $this->db->count_all_results();
 }
-//datatable operasional end
+//datatable serah_terima end
 
-//CRUD operasional start
-public function rulesoperasional()
+//CRUD serah_terima start
+public function rulesserah_terima()
 {
     return [
         [
-            'field' => 'tgl_operasional',
-            'label' => 'Tanggal Operasional',
+            'field' => 'tgl_serah_terima',
+            'label' => 'Tanggal serah_terima',
             'rules' => 'required',
         ]
     ];
 }
-function simpandataoperasional(){
+function simpandataserah_terima(){
     $post = $this->input->post();
     $array = array(
-        'tgl_operasional'=>$post["tgl_operasional"],
+        'tgl_serah_terima'=>$post["tgl_serah_terima"],
         'keterangan'=>$post["keterangan"],
         'jumlah'=>bilanganbulat($post["jumlah"]),
         'editor'=>$this->session->userdata('nama_admin'),
     );
-    $this->db->insert("master_operasional", $array);
+    $this->db->insert("master_serah_terima", $array);
     return $this->db->insert_id();
 }
-public function updatedataoperasional()
+public function updatedataserah_terima()
 {
     $post = $this->input->post();
-    $this->tgl_operasional = $post["tgl_operasional"];
+    $this->tgl_serah_terima = $post["tgl_serah_terima"];
     $this->keterangan = $post["keterangan"];
     $this->jumlah = bilanganbulat($post["jumlah"]);
     $this->editor = $this->session->userdata('nama_admin');
-    return $this->db->update("master_operasional", $this, array('id' => $post['idd']));
+    return $this->db->update("master_serah_terima", $this, array('id' => $post['idd']));
 }
-public function hapusdataoperasional()
+public function hapusdataserah_terima()
 {
     $post = $this->input->post();
     $this->db->where('id', $post['idd']);
-    return $this->db->delete('master_operasional');
+    return $this->db->delete('master_serah_terima');
 }
-//CRUD operasional end
+//CRUD serah_terima end
 
 }

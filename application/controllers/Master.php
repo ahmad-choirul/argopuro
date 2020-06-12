@@ -1194,23 +1194,23 @@ public function penjualhapus(){
     $data['token'] = $this->security->get_csrf_hash();
     echo json_encode($data); 
 }
-// Operasional
-public function operasional()
+// serah_terima
+public function serah_terima()
 {
-    level_user('master','operasional',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
-    $this->load->view('member/master/operasional');
+    level_user('master','serah_terima',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
+    $this->load->view('member/master/serah_terima');
 }
 
-public function dataoperasional()
+public function dataserah_terima()
 {
     cekajax();
     $get = $this->input->get();
-    $list = $this->master_model->get_operasional_datatable();
+    $list = $this->master_model->get_serah_terima_datatable();
     $data = array();
     foreach ($list as $r) {
         $row = array();
-        $tombolhapus = level_user('master','operasional',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->id).'">Hapus</a></li>':'';
-        $tomboledit = level_user('master','operasional',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id).'">Edit</a></li>':'';
+        $tombolhapus = level_user('master','serah_terima',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->id).'">Hapus</a></li>':'';
+        $tomboledit = level_user('master','serah_terima',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id).'">Edit</a></li>':'';
         $row[] = '
         <div class="btn-group dropup">
         <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
@@ -1221,35 +1221,37 @@ public function dataoperasional()
         </ul>
         </div>
         ';
-        $row[] = $this->security->xss_clean(tgl_indo($r->tgl_operasional));
+        $row[] = $this->security->xss_clean(tgl_indo($r->tgl_serah_terima));
+        $row[] = $this->security->xss_clean($r->id_master_item);
+        $row[] = $this->security->xss_clean($r->luas_surat);
+        $row[] = $this->security->xss_clean($r->luas_ukur);
         $row[] = $this->security->xss_clean($r->keterangan);
-        $row[] = $this->security->xss_clean(rupiah($r->jumlah));
         $data[] = $row;
     }
     $result = array(
         "draw" => $get['draw'],
-        "recordsTotal" => $this->master_model->count_all_datatable_operasional(),
-        "recordsFiltered" => $this->master_model->count_filtered_datatable_operasional(),
+        "recordsTotal" => $this->master_model->count_all_datatable_serah_terima(),
+        "recordsFiltered" => $this->master_model->count_filtered_datatable_serah_terima(),
         "data" => $data,
     );
     echo json_encode($result);
 }
 
-public function operasionaltambah(){
+public function serah_terimatambah(){
     cekajax();
     $post = $this->input->post();
     $simpan = $this->master_model;
     $validation = $this->form_validation;
-    $validation->set_rules($simpan->rulesoperasional());
+    $validation->set_rules($simpan->rulesserah_terima());
     if ($this->form_validation->run() == FALSE){
         $errors = $this->form_validation->error_array();
         $data['errors'] = $errors;
     }else{
-        $insert_id = $simpan->simpandataoperasional();
+        $insert_id = $simpan->simpandataserah_terima();
         if($insert_id > 0) {
             $data['success']= true;
-            $data['operasional']= $post["keterangan"];
-            $data['id_operasional']= $insert_id;
+            $data['serah_terima']= $post["keterangan"];
+            $data['id_serah_terima']= $insert_id;
             $data['message']="Berhasil menyimpan data";
         }else{
             $errors['fail'] = "gagal melakukan update data";
@@ -1259,15 +1261,15 @@ public function operasionaltambah(){
     $data['token'] = $this->security->get_csrf_hash();
     echo json_encode($data);
 }
-public function operasionaldetail(){
+public function serah_terimadetail(){
     cekajax();
     $idd = intval($this->input->get("id"));
-    $query = $this->db->select("tgl_operasional, keterangan, jumlah, editor")->get_where('master_operasional', array('id' => $idd),1);
+    $query = $this->db->select("tgl_serah_terima, keterangan, jumlah, editor")->get_where('master_serah_terima', array('id' => $idd),1);
 
     $result = array(
         "idd" => $this->security->xss_clean($idd),
-        "tgl_operasional" => $this->security->xss_clean($query->row()->tgl_operasional),
-        "tgl_operasional_indo" => $this->security->xss_clean(tgl_indo($query->row()->tgl_operasional)),
+        "tgl_serah_terima" => $this->security->xss_clean($query->row()->tgl_serah_terima),
+        "tgl_serah_terima_indo" => $this->security->xss_clean(tgl_indo($query->row()->tgl_serah_terima)),
         "keterangan" => $this->security->xss_clean($query->row()->keterangan),
         "jumlah" => $this->security->xss_clean($query->row()->jumlah),
         "jumlahrp" => $this->security->xss_clean(rupiah($query->row()->jumlah)),
@@ -1275,26 +1277,26 @@ public function operasionaldetail(){
     );
     echo'['.json_encode($result).']';
 }
-public function operasionaledit(){
+public function serah_terimaedit(){
     cekajax();
     $simpan = $this->master_model;
     $validation = $this->form_validation;
-    $validation->set_rules($simpan->rulesoperasional());
+    $validation->set_rules($simpan->rulesserah_terima());
     if ($this->form_validation->run() == FALSE){
       $errors = $this->form_validation->error_array();
       $data['errors'] = $errors;
   }else{
-    $simpan->updatedataoperasional();
+    $simpan->updatedataserah_terima();
     $data['success']= true;
     $data['message']="Berhasil menyimpan data";
 }
 $data['token'] = $this->security->get_csrf_hash();
 echo json_encode($data);
 }
-public function operasionalhapus(){
+public function serah_terimahapus(){
     cekajax();
     $hapus = $this->master_model;
-    if($hapus->hapusdataoperasional()){
+    if($hapus->hapusdataserah_terima()){
         $data['success']= true;
         $data['message']="Berhasil menghapus data";
     }else{
