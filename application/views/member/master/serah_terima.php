@@ -31,15 +31,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<?php $this->load->view("komponen/sidebar.php") ?>
 				<section role="main" class="content-body">
 					<header class="page-header">
-						<h2>Master Biaya Operasional</h2>
+						<h2>Master Biaya serah_terima</h2>
 					</header>
 					<!-- start: page -->
                     <section class="panel">
                         <header class="panel-heading">
                             <div class="row show-grid">
-                                <div class="col-md-6" align="left"><h2 class="panel-title">Data Biaya Operasional</h2></div>
+                                <div class="col-md-6" align="left"><h2 class="panel-title">Data Biaya serah_terima</h2></div>
                                 <?php
-                                echo level_user('master','operasional',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
+                                echo level_user('master','serah_terima',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
                                 ?>
 							</div>
                         </header>
@@ -68,15 +68,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="modal-dialog">
                 <div class="modal-content">
                 <section class="panel panel-primary">
-                    <?php echo form_open('master/operasionaltambah',' id="FormulirTambah"');?>
+                    <?php echo form_open('master/serah_terimatambah',' id="FormulirTambah"');?>
                     <header class="panel-heading">
-                        <h2 class="panel-title">Tambah Biaya Operasional</h2>
+                        <h2 class="panel-title">Tambah Biaya serah_terima</h2>
                     </header>
                     <div class="panel-body">
                             <div class="form-group mt-lg">
                                 <label class="col-sm-3 control-label">Tanggal<span class="required">*</span></label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="tgl_operasional" class="form-control tanggal_masa" data-plugin-datepicker required/>
+                                    <input type="text" name="tgl_serah_terima" class="form-control tanggal_masa" data-plugin-datepicker required/>
                                 </div>
                             </div>
                             <div class="form-group mt-lg">
@@ -111,7 +111,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="modal-content">
                 <section class="panel  panel-primary">
                     <header class="panel-heading">
-                        <h2 class="panel-title">Detail Biaya Operasional</h2>
+                        <h2 class="panel-title">Detail Biaya serah_terima</h2>
                     </header>
                     <div class="panel-body" id="showdetail">
                     </div>
@@ -131,16 +131,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="modal-dialog">
                 <div class="modal-content">
                 <section class="panel  panel-primary">
-                    <?php echo form_open('master/operasionaledit',' id="FormulirEdit"');?>
+                    <?php echo form_open('master/serah_terimaedit',' id="FormulirEdit"');?>
                     <input type="hidden" name="idd" id="idd">
                     <header class="panel-heading">
-                        <h2 class="panel-title">Edit Data Biaya Operasional</h2>
+                        <h2 class="panel-title">Edit Data Biaya serah_terima</h2>
                     </header>
                     <div class="panel-body">
                           <div class="form-group mt-lg">
                               <label class="col-sm-3 control-label">Tanggal<span class="required">*</span></label>
                               <div class="col-sm-9">
-                                  <input type="text" name="tgl_operasional" id="tgl_operasional" class="form-control tanggal_masa" data-plugin-datepicker required/>
+                                  <input type="text" name="tgl_serah_terima" id="tgl_serah_terima" class="form-control tanggal_masa" data-plugin-datepicker required/>
                               </div>
                           </div>
                           <div class="form-group mt-lg">
@@ -190,7 +190,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <footer class="panel-footer">
                         <div class="row">
                             <div class="col-md-12 text-right">
-                                <?php echo form_open('master/operasionalhapus',' id="FormulirHapus"');?>
+                                <?php echo form_open('master/serah_terimahapus',' id="FormulirHapus"');?>
                                 <input type="hidden" name="idd" id="idddelete">
                                 <button type="submit" class="btn btn-danger" id="submitformHapus">Delete</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -226,7 +226,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 "serverSide": true,
                 "order": [],
                 "ajax": {
-                    "url": "<?php echo base_url()?>master/dataoperasional",
+                    "url": "<?php echo base_url()?>master/dataserah_terima",
                     "type": "GET"
                 },
                 "columnDefs": [
@@ -303,16 +303,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $('#showdetail').html('Loading...');
                 $.ajax({
                     type: 'GET',
-                    url: '<?php echo base_url()?>master/operasionaldetail',
+                    url: '<?php echo base_url()?>master/serah_terimadetail',
                     data: 'id=' + dataId,
                     dataType 	: 'json',
                     success: function(response) {
                         var datarow='';
                         $.each(response, function(i, item) {
                             datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
-                            datarow+="<tr><td>Tanggal</td><td>: "+item.tgl_operasional_indo+"</td></tr>";
+                            datarow+="<tr><td>Tanggal</td><td>: "+item.tgl_serah_terima_indo+"</td></tr>";
 							              datarow+="<tr><td>Keterangan</td><td>: "+item.keterangan+"</td></tr>";
-                            datarow+="<tr><td>Jumlah Biaya Operasional</td><td>: "+item.jumlahrp+"</td></tr>";
+                            datarow+="<tr><td>Jumlah Biaya serah_terima</td><td>: "+item.jumlahrp+"</td></tr>";
                             datarow+="<tr><td>Editor</td><td>: "+item.editor+"</td></tr>";
                             datarow+="</table>";
                         });
@@ -327,12 +327,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         		$('#editData').modal();
                 $.ajax({
                     type: 'GET',
-                    url: '<?php echo base_url()?>master/operasionaldetail',
+                    url: '<?php echo base_url()?>master/serah_terimadetail',
                     data: 'id=' + dataId,
                     dataType 	: 'json',
                     success: function(response) {
                         $.each(response, function(i, item) {
-                        document.getElementById("tgl_operasional").setAttribute('value', item.tgl_operasional);
+                        document.getElementById("tgl_serah_terima").setAttribute('value', item.tgl_serah_terima);
                         document.getElementById("keterangan").value = item.keterangan;
                         document.getElementById("jumlah").value = item.jumlah;
                         });

@@ -36,7 +36,7 @@ class Laporan extends CI_Controller {
         $this->load->model('Keuangan_model');
         $data['data_hutang'] = $this->Keuangan_model->gethutangarray();
         $data['data_penjualan'] = $this->laporan_model->getrowspenjualan($conditions);
-        $data['data_operasional'] = $this->Master_model->getoperasionalarray($conditions);
+        $data['data_serah_terima'] = $this->Master_model->getserah_terimaarray($conditions);
         $this->load->view('member/laporan/laba_rugi',$data);
     }   
     public function laporan_evaluasi_pembelian()
