@@ -976,26 +976,26 @@ public function racikandetail(){
    echo'{"datarows":'.json_encode($array).',"datasub":'.json_encode($datasub).'}';
 } 
 
-public function pilihanobat()
+public function pilihanitem()
 {   
     cekajax(); 
     $get = $this->input->get();
-    $list = $this->master_model->get_pilihanobat_datatable();
+    $list = $this->master_model->get_pilihanitem_datatable();
     $data = array(); 
     foreach ($list as $r) { 
         $row = array(); 
         $row[] = $this->security->xss_clean($r->kode_item); 
         $row[] = $this->security->xss_clean($r->nama_item); 
-        $row[] = $this->security->xss_clean($r->kategori);   
+        $row[] = $this->security->xss_clean($r->nama_regional);   
         $row[] = ' 
-        <a onclick="pilihobat(this)"  data-namaitem="'.$r->nama_item.'" data-id="'.$r->kode_item.'" class="mt-xs mr-xs btn btn-info datarowobat" role="button"><i class="fa fa-check-square-o"></i></a>
+        <a onclick="pilihitem(this)"  data-nama_regional="'.$r->nama_regional.'" data-kode_item="'.$r->kode_item.'" class="mt-xs mr-xs btn btn-info datarowobat" role="button"><i class="fa fa-check-square-o"></i></a>
         '; 
         $data[] = $row;
     } 
     $result = array(
         "draw" => $get['draw'],
-        "recordsTotal" => $this->master_model->count_all_datatable_pilihanobat(),
-        "recordsFiltered" => $this->master_model->count_filtered_datatable_pilihanobat(),
+        "recordsTotal" => $this->master_model->count_all_datatable_pilihanitem(),
+        "recordsFiltered" => $this->master_model->count_filtered_datatable_pilihanitem(),
         "data" => $data,
     ); 
     echo json_encode($result);  
@@ -1209,8 +1209,8 @@ public function dataserah_terima()
     $data = array();
     foreach ($list as $r) {
         $row = array();
-        $tombolhapus = level_user('master','serah_terima',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->id).'">Hapus</a></li>':'';
-        $tomboledit = level_user('master','serah_terima',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id).'">Edit</a></li>':'';
+        $tombolhapus = level_user('master','serah_terima',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->id_serah_terima).'">Hapus</a></li>':'';
+        $tomboledit = level_user('master','serah_terima',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id_serah_terima).'">Edit</a></li>':'';
         $row[] = '
         <div class="btn-group dropup">
         <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
@@ -1222,7 +1222,7 @@ public function dataserah_terima()
         </div>
         ';
         $row[] = $this->security->xss_clean(tgl_indo($r->tgl_serah_terima));
-        $row[] = $this->security->xss_clean($r->id_master_item);
+        $row[] = $this->security->xss_clean($r->nama_regional);
         $row[] = $this->security->xss_clean($r->luas_surat);
         $row[] = $this->security->xss_clean($r->luas_ukur);
         $row[] = $this->security->xss_clean($r->keterangan);
@@ -1264,15 +1264,20 @@ public function serah_terimatambah(){
 public function serah_terimadetail(){
     cekajax();
     $idd = intval($this->input->get("id"));
-    $query = $this->db->select("tgl_serah_terima, keterangan, jumlah, editor")->get_where('master_serah_terima', array('id' => $idd),1);
+     $this->db->select("*");
+     $this->db->from('master_serah_terima');
+    $this->db->where('id_serah_terima' , $idd);
+    $this->db->join('master_item', 'master_item.kode_item = master_serah_terima.id_master_item', 'left');
+    $query = $this->db->get();
 
     $result = array(
         "idd" => $this->security->xss_clean($idd),
         "tgl_serah_terima" => $this->security->xss_clean($query->row()->tgl_serah_terima),
         "tgl_serah_terima_indo" => $this->security->xss_clean(tgl_indo($query->row()->tgl_serah_terima)),
         "keterangan" => $this->security->xss_clean($query->row()->keterangan),
-        "jumlah" => $this->security->xss_clean($query->row()->jumlah),
-        "jumlahrp" => $this->security->xss_clean(rupiah($query->row()->jumlah)),
+        "lokasi" => $this->security->xss_clean($query->row()->nama_regional),
+        "luas_ukur" => $this->security->xss_clean($query->row()->jumlah),
+        "luas_surat" => $this->security->xss_clean($query->row()->jumlah),
         "editor" => $this->security->xss_clean($query->row()->editor),
     );
     echo'['.json_encode($result).']';
