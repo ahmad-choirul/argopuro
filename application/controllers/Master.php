@@ -696,6 +696,7 @@ public function items()
     level_user('master','items',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
      $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
      $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+     $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
 
     $this->load->view('member/master/master_item',$data);
 } 
@@ -705,6 +706,8 @@ public function pageitem()
      $data['perumahanluarijin'] = $this->db->order_by("id","DESC")->where('status_regional','2')->get('master_regional')->result();
      $data['perumahanlokasi'] = $this->db->order_by("id","DESC")->where('status_regional','3')->get('master_regional')->result();
      $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+     $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
+
     $this->load->view('member/master/items_view',$data);
  } 
 
@@ -745,7 +748,7 @@ public function dataitems()
         $row[] = $this->security->xss_clean(tgl_indo($r->tanggal_pembelian));
         $row[] = $this->security->xss_clean($r->nama_penjual);  
         $row[] = $this->security->xss_clean($r->nama_surat_tanah);  
-        $row[] = $this->security->xss_clean($r->status_surat_tanah);  
+        $row[] = $this->security->xss_clean($r->kode_sertifikat);  
         $row[] = $this->security->xss_clean($r->no_gambar);  
         $row[] = $this->security->xss_clean($r->jumlah_bidang);  
         $row[] = $this->security->xss_clean($r->luas_surat);  
@@ -801,6 +804,7 @@ public function itemdetail(){
     cekajax(); 
     $idd = $this->input->get("id"); 
     $this->db->join('master_regional', 'master_item.id_perumahan = master_regional.id', 'left');
+    $this->db->join('tbl_sertifikat_tanah', 'master_item.status_surat_tanah = tbl_sertifikat_tanah.id_sertifikat_tanah', 'left');
     $query = $this->db->get_where('master_item', array('kode_item' => $idd),1);
     $result = array(  
        "kode_item" => $this->security->xss_clean($query->row()->kode_item),
@@ -809,6 +813,7 @@ public function itemdetail(){
        "nama_penjual" => $this->security->xss_clean($query->row()->nama_penjual),
        "nama_surat_tanah" => $this->security->xss_clean($query->row()->nama_surat_tanah),
        "status_surat_tanah" => $this->security->xss_clean($query->row()->status_surat_tanah),
+       "nama_status_surat_tanah" => $this->security->xss_clean($query->row()->nama_sertifikat),
        "no_gambar" => $this->security->xss_clean($query->row()->no_gambar),
        "jumlah_bidang" => $this->security->xss_clean($query->row()->jumlah_bidang),
        "luas_surat" => $this->security->xss_clean($query->row()->luas_surat),

@@ -658,9 +658,10 @@ var $order_item = array('waktu_update' => 'DESC');
 private function _get_query_item()
 { 
     $get = $this->input->get();
-    $this->db->select('a.*,b.nama_regional');
+    $this->db->select('a.*,b.nama_regional,c.*');
     $this->db->from('master_item a'); 
     $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
+    $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
     $i = 0; 
     foreach ($this->column_search_item as $item)
     {

@@ -140,10 +140,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="nama_surat_tanah" class="form-control"  />
                         </div>
                     </div>
-                    <div class="form-group status_surat_tanah">
-                        <label class="col-sm-3 control-label">Status Surat Tanah</span></label>
+                  <div class="form-group mt-lg nama_supplier">
+                        <label class="col-sm-3 control-label">Sertifikat<span class="required">*</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="status_surat_tanah" class="form-control"  />
+                            <select data-plugin-selectTwo class="form-control" required name="status_surat_tanah">  
+                                <option value="">Pilih Lokasi</option>
+                                <?php foreach ($sertifikat_tanah as $aa): ?>
+                                    <option value="<?php echo $aa->id_sertifikat_tanah;?>"><?php echo $aa->nama_sertifikat;?> / <?php echo $aa->nama_sertifikat;?></option>
+                                <?php endforeach; ?>
+                            </select> 
                         </div>
                     </div>
                     <div class="form-group no_gambar">
@@ -341,12 +346,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <input type="text" name="nama_surat_tanah" id="nama_surat_tanah" class="form-control"  />
                     </div>
                 </div>
-                <div class="form-group status_surat_tanah">
-                    <label class="col-sm-3 control-label">Status Surat Tanah</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="status_surat_tanah" id="status_surat_tanah" class="form-control"  />
+               <div class="form-group mt-lg nama_supplier">
+                        <label class="col-sm-3 control-label">Sertifikat<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <select data-plugin-selectTwo class="form-control" required name="status_surat_tanah" id="status_surat_tanah">  
+                                <option value="">Pilih Lokasi</option>
+                                <?php foreach ($sertifikat_tanah as $aa): ?>
+                                    <option value="<?php echo $aa->id_sertifikat_tanah;?>"><?php echo $aa->nama_sertifikat;?> / <?php echo $aa->nama_sertifikat;?></option>
+                                <?php endforeach; ?>
+                            </select> 
+                        </div>
                     </div>
-                </div>
                 <div class="form-group no_gambar">
                     <label class="col-sm-3 control-label">No Gambar</span></label>
                     <div class="col-sm-9">
@@ -616,7 +626,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             datarow+="<tr><td>tanggal_pembelian</td><td>: "+item.tanggal_pembelian+"</td></tr>";
             datarow+="<tr><td>nama_penjual</td><td>: "+item.nama_penjual+"</td></tr>";
             datarow+="<tr><td>nama_surat_tanah</td><td>: "+item.nama_surat_tanah+"</td></tr>";
-            datarow+="<tr><td>status_surat_tanah</td><td>: "+item.status_surat_tanah+"</td></tr>";
+            datarow+="<tr><td>status_surat_tanah</td><td>: "+item.nama_status_surat_tanah+"</td></tr>";
             datarow+="<tr><td>no_gambar</td><td>: "+item.no_gambar+"</td></tr>";
             datarow+="<tr><td>jumlah_bidang</td><td>: "+item.jumlah_bidang+"</td></tr>";
             datarow+="<tr><td>luas_surat</td><td>: "+item.luas_surat+"</td></tr>";
@@ -661,7 +671,6 @@ function edit(elem){
            document.getElementById("tanggal_pembelian").setAttribute('value', item.tanggal_pembelian); 
            document.getElementById("nama_penjual").setAttribute('value', item.nama_penjual); 
            document.getElementById("nama_surat_tanah").setAttribute('value', item.nama_surat_tanah); 
-           document.getElementById("status_surat_tanah").setAttribute('value', item.status_surat_tanah); 
            document.getElementById("no_gambar").setAttribute('value', item.no_gambar); 
            document.getElementById("jumlah_bidang").setAttribute('value', item.jumlah_bidang); 
            document.getElementById("luas_surat").setAttribute('value', item.luas_surat); 
@@ -683,6 +692,7 @@ function edit(elem){
            document.getElementById("harga_perm").setAttribute('value', item.harga_perm); 
            document.getElementById("keterangan").value = item.keterangan; 
                 $("#id_perumahan").select2("val", item.id_perumahan);   
+                $("#status_surat_tanah").select2("val", item.status_surat_tanah);   
 
        }); 
     }

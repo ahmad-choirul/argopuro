@@ -63,6 +63,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                 </a> 
                                                             </div>
                                                         </li>  
+
+                                                         <li>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Evaluasi Land bank</a>
+                                                            <div class="item-options">
+                                                                <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank">
+                                                                    <i class="fa fa-arrow-circle-o-left"></i>
+                                                                </a> 
+                                                            </div>
+                                                        </li>  
                                                        
                                                     </ul>
 													</ul>

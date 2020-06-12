@@ -44,6 +44,17 @@ class Laporan extends CI_Controller {
     level_user('master','items',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
      $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
      $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+     $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
+
+    $this->load->view('member/master/items',$data);
+}  
+
+ public function laporan_evaluasi_land_bank()
+{  
+    level_user('master','items',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
+     $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+     $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+     $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
 
     $this->load->view('member/master/items',$data);
 }  
