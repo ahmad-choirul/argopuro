@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </header>  
   <!-- start: page -->
   <div class="row">
-      <section class="panel col-md-7">
+      <section class="panel col-md-12">
         <header class="panel-heading">    
             <div class="row show-grid">
                 <div class="col-md-8" align="left"><h2 class="panel-title"></h2></div>
@@ -56,7 +56,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th colspan="3" style="text-align: center;">TOTAL LAND BANK</th>
                             <th colspan="3" style="text-align: center;">SERAH TERIMA TECHNIC</th>
                             <th colspan="3" style="text-align: center;">SISA LAND BANK</th>
-
+                            <th colspan="4" style="text-align: center;">PROSES PERALIHAN BANK</th>
+                            <th colspan="2" style="text-align: center;">S TERIMA FINANCE </th>
 
 
                         </tr>
@@ -71,6 +72,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>                        
                             <th  rowspan="2" style="text-align: center;">BID</th>
                             <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
+                            <th rowspan="2"  style="text-align: center;">BELUM ORDER </th>
+                            <th rowspan="2" style="text-align: center;">ORDER </th>
+                            <th rowspan="2" style="text-align: center;">TERBIT </th>
+                            <th rowspan="2" style="text-align: center;">TOTAL </th>
+                            <th rowspan="2" style="text-align: center;">SUDAH </th>
+                            <th rowspan="2" style="text-align: center;">BELUM </th>
 
 
                         </tr>
@@ -96,41 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
     </section>
-    <section class="panel col-md-5">
-        <header class="panel-heading">    
-            <div class="row show-grid">
-                <div class="col-md-8" align="left"><h2 class="panel-title"> </h2></div>
-                <?php  
-                echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class=" pull-right" ><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
-                ?> 
-            </div>
-        </header>
-        <div class="panel-body"> 
-            <div class="table" style="overflow-x: auto;">
-                <table class="table table-bordered table-hover table-striped" id="itemsdata">
-                    <thead>
-                        <tr>
 
-                            <th colspan="4" style="text-align: center;">PROSES PERALIHAN BANK</th>
-                            <th colspan="2" style="text-align: center;">S TERIMA FINANCE </th>
-                        </tr>
-                        <tr>
-                            <th  style="text-align: center;">BELUM ORDER </th>
-                            <th  style="text-align: center;">ORDER </th>
-                            <th  style="text-align: center;">TERBIT </th>
-                            <th  style="text-align: center;">TOTAL </th>
-                              <th  style="text-align: center;">SUDAH </th>
-                                <th  style="text-align: center;">BELUM </th>
-                        </tr>
-
-
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table> 
-            </div>
-        </div>
-    </section>
 </div>
 
 <!-- end: page -->
