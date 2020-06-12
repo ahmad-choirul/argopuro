@@ -32,69 +32,107 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php $this->load->view("komponen/sidebar.php") ?>
     <section role="main" class="content-body">
      <header class="page-header">  
-      <h2>Master Data Tanah</h2>
+      <h2>Laporan 2</h2>
   </header>  
   <!-- start: page -->
-  <section class="panel">
-    <header class="panel-heading">    
-        <div class="row show-grid">
-            <div class="col-md-6" align="left"><h2 class="panel-title">Data Tanah </h2></div>
-            <?php  
-            echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
-            ?> 
+  <div class="row">
+      <section class="panel col-md-7">
+        <header class="panel-heading">    
+            <div class="row show-grid">
+                <div class="col-md-8" align="left"><h2 class="panel-title"></h2></div>
+                <?php  
+                echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="pull-right" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
+                ?> 
+            </div>
+        </header>
+        <div class="panel-body"> 
+            <div class="table" style="overflow-x: auto;">
+                <table class="table table-bordered table-hover table-striped" id="itemsdata">
+                    <thead>
+                        <tr>
+
+                            <th colspan="3" style="text-align: center;">LAND BANK s/d 2019</th>
+                            <th colspan="3" style="text-align: center;">LAND BANK s/d 2020 </th>
+                            <th colspan="3" style="text-align: center;">TOTAL LAND BANK</th>
+                            <th colspan="3" style="text-align: center;">SERAH TERIMA TECHNIC</th>
+                            <th colspan="3" style="text-align: center;">SISA LAND BANK</th>
+
+
+
+                        </tr>
+                        <tr>
+                            <th  rowspan="2" style="text-align: center;">BID</th>
+                            <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
+                            <th  rowspan="2" style="text-align: center;">BID</th>
+                            <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
+                            <th  rowspan="2" style="text-align: center;">BID</th>
+                            <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
+                            <th  rowspan="2" style="text-align: center;">BID</th>
+                            <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>                        
+                            <th  rowspan="2" style="text-align: center;">BID</th>
+                            <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
+
+
+                        </tr>
+                        <tr>
+                            <th   style="text-align: center;">SURAT</th>
+                            <th   style="text-align: center;">UKUR</th>
+                            <th   style="text-align: center;">SURAT</th>
+                            <th   style="text-align: center;">UKUR</th>
+                            <th   style="text-align: center;">SURAT</th>
+                            <th   style="text-align: center;">UKUR</th>
+                            <th   style="text-align: center;">SURAT</th>
+                            <th   style="text-align: center;">UKUR</th>
+                            <th   style="text-align: center;">SURAT</th>
+                            <th   style="text-align: center;">UKUR</th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table> 
+            </div>
         </div>
-    </header>
-    <div class="panel-body"> 
-        <div class="table" style="overflow-x: auto;">
-            <table class="table table-bordered table-hover table-striped" id="itemsdata">
-                <thead>
-                    <tr>
+    </section>
+    <section class="panel col-md-5">
+        <header class="panel-heading">    
+            <div class="row show-grid">
+                <div class="col-md-8" align="left"><h2 class="panel-title"> </h2></div>
+                <?php  
+                echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class=" pull-right" ><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
+                ?> 
+            </div>
+        </header>
+        <div class="panel-body"> 
+            <div class="table" style="overflow-x: auto;">
+                <table class="table table-bordered table-hover table-striped" id="itemsdata">
+                    <thead>
+                        <tr>
 
-                        <th colspan="3" style="text-align: center;">LAND BANK s/d 2019</th>
-                        <th colspan="3" style="text-align: center;">LAND BANK s/d 2020 </th>
-                        <th colspan="3" style="text-align: center;">TOTAL LAND BANK</th>
-                        <th colspan="3" style="text-align: center;">SERAH TERIMA TECHNIC</th>
-                        <th colspan="3" style="text-align: center;">SISA LAND BANK</th>
-
-
-
-                    </tr>
-                    <tr>
-                        <th  rowspan="2" style="text-align: center;">BID</th>
-                        <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
-                        <th  rowspan="2" style="text-align: center;">BID</th>
-                        <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
-                        <th  rowspan="2" style="text-align: center;">BID</th>
-                        <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
-                        <th  rowspan="2" style="text-align: center;">BID</th>
-                        <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>                        
-                        <th  rowspan="2" style="text-align: center;">BID</th>
-                        <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
-
-
-                    </tr>
-                    <tr>
-                        <th   style="text-align: center;">SURAT</th>
-                        <th   style="text-align: center;">UKUR</th>
-                        <th   style="text-align: center;">SURAT</th>
-                        <th   style="text-align: center;">UKUR</th>
-                        <th   style="text-align: center;">SURAT</th>
-                        <th   style="text-align: center;">UKUR</th>
-                        <th   style="text-align: center;">SURAT</th>
-                        <th   style="text-align: center;">UKUR</th>
-                        <th   style="text-align: center;">SURAT</th>
-                        <th   style="text-align: center;">UKUR</th>
+                            <th colspan="4" style="text-align: center;">PROSES PERALIHAN BANK</th>
+                            <th colspan="2" style="text-align: center;">S TERIMA FINANCE </th>
+                        </tr>
+                        <tr>
+                            <th  style="text-align: center;">BELUM ORDER </th>
+                            <th  style="text-align: center;">ORDER </th>
+                            <th  style="text-align: center;">TERBIT </th>
+                            <th  style="text-align: center;">TOTAL </th>
+                              <th  style="text-align: center;">SUDAH </th>
+                                <th  style="text-align: center;">BELUM </th>
+                        </tr>
 
 
-
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table> 
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table> 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
+
 <!-- end: page -->
 </section>
 </div>
