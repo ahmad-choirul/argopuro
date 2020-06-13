@@ -27,69 +27,100 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="bgbody">
   <section class="body">
 
-   <?php $this->load->view("komponen/header.php") ?>
-   <div class="inner-wrapper"> 
-    <?php $this->load->view("komponen/sidebar.php") ?>
-    <section role="main" class="content-body">
-     <header class="page-header">  
-      <h2>EVALUASI STOCK SPLITSING</h2>
-  </header>  
-  <!-- start: page -->
-  <section class="panel">
-    <header class="panel-heading">    
-        <div class="row show-grid">
-            <div class="col-md-6" align="left"><h2 class="panel-title"></h2></div>
-            <?php  
-            echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
-            ?> 
-        </div>
-    </header>
-    <div class="panel-body"> 
-        <div class="table" style="overflow-x: auto;">
-            <table class="table table-bordered table-hover table-striped" id="itemsdata">
-                <thead>
-                    <tr>
+     <?php $this->load->view("komponen/header.php") ?>
+     <div class="inner-wrapper"> 
+        <?php $this->load->view("komponen/sidebar.php") ?>
+        <section role="main" class="content-body">
+           <header class="page-header">  
+              <h2>EVALUASI STOCK SPLITSING</h2>
+          </header>  
+          <!-- start: page -->
+          <section class="panel">
+            <header class="panel-heading">    
+                <div class="row show-grid">
+                    <div class="col-md-6" align="left"><h2 class="panel-title"></h2></div>
+                    <?php  
+                    echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
+                    ?> 
+                </div>
+            </header>
+            <div class="panel-body"> 
+                <div class="table" style="overflow-x: auto;">
+                    <table class="table table-bordered table-hover table-striped" id="itemsdata">
+                        <thead>
+                            <tr>
 
-                        <th rowspan="4" style="text-align: center;">NO</th>
-                        <th rowspan="4" style="text-align: center;">PROYEK</th>
-                        <th  colspan="10" style="text-align: center;">STOCK KAVLING EFEKTIF</th>
-                        <th colspan="6" style="text-align: center;">TERJUAL TAHUN 2020</th>
-                        <th colspan="10" style="text-align: center;">SISA STOCK KAVLING EFEKTIF</th>
-                 
-
+                                <th rowspan="4" style="text-align: center;">NO</th>
+                                <th rowspan="4" style="text-align: center;">PROYEK</th>
+                                <th  colspan="10" style="text-align: center;">STOCK KAVLING EFEKTIF</th>
+                                <th colspan="6" style="text-align: center;">TERJUAL TAHUN 2020</th>
+                                <th colspan="10" style="text-align: center;">SISA STOCK KAVLING EFEKTIF</th>
 
 
-                    </tr>
-                    <tr>
-                        <th  style="text-align: center;">sd 2019</th>
-                        <th  style="text-align: center;">th 2020</th>
-                        <th  style="text-align: center;">Jumlah</th>
-                        <th  style="text-align: center;">Jan</th>
-                        <th  style="text-align: center;">Feb</th>
-                        <th  style="text-align: center;">Mar</th>
-                        <th  style="text-align: center;">Apr</th>
-                        <th  style="text-align: center;">Mei</th>
-                        <th  style="text-align: center;">Jun</th>
-                        <th  style="text-align: center;">Jul</th>
-                        <th  style="text-align: center;">Ags</th>
-                        <th  style="text-align: center;">Sep</th>
-                        <th  style="text-align: center;">Okt</th>
-                        <th  style="text-align: center;">Nov</th>
-                        <th  style="text-align: center;">Des</th>
-                        <th  style="text-align: center;">PROSES</th>
-                        <th  style="text-align: center;">BELUM</th>
 
-                    </tr>
 
-                </thead>
-                <tbody>
-                </tbody>
-            </table> 
-        </div>
-    </div>
-</section>
-<!-- end: page -->
-</section>
+                            </tr>
+                            <tr>
+                                <th colspan="6" style="text-align: center;">TERBIT SPLITSING</th>
+                                <th colspan="2" rowspan="2" style="text-align: center;">BELUM TERBIT</th>
+                                <th colspan="2" rowspan="2" style="text-align: center;">TOTAL</th>
+                                <th colspan="2" rowspan="2" style="text-align: center;">STOCK TERBIT SPLIT</th>
+                                <th colspan="2" rowspan="2" style="text-align: center;">STOCK BELUM TERBIT SPLIT</th>
+                                <th colspan="2" rowspan="2" style="text-align: center;">TOTAL</th>
+                                <th colspan="2" rowspan="2" style="text-align: center;"> TERBIT SPLITSING</th>
+                                <th colspan="2" rowspan="2" style="text-align: center;">BELUM TERBIT SPLITSING</th>
+                                <th colspan="4" style="text-align: center;">EVALUASI BELUM TERBIT SPLIT</th>
+                                <th colspan="2" rowspan="2" style="text-align: center;">TOTAL</th>
+
+                            </tr>
+                            <tr>
+                                <th colspan="2"  style="text-align: center;">S/D 2019</th>
+                                <th colspan="2"  style="text-align: center;">TAHUN 2020</th>
+                                <th colspan="2"  style="text-align: center;">TOTAL</th>
+                                <th colspan="2"  style="text-align: center;">BELUM PROSES</th>
+                                <th colspan="2"  style="text-align: center;">PROSES</th>
+                            </tr>
+                            <tr>
+                              
+                                <th   style="text-align: center;">KAV</th>
+                                <th   style="text-align: center;">SERT</th>
+                                <th   style="text-align: center;">KAV</th>
+                                <th   style="text-align: center;">SERT</th>
+                                <th   style="text-align: center;">KAV</th>
+                                <th   style="text-align: center;">SERT</th>
+                                <th   style="text-align: center;">KAV</th>
+                                <th   style="text-align: center;">SERT</th>
+                                <th   style="text-align: center;">KAV</th>
+                                <th   style="text-align: center;">SERT</th>
+                                <th   style="text-align: center;">KAV</th>
+                                <th   style="text-align: center;">SERT</th>
+                                <th   style="text-align: center;">KAV</th>
+                                <th   style="text-align: center;">SERT</th>
+                                <th   style="text-align: center;">KAV</th>
+                                <th   style="text-align: center;">SERT</th>
+                                <th   style="text-align: center;">KAV</th>
+                                <th   style="text-align: center;">SERT</th>
+                                <th   style="text-align: center;">KAV</th>
+                                <th   style="text-align: center;">SERT</th>
+                                <th   style="text-align: center;">KAV</th>
+                                <th   style="text-align: center;">SERT</th>
+                                <th   style="text-align: center;">KAV</th>
+                                <th   style="text-align: center;">SERT</th>
+                                <th   style="text-align: center;">KAV</th>
+                                <th   style="text-align: center;">SERT</th>
+
+
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table> 
+                </div>
+            </div>
+        </section>
+        <!-- end: page -->
+    </section>
 </div>
 </section>
 
@@ -310,7 +341,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <h2 class="panel-title">Edit Data Tanah/Aset</h2>
                 </header>
                 <div class="panel-body">
-                 <div class="form-group mt-lg kode_item">
+                   <div class="form-group mt-lg kode_item">
                     <label class="col-sm-3 control-label">Kode Tanah<span class="required">*</span></label>
                     <div class="col-sm-9">
                         <input type="text" name="kode_item" id="kode_item" class="form-control" required/>
