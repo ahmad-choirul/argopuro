@@ -67,6 +67,27 @@ class Laporan extends CI_Controller {
       {
          $this->load->view('member/laporan/laporan_evaluasi_tanah_belum_shgb');
       }  
+ public function laporan_evaluasi_proses_induk()
+      {
+         $this->load->view('member/laporan/laporan_evaluasi_proses_induk');
+      }  
+ public function laporan_evaluasi_penggabungan_split()
+      {
+         $this->load->view('member/laporan/laporan_evaluasi_penggabungan_split');
+      }  
+ public function laporan_evaluasi_tanah_shgb()
+      {
+         $this->load->view('member/laporan/laporan_evaluasi_tanah_shgb');
+      }  
+ public function laporan_evaluasi_splitsing()
+      {
+         $this->load->view('member/laporan/laporan_evaluasi_splitsing');
+      }  
+
+       public function laporan_evaluasi_sert_belum_split()
+      {
+         $this->load->view('member/laporan/laporan_evaluasi_sert_belum_split');
+      }  
 
       
     public function po()
