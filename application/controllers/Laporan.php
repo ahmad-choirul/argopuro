@@ -23,10 +23,6 @@ class Laporan extends CI_Controller {
     {   
         level_user('laporan','index',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
         $this->load->view('member/laporan/beranda');
-    }   
-    public function laporan2()
-    {   
-        $this->load->view('member/laporan/laporan2');
     } 
     public function laba_rugi()
     {     
@@ -60,8 +56,40 @@ class Laporan extends CI_Controller {
         $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
         $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
 
-        $this->load->view('member/master/items',$data);
-    }  
+        $this->load->view('member/laporan/evaluasi_land_bank',$data);
+    }
+    public function laporan_evaluasi_land_bank_per()
+      {
+         $this->load->view('member/laporan/evaluasi_land_bank_per');
+      }  
+
+       public function laporan_evaluasi_tanah_belum_shgb()
+      {
+         $this->load->view('member/laporan/laporan_evaluasi_tanah_belum_shgb');
+      }  
+ public function laporan_evaluasi_proses_induk()
+      {
+         $this->load->view('member/laporan/laporan_evaluasi_proses_induk');
+      }  
+ public function laporan_evaluasi_penggabungan_split()
+      {
+         $this->load->view('member/laporan/laporan_evaluasi_penggabungan_split');
+      }  
+ public function laporan_evaluasi_tanah_shgb()
+      {
+         $this->load->view('member/laporan/laporan_evaluasi_tanah_shgb');
+      }  
+ public function laporan_evaluasi_splitsing()
+      {
+         $this->load->view('member/laporan/laporan_evaluasi_splitsing');
+      }  
+
+       public function laporan_evaluasi_sert_belum_split()
+      {
+         $this->load->view('member/laporan/laporan_evaluasi_sert_belum_split');
+      }  
+
+      
     public function po()
     {    
         level_user('laporan','po',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();

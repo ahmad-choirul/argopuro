@@ -65,13 +65,77 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         </li>  
 
                                                          <li>
-                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Evaluasi Land bank</a>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Evaluasi Land bank rekap</a>
                                                             <div class="item-options">
                                                                 <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank">
                                                                     <i class="fa fa-arrow-circle-o-left"></i>
                                                                 </a> 
                                                             </div>
                                                         </li>  
+
+                                                        <li>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank_per" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Evaluasi Land bank Perumahan</a>
+                                                            <div class="item-options">
+                                                                <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank_per">
+                                                                    <i class="fa fa-arrow-circle-o-left"></i>
+                                                                </a> 
+                                                            </div>
+                                                        </li>  
+
+                                                        <li>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Evaluasi tanah belum SHGB</a>
+                                                            <div class="item-options">
+                                                                <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb">
+                                                                    <i class="fa fa-arrow-circle-o-left"></i>
+                                                                </a> 
+                                                            </div>
+                                                        </li>  
+
+                                                         <li>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> laporan evaluasi proses induk</a>
+                                                            <div class="item-options">
+                                                                <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk">
+                                                                    <i class="fa fa-arrow-circle-o-left"></i>
+                                                                </a> 
+                                                            </div>
+                                                        </li>  
+
+                                                         <li>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_penggabungan_split" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> laporan evaluasi penggabungan split</a>
+                                                            <div class="item-options">
+                                                                <a href="<?php echo base_url()?>laporan/laporan_evaluasi_penggabungan_split">
+                                                                    <i class="fa fa-arrow-circle-o-left"></i>
+                                                                </a> 
+                                                            </div>
+                                                        </li>  
+
+                                                         <li>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_shgb" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> laporan evaluasi tanah shgb</a>
+                                                            <div class="item-options">
+                                                                <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_shgb">
+                                                                    <i class="fa fa-arrow-circle-o-left"></i>
+                                                                </a> 
+                                                            </div>
+                                                        </li>  
+
+                                                         <li>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_splitsing" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> laporan evaluasi splitsing</a>
+                                                            <div class="item-options">
+                                                                <a href="<?php echo base_url()?>laporan/laporan_evaluasi_splitsing">
+                                                                    <i class="fa fa-arrow-circle-o-left"></i>
+                                                                </a> 
+                                                            </div>
+                                                        </li>  
+
+                                                         <li>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_sert_belum_split" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> laporan evaluasi sert belum split</a>
+                                                            <div class="item-options">
+                                                                <a href="<?php echo base_url()?>laporan/laporan_evaluasi_sert_belum_split">
+                                                                    <i class="fa fa-arrow-circle-o-left"></i>
+                                                                </a> 
+                                                            </div>
+                                                        </li>  
+
                                                        
                                                     </ul>
 													</ul>
