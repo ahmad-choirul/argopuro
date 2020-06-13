@@ -52,11 +52,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											</a>
 										</div> 
 										<div class="inner-menu-content">  
-											<div class="sidebar-widget m-none"> 
+											<div class="sidebar-widget m-none" > 
 												<div class="widget-content">
-													<ul class="mg-folders" style="background-color: #003659;">
-                                                        <li>
-                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Evaluasi Pembelian</a>
+													<ul class="mg-folders" style="background-color: #003659;width: 300px; ">
+                                                        <li style="">
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Evaluasi Pembelian</a>
                                                             <div class="item-options">
                                                                 <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian">
                                                                     <i class="fa fa-arrow-circle-o-left"></i>
@@ -65,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         </li>  
 
                                                          <li>
-                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Evaluasi Land bank rekap</a>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Evaluasi Land Bank Rekap</a>
                                                             <div class="item-options">
                                                                 <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank">
                                                                     <i class="fa fa-arrow-circle-o-left"></i>
@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         </li>  
 
                                                         <li>
-                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank_per" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Evaluasi Land bank Perumahan</a>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank_per" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Evaluasi Land Bank Perumahan</a>
                                                             <div class="item-options">
                                                                 <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank_per">
                                                                     <i class="fa fa-arrow-circle-o-left"></i>
@@ -83,7 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         </li>  
 
                                                         <li>
-                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Evaluasi tanah belum SHGB</a>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Evaluasi Tanah Belum SHGB</a>
                                                             <div class="item-options">
                                                                 <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb">
                                                                     <i class="fa fa-arrow-circle-o-left"></i>
@@ -92,7 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         </li>  
 
                                                          <li>
-                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> laporan evaluasi proses induk</a>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Evaluasi Proses Induk</a>
                                                             <div class="item-options">
                                                                 <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk">
                                                                     <i class="fa fa-arrow-circle-o-left"></i>
@@ -101,7 +101,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         </li>  
 
                                                          <li>
-                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_penggabungan_split" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> laporan evaluasi penggabungan split</a>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_penggabungan_split" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Evaluasi Penggabungan Split</a>
                                                             <div class="item-options">
                                                                 <a href="<?php echo base_url()?>laporan/laporan_evaluasi_penggabungan_split">
                                                                     <i class="fa fa-arrow-circle-o-left"></i>
@@ -110,7 +110,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         </li>  
 
                                                          <li>
-                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_shgb" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> laporan evaluasi tanah shgb</a>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_shgb" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Evaluasi Tanah SHGB</a>
                                                             <div class="item-options">
                                                                 <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_shgb">
                                                                     <i class="fa fa-arrow-circle-o-left"></i>
@@ -119,7 +119,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         </li>  
 
                                                          <li>
-                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_splitsing" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> laporan evaluasi splitsing</a>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_splitsing" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Evaluasi Splitsing</a>
                                                             <div class="item-options">
                                                                 <a href="<?php echo base_url()?>laporan/laporan_evaluasi_splitsing">
                                                                     <i class="fa fa-arrow-circle-o-left"></i>
@@ -128,7 +128,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         </li>  
 
                                                          <li>
-                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_sert_belum_split" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> laporan evaluasi sert belum split</a>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_sert_belum_split" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Evaluasi Sert Belum Split</a>
                                                             <div class="item-options">
                                                                 <a href="<?php echo base_url()?>laporan/laporan_evaluasi_sert_belum_split">
                                                                     <i class="fa fa-arrow-circle-o-left"></i>
