@@ -39,10 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <section class="panel col-md-12">
         <header class="panel-heading">    
             <div class="row show-grid">
-                <div class="col-md-8" align="left"><h2 class="panel-title"></h2></div>
-                <?php  
-                echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="pull-right" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
-                ?> 
+                <div class="col-md-8" align="left"><h2 class="panel-title"></h2></div> 
             </div>
         </header>
         <div class="panel-body"> 
@@ -56,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th colspan="3" style="text-align: center;color: black;">TOTAL LAND BANK</th>
                             <th colspan="3" style="text-align: center;color: black;">SERAH TERIMA TECHNIC</th>
                             <th colspan="3" style="text-align: center;color: black;">SISA LAND BANK</th>
-                            <th colspan="4" style="text-align: center; background-color: green; color: white;">PROSES PERALIHAN BANK</th>
+                            <th colspan="3" style="text-align: center; background-color: green; color: white;">PROSES PERALIHAN BANK</th>
                             <th colspan="2" style="text-align: center;background-color: green; color: white;">S TERIMA FINANCE </th>
 
 

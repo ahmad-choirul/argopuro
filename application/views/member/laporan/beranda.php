@@ -65,9 +65,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         </li>  
 
                                                          <li>
-                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Evaluasi Land bank</a>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Evaluasi Land bank rekap</a>
                                                             <div class="item-options">
                                                                 <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank">
+                                                                    <i class="fa fa-arrow-circle-o-left"></i>
+                                                                </a> 
+                                                            </div>
+                                                        </li>  
+
+                                                        <li>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank_per" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Evaluasi Land bank Perumahan</a>
+                                                            <div class="item-options">
+                                                                <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank_per">
+                                                                    <i class="fa fa-arrow-circle-o-left"></i>
+                                                                </a> 
+                                                            </div>
+                                                        </li>  
+
+                                                        <li>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Laporan Evaluasi tanah belum SHGB</a>
+                                                            <div class="item-options">
+                                                                <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb">
                                                                     <i class="fa fa-arrow-circle-o-left"></i>
                                                                 </a> 
                                                             </div>
