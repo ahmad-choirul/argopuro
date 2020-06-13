@@ -65,10 +65,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                             </tr>
                             <tr>
-                                <th  style="text-align: center;">SURAT<sup>></th>
+                                <th  style="text-align: center;">SURAT</th>
                                 <th  style="text-align: center;">ATAS NAMA</th>
                                 <th style="text-align: center;">L SURAT </th>
-                                <th style="text-align: center;">L UKUR ></th>
+                                <th style="text-align: center;">L UKUR </th>
                                 <th style="text-align: center;">BLM ORDER </th>
                                 <th style="text-align: center;">ORDER</th>
                                 <th style="text-align: center;">TERBIT</th>
