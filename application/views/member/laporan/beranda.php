@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                          <div class="sidebar-widget m-none" > 
                             <div class="widget-content">
                                <ul class="mg-folders" style="background-color: #003659;width: 300px; ">
-                                <li style="">
+                                <li>
                                     <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Evaluasi Pembelian</a>
                                     <div class="item-options">
                                         <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian">
@@ -161,7 +161,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </div>
                                 </li>  
 
-                                 <li>
+                                <li>
                                     <a href="<?php echo base_url()?>laporan/laporan_rekap_balik_nama" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Evaluasi Rekap Balik Nama</a>
                                     <div class="item-options">
                                         <a href="<?php echo base_url()?>laporan/laporan_rekap_balik_nama">
@@ -170,7 +170,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </div>
                                 </li>  
 
-                                 <li>
+                                <li>
                                     <a href="<?php echo base_url()?>laporan/laporan_evaluasi_rekap_belum_order_ajb" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Evaluasi Rekap Belum Order AJB</a>
                                     <div class="item-options">
                                         <a href="<?php echo base_url()?>laporan/laporan_evaluasi_rekap_belum_order_ajb">
@@ -191,196 +191,71 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="inner-body mg-main">  
     <div class="row" style="margin-top:-30px;">  
 
-        <div class="col-md-12"> 
+        <div class="col-md-4"> 
             <section class="panel">
                 <header class="panel-heading"> 
-                    <h2 class="panel-title"></h2>
+                    <h2 class="panel-title">Laporan 1</h2>
                 </header>
                 <div class="panel-body">
-                    <div class="table-responsive">
-                                                   <!--  <table class="table table-bordered table-striped table-condensed mb-none" id="produk_terlaris">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>No</th>
-                                                                <th>Kode Item</th>
-                                                                <th>Nama Produk</th>
-                                                                <th>Total Terjual</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody> 
-                                                        </tbody>
-                                                    </table> -->
-                                                </div>
-                                            </div>
-                                        </section>
+                    <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian" class="btn btn-primary"><i class="fa fa-folder"></i> Evaluasi Pembelian</a>
+                </div>
+            </section>
+        </div> 
 
-                                        <section class="panel"> 
-                                            <div class="panel-body">     
-                                                <div class="row"> 
-                                                    <div class="col-md-9 col-lg-12 col-xl-4">
-                                                        <div class="row">
-                                                            <div class="col-md-12 col-xl-12">
-                                                                <section class="panel"> 
-                                                                    <header class="panel-heading">  
-                                                                        <h2 class="panel-title"></h2>
-                                                                    </header>
-                                                                    <div class="panel-body">  
-                                                                        <div class="chart chart-md" id="GrafikPenjualan"></div> 
-                                                                    </div>
-                                                                </section>
-                                                            </div>  
-                                                        </div>
-                                                    </div>
-                                                </div> 
-                                            </div>
-                                        </section>
+        <div class="col-md-4"> 
+            <section class="panel">
+                <header class="panel-heading"> 
+                    <h2 class="panel-title">Laporan 2</h2>
+                </header>
+                <div class="panel-body">
+                    <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank" class="btn btn-primary"><i class="fa fa-folder"></i> Evaluasi Land Bank Rekap</a>
+                    <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank_per" class="btn btn-primary"><i class="fa fa-folder"></i> Evaluasi Land Bank Perumahan</a>
+                </div>
+            </section>
+        </div>
 
-                                        <section class="panel">
-                                            <header class="panel-heading"> 
-                                                <h2 class="panel-title"></h2>
-                                            </header>
-                                            <div class="panel-body">
-                                                <div class="table-responsive">
-                                                   <!--  <table class="table table-bordered table-striped table-condensed mb-none" id="kadaluarsa">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>No</th>
-                                                                <th>Kode Item</th>
-                                                                <th>Nama Produk</th>
-                                                                <th>Tanggal Kadaluarsa</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody> 
-                                                        </tbody>
-                                                    </table> -->
-                                                </div>
-                                            </div>
-                                        </section> 
-                                    </div> 
+        <div class="col-md-4"> 
+            <section class="panel">
+                <header class="panel-heading"> 
+                    <h2 class="panel-title">Laporan 3</h2>
+                </header>
+                <div class="panel-body">
+                    <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="btn btn-primary"><i class="fa fa-folder"></i> Evaluasi Tanah Belum SHGB Rekap</a>
+                     <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb_per" class="btn btn-primary"><i class="fa fa-folder"></i> Evaluasi Tanah Belum SHGB Perumahan</a>
+                </div>
+            </section>
+        </div>  
 
-                                </div>
-                              <!--   <section class="panel" style="margin-top:-30px;"> 
-                                    <div class="panel-body">   
-                                        <div class="row"> 
-                                            <div class="col-md-12 col-lg-12">
-                                                <div class="row">
-                                                    <div class="col-md-6 col-xl-12">
-                                                        <section class="panel">
-                                                            <div class="panel-body bg-primary">
-                                                                <div class="widget-summary"> 
-                                                                    <div class="widget-summary-col">
-                                                                        <div class="summary">
-                                                                            <h4 class="title">Total Hutang Belum Dibayar</h4>
-                                                                            <div class="info">
-                                                                                <strong class="amount" id="total_hutang_belum_bayar"></strong>
-                                                                            </div>
-                                                                        </div> 
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </section>
-                                                    </div> 
-                                                    <div class="col-md-6 col-xl-12">
-                                                        <section class="panel">
-                                                            <div class="panel-body bg-primary">
-                                                                <div class="widget-summary"> 
-                                                                    <div class="widget-summary-col">
-                                                                        <div class="summary">
-                                                                            <h4 class="title">Hutang Akan Jatuh Tempo</h4>
-                                                                            <div class="info">
-                                                                                <strong class="amount" id="akan_jatuh_tempo"></strong>
-                                                                            </div>
-                                                                        </div> 
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </section>
-                                                    </div> 
-                                                    <div class="col-md-6 col-xl-12">
-                                                        <section class="panel">
-                                                            <div class="panel-body bg-primary">
-                                                                <div class="widget-summary"> 
-                                                                    <div class="widget-summary-col">
-                                                                        <div class="summary">
-                                                                            <h4 class="title">Hutang Sudah Jatuh Tempo</h4>
-                                                                            <div class="info">
-                                                                                <strong class="amount" id="sudah_jatuh_tempo"></strong>
-                                                                            </div>
-                                                                        </div> 
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </section>
-                                                    </div> 
-                                                    <div class="col-md-6 col-xl-12">
-                                                        <section class="panel">
-                                                            <div class="panel-body bg-primary">
-                                                                <div class="widget-summary"> 
-                                                                    <div class="widget-summary-col">
-                                                                        <div class="summary">
-                                                                            <h4 class="title">Sudah Dibayar Minggu Ini</h4>
-                                                                            <div class="info">
-                                                                                <strong class="amount" id="dibayar_minggu_ini"></strong>
-                                                                            </div>
-                                                                        </div> 
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </section>
-                                                    </div> 
-                                                </div>
-                                            </div>
-                                        </div>  
-                                    </div>
-                                </section>  -->
-                               <!--  <section class="panel"> 
-                                    <div class="panel-body">     
-                                        <div class="row"> 
-                                            <div class="col-md-9 col-lg-12 col-xl-4">
-                                                <div class="row">
-                                                    <div class="col-md-12 col-xl-12">
-                                                        <section class="panel"> 
-                                                            <header class="panel-heading">  
-                                                                <h2 class="panel-title">Pemasukan dan Pengeluaran 2 Minggu Terakhir</h2>
-                                                            </header>
-                                                            <div class="panel-body">  
-                                                                <div class="chart chart-md" id="GrafikCash"></div> 
-                                                            </div>
-                                                        </section>
-                                                    </div>  
-                                                </div>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                </section> -->
-                            </div>
-                        </div>
-                    </section>
-                    <!-- end: page -->
-                </section>
-            </div>
+    </div>
 
-        </section>
+</div>
+</div>
+</section>
+<!-- end: page -->
+</section>
+</div>
+
+</section>
 
 
-        <!-- Vendor -->
-        <script src="<?php echo base_url()?>assets/vendor/jquery/jquery.min.js"></script>  
-        <script src="<?php echo base_url()?>assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
-        <script src="<?php echo base_url()?>assets/vendor/bootstrap/js/bootstrap.js"></script>
-        <script src="<?php echo base_url()?>assets/vendor/nanoscroller/nanoscroller.js"></script>
-        <script src="<?php echo base_url()?>assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-        <script src="<?php echo base_url()?>assets/vendor/magnific-popup/magnific-popup.js"></script>
-        <script src="<?php echo base_url()?>assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
-        <script src="<?php echo base_url()?>assets/javascripts/theme.js"></script>
-        <script src="<?php echo base_url()?>assets/javascripts/admin.min.js"></script> 
-        <script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script>   
-        <script src="<?php echo base_url()?>assets/vendor/raphael/raphael.js"></script>
-        <script src="<?php echo base_url()?>assets/vendor/morris/morris.js"></script>
-        <script> 
+<!-- Vendor -->
+<script src="<?php echo base_url()?>assets/vendor/jquery/jquery.min.js"></script>  
+<script src="<?php echo base_url()?>assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+<script src="<?php echo base_url()?>assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="<?php echo base_url()?>assets/vendor/nanoscroller/nanoscroller.js"></script>
+<script src="<?php echo base_url()?>assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script src="<?php echo base_url()?>assets/vendor/magnific-popup/magnific-popup.js"></script>
+<script src="<?php echo base_url()?>assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+<script src="<?php echo base_url()?>assets/javascripts/theme.js"></script>
+<script src="<?php echo base_url()?>assets/javascripts/admin.min.js"></script> 
+<script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script>   
+<script src="<?php echo base_url()?>assets/vendor/raphael/raphael.js"></script>
+<script src="<?php echo base_url()?>assets/vendor/morris/morris.js"></script>
+<script> 
 
 
 
-           $.ajax({
+   $.ajax({
         url: '<?php echo base_url()?>dashboard/cash_2_minggu', // getchart.php
         dataType: 'JSON',
         type: 'GET', 
@@ -404,7 +279,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  });
 
 
-           $.ajax({
+   $.ajax({
         url: '<?php echo base_url()?>dashboard/laporan_ringkas', // getchart.php
         dataType: 'JSON',
         type: 'GET', 
@@ -417,53 +292,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }); 
         }
     });
-           $.ajax({
-            type: 'GET',
-            url: '<?php echo base_url()?>dashboard/produk_kadaluarsa', 
-            dataType 	: 'json',
-            success: function(response) { 
-                var i = 0; 
-                var datarow =''; 
-                $.each(response.datasub, function(i, itemsub) {
-                    i = i + 1;
-                    datarow+="<tr><td>"+i+"</td>"; 
-                    datarow+="<td>"+itemsub.kode_item+"</td>"; 
-                    datarow+="<td>"+itemsub.nama_item+"</td>"; 
-                    datarow+="<td>"+itemsub.tgl_expired+"</td>";   
-                    datarow+="</tr>"; 
-                });   
-                if(datarow == '' ){ 
-                    $('#kadaluarsa').append('<tr><td colspan="4" align="center"> Tidak ada produk akan kadaluarsa</td></tr>');
-                }else{
-                    $('#kadaluarsa').append(datarow);
-                }
-            }
-        }); 
+   $.ajax({
+    type: 'GET',
+    url: '<?php echo base_url()?>dashboard/produk_kadaluarsa', 
+    dataType 	: 'json',
+    success: function(response) { 
+        var i = 0; 
+        var datarow =''; 
+        $.each(response.datasub, function(i, itemsub) {
+            i = i + 1;
+            datarow+="<tr><td>"+i+"</td>"; 
+            datarow+="<td>"+itemsub.kode_item+"</td>"; 
+            datarow+="<td>"+itemsub.nama_item+"</td>"; 
+            datarow+="<td>"+itemsub.tgl_expired+"</td>";   
+            datarow+="</tr>"; 
+        });   
+        if(datarow == '' ){ 
+            $('#kadaluarsa').append('<tr><td colspan="4" align="center"> Tidak ada produk akan kadaluarsa</td></tr>');
+        }else{
+            $('#kadaluarsa').append(datarow);
+        }
+    }
+}); 
 
-           $.ajax({
-            type: 'GET',
-            url: '<?php echo base_url()?>dashboard/produk_terlaris', 
-            dataType 	: 'json',
-            success: function(response) { 
-                var i = 0; 
-                var datarow =''; 
-                $.each(response.datasub, function(i, itemsub) {
-                    i = i + 1;
-                    datarow+="<tr><td>"+i+"</td>"; 
-                    datarow+="<td>"+itemsub.kode_item+"</td>"; 
-                    datarow+="<td>"+itemsub.nama_item+"</td>"; 
-                    datarow+="<td>"+itemsub.total+"</td>";   
-                    datarow+="</tr>"; 
-                });   
-                if(datarow == '' ){ 
-                    $('#produk_terlaris').append('<tr><td colspan="4" align="center"> Tidak ada produk data</td></tr>');
-                }else{
-                    $('#produk_terlaris').append(datarow);
-                }
-            }
-        }); 
+   $.ajax({
+    type: 'GET',
+    url: '<?php echo base_url()?>dashboard/produk_terlaris', 
+    dataType 	: 'json',
+    success: function(response) { 
+        var i = 0; 
+        var datarow =''; 
+        $.each(response.datasub, function(i, itemsub) {
+            i = i + 1;
+            datarow+="<tr><td>"+i+"</td>"; 
+            datarow+="<td>"+itemsub.kode_item+"</td>"; 
+            datarow+="<td>"+itemsub.nama_item+"</td>"; 
+            datarow+="<td>"+itemsub.total+"</td>";   
+            datarow+="</tr>"; 
+        });   
+        if(datarow == '' ){ 
+            $('#produk_terlaris').append('<tr><td colspan="4" align="center"> Tidak ada produk data</td></tr>');
+        }else{
+            $('#produk_terlaris').append(datarow);
+        }
+    }
+}); 
 
-           $.ajax({
+   $.ajax({
         url: '<?php echo base_url()?>dashboard/penjualan_2_minggu', // getchart.php
         dataType: 'JSON',
         type: 'GET',
