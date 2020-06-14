@@ -55,8 +55,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <th colspan="3" style="text-align: center;color: black;">SISA LAND BANK</th>
                                     <th colspan="3" style="text-align: center; background-color: green; color: white;">PROSES PERALIHAN BANK</th>
                                     <th colspan="2" style="text-align: center;background-color: green; color: white;">S TERIMA FINANCE </th>
-
-
                                 </tr>
                                 <tr>
                                     <th  rowspan="2" style="text-align: center;">BID</th>
@@ -74,8 +72,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <th rowspan="2" style="text-align: center;">TOTAL </th>
                                     <th rowspan="2" style="text-align: center;">SUDAH </th>
                                     <th rowspan="2" style="text-align: center;">BELUM </th>
-
-
                                 </tr>
                                 <tr>
                                     <th   style="text-align: center;">SURAT</th>
@@ -88,9 +84,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <th   style="text-align: center;">UKUR</th>
                                     <th   style="text-align: center;">SURAT</th>
                                     <th   style="text-align: center;">UKUR</th>
-
-
-
                                 </tr>
                             </thead>
                             <tbody>
