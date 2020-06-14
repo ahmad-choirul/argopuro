@@ -643,7 +643,7 @@ public function updatedatamerk()
     return $this->db->update("master_merk", $this, array('id' => $post['idd']));
 } 
 	//CRUD merk end
-public function getperumahan($id='',$firstdate='',$lastdate='')
+public function getperumahan($id='',$firstdate='',$lastdate='',$teknik='')
 {
  $this->db->select('a.*,b.nama_regional,c.*');
  $this->db->from('master_item a'); 
@@ -655,6 +655,11 @@ public function getperumahan($id='',$firstdate='',$lastdate='')
 if (!empty($id)) {
     $this->db->where('id_perumahan', $id);
 }
+
+if (!empty($teknik)) {
+    $this->db->where('status_teknik', 'sudah');
+}
+
 return $this->db->get()->result();
 }
 	// datatable item start

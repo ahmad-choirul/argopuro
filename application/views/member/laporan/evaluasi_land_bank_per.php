@@ -27,360 +27,409 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="bgbody">
   <section class="body">
 
-   <?php $this->load->view("komponen/header.php") ?>
-   <div class="inner-wrapper"> 
-    <?php $this->load->view("komponen/sidebar.php") ?>
-    <section role="main" class="content-body">
-     <header class="page-header">  
-      <h2>Master Data Tanah</h2>
-  </header>  
-  <!-- start: page -->
-  <section class="panel">
-    <header class="panel-heading">    
-        <div class="row">
-            <div class="col-sm-3" align="left"><h2 class="panel-title">LAND BANK</h2></div>
-            <form action="" method="get">
-                <div class="form-group mt-lg nama_supplier">
-                    <div class="col-sm-5">
-                        <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
-                            <option value="">Pilih Lokasi</option>
-                            <?php foreach ($perumahan as $aa): ?>
-                                <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?></option>
-                            <?php endforeach; ?>
-                        </select> 
+     <?php $this->load->view("komponen/header.php") ?>
+     <div class="inner-wrapper"> 
+        <?php $this->load->view("komponen/sidebar.php") ?>
+        <section role="main" class="content-body">
+           <header class="page-header">  
+              <h2>Master Data Tanah</h2>
+          </header>  
+          <!-- start: page -->
+          <section class="panel">
+            <header class="panel-heading">    
+                <div class="row">
+                    <div class="col-sm-3" align="left"><h2 class="panel-title">LAND BANK</h2></div>
+                    <form action="" method="get">
+                        <div class="form-group mt-lg nama_supplier">
+                            <div class="col-sm-5">
+                                <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
+                                    <option value="">Pilih Lokasi</option>
+                                    <?php foreach ($perumahan as $aa): ?>
+                                        <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?></option>
+                                    <?php endforeach; ?>
+                                </select> 
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </header>
+
+            <div class="panel-body"> 
+                <div class="table" style="overflow-x: auto;">
+                    <table class="table table-bordered table-hover table-striped" id="itemsdata">
+                        <thead>
+                            <tr>
+
+                                <th rowspan="2" style="text-align: center;">NO</th>
+                                <th rowspan="2"  style="text-align: center;">Aksi</th>
+                                <th rowspan="2"  style="text-align: center;">Lokasi</th>
+                                <th rowspan="2"  style="text-align: center;">NO GBR </th>
+                                <th rowspan="2" style="text-align: center;">THN</th>
+                                <th rowspan="2" style="text-align: center;">PENJUAL</th>
+                                <th colspan="4" style="text-align: center;">DATA TANAH</th>
+                                <th rowspan="2" style="text-align: center;">POSISI SURAT</th>
+                                <th rowspan="2" style="text-align: center;">HARGA AKTA</th>
+                                <th colspan="6" style="text-align: center;">PENGALIHAN HAK</th>
+                                <th rowspan="2" style="text-align: center;">S TERIMA FINANCE</th>
+                                <th rowspan="2" style="text-align: center;">KET</th>
+
+
+
+                            </tr>
+                            <tr>
+                                <th  style="text-align: center;">SURAT</th>
+                                <th  style="text-align: center;">ATAS NAMA</th>
+                                <th style="text-align: center;">L SURAT </th>
+                                <th style="text-align: center;">L UKUR </th>
+                                <th style="text-align: center;">Status Order</th>
+                                <th style="text-align: center;">JENIS</th>
+                                <th style="text-align: center;">NO AKTA</th>
+                                <th style="text-align: center;">TANGGAL</th>
+                                <th style="text-align: center;">ATAS NAMA</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="21" align="left"> sd. Tahun <?php echo date('Y')-1 ?></td>
+                            </tr>
+                            <?php
+                            if ($dataperumahanseb!=''): 
+                                $no=1;
+                                foreach ($dataperumahanseb as $value => $data):?>
+                                   <tr>
+                                     <?php 
+                                     $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Hapus</a></li>':'';
+                                     $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Edit</a></li>':'';
+                                     $tombol='
+                                     <div class="btn-group dropup">
+                                     <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+                                     <ul class="dropdown-menu" role="menu"> 
+                                     <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Detail</a></li> 
+                                     '.$tomboledit.'
+                                     '.$tombolhapus.' 
+                                     </ul>
+                                     </div>
+                                     ';
+                                     if ($data->tanggal_pengalihan!=null) {
+                                        $tgl_pengalihan = tgl_indo($data->tanggal_pengalihan);
+                                    }else{
+                                        $tgl_pengalihan = '-';
+                                    }
+                                    if ($data->id_perumahan=='0') {
+                                        $perumahan = 'Tidak ada';
+                                    }else{
+                                        $perumahan = $data->nama_regional;
+                                    }
+                                    ?>
+                                    <td><?=$no++?></td>
+                                    <td><?=$tombol?></td>
+                                    <td><?=$perumahan?></td> 
+                                    <td><?=$data->no_gambar?></td> 
+                                    <td><?=tgl_indo($data->tanggal_pembelian)?></td>
+                                    <td><?=$data->nama_penjual?></td>  
+                                    <td><?=$data->kode_sertifikat?></td>   
+                                    <td><?=$data->nama_surat_tanah?></td>  
+                                    <td><?=$data->luas_surat?></td>  
+                                    <td><?=$data->luas_ukur?></td>  
+                                    <td><?=$data->id_posisi_surat?></td>  
+                                    <td></td>  
+                                    <td><?=$data->status_order_akta?></td>  
+                                    <td><?=$data->jenis_pengalihan_hak?></td>  
+                                    <td><?=$data->akta_pengalihan?></td>  
+                                    <td><?=$data->tanggal_pengalihan?></td>  
+                                    <td><?=$data->nama_pengalihan?></td>  
+                                    <td></td>  
+                                    <td><?=$data->status_teknik?></td>  
+                                    <td><?=$data->keterangan?></td>  
+                                <?php endforeach ?>
+                                <?php else: ?>
+                                    data kosong
+                                <?php endif ?>
+
+                                <tr>
+                                    <td colspan="4" align="right">Jumlah -A</td>
+                                    <td ></td>
+                                    <td ></td>
+                                </tr>
+                                <tr>
+
+                                    <td colspan="17" align="left"> Tahun <?php echo date('Y') ?></td>
+                                </tr>
+                                <?php
+                                if ($dataperumahanses!=''): 
+                                    $no=1;
+                                    foreach ($dataperumahanses as $value => $data):?>
+                                       <tr>
+                                         <?php 
+                                         $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Hapus</a></li>':'';
+                                         $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Edit</a></li>':'';
+                                         $tombol='
+                                         <div class="btn-group dropup">
+                                         <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+                                         <ul class="dropdown-menu" role="menu"> 
+                                         <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Detail</a></li> 
+                                         '.$tomboledit.'
+                                         '.$tombolhapus.' 
+                                         </ul>
+                                         </div>
+                                         ';
+                                         if ($data->tanggal_pengalihan!=null) {
+                                            $tgl_pengalihan = tgl_indo($data->tanggal_pengalihan);
+                                        }else{
+                                            $tgl_pengalihan = '-';
+                                        }
+                                        if ($data->id_perumahan=='0') {
+                                            $perumahan = 'Tidak ada';
+                                        }else{
+                                            $perumahan = $data->nama_regional;
+                                        }
+                                        ?>
+                                        <td><?=$no++?></td>
+                                        <td><?=$tombol?></td>
+                                        <td><?=$perumahan?></td> 
+                                        <td><?=$data->no_gambar?></td> 
+                                        <td><?=tgl_indo($data->tanggal_pembelian)?></td>
+                                        <td><?=$data->nama_penjual?></td>  
+                                        <td><?=$data->kode_sertifikat?></td>   
+                                        <td><?=$data->nama_surat_tanah?></td>  
+                                        <td><?=$data->luas_surat?></td>  
+                                        <td><?=$data->luas_ukur?></td>  
+                                        <td><?=$data->id_posisi_surat?></td>  
+                                        <td></td>  
+                                        <td><?=$data->status_order_akta?></td>  
+                                        <td><?=$data->jenis_pengalihan_hak?></td>  
+                                        <td><?=$data->akta_pengalihan?></td>  
+                                        <td><?=$data->tanggal_pengalihan?></td>  
+                                        <td><?=$data->nama_pengalihan?></td>  
+                                        <td></td>  
+                                        <td><?=$data->status_teknik?></td>  
+                                        <td><?=$data->keterangan?></td>  
+                                    <?php endforeach ?>
+                                    <?php else: ?>
+                                        data kosong
+                                    <?php endif ?>
+
+                                    <tr>
+                                        <td colspan="4" align="right">Jumlah B</td>
+                                        <td ></td>
+                                        <td ></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                  <tr>
+                                    <td colspan="4" align="right">TOTAL </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
+                        </table> 
                     </div>
                 </div>
-            </form>
+            </section>
+            <section class="panel">
+                <header class="panel-heading">    
+                    <div class="row show-grid">
+                        <div class="col-md-6" align="left"><h2 class="panel-title">SERAH TERIMA KE TECHNIC</h2></div>
+                        <?php  
+                        echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
+                        ?> 
+                    </div>
+                </header>
+                <div class="panel-body"> 
+                    <div class="table" style="overflow-x: auto;">
+                        <table class="table table-bordered table-hover table-striped" id="itemsdata">
+                            <thead>
+                                <tr>
+
+                                    <th rowspan="2" style="text-align: center;">NO</th>
+                                    <th rowspan="2"  style="text-align: center;">NO GBR </th>
+                                    <th rowspan="2" style="text-align: center;">THN</th>
+                                    <th rowspan="2" style="text-align: center;">PENJUAL</th>
+                                    <th colspan="4" style="text-align: center;">DATA TANAH</th>
+                                    <th rowspan="2" style="text-align: center;">POSISI SURAT</th>
+                                    <th rowspan="2" style="text-align: center;">HARGA AKTA</th>
+                                    <th colspan="7" style="text-align: center;">PENGALIHAN HAK</th>
+                                    <th rowspan="2" style="text-align: center;">S TERIMA FINANCE</th>
+                                    <th rowspan="2" style="text-align: center;">KET</th>
+
+
+
+                                </tr>
+                                <tr>
+                                    <th  style="text-align: center;">SURAT</th>
+                                    <th  style="text-align: center;">ATAS NAMA</th>
+                                    <th style="text-align: center;">L SURAT </th>
+                                    <th style="text-align: center;">L UKUR </th>
+                                    <th style="text-align: center;">Status Order</th>
+                                    <th style="text-align: center;">JENIS</th>
+                                    <th style="text-align: center;">NO AKTA</th>
+                                    <th style="text-align: center;">TANGGAL</th>
+                                    <th style="text-align: center;">ATAS NAMA</th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td colspan="21" align="left"> sd. Tahun <?php echo date('Y')-1 ?></td>
+                            </tr>
+                            <?php
+                            if ($dataperumahantekseb!=''): 
+                                $no=1;
+                                foreach ($dataperumahantekseb as $value => $data):?>
+                                   <tr>
+                                     <?php 
+                                     $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Hapus</a></li>':'';
+                                     $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Edit</a></li>':'';
+                                     $tombol='
+                                     <div class="btn-group dropup">
+                                     <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+                                     <ul class="dropdown-menu" role="menu"> 
+                                     <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Detail</a></li> 
+                                     '.$tomboledit.'
+                                     '.$tombolhapus.' 
+                                     </ul>
+                                     </div>
+                                     ';
+                                     if ($data->tanggal_pengalihan!=null) {
+                                        $tgl_pengalihan = tgl_indo($data->tanggal_pengalihan);
+                                    }else{
+                                        $tgl_pengalihan = '-';
+                                    }
+                                    if ($data->id_perumahan=='0') {
+                                        $perumahan = 'Tidak ada';
+                                    }else{
+                                        $perumahan = $data->nama_regional;
+                                    }
+                                    ?>
+                                    <td><?=$no++?></td>
+                                    <td><?=$tombol?></td>
+                                    <td><?=$perumahan?></td> 
+                                    <td><?=$data->no_gambar?></td> 
+                                    <td><?=tgl_indo($data->tanggal_pembelian)?></td>
+                                    <td><?=$data->nama_penjual?></td>  
+                                    <td><?=$data->kode_sertifikat?></td>   
+                                    <td><?=$data->nama_surat_tanah?></td>  
+                                    <td><?=$data->luas_surat?></td>  
+                                    <td><?=$data->luas_ukur?></td>  
+                                    <td><?=$data->id_posisi_surat?></td>  
+                                    <td></td>  
+                                    <td><?=$data->status_order_akta?></td>  
+                                    <td><?=$data->jenis_pengalihan_hak?></td>  
+                                    <td><?=$data->akta_pengalihan?></td>  
+                                    <td><?=$data->tanggal_pengalihan?></td>  
+                                    <td><?=$data->nama_pengalihan?></td>  
+                                    <td></td>  
+                                    <td><?=$data->status_teknik?></td>  
+                                    <td><?=$data->keterangan?></td>  
+                                <?php endforeach ?>
+                                <?php else: ?>
+                                    data kosong
+                                <?php endif ?>
+
+                                <tr>
+                                    <td colspan="4" align="right">Jumlah -A</td>
+                                    <td ></td>
+                                    <td ></td>
+                                </tr>
+                                <tr>
+
+                                    <td colspan="17" align="left"> Tahun <?php echo date('Y') ?></td>
+                                </tr>
+                                <?php
+                                if ($dataperumahantekses!=''): 
+                                    $no=1;
+                                    foreach ($dataperumahantekses as $value => $data):?>
+                                       <tr>
+                                         <?php 
+                                         $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Hapus</a></li>':'';
+                                         $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Edit</a></li>':'';
+                                         $tombol='
+                                         <div class="btn-group dropup">
+                                         <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+                                         <ul class="dropdown-menu" role="menu"> 
+                                         <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Detail</a></li> 
+                                         '.$tomboledit.'
+                                         '.$tombolhapus.' 
+                                         </ul>
+                                         </div>
+                                         ';
+                                         if ($data->tanggal_pengalihan!=null) {
+                                            $tgl_pengalihan = tgl_indo($data->tanggal_pengalihan);
+                                        }else{
+                                            $tgl_pengalihan = '-';
+                                        }
+                                        if ($data->id_perumahan=='0') {
+                                            $perumahan = 'Tidak ada';
+                                        }else{
+                                            $perumahan = $data->nama_regional;
+                                        }
+                                        ?>
+                                        <td><?=$no++?></td>
+                                        <td><?=$tombol?></td>
+                                        <td><?=$perumahan?></td> 
+                                        <td><?=$data->no_gambar?></td> 
+                                        <td><?=tgl_indo($data->tanggal_pembelian)?></td>
+                                        <td><?=$data->nama_penjual?></td>  
+                                        <td><?=$data->kode_sertifikat?></td>   
+                                        <td><?=$data->nama_surat_tanah?></td>  
+                                        <td><?=$data->luas_surat?></td>  
+                                        <td><?=$data->luas_ukur?></td>  
+                                        <td><?=$data->id_posisi_surat?></td>  
+                                        <td></td>  
+                                        <td><?=$data->status_order_akta?></td>  
+                                        <td><?=$data->jenis_pengalihan_hak?></td>  
+                                        <td><?=$data->akta_pengalihan?></td>  
+                                        <td><?=$data->tanggal_pengalihan?></td>  
+                                        <td><?=$data->nama_pengalihan?></td>  
+                                        <td></td>  
+                                        <td><?=$data->status_teknik?></td>  
+                                        <td><?=$data->keterangan?></td>  
+                                    <?php endforeach ?>
+                                    <?php else: ?>
+                                        data kosong
+                                    <?php endif ?>
+
+                                    <tr>
+                                        <td colspan="4" align="right">Jumlah B</td>
+                                        <td ></td>
+                                        <td ></td>
+                                    </tr>
+                                </tbody>
+                        <tfoot>
+                          <tr>
+                            <td colspan="4" align="right">TOTAL </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table> 
+            </div>
         </div>
-    </header>
-    <?php
-    if ($dataperumahan!=''): 
-     $totalbidang=0;
-     $totalluassurat=0;
-     $totalluasukur=0;
-     $totalhargasatuan=0;
-     $totalnilaimakelar=0;
-     $totalhargatotal=0;
-     $totalhargabiaya=0;
-     $totalhargam=0;
-     $totalpematangan =0;
-     $totalgantirugi =0;
-     $totalpbb =0;
-     $totallain=0;
-     $totalakhirbiayalain=0;
-     ?>
-     <div class="panel-body"> 
-        <div class="table" style="overflow-x: auto;">
-            <table class="table table-bordered table-hover table-striped" id="itemsdata">
-                <thead>
-                    <tr>
-
-                        <th rowspan="2" style="text-align: center;">NO</th>
-                        <th rowspan="2"  style="text-align: center;">NO GBR </th>
-                        <th rowspan="2" style="text-align: center;">THN</th>
-                        <th rowspan="2" style="text-align: center;">PENJUAL</th>
-                        <th colspan="4" style="text-align: center;">DATA TANAH</th>
-                        <th rowspan="2" style="text-align: center;">POSISI SURAT</th>
-                        <th rowspan="2" style="text-align: center;">HARGA AKTA</th>
-                        <th colspan="7" style="text-align: center;">PENGALIHAN HAK</th>
-                        <th rowspan="2" style="text-align: center;">S TERIMA FINANCE</th>
-                        <th rowspan="2" style="text-align: center;">KET</th>
-
-
-
-                    </tr>
-                    <tr>
-                        <th  style="text-align: center;">SURAT</th>
-                        <th  style="text-align: center;">ATAS NAMA</th>
-                        <th style="text-align: center;">L SURAT </th>
-                        <th style="text-align: center;">L UKUR </th>
-                        <th style="text-align: center;">BLM ORDER </th>
-                        <th style="text-align: center;">ORDER</th>
-                        <th style="text-align: center;">TERBIT</th>
-                        <th style="text-align: center;">JENIS</th>
-                        <th style="text-align: center;">NO AKTA</th>
-                        <th style="text-align: center;">TANGGAL</th>
-                        <th style="text-align: center;">ATAS NAMA</th>
-                    </tr>
-
-                </thead>
-                <tbody>
-                    <tr>
-                        <td colspan="19" align="left"> sd. Tahun <?php echo date('Y')-1 ?></td>
-                    </tr>
-                    <?php foreach ($dataperumahan as $value => $data):                                 ?>
-                     <tr>
-                       <?php 
-                       $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Hapus</a></li>':'';
-                       $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Edit</a></li>':'';
-                       $tombol='
-                       <div class="btn-group dropup">
-                       <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
-                       <ul class="dropdown-menu" role="menu"> 
-                       <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Detail</a></li> 
-                       '.$tomboledit.'
-                       '.$tombolhapus.' 
-                       </ul>
-                       </div>
-                       ';
-
-                       if ($data->tanggal_pengalihan!=null) {
-                        $tgl_pengalihan = tgl_indo($data->tanggal_pengalihan);
-                    }else{
-                        $tgl_pengalihan = '-';
-                    }
-                    if ($data->id_perumahan=='0') {
-                        $perumahan = 'Tidak ada';
-                    }else{
-                        $perumahan = $data->nama_regional;
-                    }
-                    $harga_satuan = $data->total_harga_pengalihan/$data->luas_surat;
-                    $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi+$data->pematangan;
-                    $totalharga_biaya = $data->total_harga_pengalihan+$data->nilai+$totalbiayalain;
-                    $harga_perm = $totalharga_biaya/$data->luas_surat;
-
-                    $totalbidang+=$data->jumlah_bidang;
-                    $totalluassurat+=$data->luas_surat;
-                    $totalluasukur+=$data->luas_ukur;
-                    $totalhargasatuan+=$harga_satuan;
-                    $totalhargatotal+=$data->total_harga_pengalihan;
-                    $totalnilaimakelar+=$data->nilai;
-                    $totalhargabiaya+=$totalharga_biaya;
-                    $totalhargam+=$harga_perm;
-                    $totalpematangan += $data->pematangan;
-                    $totalgantirugi +=$data->ganti_rugi;
-                    $totalpbb +=$data->pbb;
-                    $totallain+=$data->lain;
-                    $totalakhirbiayalain +=$totalbiayalain;
-                    ?>
-                    <td><?= $tombol ?></td>
-                    <td><?=$perumahan?></td>
-                    <td><?=$data->kode_item?></td> 
-                    <td><?=$data->nama_item?></td>  
-                    <td><?=tgl_indo($data->tanggal_pembelian)?></td>
-                    <td><?=$data->nama_penjual?></td>  
-                    <td><?=$data->nama_surat_tanah?></td>  
-                    <td><?=$data->kode_sertifikat?></td>  
-                    <td><?=$data->no_gambar?></td>  
-                    <td><?=$data->jumlah_bidang?></td>  
-                    <td><?=$data->luas_surat?></td>  
-                    <td><?=$data->luas_ukur?></td>  
-                    <td><?=$data->no_pbb?></td>  
-                    <td><?=$data->luas_pbb?></td>  
-                    <td><?=$data->njop?></td>  
-                    <td><?=rupiah($harga_satuan)?></td>  
-                    <td><?=rupiah($data->total_harga_pengalihan)?></td>  
-                    <td><?=$data->nama_makelar?></td>  
-                    <td><?=rupiah($data->nilai)?></td>  
-                    <td><?=$tgl_pengalihan?></td>  
-                    <td><?=$data->akta_pengalihan?></td>  
-                    <td><?=$data->nama_pengalihan?></td>  
-                    <td><?=rupiah($data->pematangan)?></td>  
-                    <td><?=rupiah($data->ganti_rugi)?></td>  
-                    <td><?=rupiah($data->pbb)?></td>  
-                    <td><?=rupiah($data->lain)?></td>  
-                    <td><?=rupiah($totalbiayalain)?></td>  
-                    <td><?=rupiah($totalharga_biaya)?></td>  
-                    <td><?=rupiah($harga_perm)?></td>  
-                    <td><?=$data->keterangan?></td>
-                <?php endforeach ?>
-                <?php else: ?>
-                    data kosong
-                <?php endif ?>
-
-                <tr>
-                    <td colspan="4" align="right">Jumlah -A</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-
-                    <td colspan="19" align="left"> Tahun <?php echo date('Y') ?></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td colspan="4" align="right">Jumlah - B</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colspan="4" align="right">TOTAL </td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tfoot>
-    </table> 
-</div>
-</div>
-</section>
-<section class="panel">
-    <header class="panel-heading">    
-        <div class="row show-grid">
-            <div class="col-md-6" align="left"><h2 class="panel-title">SERAH TERIMA KE TECHNIC</h2></div>
-            <?php  
-            echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
-            ?> 
-        </div>
-    </header>
-    <div class="panel-body"> 
-        <div class="table" style="overflow-x: auto;">
-            <table class="table table-bordered table-hover table-striped" id="itemsdata">
-                <thead>
-                    <tr>
-
-                        <th rowspan="2" style="text-align: center;">NO</th>
-                        <th rowspan="2"  style="text-align: center;">NO GBR </th>
-                        <th rowspan="2" style="text-align: center;">THN</th>
-                        <th rowspan="2" style="text-align: center;">PENJUAL</th>
-                        <th colspan="4" style="text-align: center;">DATA TANAH</th>
-                        <th rowspan="2" style="text-align: center;">POSISI SURAT</th>
-                        <th rowspan="2" style="text-align: center;">HARGA AKTA</th>
-                        <th colspan="7" style="text-align: center;">PENGALIHAN HAK</th>
-                        <th rowspan="2" style="text-align: center;">S TERIMA FINANCE</th>
-                        <th rowspan="2" style="text-align: center;">KET</th>
-
-
-
-                    </tr>
-                    <tr>
-                        <th  style="text-align: center;">SURAT</th>
-                        <th  style="text-align: center;">ATAS NAMA</th>
-                        <th style="text-align: center;">L SURAT </th>
-                        <th style="text-align: center;">L UKUR </th>
-                        <th style="text-align: center;">BLM ORDER </th>
-                        <th style="text-align: center;">ORDER</th>
-                        <th style="text-align: center;">TERBIT</th>
-                        <th style="text-align: center;">JENIS</th>
-                        <th style="text-align: center;">NO AKTA</th>
-                        <th style="text-align: center;">TANGGAL</th>
-                        <th style="text-align: center;">ATAS NAMA</th>
-                    </tr>
-
-                </thead>
-                <tbody>
-                  <tr>
-                    <td colspan="4"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td colspan="4" align="right">Jumlah -A</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colspan="4" align="right">TOTAL </td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tfoot>
-    </table> 
-</div>
-</div>
-</section>
-<!-- end: page -->
+    </section>
+    <!-- end: page -->
 </section>
 </div>
 </section>
@@ -411,7 +460,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="modal-dialog">
         <div class="modal-content">
             <section class="panel panel-primary">
-                <?php echo form_open('master/itemsedit',' id="FormulirEdit"  enctype="multipart/form-data"');?>  
+                <?php echo form_open('master/editlandbank',' id="FormulirEdit"  enctype="multipart/form-data"');?>  
                 <input type="hidden" name="idd" id="idd">
                 <header class="panel-heading">
                     <h2 class="panel-title">Edit Data Tanah/Aset</h2>
@@ -419,7 +468,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="panel-body">
 
                     <div class="form-group mt-lg nama_supplier">
-                        <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
+                        <label class="col-sm-3 control-label">Posisi Surat<span class="required">*</span></label>
                         <div class="col-sm-9">
                             <select data-plugin-selectTwo class="form-control" required id="id_perumahan" name="id_perumahan">  
                                 <option value="">Pilih Lokasi</option>
