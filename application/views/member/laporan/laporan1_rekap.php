@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <th rowspan="3" style="text-align: center; color: black;">KETERANGAN</th>
                                     <th rowspan="2" colspan="2" style="text-align: center; color: black;">TARGET s/d 2020</th>
                                     <th  colspan="26" style="text-align: center; color: black;">REALISASI 2020</th>
-                                    <th  rowspan="2" colspan="3" style="text-align: center; color: black;">EVALUASI</th>
+                                    <th  rowspan="2" colspan="3" style="text-align: center;">EVALUASI</th>
                                     <th rowspan="3"></th>
                                     <th  colspan="24" style="text-align: center; color: white;background-color: green;">TARGET 2020</th>
 
