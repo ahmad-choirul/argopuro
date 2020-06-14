@@ -90,11 +90,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                 </a> 
                                                             </div>
                                                         </li>  
+                                                          <li>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb_per" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Evaluasi Tanah Belum SHGB Perumahan</a>
+                                                            <div class="item-options">
+                                                                <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb_per">
+                                                                    <i class="fa fa-arrow-circle-o-left"></i>
+                                                                </a> 
+                                                            </div>
+                                                        </li>  
 
                                                          <li>
                                                             <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Evaluasi Proses Induk</a>
                                                             <div class="item-options">
                                                                 <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk">
+                                                                    <i class="fa fa-arrow-circle-o-left"></i>
+                                                                </a> 
+                                                            </div>
+                                                        </li>  
+
+                                                         <li>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk_per" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Evaluasi Proses Induk Perumahan</a>
+                                                            <div class="item-options">
+                                                                <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk_per">
                                                                     <i class="fa fa-arrow-circle-o-left"></i>
                                                                 </a> 
                                                             </div>
@@ -131,6 +148,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                             <a href="<?php echo base_url()?>laporan/laporan_evaluasi_sert_belum_split" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Evaluasi Sert Belum Split</a>
                                                             <div class="item-options">
                                                                 <a href="<?php echo base_url()?>laporan/laporan_evaluasi_sert_belum_split">
+                                                                    <i class="fa fa-arrow-circle-o-left"></i>
+                                                                </a> 
+                                                            </div>
+                                                        </li>  
+<li>
+                                                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_stok_split" class="menu-item"  style="color: white"><i class="fa fa-folder"></i> Evaluasi Stok Split</a>
+                                                            <div class="item-options">
+                                                                <a href="<?php echo base_url()?>laporan/laporan_evaluasi_stok_split">
                                                                     <i class="fa fa-arrow-circle-o-left"></i>
                                                                 </a> 
                                                             </div>
