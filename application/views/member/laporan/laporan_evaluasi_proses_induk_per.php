@@ -210,13 +210,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <td>2</td>
                                     <td>2</td>
                                 </tr>
+                           
+
+                            </tbody>
+                            <TFOOT>
                                 <tr>
                                     <td colspan="21"></td>
 
                                 </tr>
                                 <tr>
                                     <td>-</td>
-                                    <td colspan="4">Jumlah B : </td>
+                                    <td colspan="4"><b>Total :</b> </td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -235,7 +239,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <td></td>
                                 </tr>
 
-                            </tbody>
+                            </TFOOT>
                         </table> 
                     </div>
 
