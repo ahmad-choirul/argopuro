@@ -29,13 +29,13 @@ class Master extends CI_Controller {
     }
     public function query($value='')
     {
-     echo "<pre>";
-     print_r ($this->session->userdata());
-     print_r ($this->session->flashdata('query'));
-     echo "</pre>";
- }
- public function abseninsert()
- {
+       echo "<pre>";
+       print_r ($this->session->userdata());
+       print_r ($this->session->flashdata('query'));
+       echo "</pre>";
+   }
+   public function abseninsert()
+   {
     $data['keterangan'] = $this->input->post('keterangan');
     $data['status'] = $this->input->post('status');
     $data['id_admin'] = $this->session->userdata('idadmin');
@@ -89,9 +89,9 @@ public function suppliertambah(){
     $validation = $this->form_validation; 
     $validation->set_rules($simpan->rulessupplier());
     if ($this->form_validation->run() == FALSE){
-       $errors = $this->form_validation->error_array();
-       $data['errors'] = $errors;
-   }else{    
+     $errors = $this->form_validation->error_array();
+     $data['errors'] = $errors;
+ }else{    
     if($simpan->simpandatasupplier()){
         $data['success']= true;
         $data['message']="Berhasil menyimpan data";  
@@ -123,9 +123,9 @@ public function supplieredit(){
     $validation = $this->form_validation; 
     $validation->set_rules($simpan->rulessupplier());
     if ($this->form_validation->run() == FALSE){
-       $errors = $this->form_validation->error_array();
-       $data['errors'] = $errors;
-   }else{    
+     $errors = $this->form_validation->error_array();
+     $data['errors'] = $errors;
+ }else{    
     if($simpan->updatedatasupplier()){
         $data['success']= true;
         $data['message']="Berhasil menyimpan data";
@@ -198,9 +198,9 @@ public function distributortambah(){
     $validation = $this->form_validation; 
     $validation->set_rules($simpan->rulesdistributor());
     if ($this->form_validation->run() == FALSE){
-       $errors = $this->form_validation->error_array();
-       $data['errors'] = $errors;
-   }else{    
+     $errors = $this->form_validation->error_array();
+     $data['errors'] = $errors;
+ }else{    
     if($simpan->simpandatadistributor()){
         $data['success']= true;
         $data['message']="Berhasil menyimpan data";  
@@ -232,9 +232,9 @@ public function distributoredit(){
     $validation = $this->form_validation; 
     $validation->set_rules($simpan->rulesdistributor());
     if ($this->form_validation->run() == FALSE){
-       $errors = $this->form_validation->error_array();
-       $data['errors'] = $errors;
-   }else{    
+     $errors = $this->form_validation->error_array();
+     $data['errors'] = $errors;
+ }else{    
     if($simpan->updatedatadistributor()){
         $data['success']= true;
         $data['message']="Berhasil menyimpan data";
@@ -262,9 +262,9 @@ public function distributorhapus(){
 }
 public function pembeli()
 {     
- $data['penjual'] = $this->db->order_by("id","DESC")->get('master_penjual')->result();
+   $data['penjual'] = $this->db->order_by("id","DESC")->get('master_penjual')->result();
 
- $this->load->view('member/master/pembeli',$data); 
+   $this->load->view('member/master/pembeli',$data); 
 }  
 
 public function datapembeli()
@@ -313,9 +313,9 @@ public function pembelitambah(){
     $validation = $this->form_validation; 
     $validation->set_rules($simpan->rulespembeli());
     if ($this->form_validation->run() == FALSE){
-       $errors = $this->form_validation->error_array();
-       $data['errors'] = $errors;
-   }else{    
+     $errors = $this->form_validation->error_array();
+     $data['errors'] = $errors;
+ }else{    
     $insert_id = $simpan->simpandatapembeli();
     if($insert_id > 0) { 
         $data['success']= true;
@@ -355,9 +355,9 @@ public function pembeliedit(){
     $validation = $this->form_validation; 
     $validation->set_rules($simpan->rulespembeli());
     if ($this->form_validation->run() == FALSE){
-       $errors = $this->form_validation->error_array();
-       $data['errors'] = $errors;
-   }else{    
+     $errors = $this->form_validation->error_array();
+     $data['errors'] = $errors;
+ }else{    
     $simpan->updatedatapembeli();
     $data['success']= true;
     $data['message']="Berhasil menyimpan data";
@@ -382,7 +382,7 @@ public function pembelihapus(){
 public function perumahan()
 {   
     level_user('master','perumahan',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
-     $data['status'] = $this->db->order_by("id_status_regional","DESC")->get('master_status_regional')->result();
+    $data['status'] = $this->db->order_by("id_status_regional","DESC")->get('master_status_regional')->result();
     $this->load->view('member/master/perumahan',$data);
 }  
 public function datakategori()
@@ -529,10 +529,10 @@ public function satuantambah(){
     $validation = $this->form_validation; 
     $validation->set_rules($simpan->rulessatuan());
     if ($this->form_validation->run() == FALSE){
-       $errors = $this->form_validation->error_array();
-       $data['errors'] = $errors;
-   }else{     
-       if($simpan->simpandatasatuan()){
+     $errors = $this->form_validation->error_array();
+     $data['errors'] = $errors;
+ }else{     
+     if($simpan->simpandatasatuan()){
         $data['success']= true;
         $data['message']="Berhasil menyimpan data";   
     }else{
@@ -559,16 +559,16 @@ public function satuanedit(){
             $data['errors'] = $errors;
         }else{     
             if($simpan->updatedatasatuan()){
-             $data['success']= true;
-             $data['message']="Berhasil menyimpan data";   
-         }else{
-             $errors['fail'] = "gagal melakukan update data";
-             $data['errors'] = $errors;
-         }						
-     }
- }
- $data['token'] = $this->security->get_csrf_hash();
- echo json_encode($data); 
+               $data['success']= true;
+               $data['message']="Berhasil menyimpan data";   
+           }else{
+               $errors['fail'] = "gagal melakukan update data";
+               $data['errors'] = $errors;
+           }						
+       }
+   }
+   $data['token'] = $this->security->get_csrf_hash();
+   echo json_encode($data); 
 }
 
 public function satuanhapus(){ 
@@ -627,10 +627,10 @@ public function merktambah(){
     $validation = $this->form_validation; 
     $validation->set_rules($simpan->rulesmerk());
     if ($this->form_validation->run() == FALSE){
-       $errors = $this->form_validation->error_array();
-       $data['errors'] = $errors;
-   }else{      			
-       if($simpan->simpandatamerk()){
+     $errors = $this->form_validation->error_array();
+     $data['errors'] = $errors;
+ }else{      			
+     if($simpan->simpandatamerk()){
         $data['success']= true;
         $data['message']="Berhasil menyimpan data";   
     }else{
@@ -694,24 +694,24 @@ public function merkhapus(){
 public function items()
 {  
     level_user('master','items',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
-     $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
-     $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
-     $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
+    $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+    $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+    $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
     $this->load->view('member/master/master_item',$data);
 } 
 public function pageitem()
- {
+{
     // $data['periode'] = $this->input->get('periode',true);
-     $data['firstdate'] = $this->input->get('firstdate');
-        $data['lastdate'] = $this->input->get('lastdate'); 
-     $data['perumahandalamijin'] = $this->db->order_by("id","DESC")->where('status_regional','1')->get('master_regional')->result();
-     $data['perumahanluarijin'] = $this->db->order_by("id","DESC")->where('status_regional','2')->get('master_regional')->result();
-     $data['perumahanlokasi'] = $this->db->order_by("id","DESC")->where('status_regional','3')->get('master_regional')->result();
-     $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
-     $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
+   $data['firstdate'] = $this->input->get('firstdate');
+   $data['lastdate'] = $this->input->get('lastdate'); 
+   $data['perumahandalamijin'] = $this->db->order_by("id","DESC")->where('status_regional','1')->get('master_regional')->result();
+   $data['perumahanluarijin'] = $this->db->order_by("id","DESC")->where('status_regional','2')->get('master_regional')->result();
+   $data['perumahanlokasi'] = $this->db->order_by("id","DESC")->where('status_regional','3')->get('master_regional')->result();
+   $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+   $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
 
-    $this->load->view('member/master/items_view',$data);
- } 
+   $this->load->view('member/master/items_view',$data);
+} 
 
 public function dataitems()
 {   
@@ -723,7 +723,7 @@ public function dataitems()
         $row = array();
         $linkbayar = site_url('keuangan/bayartanah/').$r->kode_item; 
         $tomboldetailbayar = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="'.$linkbayar.'">Detail Bayar</a></li>':'';
-          $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->kode_item).'">Hapus</a></li>':'';
+        $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->kode_item).'">Hapus</a></li>':'';
         $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->kode_item).'">Edit</a></li>':'';
         $row[] = ' 
         <div class="btn-group dropup">
@@ -796,10 +796,10 @@ public function itemstambah(){
     $validation = $this->form_validation; 
     $validation->set_rules($simpan->rulesitems());
     if ($this->form_validation->run() == FALSE){
-       $errors = $this->form_validation->error_array();
-       $data['errors'] = $errors;
-   }else{      			
-       if($simpan->simpandataitems()){
+     $errors = $this->form_validation->error_array();
+     $data['errors'] = $errors;
+ }else{      			
+     if($simpan->simpandataitems()){
         $data['success']= true;
         $data['message']="Berhasil menyimpan data";   
     }else{
@@ -817,49 +817,49 @@ public function itemdetail(){
     $this->db->join('master_regional', 'master_item.id_perumahan = master_regional.id', 'left');
     $this->db->join('tbl_sertifikat_tanah', 'master_item.status_surat_tanah = tbl_sertifikat_tanah.id_sertifikat_tanah', 'left');
     $query = $this->db->get_where('master_item', array('kode_item' => $idd),1);
-     $harga_satuan = $query->row()->total_harga_pengalihan/$query->row()->luas_surat;
-        $totalbiayalain = $query->row()->lain+$query->row()->pbb+$query->row()->ganti_rugi+$query->row()->pematangan;
-        $totalharga_biaya = $query->row()->total_harga_pengalihan+$query->row()->nilai+$totalbiayalain;
-        $harga_perm = $totalharga_biaya/$query->row()->luas_surat;
+    $harga_satuan = $query->row()->total_harga_pengalihan/$query->row()->luas_surat;
+    $totalbiayalain = $query->row()->lain+$query->row()->pbb+$query->row()->ganti_rugi+$query->row()->pematangan;
+    $totalharga_biaya = $query->row()->total_harga_pengalihan+$query->row()->nilai+$totalbiayalain;
+    $harga_perm = $totalharga_biaya/$query->row()->luas_surat;
     $result = array(  
-         
-       "kode_item" => $this->security->xss_clean($query->row()->kode_item),
-       "nama_item" => $this->security->xss_clean($query->row()->nama_item),
-       "tanggal_pembelian" => $this->security->xss_clean($query->row()->tanggal_pembelian),
-       "nama_penjual" => $this->security->xss_clean($query->row()->nama_penjual),
-       "nama_surat_tanah" => $this->security->xss_clean($query->row()->nama_surat_tanah),
-       "status_surat_tanah" => $this->security->xss_clean($query->row()->status_surat_tanah),
-       "nama_status_surat_tanah" => $this->security->xss_clean($query->row()->nama_sertifikat),
-       "no_gambar" => $this->security->xss_clean($query->row()->no_gambar),
-       "jumlah_bidang" => $this->security->xss_clean($query->row()->jumlah_bidang),
-       "luas_surat" => $this->security->xss_clean($query->row()->luas_surat),
-       "luas_ukur" => $this->security->xss_clean($query->row()->luas_ukur),
-       "no_pbb" => $this->security->xss_clean($query->row()->no_pbb),
-       "luas_pbb" => $this->security->xss_clean($query->row()->luas_pbb),
-       "njop" => $this->security->xss_clean($query->row()->njop),
-       "total_harga_pengalihantampil" => $this->security->xss_clean(rupiah($query->row()->total_harga_pengalihan)),
-       "total_harga_pengalihan" => $this->security->xss_clean($query->row()->total_harga_pengalihan),
-       "satuan_harga_pengalihantampil" => $this->security->xss_clean(rupiah($harga_satuan)),
-       "nama_makelar" => $this->security->xss_clean($query->row()->nama_makelar),
-       "nilaitampil" => $this->security->xss_clean(rupiah($query->row()->nilai)),
-       "nilai" => $this->security->xss_clean($query->row()->nilai),
-       "tanggal_pengalihan" => $this->security->xss_clean($query->row()->tanggal_pengalihan),
-       "akta_pengalihan" => $this->security->xss_clean($query->row()->akta_pengalihan),
-       "nama_pengalihan" => $this->security->xss_clean($query->row()->nama_pengalihan),
-       "pematangantampil" => $this->security->xss_clean(rupiah($query->row()->pematangan)),
-       "pematangan" => $this->security->xss_clean($query->row()->pematangan),
-       "ganti_rugitampil" => $this->security->xss_clean(rupiah($query->row()->ganti_rugi)),
-       "ganti_rugi" => $this->security->xss_clean($query->row()->ganti_rugi),
-       "pbbtampil" => $this->security->xss_clean(rupiah($query->row()->pbb)),
-       "pbb" => $this->security->xss_clean($query->row()->pbb),
-       "laintampil" => $this->security->xss_clean(rupiah($query->row()->lain)),
-       "lain" => $this->security->xss_clean($query->row()->lain),
-       "harga_permtampil" => $this->security->xss_clean(rupiah($harga_perm)),
-       "harga_perm" => $this->security->xss_clean($harga_perm),
-       "keterangan" => $this->security->xss_clean($query->row()->keterangan),
-       "id_perumahan" => $this->security->xss_clean($query->row()->id_perumahan),
-       "nama_regional" => $this->security->xss_clean($query->row()->nama_regional),
-   );    
+       
+     "kode_item" => $this->security->xss_clean($query->row()->kode_item),
+     "nama_item" => $this->security->xss_clean($query->row()->nama_item),
+     "tanggal_pembelian" => $this->security->xss_clean($query->row()->tanggal_pembelian),
+     "nama_penjual" => $this->security->xss_clean($query->row()->nama_penjual),
+     "nama_surat_tanah" => $this->security->xss_clean($query->row()->nama_surat_tanah),
+     "status_surat_tanah" => $this->security->xss_clean($query->row()->status_surat_tanah),
+     "nama_status_surat_tanah" => $this->security->xss_clean($query->row()->nama_sertifikat),
+     "no_gambar" => $this->security->xss_clean($query->row()->no_gambar),
+     "jumlah_bidang" => $this->security->xss_clean($query->row()->jumlah_bidang),
+     "luas_surat" => $this->security->xss_clean($query->row()->luas_surat),
+     "luas_ukur" => $this->security->xss_clean($query->row()->luas_ukur),
+     "no_pbb" => $this->security->xss_clean($query->row()->no_pbb),
+     "luas_pbb" => $this->security->xss_clean($query->row()->luas_pbb),
+     "njop" => $this->security->xss_clean($query->row()->njop),
+     "total_harga_pengalihantampil" => $this->security->xss_clean(rupiah($query->row()->total_harga_pengalihan)),
+     "total_harga_pengalihan" => $this->security->xss_clean($query->row()->total_harga_pengalihan),
+     "satuan_harga_pengalihantampil" => $this->security->xss_clean(rupiah($harga_satuan)),
+     "nama_makelar" => $this->security->xss_clean($query->row()->nama_makelar),
+     "nilaitampil" => $this->security->xss_clean(rupiah($query->row()->nilai)),
+     "nilai" => $this->security->xss_clean($query->row()->nilai),
+     "tanggal_pengalihan" => $this->security->xss_clean($query->row()->tanggal_pengalihan),
+     "akta_pengalihan" => $this->security->xss_clean($query->row()->akta_pengalihan),
+     "nama_pengalihan" => $this->security->xss_clean($query->row()->nama_pengalihan),
+     "pematangantampil" => $this->security->xss_clean(rupiah($query->row()->pematangan)),
+     "pematangan" => $this->security->xss_clean($query->row()->pematangan),
+     "ganti_rugitampil" => $this->security->xss_clean(rupiah($query->row()->ganti_rugi)),
+     "ganti_rugi" => $this->security->xss_clean($query->row()->ganti_rugi),
+     "pbbtampil" => $this->security->xss_clean(rupiah($query->row()->pbb)),
+     "pbb" => $this->security->xss_clean($query->row()->pbb),
+     "laintampil" => $this->security->xss_clean(rupiah($query->row()->lain)),
+     "lain" => $this->security->xss_clean($query->row()->lain),
+     "harga_permtampil" => $this->security->xss_clean(rupiah($harga_perm)),
+     "harga_perm" => $this->security->xss_clean($harga_perm),
+     "keterangan" => $this->security->xss_clean($query->row()->keterangan),
+     "id_perumahan" => $this->security->xss_clean($query->row()->id_perumahan),
+     "nama_regional" => $this->security->xss_clean($query->row()->nama_regional),
+ );    
     echo'['.json_encode($result).']';
 }
 
@@ -867,35 +867,19 @@ public function itemsedit(){
     cekajax(); 
     $simpan = $this->master_model; 
     $post = $this->input->post();
-    if($post["kode_item"] == $post["idd"]){  
-        $validation = $this->form_validation; 
-        $validation->set_rules($simpan->rulesitemsedit());
-        if ($this->form_validation->run() == FALSE){
-            $errors = $this->form_validation->error_array();
-            $data['errors'] = $errors;
-        }else{       
-            if($simpan->updatedataitems()){
-                $data['success']= true;
-                $data['message']="Berhasil menyimpan data";   
-            }else{
-                $errors['fail'] = "gagal melakukan update data";
-                $data['errors'] = $errors;
-            }  				
-        }
+    $validation = $this->form_validation; 
+    $validation->set_rules($simpan->rulesitems());
+    if ($this->form_validation->run() == FALSE){
+        $errors = $this->form_validation->error_array();
+        $data['errors'] = $errors;
     }else{          
-        $validation = $this->form_validation; 
-        $validation->set_rules($simpan->rulesitems());
-        if ($this->form_validation->run() == FALSE){
-            $errors = $this->form_validation->error_array();
+        if($simpan->updatedataitems()){
+            $data['success']= true;
+            $data['message']="Berhasil menyimpan data";   
+        }else{
+            $errors['fail'] = "gagal melakukan update data";
             $data['errors'] = $errors;
-        }else{          
-            if($simpan->updatedataitems()){
-                $data['success']= true;
-                $data['message']="Berhasil menyimpan data";   
-            }else{
-                $errors['fail'] = "gagal melakukan update data";
-                $data['errors'] = $errors;
-            }  
+            
         }
     }
     $data['token'] = $this->security->get_csrf_hash();
@@ -980,15 +964,15 @@ public function racikandetail(){
 
     $subitem= $this->master_model->get_dataracikan($idd); 
     foreach($subitem as $r) {   
-       $subArray['kode_item']=$r->kode_obat;
-       $subArray['nama_item']=$r->nama_item;  
-       $subArray['jumlah_obat_dibuat']=$r->jumlah_obat_dibuat;   
-       $subArray['jumlah_obat_dipakai']=$r->jumlah_obat_dipakai;     
-       $arraysub[] =  $subArray ; 
-   }  
-   $datasub = $arraysub;
-   $array[] =  $result ; 
-   echo'{"datarows":'.json_encode($array).',"datasub":'.json_encode($datasub).'}';
+     $subArray['kode_item']=$r->kode_obat;
+     $subArray['nama_item']=$r->nama_item;  
+     $subArray['jumlah_obat_dibuat']=$r->jumlah_obat_dibuat;   
+     $subArray['jumlah_obat_dipakai']=$r->jumlah_obat_dipakai;     
+     $arraysub[] =  $subArray ; 
+ }  
+ $datasub = $arraysub;
+ $array[] =  $result ; 
+ echo'{"datarows":'.json_encode($array).',"datasub":'.json_encode($datasub).'}';
 } 
 
 public function pilihanitem()
@@ -1021,9 +1005,9 @@ public function racikantambah(){
     $validation = $this->form_validation; 
     $validation->set_rules($simpan->rulesitems());
     if ($this->form_validation->run() == FALSE){
-       $errors = $this->form_validation->error_array();
-       $data['errors'] = $errors;
-   }else{            
+     $errors = $this->form_validation->error_array();
+     $data['errors'] = $errors;
+ }else{            
     $kode_obat = $this->input->post("kode_obat");   
     if(isset($kode_obat) === TRUE AND $kode_obat[0]!='')
     {  
@@ -1062,9 +1046,9 @@ public function racikanedit(){
     $validation = $this->form_validation; 
     $validation->set_rules($simpan->rulesitemsedit());
     if ($this->form_validation->run() == FALSE){
-       $errors = $this->form_validation->error_array();
-       $data['errors'] = $errors;
-   }else{            
+     $errors = $this->form_validation->error_array();
+     $data['errors'] = $errors;
+ }else{            
     $kode_obat = $this->input->post("kode_obat");   
     if(isset($kode_obat) === TRUE AND $kode_obat[0]!='')
     {  
@@ -1088,8 +1072,8 @@ echo json_encode($data);
     // penjual
 public function penjual()
 {     
- $data['regional'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
- $this->load->view('member/master/penjual',$data); 
+   $data['regional'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+   $this->load->view('member/master/penjual',$data); 
 }  
 
 public function datapenjual()
@@ -1146,9 +1130,9 @@ public function penjualtambah(){
     $validation = $this->form_validation; 
     $validation->set_rules($simpan->rulespenjual());
     if ($this->form_validation->run() == FALSE){
-       $errors = $this->form_validation->error_array();
-       $data['errors'] = $errors;
-   }else{    
+     $errors = $this->form_validation->error_array();
+     $data['errors'] = $errors;
+ }else{    
     $insert_id = $simpan->simpandatapenjual();
     if($insert_id > 0) { 
         $data['success']= true;
@@ -1186,9 +1170,9 @@ public function penjualedit(){
     $validation = $this->form_validation; 
     $validation->set_rules($simpan->rulespenjual());
     if ($this->form_validation->run() == FALSE){
-       $errors = $this->form_validation->error_array();
-       $data['errors'] = $errors;
-   }else{    
+     $errors = $this->form_validation->error_array();
+     $data['errors'] = $errors;
+ }else{    
     $simpan->updatedatapenjual();
     $data['success']= true;
     $data['message']="Berhasil menyimpan data";
@@ -1279,8 +1263,8 @@ public function serah_terimatambah(){
 public function serah_terimadetail(){
     cekajax();
     $idd = intval($this->input->get("id"));
-     $this->db->select("a.*,b.luas_surat,b.luas_ukur,c.nama_regional");
-     $this->db->from('master_serah_terima a');
+    $this->db->select("a.*,b.luas_surat,b.luas_ukur,c.nama_regional");
+    $this->db->from('master_serah_terima a');
     $this->db->where('id_serah_terima' , $idd);
     $this->db->join('master_item b', 'b.kode_item = a.id_master_item', 'left');
     $this->db->join('master_regional c', 'b.id_perumahan = c.id', 'left');

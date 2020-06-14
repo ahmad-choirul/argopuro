@@ -206,12 +206,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </header>
                 <div class="panel-body">
 
-                    <div class="form-group mt-lg kode_item">
-                        <label class="col-sm-3 control-label">Kode Tanah<span class="required">*</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="kode_item" class="form-control" required/>
-                        </div>
-                    </div>
+                    
                     <div class="form-group mt-lg nama_supplier">
                         <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
                         <div class="col-sm-9">
@@ -407,12 +402,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <h2 class="panel-title">Edit Data Tanah/Aset</h2>
                 </header>
                 <div class="panel-body">
-                   <div class="form-group mt-lg kode_item">
-                    <label class="col-sm-3 control-label">Kode Tanah<span class="required">*</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="kode_item" id="kode_item" class="form-control" required/>
-                    </div>
-                </div>
+                   
                 <div class="form-group mt-lg nama_supplier">
                     <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
                     <div class="col-sm-9">

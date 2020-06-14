@@ -729,11 +729,6 @@ public function rulesitems()
 {
     return [
         [
-            'field' => 'kode_item',
-            'label' => 'Kode Item',
-            'rules' => 'is_unique[master_item.kode_item]|required',
-        ] ,
-        [
             'field' => 'nama_item',
             'label' => 'Nama Item',
             'rules' => 'required',
@@ -744,11 +739,6 @@ public function rulesitemsedit()
 {
     return [
         [
-            'field' => 'kode_item',
-            'label' => 'Kode Item',
-            'rules' => 'required',
-        ],
-        [
             'field' => 'nama_item',
             'label' => 'Nama Item',
             'rules' => 'required',
@@ -758,7 +748,6 @@ public function rulesitemsedit()
 function simpandataitems(){   
     $post = $this->input->post();   
     $array = array(
-        'kode_item'=>$post["kode_item"],
         'nama_item'=>$post["nama_item"], 
         'tanggal_pembelian'=>$post["tanggal_pembelian"], 
         'nama_penjual'=>$post["nama_penjual"],  
@@ -790,7 +779,6 @@ function simpandataitems(){
 public function updatedataitems()
 {
     $post = $this->input->post();
-    $this->kode_item = ($post["kode_item"]); 
     $this->nama_item = ($post["nama_item"]); 
     $this->tanggal_pembelian = ($post["tanggal_pembelian"]); 
     $this->nama_penjual = ($post["nama_penjual"]); 
