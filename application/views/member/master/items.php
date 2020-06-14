@@ -61,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                     <div class="form-group mt-lg nama_item">
-                        <label class="col-sm-3 control-label">Nama Item<span class="required">*</span></label>
+                        <label class="col-sm-3 control-label">Nama Tanah<span class="required">*</span></label>
                         <div class="col-sm-9">
                             <input type="text" name="nama_item" class="form-control" required/>
                         </div>
@@ -74,20 +74,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="form-group nama_penjual">
                         <label class="col-sm-3 control-label">Data Surat Tanah</span></label>
-                        <div class="col-sm-5">
+                        <div class="col-sm-4">
                             <input type="text" name="nama_penjual" class="form-control" placeholder="Nama Penjual"  />
                         </div>
-                       <!--  <div class="col-sm-4">
-                            <input type="text" name="status_surat_tanah" class="form-control" placeholder="Status Surat Tanah"  />
-                        </div> -->
-                    </div>
-                     <div class="form-group mt-lg nama_supplier">
-                        <label class="col-sm-3 control-label">Sertifikat<span class="required">*</span></label>
-                        <div class="col-sm-9">
+                        <div class="col-sm-5">
                             <select data-plugin-selectTwo class="form-control" required name="status_surat_tanah">  
-                                <option value="">Pilih Lokasi</option>
+                                <option value="">Pilih Jenis</option>
                                 <?php foreach ($sertifikat_tanah as $aa): ?>
-                                    <option value="<?php echo $aa->id_sertifikat_tanah;?>"><?php echo $aa->nama_sertifikat;?> / <?php echo $aa->nama_sertifikat;?></option>
+                                    <option value="<?php echo $aa->id_sertifikat_tanah;?>"><?php echo $aa->kode_sertifikat;?> / <?php echo $aa->nama_sertifikat;?></option>
                                 <?php endforeach; ?>
                             </select> 
                         </div>
@@ -98,10 +92,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="nama_surat_tanah" class="form-control"  />
                         </div>
                     </div>
-                 <!--    <div class="form-group status_surat_tanah">
-                        <label class="col-sm-3 control-label">Status Surat Tanah</span></label>
-
-                    </div> -->
                     <div class="form-group no_gambar">
                         <label class="col-sm-3 control-label">No Gambar</span></label>
                         <div class="col-sm-9">
@@ -122,10 +112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-4">
                             <input type="number" name="luas_ukur" class="form-control"  placeholder="Luas Ukur" />
                         </div>
-                    </div><!-- 
-                    <div class="form-group luas_ukur">
-                        <label class="col-sm-3 control-label">Luas Ukur</span></label></div> -->
-
+                    </div>
                         <div class="form-group no_pbb">
                             <label class="col-sm-3 control-label">PBB</span></label>
                             <div class="col-sm-3">
@@ -134,29 +121,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="col-sm-2">
                                 <input type="text" name="luas_pbb" class="form-control" placeholder="Luas PBB (m2)"  />
                             </div>
-                             <div class="col-sm-2">
+                             <div class="col-sm-3">
                                 <input type="text" name="njop" class="form-control" placeholder="NJOP" />
                             </div>
-                              <div class="col-sm-2">
-                                <input type="text" name="pbb" class="form-control" placeholder="PBB"  />
-                            </div>
-                        </div><!-- <div class="form-group luas_pbb">
-                            <label class="col-sm-3 control-label">Luas PBB</span></label>
-
-                        </div><div class="form-group njop">
-                            <label class="col-sm-3 control-label">njop</span></label>
-
-                        </div> -->
+                             
+                        </div>
                         <div class="form-group satuan_harga_pengalihan">
                             <label class="col-sm-3 control-label">Harga Pengalihan Hak</span></label>
                            
                             <div class="col-sm-4">
                                 <input type="text" name="total_harga_pengalihan" class="form-control" placeholder="Total Harga Pengalihan" />
                             </div>
-                        </div><!-- <div class="form-group total_harga_pengalihan">
-                            <label class="col-sm-3 control-label">Total Harga Pengalihan</span></label>
-                            
-                        </div> --><div class="form-group nama_makelar">
+                        </div><div class="form-group nama_makelar">
                             <label class="col-sm-3 control-label">Makelar</span></label>
                             <div class="col-sm-9">
                                 <input type="text" name="nama_makelar" class="form-control"  />
@@ -169,7 +145,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div><div class="form-group tanggal_pengalihan">
                             <label class="col-sm-3 control-label"> Detail Pengalihan </span></label>
                             <div class="col-sm-3">
-                                <input type="date" name="tanggal_pengalihan" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Tanggal Pengalihan" title="Tanggal Pengalihan"  />
+                                <input type="text" name="tanggal_pengalihan" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Tanggal Pengalihan" title="Tanggal Pengalihan"  />
                             </div>
                              <div class="col-sm-2">
                                 <input type="text" name="akta_pengalihan" class="form-control" placeholder="Akta"  />
@@ -177,14 +153,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                              <div class="col-sm-4">
                                 <input type="text" name="nama_pengalihan" class="form-control" placeholder="Nama Pengalihan" />
                             </div>
-                        </div><!-- <div class="form-group akta_pengalihan">
-                            <label class="col-sm-3 control-label">Akta Pengalihan</span></label>
-                           
-                        </div>
-                        <div class="form-group nama_pengalihan">
-                            <label class="col-sm-3 control-label">Nama Pengalihan</span></label>
-                           
-                        </div> --><div class="form-group pematangan">
+                        </div><div class="form-group pematangan">
                             <label class="col-sm-3 control-label">Pematangan</span></label>
                             <div class="col-sm-9">
                                 <input type="text" name="pematangan" class="form-control"  />
@@ -194,10 +163,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="col-sm-9">
                                 <input type="text" name="ganti_rugi" class="form-control"  />
                             </div>
-                        </div><!-- <div class="form-group pbb">
+                        </div>
+                        <div class="form-group pbb">
                             <label class="col-sm-3 control-label">PBB</span></label>
-                          
-                        </div> -->
+                            <div class="col-sm-9">
+                                <input type="text" name="pbb" class="form-control"  />
+                            </div>
+                        </div>
                         <div class="form-group lain">
                             <label class="col-sm-3 control-label">Lain-lain</span></label>
                             <div class="col-sm-9">

@@ -134,11 +134,20 @@
                     }else{
                         $perumahan = $data->nama_regional;
                     }
-                    $harga_satuan = $data->total_harga_pengalihan/$data->luas_surat;
+                    if ($data->total_harga_pengalihan==0) {
+                        $harga_satuan = 0;
+                    }else{
+                        $harga_satuan = $data->total_harga_pengalihan/$data->luas_surat;            
+                    }
+                    
                     $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi+$data->pematangan;
                     $totalharga_biaya = $data->total_harga_pengalihan+$data->nilai+$totalbiayalain;
-                    $harga_perm = $totalharga_biaya/$data->luas_surat;
+                    if ($totalharga_biaya==0) {
+                        $harga_perm=0;
+                    }else{
+                        $harga_perm = $totalharga_biaya/$data->luas_surat;
 
+                    }
                     $totalbidang+=$data->jumlah_bidang;
                     $totalluassurat+=$data->luas_surat;
                     $totalluasukur+=$data->luas_ukur;

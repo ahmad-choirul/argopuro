@@ -746,11 +746,20 @@ public function dataitems()
         }else{
             $perumahan = $r->nama_regional;
         }
-        $harga_satuan = $r->total_harga_pengalihan/$r->luas_surat;
+        if ($r->total_harga_pengalihan==0) {
+            $harga_satuan = 0;
+        }else{
+            $harga_satuan = $r->total_harga_pengalihan/$r->luas_surat;            
+        }
+
         $totalbiayalain = $r->lain+$r->pbb+$r->ganti_rugi+$r->pematangan;
         $totalharga_biaya = $r->total_harga_pengalihan+$r->nilai+$totalbiayalain;
-        $harga_perm = $totalharga_biaya/$r->luas_surat;
+        if ($totalharga_biaya==0) {
+            $harga_perm=0;
+        }else{
+            $harga_perm = $totalharga_biaya/$r->luas_surat;
 
+        }
         $row[] = $this->security->xss_clean($perumahan);
         $row[] = $this->security->xss_clean($r->kode_item); 
         $row[] = $this->security->xss_clean($r->nama_item);  
@@ -822,7 +831,7 @@ public function itemdetail(){
     $totalharga_biaya = $query->row()->total_harga_pengalihan+$query->row()->nilai+$totalbiayalain;
     $harga_perm = $totalharga_biaya/$query->row()->luas_surat;
     $result = array(  
-       
+
      "kode_item" => $this->security->xss_clean($query->row()->kode_item),
      "nama_item" => $this->security->xss_clean($query->row()->nama_item),
      "tanggal_pembelian" => $this->security->xss_clean($query->row()->tanggal_pembelian),

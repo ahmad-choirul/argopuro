@@ -128,7 +128,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                     <div class="form-group mt-lg nama_item">
-                        <label class="col-sm-3 control-label">Nama Item<span class="required">*</span></label>
+                        <label class="col-sm-3 control-label">Nama Tanah<span class="required">*</span></label>
                         <div class="col-sm-9">
                             <input type="text" name="nama_item" class="form-control" required/>
                         </div>
@@ -141,20 +141,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="form-group nama_penjual">
                         <label class="col-sm-3 control-label">Data Surat Tanah</span></label>
-                        <div class="col-sm-5">
+                        <div class="col-sm-4">
                             <input type="text" name="nama_penjual" class="form-control" placeholder="Nama Penjual"  />
                         </div>
-                       <!--  <div class="col-sm-4">
-                            <input type="text" name="status_surat_tanah" class="form-control" placeholder="Status Surat Tanah"  />
-                        </div> -->
-                    </div>
-                     <div class="form-group mt-lg nama_supplier">
-                        <label class="col-sm-3 control-label">Sertifikat<span class="required">*</span></label>
-                        <div class="col-sm-9">
+                        <div class="col-sm-5">
                             <select data-plugin-selectTwo class="form-control" required name="status_surat_tanah">  
-                                <option value="">Pilih Lokasi</option>
+                                <option value="">Pilih Jenis</option>
                                 <?php foreach ($sertifikat_tanah as $aa): ?>
-                                    <option value="<?php echo $aa->id_sertifikat_tanah;?>"><?php echo $aa->nama_sertifikat;?> / <?php echo $aa->nama_sertifikat;?></option>
+                                    <option value="<?php echo $aa->id_sertifikat_tanah;?>"><?php echo $aa->kode_sertifikat;?> / <?php echo $aa->nama_sertifikat;?></option>
                                 <?php endforeach; ?>
                             </select> 
                         </div>
@@ -165,10 +159,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="nama_surat_tanah" class="form-control"  />
                         </div>
                     </div>
-                 <!--    <div class="form-group status_surat_tanah">
-                        <label class="col-sm-3 control-label">Status Surat Tanah</span></label>
-
-                    </div> -->
                     <div class="form-group no_gambar">
                         <label class="col-sm-3 control-label">No Gambar</span></label>
                         <div class="col-sm-9">
@@ -189,10 +179,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-4">
                             <input type="number" name="luas_ukur" class="form-control"  placeholder="Luas Ukur" />
                         </div>
-                    </div><!-- 
-                    <div class="form-group luas_ukur">
-                        <label class="col-sm-3 control-label">Luas Ukur</span></label></div> -->
-
+                    </div>
                         <div class="form-group no_pbb">
                             <label class="col-sm-3 control-label">PBB</span></label>
                             <div class="col-sm-3">
@@ -201,29 +188,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="col-sm-2">
                                 <input type="text" name="luas_pbb" class="form-control" placeholder="Luas PBB (m2)"  />
                             </div>
-                             <div class="col-sm-2">
+                             <div class="col-sm-3">
                                 <input type="text" name="njop" class="form-control" placeholder="NJOP" />
                             </div>
-                              <div class="col-sm-2">
-                                <input type="text" name="pbb" class="form-control" placeholder="PBB"  />
-                            </div>
-                        </div><!-- <div class="form-group luas_pbb">
-                            <label class="col-sm-3 control-label">Luas PBB</span></label>
-
-                        </div><div class="form-group njop">
-                            <label class="col-sm-3 control-label">njop</span></label>
-
-                        </div> -->
+                             
+                        </div>
                         <div class="form-group satuan_harga_pengalihan">
                             <label class="col-sm-3 control-label">Harga Pengalihan Hak</span></label>
                            
                             <div class="col-sm-4">
                                 <input type="text" name="total_harga_pengalihan" class="form-control" placeholder="Total Harga Pengalihan" />
                             </div>
-                        </div><!-- <div class="form-group total_harga_pengalihan">
-                            <label class="col-sm-3 control-label">Total Harga Pengalihan</span></label>
-                            
-                        </div> --><div class="form-group nama_makelar">
+                        </div><div class="form-group nama_makelar">
                             <label class="col-sm-3 control-label">Makelar</span></label>
                             <div class="col-sm-9">
                                 <input type="text" name="nama_makelar" class="form-control"  />
@@ -236,7 +212,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div><div class="form-group tanggal_pengalihan">
                             <label class="col-sm-3 control-label"> Detail Pengalihan </span></label>
                             <div class="col-sm-3">
-                                <input type="date" name="tanggal_pengalihan" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Tanggal Pengalihan" title="Tanggal Pengalihan"  />
+                                <input type="text" name="tanggal_pengalihan" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Tanggal Pengalihan" title="Tanggal Pengalihan"  />
                             </div>
                              <div class="col-sm-2">
                                 <input type="text" name="akta_pengalihan" class="form-control" placeholder="Akta"  />
@@ -244,14 +220,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                              <div class="col-sm-4">
                                 <input type="text" name="nama_pengalihan" class="form-control" placeholder="Nama Pengalihan" />
                             </div>
-                        </div><!-- <div class="form-group akta_pengalihan">
-                            <label class="col-sm-3 control-label">Akta Pengalihan</span></label>
-                           
-                        </div>
-                        <div class="form-group nama_pengalihan">
-                            <label class="col-sm-3 control-label">Nama Pengalihan</span></label>
-                           
-                        </div> --><div class="form-group pematangan">
+                        </div><div class="form-group pematangan">
                             <label class="col-sm-3 control-label">Pematangan</span></label>
                             <div class="col-sm-9">
                                 <input type="text" name="pematangan" class="form-control"  />
@@ -261,10 +230,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="col-sm-9">
                                 <input type="text" name="ganti_rugi" class="form-control"  />
                             </div>
-                        </div><!-- <div class="form-group pbb">
+                        </div>
+                        <div class="form-group pbb">
                             <label class="col-sm-3 control-label">PBB</span></label>
-                          
-                        </div> -->
+                            <div class="col-sm-9">
+                                <input type="text" name="pbb" class="form-control"  />
+                            </div>
+                        </div>
                         <div class="form-group lain">
                             <label class="col-sm-3 control-label">Lain-lain</span></label>
                             <div class="col-sm-9">
@@ -328,42 +300,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </header>
                 <div class="panel-body">
                    
-                <div class="form-group mt-lg nama_supplier">
-                    <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
-                    <div class="col-sm-9">
-                        <select data-plugin-selectTwo class="form-control" required id="id_perumahan" name="id_perumahan">  
-                            <option value="">Pilih Lokasi</option>
-                            <?php foreach ($perumahan as $supp): ?>
-                                <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
-                            <?php endforeach; ?>
-                        </select> 
+                    <div class="form-group mt-lg nama_supplier">
+                        <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <select data-plugin-selectTwo class="form-control" required id="id_perumahan" name="id_perumahan">  
+                                <option value="">Pilih Lokasi</option>
+                                <?php foreach ($perumahan as $supp): ?>
+                                    <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
+                                <?php endforeach; ?>
+                            </select> 
+                        </div>
                     </div>
-                </div>
-                <div class="form-group mt-lg nama_item">
-                    <label class="col-sm-3 control-label">Nama tanah<span class="required">*</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="nama_item" id="nama_item" class="form-control" required/>
+                    <div class="form-group mt-lg nama_item">
+                        <label class="col-sm-3 control-label">Nama tanah<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nama_item" id="nama_item" class="form-control" required/>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group tanggal_pembelian">
-                    <label class="col-sm-3 control-label">Tanggal Pembelian</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="tanggal_pembelian" id="tanggal_pembelian" class="form-control tanggal"  />
+                    <div class="form-group tanggal_pembelian">
+                        <label class="col-sm-3 control-label">Tanggal Pembelian</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="tanggal_pembelian" id="tanggal_pembelian" class="form-control tanggal"  />
+                        </div>
                     </div>
-                </div>
-                <div class="form-group nama_penjual">
-                    <label class="col-sm-3 control-label">Nama Penjual</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="nama_penjual" id="nama_penjual" class="form-control"  />
+                    <div class="form-group nama_penjual">
+                        <label class="col-sm-3 control-label">Nama Penjual</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nama_penjual" id="nama_penjual" class="form-control"  />
+                        </div>
                     </div>
-                </div>
-                <div class="form-group nama_surat_tanah">
-                    <label class="col-sm-3 control-label">Nama Surat</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="nama_surat_tanah" id="nama_surat_tanah" class="form-control"  />
+                    <div class="form-group nama_surat_tanah">
+                        <label class="col-sm-3 control-label">Nama Surat</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nama_surat_tanah" id="nama_surat_tanah" class="form-control"  />
+                        </div>
                     </div>
-                </div>
-               <div class="form-group mt-lg nama_supplier">
+                    <div class="form-group mt-lg nama_supplier">
                         <label class="col-sm-3 control-label">Sertifikat<span class="required">*</span></label>
                         <div class="col-sm-9">
                             <select data-plugin-selectTwo class="form-control" required name="status_surat_tanah" id="status_surat_tanah">  
@@ -374,122 +346,122 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </select> 
                         </div>
                     </div>
-                <div class="form-group no_gambar">
-                    <label class="col-sm-3 control-label">No Gambar</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="no_gambar" id="no_gambar" class="form-control"  />
+                    <div class="form-group no_gambar">
+                        <label class="col-sm-3 control-label">No Gambar</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="no_gambar" id="no_gambar" class="form-control"  />
+                        </div>
                     </div>
+                    <div class="form-group jumlah_bidang">
+                        <label class="col-sm-3 control-label">Jumlah Bidang</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="jumlah_bidang" id="jumlah_bidang" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group luas_surat">
+                        <label class="col-sm-3 control-label">Luas Surat</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="luas_surat" id="luas_surat" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group luas_ukur">
+                        <label class="col-sm-3 control-label">Luas Ukur</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="luas_ukur" id="luas_ukur" class="form-control"  />
+                        </div>
+                    </div><div class="form-group no_pbb">
+                        <label class="col-sm-3 control-label">No PBB</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="no_pbb" id="no_pbb" class="form-control"  />
+                        </div>
+                    </div><div class="form-group luas_pbb">
+                        <label class="col-sm-3 control-label">Luas PBB</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="luas_pbb" id="luas_pbb" class="form-control"  />
+                        </div>
+                    </div><div class="form-group njop">
+                        <label class="col-sm-3 control-label">njop</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="njop" id="njop" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group total_harga_pengalihan">
+                        <label class="col-sm-3 control-label">Total Harga Pengalihan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="total_harga_pengalihan" id="total_harga_pengalihan" class="form-control"  />
+                        </div>
+                    </div><div class="form-group nama_makelar">
+                        <label class="col-sm-3 control-label">Makelar</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nama_makelar" id="nama_makelar" class="form-control"  />
+                        </div>
+                    </div><div class="form-group nilai">
+                        <label class="col-sm-3 control-label">Nilai</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nilai" id="nilai" class="form-control"  />
+                        </div>
+                    </div><div class="form-group tanggal_pengalihan">
+                        <label class="col-sm-3 control-label">Tanggal Pengalihan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="tanggal_pengalihan" id="tanggal_pengalihan" class="form-control tanggal"  />
+                        </div>
+                    </div><div class="form-group akta_pengalihan">
+                        <label class="col-sm-3 control-label">Akta Pengalihan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="akta_pengalihan" id="akta_pengalihan" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group nama_pengalihan">
+                        <label class="col-sm-3 control-label">Nama Pengalihan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nama_pengalihan" id="nama_pengalihan" class="form-control"  />
+                        </div>
+                    </div><div class="form-group pematangan">
+                        <label class="col-sm-3 control-label">Pematangan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="pematangan" id="pematangan" class="form-control"  />
+                        </div>
+                    </div><div class="form-group ganti_rugi">
+                        <label class="col-sm-3 control-label">Ganti Rugi</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="ganti_rugi" id="ganti_rugi" class="form-control"  />
+                        </div>
+                    </div><div class="form-group pbb">
+                        <label class="col-sm-3 control-label">PBB</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="pbb" id="pbb" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group lain">
+                        <label class="col-sm-3 control-label">Lain-lain</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="lain" id="lain" class="form-control"  />
+                        </div>
+                    </div><div class="form-group harga_perm">
+                        <label class="col-sm-3 control-label"></span>Harga / M^2</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="harga_perm" id="harga_perm" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group keterangan">
+                        <label class="col-sm-3 control-label">Keterangan</label>
+                        <div class="col-sm-9">
+                            <textarea rows="2" class="form-control" name="keterangan" id="keterangan"></textarea>
+                        </div>
+                    </div>
+                    
                 </div>
-                <div class="form-group jumlah_bidang">
-                    <label class="col-sm-3 control-label">Jumlah Bidang</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="jumlah_bidang" id="jumlah_bidang" class="form-control"  />
+                <footer class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <button class="btn btn-primary modal-confirm" type="submit" id="submitformEdit">Submit</button>
+                            <button class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group luas_surat">
-                    <label class="col-sm-3 control-label">Luas Surat</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="luas_surat" id="luas_surat" class="form-control"  />
-                    </div>
-                </div>
-                <div class="form-group luas_ukur">
-                    <label class="col-sm-3 control-label">Luas Ukur</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="luas_ukur" id="luas_ukur" class="form-control"  />
-                    </div>
-                </div><div class="form-group no_pbb">
-                    <label class="col-sm-3 control-label">No PBB</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="no_pbb" id="no_pbb" class="form-control"  />
-                    </div>
-                </div><div class="form-group luas_pbb">
-                    <label class="col-sm-3 control-label">Luas PBB</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="luas_pbb" id="luas_pbb" class="form-control"  />
-                    </div>
-                </div><div class="form-group njop">
-                    <label class="col-sm-3 control-label">njop</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="njop" id="njop" class="form-control"  />
-                    </div>
-                </div>
-                <div class="form-group total_harga_pengalihan">
-                    <label class="col-sm-3 control-label">Total Harga Pengalihan</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="total_harga_pengalihan" id="total_harga_pengalihan" class="form-control"  />
-                    </div>
-                </div><div class="form-group nama_makelar">
-                    <label class="col-sm-3 control-label">Makelar</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="nama_makelar" id="nama_makelar" class="form-control"  />
-                    </div>
-                </div><div class="form-group nilai">
-                    <label class="col-sm-3 control-label">Nilai</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="nilai" id="nilai" class="form-control"  />
-                    </div>
-                </div><div class="form-group tanggal_pengalihan">
-                    <label class="col-sm-3 control-label">Tanggal Pengalihan</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="tanggal_pengalihan" id="tanggal_pengalihan" class="form-control tanggal"  />
-                    </div>
-                </div><div class="form-group akta_pengalihan">
-                    <label class="col-sm-3 control-label">Akta Pengalihan</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="akta_pengalihan" id="akta_pengalihan" class="form-control"  />
-                    </div>
-                </div>
-                <div class="form-group nama_pengalihan">
-                    <label class="col-sm-3 control-label">Nama Pengalihan</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="nama_pengalihan" id="nama_pengalihan" class="form-control"  />
-                    </div>
-                </div><div class="form-group pematangan">
-                    <label class="col-sm-3 control-label">Pematangan</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="pematangan" id="pematangan" class="form-control"  />
-                    </div>
-                </div><div class="form-group ganti_rugi">
-                    <label class="col-sm-3 control-label">Ganti Rugi</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="ganti_rugi" id="ganti_rugi" class="form-control"  />
-                    </div>
-                </div><div class="form-group pbb">
-                    <label class="col-sm-3 control-label">PBB</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="pbb" id="pbb" class="form-control"  />
-                    </div>
-                </div>
-                <div class="form-group lain">
-                    <label class="col-sm-3 control-label">Lain-lain</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="lain" id="lain" class="form-control"  />
-                    </div>
-                </div><div class="form-group harga_perm">
-                    <label class="col-sm-3 control-label"></span>Harga / M^2</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="harga_perm" id="harga_perm" class="form-control"  />
-                    </div>
-                </div>
-                <div class="form-group keterangan">
-                    <label class="col-sm-3 control-label">Keterangan</label>
-                    <div class="col-sm-9">
-                        <textarea rows="2" class="form-control" name="keterangan" id="keterangan"></textarea>
-                    </div>
-                </div>
-                
-            </div>
-            <footer class="panel-footer">
-                <div class="row">
-                    <div class="col-md-12 text-right">
-                        <button class="btn btn-primary modal-confirm" type="submit" id="submitformEdit">Submit</button>
-                        <button class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </footer>
-        </form>
-    </section>
-</div>
+                </footer>
+            </form>
+        </section>
+    </div>
 </div>
 </div>
 <div class="modal fade" data-keyboard="false" data-backdrop="static"  id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
