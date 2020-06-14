@@ -27,577 +27,147 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="bgbody">
   <section class="body">
 
-   <?php $this->load->view("komponen/header.php") ?>
-   <div class="inner-wrapper"> 
-    <?php $this->load->view("komponen/sidebar.php") ?>
-    <section role="main" class="content-body">
-     <header class="page-header">  
-      <h2>Evaluasi PROSES INDUK</h2>
-  </header>  
-  <!-- start: page -->
-  <div class="row">
-      <section class="panel col-md-12">
-        <header class="panel-heading">    
-            <div class="row show-grid">
-                <div class="col-md-8" align="left"><h2 class="panel-title"></h2></div>
-                <?php  
-                echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="pull-right" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
-                ?> 
-            </div>
-        </header>
-        <div class="panel-body"> 
-            <div class="table" style="overflow-x: auto;">
-                <table class="table table-bordered table-hover table-striped" id="itemsdata">
-                    <thead>
-                        <tr>
-
-                            <th rowspan="3" style="text-align: center; color: black;">NO</th>
-                            <th rowspan="3" style="text-align: center; color: black;">KETERANGAN</th>
-                            <th rowspan="2" colspan="2" style="text-align: center; color: black;">TARGET s/d 2020</th>
-                            <th  colspan="26" style="text-align: center; color: black;">REALISASI 2020</th>
-                            <th  rowspan="2" colspan="3" style="text-align: center;">EVALUASI</th>
-                            <th rowspan="3"></th>
-                            <th  colspan="24" style="text-align: center; color: white;background-color: green;">TARGET 2020</th>
-
-
-
-                        </tr>
-                        <tr>
-                            <th colspan="2"  style="text-align: center;">JAN</th>
-                            <th colspan="2" style="text-align: center;">FEB</th>
-                            <th colspan="2" style="text-align: center;">MAR</th>
-                            <th colspan="2"  style="text-align: center;">APR</th>
-                            <th colspan="2" style="text-align: center;">MEI</th>
-                            <th colspan="2" style="text-align: center;">JUN</th>
-                            <th colspan="2"  style="text-align: center;">JUL</th>
-                            <th colspan="2" style="text-align: center;">AGU</th>
-                            <th colspan="2" style="text-align: center;">SEP</th>
-                            <th colspan="2"  style="text-align: center;">OKT</th>
-                            <th colspan="2" style="text-align: center;">NOV</th>
-                            <th colspan="2" style="text-align: center;">DES</th>
-                            <th colspan="2" style="text-align: center;">TOTAL</th>
-
-                            <th colspan="2"  style="text-align: center;">JAN</th>
-                            <th colspan="2" style="text-align: center;">FEB</th>
-                            <th colspan="2" style="text-align: center;">MAR</th>
-                            <th colspan="2"  style="text-align: center;">APR</th>
-                            <th colspan="2" style="text-align: center;">MEI</th>
-                            <th colspan="2" style="text-align: center;">JUN</th>
-                            <th colspan="2"  style="text-align: center;">JUL</th>
-                            <th colspan="2" style="text-align: center;">AGU</th>
-                            <th colspan="2" style="text-align: center;">SEP</th>
-                            <th colspan="2"  style="text-align: center;">OKT</th>
-                            <th colspan="2" style="text-align: center;">NOV</th>
-                            <th colspan="2" style="text-align: center;">DES</th>
-
-
-                        </tr>
-                        <tr>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">% </th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-
-
-                        </tr>
-
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>A. IP PROYEK DALAM IJIN</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                               <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                         <tr>
-                            <td colspan="58" style="background-color: #CCCCCC;"></td>
-                          
-                        </tr>
-                           <tr>
-                          
-                            <td colspan="2" align="right">TOTAL-A</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                               <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                         <tr>
-                            <td>1</td>
-                            <td>B. IP PROYEK LUAR IJIN</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                               <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                         <tr>
-                            <td colspan="58" style="background-color: #CCCCCC;"></td>
-                          
-                        </tr>
-                           <tr>
-                          
-                            <td colspan="2" align="right">TOTAL-B</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                               <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                         <tr>
-                            <td>1</td>
-                            <td>C. IP LOKASI</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                               <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                         <tr>
-                            <td colspan="58" style="background-color: #CCCCCC;"></td>
-                          
-                        </tr>
-                           <tr>
-                          
-                            <td colspan="2" align="right">TOTAL-C</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                               <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
+     <?php $this->load->view("komponen/header.php") ?>
+     <div class="inner-wrapper"> 
+        <?php $this->load->view("komponen/sidebar.php") ?>
+        <section role="main" class="content-body">
+           <header class="page-header">  
+              <h2>Evaluasi PROSES INDUK</h2>
+          </header>  
+          <!-- start: page -->
+          <div class="row">
+              <section class="panel col-md-12">
+                <header class="panel-heading">    
+                    <div class="row show-grid">
+                        <div class="col-md-8" align="left"><h2 class="panel-title"></h2></div>
+                        <?php  
+                        echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="pull-right" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
+                        ?> 
+                    </div>
+                </header>
+                <div class="panel-body"> 
+                    <div class="table" style="overflow-x: auto;">
+                        <table class="table table-bordered table-hover table-striped" id="itemsdata">
+                            <thead>
                                 <tr>
-                          
-                            <td colspan="2" align="right" style="background-color: green; color: white;">TOTAL ALL</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                               <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tfoot>
-                </table> 
-            </div>
+
+                                    <th rowspan="2" style="text-align: center; ">NO</th>
+                                    <th rowspan="2" style="text-align: center; ">PROYEK</th>
+                                    <th rowspan="2" colspan="2" style="text-align: center; ">TANGGAL PEMBELIAN</th>
+                                    <th  rowspan="2" style="text-align: center; ">NAMA PENJUAL</th>
+                                    <th  colspan="2" style="text-align: center;">DATA SURAT TANAH</th>
+                                    <th rowspan="2" style="text-align: center;">NO GBR</th>
+                                    <th  colspan="2" style="text-align: center;">LUAS M<sup>2</sup></th>
+                                    <th rowspan="2" style="text-align: center;">SALDO SISA PEMBAYARAN</th>
+                                    <th  colspan="13" style="text-align: center; ">SISTEM PEMBAYARAN 2020</th>
+                                    <th rowspan="2" style="text-align: center;">SALDO</th>
+
+
+
+                                </tr>
+                                <tr>
+                                    <th  style="text-align: center;">NAMA</th>
+                                    <th style="text-align: center;">STATUS </th>
+                                    <th style="text-align: center;">SURAT</th>
+                                    <th   style="text-align: center;">UKURAN</th>
+
+
+
+                                    <th style="text-align: center;">JAN</th>
+                                    <th style="text-align: center;">FEB</th>
+                                    <th style="text-align: center;">MAR</th>
+                                    <th  style="text-align: center;">APR</th>
+                                    <th style="text-align: center;">MEI</th>
+                                    <th style="text-align: center;">JUN</th>
+                                    <th style="text-align: center;">JUL</th>
+                                    <th  style="text-align: center;">AGU</th>
+                                    <th  style="text-align: center;">SEP</th>
+                                    <th   style="text-align: center;">OKT</th>
+                                    <th style="text-align: center;">NOV</th>
+                                    <th style="text-align: center;">DES</th>
+                                    <th style="text-align: center;">TOTAL</th>
+
+
+                                </tr>
+
+
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                
+
+                                </tr>
+
+
+                                <tfoot>
+                                   <tr>
+                                    <td colspan="25" ></td>
+
+                                </tr>
+                                <tr>
+
+                                    <td colspan="4" align="center" style="background-color: green;color: white"><b>TOTAL</b> </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                            
+                                 
+
+
+
+                                </tr>
+                            </tfoot>
+                        </table> 
+                    </div>
+                </div>
+            </section>
+
         </div>
+
+        <!-- end: page -->
     </section>
-
-</div>
-
-<!-- end: page -->
-</section>
 </div>
 </section>
 
@@ -818,7 +388,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <h2 class="panel-title">Edit Data Tanah/Aset</h2>
                 </header>
                 <div class="panel-body">
-                 <div class="form-group mt-lg kode_item">
+                   <div class="form-group mt-lg kode_item">
                     <label class="col-sm-3 control-label">Kode Tanah<span class="required">*</span></label>
                     <div class="col-sm-9">
                         <input type="text" name="kode_item" id="kode_item" class="form-control" required/>
