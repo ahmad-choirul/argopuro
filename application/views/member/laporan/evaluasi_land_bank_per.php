@@ -141,6 +141,112 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
         </section>
+        <section class="panel">
+            <header class="panel-heading">    
+                <div class="row show-grid">
+                    <div class="col-md-6" align="left"><h2 class="panel-title">SERAH TERIMA KE TECHNIC</h2></div>
+                    <?php  
+                    echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
+                    ?> 
+                </div>
+            </header>
+            <div class="panel-body"> 
+                <div class="table" style="overflow-x: auto;">
+                    <table class="table table-bordered table-hover table-striped" id="itemsdata">
+                        <thead>
+                            <tr>
+
+                                <th rowspan="2" style="text-align: center;">NO</th>
+                                <th rowspan="2"  style="text-align: center;">NO GBR </th>
+                                <th rowspan="2" style="text-align: center;">THN</th>
+                                <th rowspan="2" style="text-align: center;">PENJUAL</th>
+                                <th colspan="4" style="text-align: center;">DATA TANAH</th>
+                                <th rowspan="2" style="text-align: center;">POSISI SURAT</th>
+                                <th rowspan="2" style="text-align: center;">HARGA AKTA</th>
+                                <th colspan="7" style="text-align: center;">PENGALIHAN HAK</th>
+                                <th rowspan="2" style="text-align: center;">S TERIMA FINANCE</th>
+                                <th rowspan="2" style="text-align: center;">KET</th>
+
+
+
+                            </tr>
+                            <tr>
+                                <th  style="text-align: center;">SURAT</th>
+                                <th  style="text-align: center;">ATAS NAMA</th>
+                                <th style="text-align: center;">L SURAT </th>
+                                <th style="text-align: center;">L UKUR </th>
+                                <th style="text-align: center;">BLM ORDER </th>
+                                <th style="text-align: center;">ORDER</th>
+                                <th style="text-align: center;">TERBIT</th>
+                                <th style="text-align: center;">JENIS</th>
+                                <th style="text-align: center;">NO AKTA</th>
+                                <th style="text-align: center;">TANGGAL</th>
+                                <th style="text-align: center;">ATAS NAMA</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                              <tr>
+                                <td colspan="4"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" align="right">Jumlah -A</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                              <tr>
+                                <td colspan="4" align="right">TOTAL </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table> 
+                </div>
+            </div>
+        </section>
         <!-- end: page -->
     </section>
 </div>
