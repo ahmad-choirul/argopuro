@@ -42,6 +42,9 @@ class Laporan extends CI_Controller {
     public function laporan_evaluasi_pembelian()
     {  
         level_user('master','items',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
+        
+        $data['firstdate'] = $this->input->get('firstdate',true);
+        $data['lastdate'] = $this->input->get('lastdate',true);
         $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
         $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
         $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
