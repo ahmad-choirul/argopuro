@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <section class="panel">
             <header class="panel-heading">    
                 <div class="row show-grid">
-                    <div class="col-md-6" align="left"><h2 class="panel-title">Data Tanah </h2></div>
+                    <div class="col-md-6" align="left"><h2 class="panel-title">LAND BANK</h2></div>
                     <?php  
                     echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
                     ?> 
@@ -76,18 +76,67 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <th style="text-align: center;">NO AKTA</th>
                                 <th style="text-align: center;">TANGGAL</th>
                                 <th style="text-align: center;">ATAS NAMA</th>
-
-
-
-
-
-
-
                             </tr>
 
                         </thead>
                         <tbody>
+                              <tr>
+                                <td colspan="4"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" align="right">Jumlah -A</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                         </tbody>
+                        <tfoot>
+                              <tr>
+                                <td colspan="4" align="right">TOTAL </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
                     </table> 
                 </div>
             </div>
