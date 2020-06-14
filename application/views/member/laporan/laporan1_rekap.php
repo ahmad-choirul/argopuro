@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </header>
         <div class="panel-body"> 
-            <div class="table" style="overflow-x: auto;overflow-y: auto;max-height: 400PX;">
+            <div class="table" style="overflow-x: auto;">
                 <table class="table table-bordered table-hover table-striped" id="itemsdata">
                     <thead>
                         <tr>
