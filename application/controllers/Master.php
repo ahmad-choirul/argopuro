@@ -697,11 +697,13 @@ public function items()
      $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
      $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
      $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
-
     $this->load->view('member/master/master_item',$data);
 } 
 public function pageitem()
  {
+    // $data['periode'] = $this->input->get('periode',true);
+     $data['firstdate'] = $this->input->get('firstdate');
+        $data['lastdate'] = $this->input->get('lastdate'); 
      $data['perumahandalamijin'] = $this->db->order_by("id","DESC")->where('status_regional','1')->get('master_regional')->result();
      $data['perumahanluarijin'] = $this->db->order_by("id","DESC")->where('status_regional','2')->get('master_regional')->result();
      $data['perumahanlokasi'] = $this->db->order_by("id","DESC")->where('status_regional','3')->get('master_regional')->result();
@@ -718,14 +720,17 @@ public function dataitems()
     $list = $this->master_model->get_item_datatable();
     $data = array(); 
     foreach ($list as $r) { 
-        $row = array(); 
-        $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->kode_item).'">Hapus</a></li>':'';
+        $row = array();
+        $linkbayar = site_url('keuangan/bayartanah/').$r->kode_item; 
+        $tomboldetailbayar = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="'.$linkbayar.'">Detail Bayar</a></li>':'';
+          $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->kode_item).'">Hapus</a></li>':'';
         $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->kode_item).'">Edit</a></li>':'';
         $row[] = ' 
         <div class="btn-group dropup">
         <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
         <ul class="dropdown-menu" role="menu"> 
         <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($r->kode_item).'">Detail</a></li> 
+        '.$tomboldetailbayar.'
         '.$tomboledit.'
         '.$tombolhapus.' 
         </ul>
@@ -744,6 +749,7 @@ public function dataitems()
         $harga_satuan = $r->total_harga_pengalihan/$r->luas_surat;
         $totalbiayalain = $r->lain+$r->pbb+$r->ganti_rugi+$r->pematangan;
         $totalharga_biaya = $r->total_harga_pengalihan+$r->nilai+$totalbiayalain;
+        $harga_perm = $totalharga_biaya/$r->luas_surat;
 
         $row[] = $this->security->xss_clean($perumahan);
         $row[] = $this->security->xss_clean($r->kode_item); 
@@ -772,7 +778,7 @@ public function dataitems()
         $row[] = $this->security->xss_clean(rupiah($r->lain));  
         $row[] = $this->security->xss_clean(rupiah($totalbiayalain));  
         $row[] = $this->security->xss_clean(rupiah($totalharga_biaya));  
-        $row[] = $this->security->xss_clean(rupiah($r->harga_perm));  
+        $row[] = $this->security->xss_clean(rupiah($harga_perm));  
         $row[] = $this->security->xss_clean($r->keterangan);
         $data[] = $row;
     }
@@ -811,7 +817,12 @@ public function itemdetail(){
     $this->db->join('master_regional', 'master_item.id_perumahan = master_regional.id', 'left');
     $this->db->join('tbl_sertifikat_tanah', 'master_item.status_surat_tanah = tbl_sertifikat_tanah.id_sertifikat_tanah', 'left');
     $query = $this->db->get_where('master_item', array('kode_item' => $idd),1);
+     $harga_satuan = $query->row()->total_harga_pengalihan/$query->row()->luas_surat;
+        $totalbiayalain = $query->row()->lain+$query->row()->pbb+$query->row()->ganti_rugi+$query->row()->pematangan;
+        $totalharga_biaya = $query->row()->total_harga_pengalihan+$query->row()->nilai+$totalbiayalain;
+        $harga_perm = $totalharga_biaya/$query->row()->luas_surat;
     $result = array(  
+         
        "kode_item" => $this->security->xss_clean($query->row()->kode_item),
        "nama_item" => $this->security->xss_clean($query->row()->nama_item),
        "tanggal_pembelian" => $this->security->xss_clean($query->row()->tanggal_pembelian),
@@ -828,6 +839,7 @@ public function itemdetail(){
        "njop" => $this->security->xss_clean($query->row()->njop),
        "total_harga_pengalihantampil" => $this->security->xss_clean(rupiah($query->row()->total_harga_pengalihan)),
        "total_harga_pengalihan" => $this->security->xss_clean($query->row()->total_harga_pengalihan),
+       "satuan_harga_pengalihantampil" => $this->security->xss_clean(rupiah($harga_satuan)),
        "nama_makelar" => $this->security->xss_clean($query->row()->nama_makelar),
        "nilaitampil" => $this->security->xss_clean(rupiah($query->row()->nilai)),
        "nilai" => $this->security->xss_clean($query->row()->nilai),
@@ -842,8 +854,8 @@ public function itemdetail(){
        "pbb" => $this->security->xss_clean($query->row()->pbb),
        "laintampil" => $this->security->xss_clean(rupiah($query->row()->lain)),
        "lain" => $this->security->xss_clean($query->row()->lain),
-       "harga_permtampil" => $this->security->xss_clean(rupiah($query->row()->harga_perm)),
-       "harga_perm" => $this->security->xss_clean($query->row()->harga_perm),
+       "harga_permtampil" => $this->security->xss_clean(rupiah($harga_perm)),
+       "harga_perm" => $this->security->xss_clean($harga_perm),
        "keterangan" => $this->security->xss_clean($query->row()->keterangan),
        "id_perumahan" => $this->security->xss_clean($query->row()->id_perumahan),
        "nama_regional" => $this->security->xss_clean($query->row()->nama_regional),

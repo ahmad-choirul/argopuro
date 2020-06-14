@@ -297,12 +297,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="njop" class="form-control"  />
                         </div>
                     </div>
-                    <div class="form-group satuan_harga_pengalihan">
-                        <label class="col-sm-3 control-label">Satuan Harga Pengalihan</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="satuan_harga_pengalihan" class="form-control"  />
-                        </div>
-                    </div><div class="form-group total_harga_pengalihan">
+                   <div class="form-group total_harga_pengalihan">
                         <label class="col-sm-3 control-label">Total Harga Pengalihan</span></label>
                         <div class="col-sm-9">
                             <input type="text" name="total_harga_pengalihan" class="form-control"  />
@@ -503,12 +498,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <input type="text" name="njop" id="njop" class="form-control"  />
                     </div>
                 </div>
-                <div class="form-group satuan_harga_pengalihan">
-                    <label class="col-sm-3 control-label">Satuan Harga Pengalihan</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="satuan_harga_pengalihan" id="satuan_harga_pengalihan" class="form-control"  />
-                    </div>
-                </div><div class="form-group total_harga_pengalihan">
+                <div class="form-group total_harga_pengalihan">
                     <label class="col-sm-3 control-label">Total Harga Pengalihan</span></label>
                     <div class="col-sm-9">
                         <input type="text" name="total_harga_pengalihan" id="total_harga_pengalihan" class="form-control"  />

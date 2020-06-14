@@ -221,9 +221,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div> -->
                         <div class="form-group satuan_harga_pengalihan">
                             <label class="col-sm-3 control-label">Harga Pengalihan Hak</span></label>
-                            <div class="col-sm-5">
-                                <input type="text" name="satuan_harga_pengalihan" class="form-control" placeholder="Satuan Harga Pengalihan"  />
-                            </div>
+                           
                             <div class="col-sm-4">
                                 <input type="text" name="total_harga_pengalihan" class="form-control" placeholder="Total Harga Pengalihan" />
                             </div>
@@ -425,12 +423,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <input type="text" name="njop" id="njop" class="form-control"  />
                     </div>
                 </div>
-                <div class="form-group satuan_harga_pengalihan">
-                    <label class="col-sm-3 control-label">Satuan Harga Pengalihan</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="satuan_harga_pengalihan" id="satuan_harga_pengalihan" class="form-control"  />
-                    </div>
-                </div><div class="form-group total_harga_pengalihan">
+                <div class="form-group total_harga_pengalihan">
                     <label class="col-sm-3 control-label">Total Harga Pengalihan</span></label>
                     <div class="col-sm-9">
                         <input type="text" name="total_harga_pengalihan" id="total_harga_pengalihan" class="form-control"  />
@@ -707,7 +700,7 @@ function edit(elem){
            document.getElementById("no_pbb").setAttribute('value', item.no_pbb); 
            document.getElementById("luas_pbb").setAttribute('value', item.luas_pbb); 
            document.getElementById("njop").setAttribute('value', item.njop); 
-           document.getElementById("satuan_harga_pengalihan").setAttribute('value', item.satuan_harga_pengalihan); 
+           
            document.getElementById("total_harga_pengalihan").setAttribute('value', item.total_harga_pengalihan); 
            document.getElementById("nama_makelar").setAttribute('value', item.nama_makelar); 
            document.getElementById("nilai").setAttribute('value', item.nilai); 
