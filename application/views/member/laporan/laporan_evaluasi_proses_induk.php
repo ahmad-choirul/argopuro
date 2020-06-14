@@ -32,151 +32,66 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php $this->load->view("komponen/sidebar.php") ?>
         <section role="main" class="content-body">
            <header class="page-header">  
-              <h2>Evaluasi Proses Induk 12 </h2>
+              <h2>Evaluasi PROSES INDUK</h2>
           </header>  
           <!-- start: page -->
           <div class="row">
               <section class="panel col-md-12">
                 <header class="panel-heading">    
                     <div class="row show-grid">
-                        <div class="col-md-8" align="left"><h2 class="panel-title">PROSES PENYELESAIAN INDUK</h2></div>
-
+                        <div class="col-md-8" align="left"><h2 class="panel-title"></h2></div>
+                        <?php  
+                        echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="pull-right" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
+                        ?> 
                     </div>
                 </header>
                 <div class="panel-body"> 
-                    <div class="table" style="overflow-x: auto;overflow-y: auto;">
+                    <div class="table" style="overflow-x: auto;">
                         <table class="table table-bordered table-hover table-striped" id="itemsdata">
                             <thead>
                                 <tr>
 
-                                    <th rowspan="2" style="text-align: center; ">NO</th>
-                                    <th rowspan="2"style="text-align: center;"> NO GBR </th>
-                                    <th rowspan="2"style="text-align: center;">THN</th>
-                                    <th rowspan="2" style="text-align: center;">PENJUAL</th>
-                                    <th colspan="3" style="text-align: center;">DATA TANAH</th>
-                                    <th colspan="3" style="text-align: center;">LUAS M<SUP>2</SUP></th>
-                                    <th colspan="2" style="text-align: center;">DAFTAR SK HAK</th>
-                                    <th colspan="2" style="text-align: center;">TERBIT SK HAK</th>
-                                    <th colspan="2" style="text-align: center;">DAFTAR SHGB</th>
-                                    <th colspan="3" style="text-align: center;">TERBIT SHGB</th>
-                                    <th rowspan="2" style="text-align: center;">TARGET PENYELESAIAN</th>
-                                    <th rowspan="2" style="text-align: center;">KET</th>
-
-
+                                    <th rowspan="3" style="text-align: center; color: black;">PROYEK</th>
+                                    <th colspan="6" style="text-align: center;color: black;"> PROSES INDUK </th>
+                                    <th colspan="3" rowspan="2" style="text-align: center;color: black;">TERBIT TAHUN 2020</th>
+                                    <th colspan="3" rowspan="2" style="text-align: center;color: black;">SISA BELUM TERBIT s/d 2020</th>
+                                    <th rowspan="3" style="text-align: center;color: black;">KETERANGAN</th>
 
 
                                 </tr>
                                 <tr>
-                                    <th   style="text-align: center;">SURAT</th>
-                                    <th style="text-align: center;">ATAS NAMA</th>
-                                    <th style="text-align: center;">LUAS M<sup>2</sup></th>
-                                    <th  style="text-align: center;">DAFTAR</th>
-                                    <th   style="text-align: center;">TERBIT</th>
-                                    <th style="text-align: center;">SELISIH</th>
-                                    <th  style="text-align: center;">TGL</th>
-                                    <th style="text-align: center;">NO BERKAS</th>
-                                    <th   style="text-align: center;">TGL</th>
-                                    <th style="text-align: center;">NO SK</th>
-                                    <th   style="text-align: center;">TGL</th>
-                                    <th style="text-align: center;">NO BERKAS</th>
-                                    <th   style="text-align: center;">TGL</th>
-                                    <th  style="text-align: center;">NO SHGB</th>
-                                    <th style="text-align: center;">M BERLAKU</th>
+                                    <th colspan="2"  style="text-align: center;">SISA sd TH 2019</th>
+                                    <th colspan="2" style="text-align: center;">TAHUN 2020</th>
+                                    <th colspan="2" style="text-align: center;">TOTAL</th>
+
+                                </tr>
+                                <tr>
+                                    <th   style="text-align: center;">INDK</th>
+                                    <th style="text-align: center;">LUAS</th>
+                                    <th   style="text-align: center;">INDK</th>
+                                    <th style="text-align: center;">LUAS</th>
+                                    <th   style="text-align: center;">INDK</th>
+                                    <th style="text-align: center;">LUAS</th>
+                                    <th   style="text-align: center;">INDK</th>
+                                    <th style="text-align: center;">LUAS</th>
+                                    <th   style="text-align: center;">L TERBIT</th>
+                                    <th   style="text-align: center;">INDK</th>
+                                    <th style="text-align: center;">LUAS</th>
 
                                 </tr>
 
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>A</td>
-                                    <td colspan=""> sd. Tahun 2019</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-
-                                </tr>
                             </tbody>
                         </table> 
                     </div>
                 </div>
             </section>
-            <section class="panel col-md-12">
-                <header class="panel-heading">    
-                    <div class="row show-grid">
-                        <div class="col-md-8" align="left"><h2 class="panel-title">INDUK TERBIT 2019</h2></div>
 
-                    </div>
-                </header>
-                <div class="panel-body"> 
-                    <div class="table" style="overflow-x: auto;overflow-y: auto;">
-                        <table class="table table-bordered table-hover table-striped" id="itemsdata">
-                            <thead>
-                             <tr>
+        </div>
 
-                                <th rowspan="2" style="text-align: center; ">NO</th>
-                                <th rowspan="2"style="text-align: center;"> NO GBR </th>
-                                <th rowspan="2"style="text-align: center;">THN</th>
-                                <th rowspan="2" style="text-align: center;">PENJUAL</th>
-                                <th colspan="3" style="text-align: center;">DATA TANAH</th>
-                                <th colspan="3" style="text-align: center;">LUAS M<SUP>2</SUP></th>
-                                <th colspan="2" style="text-align: center;">DAFTAR SK HAK</th>
-                                <th colspan="2" style="text-align: center;">TERBIT SK HAK</th>
-                                <th colspan="2" style="text-align: center;">DAFTAR SHGB</th>
-                                <th colspan="3" style="text-align: center;">TERBIT SHGB</th>
-                                <th rowspan="2" style="text-align: center;">TARGET PENYELESAIAN</th>
-                                <th rowspan="2" style="text-align: center;">KET</th>
-
-
-
-
-                            </tr>
-                            <tr>
-                                <th   style="text-align: center;">SURAT</th>
-                                <th style="text-align: center;">ATAS NAMA</th>
-                                <th style="text-align: center;">LUAS M<sup>2</sup></th>
-                                <th  style="text-align: center;">DAFTAR</th>
-                                <th   style="text-align: center;">TERBIT</th>
-                                <th style="text-align: center;">SELISIH</th>
-                                <th  style="text-align: center;">TGL</th>
-                                <th style="text-align: center;">NO BERKAS</th>
-                                <th   style="text-align: center;">TGL</th>
-                                <th style="text-align: center;">NO SK</th>
-                                <th   style="text-align: center;">TGL</th>
-                                <th style="text-align: center;">NO BERKAS</th>
-                                <th   style="text-align: center;">TGL</th>
-                                <th  style="text-align: center;">NO SHGB</th>
-                                <th style="text-align: center;">M BERLAKU</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table> 
-                </div>
-            </div>
-        </section>
-
-
-    </div>
-
-    <!-- end: page -->
-</section>
+        <!-- end: page -->
+    </section>
 </div>
 </section>
 

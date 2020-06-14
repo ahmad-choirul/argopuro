@@ -43,7 +43,7 @@
                     <div class="panel-body"> 
                         <div class="table" style="overflow-x: auto;">
                             <table class="table table-responsive table-bordered table-hover table-striped" >
-                               <thead>
+                             <thead>
                                 <tr>
                                     <th rowspan="2" style="text-align: center;"></th>
                                     <th rowspan="2" style="text-align: center;">Lokasi</th>
@@ -92,21 +92,21 @@
                             <tbody>
                                 <?php foreach ($dataperumahan as $value => $data): ?>
                                     <tr>
-                                     <?php 
-                                     $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Hapus</a></li>':'';
-                                     $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Edit</a></li>':'';
-                                     $tombol='
-                                     <div class="btn-group dropup">
-                                     <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
-                                     <ul class="dropdown-menu" role="menu"> 
-                                     <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Detail</a></li> 
-                                     '.$tomboledit.'
-                                     '.$tombolhapus.' 
-                                     </ul>
-                                     </div>
-                                     ';
+                                       <?php 
+                                       $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Hapus</a></li>':'';
+                                       $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Edit</a></li>':'';
+                                       $tombol='
+                                       <div class="btn-group dropup">
+                                       <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+                                       <ul class="dropdown-menu" role="menu"> 
+                                       <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Detail</a></li> 
+                                       '.$tomboledit.'
+                                       '.$tombolhapus.' 
+                                       </ul>
+                                       </div>
+                                       ';
 
-                                     if ($data->tanggal_pengalihan!=null) {
+                                       if ($data->tanggal_pengalihan!=null) {
                                         $tgl_pengalihan = tgl_indo($data->tanggal_pengalihan);
                                     }else{
                                         $tgl_pengalihan = '-';
@@ -120,37 +120,105 @@
                                     $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi+$data->pematangan;
                                     $totalharga_biaya = $data->total_harga_pengalihan+$data->nilai+$totalbiayalain;
                                     ?>
-                                     <td><?= $tombol ?></td>
-  <td><?=$perumahan?></td>
-        <td><?=$data->kode_item?></td> 
-        <td><?=$data->nama_item?></td>  
-        <td><?=tgl_indo($data->tanggal_pembelian)?></td>
-        <td><?=$data->nama_penjual?></td>  
-        <td><?=$data->nama_surat_tanah?></td>  
-        <td><?=$data->kode_sertifikat?></td>  
-        <td><?=$data->no_gambar?></td>  
-        <td><?=$data->jumlah_bidang?></td>  
-        <td><?=$data->luas_surat?></td>  
-        <td><?=$data->luas_ukur?></td>  
-        <td><?=$data->no_pbb?></td>  
-        <td><?=$data->luas_pbb?></td>  
-        <td><?=$data->njop?></td>  
-        <td><?=rupiah($harga_satuan)?></td>  
-        <td><?=rupiah($data->total_harga_pengalihan)?></td>  
-        <td><?=$data->nama_makelar?></td>  
-        <td><?=rupiah($data->nilai)?></td>  
-        <td><?=$tgl_pengalihan?></td>  
-        <td><?=$data->akta_pengalihan?></td>  
-        <td><?=$data->nama_pengalihan?></td>  
-        <td><?=rupiah($data->pematangan)?></td>  
-        <td><?=rupiah($data->ganti_rugi)?></td>  
-        <td><?=rupiah($data->pbb)?></td>  
-        <td><?=rupiah($data->lain)?></td>  
-        <td><?=rupiah($totalbiayalain)?></td>  
-        <td><?=rupiah($totalharga_biaya)?></td>  
-        <td><?=rupiah($data->harga_perm)?></td>  
-        <td><?=$data->keterangan?></td>
+                                    <td><?= $tombol ?></td>
+                                    <td><?=$perumahan?></td>
+                                    <td><?=$data->kode_item?></td> 
+                                    <td><?=$data->nama_item?></td>  
+                                    <td><?=tgl_indo($data->tanggal_pembelian)?></td>
+                                    <td><?=$data->nama_penjual?></td>  
+                                    <td><?=$data->nama_surat_tanah?></td>  
+                                    <td><?=$data->kode_sertifikat?></td>  
+                                    <td><?=$data->no_gambar?></td>  
+                                    <td><?=$data->jumlah_bidang?></td>  
+                                    <td><?=$data->luas_surat?></td>  
+                                    <td><?=$data->luas_ukur?></td>  
+                                    <td><?=$data->no_pbb?></td>  
+                                    <td><?=$data->luas_pbb?></td>  
+                                    <td><?=$data->njop?></td>  
+                                    <td><?=rupiah($harga_satuan)?></td>  
+                                    <td><?=rupiah($data->total_harga_pengalihan)?></td>  
+                                    <td><?=$data->nama_makelar?></td>  
+                                    <td><?=rupiah($data->nilai)?></td>  
+                                    <td><?=$tgl_pengalihan?></td>  
+                                    <td><?=$data->akta_pengalihan?></td>  
+                                    <td><?=$data->nama_pengalihan?></td>  
+                                    <td><?=rupiah($data->pematangan)?></td>  
+                                    <td><?=rupiah($data->ganti_rugi)?></td>  
+                                    <td><?=rupiah($data->pbb)?></td>  
+                                    <td><?=rupiah($data->lain)?></td>  
+                                    <td><?=rupiah($totalbiayalain)?></td>  
+                                    <td><?=rupiah($totalharga_biaya)?></td>  
+                                    <td><?=rupiah($data->harga_perm)?></td>  
+                                    <td><?=$data->keterangan?></td>
                                 <?php endforeach ?>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+
+
+                            </tr>
+                            <tr>
+                                <td colspan="4" align="right"><b style="color: black">Total  <?php echo $per->nama_regional; ?></b></td>
+                              
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+
+
                             </tr>
                         </tbody>
                     </table> 
@@ -210,7 +278,7 @@
                     <div class="panel-body"> 
                         <div class="table" style="overflow-x: auto;">
                             <table class="table table-responsive table-bordered table-hover table-striped" >
-                               <thead>
+                             <thead>
                                 <tr>
                                     <th rowspan="2" style="text-align: center;"></th>
                                     <th rowspan="2" style="text-align: center;">Lokasi</th>
@@ -255,24 +323,25 @@
                                     <th style="text-align: center;">Total</th>
 
                                 </tr>
+
                             </thead>
                             <tbody>
                                 <?php foreach ($dataperumahan as $value => $data): ?>
                                     <tr>
-                                     <?php 
-                                     $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Hapus</a></li>':'';
-                                     $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Edit</a></li>':'';
-                                     $tombol='
-                                     <div class="btn-group dropup">
-                                     <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
-                                     <ul class="dropdown-menu" role="menu"> 
-                                     <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Detail</a></li> 
-                                     '.$tomboledit.'
-                                     '.$tombolhapus.' 
-                                     </ul>
-                                     </div>
-                                     ';
-                                     if ($data->tanggal_pengalihan!=null) {
+                                       <?php 
+                                       $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Hapus</a></li>':'';
+                                       $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Edit</a></li>':'';
+                                       $tombol='
+                                       <div class="btn-group dropup">
+                                       <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+                                       <ul class="dropdown-menu" role="menu"> 
+                                       <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Detail</a></li> 
+                                       '.$tomboledit.'
+                                       '.$tombolhapus.' 
+                                       </ul>
+                                       </div>
+                                       ';
+                                       if ($data->tanggal_pengalihan!=null) {
                                         $tgl_pengalihan = tgl_indo($data->tanggal_pengalihan);
                                     }else{
                                         $tgl_pengalihan = '-';
@@ -287,36 +356,104 @@
                                     $totalharga_biaya = $data->total_harga_pengalihan+$data->nilai+$totalbiayalain;
                                     ?>
                                     <td><?= $tombol ?></td>
-  <td><?=$perumahan?></td>
-        <td><?=$data->kode_item?></td> 
-        <td><?=$data->nama_item?></td>  
-        <td><?=tgl_indo($data->tanggal_pembelian)?></td>
-        <td><?=$data->nama_penjual?></td>  
-        <td><?=$data->nama_surat_tanah?></td>  
-        <td><?=$data->kode_sertifikat?></td>  
-        <td><?=$data->no_gambar?></td>  
-        <td><?=$data->jumlah_bidang?></td>  
-        <td><?=$data->luas_surat?></td>  
-        <td><?=$data->luas_ukur?></td>  
-        <td><?=$data->no_pbb?></td>  
-        <td><?=$data->luas_pbb?></td>  
-        <td><?=$data->njop?></td>  
-        <td><?=rupiah($harga_satuan)?></td>  
-        <td><?=rupiah($data->total_harga_pengalihan)?></td>  
-        <td><?=$data->nama_makelar?></td>  
-        <td><?=rupiah($data->nilai)?></td>  
-        <td><?=$tgl_pengalihan?></td>  
-        <td><?=$data->akta_pengalihan?></td>  
-        <td><?=$data->nama_pengalihan?></td>  
-        <td><?=rupiah($data->pematangan)?></td>  
-        <td><?=rupiah($data->ganti_rugi)?></td>  
-        <td><?=rupiah($data->pbb)?></td>  
-        <td><?=rupiah($data->lain)?></td>  
-        <td><?=rupiah($totalbiayalain)?></td>  
-        <td><?=rupiah($totalharga_biaya)?></td>  
-        <td><?=rupiah($data->harga_perm)?></td>  
-        <td><?=$data->keterangan?></td>
+                                    <td><?=$perumahan?></td>
+                                    <td><?=$data->kode_item?></td> 
+                                    <td><?=$data->nama_item?></td>  
+                                    <td><?=tgl_indo($data->tanggal_pembelian)?></td>
+                                    <td><?=$data->nama_penjual?></td>  
+                                    <td><?=$data->nama_surat_tanah?></td>  
+                                    <td><?=$data->kode_sertifikat?></td>  
+                                    <td><?=$data->no_gambar?></td>  
+                                    <td><?=$data->jumlah_bidang?></td>  
+                                    <td><?=$data->luas_surat?></td>  
+                                    <td><?=$data->luas_ukur?></td>  
+                                    <td><?=$data->no_pbb?></td>  
+                                    <td><?=$data->luas_pbb?></td>  
+                                    <td><?=$data->njop?></td>  
+                                    <td><?=rupiah($harga_satuan)?></td>  
+                                    <td><?=rupiah($data->total_harga_pengalihan)?></td>  
+                                    <td><?=$data->nama_makelar?></td>  
+                                    <td><?=rupiah($data->nilai)?></td>  
+                                    <td><?=$tgl_pengalihan?></td>  
+                                    <td><?=$data->akta_pengalihan?></td>  
+                                    <td><?=$data->nama_pengalihan?></td>  
+                                    <td><?=rupiah($data->pematangan)?></td>  
+                                    <td><?=rupiah($data->ganti_rugi)?></td>  
+                                    <td><?=rupiah($data->pbb)?></td>  
+                                    <td><?=rupiah($data->lain)?></td>  
+                                    <td><?=rupiah($totalbiayalain)?></td>  
+                                    <td><?=rupiah($totalharga_biaya)?></td>  
+                                    <td><?=rupiah($data->harga_perm)?></td>  
+                                    <td><?=$data->keterangan?></td>
                                 <?php endforeach ?>
+                            </tr>
+                             <tr>
+                                <td></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+
+
+                            </tr>
+                            <tr>
+                                <td colspan="4" align="right"><b style="color: black">Total  <?php echo $per->nama_regional; ?></b></td>
+                              
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+
+
                             </tr>
                         </tbody>
                     </table> 
@@ -425,21 +562,21 @@
                                 <tbody>
                                     <?php foreach ($dataperumahan as $value => $data): ?>
                                         <tr>
-                                         <?php 
-                                         $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Hapus</a></li>':'';
-                                         $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Edit</a></li>':'';
-                                         $tombol='
-                                         <div class="btn-group dropup">
-                                         <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
-                                         <ul class="dropdown-menu" role="menu"> 
-                                         <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Detail</a></li> 
-                                         '.$tomboledit.'
-                                         '.$tombolhapus.' 
-                                         </ul>
-                                         </div>
-                                         ';
+                                           <?php 
+                                           $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Hapus</a></li>':'';
+                                           $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Edit</a></li>':'';
+                                           $tombol='
+                                           <div class="btn-group dropup">
+                                           <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+                                           <ul class="dropdown-menu" role="menu"> 
+                                           <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Detail</a></li> 
+                                           '.$tomboledit.'
+                                           '.$tombolhapus.' 
+                                           </ul>
+                                           </div>
+                                           ';
 
-                                         if ($data->tanggal_pengalihan!=null) {
+                                           if ($data->tanggal_pengalihan!=null) {
                                             $tgl_pengalihan = tgl_indo($data->tanggal_pengalihan);
                                         }else{
                                             $tgl_pengalihan = '-';
@@ -453,38 +590,106 @@
                                         $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi+$data->pematangan;
                                         $totalharga_biaya = $data->total_harga_pengalihan+$data->nilai+$totalbiayalain;
                                         ?>
-                                         <td><?= $tombol ?></td>
-  <td><?=$perumahan?></td>
-        <td><?=$data->kode_item?></td> 
-        <td><?=$data->nama_item?></td>  
-        <td><?=tgl_indo($data->tanggal_pembelian)?></td>
-        <td><?=$data->nama_penjual?></td>  
-        <td><?=$data->nama_surat_tanah?></td>  
-        <td><?=$data->kode_sertifikat?></td>  
-        <td><?=$data->no_gambar?></td>  
-        <td><?=$data->jumlah_bidang?></td>  
-        <td><?=$data->luas_surat?></td>  
-        <td><?=$data->luas_ukur?></td>  
-        <td><?=$data->no_pbb?></td>  
-        <td><?=$data->luas_pbb?></td>  
-        <td><?=$data->njop?></td>  
-        <td><?=rupiah($harga_satuan)?></td>  
-        <td><?=rupiah($data->total_harga_pengalihan)?></td>  
-        <td><?=$data->nama_makelar?></td>  
-        <td><?=rupiah($data->nilai)?></td>  
-        <td><?=$tgl_pengalihan?></td>  
-        <td><?=$data->akta_pengalihan?></td>  
-        <td><?=$data->nama_pengalihan?></td>  
-        <td><?=rupiah($data->pematangan)?></td>  
-        <td><?=rupiah($data->ganti_rugi)?></td>  
-        <td><?=rupiah($data->pbb)?></td>  
-        <td><?=rupiah($data->lain)?></td>  
-        <td><?=rupiah($totalbiayalain)?></td>  
-        <td><?=rupiah($totalharga_biaya)?></td>  
-        <td><?=rupiah($data->harga_perm)?></td>  
-        <td><?=$data->keterangan?></td>
+                                        <td><?= $tombol ?></td>
+                                        <td><?=$perumahan?></td>
+                                        <td><?=$data->kode_item?></td> 
+                                        <td><?=$data->nama_item?></td>  
+                                        <td><?=tgl_indo($data->tanggal_pembelian)?></td>
+                                        <td><?=$data->nama_penjual?></td>  
+                                        <td><?=$data->nama_surat_tanah?></td>  
+                                        <td><?=$data->kode_sertifikat?></td>  
+                                        <td><?=$data->no_gambar?></td>  
+                                        <td><?=$data->jumlah_bidang?></td>  
+                                        <td><?=$data->luas_surat?></td>  
+                                        <td><?=$data->luas_ukur?></td>  
+                                        <td><?=$data->no_pbb?></td>  
+                                        <td><?=$data->luas_pbb?></td>  
+                                        <td><?=$data->njop?></td>  
+                                        <td><?=rupiah($harga_satuan)?></td>  
+                                        <td><?=rupiah($data->total_harga_pengalihan)?></td>  
+                                        <td><?=$data->nama_makelar?></td>  
+                                        <td><?=rupiah($data->nilai)?></td>  
+                                        <td><?=$tgl_pengalihan?></td>  
+                                        <td><?=$data->akta_pengalihan?></td>  
+                                        <td><?=$data->nama_pengalihan?></td>  
+                                        <td><?=rupiah($data->pematangan)?></td>  
+                                        <td><?=rupiah($data->ganti_rugi)?></td>  
+                                        <td><?=rupiah($data->pbb)?></td>  
+                                        <td><?=rupiah($data->lain)?></td>  
+                                        <td><?=rupiah($totalbiayalain)?></td>  
+                                        <td><?=rupiah($totalharga_biaya)?></td>  
+                                        <td><?=rupiah($data->harga_perm)?></td>  
+                                        <td><?=$data->keterangan?></td>
                                     <?php endforeach ?>
                                 </tr>
+                                 <tr>
+                                <td></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+
+
+                            </tr>
+                            <tr>
+                                <td colspan="4" align="right"><b style="color: black">Total  <?php echo $per->nama_regional; ?></b></td>
+                              
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+                                <td ></td>
+
+
+                            </tr>
                             </tbody>
                         </table> 
                     </div>
