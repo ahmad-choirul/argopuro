@@ -82,8 +82,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p style="font-size: 13px; color: black;"><b>4. EVALUASI PROSES INDUK</b></p>
                     </header>
                     <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan/laporan_evaluasi_proses_induk" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Penyelesaian Induk</a>
-                        <a href="<?php echo base_url()?>laporan/laporan/laporan_evaluasi_proses_induk_per" class="btn btn-warning"><i class="fa fa-folder"></i>Penyelesaian Induk Perumahan</a>
+                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Penyelesaian Induk</a>
+                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk_per" class="btn btn-warning"><i class="fa fa-folder"></i>Penyelesaian Induk Perumahan</a>
                     </div>
                 </section>
             </div>  
@@ -104,8 +104,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p style="font-size: 13px; color: black;"><b>6. EVALUASI TANAH SUDAH SHGB</b></p>
                     </header>
                     <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan/laporan/laporan_evaluasi_tanah_shgb" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Tanah SHGB</a>
-                        <a href="<?php echo base_url()?>laporan/laporan/laporan/laporan_evaluasi_tanah_shgb_per" class="btn btn-warning"><i class="fa fa-folder"></i>Tanah SHGB Perumahan</a>
+                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_shgb" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Tanah SHGB</a>
+                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_shgb_per" class="btn btn-warning"><i class="fa fa-folder"></i>Tanah SHGB Perumahan</a>
                     </div>
                 </section>
             </div>  
@@ -115,8 +115,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p style="font-size: 13px; color: black;"><b>7. EVALUASI PROSES SPLITSING</b></p>
                     </header>
                     <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan/laporan_evaluasi_splitsing" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Splitsing</a>
-                        <a href="<?php echo base_url()?>laporan/laporan/laporan_evaluasi_splitsing_per" class="btn btn-warning"><i class="fa fa-folder"></i> Splitsing Perumahan</a>
+                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_splitsing" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Splitsing</a>
+                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_splitsing_per" class="btn btn-warning"><i class="fa fa-folder"></i> Splitsing Perumahan</a>
                     </div>
                 </section>
             </div>  
@@ -126,8 +126,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p style="font-size: 13px; color: black;"><b>8. EVALUASI HUTANG SERT </b></p>
                     </header>
                     <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan/laporan_evaluasi_sert_belum_split" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Hutang Sertifikat </a>
-                        <a href="<?php echo base_url()?>laporan/laporan/laporan_evaluasi_sert_belum_split_per" class="btn btn-warning"><i class="fa fa-folder"></i>Hutang Sertifikat Perumahan</a>
+                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_sert_belum_split" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Hutang Sertifikat </a>
+                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_sert_belum_split_per" class="btn btn-warning"><i class="fa fa-folder"></i>Hutang Sertifikat Perumahan</a>
                     </div>
                 </section>
             </div>  
