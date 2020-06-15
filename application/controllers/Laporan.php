@@ -58,160 +58,391 @@ class Laporan extends CI_Controller {
         $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
         $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
         $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
+        $data['list'] = $this->dataevaluasilandbank();
         $this->load->view('member/laporan/evaluasi_land_bank',$data);
     }
-    public function laporan_evaluasi_land_bank_per()
-      {
-        $data['id_perumahan'] = $this->input->get('id_perumahan',true);
-        $data['dataperumahanseb'] = $this->master_model->getperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31');
-        $data['dataperumahanses'] = $this->master_model->getperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31');
-        $data['dataperumahantekseb'] = $this->master_model->getperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','sudah');
-        $data['dataperumahantekses'] = $this->master_model->getperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','sudah');
-        $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
-         $this->load->view('member/laporan/evaluasi_land_bank_per',$data);
-      }  
+   public function coba($value='')
+   {
+       echo "<pre>";
+       $data = $this->dataevaliasishgb();
+       print_r ($data);
+       echo "</pre>";
+   }
+public function dataevaluasilandbank()
+{
+    $data['perumahandalamijin'] = $this->db->order_by("id","DESC")->where('status_regional','1')->get('master_regional')->result();
+    $data['perumahanluarijin'] = $this->db->order_by("id","DESC")->where('status_regional','2')->get('master_regional')->result();
+    $data['perumahanlokasi'] = $this->db->order_by("id","DESC")->where('status_regional','3')->get('master_regional')->result();
+    $data1 = array(); 
+    $data2 = array(); 
+    $data3 = array(); 
+    $no=1;
+    if ($data['perumahandalamijin']!=null) {
+       foreach ($data['perumahandalamijin'] as $key => $value) {
+        $list1 = $this->master_model->get_rekaplandbank($value->id,'1970-01-01',(date('Y')-1).'-12-31');
+        $list2 = $this->master_model->get_rekaplandbank($value->id,date('Y'.'-01-01'),date('Y').'-12-31');
+        $list3 = $this->master_model->get_rekaplandbank($value->id);
+        $list4 = $this->master_model->get_rekaplandbank($value->id,'','','sudah');
+        $row = array();
 
-       public function laporan_evaluasi_tanah_belum_shgb()
-      {
-         $this->load->view('member/laporan/laporan_evaluasi_tanah_belum_shgb');
-      }  
+        $row[] = $this->security->xss_clean($no++);
+        $row[] = $this->security->xss_clean($value->nama_regional); 
 
-       public function laporan_evaluasi_tanah_belum_shgb_per()
-      {
-         $this->load->view('member/laporan/laporan_evaluasi_tanah_belum_shgb_per');
-      }  
- public function laporan_evaluasi_proses_induk()
-      {
-         $this->load->view('member/laporan/laporan_evaluasi_proses_induk');
-      }  
-       public function laporan_evaluasi_proses_induk_per()
-      {
-         $this->load->view('member/laporan/laporan_evaluasi_proses_induk_per');
-      }  
- public function laporan_evaluasi_penggabungan_split()
-      {
-         $this->load->view('member/laporan/laporan_evaluasi_penggabungan_split');
-      }  
- public function laporan_evaluasi_tanah_shgb()
-      {
-         $this->load->view('member/laporan/laporan_evaluasi_tanah_shgb');
-      }  
- public function laporan_evaluasi_splitsing()
-      {
-         $this->load->view('member/laporan/laporan_evaluasi_splitsing');
-      }  
+        $row[] = $this->security->xss_clean($list1['bid']);
+        $row[] = $this->security->xss_clean($list1['surat']); 
+        $row[] = $this->security->xss_clean($list1['ukur']);  
 
-       public function laporan_evaluasi_sert_belum_split()
-      {
-         $this->load->view('member/laporan/laporan_evaluasi_sert_belum_split');
-      }  
+        $row[] = $this->security->xss_clean($list2['bid']);
+        $row[] = $this->security->xss_clean($list2['surat']); 
+        $row[] = $this->security->xss_clean($list2['ukur']);  
 
-       public function laporan_evaluasi_stok_split()
-      {
-         $this->load->view('member/laporan/laporan_evaluasi_stok_split');
-      }  
+        $row[] = $this->security->xss_clean($list3['bid']);
+        $row[] = $this->security->xss_clean($list3['surat']); 
+        $row[] = $this->security->xss_clean($list3['ukur']);
 
-      
-    public function po()
-    {    
-        level_user('laporan','po',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
-        $data['supplier'] = $this->db->get('master_supplier')->result(); 
-        $this->load->view('member/laporan/po',$data);
-    }   
-    public function laporanpo()
-    {   
-        $conditions = array(); 
-        $page = $this->input->get('page');
-        if(!$page){
-            $offset = 0;
-        }else{
-            $offset = $page;
-        }
+        $row[] = $this->security->xss_clean($list4['bid']);
+        $row[] = $this->security->xss_clean($list4['surat']); 
+        $row[] = $this->security->xss_clean($list4['ukur']);  
 
-        $supplier = $this->input->get('supplier');
-        $firstdate = $this->input->get('firstdate');
-        $lastdate = $this->input->get('lastdate'); 
-        $conditions['search']['supplier'] = $supplier;
-        $conditions['search']['firstdate'] = $firstdate;
-        $conditions['search']['lastdate'] = $lastdate;
+        $row[] = $this->security->xss_clean($list3['bid']-$list4['bid']);
+        $row[] = $this->security->xss_clean($list3['surat']-$list4['surat']); 
+        $row[] = $this->security->xss_clean($list3['ukur']-$list4['ukur']); 
+
+        $row[] = $this->security->xss_clean($list4['bid']);
+        $row[] = $this->security->xss_clean($list4['surat']); 
+        $row[] = $this->security->xss_clean($list4['ukur']);  
+
+        $row[] = $this->security->xss_clean($list4['bid']);
+        $row[] = $this->security->xss_clean($list4['surat']);
+        $data1[] = $row;
+    }
+}
+
+if ($data['perumahanluarijin']!=null) {
+   foreach ($data['perumahanluarijin'] as $key => $value) {
+    $list1 = $this->master_model->get_rekaplandbank($value->id,'1970-01-01',(date('Y')-1).'-12-31');
+    $list2 = $this->master_model->get_rekaplandbank($value->id,date('Y'.'-01-01'),date('Y').'-12-31');
+    $list3 = $this->master_model->get_rekaplandbank($value->id);
+    $list4 = $this->master_model->get_rekaplandbank($value->id,'','','sudah');
+    $row = array();
+
+    $row[] = $this->security->xss_clean($no++);
+    $row[] = $this->security->xss_clean($value->nama_regional); 
+
+    $row[] = $this->security->xss_clean($list1['bid']);
+    $row[] = $this->security->xss_clean($list1['surat']); 
+    $row[] = $this->security->xss_clean($list1['ukur']);  
+
+    $row[] = $this->security->xss_clean($list2['bid']);
+    $row[] = $this->security->xss_clean($list2['surat']); 
+    $row[] = $this->security->xss_clean($list2['ukur']);  
+
+    $row[] = $this->security->xss_clean($list3['bid']);
+    $row[] = $this->security->xss_clean($list3['surat']); 
+    $row[] = $this->security->xss_clean($list3['ukur']);
+
+    $row[] = $this->security->xss_clean($list4['bid']);
+    $row[] = $this->security->xss_clean($list4['surat']); 
+    $row[] = $this->security->xss_clean($list4['ukur']);  
+
+    $row[] = $this->security->xss_clean($list3['bid']-$list4['bid']);
+    $row[] = $this->security->xss_clean($list3['surat']-$list4['surat']); 
+    $row[] = $this->security->xss_clean($list3['ukur']-$list4['ukur']); 
+
+    $row[] = $this->security->xss_clean($list4['bid']);
+    $row[] = $this->security->xss_clean($list4['surat']); 
+    $row[] = $this->security->xss_clean($list4['ukur']);  
+
+    $row[] = $this->security->xss_clean($list4['bid']);
+    $row[] = $this->security->xss_clean($list4['surat']);
+    $data2[] = $row;
+}
+}
+
+if ($data['perumahanlokasi']!=null) {
+   foreach ($data['perumahanlokasi'] as $key => $value) {
+    $list1 = $this->master_model->get_rekaplandbank($value->id,'1970-01-01',(date('Y')-1).'-12-31');
+    $list2 = $this->master_model->get_rekaplandbank($value->id,date('Y'.'-01-01'),date('Y').'-12-31');
+    $list3 = $this->master_model->get_rekaplandbank($value->id);
+    $list4 = $this->master_model->get_rekaplandbank($value->id,'','','sudah');
+    $row = array();
+
+    $row[] = $this->security->xss_clean($no++);
+    $row[] = $this->security->xss_clean($value->nama_regional); 
+
+    $row[] = $this->security->xss_clean($list1['bid']);
+    $row[] = $this->security->xss_clean($list1['surat']); 
+    $row[] = $this->security->xss_clean($list1['ukur']);  
+
+    $row[] = $this->security->xss_clean($list2['bid']);
+    $row[] = $this->security->xss_clean($list2['surat']); 
+    $row[] = $this->security->xss_clean($list2['ukur']);  
+
+    $row[] = $this->security->xss_clean($list3['bid']);
+    $row[] = $this->security->xss_clean($list3['surat']); 
+    $row[] = $this->security->xss_clean($list3['ukur']);
+
+    $row[] = $this->security->xss_clean($list4['bid']);
+    $row[] = $this->security->xss_clean($list4['surat']); 
+    $row[] = $this->security->xss_clean($list4['ukur']);  
+
+    $row[] = $this->security->xss_clean($list3['bid']-$list4['bid']);
+    $row[] = $this->security->xss_clean($list3['surat']-$list4['surat']); 
+    $row[] = $this->security->xss_clean($list3['ukur']-$list4['ukur']); 
+
+    $row[] = $this->security->xss_clean($list4['bid']);
+    $row[] = $this->security->xss_clean($list4['surat']); 
+    $row[] = $this->security->xss_clean($list4['ukur']);  
+
+    $row[] = $this->security->xss_clean($list4['bid']);
+    $row[] = $this->security->xss_clean($list4['surat']);
+    $data3[] = $row;
+}
+}
+return array('dalamijin' =>$data1 ,'luarijin' =>$data2 ,'lokasi' =>$data3  );
+}
+
+public function dataevaliasishgb()
+{
+    $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+    $data2 = array(); 
+    $no=1;
+    if ($data['perumahan']!=null) {
+       foreach ($data['perumahan'] as $key => $value) {
+        $list1 = $this->master_model->get_rekapshgb($value->id,'1970-01-01',(date('Y')-1).'-12-31');
+        $list2 = $this->master_model->get_rekapshgb($value->id,date('Y'.'-01-01'),date('Y').'-12-31');
+        $list3 = $this->master_model->get_rekapshgb($value->id);
+        $list4 = $this->master_model->get_rekapshgb($value->id,'','','3');
+        $row = array();
+
+        $row[] = $this->security->xss_clean($no++);
+        $row[] = $this->security->xss_clean($value->nama_regional); 
+
+        $row[] = $this->security->xss_clean($list1['bid']);
+        $row[] = $this->security->xss_clean($list1['surat']); 
+        $row[] = $this->security->xss_clean($list1['ukur']);  
+
+        $row[] = $this->security->xss_clean($list2['bid']);
+        $row[] = $this->security->xss_clean($list2['surat']); 
+        $row[] = $this->security->xss_clean($list2['ukur']);  
+
+        $row[] = $this->security->xss_clean($list3['bid']);
+        $row[] = $this->security->xss_clean($list3['surat']); 
+        $row[] = $this->security->xss_clean($list3['ukur']);
+
+        $row[] = $this->security->xss_clean($list4['bid']);
+        $row[] = $this->security->xss_clean($list4['surat']); 
+        $row[] = $this->security->xss_clean($list4['ukur']);  
+
+        $row[] = $this->security->xss_clean($list3['bid']-$list4['bid']);
+        $row[] = $this->security->xss_clean($list3['surat']-$list4['surat']); 
+        $row[] = $this->security->xss_clean($list3['ukur']-$list4['ukur']); 
+
+        $row[] = $this->security->xss_clean($list4['bid']);
+        $row[] = $this->security->xss_clean($list4['surat']); 
+        $row[] = $this->security->xss_clean($list4['ukur']);  
+
+        $row[] = $this->security->xss_clean($list4['bid']);
+        $row[] = $this->security->xss_clean($list4['surat']);
+        $data2[] = $row;
+    }
+}
+return $data2;
+}
+
+public function laporan_evaluasi_land_bank_per()
+{
+    $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+    $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+    $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
+    $this->load->view('member/laporan/evaluasi_land_bank_per',$data);
+}  
+public function pageevaluasilandbankper()
+{
+   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+   $data['dataperumahanseb'] = $this->master_model->getperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31');
+   $data['dataperumahanses'] = $this->master_model->getperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31');
+   $data['dataperumahantekseb'] = $this->master_model->getperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','sudah');
+   $data['dataperumahantekses'] = $this->master_model->getperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','sudah');
+   $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+   $this->load->view('member/laporan/ajax/ajaxevaluasilandbankper',$data);
+}
+
+public function pageevaluasishgbper()
+{
+   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+   $data['dataperumahanseb'] = $this->master_model->getshgbperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31');
+   $data['dataperumahanses'] = $this->master_model->getshgbperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31');
+   $data['dataperumahantekseb'] = $this->master_model->getshgbperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','proses');
+   $data['dataperumahantekses'] = $this->master_model->getshgbperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','proses');
+   $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+   $this->load->view('member/laporan/ajax/ajaxevaluasishgbper',$data);
+}
+public function laporan_evaluasi_tanah_belum_shgb()
+{
+     $data['list'] = $this->dataevaliasishgb();
+   $this->load->view('member/laporan/laporan_evaluasi_tanah_belum_shgb',$data);
+}  
+
+public function laporan_evaluasi_tanah_belum_shgb_per()
+{
+       $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+    $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+    $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
+   $this->load->view('member/laporan/laporan_evaluasi_tanah_belum_shgb_per',$data);
+}  
+public function laporan_evaluasi_proses_induk()
+{
+   $this->load->view('member/laporan/laporan_evaluasi_proses_induk');
+}  
+public function laporan_evaluasi_proses_induk_per()
+{
+   $this->load->view('member/laporan/laporan_evaluasi_proses_induk_per');
+}  
+public function laporan_evaluasi_penggabungan_split()
+{
+   $this->load->view('member/laporan/laporan_evaluasi_penggabungan_split');
+}  
+public function laporan_evaluasi_penggabungan_split_per()
+{
+   $this->load->view('member/laporan/laporan_evaluasi_penggabungan_split_per');
+}  
+public function laporan_evaluasi_tanah_shgb()
+{
+   $this->load->view('member/laporan/laporan_evaluasi_tanah_shgb');
+}  
+public function laporan_evaluasi_tanah_shgb_per()
+{
+   $this->load->view('member/laporan/laporan_evaluasi_tanah_shgb_per');
+}  
+public function laporan_evaluasi_splitsing()
+{
+   $this->load->view('member/laporan/laporan_evaluasi_splitsing');
+}  
+public function laporan_evaluasi_splitsing_per()
+{
+   $this->load->view('member/laporan/laporan_evaluasi_splitsing_per');
+}  
+
+public function laporan_evaluasi_sert_belum_split()
+{
+   $this->load->view('member/laporan/laporan_evaluasi_sert_belum_split');
+}  
+public function laporan_evaluasi_sert_belum_split_per()
+{
+   $this->load->view('member/laporan/laporan_evaluasi_sert_belum_split_per');
+}  
+
+public function laporan_evaluasi_stok_split()
+{
+   $this->load->view('member/laporan/laporan_evaluasi_stok_split');
+}  
+public function laporan_evaluasi_stok_split_per()
+{
+   $this->load->view('member/laporan/laporan_evaluasi_stok_split_per');
+}  
+
+
+public function po()
+{    
+    level_user('laporan','po',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
+    $data['supplier'] = $this->db->get('master_supplier')->result(); 
+    $this->load->view('member/laporan/po',$data);
+}   
+public function laporanpo()
+{   
+    $conditions = array(); 
+    $page = $this->input->get('page');
+    if(!$page){
+        $offset = 0;
+    }else{
+        $offset = $page;
+    }
+
+    $supplier = $this->input->get('supplier');
+    $firstdate = $this->input->get('firstdate');
+    $lastdate = $this->input->get('lastdate'); 
+    $conditions['search']['supplier'] = $supplier;
+    $conditions['search']['firstdate'] = $firstdate;
+    $conditions['search']['lastdate'] = $lastdate;
         //total rows count
-        $totalRec = count($this->laporan_model->getrowspo($conditions)); 
-        
+    $totalRec = count($this->laporan_model->getrowspo($conditions)); 
+
         //pagination configuration
-        $config['target']      = '#postList';
-        $config['base_url']    = base_url().'laporan/laporanpo';
-        $config['total_rows']  = $totalRec;
-        $config['per_page']    = $this->perPage;
-        $config['link_func']   = 'searchFilter';
-        $this->ajax_pagination->initialize($config);
-        
+    $config['target']      = '#postList';
+    $config['base_url']    = base_url().'laporan/laporanpo';
+    $config['total_rows']  = $totalRec;
+    $config['per_page']    = $this->perPage;
+    $config['link_func']   = 'searchFilter';
+    $this->ajax_pagination->initialize($config);
+
         //set start and limit
-        $conditions['start'] = $offset;
-        $conditions['limit'] = $this->perPage;
-        
+    $conditions['start'] = $offset;
+    $conditions['limit'] = $this->perPage;
+
         //get posts data
-        $data['posts'] = $this->laporan_model->getrowspo($conditions);
-        
+    $data['posts'] = $this->laporan_model->getrowspo($conditions);
+
         //load the view
-        $this->load->view('member/laporan/po_view', $data, false);
-    }   
+    $this->load->view('member/laporan/po_view', $data, false);
+}   
 
-    function excel_po(){       
+function excel_po(){       
 
-        $spreadsheet = new Spreadsheet();
-        $supplier = $this->input->get('supplier');
-        $firstdate = $this->input->get('firstdate');
-        $lastdate = $this->input->get('lastdate'); 
-        $conditions['search']['supplier'] = $supplier;
-        $conditions['search']['firstdate'] = $firstdate;
-        $conditions['search']['lastdate'] = $lastdate;
-        $conditions['kategori']['excel'] = "excel"; 
-        $postdata = $this->laporan_model->getrowspo($conditions); 
+    $spreadsheet = new Spreadsheet();
+    $supplier = $this->input->get('supplier');
+    $firstdate = $this->input->get('firstdate');
+    $lastdate = $this->input->get('lastdate'); 
+    $conditions['search']['supplier'] = $supplier;
+    $conditions['search']['firstdate'] = $firstdate;
+    $conditions['search']['lastdate'] = $lastdate;
+    $conditions['kategori']['excel'] = "excel"; 
+    $postdata = $this->laporan_model->getrowspo($conditions); 
 
-        $spreadsheet->getProperties()->setCreator('Paber Panjaitan')
-        ->setLastModifiedBy('Paber Panjaitan')
-        ->setTitle('Laporan Format Excel')
-        ->setSubject('Laporan Format Excel');
+    $spreadsheet->getProperties()->setCreator('Paber Panjaitan')
+    ->setLastModifiedBy('Paber Panjaitan')
+    ->setTitle('Laporan Format Excel')
+    ->setSubject('Laporan Format Excel');
 
+    $spreadsheet->setActiveSheetIndex(0)
+    ->setCellValue('A1', 'Nomor PO')
+    ->setCellValue('B1', 'Tanggal PO')
+    ->setCellValue('C1', 'Kode Supplier')
+    ->setCellValue('D1', 'Nama Supplier')
+    ->setCellValue('E1', 'Total')
+    ->setCellValue('F1', 'Pembayaran')
+    ->setCellValue('G1', 'Termin')
+    ->setCellValue('H1', 'Keterangan')
+    ;
+
+    $i=2; 
+    foreach($postdata as $post) { 
+        $tgl = tgl_indo($post['tgl_po']);
+        $total = rupiah($post['total']);
         $spreadsheet->setActiveSheetIndex(0)
-        ->setCellValue('A1', 'Nomor PO')
-        ->setCellValue('B1', 'Tanggal PO')
-        ->setCellValue('C1', 'Kode Supplier')
-        ->setCellValue('D1', 'Nama Supplier')
-        ->setCellValue('E1', 'Total')
-        ->setCellValue('F1', 'Pembayaran')
-        ->setCellValue('G1', 'Termin')
-        ->setCellValue('H1', 'Keterangan')
-        ;
-
-        $i=2; 
-        foreach($postdata as $post) { 
-            $tgl = tgl_indo($post['tgl_po']);
-            $total = rupiah($post['total']);
-            $spreadsheet->setActiveSheetIndex(0)
-            ->setCellValue('A'.$i, $post['nomor_po'])
-            ->setCellValue('B'.$i, $tgl)
-            ->setCellValue('C'.$i, $post['supplier'])
-            ->setCellValue('D'.$i, $post['nama_supplier'])
-            ->setCellValue('E'.$i, $total)
-            ->setCellValue('F'.$i, $post['pembayaran'])
-            ->setCellValue('G'.$i, $post['termin']." Hari")
-            ->setCellValue('H'.$i, $post['keterangan']);
-            $i++;
-        }
+        ->setCellValue('A'.$i, $post['nomor_po'])
+        ->setCellValue('B'.$i, $tgl)
+        ->setCellValue('C'.$i, $post['supplier'])
+        ->setCellValue('D'.$i, $post['nama_supplier'])
+        ->setCellValue('E'.$i, $total)
+        ->setCellValue('F'.$i, $post['pembayaran'])
+        ->setCellValue('G'.$i, $post['termin']." Hari")
+        ->setCellValue('H'.$i, $post['keterangan']);
+        $i++;
+    }
 
         // Rename worksheet
-        $spreadsheet->getActiveSheet()->setTitle('Purchase Order');
+    $spreadsheet->getActiveSheet()->setTitle('Purchase Order');
 
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
-        $spreadsheet->setActiveSheetIndex(0);
+    $spreadsheet->setActiveSheetIndex(0);
 
         // Redirect output to a client’s web browser (Xlsx)
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="Laporan PO.xlsx"');
-        header('Cache-Control: max-age=0');
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="Laporan PO.xlsx"');
+    header('Cache-Control: max-age=0');
         // If you're serving to IE 9, then the following may be needed
-        header('Cache-Control: max-age=1');
+    header('Cache-Control: max-age=1');
 
         // If you're serving to IE over SSL, then the following may be needed
         header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past

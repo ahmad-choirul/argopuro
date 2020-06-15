@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </header>
             <div class="panel-body"> 
                   <div >
-                          <table class="table table-bordered table-hover table-striped" id="itemsdata">
+                          <table class="table table-bordered table-hover table-striped data" id="itemsdata">
                         <thead>
                             <tr>
                                 <th rowspan="2" style="text-align: center;"></th>

@@ -347,7 +347,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <h2 class="panel-title">Data Produk</h2>
                     </header>
                     <div class="panel-body">
-                        <table class="table table-bordered table-hover table-striped" id="itemsdata">
+                        <table class="table table-bordered table-hover table-striped data" id="itemsdata">
                             <thead>
                                 <tr>
                                     <th>Kode Item</th>

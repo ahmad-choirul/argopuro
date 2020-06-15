@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </header>
                         <div class="panel-body">
                             <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian" class="btn btn-primary"><i class="fa fa-folder"></i> REKAP</a>
-                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian" class="btn btn-primary"><i class="fa fa-folder"></i> SISA PEMBAYARAN</a>
+                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian" class="btn btn-warning"><i class="fa fa-folder"></i> SISA PEMBAYARAN</a>
                         </div>
                     </section>
                 </div> 
@@ -82,8 +82,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p style="font-size: 13px; color: black;"><b>4. EVALUASI PROSES INDUK</b></p>
                     </header>
                     <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="btn btn-primary"><i class="fa fa-folder"></i>  Rekap Penyelesaian Induk</a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb_per" class="btn btn-primary"><i class="fa fa-folder"></i>Penyelesaian Induk Perumahan</a>
+                        <a href="<?php echo base_url()?>laporan/laporan/laporan_evaluasi_proses_induk" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Penyelesaian Induk</a>
+                        <a href="<?php echo base_url()?>laporan/laporan/laporan_evaluasi_proses_induk_per" class="btn btn-warning"><i class="fa fa-folder"></i>Penyelesaian Induk Perumahan</a>
                     </div>
                 </section>
             </div>  
@@ -93,8 +93,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p style="font-size: 13px; color: black;"><b>5. EVALUASI PENGGABUNGAN</b></p>
                     </header>
                     <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="btn btn-primary"><i class="fa fa-folder"></i>  Rekap Penggabungan </a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb_per" class="btn btn-primary"><i class="fa fa-folder"></i>Penggabungan Perumahan</a>
+                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_penggabungan_split" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Penggabungan </a>
+                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_penggabungan_split_per" class="btn btn-warning"><i class="fa fa-folder"></i>Penggabungan Perumahan</a>
                     </div>
                 </section>
             </div>  
@@ -104,8 +104,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p style="font-size: 13px; color: black;"><b>6. EVALUASI TANAH SUDAH SHGB</b></p>
                     </header>
                     <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="btn btn-primary"><i class="fa fa-folder"></i>  Rekap Tanah SHGB</a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb_per" class="btn btn-primary"><i class="fa fa-folder"></i>Tanah SHGB Perumahan</a>
+                        <a href="<?php echo base_url()?>laporan/laporan/laporan/laporan_evaluasi_tanah_shgb" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Tanah SHGB</a>
+                        <a href="<?php echo base_url()?>laporan/laporan/laporan/laporan_evaluasi_tanah_shgb_per" class="btn btn-warning"><i class="fa fa-folder"></i>Tanah SHGB Perumahan</a>
                     </div>
                 </section>
             </div>  
@@ -115,8 +115,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p style="font-size: 13px; color: black;"><b>7. EVALUASI PROSES SPLITSING</b></p>
                     </header>
                     <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="btn btn-primary"><i class="fa fa-folder"></i>  Rekap Splitsing</a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb_per" class="btn btn-primary"><i class="fa fa-folder"></i> Splitsing Perumahan</a>
+                        <a href="<?php echo base_url()?>laporan/laporan/laporan_evaluasi_splitsing" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Splitsing</a>
+                        <a href="<?php echo base_url()?>laporan/laporan/laporan_evaluasi_splitsing_per" class="btn btn-warning"><i class="fa fa-folder"></i> Splitsing Perumahan</a>
                     </div>
                 </section>
             </div>  
@@ -126,8 +126,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p style="font-size: 13px; color: black;"><b>8. EVALUASI HUTANG SERT </b></p>
                     </header>
                     <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="btn btn-primary"><i class="fa fa-folder"></i>  Rekap Hutang Sertifikat </a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb_per" class="btn btn-primary"><i class="fa fa-folder"></i>Hutang Sertifikat Perumahan</a>
+                        <a href="<?php echo base_url()?>laporan/laporan/laporan_evaluasi_sert_belum_split" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Hutang Sertifikat </a>
+                        <a href="<?php echo base_url()?>laporan/laporan/laporan_evaluasi_sert_belum_split_per" class="btn btn-warning"><i class="fa fa-folder"></i>Hutang Sertifikat Perumahan</a>
                     </div>
                 </section>
             </div>  
@@ -137,8 +137,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p style="font-size: 13px; color: black;"><b>9. STOK SPLITSING</b></p>
                     </header>
                     <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="btn btn-primary"><i class="fa fa-folder"></i>  Rekap Stok Splitsing</a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb_per" class="btn btn-primary"><i class="fa fa-folder"></i>Splitsing Per Perumahan</a>
+                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_stok_split" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Stok Splitsing</a>
+                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_stok_split_per" class="btn btn-warning"><i class="fa fa-folder"></i>Splitsing Per Perumahan</a>
                     </div>
                 </section>
             </div>  
@@ -148,8 +148,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p style="font-size: 13px; color: black;"><b>10. EVALUASI BALIK NAMA</b></p>
                     </header>
                     <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="btn btn-primary"><i class="fa fa-folder"></i>  Rekap Balik Namak</a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb_per" class="btn btn-primary"><i class="fa fa-folder"></i>Balik Nama Per Perumahan</a>
+                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Balik Namak</a>
+                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb_per" class="btn btn-warning"><i class="fa fa-folder"></i>Balik Nama Per Perumahan</a>
                     </div>
                 </section>
             </div>  
