@@ -40,9 +40,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <header class="panel-heading">    
                     <div class="row show-grid">
                         <div class="col-md-8" align="left"><h2 class="panel-title"></h2></div>
-                        <?php  
-                        echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="pull-right" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
-                        ?> 
                     </div>
                 </header>
                 <div class="panel-body"> 
