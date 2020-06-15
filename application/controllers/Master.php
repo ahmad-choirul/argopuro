@@ -867,7 +867,12 @@ public function itemdetail(){
      "harga_perm" => $this->security->xss_clean($harga_perm),
      "keterangan" => $this->security->xss_clean($query->row()->keterangan),
      "id_perumahan" => $this->security->xss_clean($query->row()->id_perumahan),
+     "harga_perm" => $this->security->xss_clean($harga_perm),
+     "harga_permtampil" => $this->security->xss_clean(rupiah($harga_perm)),
      "nama_regional" => $this->security->xss_clean($query->row()->nama_regional),
+     "status_order_akta" => $this->security->xss_clean($query->row()->status_order_akta),
+     "jenis_pengalihan_hak" => $this->security->xss_clean($query->row()->jenis_pengalihan_hak),
+     "status_teknik" => $this->security->xss_clean($query->row()->status_teknik),
  );    
     echo'['.json_encode($result).']';
 }
@@ -894,6 +899,43 @@ public function itemsedit(){
     $data['token'] = $this->security->get_csrf_hash();
     echo json_encode($data); 
 }
+
+public function editlandbank(){ 
+    cekajax(); 
+    $simpan = $this->master_model; 
+    $post = $this->input->post();      
+    if($simpan->updatedatalandbank()){
+        $data['success']= true;
+        $data['message']="Berhasil menyimpan data";   
+    }else{
+        $errors['fail'] = "gagal melakukan update data";
+        $data['errors'] = $errors;
+        
+    }
+    $data['token'] = $this->security->get_csrf_hash();
+    echo json_encode($data); 
+}
+
+public function updatemasteritem(){ 
+    cekajax(); 
+    $simpan = $this->master_model; 
+    $post = $this->input->post();
+    $data = array('kode_item' => $post['idd'],
+        'status_order_akta' => $post['status_order_akta'],
+        'keterangan' => $post['keterangan']
+    );      
+    if($simpan->updatemasteritem($data)){
+        $data['success']= true;
+        $data['message']="Berhasil menyimpan data";   
+    }else{
+        $errors['fail'] = "gagal melakukan update data";
+        $data['errors'] = $errors;
+        
+    }
+    $data['token'] = $this->security->get_csrf_hash();
+    echo json_encode($data); 
+}
+
 
 public function itemshapus(){ 
     cekajax(); 

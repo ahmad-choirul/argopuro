@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </header>
                 <div class="panel-body"> 
                     <div class="table" style="overflow-x: auto;overflow-y: auto;">
-                        <table class="table table-bordered table-hover table-striped" id="itemsdata">
+                        <table class="table table-bordered table-hover table-striped data" id="itemsdata">
                             <thead>
                                 <tr>
 
@@ -615,9 +615,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url()?>assets/javascripts/admin.min.js"></script>
 <script src="<?php echo base_url()?>assets/vendor/pnotify/pnotify.custom.js"></script>
 <script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script> 
-<script type="text/javascript">  
-
-
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.data').DataTable();
+	});
 </script>
 </body>
 </html>

@@ -47,9 +47,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </header>
         <div class="panel-body"> 
             <div class="table" style="overflow-x: auto;">
-                <table class="table table-bordered table-hover table-striped" id="itemsdata">
+                <table class="table table-bordered table-hover table-striped data" id="itemsdata">
                     <thead>
                         <tr>
+                            <th colspan="2"></th>
 
                             <th colspan="3" style="text-align: center; color: black;">TANAH PROYEK BELUM SHGB sd TAHUN 2019</th>
                             <th colspan="3" style="text-align: center;color: black;"> TANAH PROYEK BELUM SHGB TH 2020 </th>
@@ -62,6 +63,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         </tr>
                         <tr>
+                             <th rowspan="3">No</th>
+                            <th rowspan="3">Lokasi</th>
                             <th   style="text-align: center;">BID</th>
                             <th style="text-align: center;">L SURAT</th>
                             <th  style="text-align: center;">L UKUR</th>
@@ -87,6 +90,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     </thead>
                     <tbody>
+                        <?php for ($i=0; $i <sizeof($list); $i++) { 
+                          ?>
+                          <tr>
+                            <?php for ($j=0; $j <sizeof($list[$i]) ; $j++) { 
+                              ?>  
+                              <td><?php echo $list[$i][$j] ?></td>
+                              <?php
+                          } ?>
+                      </tr>
+                      <?php
+                  } ?>
                     </tbody>
                 </table> 
             </div>
@@ -520,9 +534,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url()?>assets/javascripts/admin.min.js"></script>
 <script src="<?php echo base_url()?>assets/vendor/pnotify/pnotify.custom.js"></script>
 <script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script> 
-<script type="text/javascript">  
-
-
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.data').DataTable();
+	});
 </script>
 </body>
 </html>

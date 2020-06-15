@@ -27,306 +27,123 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="bgbody">
   <section class="body">
 
-     <?php $this->load->view("komponen/header.php") ?>
-     <div class="inner-wrapper"> 
-        <?php $this->load->view("komponen/sidebar.php") ?>
-        <section role="main" class="content-body">
-           <header class="page-header">  
-              <h2>Laporan 2</h2>
-          </header>  
-          <!-- start: page -->
-          <div class="row">
-              <section class="panel col-md-12">
-                <header class="panel-heading">    
-                    <div class="row show-grid">
-                        <div class="col-md-8" align="left"><h2 class="panel-title"></h2></div> 
-                    </div>
-                </header>
-                <div class="panel-body"> 
-                    <div class="table" style="overflow-x: auto;">
-                        <table class="table table-bordered table-hover table-striped" id="itemsdata">
-                            <thead>
-                                <tr>
+   <?php $this->load->view("komponen/header.php") ?>
+   <div class="inner-wrapper"> 
+    <?php $this->load->view("komponen/sidebar.php") ?>
+    <section role="main" class="content-body">
+     <header class="page-header">  
+      <h2>Laporan 2</h2>
+  </header>  
+  <!-- start: page -->
+  <div class="row">
+      <section class="panel col-md-12">
+        <header class="panel-heading">    
+            <div class="row show-grid">
+                <div class="col-md-8" align="left"><h2 class="panel-title"></h2></div> 
+            </div>
+        </header>
+        <div class="panel-body"> 
+            <div class="table" style="overflow-x: auto;">
+                <table class="table table-bordered table-hover table-striped data" id="itemsdata">
+                    <thead>
+                        <tr>
+                            <th colspan="2"></th>
+                            <th colspan="3" style="text-align: center; color: black;">LAND BANK s/d 2019</th>
+                            <th colspan="3" style="text-align: center;color: black;">LAND BANK s/d 2020 </th>
+                            <th colspan="3" style="text-align: center;color: black;">TOTAL LAND BANK</th>
+                            <th colspan="3" style="text-align: center;color: black;">SERAH TERIMA TECHNIC</th>
+                            <th colspan="3" style="text-align: center;color: black;">SISA LAND BANK</th>
+                            <th colspan="3" style="text-align: center; background-color: green; color: white;">PROSES PERALIHAN BANK</th>
+                            <th colspan="2" style="text-align: center;background-color: green; color: white;">S TERIMA FINANCE </th>
+                        </tr>
+                        <tr>
+                            <th rowspan="3">No</th>
+                            <th rowspan="3">Lokasi</th>
+                            <th  rowspan="2" style="text-align: center;">BID</th>
+                            <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
+                            <th  rowspan="2" style="text-align: center;">BID</th>
+                            <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
+                            <th  rowspan="2" style="text-align: center;">BID</th>
+                            <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
+                            <th  rowspan="2" style="text-align: center;">BID</th>
+                            <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>                        
+                            <th  rowspan="2" style="text-align: center;">BID</th>
+                            <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
+                            <th rowspan="2" style="text-align: center;">ORDER </th>
+                            <th rowspan="2" style="text-align: center;">TERBIT </th>
+                            <th rowspan="2" style="text-align: center;">TOTAL </th>
+                            <th rowspan="2" style="text-align: center;">SUDAH </th>
+                            <th rowspan="2" style="text-align: center;">BELUM </th>
+                        </tr>
+                        <tr>
+                            <th   style="text-align: center;">SURAT</th>
+                            <th   style="text-align: center;">UKUR</th>
+                            <th   style="text-align: center;">SURAT</th>
+                            <th   style="text-align: center;">UKUR</th>
+                            <th   style="text-align: center;">SURAT</th>
+                            <th   style="text-align: center;">UKUR</th>
+                            <th   style="text-align: center;">SURAT</th>
+                            <th   style="text-align: center;">UKUR</th>
+                            <th   style="text-align: center;">SURAT</th>
+                            <th   style="text-align: center;">UKUR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="20">IP Proyek - DALAM IJIN</td>
+                        </tr>
+                        <?php for ($i=0; $i <sizeof($list['dalamijin']); $i++) { 
+                          ?>
+                          <tr>
+                            <?php for ($j=0; $j <sizeof($list['dalamijin'][$i]) ; $j++) { 
+                              ?>  
+                              <td><?php echo $list['dalamijin'][$i][$j] ?></td>
+                              <?php
+                          } ?>
+                      </tr>
+                      <?php
+                  } ?>
+                   <tr>
+                            <td colspan="20">IP Proyek - Luar IJIN</td>
+                        </tr>
+                        <?php for ($i=0; $i <sizeof($list['luarijin']); $i++) { 
+                          ?>
+                          <tr>
+                            <?php for ($j=0; $j <sizeof($list['luarijin'][$i]) ; $j++) { 
+                              ?>  
+                              <td><?php echo $list['luarijin'][$i][$j] ?></td>
+                              <?php
+                          } ?>
+                      </tr>
+                      <?php
+                  } ?>
+                   <tr>
+                            <td colspan="20">IP Proyek - Lokasi</td>
+                        </tr>
+                        <?php for ($i=0; $i <sizeof($list['lokasi']); $i++) { 
+                          ?>
+                          <tr>
+                            <?php for ($j=0; $j <sizeof($list['lokasi'][$i]) ; $j++) { 
+                              ?>  
+                              <td><?php echo $list['lokasi'][$i][$j] ?></td>
+                              <?php
+                          } ?>
+                      </tr>
+                      <?php
+                  } ?>
+              </tbody>
+          </table> 
+      </div>
+  </div>
+</section>
 
-                                    <th colspan="3" style="text-align: center; color: black;">LAND BANK s/d 2019</th>
-                                    <th colspan="3" style="text-align: center;color: black;">LAND BANK s/d 2020 </th>
-                                    <th colspan="3" style="text-align: center;color: black;">TOTAL LAND BANK</th>
-                                    <th colspan="3" style="text-align: center;color: black;">SERAH TERIMA TECHNIC</th>
-                                    <th colspan="3" style="text-align: center;color: black;">SISA LAND BANK</th>
-                                    <th colspan="3" style="text-align: center; background-color: green; color: white;">PROSES PERALIHAN BANK</th>
-                                    <th colspan="2" style="text-align: center;background-color: green; color: white;">S TERIMA FINANCE </th>
-                                </tr>
-                                <tr>
-                                    <th  rowspan="2" style="text-align: center;">BID</th>
-                                    <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
-                                    <th  rowspan="2" style="text-align: center;">BID</th>
-                                    <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
-                                    <th  rowspan="2" style="text-align: center;">BID</th>
-                                    <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
-                                    <th  rowspan="2" style="text-align: center;">BID</th>
-                                    <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>                        
-                                    <th  rowspan="2" style="text-align: center;">BID</th>
-                                    <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
-                                    <th rowspan="2" style="text-align: center;">ORDER </th>
-                                    <th rowspan="2" style="text-align: center;">TERBIT </th>
-                                    <th rowspan="2" style="text-align: center;">TOTAL </th>
-                                    <th rowspan="2" style="text-align: center;">SUDAH </th>
-                                    <th rowspan="2" style="text-align: center;">BELUM </th>
-                                </tr>
-                                <tr>
-                                    <th   style="text-align: center;">SURAT</th>
-                                    <th   style="text-align: center;">UKUR</th>
-                                    <th   style="text-align: center;">SURAT</th>
-                                    <th   style="text-align: center;">UKUR</th>
-                                    <th   style="text-align: center;">SURAT</th>
-                                    <th   style="text-align: center;">UKUR</th>
-                                    <th   style="text-align: center;">SURAT</th>
-                                    <th   style="text-align: center;">UKUR</th>
-                                    <th   style="text-align: center;">SURAT</th>
-                                    <th   style="text-align: center;">UKUR</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table> 
-                    </div>
-                </div>
-            </section>
+</div>
 
-        </div>
-
-        <!-- end: page -->
-    </section>
+<!-- end: page -->
+</section>
 </div>
 </section>
 
-<div class="modal fade" data-keyboard="false" data-backdrop="static"  id="detailData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <section class="panel panel-primary">   
-                <header class="panel-heading">
-                    <h2 class="panel-title">Detail Obat / Alkes</h2>
-                </header>
-                <div class="panel-body" id="showdetail"> 
-                </div>
-                <footer class="panel-footer">
-                    <div class="row">
-                        <div class="col-md-12 text-right">
-                            <button class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </footer> 
-            </section>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" data-keyboard="false" data-backdrop="static"  id="editData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <section class="panel panel-primary">
-                <?php echo form_open('master/itemsedit',' id="FormulirEdit"  enctype="multipart/form-data"');?>  
-                <input type="hidden" name="idd" id="idd">
-                <header class="panel-heading">
-                    <h2 class="panel-title">Edit Data Tanah/Aset</h2>
-                </header>
-                <div class="panel-body">
-                   
-                    <div class="form-group mt-lg nama_supplier">
-                        <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
-                        <div class="col-sm-9">
-                            <select data-plugin-selectTwo class="form-control" required id="id_perumahan" name="id_perumahan">  
-                                <option value="">Pilih Lokasi</option>
-                                <?php foreach ($perumahan as $supp): ?>
-                                    <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
-                                <?php endforeach; ?>
-                            </select> 
-                        </div>
-                    </div>
-                    <div class="form-group mt-lg nama_item">
-                        <label class="col-sm-3 control-label">Nama tanah<span class="required">*</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="nama_item" id="nama_item" class="form-control" required/>
-                        </div>
-                    </div>
-                    <div class="form-group tanggal_pembelian">
-                        <label class="col-sm-3 control-label">Tanggal Pembelian</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="tanggal_pembelian" id="tanggal_pembelian" class="form-control tanggal"  />
-                        </div>
-                    </div>
-                    <div class="form-group nama_penjual">
-                        <label class="col-sm-3 control-label">Nama Penjual</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="nama_penjual" id="nama_penjual" class="form-control"  />
-                        </div>
-                    </div>
-                    <div class="form-group nama_surat_tanah">
-                        <label class="col-sm-3 control-label">Nama Surat</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="nama_surat_tanah" id="nama_surat_tanah" class="form-control"  />
-                        </div>
-                    </div>
-                    <div class="form-group mt-lg nama_supplier">
-                        <label class="col-sm-3 control-label">Sertifikat<span class="required">*</span></label>
-                        <div class="col-sm-9">
-                            <select data-plugin-selectTwo class="form-control" required name="status_surat_tanah" id="status_surat_tanah">  
-                                <option value="">Pilih Lokasi</option>
-                                <?php foreach ($sertifikat_tanah as $aa): ?>
-                                    <option value="<?php echo $aa->id_sertifikat_tanah;?>"><?php echo $aa->nama_sertifikat;?> / <?php echo $aa->nama_sertifikat;?></option>
-                                <?php endforeach; ?>
-                            </select> 
-                        </div>
-                    </div>
-                    <div class="form-group no_gambar">
-                        <label class="col-sm-3 control-label">No Gambar</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="no_gambar" id="no_gambar" class="form-control"  />
-                        </div>
-                    </div>
-                    <div class="form-group jumlah_bidang">
-                        <label class="col-sm-3 control-label">Jumlah Bidang</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="jumlah_bidang" id="jumlah_bidang" class="form-control"  />
-                        </div>
-                    </div>
-                    <div class="form-group luas_surat">
-                        <label class="col-sm-3 control-label">Luas Surat</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="luas_surat" id="luas_surat" class="form-control"  />
-                        </div>
-                    </div>
-                    <div class="form-group luas_ukur">
-                        <label class="col-sm-3 control-label">Luas Ukur</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="luas_ukur" id="luas_ukur" class="form-control"  />
-                        </div>
-                    </div><div class="form-group no_pbb">
-                        <label class="col-sm-3 control-label">No PBB</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="no_pbb" id="no_pbb" class="form-control"  />
-                        </div>
-                    </div><div class="form-group luas_pbb">
-                        <label class="col-sm-3 control-label">Luas PBB</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="luas_pbb" id="luas_pbb" class="form-control"  />
-                        </div>
-                    </div><div class="form-group njop">
-                        <label class="col-sm-3 control-label">njop</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="njop" id="njop" class="form-control"  />
-                        </div>
-                    </div>
-                    <div class="form-group total_harga_pengalihan">
-                        <label class="col-sm-3 control-label">Total Harga Pengalihan</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="total_harga_pengalihan" id="total_harga_pengalihan" class="form-control"  />
-                        </div>
-                    </div><div class="form-group nama_makelar">
-                        <label class="col-sm-3 control-label">Makelar</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="nama_makelar" id="nama_makelar" class="form-control"  />
-                        </div>
-                    </div><div class="form-group nilai">
-                        <label class="col-sm-3 control-label">Nilai</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="nilai" id="nilai" class="form-control"  />
-                        </div>
-                    </div><div class="form-group tanggal_pengalihan">
-                        <label class="col-sm-3 control-label">Tanggal Pengalihan</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="tanggal_pengalihan" id="tanggal_pengalihan" class="form-control tanggal"  />
-                        </div>
-                    </div><div class="form-group akta_pengalihan">
-                        <label class="col-sm-3 control-label">Akta Pengalihan</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="akta_pengalihan" id="akta_pengalihan" class="form-control"  />
-                        </div>
-                    </div>
-                    <div class="form-group nama_pengalihan">
-                        <label class="col-sm-3 control-label">Nama Pengalihan</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="nama_pengalihan" id="nama_pengalihan" class="form-control"  />
-                        </div>
-                    </div><div class="form-group pematangan">
-                        <label class="col-sm-3 control-label">Pematangan</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="pematangan" id="pematangan" class="form-control"  />
-                        </div>
-                    </div><div class="form-group ganti_rugi">
-                        <label class="col-sm-3 control-label">Ganti Rugi</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="ganti_rugi" id="ganti_rugi" class="form-control"  />
-                        </div>
-                    </div><div class="form-group pbb">
-                        <label class="col-sm-3 control-label">PBB</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="pbb" id="pbb" class="form-control"  />
-                        </div>
-                    </div>
-                    <div class="form-group lain">
-                        <label class="col-sm-3 control-label">Lain-lain</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="lain" id="lain" class="form-control"  />
-                        </div>
-                    </div><div class="form-group harga_perm">
-                        <label class="col-sm-3 control-label"></span>Harga / M^2</label>
-                        <div class="col-sm-9">
-                            <input type="text" name="harga_perm" id="harga_perm" class="form-control"  />
-                        </div>
-                    </div>
-                    <div class="form-group keterangan">
-                        <label class="col-sm-3 control-label">Keterangan</label>
-                        <div class="col-sm-9">
-                            <textarea rows="2" class="form-control" name="keterangan" id="keterangan"></textarea>
-                        </div>
-                    </div>
-                    
-                </div>
-                <footer class="panel-footer">
-                    <div class="row">
-                        <div class="col-md-12 text-right">
-                            <button class="btn btn-primary modal-confirm" type="submit" id="submitformEdit">Submit</button>
-                            <button class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </footer>
-            </form>
-        </section>
-    </div>
-</div>
-</div>
-<div class="modal fade" data-keyboard="false" data-backdrop="static"  id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <section class="panel  panel-danger">
-                <header class="panel-heading">
-                    <h2 class="panel-title">Konfirmasi Hapus Data</h2>
-                </header>
-                <div class="panel-body">
-                    <div class="modal-wrapper">
-                        <div class="modal-icon">
-                            <i class="fa fa-question-circle"></i>
-                        </div>
-                        <div class="modal-text">
-                            <h4>Yakin ingin menghapus data ini ?</h4> 
-                        </div>
-                    </div>
-                </div>
-                <footer class="panel-footer"> 
-                    <div class="row">
-                        <div class="col-md-12 text-right"> 
-                            <?php echo form_open('master/itemshapus',' id="FormulirHapus"');?>  
-                            <input type="hidden" name="idd" id="idddelete">
-                            <button type="submit" class="btn btn-danger" id="submitformHapus">Delete</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </form>
-                    </div>
-                </div>
-            </footer>
-        </section>
-    </div>
-</div>
 </div>  
 
 <!-- Vendor -->
@@ -344,9 +161,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url()?>assets/javascripts/admin.min.js"></script>
 <script src="<?php echo base_url()?>assets/vendor/pnotify/pnotify.custom.js"></script>
 <script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script> 
-<script type="text/javascript">  
-
-
+<script type="text/javascript">
+  var tableitems = $('#itemsdata').DataTable({  
+    "serverSide": false, 
+    "order": []
+}); 
 </script>
 </body>
 </html>

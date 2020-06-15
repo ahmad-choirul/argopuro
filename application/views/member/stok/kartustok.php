@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                         </header>
                         <div class="panel-body"> 
-                                <table class="table table-bordered table-hover table-striped" id="itemsdata">
+                                <table class="table table-bordered table-hover table-striped data" id="itemsdata">
                                     <thead>
                                         <tr>
                                             <th></th>
