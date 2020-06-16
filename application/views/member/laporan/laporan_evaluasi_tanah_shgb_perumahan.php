@@ -27,78 +27,212 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="bgbody">
   <section class="body">
 
-     <?php $this->load->view("komponen/header.php") ?>
-     <div class="inner-wrapper"> 
-        <?php $this->load->view("komponen/sidebar.php") ?>
-        <section role="main" class="content-body">
-           <header class="page-header">  
-              <h2>Evaluasi Proyek Sudah SHGB</h2>
-          </header>  
-          <!-- start: page -->
-          <section class="panel">
-            <header class="panel-heading">    
-                <div class="row show-grid">
-                    <div class="col-md-6" align="left"><h2 class="panel-title">Evaluasi Proyek Sudah SHGB</h2></div>
-                    <?php  
-                    echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
-                    ?> 
-                </div>
-            </header>
-            <div class="panel-body"> 
-                <div class="table" style="overflow-x: auto;">
-                    <table class="table table-bordered table-hover table-striped" id="itemsdata">
-                        <thead>
-                            <tr>
+   <?php $this->load->view("komponen/header.php") ?>
+   <div class="inner-wrapper"> 
+    <?php $this->load->view("komponen/sidebar.php") ?>
+    <section role="main" class="content-body">
+     <header class="page-header">  
+      <h2>Evaluasi Proyek Sudah SHGB</h2>
+  </header>  
+  <!-- start: page -->
+  <section class="panel">
+    <header class="panel-heading">    
+        <div class="row show-grid">
+            <div class="col-md-6" align="left"><h2 class="panel-title">Tanah Sudah SHGB</h2></div>
+            <?php  
+            echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
+            ?> 
+        </div>
+    </header>
+    <div class="panel-body"> 
+        <div class="table" style="overflow-x: auto;">
+            <table class="table table-bordered table-hover table-striped" id="itemsdata">
+                <thead>
+                    <tr>
 
-                                <th rowspan="3" style="text-align: center;">NO</th>
-                                <th rowspan="3" style="text-align: center;">SHGB</th>
-                                <th  rowspan ="2" colspan="2" style="text-align: center;">DATA TANAH</th>
-                                <th rowspan="3" style="text-align: center;">BATAS WAKTU SHGB</th>
-                                <th rowspan="3" style="text-align: center;">POSISI SURAT</th>
-                                <th rowspan="3" style="text-align: center;">JML SHGB</th>
-                                <th colspan="4" style="text-align: center;">PROSES SPLIT</th>
-                                <th colspan="2" style="text-align: center;">PROSES GABUNG</th>
-                                <th rowspan="3" style="text-align: center;">TERBIT PROSES</th>
-                                <th colspan="2" rowspan="2" style="text-align: center;">SISA SETELAH TERBIT</th>
-                                <th rowspan="3" style="text-align: center;">KETERANGAN</th>
+                        <th rowspan="3" style="text-align: center;">NO</th>
+                        <th rowspan="3" style="text-align: center;">SHGB</th>
+                        <th  rowspan ="2" colspan="2" style="text-align: center;">DATA TANAH</th>
+                        <th rowspan="3" style="text-align: center;">BATAS WAKTU SHGB</th>
+                        <th rowspan="3" style="text-align: center;">POSISI SURAT</th>
+                        <th rowspan="3" style="text-align: center;">JML SHGB</th>
+                        <th colspan="4" style="text-align: center;">PROSES SPLIT</th>
+                        <th colspan="2" style="text-align: center;">PROSES GABUNG</th>
+                        <th rowspan="3" style="text-align: center;">TERBIT PROSES</th>
+                        <th colspan="2" rowspan="2" style="text-align: center;">SISA SETELAH TERBIT</th>
+                        <th rowspan="3" style="text-align: center;">KETERANGAN</th>
+                    </tr>
+                    <tr>
 
+                        <th rowspan="2" style="text-align: center;">JML SHGB</th>
+                        <th  colspan="3" style="text-align: center;">LUAS</th>
+                        <th rowspan="2" style="text-align: center;">JML SHGB</th>
+                        <th rowspan="2" style="text-align: center;">LUAS</th>
 
+                    </tr>
+                    <tr>
 
-                            </tr>
-                            <tr>
-
-                                <th rowspan="2" style="text-align: center;">JML SHGB</th>
-                                <th  colspan="3" style="text-align: center;">LUAS</th>
-
-                                <th rowspan="2" style="text-align: center;">JML SHGB</th>
-                                <th rowspan="2" style="text-align: center;">LUAS</th>
-
-
-                            </tr>
-                            <tr>
-
-                             <th style="text-align: center;">ATAS NAMA</th>
-                             <th  style="text-align: center;"> LUAS</th>  
-                             <th style="text-align: center;">SHGB</th>
-                      <th  style="text-align: center;"> PROSES </th>                
-                              <th style="text-align: center;">TERBIT</th>
-            
-
-                             <th  style="text-align: center;">JML</th>
-                             <th  style="text-align: center;">LUAS</th>
+                       <th style="text-align: center;">ATAS NAMA</th>
+                       <th  style="text-align: center;"> LUAS</th>  
+                       <th style="text-align: center;">SHGB</th>
+                       <th  style="text-align: center;"> PROSES </th>                
+                       <th style="text-align: center;">TERBIT</th>
 
 
-                         </tr>
+                       <th  style="text-align: center;">JML</th>
+                       <th  style="text-align: center;">LUAS</th>
 
-                     </thead>
-                     <tbody>
-                     </tbody>
-                 </table> 
-             </div>
-         </div>
-     </section>
-     <!-- end: page -->
- </section>
+
+                   </tr>
+                   <tr>
+                       <th>A</th>
+                       <th>sd. Tahun 2019</th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                   </tr>
+                   <tr>
+                       <th colspan="17" bgcolor="grey"></th>
+
+                   </tr>
+                   <tr>
+
+                       <th colspan="2">JUMLAH A</th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                   </tr>
+                   <tr>
+                       <th>B</th>
+                       <th>sd. Tahun 2020</th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                   </tr>
+                   <tr>
+                       <th colspan="17" bgcolor="grey"></th>
+
+                   </tr>
+                   <tr>
+
+                    <th colspan="2">JUMLAH B</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+            </thead>
+            <tbody>
+            </tbody>
+        </table> 
+    </div>
+</div>
+</section>
+<section class="panel">
+    <header class="panel-heading">    
+        <div class="row show-grid">
+            <div class="col-md-6" align="left"><h2 class="panel-title">Sisa SHGB Untuk Jalan Dan Fasos</h2></div>
+            <?php  
+            echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
+            ?> 
+        </div>
+    </header>
+    <div class="panel-body"> 
+        <div class="table" style="overflow-x: auto;">
+            <table class="table table-bordered table-hover table-striped" id="itemsdata">
+                <thead>
+                    <tr>
+
+                        <th rowspan="2" style="text-align: center;">NO</th>
+                        <th  rowspan="2" style="text-align: center;">NO SHGB</th>
+                        <th colspan="2" style="text-align: center;">DATA TANAH</th>
+                        <th rowspan="2" style="text-align: center;">BATAS WAKTU SHGB</th>
+                        <th rowspan="2" style="text-align: center;">POSISI SURAT</th>
+
+                        <th rowspan="2" style="text-align: center;">KETERANGAN</th>
+                    </tr>
+                    <tr>
+                       <th style="text-align: center;">ATAS NAMA</th>
+                       <th  style="text-align: center;"> LUAS</th>  
+
+
+                   </tr>
+
+                   <tr>
+                       <th colspan="7" bgcolor="grey"></th>
+
+                   </tr>
+                   <tr>
+                    <th >1</th>
+                    <th >123abc</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+
+
+                </tr>
+
+
+
+            </thead>
+            <tbody>
+            </tbody>
+        </table> 
+    </div>
+</div></section>
+
+<!-- end: page -->
+</section>
 </div>
 </section>
 
