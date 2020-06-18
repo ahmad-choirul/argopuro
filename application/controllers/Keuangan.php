@@ -15,7 +15,11 @@ class Keuangan extends CI_Controller {
         level_user('keuangan','index',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
         $this->load->view('member/keuangan/beranda');
     }   
-   
+public function keuangandetail()
+{
+    $kode_item = $this->input->get('id');
+    $datapembayaran = $this->keuangan_model->getdetailpembayaran($kode_item);
+}
     public function datahutang()
 	{   
         cekajax();

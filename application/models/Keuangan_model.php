@@ -6,6 +6,13 @@ class Keuangan_model extends CI_Model{
     var $column_search_datarekening = array('kategori','kode_rekening','nama_rekening'); 
     var $column_order_datarekening = array(null, 'kategori','kode_rekening','nama_rekening');
     var $order_datarekening = array('waktu_update' => 'DESC');
+    public function getpembayaran($kode_item)
+    {
+        $this->db->select('*');
+        $this->db->from('master_pembayaran');
+        $this->db->where('kode_item', $kode_item);
+        return $this->db->get()->result();
+    }
     private function _get_query_datarekening()
     { 
         $get = $this->input->get();

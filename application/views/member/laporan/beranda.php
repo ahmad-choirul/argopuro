@@ -47,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <p style="font-size: 13px; color: black;"><b>1. EVALUASI PEMBELIAN TANAH</b></p>
                         </header>
                         <div class="panel-body">
-                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian" class="btn btn-primary"><i class="fa fa-folder"></i> REKAP</a>
+                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian_detail" class="btn btn-primary"><i class="fa fa-folder"></i> Detail Pembelian</a>
                             <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian" class="btn btn-warning"><i class="fa fa-folder"></i> SISA PEMBAYARAN</a>
                         </div>
                     </section>

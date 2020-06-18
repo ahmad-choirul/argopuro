@@ -39,7 +39,19 @@ class Laporan extends CI_Controller {
         $data['data_serah_terima'] = $this->Master_model->getserah_terimaarray($conditions);
         $this->load->view('member/laporan/laba_rugi',$data);
     }   
-    public function laporan_evaluasi_pembelian()
+
+
+    public function pembayaran($kode_item='')
+    {  
+        level_user('master','items',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
+        
+        $data['firstdate'] = $this->input->get('firstdate',true);
+        $data['lastdate'] = $this->input->get('lastdate',true);
+        $data['kode_item'] = $kode_item;
+        $data['list'] = $this->keuangan_model->getpembayaran($kode_item);
+        $this->load->view('member/master/items',$data);
+    }  
+    public function laporan_evaluasi_pembelian_detail()
     {  
         level_user('master','items',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
         
@@ -61,15 +73,15 @@ class Laporan extends CI_Controller {
         $data['list'] = $this->dataevaluasilandbank();
         $this->load->view('member/laporan/evaluasi_land_bank',$data);
     }
-   public function coba($value='')
-   {
+    public function coba($value='')
+    {
        echo "<pre>";
        $data = $this->dataevaliasishgb();
        print_r ($data);
        echo "</pre>";
    }
-public function dataevaluasilandbank()
-{
+   public function dataevaluasilandbank()
+   {
     $data['perumahandalamijin'] = $this->db->order_by("id","DESC")->where('status_regional','1')->get('master_regional')->result();
     $data['perumahanluarijin'] = $this->db->order_by("id","DESC")->where('status_regional','2')->get('master_regional')->result();
     $data['perumahanlokasi'] = $this->db->order_by("id","DESC")->where('status_regional','3')->get('master_regional')->result();
@@ -280,15 +292,15 @@ public function pageevaluasishgbper()
 }
 public function laporan_evaluasi_tanah_belum_shgb()
 {
-     $data['list'] = $this->dataevaliasishgb();
-   $this->load->view('member/laporan/laporan_evaluasi_tanah_belum_shgb',$data);
+ $data['list'] = $this->dataevaliasishgb();
+ $this->load->view('member/laporan/laporan_evaluasi_tanah_belum_shgb',$data);
 }  
 
 public function laporan_evaluasi_tanah_belum_shgb_per()
 {
-       $data['id_perumahan'] = $this->input->get('id_perumahan',true);
-    $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
-    $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
+   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+   $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+   $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
    $this->load->view('member/laporan/laporan_evaluasi_tanah_belum_shgb_per',$data);
 }  
 public function laporan_evaluasi_proses_induk()

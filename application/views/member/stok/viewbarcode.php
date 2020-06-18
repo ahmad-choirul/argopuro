@@ -12,6 +12,7 @@ $harga = $this->input->post("harga");
 		<title>PT Argopuro</title>    
 		<meta name="author" content="Paber">  
 		<link rel="stylesheet" href="<?php echo base_url()?>/assets/vendor/bootstrap/css/bootstrap.css" />
+  <?php $this->load->view('komponen/css'); ?>
 		<link rel="stylesheet" href="<?php echo base_url()?>/assets/vendor/font-awesome/css/font-awesome.css" />
 	 
 	</head>

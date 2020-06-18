@@ -1,6 +1,14 @@
 <?php
 class Master_model extends CI_Model{   
-
+public function getdatatanah($kode_item)
+{
+    $this->db->select('a.*,b.nama_regional,c.*');
+   $this->db->from('master_item a'); 
+   $this->db->where('a.kode_item', $kode_item);
+   $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
+   $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
+   return $this->db->get()->result();
+}
     public function getdataabsensibyid($id)
     {
         $this->db->select('*');
