@@ -75,13 +75,13 @@ class Laporan extends CI_Controller {
     }
     public function coba($value='')
     {
-       echo "<pre>";
-       $data = $this->dataevaliasishgb();
-       print_r ($data);
-       echo "</pre>";
-   }
-   public function dataevaluasilandbank()
-   {
+     echo "<pre>";
+     $data = $this->dataevaliasishgb();
+     print_r ($data);
+     echo "</pre>";
+ }
+ public function dataevaluasilandbank()
+ {
     $data['perumahandalamijin'] = $this->db->order_by("id","DESC")->where('status_regional','1')->get('master_regional')->result();
     $data['perumahanluarijin'] = $this->db->order_by("id","DESC")->where('status_regional','2')->get('master_regional')->result();
     $data['perumahanlokasi'] = $this->db->order_by("id","DESC")->where('status_regional','3')->get('master_regional')->result();
@@ -90,7 +90,7 @@ class Laporan extends CI_Controller {
     $data3 = array(); 
     $no=1;
     if ($data['perumahandalamijin']!=null) {
-       foreach ($data['perumahandalamijin'] as $key => $value) {
+     foreach ($data['perumahandalamijin'] as $key => $value) {
         $list1 = $this->master_model->get_rekaplandbank($value->id,'1970-01-01',(date('Y')-1).'-12-31');
         $list2 = $this->master_model->get_rekaplandbank($value->id,date('Y'.'-01-01'),date('Y').'-12-31');
         $list3 = $this->master_model->get_rekaplandbank($value->id);
@@ -131,7 +131,7 @@ class Laporan extends CI_Controller {
 }
 
 if ($data['perumahanluarijin']!=null) {
-   foreach ($data['perumahanluarijin'] as $key => $value) {
+ foreach ($data['perumahanluarijin'] as $key => $value) {
     $list1 = $this->master_model->get_rekaplandbank($value->id,'1970-01-01',(date('Y')-1).'-12-31');
     $list2 = $this->master_model->get_rekaplandbank($value->id,date('Y'.'-01-01'),date('Y').'-12-31');
     $list3 = $this->master_model->get_rekaplandbank($value->id);
@@ -172,7 +172,7 @@ if ($data['perumahanluarijin']!=null) {
 }
 
 if ($data['perumahanlokasi']!=null) {
-   foreach ($data['perumahanlokasi'] as $key => $value) {
+ foreach ($data['perumahanlokasi'] as $key => $value) {
     $list1 = $this->master_model->get_rekaplandbank($value->id,'1970-01-01',(date('Y')-1).'-12-31');
     $list2 = $this->master_model->get_rekaplandbank($value->id,date('Y'.'-01-01'),date('Y').'-12-31');
     $list3 = $this->master_model->get_rekaplandbank($value->id);
@@ -220,7 +220,7 @@ public function dataevaliasishgb()
     $data2 = array(); 
     $no=1;
     if ($data['perumahan']!=null) {
-       foreach ($data['perumahan'] as $key => $value) {
+     foreach ($data['perumahan'] as $key => $value) {
         $list1 = $this->master_model->get_rekapshgb($value->id,'1970-01-01',(date('Y')-1).'-12-31');
         $list2 = $this->master_model->get_rekapshgb($value->id,date('Y'.'-01-01'),date('Y').'-12-31');
         $list3 = $this->master_model->get_rekapshgb($value->id);
@@ -271,87 +271,87 @@ public function laporan_evaluasi_land_bank_per()
 }  
 public function pageevaluasilandbankper()
 {
-   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
-   $data['dataperumahanseb'] = $this->master_model->getperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31');
-   $data['dataperumahanses'] = $this->master_model->getperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31');
-   $data['dataperumahantekseb'] = $this->master_model->getperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','sudah');
-   $data['dataperumahantekses'] = $this->master_model->getperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','sudah');
-   $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
-   $this->load->view('member/laporan/ajax/ajaxevaluasilandbankper',$data);
+ $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+ $data['dataperumahanseb'] = $this->master_model->getperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31');
+ $data['dataperumahanses'] = $this->master_model->getperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31');
+ $data['dataperumahantekseb'] = $this->master_model->getperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','sudah');
+ $data['dataperumahantekses'] = $this->master_model->getperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','sudah');
+ $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+ $this->load->view('member/laporan/ajax/ajaxevaluasilandbankper',$data);
 }
 
 public function pageevaluasishgbper()
 {
-   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
-   $data['dataperumahanseb'] = $this->master_model->getshgbperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31');
-   $data['dataperumahanses'] = $this->master_model->getshgbperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31');
-   $data['dataperumahantekseb'] = $this->master_model->getshgbperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','proses');
-   $data['dataperumahantekses'] = $this->master_model->getshgbperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','proses');
-   $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
-   $this->load->view('member/laporan/ajax/ajaxevaluasishgbper',$data);
+ $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+ $data['dataperumahanseb'] = $this->master_model->getshgbperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31');
+ $data['dataperumahanses'] = $this->master_model->getshgbperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31');
+ $data['dataperumahantekseb'] = $this->master_model->getshgbperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','proses');
+ $data['dataperumahantekses'] = $this->master_model->getshgbperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','proses');
+ $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+ $this->load->view('member/laporan/ajax/ajaxevaluasishgbper',$data);
 }
 public function laporan_evaluasi_tanah_belum_shgb()
 {
- $data['list'] = $this->dataevaliasishgb();
- $this->load->view('member/laporan/laporan_evaluasi_tanah_belum_shgb',$data);
+   $data['list'] = $this->dataevaliasishgb();
+   $this->load->view('member/laporan/laporan_evaluasi_tanah_belum_shgb',$data);
 }  
 
 public function laporan_evaluasi_tanah_belum_shgb_per()
 {
-   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
-   $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
-   $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
-   $this->load->view('member/laporan/laporan_evaluasi_tanah_belum_shgb_per',$data);
+ $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+ $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+ $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
+ $this->load->view('member/laporan/laporan_evaluasi_tanah_belum_shgb_per',$data);
 }  
 public function laporan_evaluasi_proses_induk()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_proses_induk');
+ $this->load->view('member/laporan/laporan_evaluasi_proses_induk');
 }  
 public function laporan_evaluasi_proses_induk_per()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_proses_induk_per');
+ $this->load->view('member/laporan/laporan_evaluasi_proses_induk_per');
 }  
 public function laporan_evaluasi_penggabungan_split()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_penggabungan_split');
+ $this->load->view('member/laporan/laporan_evaluasi_penggabungan_split');
 }  
 public function laporan_evaluasi_penggabungan_split_per()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_penggabungan_split_per');
+ $this->load->view('member/laporan/laporan_evaluasi_penggabungan_split_per');
 }  
 public function laporan_evaluasi_tanah_shgb()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_tanah_shgb');
+ $this->load->view('member/laporan/laporan_evaluasi_tanah_shgb');
 }  
 public function laporan_evaluasi_tanah_shgb_per()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_tanah_shgb_perumahan');
+ $this->load->view('member/laporan/laporan_evaluasi_tanah_shgb_perumahan');
 }  
 public function laporan_evaluasi_splitsing()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_splitsing');
+ $this->load->view('member/laporan/laporan_evaluasi_splitsing');
 }  
 public function laporan_evaluasi_splitsing_per()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_splitsing_per');
+ $this->load->view('member/laporan/laporan_evaluasi_splitsing_per');
 }  
 
 public function laporan_evaluasi_sert_belum_split()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_sert_belum_split');
+ $this->load->view('member/laporan/laporan_evaluasi_sert_belum_split');
 }  
 public function laporan_evaluasi_sert_belum_split_per()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_sert_belum_split_per');
+ $this->load->view('member/laporan/laporan_evaluasi_sert_belum_split_per');
 }  
 
 public function laporan_evaluasi_stok_split()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_stok_split');
+ $this->load->view('member/laporan/laporan_evaluasi_stok_split');
 }  
 public function laporan_evaluasi_stok_split_per()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_stok_split_per');
+ $this->load->view('member/laporan/laporan_evaluasi_stok_split_per');
 }  
 
 
@@ -399,62 +399,233 @@ public function laporanpo()
     $this->load->view('member/laporan/po_view', $data, false);
 }   
 
-function excel_po(){       
+function excel_laporan2rekap($id_perumahan){       
 
     $spreadsheet = new Spreadsheet();
-    $supplier = $this->input->get('supplier');
-    $firstdate = $this->input->get('firstdate');
-    $lastdate = $this->input->get('lastdate'); 
-    $conditions['search']['supplier'] = $supplier;
-    $conditions['search']['firstdate'] = $firstdate;
-    $conditions['search']['lastdate'] = $lastdate;
-    $conditions['kategori']['excel'] = "excel"; 
-    $postdata = $this->laporan_model->getrowspo($conditions); 
+    $data['id_perumahan'] = $id_perumahan;
+    $data['dataperumahanseb'] = $this->master_model->getperumahanarray($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31');
+    $data['dataperumahanses'] = $this->master_model->getperumahanarray($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31');
+    $data['dataperumahantekseb'] = $this->master_model->getperumahanarray($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','sudah');
+    $data['dataperumahantekses'] = $this->master_model->getperumahanarray($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','sudah');
+    $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
 
-    $spreadsheet->getProperties()->setCreator('Paber Panjaitan')
-    ->setLastModifiedBy('Paber Panjaitan')
+    $spreadsheet->getProperties()->setCreator('Kreatindo')
+    ->setLastModifiedBy('Kreatindo')
     ->setTitle('Laporan Format Excel')
     ->setSubject('Laporan Format Excel');
 
     $spreadsheet->setActiveSheetIndex(0)
-    ->setCellValue('A1', 'Nomor PO')
-    ->setCellValue('B1', 'Tanggal PO')
-    ->setCellValue('C1', 'Kode Supplier')
-    ->setCellValue('D1', 'Nama Supplier')
-    ->setCellValue('E1', 'Total')
-    ->setCellValue('F1', 'Pembayaran')
-    ->setCellValue('G1', 'Termin')
-    ->setCellValue('H1', 'Keterangan')
+    ->setCellValue('A1', 'Lokasi')
+    ->setCellValue('B1', 'No Gmbr')
+    ->setCellValue('C1', 'tanggal')
+    ->setCellValue('D1', 'penjual')
+    ->setCellValue('E1', 'Status Surat')
+    ->setCellValue('F1', 'Atas Nama')
+    ->setCellValue('G1', 'Luas Surat')
+    ->setCellValue('H1', 'Luas Ukur')
+    ->setCellValue('I1', 'Posisi Surat')
+    ->setCellValue('J1', 'Harga Akta')
+    ->setCellValue('K1', 'Status Order')
+    ->setCellValue('L1', 'Jenis Pengalihan')
+    ->setCellValue('M1', 'No Akta')
+    ->setCellValue('N1', 'Tanggal Akta')
+    ->setCellValue('O1', 'Atas Nama')
+    ->setCellValue('P1', 'status finance')
+    ->setCellValue('Q1', 'Keterangan')
     ;
 
-    $i=2; 
-    foreach($postdata as $post) { 
-        $tgl = tgl_indo($post['tgl_po']);
-        $total = rupiah($post['total']);
-        $spreadsheet->setActiveSheetIndex(0)
-        ->setCellValue('A'.$i, $post['nomor_po'])
-        ->setCellValue('B'.$i, $tgl)
-        ->setCellValue('C'.$i, $post['supplier'])
-        ->setCellValue('D'.$i, $post['nama_supplier'])
-        ->setCellValue('E'.$i, $total)
-        ->setCellValue('F'.$i, $post['pembayaran'])
-        ->setCellValue('G'.$i, $post['termin']." Hari")
-        ->setCellValue('H'.$i, $post['keterangan']);
-        $i++;
+    $i=2;
+    $spreadsheet->setActiveSheetIndex(0)
+    ->setCellValue('A'.$i, 'Sd. Tahun 2019')
+    ;
+    $i++;
+    $nama_perumahan = '';
+    foreach($data['dataperumahanseb'] as $data) { 
+      if ($data['tanggal_pengalihan']!=null) {
+        $tgl_pengalihan = tgl_indo($data['tanggal_pengalihan']);
+    }else{
+        $tgl_pengalihan = '-';
     }
+    if ($data['id_perumahan']=='0') {
+        $perumahan = 'Tidak ada';
+    }else{
+        $perumahan = $data['nama_regional'];
+    }
+    $nama_perumahan = $perumahan;
+    $spreadsheet->setActiveSheetIndex(0)
+    ->setCellValue('A'.$i, $perumahan)
+    ->setCellValue('B'.$i, $data['no_gambar'])
+    ->setCellValue('C'.$i, tgl_indo($data['tanggal_pembelian']))
+    ->setCellValue('D'.$i, $data['nama_penjual'])
+    ->setCellValue('E'.$i, $data['kode_sertifikat'])
+    ->setCellValue('F'.$i, $data['nama_surat_tanah'])
+    ->setCellValue('G'.$i, $data['luas_surat'])
+    ->setCellValue('H'.$i, $data['luas_ukur'])
+    ->setCellValue('I'.$i, $data['id_posisi_surat'])
+    ->setCellValue('J'.$i, '')
+    ->setCellValue('K'.$i, $data['status_order_akta'])
+    ->setCellValue('L'.$i, $data['jenis_pengalihan_hak'])
+    ->setCellValue('M'.$i, $data['akta_pengalihan'])
+    ->setCellValue('N'.$i, $tgl_pengalihan)
+    ->setCellValue('O'.$i, $data['nama_pengalihan'])
+    ->setCellValue('Q'.$i, $data['status_teknik'])
+    ->setCellValue('R'.$i, $data['keterangan']);
+    $i++;
+}
+$spreadsheet->setActiveSheetIndex(0)
+->setCellValue('A'.$i, 'Tahun 2020')
+;
+$i++;
+
+$nama_perumahan = '';
+foreach($data['dataperumahanses'] as $data) { 
+  if ($data['tanggal_pengalihan']!=null) {
+    $tgl_pengalihan = tgl_indo($data['tanggal_pengalihan']);
+}else{
+    $tgl_pengalihan = '-';
+}
+if ($data['id_perumahan']=='0') {
+    $perumahan = 'Tidak ada';
+}else{
+    $perumahan = $data['nama_regional'];
+}
+$nama_perumahan = $perumahan;
+$spreadsheet->setActiveSheetIndex(0)
+->setCellValue('A'.$i, $perumahan)
+->setCellValue('B'.$i, $data['no_gambar'])
+->setCellValue('C'.$i, tgl_indo($data['tanggal_pembelian']))
+->setCellValue('D'.$i, $data['nama_penjual'])
+->setCellValue('E'.$i, $data['kode_sertifikat'])
+->setCellValue('F'.$i, $data['nama_surat_tanah'])
+->setCellValue('G'.$i, $data['luas_surat'])
+->setCellValue('H'.$i, $data['luas_ukur'])
+->setCellValue('I'.$i, $data['id_posisi_surat'])
+->setCellValue('J'.$i, '')
+->setCellValue('K'.$i, $data['status_order_akta'])
+->setCellValue('L'.$i, $data['jenis_pengalihan_hak'])
+->setCellValue('M'.$i, $data['akta_pengalihan'])
+->setCellValue('N'.$i, $tgl_pengalihan)
+->setCellValue('O'.$i, $data['nama_pengalihan'])
+->setCellValue('Q'.$i, $data['status_teknik'])
+->setCellValue('R'.$i, $data['keterangan']);
+$i++;
+}
+
+$i++;
+$i++;
+$i++;
+
+    $spreadsheet->setActiveSheetIndex(0)
+    ->setCellValue('A'.$i, 'Lokasi')
+    ->setCellValue('B'.$i, 'No Gmbr')
+    ->setCellValue('C'.$i, 'tanggal')
+    ->setCellValue('D'.$i, 'penjual')
+    ->setCellValue('E'.$i, 'Status Surat')
+    ->setCellValue('F'.$i, 'Atas Nama')
+    ->setCellValue('G'.$i, 'Luas Surat')
+    ->setCellValue('H'.$i, 'Luas Ukur')
+    ->setCellValue('I'.$i, 'Posisi Surat')
+    ->setCellValue('J'.$i, 'Harga Akta')
+    ->setCellValue('K'.$i, 'Status Order')
+    ->setCellValue('L'.$i, 'Jenis Pengalihan')
+    ->setCellValue('M'.$i, 'No Akta')
+    ->setCellValue('N'.$i, 'Tanggal Akta')
+    ->setCellValue('O'.$i, 'Atas Nama')
+    ->setCellValue('P'.$i, 'status finance')
+    ->setCellValue('Q'.$i, 'Keterangan')
+    ;
+
+    $i++;
+    $spreadsheet->setActiveSheetIndex(0)
+    ->setCellValue('A'.$i, 'Sd. Tahun 2019')
+    ;$i++;
+    $nama_perumahan = '';
+//     foreach($data['dataperumahantekseb'] as $data) { 
+//       if ($data['tanggal_pengalihan']!=null) {
+//         $tgl_pengalihan = tgl_indo($data['tanggal_pengalihan']);
+//     }else{
+//         $tgl_pengalihan = '-';
+//     }
+//     if ($data['id_perumahan']=='0') {
+//         $perumahan = 'Tidak ada';
+//     }else{
+//         $perumahan = $data['nama_regional'];
+//     }
+//     $nama_perumahan = $perumahan;
+//     $spreadsheet->setActiveSheetIndex(0)
+//     ->setCellValue('A'.$i, $perumahan)
+//     ->setCellValue('B'.$i, $data['no_gambar'])
+//     ->setCellValue('C'.$i, tgl_indo($data['tanggal_pembelian']))
+//     ->setCellValue('D'.$i, $data['nama_penjual'])
+//     ->setCellValue('E'.$i, $data['kode_sertifikat'])
+//     ->setCellValue('F'.$i, $data['nama_surat_tanah'])
+//     ->setCellValue('G'.$i, $data['luas_surat'])
+//     ->setCellValue('H'.$i, $data['luas_ukur'])
+//     ->setCellValue('I'.$i, $data['id_posisi_surat'])
+//     ->setCellValue('J'.$i, '')
+//     ->setCellValue('K'.$i, $data['status_order_akta'])
+//     ->setCellValue('L'.$i, $data['jenis_pengalihan_hak'])
+//     ->setCellValue('M'.$i, $data['akta_pengalihan'])
+//     ->setCellValue('N'.$i, $tgl_pengalihan)
+//     ->setCellValue('O'.$i, $data['nama_pengalihan'])
+//     ->setCellValue('Q'.$i, $data['status_teknik'])
+//     ->setCellValue('R'.$i, $data['keterangan']);
+//     $i++;
+// }
+// $spreadsheet->setActiveSheetIndex(0)
+// ->setCellValue('A'.$i, 'Tahun 2020')
+// ;
+// $i++;
+
+// $nama_perumahan = '';
+// foreach($data['dataperumahantekses'] as $data) { 
+//   if ($data['tanggal_pengalihan']!=null) {
+//     $tgl_pengalihan = tgl_indo($data['tanggal_pengalihan']);
+// }else{
+//     $tgl_pengalihan = '-';
+// }
+// if ($data['id_perumahan']=='0') {
+//     $perumahan = 'Tidak ada';
+// }else{
+//     $perumahan = $data['nama_regional'];
+// }
+// $nama_perumahan = $perumahan;
+// $spreadsheet->setActiveSheetIndex(0)
+// ->setCellValue('A'.$i, $perumahan)
+// ->setCellValue('B'.$i, $data['no_gambar'])
+// ->setCellValue('C'.$i, tgl_indo($data['tanggal_pembelian']))
+// ->setCellValue('D'.$i, $data['nama_penjual'])
+// ->setCellValue('E'.$i, $data['kode_sertifikat'])
+// ->setCellValue('F'.$i, $data['nama_surat_tanah'])
+// ->setCellValue('G'.$i, $data['luas_surat'])
+// ->setCellValue('H'.$i, $data['luas_ukur'])
+// ->setCellValue('I'.$i, $data['id_posisi_surat'])
+// ->setCellValue('J'.$i, '')
+// ->setCellValue('K'.$i, $data['status_order_akta'])
+// ->setCellValue('L'.$i, $data['jenis_pengalihan_hak'])
+// ->setCellValue('M'.$i, $data['akta_pengalihan'])
+// ->setCellValue('N'.$i, $tgl_pengalihan)
+// ->setCellValue('O'.$i, $data['nama_pengalihan'])
+// ->setCellValue('Q'.$i, $data['status_teknik'])
+// ->setCellValue('R'.$i, $data['keterangan']);
+// $i++;
+// }
+
+
+
 
         // Rename worksheet
-    $spreadsheet->getActiveSheet()->setTitle('Purchase Order');
+$spreadsheet->getActiveSheet()->setTitle('Laporan '.$nama_perumahan);
 
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
-    $spreadsheet->setActiveSheetIndex(0);
+$spreadsheet->setActiveSheetIndex(0);
 
         // Redirect output to a client’s web browser (Xlsx)
-    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header('Content-Disposition: attachment;filename="Laporan PO.xlsx"');
-    header('Cache-Control: max-age=0');
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment;filename="Laporan Land bank.xlsx"');
+header('Cache-Control: max-age=0');
         // If you're serving to IE 9, then the following may be needed
-    header('Cache-Control: max-age=1');
+header('Cache-Control: max-age=1');
 
         // If you're serving to IE over SSL, then the following may be needed
         header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past

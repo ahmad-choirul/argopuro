@@ -717,6 +717,26 @@ if (!empty($teknik)) {
 
 return $this->db->get()->result();
 }
+
+public function getperumahanarray($id='',$firstdate='',$lastdate='',$teknik='')
+{
+   $this->db->select('a.*,b.nama_regional,c.*');
+   $this->db->from('master_item a'); 
+   $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
+   $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
+   if(!empty($firstdate) AND !empty($lastdate)){
+    $this->db->where('a.tanggal_pembelian BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
+}
+if (!empty($id)) {
+    $this->db->where('id_perumahan', $id);
+}
+
+if (!empty($teknik)) {
+    $this->db->where('status_teknik', 'sudah');
+}
+
+return $this->db->get()->result_array();
+}
 public function updatemasteritem($data)
 {
     $this->db->where('kode_item', $data['kode_item']);
