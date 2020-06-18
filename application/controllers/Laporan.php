@@ -325,7 +325,7 @@ public function laporan_evaluasi_tanah_shgb()
 }  
 public function laporan_evaluasi_tanah_shgb_per()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_tanah_shgb_per');
+   $this->load->view('member/laporan/laporan_evaluasi_tanah_shgb_perumahan');
 }  
 public function laporan_evaluasi_splitsing()
 {

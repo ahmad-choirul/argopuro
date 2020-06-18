@@ -28,72 +28,212 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="bgbody">
   <section class="body">
 
-     <?php $this->load->view("komponen/header.php") ?>
-     <div class="inner-wrapper"> 
-        <?php $this->load->view("komponen/sidebar.php") ?>
-        <section role="main" class="content-body">
-           <header class="page-header">  
-              <h2>Evaluasi Proyek Sudah SHGB</h2>
-          </header>  
-          <!-- start: page -->
-          <section class="panel">
-            <header class="panel-heading">    
-                <div class="row show-grid">
-                    <div class="col-md-6" align="left"><h2 class="panel-title">Evaluasi Proyek Sudah SHGB</h2></div>
-                    <?php  
-                    echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
-                    ?> 
-                </div>
-            </header>
-            <div class="panel-body"> 
-                <div class="table" style="overflow-x: auto;">
-                    <table class="table table-bordered table-hover table-striped" id="itemsdata">
-                        <thead>
-                            <tr>
+   <?php $this->load->view("komponen/header.php") ?>
+   <div class="inner-wrapper"> 
+    <?php $this->load->view("komponen/sidebar.php") ?>
+    <section role="main" class="content-body">
+     <header class="page-header">  
+      <h2>Evaluasi Proyek Sudah SHGB</h2>
+  </header>  
+  <!-- start: page -->
+  <section class="panel">
+    <header class="panel-heading">    
+        <div class="row show-grid">
+            <div class="col-md-6" align="left"><h2 class="panel-title">Tanah Sudah SHGB</h2></div>
+            <?php  
+            echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
+            ?> 
+        </div>
+    </header>
+    <div class="panel-body"> 
+        <div class="table" style="overflow-x: auto;">
+            <table class="table table-bordered table-hover table-striped" id="itemsdata">
+                <thead>
+                    <tr>
 
-                                <th rowspan="3" style="text-align: center;">NO</th>
-                                <th rowspan="3" style="text-align: center;">SHGB</th>
-                                <th  rowspan ="2" colspan="2" style="text-align: center;">DATA TANAH</th>
-                                <th colspan="4" style="text-align: center;">PROSES SAMPAI 2020</th>
-                                <th colspan="2" rowspan="2" style="text-align: center;">SISA TANAH PROYEK SUDAH SHGB BELUM PROSES</th>
-                                <th colspan="2" rowspan="2" style="text-align: center; background-color: green; color: white;">JALAN & PASOS</th>
+                        <th rowspan="3" style="text-align: center;">NO</th>
+                        <th rowspan="3" style="text-align: center;">SHGB</th>
+                        <th  rowspan ="2" colspan="2" style="text-align: center;">DATA TANAH</th>
+                        <th rowspan="3" style="text-align: center;">BATAS WAKTU SHGB</th>
+                        <th rowspan="3" style="text-align: center;">POSISI SURAT</th>
+                        <th rowspan="3" style="text-align: center;">JML SHGB</th>
+                        <th colspan="4" style="text-align: center;">PROSES SPLIT</th>
+                        <th colspan="2" style="text-align: center;">PROSES GABUNG</th>
+                        <th rowspan="3" style="text-align: center;">TERBIT PROSES</th>
+                        <th colspan="2" rowspan="2" style="text-align: center;">SISA SETELAH TERBIT</th>
+                        <th rowspan="3" style="text-align: center;">KETERANGAN</th>
+                    </tr>
+                    <tr>
+
+                        <th rowspan="2" style="text-align: center;">JML SHGB</th>
+                        <th  colspan="3" style="text-align: center;">LUAS</th>
+                        <th rowspan="2" style="text-align: center;">JML SHGB</th>
+                        <th rowspan="2" style="text-align: center;">LUAS</th>
+
+                    </tr>
+                    <tr>
+
+                       <th style="text-align: center;">ATAS NAMA</th>
+                       <th  style="text-align: center;"> LUAS</th>  
+                       <th style="text-align: center;">SHGB</th>
+                       <th  style="text-align: center;"> PROSES </th>                
+                       <th style="text-align: center;">TERBIT</th>
+
+
+                       <th  style="text-align: center;">JML</th>
+                       <th  style="text-align: center;">LUAS</th>
+
+
+                   </tr>
+                   <tr>
+                       <th>A</th>
+                       <th>sd. Tahun 2019</th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                   </tr>
+                   <tr>
+                       <th colspan="17" bgcolor="grey"></th>
+
+                   </tr>
+                   <tr>
+
+                       <th colspan="2">JUMLAH A</th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                   </tr>
+                   <tr>
+                       <th>B</th>
+                       <th>sd. Tahun 2020</th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                       <th></th>
+                   </tr>
+                   <tr>
+                       <th colspan="17" bgcolor="grey"></th>
+
+                   </tr>
+                   <tr>
+
+                    <th colspan="2">JUMLAH B</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+            </thead>
+            <tbody>
+            </tbody>
+        </table> 
+    </div>
+</div>
+</section>
+<section class="panel">
+    <header class="panel-heading">    
+        <div class="row show-grid">
+            <div class="col-md-6" align="left"><h2 class="panel-title">Sisa SHGB Untuk Jalan Dan Fasos</h2></div>
+            <?php  
+            echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
+            ?> 
+        </div>
+    </header>
+    <div class="panel-body"> 
+        <div class="table" style="overflow-x: auto;">
+            <table class="table table-bordered table-hover table-striped" id="itemsdata">
+                <thead>
+                    <tr>
+
+                        <th rowspan="2" style="text-align: center;">NO</th>
+                        <th  rowspan="2" style="text-align: center;">NO SHGB</th>
+                        <th colspan="2" style="text-align: center;">DATA TANAH</th>
+                        <th rowspan="2" style="text-align: center;">BATAS WAKTU SHGB</th>
+                        <th rowspan="2" style="text-align: center;">POSISI SURAT</th>
+
+                        <th rowspan="2" style="text-align: center;">KETERANGAN</th>
+                    </tr>
+                    <tr>
+                       <th style="text-align: center;">ATAS NAMA</th>
+                       <th  style="text-align: center;"> LUAS</th>  
+
+
+                   </tr>
+
+                   <tr>
+                       <th colspan="7" bgcolor="grey"></th>
+
+                   </tr>
+                   <tr>
+                    <th >1</th>
+                    <th >123abc</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+
+
+                </tr>
 
 
 
-                            </tr>
-                            <tr>
-                                <th colspan="2" style="text-align: center;">SISA S/D 2019</th>
-                                <th colspan="2" style="text-align: center;">TAHUN 2020</th>
-                                <th colspan="2" style="text-align: center;">TOTAL</th>
-                                <th colspan="2" style="text-align: center;">SPLITSING</th>
-                                <th colspan="2" style="text-align: center;">PENGGABUNGAN</th>
-                            </tr>
-                            <tr>
-                                <th  style="text-align: center;">SHGB</th>
-                                <th  style="text-align: center;">LUAS</th>
-                                <th  style="text-align: center;">SHGB</th>
-                                <th  style="text-align: center;">LUAS</th>
-                                <th  style="text-align: center;">SHGB</th>
-                                <th  style="text-align: center;">LUAS</th>
-                                <th  style="text-align: center;">SHGB</th>
-                                <th  style="text-align: center;">LUAS</th>
-                                <th  style="text-align: center;">SHGB</th>
-                                <th  style="text-align: center;">LUAS</th>
-                                <th  style="text-align: center;">SHGB</th>
-                                <th  style="text-align: center;">LUAS</th>
-                                <th  style="text-align: center;">SHGB</th>
-                                <th  style="text-align: center;">LUAS</th>
-                            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table> 
+    </div>
+</div></section>
 
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table> 
-                </div>
-            </div>
-        </section>
-        <!-- end: page -->
-    </section>
+<!-- end: page -->
+</section>
 </div>
 </section>
 
@@ -108,7 +248,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </header>
                 <div class="panel-body">
 
-                    
+
                     <div class="form-group mt-lg nama_supplier">
                         <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
                         <div class="col-sm-9">
@@ -194,7 +334,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="njop" class="form-control"  />
                         </div>
                     </div>
-                   <div class="form-group total_harga_pengalihan">
+                    <div class="form-group total_harga_pengalihan">
                         <label class="col-sm-3 control-label">Total Harga Pengalihan</span></label>
                         <div class="col-sm-9">
                             <input type="text" name="total_harga_pengalihan" class="form-control"  />
@@ -304,169 +444,169 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <h2 class="panel-title">Edit Data Tanah/Aset</h2>
                 </header>
                 <div class="panel-body">
-                   
-                <div class="form-group mt-lg nama_supplier">
-                    <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
-                    <div class="col-sm-9">
-                        <select data-plugin-selectTwo class="form-control" required id="id_perumahan" name="id_perumahan">  
-                            <option value="">Pilih Lokasi</option>
-                            <?php foreach ($perumahan as $supp): ?>
-                                <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
-                            <?php endforeach; ?>
-                        </select> 
+
+                    <div class="form-group mt-lg nama_supplier">
+                        <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <select data-plugin-selectTwo class="form-control" required id="id_perumahan" name="id_perumahan">  
+                                <option value="">Pilih Lokasi</option>
+                                <?php foreach ($perumahan as $supp): ?>
+                                    <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
+                                <?php endforeach; ?>
+                            </select> 
+                        </div>
                     </div>
+                    <div class="form-group mt-lg nama_item">
+                        <label class="col-sm-3 control-label">Nama tanah<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nama_item" id="nama_item" class="form-control" required/>
+                        </div>
+                    </div>
+                    <div class="form-group tanggal_pembelian">
+                        <label class="col-sm-3 control-label">Tanggal Pembelian</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="tanggal_pembelian" id="tanggal_pembelian" class="form-control tanggal"  />
+                        </div>
+                    </div>
+                    <div class="form-group nama_penjual">
+                        <label class="col-sm-3 control-label">Nama Penjual</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nama_penjual" id="nama_penjual" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group nama_surat_tanah">
+                        <label class="col-sm-3 control-label">Nama Surat</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nama_surat_tanah" id="nama_surat_tanah" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group mt-lg nama_supplier">
+                        <label class="col-sm-3 control-label">Sertifikat<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <select data-plugin-selectTwo class="form-control" required name="status_surat_tanah" id="status_surat_tanah">  
+                                <option value="">Pilih Lokasi</option>
+                                <?php foreach ($sertifikat_tanah as $aa): ?>
+                                    <option value="<?php echo $aa->id_sertifikat_tanah;?>"><?php echo $aa->nama_sertifikat;?> / <?php echo $aa->nama_sertifikat;?></option>
+                                <?php endforeach; ?>
+                            </select> 
+                        </div>
+                    </div>
+                    <div class="form-group no_gambar">
+                        <label class="col-sm-3 control-label">No Gambar</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="no_gambar" id="no_gambar" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group jumlah_bidang">
+                        <label class="col-sm-3 control-label">Jumlah Bidang</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="jumlah_bidang" id="jumlah_bidang" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group luas_surat">
+                        <label class="col-sm-3 control-label">Luas Surat</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="luas_surat" id="luas_surat" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group luas_ukur">
+                        <label class="col-sm-3 control-label">Luas Ukur</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="luas_ukur" id="luas_ukur" class="form-control"  />
+                        </div>
+                    </div><div class="form-group no_pbb">
+                        <label class="col-sm-3 control-label">No PBB</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="no_pbb" id="no_pbb" class="form-control"  />
+                        </div>
+                    </div><div class="form-group luas_pbb">
+                        <label class="col-sm-3 control-label">Luas PBB</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="luas_pbb" id="luas_pbb" class="form-control"  />
+                        </div>
+                    </div><div class="form-group njop">
+                        <label class="col-sm-3 control-label">njop</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="njop" id="njop" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group total_harga_pengalihan">
+                        <label class="col-sm-3 control-label">Total Harga Pengalihan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="total_harga_pengalihan" id="total_harga_pengalihan" class="form-control"  />
+                        </div>
+                    </div><div class="form-group nama_makelar">
+                        <label class="col-sm-3 control-label">Makelar</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nama_makelar" id="nama_makelar" class="form-control"  />
+                        </div>
+                    </div><div class="form-group nilai">
+                        <label class="col-sm-3 control-label">Nilai</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nilai" id="nilai" class="form-control"  />
+                        </div>
+                    </div><div class="form-group tanggal_pengalihan">
+                        <label class="col-sm-3 control-label">Tanggal Pengalihan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="tanggal_pengalihan" id="tanggal_pengalihan" class="form-control tanggal"  />
+                        </div>
+                    </div><div class="form-group akta_pengalihan">
+                        <label class="col-sm-3 control-label">Akta Pengalihan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="akta_pengalihan" id="akta_pengalihan" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group nama_pengalihan">
+                        <label class="col-sm-3 control-label">Nama Pengalihan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nama_pengalihan" id="nama_pengalihan" class="form-control"  />
+                        </div>
+                    </div><div class="form-group pematangan">
+                        <label class="col-sm-3 control-label">Pematangan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="pematangan" id="pematangan" class="form-control"  />
+                        </div>
+                    </div><div class="form-group ganti_rugi">
+                        <label class="col-sm-3 control-label">Ganti Rugi</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="ganti_rugi" id="ganti_rugi" class="form-control"  />
+                        </div>
+                    </div><div class="form-group pbb">
+                        <label class="col-sm-3 control-label">PBB</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="pbb" id="pbb" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group lain">
+                        <label class="col-sm-3 control-label">Lain-lain</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="lain" id="lain" class="form-control"  />
+                        </div>
+                    </div><div class="form-group harga_perm">
+                        <label class="col-sm-3 control-label"></span>Harga / M^2</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="harga_perm" id="harga_perm" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group keterangan">
+                        <label class="col-sm-3 control-label">Keterangan</label>
+                        <div class="col-sm-9">
+                            <textarea rows="2" class="form-control" name="keterangan" id="keterangan"></textarea>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="form-group mt-lg nama_item">
-                    <label class="col-sm-3 control-label">Nama tanah<span class="required">*</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="nama_item" id="nama_item" class="form-control" required/>
+                <footer class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <button class="btn btn-primary modal-confirm" type="submit" id="submitformEdit">Submit</button>
+                            <button class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group tanggal_pembelian">
-                    <label class="col-sm-3 control-label">Tanggal Pembelian</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="tanggal_pembelian" id="tanggal_pembelian" class="form-control tanggal"  />
-                    </div>
-                </div>
-                <div class="form-group nama_penjual">
-                    <label class="col-sm-3 control-label">Nama Penjual</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="nama_penjual" id="nama_penjual" class="form-control"  />
-                    </div>
-                </div>
-                <div class="form-group nama_surat_tanah">
-                    <label class="col-sm-3 control-label">Nama Surat</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="nama_surat_tanah" id="nama_surat_tanah" class="form-control"  />
-                    </div>
-                </div>
-                <div class="form-group mt-lg nama_supplier">
-                    <label class="col-sm-3 control-label">Sertifikat<span class="required">*</span></label>
-                    <div class="col-sm-9">
-                        <select data-plugin-selectTwo class="form-control" required name="status_surat_tanah" id="status_surat_tanah">  
-                            <option value="">Pilih Lokasi</option>
-                            <?php foreach ($sertifikat_tanah as $aa): ?>
-                                <option value="<?php echo $aa->id_sertifikat_tanah;?>"><?php echo $aa->nama_sertifikat;?> / <?php echo $aa->nama_sertifikat;?></option>
-                            <?php endforeach; ?>
-                        </select> 
-                    </div>
-                </div>
-                <div class="form-group no_gambar">
-                    <label class="col-sm-3 control-label">No Gambar</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="no_gambar" id="no_gambar" class="form-control"  />
-                    </div>
-                </div>
-                <div class="form-group jumlah_bidang">
-                    <label class="col-sm-3 control-label">Jumlah Bidang</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="jumlah_bidang" id="jumlah_bidang" class="form-control"  />
-                    </div>
-                </div>
-                <div class="form-group luas_surat">
-                    <label class="col-sm-3 control-label">Luas Surat</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="luas_surat" id="luas_surat" class="form-control"  />
-                    </div>
-                </div>
-                <div class="form-group luas_ukur">
-                    <label class="col-sm-3 control-label">Luas Ukur</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="luas_ukur" id="luas_ukur" class="form-control"  />
-                    </div>
-                </div><div class="form-group no_pbb">
-                    <label class="col-sm-3 control-label">No PBB</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="no_pbb" id="no_pbb" class="form-control"  />
-                    </div>
-                </div><div class="form-group luas_pbb">
-                    <label class="col-sm-3 control-label">Luas PBB</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="luas_pbb" id="luas_pbb" class="form-control"  />
-                    </div>
-                </div><div class="form-group njop">
-                    <label class="col-sm-3 control-label">njop</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="njop" id="njop" class="form-control"  />
-                    </div>
-                </div>
-                <div class="form-group total_harga_pengalihan">
-                    <label class="col-sm-3 control-label">Total Harga Pengalihan</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="total_harga_pengalihan" id="total_harga_pengalihan" class="form-control"  />
-                    </div>
-                </div><div class="form-group nama_makelar">
-                    <label class="col-sm-3 control-label">Makelar</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="nama_makelar" id="nama_makelar" class="form-control"  />
-                    </div>
-                </div><div class="form-group nilai">
-                    <label class="col-sm-3 control-label">Nilai</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="nilai" id="nilai" class="form-control"  />
-                    </div>
-                </div><div class="form-group tanggal_pengalihan">
-                    <label class="col-sm-3 control-label">Tanggal Pengalihan</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="tanggal_pengalihan" id="tanggal_pengalihan" class="form-control tanggal"  />
-                    </div>
-                </div><div class="form-group akta_pengalihan">
-                    <label class="col-sm-3 control-label">Akta Pengalihan</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="akta_pengalihan" id="akta_pengalihan" class="form-control"  />
-                    </div>
-                </div>
-                <div class="form-group nama_pengalihan">
-                    <label class="col-sm-3 control-label">Nama Pengalihan</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="nama_pengalihan" id="nama_pengalihan" class="form-control"  />
-                    </div>
-                </div><div class="form-group pematangan">
-                    <label class="col-sm-3 control-label">Pematangan</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="pematangan" id="pematangan" class="form-control"  />
-                    </div>
-                </div><div class="form-group ganti_rugi">
-                    <label class="col-sm-3 control-label">Ganti Rugi</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="ganti_rugi" id="ganti_rugi" class="form-control"  />
-                    </div>
-                </div><div class="form-group pbb">
-                    <label class="col-sm-3 control-label">PBB</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="pbb" id="pbb" class="form-control"  />
-                    </div>
-                </div>
-                <div class="form-group lain">
-                    <label class="col-sm-3 control-label">Lain-lain</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="lain" id="lain" class="form-control"  />
-                    </div>
-                </div><div class="form-group harga_perm">
-                    <label class="col-sm-3 control-label"></span>Harga / M^2</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="harga_perm" id="harga_perm" class="form-control"  />
-                    </div>
-                </div>
-                <div class="form-group keterangan">
-                    <label class="col-sm-3 control-label">Keterangan</label>
-                    <div class="col-sm-9">
-                        <textarea rows="2" class="form-control" name="keterangan" id="keterangan"></textarea>
-                    </div>
-                </div>
-                
-            </div>
-            <footer class="panel-footer">
-                <div class="row">
-                    <div class="col-md-12 text-right">
-                        <button class="btn btn-primary modal-confirm" type="submit" id="submitformEdit">Submit</button>
-                        <button class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </footer>
-        </form>
-    </section>
-</div>
+                </footer>
+            </form>
+        </section>
+    </div>
 </div>
 </div>
 <div class="modal fade" data-keyboard="false" data-backdrop="static"  id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
