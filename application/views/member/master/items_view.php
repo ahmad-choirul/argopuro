@@ -59,7 +59,7 @@
            $totalakhirbiayalain=0;
            ?>
            <div class="panel-body"> 
-            <div class="table" style="overflow-x: auto;">
+            <div class="table" style="overflow-x: auto;white-space: nowrap;">
                 <table class="table table-responsive table-bordered table-hover table-striped" >
                    <thead>
                     <tr>
@@ -329,7 +329,7 @@
                    $totalakhirbiayalain=0;
                    ?>
                    <div class="panel-body"> 
-                    <div class="table" style="overflow-x: auto;">
+                    <div class="table" style="overflow-x: auto;white-space: nowrap;">
                         <table class="table table-responsive table-bordered table-hover table-striped" >
                            <thead>
                             <tr>
@@ -589,7 +589,7 @@
                    $totalakhirbiayalain=0;
                    ?>
                    <div class="panel-body"> 
-                    <div class="table" style="overflow-x: auto;">
+                    <div class="table" style="overflow-x: auto;white-space: nowrap;">
                         <table class="table table-responsive table-bordered table-hover table-striped" >
                            <thead>
                             <tr>

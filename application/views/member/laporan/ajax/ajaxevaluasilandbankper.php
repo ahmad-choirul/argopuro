@@ -1,5 +1,5 @@
 <div class="panel-body"> 
-                <div class="table" style="overflow-x: auto;">
+                <div class="table" style="overflow-x: auto;white-space: nowrap;">
                     <table class="table table-bordered table-hover table-striped data" id="itemsdata">
                         <thead>
                             <tr>
@@ -188,7 +188,7 @@
                     </div>
                 </header>
                 <div class="panel-body"> 
-                    <div class="table" style="overflow-x: auto;">
+                    <div class="table" style="overflow-x: auto;white-space: nowrap;">
                         <table class="table table-bordered table-hover table-striped data2" id="itemsdata2">
                             <thead>
                                 <tr>
