@@ -431,7 +431,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 </div>
 </div>  
-
+<div class="modal fade bd-example-modal-lg" id="detailpembayaran"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="width:90%">
+        <div class="modal-content">
+            <section class="panel panel-primary">   
+                <header class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-3 text-left"> 
+                            <h2 class="panel-title">Detail Pembayaran</h2>  
+                        </div>
+                        <div class="col-md-9 text-right">
+                            <a class="btn btn-success" id="linkprint" target="_blank"><i class="fa fa-print"></i> Print</a>
+                            <a class="btn btn-success" id="linkpdf" target="_blank"><i class="fa fa-file-pdf-o"></i> PDF</a>
+                        </div>
+                    </div>
+                </header>
+                <div class="panel-body" id="showdetailpembayaran"> 
+                </div>
+                <footer class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <button class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </footer> 
+            </section>
+        </div>
+    </div>
+</div>
 <!-- Vendor -->
 <script src="<?php echo base_url()?>assets/vendor/jquery/jquery.min.js"></script>
 <script src="<?php echo base_url()?>assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
@@ -532,10 +559,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  e.preventDefault(); 
 }); 
 
-      function detail(elem){
+      function bayar(elem){
   var dataId = $(elem).data("id");   
-  $('#detailData').modal();    
-  $('#showdetail').html('Loading...'); 
+  $('#detailpembayaran').modal();    
+  $('#showdetailpembayaran').html('Loading...'); 
   $.ajax({
     type: 'GET',
     url: '<?php echo base_url()?>keuangan/keuangandetail',
@@ -549,45 +576,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         datarow+='<div class="col-md-6">';
         datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
-        datarow+="<tr><td>ID Penjualan</td><td>: "+item.id+"</td></tr>";
-        datarow+="<tr><td>ID Pembeli</td><td>: "+item.id_pembeli+"</td></tr>"; 
-        datarow+="<tr><td>ID Admin</td><td>: "+item.id_admin+"</td></tr>";
+        datarow+="<tr><td>Nama Penjual</td><td>: "+item.nama_penjual+"</td></tr>";
+        datarow+="<tr><td>status_surat_tanah</td><td>: "+item.status_surat_tanah+"</td></tr>"; 
+        datarow+="<tr><td>Tanggal Pembelian</td><td>: "+item.tanggal_pembelian+"</td></tr>";
         datarow+="</table>";
         datarow+='</div>';
         datarow+='<div class="col-md-6">';
         datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
         
-        datarow+="<tr><td>Total Harga Item</td><td>: "+item.total_harga_item+"</td></tr>";
-        datarow+="<tr><td>Jenis Penjualan</td><td>: "+item.jenis_penjualan+"</td></tr>"; 
+        // datarow+="<tr><td>Total Harga Item</td><td>: "+item.total_harga_item+"</td></tr>";
+        // datarow+="<tr><td>Jenis Penjualan</td><td>: "+item.jenis_penjualan+"</td></tr>"; 
         datarow+="</table>";
         datarow+='</div>';
       });
       datarow+='</div>';
       datarow+='<div class="row"><div class="col-md-12">';
-      datarow+='<h3>Rincian</h3>';
+      datarow+='<h3>Rincian Pembayaran</h3>';
       datarow+='<div class="table-responsive" style="max-height:420px;">';  
       datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
       datarow+="<thead><tr>";
-      datarow+="<th>Kode Item</th>";
-      datarow+="<th>Harga Beli</th>";
-      datarow+="<th>Harga Jual</th>";
-      datarow+="<th>Total</th>"; 
+      datarow+="<th>Id Pembayaran</th>";
+      datarow+="<th>Tanggal Pembayaran</th>";
+      datarow+="<th>Total Bayar</th>"; 
       datarow+="</tr></thead>";
       datarow+="<tbody>";
 
       $.each(response.datasub, function(i, itemsub) {
         datarow+="<tr>";
-        datarow+="<td>"+itemsub.kode_item+"</td>"; 
-        datarow+="<td>"+itemsub.harga_beli+"</td>"; 
-        datarow+="<td>"+itemsub.harga_jual+"</td>"; 
-        datarow+="<td>"+itemsub.total+"</td>"; 
+        datarow+="<td>"+itemsub.id_pembayaran+"</td>"; 
+        datarow+="<td>"+itemsub.tanggal_pembayaran+"</td>"; 
+        datarow+="<td>"+itemsub.total_bayar+"</td>"; 
         datarow+="</tr>"; 
       });  
       datarow+="</tbody>";
       datarow+="</table>";
       datarow+="</div>";
       datarow+='</div></div>';
-      $('#showdetail').html(datarow);
+      $('#showdetailpembayaran').html(datarow);
     }
   });  
   return false;
@@ -638,10 +663,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     });  
       return false;
   }
-  function bayar(elem){
-      var kode_item = $(elem).data("id");   
-      window.location =  "<?php echo site_url('new_controller'); ?>";
-  }
+
   document.getElementById("FormulirEdit").addEventListener("submit", function (e) {  
    blurForm();       
    $('.help-block').hide();

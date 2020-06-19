@@ -722,7 +722,7 @@ public function dataitems()
     foreach ($list as $r) { 
         $row = array();
         $linkbayar = site_url('keuangan/bayartanah/').$r->kode_item; 
-        $tomboldetailbayar = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="'.$linkbayar.'">Detail Bayar</a></li>':'';
+        $tomboldetailbayar = '<li><a href="'.$linkbayar.'">Pembayaran</a></li>';
         $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->kode_item).'">Hapus</a></li>':'';
         $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->kode_item).'">Edit</a></li>':'';
         $row[] = ' 

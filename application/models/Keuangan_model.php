@@ -9,9 +9,10 @@ class Keuangan_model extends CI_Model{
     public function getpembayaran($kode_item)
     {
         $this->db->select('*');
-        $this->db->from('master_pembayaran');
+        $this->db->from('tabel_pembayaran');
         $this->db->where('kode_item', $kode_item);
-        return $this->db->get()->result();
+        $this->db->order_by('waktu_update', 'desc');
+        return $this->db->get()->result_array();
     }
     private function _get_query_datarekening()
     { 
