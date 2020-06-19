@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php $this->load->view("komponen/sidebar.php") ?>
     <section role="main" class="content-body">
      <header class="page-header">  
-      <h2>Evaluasi Proses Splitsing</h2>
+      <h2>Evaluasi Hutang Sertifikat Belum Splitsing</h2>
     </header>  
     <!-- start: page -->
     <section class="panel">
@@ -70,6 +70,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
          </thead>
          <tbody>
+          <tr>
+
+             <th >A</th>
+             <th colspan="2">Proses sd Tahun 2019</th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+           </tr>
 
            <tr>
 
@@ -107,9 +123,48 @@ defined('BASEPATH') OR exit('No direct script access allowed');
              <th></th>
              <th></th>
              <th></th>
-           </tr> <tr>
+           </tr>
+             <tr>
 
-             <th colspan="2">TOTAL </th>
+             <th >A</th>
+             <th colspan="2">Proses sd Tahun 2020</th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+           </tr>
+
+           <tr>
+
+             <th >1</th>
+             <th>abc</th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+             <th></th>
+           </tr> 
+           <tr>
+             <th colspan="13" bgcolor="grey"></th>
+
+           </tr>
+
+           <tr>
+
+             <th colspan="2">JUMLAH B</th>
 
              <th></th>
              <th></th>
@@ -123,107 +178,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
              <th></th>
              <th></th>
            </tr>
+
          </tbody>
+         <tfoot>
+           <tr>
+             <td colspan="2">TOTAL A + B</td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+           </tr>
+         </tfoot>
        </table> 
      </div>
    </div>
  </section>
- <section class="panel">
-  <header class="panel-heading">    
-    <div class="row show-grid">
-      <div class="col-md-6" align="left"><h2 class="panel-title">Nama Perumahan | Proses Tahun 2020</h2></div>
-      <?php  
-      echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
-      ?> 
-    </div>
-  </header>
-  <div class="panel-body"> 
-    <div class="table" style="overflow-x: auto;white-space: nowrap;">
-      <table class="table table-bordered table-hover table-striped" id="itemsdata">
-        <thead>
-
-         <tr>
-           <th style="text-align: center;">NO</th>
-           <th style="text-align: center;">INDUK</th>
-           <th style="text-align: center;">UNIT</th>
-           <th style="text-align: center;">BLOK</th>
-           <th style="text-align: center;">LUAS DAFTAR</th>
-           <th style="text-align: center;">LUAS TERBIT</th>
-           <th style="text-align: center;">SELISIH</th>
-           <th style="text-align: center;">NO SHGB</th>
-           <th style="text-align: center;">MASA BERLAKU</th>
-           <th style="text-align: center;">NO DAFTAR</th>
-           <th style="text-align: center;">TGL DAFTAR</th>
-           <th style="text-align: center;">TGL TERBIT</th>
-           <th style="text-align: center;">KET</th>
-
-         </tr>
 
 
-
-       </thead>
-       <tbody>
-        <tr>
-
-         <th >1</th>
-         <th>abc</th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-       </tr>
-       <tr>
-         <th colspan="13" bgcolor="grey"></th>
-
-       </tr>
-       <tr>
-
-         <th colspan="2">JUMLAH A</th>
-
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-       </tr>
-        <tr>
-
-             <th colspan="2">TOTAL </th>
-
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-           </tr>
-
-     </tbody>
-
-   </table> 
- </div>
-</div>
-</section>
-
-<!-- end: page -->
+ <!-- end: page -->
 </section>
 </div>
 </section>
