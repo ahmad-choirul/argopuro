@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php $this->load->view("komponen/sidebar.php") ?>
     <section role="main" class="content-body">
      <header class="page-header">  
-      <h2>Evaluasi Hutang Sertifikat Belum Splitsing</h2>
+      <h2>Evaluasi Stok Split </h2>
     </header>  
     <!-- start: page -->
     <section class="panel">
@@ -47,128 +47,134 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="panel-body"> 
         <div class="table" style="overflow-x: auto;white-space: nowrap;">
          <table class="table table-bordered table-hover table-striped" id="itemsdata">
-          <thead>
+          <thead style="position: sticky;">
 
            <tr>
-             <th rowspan="2" style="text-align: center;">NO</th>
-             <th rowspan="2" style="text-align: center;">TGL JUAL</th>
-             <th rowspan="2" style="text-align: center;">NAMA</th>
-             <th  rowspan="2"style="text-align: center;">TYPE</th>
-             <th rowspan="2" style="text-align: center;">BLOK</th>
-             <th rowspan="2" style="text-align: center;">JML KAVL</th>
-             <th style="text-align: center;"  colspan="3">LUAS</th>
-             <th rowspan="2" style="text-align: center;">TGL PROSES</th>
-             <th rowspan="2" style="text-align: center;">TGL TERBIT</th>
-             <th rowspan="2" style="text-align: center;">NO SERTIFIKAT</th>
-             <th rowspan="2" style="text-align: center;">MASA SHGB</th>
-             <th rowspan="2" style="text-align: center;">KET</th>
+             <th rowspan="4" style="text-align: center;">NO</th>
+             <th rowspan="4" style="text-align: center;">NAMA</th>
+             <th rowspan="4" style="text-align: center;">BLOK</th>
+             <th rowspan="4" style="text-align: center;">JML KAV</th>
+             <th colspan="3" rowspan="2" style="text-align: center;">L. TANAH</th>
+             <th rowspan="4" style="text-align: center;">NO INDUK</th>
+             <th rowspan="4" style="text-align: center;">NO SERT </th>
+             <th rowspan="4" style="text-align: center;">TGL DAFTAR</th>
+             <th rowspan="4" style="text-align: center;">TGL TERBIT</th>
+             <th rowspan="4" style="text-align: center;">BATAS WAKTU HGB</th>
+             <th colspan="6" rowspan="2" style="text-align: center;">BELUM TERBIT SPLIT</th>
+             <th colspan="6" rowspan="2" style="text-align: center;">TERBIT STOK</th>
+             <th colspan="12" style="text-align: center;">PENJUALAN 2020</th>
+             <th rowspan="4" style="text-align: center;">KETERANGAN</th>
+
+           </tr>
+           <tr>
+             <th colspan="6"  style="text-align: center;">STOCK</th>
+             <th colspan="6" style="text-align: center;">BELUM TERBIT SPLIT</th>
+           </tr>
+           <tr>
+             <th rowspan="2" style="text-align: center;">TECHNIC</th>
+             <th rowspan="2" style="text-align: center;">SERT</th>
+             <th rowspan="2" style="text-align: center;">SELISIH</th>
+             <th colspan="2" style="text-align: center;">BELUM PROSES</th>
+             <th colspan="2" style="text-align: center;">PROSES</th>
+             <th colspan="2" style="text-align: center;">TOTAL</th>
+             <th colspan="2" style="text-align: center;">sd 2019</th>
+             <th colspan="2" style="text-align: center;">2020L</th>
+             <th colspan="2" style="text-align: center;">TOTAL</th>
+             <th colspan="2" style="text-align: center;">sd 2019</th>
+             <th colspan="2" style="text-align: center;">2020L</th>
+             <th colspan="2" style="text-align: center;">TOTAL</th>
+             <th colspan="2" style="text-align: center;">BELUM PROSES</th>
+             <th colspan="2" style="text-align: center;">PROSESL</th>
+             <th colspan="2" style="text-align: center;">TOTAL</th>
 
 
            </tr>
-
            <tr>
-             <th style="text-align: center;">DAFTAR</th>
-             <th style="text-align: center;">SERTF</th>
-             <th style="text-align: center;">SELISIH</th>
-
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
 
 
            </tr>
-
            
 
          </thead>
          <tbody>
+
+
+           <tr>
+            <td>1</td>
+            <td>aad</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+          </tr>
+
           <tr>
+            <th colspan="37" bgcolor="grey"></th>
 
-           <td >A</td>
-           <td colspan="2">Proses sd Tahun 2019</td>
-    
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
+          </tr>
 
 
-         </tr>
-
+        </tbody>
+        <tfoot>
          <tr>
-
-
-           <td >1</td>
-           <td >ABC</td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-   
-         </tr>
-
-         <tr>
-           <th colspan="14" bgcolor="grey"></th>
-
-         </tr>
-         <tr>
-
-          
-       
-           <td colspan="2">Jumlah A</td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-     
+           <td colspan="2">TOTAL </td>
            
-         </tr>
-         <tr>
-
-           <td >A</td>
-           <td colspan="2">Proses sd Tahun 2020</td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-      
-         
-
-
-         </tr>
-
-         <tr>
-
-
-           <td >1</td>
-           <td >ABC</td>
            <td></td>
            <td></td>
            <td></td>
@@ -181,20 +187,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
            <td></td>
            <td></td>
            <td></td>
-
-
-         </tr>
-
-         <tr>
-           <th colspan="14" bgcolor="grey"></th>
-
-         </tr>
-         <tr>
-
-          
-       
-           <td colspan="2">Jumlah B</td>
-
            <td></td>
            <td></td>
            <td></td>
@@ -207,13 +199,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
            <td></td>
            <td></td>
            <td></td>
-           
-         </tr>
-
-       </tbody>
-       <tfoot>
-         <tr>
-           <td colspan="2">TOTAL A + B</td>
            <td></td>
            <td></td>
            <td></td>
@@ -225,7 +210,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
            <td></td>
            <td></td>
            <td></td>
-   
          </tr>
        </tfoot>
      </table> 
