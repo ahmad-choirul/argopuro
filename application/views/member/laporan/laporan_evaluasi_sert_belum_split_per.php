@@ -84,7 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
              <th></th>
              <th></th>
              <th></th>
-             <th></th>
+    
            </tr>
 
            <tr>
@@ -138,7 +138,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
              <th></th>
              <th></th>
              <th></th>
-             <th></th>
+        
            </tr>
 
            <tr>
