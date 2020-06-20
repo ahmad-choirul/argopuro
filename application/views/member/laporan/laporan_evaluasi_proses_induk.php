@@ -49,11 +49,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <thead>
                                 <tr>
 
-                                    <th rowspan="3" style="text-align: center; color: black;">PROYEK</th>
-                                    <th colspan="6" style="text-align: center;color: black;"> PROSES INDUK </th>
-                                    <th colspan="3" rowspan="2" style="text-align: center;color: black;">TERBIT TAHUN 2020</th>
-                                    <th colspan="3" rowspan="2" style="text-align: center;color: black;">SISA BELUM TERBIT s/d 2020</th>
-                                    <th rowspan="3" style="text-align: center;color: black;">KETERANGAN</th>
+                                    <th rowspan="3" style="text-align: center;">PROYEK</th>
+                                    <th colspan="6" style="text-align: center;;"> PROSES INDUK </th>
+                                    <th colspan="3" rowspan="2" style="text-align: center;">TERBIT TAHUN 2020</th>
+                                    <th colspan="3" rowspan="2" style="text-align: center;">SISA BELUM TERBIT s/d 2020</th>
+                                    <th rowspan="3" style="text-align: center;">KETERANGAN</th>
 
 
                                 </tr>
