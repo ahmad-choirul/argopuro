@@ -3,8 +3,8 @@
 </header>  
 <!-- start: page -->
 <form action="" method="get">
-    <div class="form-group mt-lg tanggal">
-        <div class="row">
+    <div class="form-group mt-lg tanggal" >
+        <div class="row" style="background-color: #ffffff;width: 100%; padding: 4px;margin-left: 0%;">
             <label class="col-sm-1 control-label">Periode<span class="required">*</span></label>
             <div class="col-sm-4">
                 <input type="text" name="firstdate" class="form-control tanggalformat" value="<?php echo $firstdate ?>" data-plugin-datepicker required/>
@@ -14,7 +14,8 @@
             </div>
             <div class="col-sm-2">
                 <button type="submit" class="btn btn-primary"> Cari </button>
-            </div> <a class="btn btn-primary" href="<?php echo site_url('export_excel/excel_laporan1_evaluasi_pembelian_detail/').$firstdate.'/'.$lastdate ?>"> cetak </a>
+                 <a class="btn btn-warning" href="<?php echo site_url('export_excel/excel_laporan1_evaluasi_pembelian_detail/').$firstdate.'/'.$lastdate ?>"> cetak </a>
+            </div>
         </div>
     </div>
 </form>
