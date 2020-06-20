@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?></option>
                                     <?php endforeach; ?>
                                 </select> 
-                            <a class="btn btn-primary" href="<?php echo site_url('Laporan/excel_laporan2rekap/').$id_perumahan ?>"> cetak </a>
+                            <a class="btn btn-primary" href="<?php echo site_url('export_excel/excel_laporan2rekap/').$id_perumahan ?>"> cetak </a>
                             </div>
                         </div>
                     </form>
