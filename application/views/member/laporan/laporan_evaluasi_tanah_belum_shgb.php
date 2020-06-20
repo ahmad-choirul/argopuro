@@ -53,11 +53,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tr>
                             <th colspan="2"></th>
 
-                            <th colspan="3" style="text-align: center; color: black;">TANAH PROYEK BELUM SHGB sd TAHUN 2019</th>
-                            <th colspan="3" style="text-align: center;color: black;"> TANAH PROYEK BELUM SHGB TH 2020 </th>
-                            <th colspan="3" style="text-align: center;color: black;">TOTAL TANAH PROYEK BELUM SHGB</th>
-                            <th colspan="3" style="text-align: center;color: black;">PROSES SHGB TAHUN 2020</th>
-                            <th colspan="3" style="text-align: center;color: black;">SISA TANAH PROYEK BELUM SHGB sd. TAHUN 2020</th>
+                            <th colspan="3" style="text-align: center; ">TANAH PROYEK BELUM SHGB sd TAHUN 2019</th>
+                            <th colspan="3" style="text-align: center;"> TANAH PROYEK BELUM SHGB TH 2020 </th>
+                            <th colspan="3" style="text-align: center;">TOTAL TANAH PROYEK BELUM SHGB</th>
+                            <th colspan="3" style="text-align: center;">PROSES SHGB TAHUN 2020</th>
+                            <th colspan="3" style="text-align: center;">SISA TANAH PROYEK BELUM SHGB sd. TAHUN 2020</th>
                             <th colspan="4" style="text-align: center; background-color: green; color: white;">PROSES PERALIHAN BANK</th>
                             <th colspan="2" style="text-align: center;background-color: green; color: white;">S TERIMA FINANCE </th>
 
