@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2020 at 05:09 AM
+-- Generation Time: Jun 20, 2020 at 10:04 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -288,8 +288,8 @@ CREATE TABLE `master_item` (
 --
 
 INSERT INTO `master_item` (`kode_item`, `nama_item`, `tanggal_pembelian`, `nama_penjual`, `nama_surat_tanah`, `status_surat_tanah`, `no_gambar`, `jumlah_bidang`, `luas_surat`, `luas_ukur`, `no_pbb`, `luas_pbb`, `njop`, `total_harga_pengalihan`, `nama_makelar`, `nilai`, `tanggal_pengalihan`, `akta_pengalihan`, `nama_pengalihan`, `pematangan`, `ganti_rugi`, `pbb`, `lain`, `waktu_update`, `keterangan`, `id_perumahan`, `id_posisi_surat`, `status_order_akta`, `jenis_pengalihan_hak`, `status_teknik`) VALUES
-(1, 'deni', '2020-01-01', 'Deni Yana', '', 1, 76, 1, 220, 220, '78/56/2020', 2020, '98/235/23', '200000', 'buna', '100000', '2020-04-22', 'Un/34', 'yani', '12000', '200000', '150000', '50000', '2020-06-17 07:47:48', 'test', 1, 0, 'proses', 'pribadi', 'sudah'),
-(2, 'tanah 1', '2020-02-05', 'ach saubari', 'ach saubari', 1, 45, 1, 220, 220, '123/51.2/34/1998', 220, '34578', '55000000', 'rahayu', '0', '2020-06-05', '', '', '', '0', '0', '0', '2020-06-15 06:00:59', 'test', 1, 0, 'belum', 'pt', 'sudah');
+(1, 'deni', '2020-01-01', 'Deni Yana', '', 1, 76, 1, 220, 220, '78/56/2020', 2020, '98/235/23', '200000', 'buna', '100000', '2020-04-22', 'Un/34', 'yani', '12000', '200000', '150000', '50000', '2020-06-19 23:54:49', 'test', 4, 0, 'proses', 'pribadi', 'sudah'),
+(2, 'tanah 1', '2019-09-19', 'ach saubari', 'ach saubari', 1, 45, 1, 220, 220, '123/51.2/34/1998', 220, '34578', '55000000', 'rahayu', '0', '2020-06-05', '', '', '', '0', '0', '0', '2020-06-20 04:55:05', 'test', 3, 0, 'proses', 'pt', 'sudah');
 
 -- --------------------------------------------------------
 
@@ -376,7 +376,8 @@ CREATE TABLE `master_regional` (
 INSERT INTO `master_regional` (`id`, `nama_regional`, `lokasi`, `status_regional`, `waktu_update`) VALUES
 (1, 'Mangli Residence', 'jember', 1, '2020-06-14 07:12:30'),
 (3, 'Bumi Mangli Permai 5', 'mangli', 3, '2020-06-14 07:13:10'),
-(4, 'Bumi Mangli Permai 4', 'mangli', 1, '2020-06-14 07:12:50');
+(4, 'Bumi Mangli Permai 4', 'mangli', 1, '2020-06-14 07:12:50'),
+(5, 'argopuro a', 'jember', 1, '2020-06-20 04:03:42');
 
 -- --------------------------------------------------------
 
@@ -588,8 +589,16 @@ CREATE TABLE `tabel_pembayaran` (
   `kode_item` int(11) NOT NULL,
   `tanggal_pembayaran` date NOT NULL,
   `total_bayar` varchar(100) NOT NULL,
-  `waktu_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `waktu_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Keterangan` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tabel_pembayaran`
+--
+
+INSERT INTO `tabel_pembayaran` (`id_pembayaran`, `kode_item`, `tanggal_pembayaran`, `total_bayar`, `waktu_update`, `Keterangan`) VALUES
+(5, 2, '2020-06-01', '1000', '2020-06-20 07:24:06', '1');
 
 -- --------------------------------------------------------
 
@@ -764,7 +773,7 @@ ALTER TABLE `master_penjual`
 -- AUTO_INCREMENT for table `master_regional`
 --
 ALTER TABLE `master_regional`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `master_serah_terima`
 --
@@ -794,7 +803,7 @@ ALTER TABLE `notes`
 -- AUTO_INCREMENT for table `tabel_pembayaran`
 --
 ALTER TABLE `tabel_pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tbl_sertifikat_tanah`
 --
