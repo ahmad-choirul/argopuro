@@ -14,7 +14,7 @@
             </div>
             <div class="col-sm-2">
                 <button type="submit" class="btn btn-primary"> Cari </button>
-                 <a class="btn btn-warning" href="<?php echo site_url('export_excel/excel_laporan1_evaluasi_pembelian_detail/').$firstdate.'/'.$lastdate ?>"> cetak </a>
+                 <a class="btn btn-warning" href="<?php echo site_url('Export_excel/excel_laporan1_evaluasi_pembelian_detail/').$firstdate.'/'.$lastdate ?>"> cetak </a>
             </div>
         </div>
     </div>

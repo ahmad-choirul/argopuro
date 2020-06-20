@@ -14,62 +14,22 @@ class Export_excel extends CI_Controller {
 		$this->load->model('master_model');
 	}
 
-    function excel_laporan2rekap($id_perumahan=''){       
+function excel_laporan2rekap($id_perumahan=''){       
 
-        $spreadsheet = new Spreadsheet();
-        $datarumah['id_perumahan'] = $id_perumahan;
-        $datarumah['dataperumahanseb'] = $this->master_model->getperumahanarray($datarumah['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31');
-        $datarumah['dataperumahanses'] = $this->master_model->getperumahanarray($datarumah['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31');
-        $datarumah['dataperumahantekseb'] = $this->master_model->getperumahanarray($datarumah['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','sudah');
-        $datarumah['dataperumahantekses'] = $this->master_model->getperumahanarray($datarumah['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','sudah');
-        $datarumah['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+    $spreadsheet = new Spreadsheet();
+    $datarumah['id_perumahan'] = $id_perumahan;
+    $datarumah['dataperumahanseb'] = $this->master_model->getperumahanarray($datarumah['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31');
+    $datarumah['dataperumahanses'] = $this->master_model->getperumahanarray($datarumah['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31');
+    $datarumah['dataperumahantekseb'] = $this->master_model->getperumahanarray($datarumah['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','sudah');
+    $datarumah['dataperumahantekses'] = $this->master_model->getperumahanarray($datarumah['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','sudah');
+    $datarumah['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
 
-        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load(__DIR__ . '/file/evaluasi_land_bank_per.xlsx');
-        $i=12;
-
-        $nama_perumahan = '';
-        $no=1;
-        foreach($datarumah['dataperumahanseb'] as $data) { 
-          if ($data['tanggal_pengalihan']!=null) {
-            $tgl_pengalihan = tgl_indo($data['tanggal_pengalihan']);
-        }else{
-            $tgl_pengalihan = '-';
-        }
-        if ($data['id_perumahan']=='0') {
-            $perumahan = 'Tidak ada';
-        }else{
-            $perumahan = $data['nama_regional'];
-        }
-        $nama_perumahan = $perumahan;
-        $spreadsheet->setActiveSheetIndex(0)
-        ->setCellValue('A'.$i, $no++.'')
-        ->setCellValue('B'.$i, $perumahan)
-        ->setCellValue('C'.$i, $data['no_gambar'])
-        ->setCellValue('D'.$i, tgl_indo($data['tanggal_pembelian']))
-        ->setCellValue('E'.$i, $data['nama_penjual'])
-        ->setCellValue('F'.$i, $data['kode_sertifikat'])
-        ->setCellValue('G'.$i, $data['nama_surat_tanah'])
-        ->setCellValue('H'.$i, $data['luas_surat'])
-        ->setCellValue('I'.$i, $data['luas_ukur'])
-        ->setCellValue('J'.$i, $data['id_posisi_surat'])
-        ->setCellValue('K'.$i, '')
-        ->setCellValue('L'.$i, $data['status_order_akta'])
-        ->setCellValue('M'.$i, $data['jenis_pengalihan_hak'])
-        ->setCellValue('N'.$i, $data['akta_pengalihan'])
-        ->setCellValue('O'.$i, $tgl_pengalihan)
-        ->setCellValue('P'.$i, $data['nama_pengalihan'])
-        ->setCellValue('Q'.$i, $data['status_teknik'])
-        ->setCellValue('R'.$i, $data['keterangan']);
-        $i++;
-        $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
-    }
-    $i+=3;
+    $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load(__DIR__ . '\file\evaluasi_land_bank_per.xlsx');
+    $i=12;
 
     $nama_perumahan = '';
     $no=1;
-    $nama_perumahan = '';
-    $no=1;
-    foreach($datarumah['dataperumahanses'] as $data) { 
+    foreach($datarumah['dataperumahanseb'] as $data) { 
       if ($data['tanggal_pengalihan']!=null) {
         $tgl_pengalihan = tgl_indo($data['tanggal_pengalihan']);
     }else{
@@ -103,6 +63,46 @@ class Export_excel extends CI_Controller {
     $i++;
     $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
 }
+$i+=3;
+
+$nama_perumahan = '';
+$no=1;
+$nama_perumahan = '';
+$no=1;
+foreach($datarumah['dataperumahanses'] as $data) { 
+  if ($data['tanggal_pengalihan']!=null) {
+    $tgl_pengalihan = tgl_indo($data['tanggal_pengalihan']);
+}else{
+    $tgl_pengalihan = '-';
+}
+if ($data['id_perumahan']=='0') {
+    $perumahan = 'Tidak ada';
+}else{
+    $perumahan = $data['nama_regional'];
+}
+$nama_perumahan = $perumahan;
+$spreadsheet->setActiveSheetIndex(0)
+->setCellValue('A'.$i, $no++)
+->setCellValue('B'.$i, $perumahan)
+->setCellValue('C'.$i, $data['no_gambar'])
+->setCellValue('D'.$i, tgl_indo($data['tanggal_pembelian']))
+->setCellValue('E'.$i, $data['nama_penjual'])
+->setCellValue('F'.$i, $data['kode_sertifikat'])
+->setCellValue('G'.$i, $data['nama_surat_tanah'])
+->setCellValue('H'.$i, $data['luas_surat'])
+->setCellValue('I'.$i, $data['luas_ukur'])
+->setCellValue('J'.$i, $data['id_posisi_surat'])
+->setCellValue('K'.$i, '')
+->setCellValue('L'.$i, $data['status_order_akta'])
+->setCellValue('M'.$i, $data['jenis_pengalihan_hak'])
+->setCellValue('N'.$i, $data['akta_pengalihan'])
+->setCellValue('O'.$i, $tgl_pengalihan)
+->setCellValue('P'.$i, $data['nama_pengalihan'])
+->setCellValue('Q'.$i, $data['status_teknik'])
+->setCellValue('R'.$i, $data['keterangan']);
+$i++;
+$spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
+}
 
 $i+=10 ;
 
@@ -121,7 +121,7 @@ if ($data['id_perumahan']=='0') {
 }
 $nama_perumahan = $perumahan;
 $spreadsheet->setActiveSheetIndex(0)
-->setCellValue('A'.$i, $no++.'')
+->setCellValue('A'.$i, $no++)
 ->setCellValue('B'.$i, $perumahan)
 ->setCellValue('C'.$i, $data['no_gambar'])
 ->setCellValue('D'.$i, tgl_indo($data['tanggal_pembelian']))
@@ -161,7 +161,7 @@ if ($data['id_perumahan']=='0') {
 }
 $nama_perumahan = $perumahan;
 $spreadsheet->setActiveSheetIndex(0)
-->setCellValue('A'.$i, $no++.'')
+->setCellValue('A'.$i, $no++)
 ->setCellValue('B'.$i, $perumahan)
 ->setCellValue('C'.$i, $data['no_gambar'])
 ->setCellValue('D'.$i, tgl_indo($data['tanggal_pembelian']))
@@ -203,24 +203,24 @@ header('Cache-Control: max-age=1');
         exit;  
     }
 
-    function excel_laporan1_evaluasi_pembelian_detail($firstdate='',$lastdate=''){       
+   function excel_laporan1_evaluasi_pembelian_detail($firstdate='',$lastdate=''){       
 
         $spreadsheet = new Spreadsheet();
         $data['firstdate'] =$firstdate;
         $data['lastdate'] = $lastdate;
-        $datarumah['perumahandalamijin'] = $this->db->order_by("id","DESC")->where('status_regional','1')->get('master_regional')->result();
-        $datarumah['perumahanluarijin'] = $this->db->order_by("id","DESC")->where('status_regional','2')->get('master_regional')->result();
-        $datarumah['perumahanlokasi'] = $this->db->order_by("id","DESC")->where('status_regional','3')->get('master_regional')->result();
-        $datrumah['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
-        $datarumah['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
+        $data['perumahandalamijin'] = $this->db->order_by("id","DESC")->where('status_regional','1')->get('master_regional')->result();
+        $data['perumahanluarijin'] = $this->db->order_by("id","DESC")->where('status_regional','2')->get('master_regional')->result();
+        $data['perumahanlokasi'] = $this->db->order_by("id","DESC")->where('status_regional','3')->get('master_regional')->result();
+        $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+        $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
 
-        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load(__DIR__ . '/file/laporan_evaluasi_pembelian.xlsx');
+        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load(__DIR__ . '\file\laporan_evaluasi_pembelian.xlsx');
         $i=9;
         $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
         $stylefont = array('font' => array('bold' => true ));
-        foreach ($datarumah['perumahandalamijin'] as $per){
+        foreach ($data['perumahandalamijin'] as $per){
             $dataperumahan = $this->master_model->getperumahan($per->id,$firstdate,$lastdate);
-            if ($dataperumahan!=null){
+            if ($dataperumahan!=''){
                 $totalbidang=0;
                 $totalluassurat=0;
                 $totalluasukur=0;
@@ -238,7 +238,7 @@ header('Cache-Control: max-age=1');
                 $nama_perumahan='';
                 foreach ($dataperumahan as $value => $data){
 
-                 if ($data->tanggal_pengalihan!=null) {
+                   if ($data->tanggal_pengalihan!=null) {
                     $tgl_pengalihan = tgl_indo($data->tanggal_pengalihan);
                 }else{
                     $tgl_pengalihan = '-';
@@ -317,24 +317,22 @@ header('Cache-Control: max-age=1');
                 $i++;
                 $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
             }
-            if ($dataperumahan!=null){
-                $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
-                $spreadsheet->setActiveSheetIndex(0)
-                ->setCellValue('C'.$i, 'TOTAL' );
-                $spreadsheet->getActiveSheet()->mergeCells('C'.$i.':D'.$i);
-                $spreadsheet->getActiveSheet()->getStyle('C'.$i)->applyFromArray($stylefont);
-                $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
-                $i+=2;
-            }
+            $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
+            $spreadsheet->setActiveSheetIndex(0)
+            ->setCellValue('C'.$i, 'TOTAL' );
+            $spreadsheet->getActiveSheet()->mergeCells('C'.$i.':D'.$i);
+            $spreadsheet->getActiveSheet()->getStyle('C'.$i)->applyFromArray($stylefont);
+            $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
+            $i+=2;
         }
     }
 
-     $i+=8;
+    $i+=7;
         $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
         $stylefont = array('font' => array('bold' => true ));
-        foreach ($datarumah['perumahanluarijin'] as $per){
+        foreach ($data['perumahanluarijin'] as $get => $per){
             $dataperumahan = $this->master_model->getperumahan($per->id,$firstdate,$lastdate);
-            if ($dataperumahan!=null){
+            if ($dataperumahan!=''){
                 $totalbidang=0;
                 $totalluassurat=0;
                 $totalluasukur=0;
@@ -352,7 +350,7 @@ header('Cache-Control: max-age=1');
                 $nama_perumahan='';
                 foreach ($dataperumahan as $value => $data){
 
-                 if ($data->tanggal_pengalihan!=null) {
+                   if ($data->tanggal_pengalihan!=null) {
                     $tgl_pengalihan = tgl_indo($data->tanggal_pengalihan);
                 }else{
                     $tgl_pengalihan = '-';
@@ -401,7 +399,7 @@ header('Cache-Control: max-age=1');
                 }
 
                 $spreadsheet->setActiveSheetIndex(0)
-                ->setCellValue('B'.$i, $no++.'' )
+                ->setCellValue('B'.$i, $no++ )
                 ->setCellValue('C'.$i,tgl_indo($data->tanggal_pembelian))
                 ->setCellValue('D'.$i,$data->nama_penjual)  
                 ->setCellValue('E'.$i,$data->nama_surat_tanah)  
@@ -431,25 +429,22 @@ header('Cache-Control: max-age=1');
                 $i++;
                 $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
             }
-            if ($dataperumahan!=null){
-                $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
-                $spreadsheet->setActiveSheetIndex(0)
-                ->setCellValue('C'.$i, 'TOTAL' );
-                $spreadsheet->getActiveSheet()->mergeCells('C'.$i.':D'.$i);
-                $spreadsheet->getActiveSheet()->getStyle('C'.$i)->applyFromArray($stylefont);
-                $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
-                $i+=2;
-            }
+            $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
+            $spreadsheet->setActiveSheetIndex(0)
+            ->setCellValue('C'.$i, 'TOTAL' );
+            $spreadsheet->getActiveSheet()->mergeCells('C'.$i.':D'.$i);
+            $spreadsheet->getActiveSheet()->getStyle('C'.$i)->applyFromArray($stylefont);
+            $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
+            $i+=2;
         }
     }
 
-
-     $i+=9;
+    $i+=7;
         $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
         $stylefont = array('font' => array('bold' => true ));
-        foreach ($datarumah['perumahanlokasi'] as $per){
+        foreach ($data['perumahanlokasi'] as $per){
             $dataperumahan = $this->master_model->getperumahan($per->id,$firstdate,$lastdate);
-            if ($dataperumahan!=null){
+            if ($dataperumahan!=''){
                 $totalbidang=0;
                 $totalluassurat=0;
                 $totalluasukur=0;
@@ -467,7 +462,7 @@ header('Cache-Control: max-age=1');
                 $nama_perumahan='';
                 foreach ($dataperumahan as $value => $data){
 
-                 if ($data->tanggal_pengalihan!=null) {
+                   if ($data->tanggal_pengalihan!=null) {
                     $tgl_pengalihan = tgl_indo($data->tanggal_pengalihan);
                 }else{
                     $tgl_pengalihan = '-';
@@ -516,7 +511,7 @@ header('Cache-Control: max-age=1');
                 }
 
                 $spreadsheet->setActiveSheetIndex(0)
-                ->setCellValue('B'.$i, $no++.'' )
+                ->setCellValue('B'.$i, $no++ )
                 ->setCellValue('C'.$i,tgl_indo($data->tanggal_pembelian))
                 ->setCellValue('D'.$i,$data->nama_penjual)  
                 ->setCellValue('E'.$i,$data->nama_surat_tanah)  
@@ -546,18 +541,15 @@ header('Cache-Control: max-age=1');
                 $i++;
                 $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
             }
-            if ($dataperumahan!=null){
-                $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
-                $spreadsheet->setActiveSheetIndex(0)
-                ->setCellValue('C'.$i, 'TOTAL' );
-                $spreadsheet->getActiveSheet()->mergeCells('C'.$i.':D'.$i);
-                $spreadsheet->getActiveSheet()->getStyle('C'.$i)->applyFromArray($stylefont);
-                $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
-                $i+=2;
-            }
+            $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
+            $spreadsheet->setActiveSheetIndex(0)
+            ->setCellValue('C'.$i, 'TOTAL' );
+            $spreadsheet->getActiveSheet()->mergeCells('C'.$i.':D'.$i);
+            $spreadsheet->getActiveSheet()->getStyle('C'.$i)->applyFromArray($stylefont);
+            $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
+            $i+=2;
         }
     }
-
    // Rename worksheet
     $spreadsheet->getActiveSheet()->setTitle('Laporan '.$perumahan);
    // Set active sheet index to the first sheet, so Excel opens this as the first sheet
