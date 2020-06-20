@@ -383,17 +383,20 @@
                            <tr>
                              <?php 
                              $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Hapus</a></li>':'';
-                             $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Edit</a></li>':'';
-                             $tombol='
-                             <div class="btn-group dropup">
-                             <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
-                             <ul class="dropdown-menu" role="menu"> 
-                             <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Detail</a></li> 
-                             '.$tomboledit.'
-                             '.$tombolhapus.' 
-                             </ul>
-                             </div>
-                             ';
+                      $tombolbayar = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="bayar(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Pembayaran</a></li>':'';
+                     $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Edit</a></li>':'';
+                     $tombol='
+                     <div class="btn-group dropup">
+                     <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+                     <ul class="dropdown-menu" role="menu"> 
+                     <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Detail</a></li> 
+                     '.$tombolbayar.'
+                     '.$tomboledit.'
+                     '.$tombolhapus.' 
+                     </ul>
+                     </div>
+                     ';
+
 
                              if ($data->tanggal_pengalihan!=null) {
                                 $tgl_pengalihan = tgl_indo($data->tanggal_pengalihan);
@@ -641,20 +644,21 @@
                         </thead>
                         <?php foreach ($dataperumahan as $value => $data):                                 ?>
                            <tr>
-                             <?php 
+                              <?php 
                              $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Hapus</a></li>':'';
-                             $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Edit</a></li>':'';
-                             $tombol='
-                             <div class="btn-group dropup">
-                             <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
-                             <ul class="dropdown-menu" role="menu"> 
-                             <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Detail</a></li> 
-                             '.$tomboledit.'
-                             '.$tombolhapus.' 
-                             </ul>
-                             </div>
-                             ';
-
+                      $tombolbayar = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="bayar(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Pembayaran</a></li>':'';
+                     $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Edit</a></li>':'';
+                     $tombol='
+                     <div class="btn-group dropup">
+                     <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+                     <ul class="dropdown-menu" role="menu"> 
+                     <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Detail</a></li> 
+                     '.$tombolbayar.'
+                     '.$tomboledit.'
+                     '.$tombolhapus.' 
+                     </ul>
+                     </div>
+                     ';
                              if ($data->tanggal_pengalihan!=null) {
                                 $tgl_pengalihan = tgl_indo($data->tanggal_pengalihan);
                             }else{
