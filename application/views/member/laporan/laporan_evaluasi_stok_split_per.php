@@ -32,13 +32,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php $this->load->view("komponen/sidebar.php") ?>
     <section role="main" class="content-body">
      <header class="page-header">  
-      <h2>Evaluasi Proses Splitsing</h2>
+      <h2>Evaluasi Stok Split </h2>
     </header>  
     <!-- start: page -->
     <section class="panel">
       <header class="panel-heading">    
         <div class="row show-grid">
-          <div class="col-md-6" align="left"><h2 class="panel-title">Nama Perumahan | Proses Tahun 2019</h2></div>
+          <div class="col-md-6" align="left"><h2 class="panel-title">Nama Perumahan </h2></div>
           <?php  
           echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
           ?> 
@@ -47,181 +47,176 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="panel-body"> 
         <div class="table" style="overflow-x: auto;white-space: nowrap;">
          <table class="table table-bordered table-hover table-striped" id="itemsdata">
-          <thead>
+          <thead style="position: sticky;">
 
            <tr>
-             <th style="text-align: center;">NO</th>
-             <th style="text-align: center;">INDUK</th>
-             <th style="text-align: center;">UNIT</th>
-             <th style="text-align: center;">BLOK</th>
-             <th style="text-align: center;">LUAS DAFTAR</th>
-             <th style="text-align: center;">LUAS TERBIT</th>
-             <th style="text-align: center;">SELISIH</th>
-             <th style="text-align: center;">NO SHGB</th>
-             <th style="text-align: center;">MASA BERLAKU</th>
-             <th style="text-align: center;">NO DAFTAR</th>
-             <th style="text-align: center;">TGL DAFTAR</th>
-             <th style="text-align: center;">TGL TERBIT</th>
-             <th style="text-align: center;">KET</th>
+             <th rowspan="4" style="text-align: center;">NO</th>
+             <th rowspan="4" style="text-align: center;">NAMA</th>
+             <th rowspan="4" style="text-align: center;">BLOK</th>
+             <th rowspan="4" style="text-align: center;">JML KAV</th>
+             <th colspan="3" rowspan="2" style="text-align: center;">L. TANAH</th>
+             <th rowspan="4" style="text-align: center;">NO INDUK</th>
+             <th rowspan="4" style="text-align: center;">NO SERT </th>
+             <th rowspan="4" style="text-align: center;">TGL DAFTAR</th>
+             <th rowspan="4" style="text-align: center;">TGL TERBIT</th>
+             <th rowspan="4" style="text-align: center;">BATAS WAKTU HGB</th>
+             <th colspan="6" rowspan="2" style="text-align: center;">BELUM TERBIT SPLIT</th>
+             <th colspan="6" rowspan="2" style="text-align: center;">TERBIT STOK</th>
+             <th colspan="12" style="text-align: center;">PENJUALAN 2020</th>
+             <th rowspan="4" style="text-align: center;">KETERANGAN</th>
 
            </tr>
+           <tr>
+             <th colspan="6"  style="text-align: center;">STOCK</th>
+             <th colspan="6" style="text-align: center;">BELUM TERBIT SPLIT</th>
+           </tr>
+           <tr>
+             <th rowspan="2" style="text-align: center;">TECHNIC</th>
+             <th rowspan="2" style="text-align: center;">SERT</th>
+             <th rowspan="2" style="text-align: center;">SELISIH</th>
+             <th colspan="2" style="text-align: center;">BELUM PROSES</th>
+             <th colspan="2" style="text-align: center;">PROSES</th>
+             <th colspan="2" style="text-align: center;">TOTAL</th>
+             <th colspan="2" style="text-align: center;">sd 2019</th>
+             <th colspan="2" style="text-align: center;">2020L</th>
+             <th colspan="2" style="text-align: center;">TOTAL</th>
+             <th colspan="2" style="text-align: center;">sd 2019</th>
+             <th colspan="2" style="text-align: center;">2020L</th>
+             <th colspan="2" style="text-align: center;">TOTAL</th>
+             <th colspan="2" style="text-align: center;">BELUM PROSES</th>
+             <th colspan="2" style="text-align: center;">PROSESL</th>
+             <th colspan="2" style="text-align: center;">TOTAL</th>
 
+
+           </tr>
+           <tr>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;">KAV</th>
+             <th style="text-align: center;">SERT</th>
+
+
+           </tr>
            
 
          </thead>
          <tbody>
 
-           <tr>
-
-             <th >1</th>
-             <th>abc</th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-           </tr>
 
            <tr>
-             <th colspan="13" bgcolor="grey"></th>
+            <td>1</td>
+            <td>aad</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
 
-           </tr>
-           <tr>
+          </tr>
 
-             <th colspan="2">JUMLAH A</th>
+          <tr>
+            <th colspan="37" bgcolor="grey"></th>
 
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-           </tr> <tr>
+          </tr>
 
-             <th colspan="2">TOTAL </th>
 
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-           </tr>
-         </tbody>
-       </table> 
-     </div>
-   </div>
- </section>
- <section class="panel">
-  <header class="panel-heading">    
-    <div class="row show-grid">
-      <div class="col-md-6" align="left"><h2 class="panel-title">Nama Perumahan | Proses Tahun 2020</h2></div>
-      <?php  
-      echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
-      ?> 
-    </div>
-  </header>
-  <div class="panel-body"> 
-    <div class="table" style="overflow-x: auto;white-space: nowrap;">
-      <table class="table table-bordered table-hover table-striped" id="itemsdata">
-        <thead>
-
+        </tbody>
+        <tfoot>
          <tr>
-           <th style="text-align: center;">NO</th>
-           <th style="text-align: center;">INDUK</th>
-           <th style="text-align: center;">UNIT</th>
-           <th style="text-align: center;">BLOK</th>
-           <th style="text-align: center;">LUAS DAFTAR</th>
-           <th style="text-align: center;">LUAS TERBIT</th>
-           <th style="text-align: center;">SELISIH</th>
-           <th style="text-align: center;">NO SHGB</th>
-           <th style="text-align: center;">MASA BERLAKU</th>
-           <th style="text-align: center;">NO DAFTAR</th>
-           <th style="text-align: center;">TGL DAFTAR</th>
-           <th style="text-align: center;">TGL TERBIT</th>
-           <th style="text-align: center;">KET</th>
-
+           <td colspan="2">TOTAL </td>
+           
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
+           <td></td>
          </tr>
-
-
-
-       </thead>
-       <tbody>
-        <tr>
-
-         <th >1</th>
-         <th>abc</th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-       </tr>
-       <tr>
-         <th colspan="13" bgcolor="grey"></th>
-
-       </tr>
-       <tr>
-
-         <th colspan="2">JUMLAH A</th>
-
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-       </tr>
-        <tr>
-
-             <th colspan="2">TOTAL </th>
-
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-           </tr>
-
-     </tbody>
-
-   </table> 
+       </tfoot>
+     </table> 
+   </div>
  </div>
-</div>
 </section>
+
 
 <!-- end: page -->
 </section>
