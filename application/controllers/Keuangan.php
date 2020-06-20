@@ -16,6 +16,7 @@
             level_user('keuangan','index',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
             $this->load->view('member/keuangan/beranda');
         }   
+
         public function keuangandetail()
         {
             cekajax(); 
@@ -290,46 +291,34 @@
     echo json_encode($data); 
 }
 
-public function piutang()
+public function bayar_tanah($kode_item)
 {    
-    $this->load->view('member/keuangan/piutang');
+    $data['kode_item'] = $kode_item;
+    $this->load->view('member/keuangan/bayar_tanah',$data);
 }
 
-public function datapiutang()
+public function databayar_tanah($kode_item)
 {   
     cekajax(); 
     $draw = intval($this->input->get("draw")); 
     $start = intval($this->input->get("start")); 
     $length = intval($this->input->get("length"));
-    $query = $this->db->select("a.id, a.id_penjualan, a.id_pembeli, a.judul, a.tanggal, a.tanggal_jatuh_tempo, a.nominal, a.nominal_dibayar, a.sudah_lunas, b.nama_pembeli, b.handphone")->from("piutang_history a")->join('master_pembeli b', 'a.id_pembeli = b.id')->get();  
+    $query = $this->db->select("a.id_pembayaran, a.kode_item, a.tanggal_pembayaran, a.total_bayar, a.keterangan")->from("tabel_pembayaran a")->get();  
     $data = []; 
-    foreach($query->result() as $r) { 
-        $tombol = ''; 
-        $sisa =  $r->nominal - $r->nominal_dibayar;
-        $statuslunas ='<span class="btn btn-danger btn-xs">Belum</span>';
-        if($r->sudah_lunas == '1'){
-            $statuslunas ='<span class="btn btn-success btn-xs">Sudah</span>';
-            $tombolbayar ='';
-        }  
+    foreach($query->result() as $r) {  
         $data[] = array(   
             ' 
             <div class="btn-group dropup">
             <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
             <ul class="dropdown-menu" role="menu">
-            <li><a href="#" onclick="detail(this)" data-id="'.$r->id.'">Rincian</a></li> 
-            <li><a href="#" onclick="bayar(this)" data-id="'.$r->id.'">Bayar</a></li>
+            <li><a href="#" onclick="hapus(this)" data-id="'.$r->id_pembayaran.'">Hapus</a></li>
             </ul>
             </div>
             ', 
-            $this->security->xss_clean($r->id_penjualan),
-            $this->security->xss_clean($r->nama_pembeli),
-            $this->security->xss_clean($r->handphone),  
-            $this->security->xss_clean(tgl_indo($r->tanggal)),  
-            $this->security->xss_clean(rupiah($r->nominal)),  
-            $this->security->xss_clean(tgl_indo($r->tanggal_jatuh_tempo)),   
-            $this->security->xss_clean(rupiah($r->nominal_dibayar)),   
-            $this->security->xss_clean(rupiah($sisa)),   
-            $this->security->xss_clean($statuslunas), 
+            $this->security->xss_clean($r->id_pembayaran),
+            $this->security->xss_clean(tgl_indo($r->tanggal_pembayaran)),  
+            $this->security->xss_clean(rupiah($r->total_bayar)),   
+            $this->security->xss_clean($r->keterangan)
         ); 
     }  
     $result = array( 
@@ -341,77 +330,11 @@ public function datapiutang()
     echo json_encode($result);  
 } 
 
-public function piutangdetail(){  
-    cekajax(); 
-    $idd = $this->input->get("id");   
-    $query = $this->keuangan_model->get_piutang($idd); 
-    foreach ($query as $po_data) {    
-        $sisa = $po_data['nominal'] - $po_data['nominal_dibayar'] ;
-        if($po_data['sudah_lunas'] == '1'){
-            $statuslunas ='<span class="btn btn-success btn-xs">Sudah Lunas</span>';
-            $tombolbayar ='';
-        }else{
-            $statuslunas ='<span class="btn btn-danger btn-xs">Belum Lunas</span>';
-        }
-        $result = array(  
-            "id" => $this->security->xss_clean($po_data['id']),
-            "judul" => $this->security->xss_clean($po_data['judul']),
-            "tanggal" => $this->security->xss_clean(tgl_indo($po_data['tanggal'])),
-            "nominal" => $this->security->xss_clean(rupiah($po_data['nominal'])), 
-            "nominal_dibayar" => $this->security->xss_clean(rupiah($po_data['nominal_dibayar'])),
-            "sisa" => $this->security->xss_clean(rupiah($sisa)),
-            "id_penjualan" => $this->security->xss_clean($po_data['id_penjualan']),
-            "id_pembeli" => $this->security->xss_clean($po_data['id_pembeli']), 
-            "tanggal_jatuh_tempo" => $this->security->xss_clean(tgl_indo($po_data['tanggal_jatuh_tempo'])),  
-            "tanggal_jatuh_tempo_ymd" => $this->security->xss_clean($po_data['tanggal_jatuh_tempo']),   
-            "nama_pembeli" => $this->security->xss_clean($po_data['nama_pembeli']),
-            "jenis_kelamin" => $this->security->xss_clean($po_data['jenis_kelamin']),
-            "alamat" => $this->security->xss_clean($po_data['alamat']),
-            "telepon" => $this->security->xss_clean($po_data['telepon']),
-            "handphone" => $this->security->xss_clean($po_data['handphone']),
-            "status" => $statuslunas,
-            "keterangan" => $this->security->xss_clean($po_data['keterangan'])
-        );     
-    } 
-    $detailpo = $this->db->get_where('piutang_dibayar_history', array('id_piutang' => $idd)); 
-    if($detailpo->num_rows() > 0) { 
-        foreach($detailpo->result() as $r) {     
-            $subArray['id']=$this->security->xss_clean($r->id); 
-            $subArray['tanggal']=$this->security->xss_clean(tgl_indo($r->tanggal)); 
-            $subArray['nominal']=$this->security->xss_clean(rupiah($r->nominal));
-            $subArray['keterangan']=$this->security->xss_clean($r->keterangan);
-            $subArray['nominalInt']=$this->security->xss_clean($r->nominal); 
-            $arraysub[] =  $subArray ; 
-        }  
-    }else{
-        $subArray['id']=""; 
-        $subArray['tanggal']=""; 
-        $subArray['nominal']="";
-        $subArray['keterangan']=""; 
-        $arraysub[] =  $subArray ; 
-    }
 
-    $query = $this->keuangan_model->get_piutangdetail($idd); 
-    foreach ($query as $po_data) {   
-        $subArrayProduk['nama_item']= $this->security->xss_clean($po_data['nama_item']); 
-        $subArrayProduk['kode_item']= $this->security->xss_clean($po_data['kode_item']); 
-        $subArrayProduk['harga']= $this->security->xss_clean(rupiah($po_data['harga'])); 
-        $subArrayProduk['kuantiti']= $this->security->xss_clean($po_data['kuantiti']); 
-        $subArrayProduk['diskon']= $this->security->xss_clean(rupiah($po_data['diskon'])); 
-        $subArrayProduk['total']= $this->security->xss_clean(rupiah($po_data['total'])); 
-        $arraysubProduk[] =  $subArrayProduk ;  
-    } 
-
-    $datasub = $arraysub;
-    $dataproduk = $arraysubProduk;
-    $array[] =  $result ; 
-    echo'{"datarows":'.json_encode($array).',"datasub":'.json_encode($datasub).',"dataproduk":'.json_encode($dataproduk).'}';
-}
-
-public function piutanghapuspembayaran(){ 
+public function bayar_tanahhapuspembayaran(){ 
     cekajax(); 
     $hapus = $this->keuangan_model;
-    if($hapus->hapusdatapembayaranpiutang()){ 
+    if($hapus->hapusdatapembayaranbayar_tanah()){ 
         $data['success']= true;
         $data['message']="Berhasil menghapus data"; 
     }else{    
@@ -422,23 +345,16 @@ public function piutanghapuspembayaran(){
     echo json_encode($data); 
 }  
 
-public function piutangtambahpembayaran(){ 
+public function bayar_tanahtambahpembayaran(){ 
     cekajax(); 
     $simpan = $this->keuangan_model;
-    $validation = $this->form_validation; 
-    $validation->set_rules($simpan->rulespiutangdibayar());
-    if ($this->form_validation->run() == FALSE){
-        $errors = $this->form_validation->error_array();
+    if($simpan->simpandatabayar_tanahdibayar()){ 
+        $data['success']= true;
+        $data['message']="Berhasil menyimpan data";  
+    }else{
+        $errors['fail'] = "gagal melakukan update data";
         $data['errors'] = $errors;
-    }else{     
-        if($simpan->simpandatapiutangdibayar()){ 
-            $data['success']= true;
-            $data['message']="Berhasil menyimpan data";  
-        }else{
-            $errors['fail'] = "gagal melakukan update data";
-            $data['errors'] = $errors;
-        } 
-    }
+    } 
     $data['token'] = $this->security->get_csrf_hash();
     echo json_encode($data); 
 }
@@ -615,16 +531,16 @@ function cashinout_data(){
     echo'['.json_encode($result).']';
 }
 
-function piutang_data(){ 
+function bayar_tanah_data(){ 
     cekajax(); 
-    $dibayar_minggu = $this->db->select('SUM(nominal) as total')->from('piutang_dibayar_history')->where('tanggal BETWEEN "'. date('Y-m-d', strtotime('monday this week')). '" and "'. date('Y-m-d', strtotime('sunday this week')).'"')->get()->row();
-    $total_piutang_belum_bayar = $this->db->select('SUM(nominal - nominal_dibayar) as total')->from('piutang_history')->where('sudah_lunas ="0"')->get()->row();
+    $dibayar_minggu = $this->db->select('SUM(nominal) as total')->from('bayar_tanah_dibayar_history')->where('tanggal BETWEEN "'. date('Y-m-d', strtotime('monday this week')). '" and "'. date('Y-m-d', strtotime('sunday this week')).'"')->get()->row();
+    $total_bayar_tanah_belum_bayar = $this->db->select('SUM(nominal - nominal_dibayar) as total')->from('bayar_tanah_history')->where('sudah_lunas ="0"')->get()->row();
 
-    $akan_jatuh_tempo = $this->db->select('*')->from('piutang_history')->where('tanggal_jatuh_tempo <= "'. date('Y-m-d',strtotime('+2 weeks')). '" and tanggal_jatuh_tempo > "'. date('Y-m-d'). '" and sudah_lunas ="0"')->get()->num_rows();
-    $sudah_jatuh_tempo = $this->db->select('*')->from('piutang_history')->where('tanggal_jatuh_tempo <= "'. date('Y-m-d'). '" and sudah_lunas ="0"')->get()->num_rows(); 
+    $akan_jatuh_tempo = $this->db->select('*')->from('bayar_tanah_history')->where('tanggal_jatuh_tempo <= "'. date('Y-m-d',strtotime('+2 weeks')). '" and tanggal_jatuh_tempo > "'. date('Y-m-d'). '" and sudah_lunas ="0"')->get()->num_rows();
+    $sudah_jatuh_tempo = $this->db->select('*')->from('bayar_tanah_history')->where('tanggal_jatuh_tempo <= "'. date('Y-m-d'). '" and sudah_lunas ="0"')->get()->num_rows(); 
     $result = array(   
         "dibayar_minggu" => $this->security->xss_clean(rupiah($dibayar_minggu->total)),
-        "total_piutang_belum_bayar" => $this->security->xss_clean(rupiah($total_piutang_belum_bayar ->total)),
+        "total_bayar_tanah_belum_bayar" => $this->security->xss_clean(rupiah($total_bayar_tanah_belum_bayar ->total)),
         "akan_jatuh_tempo" => $this->security->xss_clean($akan_jatuh_tempo." Transaksi"),   
         "sudah_jatuh_tempo" => $this->security->xss_clean($sudah_jatuh_tempo." Transaksi"),
     );    

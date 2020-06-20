@@ -288,75 +288,48 @@ class Keuangan_model extends CI_Model{
         return TRUE;
     } 
 
-    public function get_piutang($idd){ 
+    public function get_bayar_tanah($idd){ 
         $this->db->select("a.id, a.id_penjualan, a.id_pembeli, a.judul, a.tanggal, a.tanggal_jatuh_tempo, a.nominal, a.nominal_dibayar, a.sudah_lunas, a.tanggal_lunas, a.keterangan, b.nama_pembeli, b.jenis_kelamin, b.alamat, b.telepon, b.handphone");
-        $this->db->from("piutang_history a");
+        $this->db->from("bayar_tanah_history a");
         $this->db->join('master_pembeli b', 'a.id_pembeli = b.id'); 
         $this->db->where('a.id', $idd,'1'); 
         return $this->db->get()->result_array();
     }
-    public function get_piutangdetail($idd){ 
+    public function get_bayar_tanahdetail($idd){ 
         $this->db->select("a.nama_item, b.kode_item, b.kuantiti, b.harga, b.total, b.diskon");
         $this->db->from("master_item a");
         $this->db->join('penjualan_detail b', 'a.kode_item = b.kode_item'); 
-        $this->db->join('piutang_history c', 'b.id_penjualan = b.id_penjualan'); 
+        $this->db->join('bayar_tanah_history c', 'b.id_penjualan = b.id_penjualan'); 
         $this->db->where('c.id', $idd,'1'); 
         return $this->db->get()->result_array();
     } 
 
 
-    public function hapusdatapembayaranpiutang()
+    public function hapusdatapembayaranbayar_tanah()
     {
         $post = $this->input->post();
-        $nominal = bilanganbulat($post["nominalInt"]);
-        $this->db->set('nominal_dibayar', 'nominal_dibayar - ' . (int) $nominal, FALSE)->where('id', $post["dataId"])->update('piutang_history');  
-        $status = $this->db->get_where('piutang_history', array('id' => $post["dataId"])); 
-        if($status->row()->nominal >= $status->row()->nominal_dibayar){ 
-            $this->tanggal_lunas = '0000-00-00'; 
-            $this->sudah_lunas = '0'; 
-            $this->db->update("piutang_history", $this, array('id' => $post['dataId']));
-        }
-        return $this->db->where('id', $post['id'])->delete('piutang_dibayar_history');  
+        return $this->db->where('id_pembayaran', $post['id'])->delete('tabel_pembayaran');  
     } 
 
-    public function rulespiutangdibayar()
+    public function rulesbayar_tanahdibayar()
     {
         return [ 
             [
-                'field' => 'nominal',
-                'label' => 'Nominal',
-                'rules' => 'required',
             ] 
         ];
     } 
 
-    function simpandatapiutangdibayar(){   
+    function simpandatabayar_tanahdibayar(){   
         $post = $this->input->post();    
-        $nominal = bilanganbulat($post["nominal"]);
+        $total_bayar = bilanganbulat($post["total_bayar"]);
         $array = array(
-            'id_piutang'=>$post["idd"], 
-            'tanggal'=>$post["tanggal"], 
-            'nominal'=> $nominal,  
+            'kode_item'=>$post["kode_item"], 
+            'tanggal_pembayaran'=>$post["tanggal_pembayaran"], 
+            'total_bayar'=> $total_bayar,  
             'keterangan'=>$post["keterangan"],  
         );
-        $this->db->insert("piutang_dibayar_history", $array);   
-        $insert_id = $this->db->insert_id(); 
-        $cashout = array(
-            'id_piutang_dibayar'=>$insert_id,  
-            'kode_rekening'=>'10002',  
-            'masuk'=>$nominal,  
-            'keluar'=> '0',   
-            'tanggal'=> $post["tanggal"],      
-            'id_admin'=> $this->session->userdata('idadmin'),      
-        ); 
-        $this->db->insert("cash_in_out", $cashout);  
-        $this->db->set('nominal_dibayar', 'nominal_dibayar + ' . (int) $nominal, FALSE)->where('id', $post["idd"])->update('piutang_history'); 
-        $status = $this->db->get_where('piutang_history', array('id' => $post["idd"])); 
-        if($status->row()->nominal_dibayar >= $status->row()->nominal){ 
-            $this->tanggal_lunas = $post["tanggal"]; 
-            $this->sudah_lunas = '1'; 
-            $this->db->update("piutang_history", $this, array('id' => $post['idd']));
-        }
+        $this->db->insert("tabel_pembayaran", $array);   
+     
         return TRUE;
     } 
 	//CRUD hutang end

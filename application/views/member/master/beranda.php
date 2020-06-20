@@ -109,7 +109,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 														<?php
 													}?>
 
-													<?php if( $this->session->userdata('kategori')==31){?>
+												<!-- 	<?php if( $this->session->userdata('kategori')==31){?>
 														<li>
 															<a href="<?php echo base_url()?>master/serah_terima" class="menu-item" style="color: white"><i class="fa fa-folder"></i> Master Serah Terima Teknik</a>
 															<div class="item-options">
@@ -119,7 +119,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 															</div>
 														</li>
 														<?php
-													}?>
+													}?> -->
 												</ul>
 											</div>
 										</div>
