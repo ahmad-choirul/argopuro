@@ -350,7 +350,7 @@ public function laporan_evaluasi_stok_split_per()
 public function po()
 {    
     level_user('laporan','po',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
-    $data['supplier'] = $this->db->get('master_supplier')->result(); 
+    $data['target'] = $this->db->get('tbl_target')->result(); 
     $this->load->view('member/laporan/po',$data);
 }   
 public function laporanpo()
@@ -363,10 +363,10 @@ public function laporanpo()
         $offset = $page;
     }
 
-    $supplier = $this->input->get('supplier');
+    $target = $this->input->get('target');
     $firstdate = $this->input->get('firstdate');
     $lastdate = $this->input->get('lastdate'); 
-    $conditions['search']['supplier'] = $supplier;
+    $conditions['search']['target'] = $target;
     $conditions['search']['firstdate'] = $firstdate;
     $conditions['search']['lastdate'] = $lastdate;
         //total rows count
@@ -409,7 +409,7 @@ public function cekcetak($id_perumahan)
 public function pembelian()
 {    
     level_user('laporan','pembelian',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
-    $conditions['supplier'] = '*';
+    $conditions['target'] = '*';
     $timestamp    = strtotime(date('F Y'));
     $conditions['search']['firstdate'] = date('Y-m-01', $timestamp);
     $conditions['search']['lastdate'] = date('Y-m-t', $timestamp);
@@ -419,7 +419,7 @@ public function pembelian()
 
     //get posts data
     $data['posts'] = $this->laporan_model->getrowspembelian($conditions);
-    $data['supplier'] = $this->db->get('master_supplier')->result(); 
+    $data['target'] = $this->db->get('tbl_target')->result(); 
     $this->load->view('member/laporan/pembelian',$data);
 }   
 public function laporanpembelian()
@@ -432,10 +432,10 @@ public function laporanpembelian()
         $offset = $page;
     }
 
-    $supplier = $this->input->get('supplier');
+    $target = $this->input->get('target');
     $firstdate = $this->input->get('firstdate');
     $lastdate = $this->input->get('lastdate'); 
-    $conditions['search']['supplier'] = $supplier;
+    $conditions['search']['target'] = $target;
     $conditions['search']['firstdate'] = $firstdate;
     $conditions['search']['lastdate'] = $lastdate;
 //total rows count
@@ -463,10 +463,10 @@ public function laporanpembelian()
 function excel_pembelian(){       
 
     $spreadsheet = new Spreadsheet();
-    $supplier = $this->input->get('supplier');
+    $target = $this->input->get('target');
     $firstdate = $this->input->get('firstdate');
     $lastdate = $this->input->get('lastdate'); 
-    $conditions['search']['supplier'] = $supplier;
+    $conditions['search']['target'] = $target;
     $conditions['search']['firstdate'] = $firstdate;
     $conditions['search']['lastdate'] = $lastdate;
     $conditions['kategori']['excel'] = "excel"; 
@@ -480,8 +480,8 @@ function excel_pembelian(){
     $spreadsheet->setActiveSheetIndex(0)
     ->setCellValue('A1', 'Nomor Faktur')
     ->setCellValue('B1', 'Tanggal Pembelian')
-    ->setCellValue('C1', 'Kode Supplier')
-    ->setCellValue('D1', 'Nama Supplier')
+    ->setCellValue('C1', 'Kode target')
+    ->setCellValue('D1', 'Nama target')
     ->setCellValue('E1', 'Total')
     ->setCellValue('F1', 'Pembayaran')
     ->setCellValue('G1', 'Termin')
@@ -495,8 +495,8 @@ function excel_pembelian(){
         $spreadsheet->setActiveSheetIndex(0)
         ->setCellValue('A'.$i, $post['nomor_faktur'])
         ->setCellValue('B'.$i, $tgl)
-        ->setCellValue('C'.$i, $post['supplier'])
-        ->setCellValue('D'.$i, $post['nama_supplier'])
+        ->setCellValue('C'.$i, $post['target'])
+        ->setCellValue('D'.$i, $post['nama_target'])
         ->setCellValue('E'.$i, $total)
         ->setCellValue('F'.$i, $post['pembayaran'])
         ->setCellValue('G'.$i, $post['termin']." Hari")
@@ -1099,10 +1099,10 @@ public function laporanpenjual()
 function excel_penjual(){       
 
     $spreadsheet = new Spreadsheet();
-    $supplier = $this->input->get('supplier');
+    $target = $this->input->get('target');
     $firstdate = $this->input->get('firstdate');
     $lastdate = $this->input->get('lastdate'); 
-    $conditions['search']['supplier'] = $supplier;
+    $conditions['search']['target'] = $target;
     $conditions['search']['firstdate'] = $firstdate;
     $conditions['search']['lastdate'] = $lastdate;
     $conditions['kategori']['excel'] = "excel"; 
@@ -1116,8 +1116,8 @@ function excel_penjual(){
     $spreadsheet->setActiveSheetIndex(0)
     ->setCellValue('A1', 'Nomor Faktur')
     ->setCellValue('B1', 'Tanggal Pembelian')
-    ->setCellValue('C1', 'Kode Supplier')
-    ->setCellValue('D1', 'Nama Supplier')
+    ->setCellValue('C1', 'Kode target')
+    ->setCellValue('D1', 'Nama target')
     ->setCellValue('E1', 'Total')
     ->setCellValue('F1', 'Pembayaran')
     ->setCellValue('G1', 'Termin')
@@ -1131,8 +1131,8 @@ function excel_penjual(){
         $spreadsheet->setActiveSheetIndex(0)
         ->setCellValue('A'.$i, $post['nomor_faktur'])
         ->setCellValue('B'.$i, $tgl)
-        ->setCellValue('C'.$i, $post['supplier'])
-        ->setCellValue('D'.$i, $post['nama_supplier'])
+        ->setCellValue('C'.$i, $post['target'])
+        ->setCellValue('D'.$i, $post['nama_target'])
         ->setCellValue('E'.$i, $total)
         ->setCellValue('F'.$i, $post['pembayaran'])
         ->setCellValue('G'.$i, $post['termin']." Hari")

@@ -22,7 +22,7 @@ class Pembelian extends CI_Controller {
 
 	public function transfer_stok()
 	{   
-        $data['supplier'] = $this->db->get('master_supplier')->result(); 
+        $data['target'] = $this->db->get('tbl_target')->result(); 
         $this->load->view('member/pembelian/transfer_stok',$data); 
     }  
 
@@ -44,8 +44,8 @@ class Pembelian extends CI_Controller {
                 "nomor_po" => $this->security->xss_clean($po_data['nomor_po']),
                 "tgl_po" => $this->security->xss_clean(tgl_indo($po_data['tgl_po'])),
                 "tgl_po_ymd" => $this->security->xss_clean($po_data['tgl_po']),
-                "kode_supplier" => $this->security->xss_clean($po_data['supplier']),
-                "supplier" => $this->security->xss_clean($po_data['nama_supplier']),
+                "kode_target" => $this->security->xss_clean($po_data['target']),
+                "target" => $this->security->xss_clean($po_data['nama_target']),
                 "totalbiaya" => $this->security->xss_clean(rupiah($po_data['total'])),
                 "keterangan" => $this->security->xss_clean($po_data['keterangan'])
             );     
@@ -182,7 +182,7 @@ class Pembelian extends CI_Controller {
 	public function langsung()
 	{   
         level_user('pembelian','langsung',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
-        $data['supplier'] = $this->db->get('master_supplier')->result(); 
+        $data['target'] = $this->db->get('tbl_target')->result(); 
         $data['po'] = $this->db->order_by("nomor_rec","DESC")->get('penerimaan_barang')->result(); 
         $this->load->view('member/pembelian/langsung',$data); 
     }  
@@ -251,8 +251,8 @@ class Pembelian extends CI_Controller {
                 "termin" => $this->security->xss_clean($termin),
                 "termin_int" => $this->security->xss_clean($po_data['termin']),
                 "pembayaran" => $this->security->xss_clean($po_data['pembayaran']),
-                "kode_supplier" => $this->security->xss_clean($po_data['supplier']),
-                "supplier" => $this->security->xss_clean($po_data['nama_supplier']),
+                "kode_target" => $this->security->xss_clean($po_data['target']),
+                "target" => $this->security->xss_clean($po_data['nama_target']),
                 "totalbiaya" => $this->security->xss_clean(rupiah($po_data['total'])),
                 "keterangan" => $this->security->xss_clean($po_data['keterangan'])
             );     
@@ -444,10 +444,10 @@ class Pembelian extends CI_Controller {
                 "tanggal_penerimaan_ymd" => $this->security->xss_clean($po_data['tanggal_penerimaan']),
                 "nomor_po" => $this->security->xss_clean($po_data['nomor_po']),
                 "penerima" => $this->security->xss_clean($po_data['penerima']),
-                "supplier" => $this->security->xss_clean($po_data['supplier']),
+                "target" => $this->security->xss_clean($po_data['target']),
                 "termin" => $this->security->xss_clean($po_data['termin']),
                 "pembayaran" => $this->security->xss_clean($po_data['pembayaran']),
-                "nama_supplier" => $this->security->xss_clean($po_data['nama_supplier']),
+                "nama_target" => $this->security->xss_clean($po_data['nama_target']),
                 "keterangan" => $this->security->xss_clean($po_data['keterangan'])
             );     
         }
@@ -579,7 +579,7 @@ class Pembelian extends CI_Controller {
                 "tanggal_retur_ymd" => $this->security->xss_clean($po_data['tanggal_retur']),
                 "nomor_faktur" => $this->security->xss_clean($po_data['nomor_faktur']),  
                 "penerima" => $this->security->xss_clean($po_data['penerima']),
-                "nama_supplier" => $this->security->xss_clean($po_data['nama_supplier']),
+                "nama_target" => $this->security->xss_clean($po_data['nama_target']),
                 "keterangan" => $this->security->xss_clean($po_data['keterangan'])
             );     
         }

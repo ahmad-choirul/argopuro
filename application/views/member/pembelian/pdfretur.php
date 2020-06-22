@@ -167,14 +167,14 @@ foreach ($po_data as $datapo) {
                                         <td> <?php echo $datapo['penerima']; ?></td>
                                     </tr> 
                                     <tr>
-                                        <td>Kode Supplier</td>
+                                        <td>Kode target</td>
                                         <td>:</td>
-                                        <td> <?php echo $datapo['supplier']; ?></td>
+                                        <td> <?php echo $datapo['target']; ?></td>
                                     </tr> 
                                     <tr>
-                                        <td>Nama Supplier</td>
+                                        <td>Nama target</td>
                                         <td>:</td>
-                                        <td> <?php echo $this->security->xss_clean($datapo['nama_supplier']);?></td>
+                                        <td> <?php echo $this->security->xss_clean($datapo['nama_target']);?></td>
 							  </tr> 
                                     <tr>
                                         <td>Telp</td>

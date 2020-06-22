@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2020 at 10:04 AM
+-- Generation Time: Jun 22, 2020 at 11:24 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -279,17 +279,19 @@ CREATE TABLE `master_item` (
   `id_perumahan` int(11) NOT NULL DEFAULT '0',
   `id_posisi_surat` int(11) DEFAULT NULL,
   `status_order_akta` enum('belum','proses','selesai') NOT NULL DEFAULT 'belum',
-  `jenis_pengalihan_hak` enum('pribadi','pt') NOT NULL DEFAULT 'pribadi',
-  `status_teknik` enum('belum','sudah') NOT NULL DEFAULT 'belum'
+  `tanggal_proses` date DEFAULT NULL,
+  `jenis_pengalihan_hak` varchar(100) DEFAULT NULL,
+  `status_teknik` enum('belum','sudah') NOT NULL DEFAULT 'belum',
+  `status_finance` enum('belum','sudah') NOT NULL DEFAULT 'belum'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `master_item`
 --
 
-INSERT INTO `master_item` (`kode_item`, `nama_item`, `tanggal_pembelian`, `nama_penjual`, `nama_surat_tanah`, `status_surat_tanah`, `no_gambar`, `jumlah_bidang`, `luas_surat`, `luas_ukur`, `no_pbb`, `luas_pbb`, `njop`, `total_harga_pengalihan`, `nama_makelar`, `nilai`, `tanggal_pengalihan`, `akta_pengalihan`, `nama_pengalihan`, `pematangan`, `ganti_rugi`, `pbb`, `lain`, `waktu_update`, `keterangan`, `id_perumahan`, `id_posisi_surat`, `status_order_akta`, `jenis_pengalihan_hak`, `status_teknik`) VALUES
-(1, 'deni', '2020-01-01', 'Deni Yana', '', 1, 76, 1, 220, 220, '78/56/2020', 2020, '98/235/23', '200000', 'buna', '100000', '2020-04-22', 'Un/34', 'yani', '12000', '200000', '150000', '50000', '2020-06-19 23:54:49', 'test', 4, 0, 'proses', 'pribadi', 'sudah'),
-(2, 'tanah 1', '2019-09-19', 'ach saubari', 'ach saubari', 1, 45, 1, 220, 220, '123/51.2/34/1998', 220, '34578', '55000000', 'rahayu', '0', '2020-06-05', '', '', '', '0', '0', '0', '2020-06-20 04:55:05', 'test', 3, 0, 'proses', 'pt', 'sudah');
+INSERT INTO `master_item` (`kode_item`, `nama_item`, `tanggal_pembelian`, `nama_penjual`, `nama_surat_tanah`, `status_surat_tanah`, `no_gambar`, `jumlah_bidang`, `luas_surat`, `luas_ukur`, `no_pbb`, `luas_pbb`, `njop`, `total_harga_pengalihan`, `nama_makelar`, `nilai`, `tanggal_pengalihan`, `akta_pengalihan`, `nama_pengalihan`, `pematangan`, `ganti_rugi`, `pbb`, `lain`, `waktu_update`, `keterangan`, `id_perumahan`, `id_posisi_surat`, `status_order_akta`, `tanggal_proses`, `jenis_pengalihan_hak`, `status_teknik`, `status_finance`) VALUES
+(1, 'deni', '2020-01-01', 'Deni Yana', '', 1, 76, 1, 220, 220, '78/56/2020', 2020, '98/235/23', '200000', 'buna', '100000', '2020-04-22', 'Un/34', 'yani', '12000', '200000', '150000', '50000', '2020-06-22 06:41:48', 'test', 4, 0, 'proses', '2020-06-04', 'pribadi', 'sudah', 'belum'),
+(2, 'tanah 1', '2019-09-19', 'ach saubari', 'ach saubari', 1, 45, 1, 220, 220, '123/51.2/34/1998', 220, '34578', '55000000', 'rahayu', '0', '2020-06-05', '', '', '', '0', '0', '0', '2020-06-22 06:56:07', 'test', 3, 0, 'proses', '2020-06-16', 'pt', 'sudah', 'belum');
 
 -- --------------------------------------------------------
 
@@ -476,7 +478,7 @@ INSERT INTO `modul` (`id`, `label`, `controller`, `nama_function`, `aksi_edit`, 
 (2, 'Master Data Beranda', 'master', 'index', '0', '0', '0'),
 (3, 'Master Data Dokter', 'master', 'dokter', '1', '1', '1'),
 (4, 'Master Data pembeli', 'master', 'pembeli', '1', '1', '1'),
-(5, 'Master Data Supplier', 'master', 'supplier', '1', '1', '1'),
+(5, 'Master Data Supplier', 'master', 'target', '1', '1', '1'),
 (6, 'Master Data Kategori Item', 'master', 'perumahan', '1', '1', '1'),
 (7, 'Master Data Satuan Item', 'master', 'satuan', '1', '1', '1'),
 (8, 'Master Data Merk', 'master', 'merk', '1', '1', '1'),
@@ -598,7 +600,8 @@ CREATE TABLE `tabel_pembayaran` (
 --
 
 INSERT INTO `tabel_pembayaran` (`id_pembayaran`, `kode_item`, `tanggal_pembayaran`, `total_bayar`, `waktu_update`, `Keterangan`) VALUES
-(5, 2, '2020-06-01', '1000', '2020-06-20 07:24:06', '1');
+(5, 2, '2020-06-01', '1000', '2020-06-20 07:24:06', '1'),
+(7, 1, '2020-06-01', '1000', '2020-06-22 02:18:24', 'abcd');
 
 -- --------------------------------------------------------
 
@@ -623,6 +626,27 @@ INSERT INTO `tbl_sertifikat_tanah` (`id_sertifikat_tanah`, `kode_sertifikat`, `n
 (3, 'SHGB', 'Sertifikat Hak Guna Bangunan'),
 (4, 'Petok', 'Girik atau Petok'),
 (5, 'AJB', 'Akta Jual Beli');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_target`
+--
+
+CREATE TABLE `tbl_target` (
+  `id_target` int(11) NOT NULL,
+  `id_perumahan` int(11) NOT NULL,
+  `tahun` date NOT NULL,
+  `target_bid` varchar(100) NOT NULL,
+  `target_luas` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_target`
+--
+
+INSERT INTO `tbl_target` (`id_target`, `id_perumahan`, `tahun`, `target_bid`, `target_luas`) VALUES
+(1, 1, '2020-06-01', '1;2;3;4;5;6;7;8;9;10;11;12', 'A;B;C;D;E;F;G;H;I;J;K;L');
 
 --
 -- Indexes for dumped tables
@@ -731,6 +755,12 @@ ALTER TABLE `tbl_sertifikat_tanah`
   ADD PRIMARY KEY (`id_sertifikat_tanah`);
 
 --
+-- Indexes for table `tbl_target`
+--
+ALTER TABLE `tbl_target`
+  ADD PRIMARY KEY (`id_target`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -803,12 +833,17 @@ ALTER TABLE `notes`
 -- AUTO_INCREMENT for table `tabel_pembayaran`
 --
 ALTER TABLE `tabel_pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tbl_sertifikat_tanah`
 --
 ALTER TABLE `tbl_sertifikat_tanah`
   MODIFY `id_sertifikat_tanah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `tbl_target`
+--
+ALTER TABLE `tbl_target`
+  MODIFY `id_target` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --

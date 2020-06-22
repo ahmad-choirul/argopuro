@@ -159,12 +159,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <h2 class="panel-title">Tambah Hutang</h2>
                     </header>
                     <div class="panel-body">
-                        <div class="form-group mt-lg id_supplier">
-                                <label class="col-sm-3 control-label">Pilih Supplier<span class="required">*</span></label>
+                        <div class="form-group mt-lg id_target">
+                                <label class="col-sm-3 control-label">Pilih target<span class="required">*</span></label>
                                 <div class="col-sm-9">
-                                    <select data-plugin-selectTwo class="form-control" name="id_supplier"  required>  
-    									<?php foreach ($supplier as $supp): ?>
-                                        <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_supplier;?></option>
+                                    <select data-plugin-selectTwo class="form-control" name="id_target"  required>  
+    									<?php foreach ($target as $supp): ?>
+                                        <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_target;?></option>
                                         <?php endforeach; ?>
                                     </select> 
                                 </div>
@@ -224,12 +224,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <h2 class="panel-title">Form Pembayaran Hutang</h2>
                     </header>
                     <div class="panel-body">
-                        <div class="form-group mt-lg id_supplier">
-                                <label class="col-sm-3 control-label">Pilih Supplier<span class="required">*</span></label>
+                        <div class="form-group mt-lg id_target">
+                                <label class="col-sm-3 control-label">Pilih target<span class="required">*</span></label>
                                 <div class="col-sm-9">
-                                    <select data-plugin-selectTwo class="form-control" id="id_supplier" name="id_supplier"  disabled>  
-    									<?php foreach ($supplier as $supp): ?>
-                                        <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_supplier;?></option>
+                                    <select data-plugin-selectTwo class="form-control" id="id_target" name="id_target"  disabled>  
+    									<?php foreach ($target as $supp): ?>
+                                        <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_target;?></option>
                                         <?php endforeach; ?>
                                     </select> 
                                 </div>
@@ -513,8 +513,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             datarow+='</table></div><div class="col-md-6">';
                             datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
                             datarow+="<tr><td>Status</td><td>: "+item.status+"</td></tr>";  
-                            datarow+="<tr><td>Kode Supplier</td><td>: "+item.id_supplier+"</td></tr>";
-                            datarow+="<tr><td>Supplier</td><td>: "+item.supplier+"</td></tr>";
+                            datarow+="<tr><td>Kode target</td><td>: "+item.id_target+"</td></tr>";
+                            datarow+="<tr><td>target</td><td>: "+item.target+"</td></tr>";
                             datarow+="<tr><td>Telepon</td><td>: "+item.telepon+"</td></tr>";
                             datarow+="<tr><td>Alamat</td><td>: "+item.alamat+"</td></tr>";
                             datarow+="<tr><td>Keterangan</td><td>: "+item.keterangan+"</td></tr>";
@@ -569,7 +569,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         var datarow='<div class="row">';
                         $.each(response.datarows, function(i, item) { 
                                  
-                            $("#id_supplier").select2("val", item.id_supplier);  
+                            $("#id_target").select2("val", item.id_target);  
                             document.getElementById("idhutang").value = item.id; 
                             document.getElementById("totalhutang").value = item.nominal; 
                             document.getElementById("totalhutangdibayar").value = item.nominal_dibayar;  

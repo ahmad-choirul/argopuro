@@ -69,10 +69,10 @@ class Pembelian_model extends CI_Model{
         // $tombolhapus = level_user('pembelian','po',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="$2">Hapus</a></li>':'';
         // $tomboledit = level_user('pembelian','po',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="$2">Edit</a></li>':'';
         
-        $this->datatables->select('nomor_po,tgl_po,pembayaran,id,nama_supplier');
+        $this->datatables->select('nomor_po,tgl_po,pembayaran,id,nama_target');
         $this->datatables->from('purchase_order');
         $this->datatables->where('id_admin', $id_admin);
-        $this->datatables->join('master_supplier', 'supplier=id');
+        $this->datatables->join('tbl_target', 'target=id');
         $this->datatables->add_column('tombol', 
 		'	<div class="btn-group dropup">
 				<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
@@ -81,7 +81,7 @@ class Pembelian_model extends CI_Model{
                     
 				</ul>
 			</div>
-		','tgl_po,nomor_po,pembayaran,nama_supplier,termin'); 
+		','tgl_po,nomor_po,pembayaran,nama_target,termin'); 
         $this->datatables->edit_column('tgl_po','$1', 'tgl_indo(tgl_po)'); 
         return $this->datatables->generate();
     }  
@@ -89,9 +89,9 @@ class Pembelian_model extends CI_Model{
 	
 	// CRUD purchase order start 
 	public function get_po($idd){ 
-        $this->db->select("a.nomor_po, a.tgl_po, a.total,  a.supplier, a.keterangan, b.nama_supplier, b.telepon, b.alamat");
+        $this->db->select("a.nomor_po, a.tgl_po, a.total,  a.target, a.keterangan, b.nama_target, b.telepon, b.alamat");
         $this->db->from("purchase_order a");
-        $this->db->join('master_supplier b', 'a.supplier = b.id'); 
+        $this->db->join('tbl_target b', 'a.target = b.id'); 
         $this->db->where('a.nomor_po', $idd,'1'); 
         return $this->db->get()->result_array();
     }  
@@ -154,7 +154,7 @@ class Pembelian_model extends CI_Model{
             'tgl_po'=>$post["tgl_po"],  
             'termin'=>$post["termin"], 
             'pembayaran'=>$post["pembayaran"], 
-            'supplier'=>$post["supplier"], 
+            'target'=>$post["target"], 
             'keterangan'=>$post["keterangan"],  
             'termin'=>$post['termin'],  
         );  
@@ -195,7 +195,7 @@ class Pembelian_model extends CI_Model{
         $this->tgl_po = $post["tgl_po"];
         $this->termin = $post["termin"]; 
         $this->pembayaran = $post["pembayaran"]; 
-        $this->supplier = $post["supplier"];    
+        $this->target = $post["target"];    
         $this->keterangan = $post["keterangan"];      
         $this->termin = $post["termin"];         
         $this->db->update("purchase_order", $this, array('nomor_po' => $post['idd']));
@@ -236,9 +236,9 @@ class Pembelian_model extends CI_Model{
         $tombolhapus = level_user('pembelian','langsung',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="$2">Hapus</a></li>':'';
         $tomboledit = level_user('pembelian','langsung',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="$2">Edit</a></li>':'';
         $this->datatables->select('nomor_faktur,tgl_pembelian,pembayaran,
-		termin,id,nama_supplier');
+		termin,id,nama_target');
         $this->datatables->from('pembelian_langsung');
-        $this->datatables->join('master_supplier', 'supplier=id');
+        $this->datatables->join('tbl_target', 'target=id');
         $this->datatables->add_column('tombol', 
 		'	<div class="btn-group dropup">
 				<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
@@ -247,7 +247,7 @@ class Pembelian_model extends CI_Model{
                     '.$tombolhapus.'
 				</ul>
 			</div>
-		','tgl_pembelian,nomor_faktur,pembayaran,nama_supplier,termin'); 
+		','tgl_pembelian,nomor_faktur,pembayaran,nama_target,termin'); 
         $this->datatables->edit_column('tgl_pembelian','$1', 'tgl_indo(tgl_pembelian)'); 
         return $this->datatables->generate();
     }   
@@ -293,7 +293,7 @@ class Pembelian_model extends CI_Model{
             'nomor_rec'=>$post["nomor_po"],  
             'termin'=>$post["termin"], 
             'pembayaran'=>$post["pembayaran"], 
-            'supplier'=>$post["supplier"], 
+            'target'=>$post["target"], 
             'keterangan'=>$post["keterangan"],  
             'termin'=>$post['termin'],  
         );  
@@ -363,7 +363,7 @@ class Pembelian_model extends CI_Model{
         } 
         $this->total = $total;
         $this->db->update("pembelian_langsung", $this, array('nomor_faktur' => $nomor_faktur));
-        $judul ="pembelian ke supplier";
+        $judul ="pembelian ke target";
         $jatuhtempo = $post["tgl_pembelian"];
         if($post["pembayaran"] == "hutang"){ 
             $date = strtotime($jatuhtempo);
@@ -375,7 +375,7 @@ class Pembelian_model extends CI_Model{
             'tanggal'=>$post["tgl_pembelian"],  
             'nominal'=>$total,   
             'nomor_faktur'=>$nomor_faktur,  
-            'id_supplier'=>$post["supplier"], 
+            'id_target'=>$post["target"], 
             'tanggal_jatuh_tempo'=>$jatuhtempo,   
             'keterangan'=>'-',   
         );  
@@ -384,9 +384,9 @@ class Pembelian_model extends CI_Model{
     }    
 	
     public function get_pembelian($idd){ 
-        $this->db->select("a.nomor_faktur, a.kategori, a.nomor_rec, a.tgl_pembelian, a.total, a.termin, a.pembayaran, a.supplier, a.keterangan, b.nama_supplier, b.telepon, b.alamat");
+        $this->db->select("a.nomor_faktur, a.kategori, a.nomor_rec, a.tgl_pembelian, a.total, a.termin, a.pembayaran, a.target, a.keterangan, b.nama_target, b.telepon, b.alamat");
         $this->db->from("pembelian_langsung a");
-        $this->db->join('master_supplier b', 'a.supplier = b.id'); 
+        $this->db->join('tbl_target b', 'a.target = b.id'); 
         $this->db->where('a.nomor_faktur', $idd,'1'); 
         return $this->db->get()->result_array();
     } 
@@ -409,7 +409,7 @@ class Pembelian_model extends CI_Model{
         $this->nomor_rec = $post["nomor_po"];
         $this->termin = $post["termin"]; 
         $this->pembayaran = $post["pembayaran"]; 
-        $this->supplier = $post["supplier"];    
+        $this->target = $post["target"];    
         $this->keterangan = $post["keterangan"];      
         $this->termin = $post["termin"];         
         $this->db->update("pembelian_langsung", $this, array('nomor_faktur' => $post['idd']));
@@ -606,7 +606,7 @@ class Pembelian_model extends CI_Model{
                 'kode_item'=>$kode_item[$i],  
                 'tanggal'=>$post["tanggal_penerimaan"],  
                 'tgl_expired'=>$tgl_expired[$i],  
-                'jenis_transaksi'=>"pembelian ke supplier",   
+                'jenis_transaksi'=>"pembelian ke target",   
                 'jumlah_masuk'=>$kuantiti[$i],     
                 'jumlah_keluar'=>0,   
                 'satuan_kecil'=>$satuan_kecil[$i]
@@ -617,10 +617,10 @@ class Pembelian_model extends CI_Model{
         return TRUE;
     }     
     public function get_penerimaan($idd){ 
-        $this->db->select("a.nomor_rec, a.nomor_po, a.tanggal_penerimaan, a.penerima, a.keterangan, b.supplier, b.termin, b.pembayaran, c.nama_supplier");
+        $this->db->select("a.nomor_rec, a.nomor_po, a.tanggal_penerimaan, a.penerima, a.keterangan, b.target, b.termin, b.pembayaran, c.nama_target");
         $this->db->from("penerimaan_barang a");
         $this->db->join('purchase_order b', 'a.nomor_po = b.nomor_po');  
-        $this->db->join('master_supplier c', 'b.supplier = c.id');  
+        $this->db->join('tbl_target c', 'b.target = c.id');  
         $this->db->where('a.nomor_rec', $idd,'1'); 
         return $this->db->get()->result_array();
     }  
@@ -779,10 +779,10 @@ class Pembelian_model extends CI_Model{
         return TRUE;
     }   
     public function get_retur($idd){ 
-        $this->db->select("a.nomor_faktur, a.nomor_retur, a.nomor_rec_penerimaan, a.tanggal_retur, d.penerima, a.keterangan, b.supplier, c.nama_supplier,c.telepon");
+        $this->db->select("a.nomor_faktur, a.nomor_retur, a.nomor_rec_penerimaan, a.tanggal_retur, d.penerima, a.keterangan, b.target, c.nama_target,c.telepon");
         $this->db->from("retur_pembelian a");
         $this->db->join('pembelian_langsung b', 'a.nomor_faktur = b.nomor_faktur');  
-        $this->db->join('master_supplier c', 'b.supplier = c.id');  
+        $this->db->join('tbl_target c', 'b.target = c.id');  
         $this->db->join('penerimaan_barang d', 'a.nomor_rec_penerimaan = d.nomor_rec');  
         $this->db->where('a.nomor_retur', $idd,'1'); 
         return $this->db->get()->result_array();

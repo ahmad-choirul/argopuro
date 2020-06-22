@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="row">
                     <div class="col-sm-3" align="left"><h2 class="panel-title">LAND BANK</h2></div>
                     <form action="" method="get">
-                        <div class="form-group mt-lg nama_supplier">
+                        <div class="form-group mt-lg nama_target">
                             <div class="col-sm-5">
                                 <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
                                     <option value="">Pilih Lokasi</option>
@@ -99,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </header>
                 <div class="panel-body">
 
-                    <div class="form-group mt-lg nama_supplier">
+                    <div class="form-group mt-lg nama_target">
                         <label class="col-sm-3 control-label">Posisi Surat<span class="required">*</span></label>
                         <div class="col-sm-9">
                             <select data-plugin-selectTwo class="form-control" id="id_posisi_surat" name="id_posisi_surat">  
@@ -120,7 +120,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="tanggal_pembelian" id="tanggal_pembelian" class="form-control tanggal"  />
                         </div>
                     </div>
-                    <div class="form-group mt-lg nama_supplier">
+                    <div class="form-group mt-lg nama_target">
                         <label class="col-sm-3 control-label">Sertifikat<span class="required">*</span></label>
                         <div class="col-sm-9">
                             <select data-plugin-selectTwo class="form-control" required name="status_surat_tanah" id="status_surat_tanah">  

@@ -3,11 +3,11 @@ class Laporan_model extends CI_Model{
      
     function getrowspo($params = array()){ 
         $this->db->select("a.nomor_po, a.tgl_po, a.termin,
-         a.pembayaran, a.supplier, a.total, a.keterangan, b.nama_supplier");
+         a.pembayaran, a.target, a.total, a.keterangan, b.nama_target");
         $this->db->from("purchase_order a");
-        $this->db->join('master_supplier b', 'b.id = a.supplier');   
-        if(!empty($params['search']['supplier'])){
-            $this->db->where('a.supplier',$params['search']['supplier']);
+        $this->db->join('tbl_target b', 'b.id = a.target');   
+        if(!empty($params['search']['target'])){
+            $this->db->where('a.target',$params['search']['target']);
         } 
         if(!empty($params['search']['firstdate']) AND !empty($params['search']['lastdate'])){
             $this->db->where('a.tgl_po BETWEEN "'.$params['search']['firstdate']. '" and "'. $params['search']['lastdate'].'"');
@@ -27,11 +27,11 @@ class Laporan_model extends CI_Model{
     
     function getrowspembelian($params = array()){ 
         $this->db->select("a.nomor_faktur, a.tgl_pembelian, a.termin,
-         a.pembayaran, a.supplier, a.total, a.keterangan, b.nama_supplier");
+         a.pembayaran, a.target, a.total, a.keterangan, b.nama_target");
         $this->db->from("pembelian_langsung a");
-        $this->db->join('master_supplier b', 'b.id = a.supplier');   
-        if(!empty($params['search']['supplier'])){
-            $this->db->where('a.supplier',$params['search']['supplier']);
+        $this->db->join('tbl_target b', 'b.id = a.target');   
+        if(!empty($params['search']['target'])){
+            $this->db->where('a.target',$params['search']['target']);
         } 
         if(!empty($params['search']['firstdate']) AND !empty($params['search']['lastdate'])){
             $this->db->where('a.tgl_pembelian BETWEEN "'.$params['search']['firstdate']. '" and "'. $params['search']['lastdate'].'"');

@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="row show-grid">
                     <div class="col-md-6" align="left"><h2 class="panel-title">Data distributor</h2></div>
                     <?php  
-                    echo level_user('master','supplier',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
+                    echo level_user('master','target',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
                     ?> 
                 </div>
             </header>

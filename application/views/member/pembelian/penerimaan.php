@@ -145,10 +145,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </select> 
                                 </div>
                             </div>
-                            <div class="form-group mt-lg supplier">
-                                <label class="col-sm-3 control-label">Supplier<span class="required">*</span></label>
+                            <div class="form-group mt-lg target">
+                                <label class="col-sm-3 control-label">target<span class="required">*</span></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control supplier" readonly/>
+                                    <input type="text" class="form-control target" readonly/>
                                 </div>
                             </div>     
                         </div>
@@ -332,7 +332,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 dataType 	: 'json',
                 success: function(response) { 
                     $.each(response.datarows, function(i, item) {   
-                            $('.supplier').val(item.supplier);    
+                            $('.target').val(item.target);    
                     }); 
                     var datarow =''; 
                     $.each(response.datasub, function(i, itemsub) {
@@ -441,7 +441,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         datarow+='<div class="col-md-6">';
                         datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
                         datarow+="<tr><td>Nomor Record</td><td>: "+item.nomor_rec+"</td></tr>";
-                        datarow+="<tr><td>Supplier</td><td>: "+item.nama_supplier+"</td></tr>"; 
+                        datarow+="<tr><td>target</td><td>: "+item.nama_target+"</td></tr>"; 
                         datarow+="</table>";
                         datarow+='</div>';
                         datarow+='<div class="col-md-6">';

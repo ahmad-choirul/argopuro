@@ -151,10 +151,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <input type="hidden" name="nomor_faktur" class="nomor_faktur"/>
                                 </div>
                             </div>     
-                            <div class="form-group mt-lg supplier">
-                                <label class="col-sm-3 control-label">Supplier<span class="required">*</span></label>
+                            <div class="form-group mt-lg target">
+                                <label class="col-sm-3 control-label">target<span class="required">*</span></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control supplier" readonly/>
+                                    <input type="text" class="form-control target" readonly/>
                                 </div>
                             </div>     
                         </div>
@@ -279,10 +279,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <input type="hidden" name="nomor_faktur" class="form-control nomor_faktur_edit" id="nomor_faktur"/>
                                 </div>
                             </div>     
-                            <div class="form-group mt-lg supplier">
-                                <label class="col-sm-3 control-label">Supplier<span class="required">*</span></label>
+                            <div class="form-group mt-lg target">
+                                <label class="col-sm-3 control-label">target<span class="required">*</span></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control nama_supplier_edit" id="nama_supplier" readonly/>
+                                    <input type="text" class="form-control nama_target_edit" id="nama_target" readonly/>
                                 </div>
                             </div>     
                         </div>
@@ -438,7 +438,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 success: function(response) { 
                     $.each(response.datarows, function(i, item) {   
                             $('.nomor_faktur').val(item.nomor_faktur);    
-                            $('.supplier').val(item.nama_supplier);      
+                            $('.target').val(item.nama_target);      
                             $('.penerima').val(item.penerima);    
                     }); 
                     var datarow =''; 
@@ -546,7 +546,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         datarow+="<tr><td>Nomor Retur</td><td>: "+item.nomor_retur+"</td></tr>";
                         datarow+="<tr><td>Nomor Faktur</td><td>: "+item.nomor_faktur+"</td></tr>";
                         datarow+="<tr><td>Nomor Record Penerimaan </td><td>: "+item.nomor_rec_penerimaan+"</td></tr>";
-                        datarow+="<tr><td>Supplier</td><td>: "+item.nama_supplier+"</td></tr>"; 
+                        datarow+="<tr><td>target</td><td>: "+item.nama_target+"</td></tr>"; 
                         datarow+="</table>";
                         datarow+='</div>';
                         datarow+='<div class="col-md-6">';
@@ -608,7 +608,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             document.getElementById("penerima").value = item.penerima;        
                             document.getElementById("nomor_faktur").value = item.nomor_faktur;        
                             document.getElementById("nomor_faktur_view").value = item.nomor_faktur;        
-                            document.getElementById("nama_supplier").value = item.nama_supplier;    
+                            document.getElementById("nama_target").value = item.nama_target;    
                             document.getElementById("keterangan").value = item.keterangan;  
                         });  
 
@@ -639,7 +639,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 success: function(response) { 
                     $.each(response.datarows, function(i, item) {   
                             $('.nomor_faktur_edit').val(item.nomor_faktur);    
-                            $('.supplier_edit').val(item.nama_supplier);      
+                            $('.target_edit').val(item.nama_target);      
                             $('.penerima_edit').val(item.penerima);    
                     }); 
                     var datarow =''; 

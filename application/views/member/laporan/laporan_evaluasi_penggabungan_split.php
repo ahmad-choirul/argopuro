@@ -102,7 +102,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="panel-body">
 
                     
-                    <div class="form-group mt-lg nama_supplier">
+                    <div class="form-group mt-lg nama_target">
                         <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
                         <div class="col-sm-9">
                             <select data-plugin-selectTwo class="form-control" required name="id_perumahan">  
@@ -137,7 +137,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="nama_surat_tanah" class="form-control"  />
                         </div>
                     </div>
-                    <div class="form-group mt-lg nama_supplier">
+                    <div class="form-group mt-lg nama_target">
                         <label class="col-sm-3 control-label">Sertifikat<span class="required">*</span></label>
                         <div class="col-sm-9">
                             <select data-plugin-selectTwo class="form-control" required name="status_surat_tanah">  
@@ -298,7 +298,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </header>
                 <div class="panel-body">
                  
-                <div class="form-group mt-lg nama_supplier">
+                <div class="form-group mt-lg nama_target">
                     <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
                     <div class="col-sm-9">
                         <select data-plugin-selectTwo class="form-control" required id="id_perumahan" name="id_perumahan">  
@@ -333,7 +333,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <input type="text" name="nama_surat_tanah" id="nama_surat_tanah" class="form-control"  />
                     </div>
                 </div>
-                <div class="form-group mt-lg nama_supplier">
+                <div class="form-group mt-lg nama_target">
                     <label class="col-sm-3 control-label">Sertifikat<span class="required">*</span></label>
                     <div class="col-sm-9">
                         <select data-plugin-selectTwo class="form-control" required name="status_surat_tanah" id="status_surat_tanah">  

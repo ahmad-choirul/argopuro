@@ -14,7 +14,7 @@
                                 <th rowspan="2" style="text-align: center;">POSISI SURAT</th>
                                 <th rowspan="2" style="text-align: center;">HARGA AKTA</th>
                                 <th colspan="6" style="text-align: center;">PENGALIHAN HAK</th>
-                                <th rowspan="2" style="text-align: center;">S TERIMA FINANCE</th>
+                                <th rowspan="2" style="text-align: center;">Status Teknik</th>
                                 <th rowspan="2" style="text-align: center;">KET</th>
 
 
@@ -201,7 +201,7 @@
                                     <th rowspan="2" style="text-align: center;">POSISI SURAT</th>
                                     <th rowspan="2" style="text-align: center;">HARGA AKTA</th>
                                     <th colspan="7" style="text-align: center;">PENGALIHAN HAK</th>
-                                    <th rowspan="2" style="text-align: center;">S TERIMA FINANCE</th>
+                                    <th rowspan="2" style="text-align: center;">Status Teknik</th>
                                     <th rowspan="2" style="text-align: center;">KET</th>
 
 

@@ -111,7 +111,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <th></th>
                                             <th>Tanggal Transaksi</th>
                                             <th>Nomor Faktur</th> 
-                                            <th>Supplier</th> 
+                                            <th>target</th> 
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -165,12 +165,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>      -->
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group mt-lg supplier">
-                                <label class="col-sm-3 control-label">Pilih Supplier<span class="required">*</span></label>
+                            <div class="form-group mt-lg target">
+                                <label class="col-sm-3 control-label">Pilih target<span class="required">*</span></label>
                                 <div class="col-sm-9">
-                                    <select data-plugin-selectTwo class="form-control" name="supplier" required>  
-    									<?php foreach ($supplier as $supp): ?>
-                                        <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_supplier;?></option>
+                                    <select data-plugin-selectTwo class="form-control" name="target" required>  
+    									<?php foreach ($target as $supp): ?>
+                                        <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_target;?></option>
                                         <?php endforeach; ?>
                                     </select> 
                                 </div>
@@ -287,12 +287,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>     
                         </div> -->
                         <div class="col-md-6">
-                            <div class="form-group mt-lg supplier">
-                                <label class="col-sm-3 control-label">Pilih Supplier<span class="required">*</span></label>
+                            <div class="form-group mt-lg target">
+                                <label class="col-sm-3 control-label">Pilih target<span class="required">*</span></label>
                                 <div class="col-sm-9">
-                                    <select data-plugin-selectTwo class="form-control" name="supplier" id="supplier" required>  
-    									<?php foreach ($supplier as $supp): ?>
-                                        <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_supplier;?></option>
+                                    <select data-plugin-selectTwo class="form-control" name="target" id="target" required>  
+    									<?php foreach ($target as $supp): ?>
+                                        <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_target;?></option>
                                         <?php endforeach; ?>
                                     </select> 
                                 </div>
@@ -449,7 +449,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 {"data": "tombol"},
                 {"data": "tgl_po"},
                 {"data": "nomor_po"},  
-                {"data": "nama_supplier"}
+                {"data": "nama_target"}
             ],
             "columnDefs": [
                 { 
@@ -500,8 +500,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         datarow+='</div>';
                         datarow+='<div class="col-md-6">';
                         datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
-                        datarow+="<tr><td>Kode Supplier</td><td>: "+item.kode_supplier+"</td></tr>";
-                        datarow+="<tr><td>Supplier</td><td>: "+item.supplier+"</td></tr>";
+                        datarow+="<tr><td>Kode target</td><td>: "+item.kode_target+"</td></tr>";
+                        datarow+="<tr><td>target</td><td>: "+item.target+"</td></tr>";
                         datarow+="<tr><td>Keterangan</td><td>: "+item.keterangan+"</td></tr>";
                         datarow+="</table>";
                         datarow+='</div>';
@@ -661,7 +661,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     success: function(response) {  
                         $.each(response.datarows, function(i, item) {                 
                             $("#pembayaran").select2("val", item.pembayaran); 
-                            $("#supplier").select2("val", item.kode_supplier);                
+                            $("#target").select2("val", item.kode_target);                
                             document.getElementById("nomor_po").value = item.nomor_po;       
                             document.getElementById("nomor_po_view").value = item.nomor_po;
                             document.getElementById("tgl_po").value = item.tgl_po_ymd;    

@@ -111,7 +111,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <th>Tanggal Pembelian</th>
                                             <th>Nomor Faktur</th>
                                             <th>Pembayaran</th>
-                                            <th>Supplier</th>
+                                            <th>target</th>
                                             <th>Termin</th> 
                                         </tr>
                                     </thead>
@@ -181,12 +181,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <input type="text" name="tgl_pembelian" class="form-control tanggal" data-plugin-datepicker required/>
                                 </div>
                             </div>
-                            <div class="form-group mt-lg supplier">
-                                <label class="col-sm-3 control-label">Pilih Supplier<span class="required">*</span></label>
+                            <div class="form-group mt-lg target">
+                                <label class="col-sm-3 control-label">Pilih target<span class="required">*</span></label>
                                 <div class="col-sm-9">
-                                    <select data-plugin-selectTwo class="form-control" id="suppliertambah" name="supplier" required>  
-    									<?php foreach ($supplier as $supp): ?>
-                                        <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_supplier;?></option>
+                                    <select data-plugin-selectTwo class="form-control" id="targettambah" name="target" required>  
+    									<?php foreach ($target as $supp): ?>
+                                        <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_target;?></option>
                                         <?php endforeach; ?>
                                     </select> 
                                 </div>
@@ -339,12 +339,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <input type="text" name="termin" id="termin" class="form-control" required />
                                 </div>
                             </div>   
-                            <div class="form-group mt-lg supplier">
-                                <label class="col-sm-3 control-label">Pilih Supplier<span class="required">*</span></label>
+                            <div class="form-group mt-lg target">
+                                <label class="col-sm-3 control-label">Pilih target<span class="required">*</span></label>
                                 <div class="col-sm-9">
-                                    <select data-plugin-selectTwo class="form-control" name="supplier" id="supplier" required>  
-    									<?php foreach ($supplier as $supp): ?>
-                                        <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_supplier;?></option>
+                                    <select data-plugin-selectTwo class="form-control" name="target" id="target" required>  
+    									<?php foreach ($target as $supp): ?>
+                                        <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_target;?></option>
                                         <?php endforeach; ?>
                                     </select> 
                                 </div>
@@ -513,7 +513,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 {"data": "tgl_pembelian"},
                 {"data": "nomor_faktur"}, 
                 {"data": "pembayaran"}, 
-                {"data": "nama_supplier"},
+                {"data": "nama_target"},
                 {"data": "termin"}
             ],
             "columnDefs": [
@@ -565,7 +565,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     $.each(response.datarows, function(i, item) {   
                             $('#termintambah').val(item.termin);    
                             $('#keterangantambah').val(item.keterangan);    
-                            $("#suppliertambah").select2("val", item.supplier);
+                            $("#targettambah").select2("val", item.target);
                             $("#pembayarantambah").select2("val", item.pembayaran);   
                     }); 
                     var total = 0;
@@ -662,8 +662,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         datarow+='</div>';
                         datarow+='<div class="col-md-6">';
                         datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
-                        datarow+="<tr><td>Kode Supplier</td><td>: "+item.kode_supplier+"</td></tr>";
-                        datarow+="<tr><td>Supplier</td><td>: "+item.supplier+"</td></tr>";
+                        datarow+="<tr><td>Kode target</td><td>: "+item.kode_target+"</td></tr>";
+                        datarow+="<tr><td>target</td><td>: "+item.target+"</td></tr>";
                         datarow+="<tr><td>Keterangan</td><td>: "+item.keterangan+"</td></tr>";
                         datarow+="</table>";
                         datarow+='</div>';
@@ -859,7 +859,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         $.each(response.datarows, function(i, item) {         
                             $("#nomor_po_edit").select2("val", item.nomor_po);    
                             $("#pembayaran").select2("val", item.pembayaran); 
-                            $("#supplier").select2("val", item.kode_supplier);           
+                            $("#target").select2("val", item.kode_target);           
                             $("#kategori").select2("val", item.kategori);                
                             document.getElementById("nomor_faktur").value = item.nomor_faktur;
                             document.getElementById("nomor_faktur_view").value = item.nomor_faktur;

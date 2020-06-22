@@ -84,13 +84,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 										</div>
 									</div>
 									<!-- npwp -->
-									<div class="form-group mt-lg nama_supplier">
+									<div class="form-group mt-lg nama_target">
 										<label class="col-sm-3 control-label">Nomor NPWP</label>
 										<div class="col-md-8">
 											<input type="text" name="no_npwp" id="no_npwp" class="form-control" value="<?php echo $this->security->xss_clean($profil->row()->no_npwp); ?>" required />
 										</div>
 									</div>
-									<div class="form-group mt-lg nama_supplier">
+									<div class="form-group mt-lg nama_target">
 										<label class="col-sm-3 control-label">Nama NPWP</label>
 										<div class="col-md-8">
 											<input type="text" name="nama_npwp" id="nama_npwp" class="form-control" value="<?php echo $this->security->xss_clean($profil->row()->nama_npwp); ?>" required />
@@ -103,26 +103,26 @@ defined('BASEPATH') or exit('No direct script access allowed');
 										</div>
 									</div>
 									<!-- bank -->
-									<div class="form-group mt-lg nama_supplier">
+									<div class="form-group mt-lg nama_target">
 										<label class="col-sm-3 control-label">Nama Bank</label>
 										<div class="col-md-8">
 											<input type="text" name="bank" id="bank" class="form-control" value="<?php echo $this->security->xss_clean($profil->row()->bank); ?>" required />
 										</div>
 									</div>
-									<div class="form-group mt-lg nama_supplier">
+									<div class="form-group mt-lg nama_target">
 										<label class="col-sm-3 control-label">Nomor Rekening</label>
 										<div class="col-md-8">
 											<input type="text" name="rekening" id="rekening" class="form-control" value="<?php echo $this->security->xss_clean($profil->row()->rekening); ?>" required />
 										</div>
 									</div>
-									<div class="form-group mt-lg nama_supplier">
+									<div class="form-group mt-lg nama_target">
 										<label class="col-sm-3 control-label">Rekening Atas Nama</label>
 										<div class="col-md-8">
 											<input type="text" name="an" id="an" class="form-control" value="<?php echo $this->security->xss_clean($profil->row()->an); ?>" required />
 										</div>
 									</div>
 									<!-- apoteker -->
-									<div class="form-group mt-lg nama_supplier">
+									<div class="form-group mt-lg nama_target">
 										<label class="col-sm-3 control-label">No. Ijin Apoteker</label>
 										<div class="col-md-8">
 											<input type="text" name="no_apoteker" id="no_apoteker" class="form-control" value="<?php echo $this->security->xss_clean($profil->row()->no_apoteker); ?>" required />
@@ -134,7 +134,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 											<input type="text" name="masa_apoteker" id="masa_apoteker" class="form-control tanggal_masa" value="<?php echo $this->security->xss_clean($profil->row()->tgl_masa); ?>" data-plugin-datepicker required />
 										</div>
 									</div>
-									<div class="form-group mt-lg nama_supplier">
+									<div class="form-group mt-lg nama_target">
 										<label class="col-sm-3 control-label">Nama Apoteker</label>
 										<div class="col-md-8">
 											<input type="text" name="apoteker" id="apoteker" class="form-control" value="<?php echo $this->security->xss_clean($profil->row()->apoteker); ?>" required />
@@ -152,13 +152,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 											<textarea rows="2" class="form-control" name="alamat_tinggal" id="alamat_tinggal" required><?php echo $this->security->xss_clean($profil->row()->alamat_tinggal); ?></textarea>
 										</div>
 									</div>
-									<div class="form-group mt-lg nama_supplier">
+									<div class="form-group mt-lg nama_target">
 										<label class="col-sm-3 control-label">Kontak Apoteker</label>
 										<div class="col-md-8">
 											<input type="text" name="hp" id="hp" class="form-control" value="<?php echo $this->security->xss_clean($profil->row()->hp); ?>"  required />
 										</div>
 									</div>
-									<div class="form-group mt-lg nama_supplier">
+									<div class="form-group mt-lg nama_target">
 										<label class="col-sm-3 control-label">No SIPA</label>
 										<div class="col-md-8">
 											<input type="text" name="no_sipa" id="no_sipa" class="form-control" value="<?php echo $this->security->xss_clean($profil->row()->no_sipa); ?>"  required />
@@ -170,7 +170,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 											<input type="text" name="tanggal_sipa" id="tanggal_sipa" class="form-control tanggal_sipa" value="<?php echo $this->security->xss_clean($profil->row()->tgl_sipa); ?>"  data-plugin-datepicker required />
 										</div>
 									</div>
-									<div class="form-group mt-lg nama_supplier">
+									<div class="form-group mt-lg nama_target">
 										<label class="col-sm-3 control-label">Nama TTK yang didelegasikan</label>
 										<div class="col-md-8">
 											<input type="text" name="nama_ttk" id="nama_ttk" class="form-control" value="<?php echo $this->security->xss_clean($profil->row()->nama_ttk); ?>"  required />

@@ -515,7 +515,7 @@ public function bankjenis(){
 public function target()
 {   
     level_user('penjualan','target',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
-    $data['target'] = $this->db->get_where('master_target', array('id' => '1'),1); 
+    $data['target'] = $this->db->get_where('tbl_target', array('id' => '1'),1); 
     $this->load->view('member/penjualan/target',$data);
 }   
 

@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="row">
                     <div class="col-sm-3" align="left"><h2 class="panel-title">LAND BANK</h2></div>
                     <form action="" method="get">
-                        <div class="form-group mt-lg nama_supplier">
+                        <div class="form-group mt-lg nama_target">
                             <div class="col-sm-5">
                                 <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
                                     <option value="">Pilih Lokasi</option>
@@ -98,7 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </header>
                 <div class="panel-body">
                   
-                <div class="form-group mt-lg nama_supplier">
+                <div class="form-group mt-lg nama_target">
                     <label class="col-sm-3 control-label">Status Order Akta<span class="required">*</span></label>
                     <div class="col-sm-9">
                         <select data-plugin-selectTwo class="form-control" required name="status_order_akta" id="status_order_akta">  
@@ -107,6 +107,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <option value="proses">Proses</option>
                                 <option value="selesai">Selesai</option>
                         </select> 
+                    </div>
+                </div>
+
+                <div class="form-group tanggal_pembelian">
+                    <label class="col-sm-3 control-label">Tanggal Proses</span></label>
+                    <div class="col-sm-9">
+                        <input type="text" name="tanggal_proses" id="tanggal_proses" class="form-control tanggal"  />
                     </div>
                 </div>
                
@@ -154,6 +161,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     });
 </script>
 <script type="text/javascript">
+  $('.tanggal').datepicker({
+        format: 'yyyy-mm-dd' 
+    });
      function edit(elem){
       var dataId = $(elem).data("id");   
       document.getElementById("idd").setAttribute('value', dataId);
@@ -166,6 +176,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         success: function(response) {  
             $.each(response, function(i, item) { 
              document.getElementById("keterangan").value = item.keterangan; 
+             document.getElementById("tanggal_proses").value = item.tanggal_proses; 
              $("#status_order_akta").select2("val", item.status_order_akta);
          }); 
         }

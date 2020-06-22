@@ -21,7 +21,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url()?>/assets/stylesheets/admin.min.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/vendor/pnotify/pnotify.custom.css" />
 
-
   <!-- Head Libs -->
   <script src="<?php echo base_url()?>/assets/vendor/modernizr/modernizr.js"></script>
 </head>
@@ -33,33 +32,77 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php $this->load->view("komponen/sidebar.php") ?>
     <section role="main" class="content-body">
      <header class="page-header">  
-      <h2>Master Data Regional</h2>  
-  </header> 
+      <h2>Master Data Agen</h2>  
+  </header>  
   <!-- start: page -->
   <section class="panel">
     <header class="panel-heading">    
         <div class="row show-grid">
-            <div class="col-md-6" align="left"><h2 class="panel-title">Data Regional</h2></div>
+            <div class="col-md-6" align="left"><h2 class="panel-title">Data Agen</h2></div>
             <?php  
-            echo level_user('master','perumahan',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
+            echo level_user('master','target',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
             ?> 
         </div>
     </header>
     <div class="panel-body"> 
-        <table class="table table-bordered table-hover table-striped" id="kategoridata">
+        <table class="table table-bordered table-hover table-striped" id="targetdata">
             <thead>
-                <tr>
-                    <th></th>
-                    <th>id</th>
-                    <th>Nama Regional</th>
-                    <th>Lokasi</th>  
-                    <th>Status</th>  
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table> 
-    </div>
+             <tr>
+                <th>Aksi</th>
+                <th>Tahun</th>
+                <th colspan="2"  style="text-align: center;">JAN</th>
+                <th colspan="2" style="text-align: center;">FEB</th>
+                <th colspan="2" style="text-align: center;">MAR</th>
+                <th colspan="2"  style="text-align: center;">APR</th>
+                <th colspan="2" style="text-align: center;">MEI</th>
+                <th colspan="2" style="text-align: center;">JUN</th>
+                <th colspan="2"  style="text-align: center;">JUL</th>
+                <th colspan="2" style="text-align: center;">AGU</th>
+                <th colspan="2" style="text-align: center;">SEP</th>
+                <th colspan="2"  style="text-align: center;">OKT</th>
+                <th colspan="2" style="text-align: center;">NOV</th>
+                <th colspan="2" style="text-align: center;">DES</th>
+                
+
+
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th   style="text-align: center;">BID </th>
+                <th style="text-align: center;">LUAS</th>
+                <th   style="text-align: center;">BID </th>
+                <th style="text-align: center;">LUAS</th>
+                <th   style="text-align: center;">BID </th>
+                <th style="text-align: center;">LUAS</th>
+                <th   style="text-align: center;">BID </th>
+                <th style="text-align: center;">LUAS</th>
+                <th   style="text-align: center;">BID </th>
+                <th style="text-align: center;">LUAS</th>
+                <th   style="text-align: center;">BID </th>
+                <th style="text-align: center;">LUAS</th>
+                <th   style="text-align: center;">BID </th>
+                <th style="text-align: center;">LUAS</th>
+                <th   style="text-align: center;">BID </th>
+                <th style="text-align: center;">LUAS</th>
+                <th   style="text-align: center;">BID </th>
+                <th style="text-align: center;">LUAS</th>
+                <th   style="text-align: center;">BID </th>
+                <th style="text-align: center;">LUAS</th>
+                <th   style="text-align: center;">BID </th>
+                <th style="text-align: center;">LUAS</th>
+                <th   style="text-align: center;">BID </th>
+                <th style="text-align: center;">LUAS</th>
+
+
+
+            </tr>
+
+        </thead>
+        <tbody>
+        </tbody>
+    </table> 
+</div>
 </section>
 <!-- end: page -->
 </section>
@@ -71,34 +114,50 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="modal-dialog">
         <div class="modal-content">
             <section class="panel  panel-primary">
-                <?php echo form_open('master/kategoritambah',' id="FormulirTambah"');?>  
+                <?php echo form_open('master/targettambah',' id="FormulirTambah"');?>  
                 <header class="panel-heading">
-                    <h2 class="panel-title">Tambah Regional</h2>
+                    <h2 class="panel-title">Tambah Agen</h2>
                 </header>
                 <div class="panel-body">
-                    <div class="form-group mt-lg id">
-                        <label class="col-sm-3 control-label">Nama Regional<span class="required">*</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="nama_regional" class="form-control" required/>
-                        </div>
-                    </div>  
-                    <div class="form-group mt-lg id">
-                        <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="lokasi" class="form-control" required/>
-                        </div>
-                    </div>  
+                    <!-- apotek -->
                     <div class="form-group mt-lg nama_target">
-                        <label class="col-sm-3 control-label">Status<span class="required">*</span></label>
+                        <label class="col-sm-3 control-label">Nama Agen<span class="required">*</span></label>
                         <div class="col-sm-9">
-                            <select data-plugin-selectTwo class="form-control" required name="status_regional">  
-                                <option value="">Pilih Status</option>
-                                <?php foreach ($status as $supp): ?>
-                                    <option value="<?php echo $supp->id_status_regional;?>"><?php echo $supp->nama_status;?></option>
+                            <input type="text" name="nama_target" class="form-control" required/>
+                        </div>
+                    </div> 
+                    <div class="form-group mt-lg nama_target">
+                        <label class="col-sm-3 control-label">Regional<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <select data-plugin-selectTwo class="form-control" required id="id_regional" name="id_regional">  
+                                <option value="">Pilih Regional</option>
+                                <?php foreach ($regional as $supp): ?>
+                                    <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
                                 <?php endforeach; ?>
                             </select> 
                         </div>
                     </div>
+                    <div class="form-group alamat">
+                        <label class="col-sm-3 control-label">Alamat Agen<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <textarea rows="2" class="form-control" name="alamat" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group telepon">
+                        <label class="col-sm-3 control-label">Telepon</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="telepon" class="form-control" />
+                        </div>
+                    </div>  
+                    <!-- bank -->
+                    <div class="form-group mt-lg nama_target">
+                        <label class="col-sm-3 control-label">penjual<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="penjual" class="form-control" readonly value="<?php echo $this->session->userdata('nama_admin'); ?>" required/>
+                            <input type="hidden" name="penjual" class="form-control" value="<?php echo $this->session->userdata('idadmin'); ?>" required/>
+                        </div>
+                    </div> 
                 </div>
                 <footer class="panel-footer">
                     <div class="row">
@@ -114,40 +173,58 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 </div>
 
-
 <div class="modal fade" data-keyboard="false" data-backdrop="static"  id="editData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <section class="panel  panel-primary">
-                <?php echo form_open('master/kategoriedit',' id="FormulirEdit"');?>  
-                <input type="hidden" name="id" id="id">
+                <?php echo form_open('master/targetedit',' id="FormulirEdit"');?>  
+                <input type="hidden" name="idd" id="idd">
                 <header class="panel-heading">
-                    <h2 class="panel-title">Edit Data Kategori</h2>
+                    <h2 class="panel-title">Edit Data Agen</h2>
                 </header>
                 <div class="panel-body">
-                    <div class="form-group mt-lg id">
-                        <label class="col-sm-3 control-label">Nama Kategori<span class="required">*</span></label>
+                    <!-- apotek -->
+                    <div class="form-group mt-lg nama_target">
+                        <label class="col-sm-3 control-label">Nama Agen<span class="required">*</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="nama_regional" id="nama_regional" class="form-control" required/>
+                            <input type="text" name="nama_target" id="nama_target" class="form-control" required/>
                         </div>
                     </div> 
-                    <div class="form-group mt-lg id">
-                        <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
+                    <div class="form-group mt-lg id_regional_edit">
+                        <label class="col-sm-3 control-label">Regional<span class="required">*</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="lokasi" id="lokasi" class="form-control" required/>
-                        </div>
-                    </div>  
-                    <div class="form-group mt-lg nama_target">
-                        <label class="col-sm-3 control-label">Status<span class="required">*</span></label>
-                        <div class="col-sm-9">
-                            <select data-plugin-selectTwo class="form-control" required id="status_regional" name="status_regional">  
-                                <option value="">Pilih Status</option>
-                                <?php foreach ($status as $supp): ?>
-                                    <option value="<?php echo $supp->id_status_regional;?>"><?php echo $supp->nama_status;?></option>
+                            <select data-plugin-selectTwo class="form-control" required id="id_regional_edit" name="id_regional">  
+                                <option value="">Pilih Regional</option>
+                                <?php foreach ($regional as $supp): ?>
+                                    <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
                                 <?php endforeach; ?>
                             </select> 
                         </div>
                     </div>
+                    <div class="form-group telepon">
+                        <label class="col-sm-3 control-label">Telepon</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="telepon" id="telepon" class="form-control" />
+                        </div>
+                    </div> 
+                    <div class="form-group alamat">
+                        <label class="col-sm-3 control-label">Alamat Agen<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <textarea rows="2" class="form-control" name="alamat" id="alamat" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group mt-lg nama_target">
+                        <label class="col-sm-3 control-label">penjual<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <select data-plugin-selectTwo class="form-control" required id="id_penjual_edit" name="id_penjual">  
+                                <option value="">Pilih penjual</option>
+                                <?php foreach ($penjual as $supp): ?>
+                                    <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_penjual;?></option>
+                                <?php endforeach; ?>
+                            </select> 
+                        </div>
+                    </div> 
+
                 </div>
                 <footer class="panel-footer">
                     <div class="row">
@@ -162,6 +239,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 </div>
 </div>
+
 <div class="modal fade" data-keyboard="false" data-backdrop="static"  id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -182,8 +260,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <footer class="panel-footer"> 
                     <div class="row">
                         <div class="col-md-12 text-right"> 
-                            <?php echo form_open('master/kategorihapus',' id="FormulirHapus"');?>  
-                            <input type="hidden" name="id" id="idelete">
+                            <?php echo form_open('master/targethapus',' id="FormulirHapus"');?>  
+                            <input type="hidden" name="idd" id="idddelete">
                             <button type="submit" class="btn btn-danger" id="submitformHapus">Delete</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </form>
@@ -193,7 +271,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </section>
     </div>
 </div>
-</div>  
+</div> 
 
 <!-- Vendor -->
 <script src="<?php echo base_url()?>assets/vendor/jquery/jquery.min.js"></script>
@@ -211,20 +289,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url()?>assets/vendor/pnotify/pnotify.custom.js"></script>
 <script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script> 
 <script type="text/javascript"> 
-    var tablekategori = $('#kategoridata').DataTable({  
+    $('.tanggal_masa').datepicker({
+        format: 'yyyy-mm-dd' 
+    });
+    $('.tanggal_sipa').datepicker({
+        format: 'yyyy-mm-dd' 
+    });
+    $('.tanggal_sipaedit').datepicker({
+        format: 'yyyy-mm-dd' 
+    });
+    var tabletarget = $('#targetdata').DataTable({  
         "serverSide": true, 
-        "order": [], 
+        "order": [1],
+        "searching": false,
         "ajax": {
-            "url": "<?php echo base_url()?>master/datakategori",
-            "type": "GET"
-        }, 
-        "columnDefs": [
-        { 
-            "targets": [ 0 ], 
-            "orderable": false, 
+            "url": "<?php echo base_url()?>master/datatarget",
+            data: function (data) {
+              for (var i = 0, len = data.columns.length; i < len; i++) {
+                if (! data.columns[i].search.value) delete data.columns[i].search;
+                if (data.columns[i].searchable === true) delete data.columns[i].searchable;
+                if (data.columns[i].orderable === true) delete data.columns[i].orderable;
+                if (data.columns[i].data === data.columns[i].name) delete data.columns[i].name;
+            }
+            delete data.search.regex;
         },
-        ],  
-    }); 
+        "type": "GET"
+    }, 
+    "columnDefs": [
+    { 
+        "targets": [0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25], 
+        "orderable": false, 
+    },
+    ],  
+}); 
     document.getElementById("FormulirTambah").addEventListener("submit", function (e) {  
        blurForm();       
        $('.help-block').hide();
@@ -265,7 +362,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         } else { 
             $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
             PNotify.removeAll(); 
-            tablekategori.ajax.reload();   
+            tabletarget.ajax.reload();   
             document.getElementById("submitform").removeAttribute('disabled'); 
             $('#tambahData').modal('hide'); 
             document.getElementById("FormulirTambah").reset();  
@@ -288,22 +385,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 }); 
 
     function edit(elem){
-      var dataId = $(elem).data("id");
-      document.getElementById("id").setAttribute('value', dataId);
+      var dataId = $(elem).data("id");   
+      document.getElementById("idd").setAttribute('value', dataId);
       $('#editData').modal();        
       $.ajax({
         type: 'GET',
-        url: '<?php echo base_url()?>master/kategoridetail',
+        url: '<?php echo base_url()?>master/targetdetail',
         data: 'id=' + dataId,
         dataType 	: 'json',
         success: function(response) {  
             $.each(response, function(i, item) { 
-                document.getElementById("id").setAttribute('value', item.id);
-                document.getElementById("nama_regional").setAttribute('value', item.nama_regional);
-                document.getElementById("lokasi").setAttribute('value', item.lokasi); 
-                // document.getElementById("status_kategori").setAttribute('value', item.status_kategori); 
-                // $("#status_regional").val(item.status_regional);
-                $("#status_regional").select2("val", item.status_regional);   
+                document.getElementById("nama_target").setAttribute('value', item.nama_target);
+                document.getElementById("alamat").value = item.alamat;
+                document.getElementById("telepon").setAttribute('value', item.telepon);
+                document.getElementById("id_regional_edit").value = item.id_regional;
+                document.getElementById("id_penjual_edit").value = item.id_penjual;
             }); 
         }
     });  
@@ -348,7 +444,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     } else { 
         $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
         PNotify.removeAll();
-        tablekategori.ajax.reload();    
+        tabletarget.ajax.reload();    
         document.getElementById("submitformEdit").removeAttribute('disabled'); 
         $('#editData').modal('hide');        
         document.getElementById("FormulirEdit").reset();    
@@ -365,13 +461,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         text: "Request gagal, browser akan direload",
         type: 'danger'
     }); 
-    window.setTimeout(function() {  location.reload();}, 2000);
+    window.setTimeout(function() {  location.reload();}, 2000); 
 }); 
 e.preventDefault(); 
 }); 
   function hapus(elem){ 
       var dataId = $(elem).data("id");
-      document.getElementById("idelete").setAttribute('value', dataId);
+      document.getElementById("idddelete").setAttribute('value', dataId);
       $('#modalHapus').modal();        
   }
   document.getElementById("FormulirHapus").addEventListener("submit", function (e) {  
@@ -408,7 +504,7 @@ e.preventDefault();
     } else { 
         $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
         PNotify.removeAll();   
-        tablekategori.ajax.reload();
+        tabletarget.ajax.reload();
         document.getElementById("submitformHapus").removeAttribute('disabled'); 
         $('#modalHapus').modal('hide');        
         document.getElementById("FormulirHapus").reset();    
@@ -417,7 +513,7 @@ e.preventDefault();
             title: 'Notifikasi',
             text: data.message,
             type: 'success'
-        });  
+        }); 
     }
 }).fail(function(data) {   
     new PNotify({

@@ -53,18 +53,17 @@ public function getlistabsensi($id='')
    return $hasil;
 }
 
-    // datatable supplier start
-var $column_search_supplier = array('nama_supplier','telepon','alamat','nama_regional'); 
-var $column_order_supplier = array(null, 'nama_supplier','telepon','alamat','nama_regional');
-var $order_supplier = array('master_supplier.waktu_update' => 'DESC');
-private function _get_query_supplier()
+    // datatable target start
+var $column_search_target = array('nama_regional','tahun'); 
+var $column_order_target = array(null, 'nama_regional','tahun');
+var $order_target = array('tbl_target.tahun' => 'DESC');
+private function _get_query_target()
 { 
     $get = $this->input->get();
-    $this->db->from('master_supplier'); 
-    $this->db->join('master_regional', 'master_regional.id = master_supplier.id_regional');
-    $this->db->join('master_penjual', 'master_penjual.id = master_supplier.id_penjual');
+    $this->db->from('tbl_target'); 
+    $this->db->join('master_regional', 'master_regional.id = tbl_target.id_perumahan');
     $i = 0; 
-    foreach ($this->column_search_supplier as $item)
+    foreach ($this->column_search_target as $item)
     {
         if($get['search']['value'])
         { 
@@ -78,85 +77,76 @@ private function _get_query_supplier()
                 $this->db->or_like($item, $get['search']['value']);
             }
 
-            if(count($this->column_search_supplier) - 1 == $i) 
+            if(count($this->column_search_target) - 1 == $i) 
                 $this->db->group_end(); 
         }
         $i++;
     } 
-    if(isset($get['order'])) 
-    {
-        $this->db->order_by($this->column_order_supplier[$get['order']['0']['column']], $get['order']['0']['dir']);
-    } 
-    else if(isset($this->order_supplier))
-    {
-        $order = $this->order_supplier;
-        $this->db->order_by(key($order), $order[key($order)]);
-    }
 }
 
-function get_supplier_datatable()
+function get_target_datatable()
 {
     $get = $this->input->get();
-    $this->_get_query_supplier();
+    $this->_get_query_target();
     if($get['length'] != -1)
         $this->db->limit($get['length'], $get['start']);
     $query = $this->db->get();
     return $query->result();
 }
 
-function count_filtered_datatable_supplier()
+function count_filtered_datatable_target()
 {
-    $this->_get_query_supplier();
+    $this->_get_query_target();
     $query = $this->db->get();
     return $query->num_rows();
 }
 
-public function count_all_datatable_supplier()
+public function count_all_datatable_target()
 {
-    $this->db->from('master_supplier');
+    $this->db->from('tbl_target');
     return $this->db->count_all_results();
 } 
-    //datatable supplier end
+    //datatable target end
 
-		// CRUD supplier start
-public function rulessupplier()
+		// CRUD target start
+public function rulestarget()
 {
     return [
         [
-            'field' => 'nama_supplier',
-            'label' => 'Nama supplier',
+            'field' => 'nama_target',
+            'label' => 'Nama target',
             'rules' => 'required',
         ] 
     ];
 } 
-function simpandatasupplier(){   
+function simpandatatarget(){   
     $post = $this->input->post();   
     $array = array(
-        'nama_supplier' =>$post["nama_supplier"],
+        'nama_target' =>$post["nama_target"],
         'alamat'        =>$post["alamat"], 
         'telepon'       =>$post["telepon"], 
         'id_regional'      =>$post["id_regional"], 
         'id_penjual'      =>$post["id_penjual"], 
     );
-    return $this->db->insert("master_supplier", $array);   
+    return $this->db->insert("tbl_target", $array);   
 } 
-public function updatedatasupplier()
+public function updatedatatarget()
 {
     $post = $this->input->post();
-    $this->nama_supplier    = $post["nama_supplier"];
+    $this->nama_target    = $post["nama_target"];
     $this->alamat           = $post["alamat"];
     $this->telepon          = $post["telepon"];
     $this->id_regional         = $post["id_regional"];
     $this->id_penjual         = $post["id_penjual"];
-    return $this->db->update("master_supplier", $this, array('id' => $post['idd']));
+    return $this->db->update("tbl_target", $this, array('id' => $post['idd']));
 }
-public function hapusdatasupplier()
+public function hapusdatatarget()
 {
     $post = $this->input->post();
     $this->db->where('id', $post['idd']);
-    return $this->db->delete('master_supplier');
+    return $this->db->delete('tbl_target');
 }
-        // CRUD supplier end
+        // CRUD target end
 
     // datatable distributor start
 var $column_search_distributor = array('nama_distributor','telepon','alamat','nama_regional'); 
@@ -756,7 +746,10 @@ if (!empty($id)) {
 }
 
 if (!empty($shgb)) {
-    $this->db->where('status_order_akta', 'proses');
+    $this->db->where('status_order_akta', 'sudah');
+}else{
+    $this->db->where('status_order_akta !=', 'sudah');
+
 }
 
 return $this->db->get()->result();

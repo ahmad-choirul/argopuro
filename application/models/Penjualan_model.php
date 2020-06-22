@@ -193,7 +193,7 @@ class Penjualan_model extends CI_Model
         $this->db->where('singkatan', $post['idd']);
         return $this->db->delete('master_bank');
     }
-    // CRUD supplier end
+    // CRUD target end
 
 
     public function stokracikan($kode)
@@ -400,7 +400,7 @@ class Penjualan_model extends CI_Model
         $this->target_4 = bilanganbulat($post["target4"]);
         $this->target_5 = bilanganbulat($post["target5"]);
 
-        return $this->db->update("master_target", $this, array('id' => '1'));
+        return $this->db->update("tbl_target", $this, array('id' => '1'));
     }
 
 

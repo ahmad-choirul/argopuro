@@ -211,7 +211,7 @@ class Keuangan_model extends CI_Model{
             'judul'=>$post["judul"], 
             'tanggal'=>$post["tanggal"], 
             'nominal'=>bilanganbulat($post["nominal"]), 
-            'id_supplier'=>$post["id_supplier"], 
+            'id_target'=>$post["id_target"], 
             'tanggal_jatuh_tempo'=>$post["tanggal_jatuh_tempo"],  
             'keterangan'=>$post["keterangan"],  
         );
@@ -224,9 +224,9 @@ class Keuangan_model extends CI_Model{
         return $this->db->delete('hutang_history');
     } 
     public function get_hutang($idd){ 
-        $this->db->select("a.id, a.judul, a.tanggal, a.nominal, a.nominal_dibayar, a.nomor_faktur, a.id_supplier, a.tanggal_lunas, a.tanggal_jatuh_tempo, a.sudah_lunas, a.keterangan, b.nama_supplier, b.telepon, b.alamat");
+        $this->db->select("a.id, a.judul, a.tanggal, a.nominal, a.nominal_dibayar, a.nomor_faktur, a.id_target, a.tanggal_lunas, a.tanggal_jatuh_tempo, a.sudah_lunas, a.keterangan, b.nama_target, b.telepon, b.alamat");
         $this->db->from("hutang_history a");
-        $this->db->join('master_supplier b', 'a.id_supplier = b.id'); 
+        $this->db->join('tbl_target b', 'a.id_target = b.id'); 
         $this->db->where('a.id', $idd,'1'); 
         return $this->db->get()->result_array();
     }  

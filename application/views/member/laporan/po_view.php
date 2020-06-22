@@ -3,8 +3,8 @@
         <tr>
             <th>Nomor PO</th>
             <th>Tanggal PO</th>
-            <th>Kode Supplier</th> 
-            <th>Nama Supplier</th> 
+            <th>Kode target</th> 
+            <th>Nama target</th> 
             <th class="text-right">Total Harga</th>
             <th class="text-right">Pembayaran</th>
             <th class="text-right">Termin</th> 
@@ -16,8 +16,8 @@
 <tr>
     <td><?php echo $post['nomor_po']; ?></td>
     <td><?php echo tgl_indo($post['tgl_po']); ?></td>
-    <td><?php echo $post['supplier']; ?></td>
-    <td><?php echo $post['nama_supplier']; ?></td> 
+    <td><?php echo $post['target']; ?></td>
+    <td><?php echo $post['nama_target']; ?></td> 
     <td class="text-right"><?php echo rupiah($post['total']); ?></td>
     <td class="text-right"><?php echo $post['pembayaran']; ?></td>
     <td class="text-right"><?php echo $post['termin']; ?> Hari</td> 

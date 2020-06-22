@@ -51,11 +51,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label class="control-label">Supplier</label>
-                                        <select  data-plugin-selectTwo class="form-control"  id="supplier" name="supplier">  
-                                            <option value="">Semua Supplier</option>
-                                            <?php foreach ($supplier as $supp): ?>
-                                            <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_supplier;?></option>
+                                        <label class="control-label">target</label>
+                                        <select  data-plugin-selectTwo class="form-control"  id="target" name="target">  
+                                            <option value="">Semua target</option>
+                                            <?php foreach ($target as $supp): ?>
+                                            <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_target;?></option>
                                             <?php endforeach; ?>
                                         </select> 
                                     </div>
@@ -108,13 +108,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         });   
         function searchFilter(page_num) { 
 			page_num = page_num?page_num:0;
-			var supplier = $('#supplier').val();
+			var target = $('#target').val();
 			var firstdate = $('#firstdate').val();
 			var lastdate = $('#lastdate').val();
             $.ajax({
 				type: 'GET',
 				url: '<?php echo base_url(); ?>laporan/laporanpo/'+page_num,
-				data: 'page='+page_num+'&supplier='+supplier+'&firstdate='+firstdate+'&lastdate='+lastdate,success: function (html) { 
+				data: 'page='+page_num+'&target='+target+'&firstdate='+firstdate+'&lastdate='+lastdate,success: function (html) { 
 					$('#postList').html(html);
 				    document.getElementById("KontenHTML").style.display = "block";  
 				}
@@ -124,7 +124,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		document.getElementById("ResetBtn").addEventListener("click", function (e) {  
             document.getElementById("Formulir").reset();  
 		    document.getElementById("KontenHTML").style.display = "none";       
-            $("#supplier").select2("val",''); 
+            $("#target").select2("val",''); 
         });
         
 		  

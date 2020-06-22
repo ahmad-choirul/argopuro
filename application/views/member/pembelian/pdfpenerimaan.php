@@ -173,9 +173,9 @@ foreach ($penerimaan_data as $penerimaan_data) {
                                         <td> <?php echo $this->security->xss_clean($penerimaan_data['penerima']);?></td>
 							        </tr>    
                                     <tr>
-                                        <td>Nama Supplier</td>
+                                        <td>Nama target</td>
                                         <td>:</td>
-                                        <td> <?php echo $this->security->xss_clean($penerimaan_data['nama_supplier']);?></td>
+                                        <td> <?php echo $this->security->xss_clean($penerimaan_data['nama_target']);?></td>
 							        </tr>  
                                 </table>
 
