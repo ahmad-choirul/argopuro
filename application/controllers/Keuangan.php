@@ -303,7 +303,7 @@ public function databayar_tanah($kode_item)
     $draw = intval($this->input->get("draw")); 
     $start = intval($this->input->get("start")); 
     $length = intval($this->input->get("length"));
-    $query = $this->db->select("a.id_pembayaran, a.kode_item, a.tanggal_pembayaran, a.total_bayar, a.keterangan")->from("tabel_pembayaran a")b->where('a.kode_item', $kode_item)->get();  
+    $query = $this->db->select("a.id_pembayaran, a.kode_item, a.tanggal_pembayaran, a.total_bayar, a.keterangan")->from("tabel_pembayaran a")->where('a.kode_item', $kode_item)->get();  
     $data = []; 
     foreach($query->result() as $r) {  
         $data[] = array(   

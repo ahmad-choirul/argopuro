@@ -60,7 +60,6 @@ class Laporan extends CI_Controller {
         $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
         $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
         $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
-
         $this->load->view('member/master/items',$data);
     }  
 
@@ -73,13 +72,6 @@ class Laporan extends CI_Controller {
         $data['list'] = $this->dataevaluasilandbank();
         $this->load->view('member/laporan/evaluasi_land_bank',$data);
     }
-    public function coba($value='')
-    {
-     echo "<pre>";
-     $data = $this->dataevaliasishgb();
-     print_r ($data);
-     echo "</pre>";
- }
  public function dataevaluasilandbank()
  {
     $data['perumahandalamijin'] = $this->db->order_by("id","DESC")->where('status_regional','1')->get('master_regional')->result();
