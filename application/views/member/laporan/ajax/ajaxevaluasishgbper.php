@@ -26,7 +26,7 @@
                     <th style="text-align: center;">L SURAT </th>
                     <th style="text-align: center;">L UKUR </th>
                     <th style="text-align: center;">Status Order</th>
-                    <th style="text-align: center;">Tanggal</th>
+                    <th style="text-align: center;">Tgl Terbit</th>
                     <th style="text-align: center;">JENIS</th>
                     <th style="text-align: center;">NO AKTA</th>
                     <th style="text-align: center;">TANGGAL</th>
@@ -84,7 +84,7 @@
                         <td><?=$data->tanggal_pengalihan?></td>  
                         <td><?=$data->nama_pengalihan?></td>  
                         <td></td>  
-                        <td><?=$data->status_teknik?></td>  
+                        <td><?=tgl_indo($data->terima_finance)?></td>  
                         <td><?=$data->keterangan?></td>  
                     <?php endforeach ?>
                     <?php else: ?>
@@ -148,7 +148,7 @@
                             <td><?=$data->tanggal_pengalihan?></td>  
                             <td><?=$data->nama_pengalihan?></td>  
                             <td></td>  
-                            <td><?=$data->status_teknik?></td>  
+                            <td><?=tgl_indo($data->terima_finance)?></td>  
                             <td><?=$data->keterangan?></td>  
                         <?php endforeach ?>
                         <?php else: ?>
@@ -218,7 +218,7 @@
                         <th style="text-align: center;">L SURAT </th>
                         <th style="text-align: center;">L UKUR </th>
                         <th style="text-align: center;">Status Order</th>
-                        <th style="text-align: center;">Tanggal Order</th>
+                        <th style="text-align: center;">Tgl Terbit</th>
                         <th style="text-align: center;">JENIS</th>
                         <th style="text-align: center;">NO AKTA</th>
                         <th style="text-align: center;">TANGGAL</th>
@@ -277,7 +277,7 @@
                             <td><?=$data->tanggal_pengalihan?></td>  
                             <td><?=$data->nama_pengalihan?></td>  
                             <td></td>  
-                            <td><?=$data->status_teknik?></td>  
+                            <td><?=tgl_indo($data->terima_finance)?></td>  
                             <td><?=$data->keterangan?></td>  
                         <?php endforeach ?>
                         <?php else: ?>
@@ -341,7 +341,7 @@
                                 <td><?=$data->tanggal_pengalihan?></td>  
                                 <td><?=$data->nama_pengalihan?></td>  
                                 <td></td>  
-                                <td><?=$data->status_teknik?></td>  
+                                <td><?=tgl_indo($data->terima_finance)?></td>  
                                 <td><?=$data->keterangan?></td>  
                             <?php endforeach ?>
                             <?php else: ?>

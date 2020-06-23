@@ -282,6 +282,17 @@ public function pageevaluasishgbper()
  $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
  $this->load->view('member/laporan/ajax/ajaxevaluasishgbper',$data);
 }
+
+public function pageevaluasiprosesinduk()
+{
+ // $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+ // $data['dataperumahanseb'] = $this->master_model->getshgbperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31');
+ // $data['dataperumahanses'] = $this->master_model->getshgbperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31');
+ // $data['dataperumahantekseb'] = $this->master_model->getshgbperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','proses');
+ // $data['dataperumahantekses'] = $this->master_model->getshgbperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','proses');
+ // $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+ $this->load->view('member/laporan/ajax/ajaxpenyelesaianinduk');
+}
 public function laporan_evaluasi_tanah_belum_shgb()
 {
    $data['list'] = $this->dataevaliasishgb();
@@ -301,7 +312,9 @@ public function laporan_evaluasi_proses_induk()
 }  
 public function laporan_evaluasi_proses_induk_per()
 {
- $this->load->view('member/laporan/laporan_evaluasi_proses_induk_per');
+      $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+    $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+ $this->load->view('member/laporan/laporan_evaluasi_proses_induk_per',$data);
 }  
 public function laporan_evaluasi_penggabungan_split()
 {

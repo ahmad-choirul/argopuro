@@ -31,10 +31,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      <?php $this->load->view("komponen/header.php") ?>
      <div class="inner-wrapper"> 
         <?php $this->load->view("komponen/sidebar.php") ?>
-        <section role="main" class="content-body" id="kontendata">
+        <section role="main" class="content-body">
+            <header class="page-header">  
+              <h2>Evaluasi Pembelian Tanah</h2>
+          </header>  
+          <!-- start: page -->
+          <form action="" method="get">
+            <div class="form-group mt-lg" >
+                <div class="row" style="background-color: #ffffff;width: 100%; padding: 4px;margin-left: 0%;">
+                    <label class="col-sm-1 control-label">Lokasi<span class="required">*</span></label>
 
-        </section>
-    </div>
+                     <div class="col-sm-2">
+                         <div class="form-group nama_target">
+                                <select data-plugin-selectTwo class="form-control" onchange="refresh()" required id="id_perumahan" name="id_perumahan">  
+                                    <option value="">Pilih Lokasi</option>
+                                    <?php foreach ($perumahan as $aa): ?>
+                                        <option value="<?php echo $aa->id;?>"><?php echo $aa->nama_regional;?></option>
+                                    <?php endforeach; ?>
+                                </select> 
+                        </div>
+                    </div>
+                    <label class="col-sm-1 control-label">Periode<span class="required">*</span></label>
+                    
+                    <div class="col-sm-2">
+                        <input type="text" name="firstdate" id="firstdate" class="form-control tanggal" onchange="refresh()" value="<?php echo $firstdate ?>" data-plugin-datepicker required/>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" name="lastdate" id="lastdate" class="form-control tanggal" onchange="refresh()" value="<?php echo $lastdate ?>" data-plugin-datepicker required/>
+                    </div>
+                    <div class="col-sm-2">
+                        <a class="btn btn-warning" href="<?php echo site_url('Export_excel/excel_laporan1_evaluasi_pembelian_detail/').$firstdate.'/'.$lastdate ?>"> cetak </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div id="kontendata"></div>
+    </section>
+</div>
 </section>
 
 
@@ -480,7 +513,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        refresh();
    }); 
     $('.tanggal').datepicker({
-        format: 'yyyy-mm-dd' 
+        format: 'yyyy-mm-dd' ,
+        autoClose:true
     });   
     var tableitems = $('#itemsdata').DataTable({  
         "serverSide": true, 
@@ -793,10 +827,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 }); 
   function refresh() { 
 
+            var firstdate = $('#firstdate').val();
+            var lastdate = $('#lastdate').val();
+            var id_perumahan = $('#id_perumahan').val();
     $.ajax({
         type: 'GET',
-        url: '<?php echo base_url(); ?>Master/pageitem/',
-        data: 'firstdate=<?php echo $firstdate ?>'+'&lastdate=<?php echo $lastdate ?>',
+        url: '<?php echo base_url(); ?>Master/pageitem?',
+        data: 'firstdate='+firstdate+'&lastdate='+lastdate+'&id_perumahan='+id_perumahan,
         success: function (html) { 
             $('#kontendata').html(html); 
         }

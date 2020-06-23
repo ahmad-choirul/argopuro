@@ -712,13 +712,20 @@ public function pageitem()
     // $data['periode'] = $this->input->get('periode',true);
    $data['firstdate'] = $this->input->get('firstdate');
    $data['lastdate'] = $this->input->get('lastdate'); 
-   $data['perumahandalamijin'] = $this->db->order_by("id","DESC")->where('status_regional','1')->get('master_regional')->result();
-   $data['perumahanluarijin'] = $this->db->order_by("id","DESC")->where('status_regional','2')->get('master_regional')->result();
-   $data['perumahanlokasi'] = $this->db->order_by("id","DESC")->where('status_regional','3')->get('master_regional')->result();
-   $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
-   $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
+   $data['id_perumahan'] = $this->input->get('id_perumahan'); 
+   if ($data['id_perumahan']!='') {
+       $data['perumahan'] = $this->master_model->getperumahan($data['id_perumahan'],$data['firstdate'],$data['lastdate']);
+       $data['dataperumahan'] = $this->master_model->getdataperumahan($data['id_perumahan']);
+   }else{
+    $data['perumahan']='';
+}
+   // $data['perumahandalamijin'] = $this->db->order_by("id","DESC")->where('status_regional','1')->get('master_regional')->result();
+   // $data['perumahanluarijin'] = $this->db->order_by("id","DESC")->where('status_regional','2')->get('master_regional')->result();
+   // $data['perumahanlokasi'] = $this->db->order_by("id","DESC")->where('status_regional','3')->get('master_regional')->result();
+   // $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+$data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
 
-   $this->load->view('member/master/items_view',$data);
+$this->load->view('member/master/items_view',$data);
 } 
 
 public function dataitems()
@@ -882,6 +889,7 @@ public function itemdetail(){
      "tanggal_proses" => $this->security->xss_clean($query->row()->tanggal_proses),
      "jenis_pengalihan_hak" => $this->security->xss_clean($query->row()->jenis_pengalihan_hak),
      "status_teknik" => $this->security->xss_clean($query->row()->status_teknik),
+     "terima_finance" => $this->security->xss_clean($query->row()->terima_finance),
  );    
     echo'['.json_encode($result).']';
 }
@@ -932,6 +940,11 @@ public function updatemasteritem(){
     $data = array('kode_item' => $post['idd'],
         'status_order_akta' => $post['status_order_akta'],
         'tanggal_proses' => $post['tanggal_proses'],
+        'akta_pengalihan' => $post['akta_pengalihan'],
+        'tanggal_pengalihan' => $post['tanggal_pengalihan'],
+        'nama_pengalihan' => $post['nama_pengalihan'],
+        'jenis_pengalihan_hak' => $post['jenis_pengalihan_hak'],
+        'terima_finance' => $post['terima_finance'],
         'keterangan' => $post['keterangan']
     );      
     if($simpan->updatemasteritem($data)){

@@ -28,486 +28,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="bgbody">
   <section class="body">
 
-   <?php $this->load->view("komponen/header.php") ?>
-   <div class="inner-wrapper"> 
-    <?php $this->load->view("komponen/sidebar.php") ?>
-    <section role="main" class="content-body">
-     <header class="page-header">  
-      <h2>Evaluasi Proses Induk 12 </h2>
-  </header>  
-  <!-- start: page -->
-  <div class="row">
-      <section class="panel col-md-12">
-        <header class="panel-heading">    
-            <div class="row show-grid">
-                <div class="col-md-8" align="left"><h2 class="panel-title">PROSES PENYELESAIAN INDUK</h2></div>
-
+     <?php $this->load->view("komponen/header.php") ?>
+     <div class="inner-wrapper"> 
+        <?php $this->load->view("komponen/sidebar.php") ?>
+        <section role="main" class="content-body">
+           <header class="page-header">  
+              <h2>Evaluasi Proses Induk 12 </h2>
+          </header>  
+          <!-- start: page -->
+          <div class="row">
+              <section class="panel col-md-12">
+                <header class="panel-heading">    
+                    <div class="row show-grid">
+                        <div class="col-md-8" align="left"><h2 class="panel-title">PROSES PENYELESAIAN INDUK</h2></div>
+                        <form action="" method="get">
+                            <div class="form-group mt-lg nama_target">
+                              <div class="col-sm-5">
+                                <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
+                                  <option value="">Pilih Lokasi</option>
+                                  <?php foreach ($perumahan as $aa): ?>
+                                    <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?></option>
+                                <?php endforeach; ?>
+                            </select> 
+                        </div>
+                        <a class="btn btn-primary" href="<?php echo site_url('Export_excel/excellaporanbelumshgb/').$id_perumahan ?>"> cetak </a>
+                    </div>
+                </form>
             </div>
         </header>
-        <div class="panel-body"> 
-            <div class="table" style="overflow-x: auto;overflow-y: auto;">
-                <table class="table table-bordered table-hover table-striped data" id="itemsdata">
-                    <thead>
-                        <tr>
-
-                            <th rowspan="2" style="text-align: center; ">NO</th>
-                            <th rowspan="2"style="text-align: center;"> NO GBR </th>
-                            <th rowspan="2"style="text-align: center;">THN</th>
-                            <th rowspan="2" style="text-align: center;">PENJUAL</th>
-                            <th colspan="3" style="text-align: center;">DATA TANAH</th>
-                            <th colspan="3" style="text-align: center;">LUAS M<SUP>2</SUP></th>
-                            <th colspan="2" style="text-align: center;">DAFTAR SK HAK</th>
-                            <th colspan="2" style="text-align: center;">TERBIT SK HAK</th>
-                            <th colspan="2" style="text-align: center;">DAFTAR SHGB</th>
-                            <th colspan="3" style="text-align: center;">TERBIT SHGB</th>
-                            <th rowspan="2" style="text-align: center;">TARGET PENYELESAIAN</th>
-                            <th rowspan="2" style="text-align: center;">KET</th>
-
-
-
-
-                        </tr>
-                        <tr>
-                            <th   style="text-align: center;">SURAT</th>
-                            <th style="text-align: center;">ATAS NAMA</th>
-                            <th style="text-align: center;">LUAS M<sup>2</sup></th>
-                            <th  style="text-align: center;">DAFTAR</th>
-                            <th   style="text-align: center;">TERBIT</th>
-                            <th style="text-align: center;">SELISIH</th>
-                            <th  style="text-align: center;">TGL</th>
-                            <th style="text-align: center;">NO BERKAS</th>
-                            <th   style="text-align: center;">TGL</th>
-                            <th style="text-align: center;">NO SK</th>
-                            <th   style="text-align: center;">TGL</th>
-                            <th style="text-align: center;">NO BERKAS</th>
-                            <th   style="text-align: center;">TGL</th>
-                            <th  style="text-align: center;">NO SHGB</th>
-                            <th style="text-align: center;">M BERLAKU</th>
-
-                        </tr>
-
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>A</td>
-                            <td colspan="3">Proses sd. Tahun 2019</td>
-
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-
-
-                        </tr>
-
-
-                    </tr>
-                    <tr>
-                        <td colspan="21"></td>
-
-                    </tr>
-
-                    <tr>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-
-
-                       <tr>
-                        <td>-</td>
-                        <td colspan="4">Jumlah A : </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="21"></td>
-
-                    </tr>
-                    <tr>
-                        <td>B</td>
-                        <td colspan="3">Proses Tahun 2020</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
-
-                    </tr>
-
-                    <tr>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-
-                   </tr>
-                   <tr>
-                    <td>-</td>
-                    <td colspan="4">Jumlah B : </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-
-            </tbody>
-            <TFOOT>
-                <tr>
-                    <td colspan="21"></td>
-
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td colspan="4"><b>Total :</b> </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-
-            </TFOOT>
-        </table> 
-    </div>
-
-</div>
-</section>
-<section class="panel col-md-12">
-    <header class="panel-heading">    
-        <div class="row show-grid">
-            <div class="col-md-8" align="left"><h2 class="panel-title">INDUK TERBIT 2019</h2></div>
-
-        </div>
-    </header>
-    <div class="panel-body"> 
-        <div class="table" style="overflow-x: auto;overflow-y: auto;">
-            <table class="table table-bordered table-hover table-striped data" id="itemsdata">
-                <thead>
-                    <tr>
-
-                        <th rowspan="2" style="text-align: center; ">NO</th>
-                        <th rowspan="2"style="text-align: center;"> NO GBR </th>
-                        <th rowspan="2"style="text-align: center;">THN</th>
-                        <th rowspan="2" style="text-align: center;">PENJUAL</th>
-                        <th colspan="3" style="text-align: center;">DATA TANAH</th>
-                        <th colspan="3" style="text-align: center;">LUAS M<SUP>2</SUP></th>
-                        <th colspan="2" style="text-align: center;">DAFTAR SK HAK</th>
-                        <th colspan="2" style="text-align: center;">TERBIT SK HAK</th>
-                        <th colspan="2" style="text-align: center;">DAFTAR SHGB</th>
-                        <th colspan="3" style="text-align: center;">TERBIT SHGB</th>
-                        <th rowspan="2" style="text-align: center;">TARGET PENYELESAIAN</th>
-                        <th rowspan="2" style="text-align: center;">KET</th>
-
-
-
-
-                    </tr>
-                    <tr>
-                        <th   style="text-align: center;">SURAT</th>
-                        <th style="text-align: center;">ATAS NAMA</th>
-                        <th style="text-align: center;">LUAS M<sup>2</sup></th>
-                        <th  style="text-align: center;">DAFTAR</th>
-                        <th   style="text-align: center;">TERBIT</th>
-                        <th style="text-align: center;">SELISIH</th>
-                        <th  style="text-align: center;">TGL</th>
-                        <th style="text-align: center;">NO BERKAS</th>
-                        <th   style="text-align: center;">TGL</th>
-                        <th style="text-align: center;">NO SK</th>
-                        <th   style="text-align: center;">TGL</th>
-                        <th style="text-align: center;">NO BERKAS</th>
-                        <th   style="text-align: center;">TGL</th>
-                        <th  style="text-align: center;">NO SHGB</th>
-                        <th style="text-align: center;">M BERLAKU</th>
-
-                    </tr>
-
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>A</td>
-                        <td colspan="3">Proses sd. Tahun 2019</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
-
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-
-
-                    </tr>
-                    <tr>
-                        <td colspan="21"></td>
-
-                    </tr>
-                    <tr>
-                        <td>-</td>
-                        <td colspan="4">Jumlah A : </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td colspan="21"></td>
-
-                    </tr>
-                    <tr>
-                        <td>B</td>
-                        <td colspan="3">Proses Tahun 2020</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
-
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-
-                    </tr>
-                    <tr>
-                        <td>-</td>
-                        <td colspan="4">Jumlah B : </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="21"></td>
-
-                    </tr>
-                    <tr>
-                        <td>-</td>
-                        <td colspan="4"><b>Total :</b>: </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                </tbody>
-            </table> 
-        </div>
-
-
-    </div>
-</section>
-
-
-</div>
-
-<!-- end: page -->
-</section>
+        <div id="kontendata"></div>
+        <!-- end: page -->
+    </section>
 </div>
 </section>
 
@@ -543,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <h2 class="panel-title">Edit Data Tanah/Aset</h2>
                 </header>
                 <div class="panel-body">
-                 
+
                     <div class="form-group mt-lg nama_target">
                         <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
                         <div class="col-sm-9">
@@ -758,10 +309,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script> 
 <script type="text/javascript">
 	$(document).ready(function(){
-		// $('.data').DataTable({
-  //           "orderable": false
-  //       });
-});
+        refresh();
+    });
+  function refresh() { 
+
+    $.ajax({
+        type: 'GET',
+        url: '<?php echo base_url(); ?>laporan/pageevaluasiprosesinduk/',
+        data: 'id_perumahan=<?php echo $id_perumahan ?>',
+        success: function (html) { 
+            $('#kontendata').html(html); 
+        }
+    }); 
+}
 </script>
+
 </body>
 </html>

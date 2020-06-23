@@ -28,117 +28,156 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="bgbody">
   <section class="body">
 
-     <?php $this->load->view("komponen/header.php") ?>
-     <div class="inner-wrapper"> 
-        <?php $this->load->view("komponen/sidebar.php") ?>
-        <section role="main" class="content-body">
-           <header class="page-header">  
-              <h2>Master Data Tanah</h2>
-          </header>  
-          <!-- start: page -->
-                   <!-- start: page -->
-          <section class="panel">
-            <header class="panel-heading">    
-                <div class="row">
-                    <div class="col-sm-3" align="left"><h2 class="panel-title">LAND BANK</h2></div>
-                    <form action="" method="get">
-                        <div class="form-group mt-lg nama_target">
-                            <div class="col-sm-5">
-                                <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
-                                    <option value="">Pilih Lokasi</option>
-                                    <?php foreach ($perumahan as $aa): ?>
-                                        <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?></option>
-                                    <?php endforeach; ?>
-                                </select> 
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </header>
-
-            <div id="kontendata">
-
+   <?php $this->load->view("komponen/header.php") ?>
+   <div class="inner-wrapper"> 
+    <?php $this->load->view("komponen/sidebar.php") ?>
+    <section role="main" class="content-body">
+     <header class="page-header">  
+      <h2>Master Data Tanah</h2>
+    </header>  
+    <!-- start: page -->
+    <!-- start: page -->
+    <section class="panel">
+      <header class="panel-heading">    
+        <div class="row">
+          <div class="col-sm-3" align="left"><h2 class="panel-title">LAND BANK</h2></div>
+          <form action="" method="get">
+            <div class="form-group mt-lg nama_target">
+              <div class="col-sm-5">
+                <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
+                  <option value="">Pilih Lokasi</option>
+                  <?php foreach ($perumahan as $aa): ?>
+                    <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?></option>
+                  <?php endforeach; ?>
+                </select> 
+              </div>
+               <a class="btn btn-primary" href="<?php echo site_url('Export_excel/excellaporanbelumshgb/').$id_perumahan ?>"> cetak </a>
             </div>
+          </form>
+        </div>
+      </header>
 
-        </section>
+      <div id="kontendata">
+
+      </div>
+
     </section>
+  </section>
 </div>
 </section>
 
 
 <div class="modal fade" data-keyboard="false" data-backdrop="static"  id="detailData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <section class="panel panel-primary">   
-                <header class="panel-heading">
-                    <h2 class="panel-title">Detail Obat / Alkes</h2>
-                </header>
-                <div class="panel-body" id="showdetail"> 
-                </div>
-                <footer class="panel-footer">
-                    <div class="row">
-                        <div class="col-md-12 text-right">
-                            <button class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </footer> 
-            </section>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <section class="panel panel-primary">   
+        <header class="panel-heading">
+          <h2 class="panel-title">Detail Obat / Alkes</h2>
+        </header>
+        <div class="panel-body" id="showdetail"> 
         </div>
+        <footer class="panel-footer">
+          <div class="row">
+            <div class="col-md-12 text-right">
+              <button class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </footer> 
+      </section>
     </div>
+  </div>
 </div>
 
 <div class="modal fade" data-keyboard="false" data-backdrop="static"  id="editData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <section class="panel panel-primary">
-                <?php echo form_open('master/updatemasteritem',' id="FormulirEdit"  enctype="multipart/form-data"');?>  
-                <input type="hidden" name="idd" id="idd">
-                <header class="panel-heading">
-                    <h2 class="panel-title">Edit Data Tanah/Aset</h2>
-                </header>
-                <div class="panel-body">
-                  
-                <div class="form-group mt-lg nama_target">
-                    <label class="col-sm-3 control-label">Status Order Akta<span class="required">*</span></label>
-                    <div class="col-sm-9">
-                        <select data-plugin-selectTwo class="form-control" required name="status_order_akta" id="status_order_akta">  
-                            <option value="">Pilih status</option>
-                                <option value="belum">Belum</option>
-                                <option value="proses">Proses</option>
-                                <option value="selesai">Selesai</option>
-                        </select> 
-                    </div>
-                </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <section class="panel panel-primary">
+        <?php echo form_open('master/updatemasteritem',' id="FormulirEdit"  enctype="multipart/form-data"');?>  
+        <input type="hidden" name="idd" id="idd">
+        <header class="panel-heading">
+          <h2 class="panel-title">Edit Data Tanah/Aset</h2>
+        </header>
+        <div class="panel-body">
 
-                <div class="form-group tanggal_pembelian">
-                    <label class="col-sm-3 control-label">Tanggal Proses</span></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="tanggal_proses" id="tanggal_proses" class="form-control tanggal"  />
-                    </div>
-                </div>
-               
-                <div class="form-group keterangan">
-                    <label class="col-sm-3 control-label">Keterangan</label>
-                    <div class="col-sm-9">
-                        <textarea rows="2" class="form-control" name="keterangan" id="keterangan"></textarea>
-                    </div>
-                </div>
-                
+          <div class="form-group mt-lg nama_target">
+            <label class="col-sm-3 control-label">Status Order Akta<span class="required">*</span></label>
+            <div class="col-sm-9">
+              <select data-plugin-selectTwo class="form-control" required name="status_order_akta" id="status_order_akta">  
+                <option value="">Pilih status</option>
+                <option value="belum">Belum</option>
+                <option value="proses">Proses</option>
+                <option value="selesai">Selesai</option>
+              </select> 
             </div>
-            <footer class="panel-footer">
-                <div class="row">
-                    <div class="col-md-12 text-right">
-                        <button class="btn btn-primary modal-confirm" type="submit" id="submitformEdit">Submit</button>
-                        <button class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </footer>
-        </form>
-    </section>
-</div>
-</div>
-</div>
+          </div>
+
+          <div class="form-group tanggal_pembelian">
+            <label class="col-sm-3 control-label">Tanggal Proses</span></label>
+            <div class="col-sm-9">
+              <input type="text" name="tanggal_proses" id="tanggal_proses" class="form-control tanggal"  />
+            </div>
+          </div>
+
+          <div class="form-group ">
+            <label class="col-sm-3 control-label">Jenis</span></label>
+            <div class="col-sm-9">
+              <input type="text" name="jenis_pengalihan_hak" id="jenis_pengalihan_hak" class="form-control"  />
+            </div>
+          </div>
+
+          <div class="form-group ">
+            <label class="col-sm-3 control-label">No Akta</span></label>
+            <div class="col-sm-9">
+              <input type="text" name="akta_pengalihan" id="akta_pengalihan" class="form-control"  />
+            </div>
+          </div>
+
+
+
+          <div class="form-group tanggal_pembelian">
+            <label class="col-sm-3 control-label">Tanggal Akta</span></label>
+            <div class="col-sm-9">
+              <input type="text" name="tanggal_pengalihan" id="tanggal_pengalihan" class="form-control tanggal"  />
+            </div>
+          </div>
+
+          <div class="form-group ">
+            <label class="col-sm-3 control-label">Atas Nama</span></label>
+            <div class="col-sm-9">
+              <input type="text" name="nama_pengalihan" id="nama_pengalihan" class="form-control  "  />
+            </div>
+          </div>
+
+          <div class="form-group tanggal_pembelian">
+            <label class="col-sm-3 control-label">Terima FInance</span></label>
+            <div class="col-sm-9">
+              <input type="text" name="terima_finance" id="terima_finance" class="form-control tanggal"  />
+            </div>
+          </div>
+
  
+          <div class="form-group keterangan">
+            <label class="col-sm-3 control-label">Keterangan</label>
+            <div class="col-sm-9">
+              <textarea rows="2" class="form-control" name="keterangan" id="keterangan"></textarea>
+            </div>
+          </div>
+
+        </div>
+        <footer class="panel-footer">
+          <div class="row">
+            <div class="col-md-12 text-right">
+              <button class="btn btn-primary modal-confirm" type="submit" id="submitformEdit">Submit</button>
+              <button class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </footer>
+      </form>
+    </section>
+  </div>
+</div>
+</div>
+
 
 <!-- Vendor -->
 <script src="<?php echo base_url()?>assets/vendor/jquery/jquery.min.js"></script>
@@ -156,32 +195,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url()?>assets/vendor/pnotify/pnotify.custom.js"></script>
 <script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script> 
 <script type="text/javascript">
-    $(document).ready(function(){
-        refresh();
-    });
+  $(document).ready(function(){
+    refresh();
+  });
 </script>
 <script type="text/javascript">
   $('.tanggal').datepicker({
-        format: 'yyyy-mm-dd' 
-    });
-     function edit(elem){
-      var dataId = $(elem).data("id");   
-      document.getElementById("idd").setAttribute('value', dataId);
-      $('#editData').modal();        
-      $.ajax({
-        type: 'GET',
-        url: '<?php echo base_url()?>master/itemdetail',
-        data: 'id=' + dataId,
-        dataType    : 'json',
-        success: function(response) {  
-            $.each(response, function(i, item) { 
-             document.getElementById("keterangan").value = item.keterangan; 
-             document.getElementById("tanggal_proses").value = item.tanggal_proses; 
-             $("#status_order_akta").select2("val", item.status_order_akta);
-         }); 
-        }
+    format: 'yyyy-mm-dd' 
+  });
+  function edit(elem){
+    var dataId = $(elem).data("id");   
+    document.getElementById("idd").setAttribute('value', dataId);
+    $('#editData').modal();        
+    $.ajax({
+      type: 'GET',
+      url: '<?php echo base_url()?>master/itemdetail',
+      data: 'id=' + dataId,
+      dataType    : 'json',
+      success: function(response) {  
+        $.each(response, function(i, item) { 
+         document.getElementById("keterangan").value = item.keterangan; 
+         document.getElementById("tanggal_proses").value = item.tanggal_proses; 
+         document.getElementById("akta_pengalihan").value = item.akta_pengalihan; 
+         document.getElementById("tanggal_pengalihan").value = item.tanggal_pengalihan; 
+         document.getElementById("nama_pengalihan").value = item.nama_pengalihan; 
+         document.getElementById("jenis_pengalihan_hak").value = item.jenis_pengalihan_hak; 
+         document.getElementById("terima_finance").value = item.terima_finance; 
+
+         $("#status_order_akta").select2("val", item.status_order_akta);
+       }); 
+      }
     });  
-      return false;
+    return false;
   }
   document.getElementById("FormulirEdit").addEventListener("submit", function (e) {  
    blurForm();       
@@ -192,69 +237,69 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    var form = $('#FormulirEdit')[0];
    var formData = new FormData(form);
    var xhrAjax = $.ajax({
-       type       : 'POST',
-       url        : $(this).attr('action'),
-       data       : formData, 
-       processData: false,
-       contentType: false,
-       cache: false, 
-       dataType   : 'json'
+     type       : 'POST',
+     url        : $(this).attr('action'),
+     data       : formData, 
+     processData: false,
+     contentType: false,
+     cache: false, 
+     dataType   : 'json'
    }).done(function(data) { 
-       if ( ! data.success) {  
-        $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-        document.getElementById("submitformEdit").removeAttribute('disabled');  
-        $('#submitformEdit').html('Submit');    
-        var objek = Object.keys(data.errors);  
-        for (var key in data.errors) {
-            if (data.errors.hasOwnProperty(key)) { 
-                var msg = '<div class="help-block" for="'+key+'">'+data.errors[key]+'</span>';
-                $('.'+key).addClass('has-error');
-                $('input[name="' + key + '"]').after(msg);  
-            }
-            if (key == 'fail') {   
-                new PNotify({
-                    title: 'Notifikasi',
-                    text: data.errors[key],
-                    type: 'danger'
-                }); 
-            }
+     if ( ! data.success) {  
+      $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+      document.getElementById("submitformEdit").removeAttribute('disabled');  
+      $('#submitformEdit').html('Submit');    
+      var objek = Object.keys(data.errors);  
+      for (var key in data.errors) {
+        if (data.errors.hasOwnProperty(key)) { 
+          var msg = '<div class="help-block" for="'+key+'">'+data.errors[key]+'</span>';
+          $('.'+key).addClass('has-error');
+          $('input[name="' + key + '"]').after(msg);  
         }
-    } else { 
-        $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-        PNotify.removeAll();
-        document.getElementById("submitformEdit").removeAttribute('disabled'); 
-        $('#editData').modal('hide');        
-        document.getElementById("FormulirEdit").reset();    
-        $('#submitformEdit').html('Submit');   
-        new PNotify({
+        if (key == 'fail') {   
+          new PNotify({
             title: 'Notifikasi',
-            text: data.message,
-            type: 'success'
-        });  
-        refresh();    
+            text: data.errors[key],
+            type: 'danger'
+          }); 
+        }
+      }
+    } else { 
+      $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+      PNotify.removeAll();
+      document.getElementById("submitformEdit").removeAttribute('disabled'); 
+      $('#editData').modal('hide');        
+      document.getElementById("FormulirEdit").reset();    
+      $('#submitformEdit').html('Submit');   
+      new PNotify({
+        title: 'Notifikasi',
+        text: data.message,
+        type: 'success'
+      });  
+      refresh();    
 
     }
-}).fail(function(data) { 
+  }).fail(function(data) { 
     new PNotify({
-        title: 'Notifikasi',
-        text: "Request gagal, browser akan direload",
-        type: 'danger'
+      title: 'Notifikasi',
+      text: "Request gagal, browser akan direload",
+      type: 'danger'
     }); 
                     //window.settimeout(function() {  location.reload();}, 2000);
-                }); 
-e.preventDefault(); 
+                  }); 
+  e.preventDefault(); 
 }); 
-	  function refresh() { 
+  function refresh() { 
 
     $.ajax({
-        type: 'GET',
-        url: '<?php echo base_url(); ?>laporan/pageevaluasishgbper/',
-        data: 'id_perumahan=<?php echo $id_perumahan ?>',
-        success: function (html) { 
-            $('#kontendata').html(html); 
-        }
+      type: 'GET',
+      url: '<?php echo base_url(); ?>laporan/pageevaluasishgbper/',
+      data: 'id_perumahan=<?php echo $id_perumahan ?>',
+      success: function (html) { 
+        $('#kontendata').html(html); 
+      }
     }); 
-}
+  }
 </script>
 </body>
 </html>
