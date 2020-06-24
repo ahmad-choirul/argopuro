@@ -123,12 +123,12 @@ public function catatantambah(){
     $post = $this->input->post();
     $simpan = $this->dashboard_model;
     $validation = $this->form_validation;
-    $validation->set_rules($simpan->rulesserah_terima());
+    $validation->set_rules($simpan->rulesproses_induk());
     if ($this->form_validation->run() != FALSE){
      $errors = $this->form_validation->error_array();
      $data['errors'] = $errors;
  }else{
-    $insert_id = $simpan->updatedataserah_terima();
+    $insert_id = $simpan->updatedataproses_induk();
     if($insert_id > 0) {
         $data['success']= true;
         $data['penjual']= $post["nama_penjual"];

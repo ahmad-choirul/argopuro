@@ -1,5 +1,13 @@
 <?php
 class Master_model extends CI_Model{   
+            public function getdetailprosesinduk($id_proses_induk)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dtl_proses_induk');
+        $this->db->where('id_proses_induk', $id_proses_induk);
+        $this->db->order_by('waktu_update', 'desc');
+        return $this->db->get()->result_array();
+    }
     public function getdatatanah($kode_item)
     {
         $this->db->select('a.*,b.nama_regional,c.*');
@@ -189,14 +197,14 @@ private function _get_query_distributor()
         $this->db->order_by(key($order), $order[key($order)]);
     }
 }
-public function getserah_terimaarray()
+public function getproses_indukarray()
 {
 
-    $this->db->from('master_serah_terima');
+    $this->db->from('tbl_dtl_proses_induk');
     $firstdate = $this->input->get('firstdate');
     $lastdate = $this->input->get('lastdate');
     if($firstdate!='' AND $lastdate!=''){
-        $this->db->where('tgl_serah_terima BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
+        $this->db->where('tgl_proses_induk BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
     }
     $hasil = $this->db->get();
     if ($hasil->num_rows()>0) {
@@ -785,6 +793,33 @@ if (!empty($shgb)) {
 
 return $this->db->get()->result_array();
 }
+
+
+public function getmaster_prosesinduk($firstdate='',$lastdate='',$sudah='')
+{
+ $this->db->select('a.*');
+ $this->db->from('master_proses_induk a'); 
+//    if(!empty($firstdate) AND !empty($lastdate)){
+//     $this->db->where('a.tanggal_pembelian BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
+// }
+
+// if (!empty($shgb)) {
+//     $this->db->where('status_order_akta', 'selesai');
+// }else{
+//     $this->db->where('status_order_akta !=', 'selesai');
+
+// }
+
+ return $this->db->get()->result();
+}
+
+public function getprosesinduk($id)
+{
+    $this->db->select('*');
+    $this->db->from('master_proses_induk');
+    $this->db->where('id_proses_induk', $id);
+    return $this->db->get()->result_array();
+}
 	// datatable item start
 var $column_search_item = array('kode_item','nama_item','nama_penjual','nama_surat_tanah','nama_makelar'); 
 var $column_order_item = array(null, 'kode_item','nama_item','nama_penjual','nama_surat_tanah','nama_makelar');
@@ -1305,19 +1340,19 @@ public function hapusdatapenjual()
 }
     //CRUD penjual end 
 
-// datatable serah_terima start
-var $column_search_serah_terima = array('tgl_serah_terima','id_master_item','keterangan');
-var $column_order_serah_terima = array(null, 'tgl_serah_terima','keterangan');
-var $order_serah_terima = array('a.waktu_update' => 'DESC');
-private function _get_query_serah_terima()
+// datatable proses_induk start
+var $column_search_proses_induk = array('tgl_proses_induk','id_master_item','keterangan');
+var $column_order_proses_induk = array(null, 'tgl_proses_induk','keterangan');
+var $order_proses_induk = array('a.waktu_update' => 'DESC');
+private function _get_query_proses_induk()
 {
     $this->db->select('a.*,b.luas_surat,b.luas_ukur,c.nama_regional');
-    $this->db->from('master_serah_terima a');
+    $this->db->from('tbl_dtl_proses_induk a');
     $this->db->join('master_item b', 'b.kode_item = a.id_master_item', 'left');
     $this->db->join('master_regional c', 'b.id_perumahan = c.id', 'left');
     $get = $this->input->get();
     $i = 0;
-    foreach ($this->column_search_serah_terima as $item)
+    foreach ($this->column_search_proses_induk as $item)
     {
         if($get['search']['value'])
         {
@@ -1331,26 +1366,26 @@ private function _get_query_serah_terima()
                 $this->db->or_like($item, $get['search']['value']);
             }
 
-            if(count($this->column_search_serah_terima) - 1 == $i)
+            if(count($this->column_search_proses_induk) - 1 == $i)
                 $this->db->group_end();
         }
         $i++;
     }
     if(isset($get['order']))
     {
-        $this->db->order_by($this->column_order_serah_terima[$get['order']['0']['column']], $get['order']['0']['dir']);
+        $this->db->order_by($this->column_order_proses_induk[$get['order']['0']['column']], $get['order']['0']['dir']);
     }
-    else if(isset($this->order_serah_terima))
+    else if(isset($this->order_proses_induk))
     {
-        $order = $this->order_serah_terima;
+        $order = $this->order_proses_induk;
         $this->db->order_by(key($order), $order[key($order)]);
     }
 }
 
-function get_serah_terima_datatable()
+function get_proses_induk_datatable()
 {
     $get = $this->input->get();
-    $this->_get_query_serah_terima();
+    $this->_get_query_proses_induk();
     // $this->db->where('jenis_pembeli','2');
     if($get['length'] != -1)
         $this->db->limit($get['length'], $get['start']);
@@ -1358,54 +1393,108 @@ function get_serah_terima_datatable()
     return $query->result();
 }
 
-function count_filtered_datatable_serah_terima()
+function count_filtered_datatable_proses_induk()
 {
-    $this->_get_query_serah_terima();
+    $this->_get_query_proses_induk();
     $query = $this->db->get();
     return $query->num_rows();
 }
 
-public function count_all_datatable_serah_terima()
+public function count_all_datatable_proses_induk()
 {
-    $this->db->from('master_serah_terima');
+    $this->db->from('tbl_dtl_proses_induk');
     return $this->db->count_all_results();
 }
-//datatable serah_terima end
+//datatable proses_induk end
 
-//CRUD serah_terima start
-public function rulesserah_terima()
+//CRUD proses_induk start
+public function rulesproses_induk()
 {
     return [
         [
-            'field' => 'tgl_serah_terima',
-            'label' => 'Tanggal serah_terima',
+            'field' => 'tgl_proses_induk',
+            'label' => 'Tanggal proses_induk',
             'rules' => 'required',
         ]
     ];
 }
-function simpandataserah_terima(){
+function simpandataproses_induk(){
     $post = $this->input->post();
     $array = array(
-        'tgl_serah_terima'=>$post["tgl_serah_terima"],
+        'id_proses_induk'=>$post["id_proses_induk"],
+        'tgl_proses_induk'=>$post["tgl_proses_induk"],
         'keterangan'=>$post["keterangan"],
         'id_master_item'=>$post["id_master_item"],
     );
-    $this->db->insert("master_serah_terima", $array);
+    $this->db->insert("tbl_dtl_proses_induk", $array);
     return $this->db->insert_id();
 }
-public function updatedataserah_terima()
+public function updatedataproses_induk()
 {
     $post = $this->input->post();
-    $this->tgl_serah_terima = $post["tgl_serah_terima"];
+    $this->id_proses_induk = $post["id_proses_induk"];
+    $this->tgl_proses_induk = $post["tgl_proses_induk"];
     $this->keterangan = $post["keterangan"];
-    return $this->db->update("master_serah_terima", $this, array('id_serah_terima' => $post['idd']));
+    return $this->db->update("tbl_dtl_proses_induk", $this, array('id_dtl_proses_induk' => $post['idd']));
 }
-public function hapusdataserah_terima()
+public function hapusdataproses_induk()
 {
     $post = $this->input->post();
-    $this->db->where('id_serah_terima', $post['idd']);
-    return $this->db->delete('master_serah_terima');
+    $this->db->where('id_dtl_proses_induk', $post['idd']);
+    return $this->db->delete('tbl_dtl_proses_induk');
 }
-//CRUD serah_terima end
+//CRUD proses_induk end
+
+public function rulesdetailproses_induk()
+{
+    return [
+        [
+            'field' => 'tgl_proses_induk',
+            'label' => 'Tanggal proses_induk',
+            'rules' => 'required',
+        ]
+    ];
+}
+function simpandatamasterproses_induk(){
+    $post = $this->input->post();
+    $array = array(
+     'no_surat_tanah'=>$post["no_surat_tanah"],
+     'nama_surat_tanah'=>$post["nama_surat_tanah"],
+     'luas'=>$post["luas"],
+     'tanggal_daftar_sk_hak'=>$post["tanggal_daftar_sk_hak"],
+     'no_daftar_sk_hak'=>$post["no_daftar_sk_hak"],
+     'tanggal_terbit_sk_hak'=>$post["tanggal_terbit_sk_hak"],
+     'no_terbit_sk_hak'=>$post["no_terbit_sk_hak"],
+     'tanggal_daftar_shgb'=>$post["tanggal_daftar_shgb"],
+     'no_daftar_shgb'=>$post["no_daftar_shgb"],
+     'tanggal_terbit_shgb'=>$post["tanggal_terbit_shgb"],
+     'no_terbit_shgb'=>$post["no_terbit_shgb"],
+     'masa_berlaku_shgb'=>$post["masa_berlaku_shgb"],
+     'target_penyelesaian'=>$post["target_penyelesaian"],
+     'keterangan'=>$post["keterangan"],
+ );
+    $this->db->insert("master_proses_induk", $array);
+    return $this->db->insert_id();
+}
+public function updatedatamasterproses_induk()
+{
+    $post = $this->input->post();
+    $this->id_proses_induk = $post["id_proses_induk"];
+    $this->no_surat_tanah = $post["no_surat_tanah"];
+    $this->nama_surat_tanah = $post["nama_surat_tanah"];
+    $this->luas = $post["luas"];
+    $this->tanggal_daftar_sk_hak = $post["tanggal_daftar_sk_hak"];
+    $this->no_daftar_sk_hak = $post["no_daftar_sk_hak"];
+    $this->tanggal_terbit_sk_hak = $post["tanggal_terbit_sk_hak"];
+    $this->no_terbit_sk_hak = $post["no_terbit_sk_hak"];
+    $this->tanggal_daftar_shgb = $post["tanggal_daftar_shgb"];
+    $this->no_daftar_shgb = $post["no_daftar_shgb"];
+    $this->tanggal_terbit_shgb = $post["tanggal_terbit_shgb"];
+    $this->no_terbit_shgb = $post["no_terbit_shgb"];
+    $this->masa_berlaku_shgb = $post["masa_berlaku_shgb"];
+    $this->target_penyelesaian = $post["target_penyelesaian"];
+    $this->keterangan = $post["keterangan"];
+    return $this->db->update("master_proses_induk", $this, array('id_proses_induk' => $post['idd']));
+}
 
 }

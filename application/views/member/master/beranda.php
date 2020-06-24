@@ -111,9 +111,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 												<!-- 	<?php if( $this->session->userdata('kategori')==31){?>
 														<li>
-															<a href="<?php echo base_url()?>master/serah_terima" class="menu-item" style="color: white"><i class="fa fa-folder"></i> Master Serah Terima Teknik</a>
+															<a href="<?php echo base_url()?>master/proses_induk" class="menu-item" style="color: white"><i class="fa fa-folder"></i> Master Serah Terima Teknik</a>
 															<div class="item-options">
-																<a href="<?php echo base_url()?>master/serah_terima">
+																<a href="<?php echo base_url()?>master/proses_induk">
 																	<i class="fa fa-arrow-circle-o-left"></i>
 																</a> 
 															</div>

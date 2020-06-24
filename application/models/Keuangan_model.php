@@ -14,6 +14,8 @@ class Keuangan_model extends CI_Model{
         $this->db->order_by('waktu_update', 'desc');
         return $this->db->get()->result_array();
     }
+
+
     private function _get_query_datarekening()
     { 
         $get = $this->input->get();

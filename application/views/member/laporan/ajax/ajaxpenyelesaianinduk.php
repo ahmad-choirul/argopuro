@@ -1,205 +1,115 @@
+
 <div class="panel-body"> 
-            <div class="table" style="overflow-x: auto;overflow-y: auto;">
-                <table class="table table-bordered table-hover table-striped data" id="itemsdata">
-                    <thead>
-                        <tr>
+    <div class="table" style="overflow-x: auto;overflow-y: auto;">
+        <table class="table table-bordered table-hover table-striped data" id="itemsdata">
+            <thead>
+                <tr>
 
-                            <th rowspan="2" style="text-align: center; ">NO</th>
-                            <th rowspan="2"style="text-align: center;"> NO GBR </th>
-                            <th rowspan="2"style="text-align: center;">THN</th>
-                            <th rowspan="2" style="text-align: center;">PENJUAL</th>
-                            <th colspan="3" style="text-align: center;">DATA TANAH</th>
-                            <th colspan="3" style="text-align: center;">LUAS M<SUP>2</SUP></th>
-                            <th colspan="2" style="text-align: center;">DAFTAR SK HAK</th>
-                            <th colspan="2" style="text-align: center;">TERBIT SK HAK</th>
-                            <th colspan="2" style="text-align: center;">DAFTAR SHGB</th>
-                            <th colspan="3" style="text-align: center;">TERBIT SHGB</th>
-                            <th rowspan="2" style="text-align: center;">TARGET PENYELESAIAN</th>
-                            <th rowspan="2" style="text-align: center;">KET</th>
+                    <th rowspan="2" style="text-align: center; ">NO</th>
+                    <th rowspan="2" style="text-align: center;">PENJUAL</th>
+                    <th colspan="2" style="text-align: center;">DATA TANAH</th>
+                    <th colspan="3" style="text-align: center;">LUAS M<SUP>2</SUP></th>
+                    <th colspan="2" style="text-align: center;">DAFTAR SK HAK</th>
+                    <th colspan="2" style="text-align: center;">TERBIT SK HAK</th>
+                    <th colspan="2" style="text-align: center;">DAFTAR SHGB</th>
+                    <th colspan="3" style="text-align: center;">TERBIT SHGB</th>
+                    <th rowspan="2" style="text-align: center;">TARGET PENYELESAIAN</th>
+                    <th rowspan="2" style="text-align: center;">KET</th>
 
 
 
 
-                        </tr>
-                        <tr>
-                            <th   style="text-align: center;">SURAT</th>
-                            <th style="text-align: center;">ATAS NAMA</th>
-                            <th style="text-align: center;">LUAS M<sup>2</sup></th>
-                            <th  style="text-align: center;">DAFTAR</th>
-                            <th   style="text-align: center;">TERBIT</th>
-                            <th style="text-align: center;">SELISIH</th>
-                            <th  style="text-align: center;">TGL</th>
-                            <th style="text-align: center;">NO BERKAS</th>
-                            <th   style="text-align: center;">TGL</th>
-                            <th style="text-align: center;">NO SK</th>
-                            <th   style="text-align: center;">TGL</th>
-                            <th style="text-align: center;">NO BERKAS</th>
-                            <th   style="text-align: center;">TGL</th>
-                            <th  style="text-align: center;">NO SHGB</th>
-                            <th style="text-align: center;">M BERLAKU</th>
+                </tr>
+                <tr>
+                    <th   style="text-align: center;">SURAT</th>
+                    <th style="text-align: center;">ATAS NAMA</th>
+                    <th  style="text-align: center;">DAFTAR</th>
+                    <th   style="text-align: center;">TERBIT</th>
+                    <th style="text-align: center;">SELISIH</th>
+                    <th  style="text-align: center;">TGL</th>
+                    <th style="text-align: center;">NO BERKAS</th>
+                    <th   style="text-align: center;">TGL</th>
+                    <th style="text-align: center;">NO SK</th>
+                    <th   style="text-align: center;">TGL</th>
+                    <th style="text-align: center;">NO BERKAS</th>
+                    <th   style="text-align: center;">TGL</th>
+                    <th  style="text-align: center;">NO SHGB</th>
+                    <th style="text-align: center;">M BERLAKU</th>
 
-                        </tr>
-
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>A</td>
-                            <td colspan="3">Proses sd. Tahun 2019</td>
-
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-
-
-                        </tr>
-                    <tr>
-                        <td colspan="21"></td>
-
-                    </tr>
-
-                    <tr>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                   </tr>
-
-                       <tr>
-                        <td>-</td>
-                        <td colspan="4">Jumlah A : </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="21"></td>
-
-                    </tr>
-                    <tr>
-                        <td>B</td>
-                        <td colspan="3">Proses Tahun 2020</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
-
-                    </tr>
-
-                    <tr>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-                       <td></td>
-
-                   </tr>
-                   <tr>
-                    <td>-</td>
-                    <td colspan="4">Jumlah B : </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                 </tr>
 
-            </tbody>
-            <TFOOT>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>A</td>
+                    <td colspan="3">Proses sd. Tahun 2019</td>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+
+                </tr>
                 <tr>
                     <td colspan="21"></td>
 
                 </tr>
+                <?php 
+                $no=1;
+                foreach ($prosesshgbses as $r) { 
+                    $row = array();
+                    $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->id_proses_induk).'">Hapus</a></li>':'';
+                    $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id_proses_induk).'">Edit</a></li>':'';
+                    $tombol = ' 
+                    <div class="btn-group dropup">
+                    <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu"> 
+                    <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($r->id_proses_induk).'">Detail</a></li> 
+                    '.$tomboledit.'
+                    '.$tombolhapus.' 
+                    </ul>
+                    </div>
+                    ';
+
+                    ?>
+                    <tr>
+
+                        <td><?php echo $no++;echo $tombol; ?></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                     <!--    <td><?php echo $r->nama_surat_tanah ?></td>
+                        <td><?php echo $r->no_surat_tanah ?></td> -->
+                        <td><?php echo $r->luas ?></td>
+                        <td><?php echo tgl_indo($r->tanggal_daftar_sk_hak) ?></td>
+                        <td><?php echo $r->no_daftar_sk_hak ?></td>
+                        <td><?php echo tgl_indo($r->tanggal_terbit_sk_hak) ?></td>
+                        <td><?php echo $r->no_terbit_sk_hak ?></td>
+                        <td><?php echo tgl_indo($r->tanggal_daftar_shgb) ?></td>
+                        <td><?php echo $r->no_daftar_shgb ?></td>
+                        <td><?php echo tgl_indo($r->tanggal_terbit_shgb) ?></td>
+                        <td><?php echo $r->no_terbit_shgb ?></td>
+                        <td><?php echo tgl_indo($r->masa_berlaku_shgb) ?></td>
+                        <td><?php echo tgl_indo($r->target_penyelesaian) ?></td>
+                        <td><?php echo $r->keterangan ?></td>
+                    </tr>
+                <?php } ?>
                 <tr>
                     <td>-</td>
-                    <td colspan="4"><b>Total :</b> </td>
-                    <td></td>
-                    <td></td>
+                    <td colspan="4">Jumlah A : </td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -215,10 +125,102 @@
                     <td></td>
                     <td></td>
                 </tr>
+                <tr>
+                    <td colspan="19"></td>
 
-            </TFOOT>
-        </table> 
-    </div>
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td colspan="3">Proses Tahun 2020</td>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+
+                </tr>
+
+                <tr>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+
+               </tr>
+               <tr>
+                <td>-</td>
+                <td colspan="4">Jumlah B : </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+        </tbody>
+        <TFOOT>
+            <tr>
+                <td colspan="19"></td>
+
+            </tr>
+            <tr>
+                <td>-</td>
+                <td colspan="4"><b>Total :</b> </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+        </TFOOT>
+    </table> 
+</div>
 
 </div>
 </section>
@@ -236,10 +238,8 @@
                     <tr>
 
                         <th rowspan="2" style="text-align: center; ">NO</th>
-                        <th rowspan="2"style="text-align: center;"> NO GBR </th>
-                        <th rowspan="2"style="text-align: center;">THN</th>
                         <th rowspan="2" style="text-align: center;">PENJUAL</th>
-                        <th colspan="3" style="text-align: center;">DATA TANAH</th>
+                        <th colspan="2" style="text-align: center;">DATA TANAH</th>
                         <th colspan="3" style="text-align: center;">LUAS M<SUP>2</SUP></th>
                         <th colspan="2" style="text-align: center;">DAFTAR SK HAK</th>
                         <th colspan="2" style="text-align: center;">TERBIT SK HAK</th>
@@ -255,7 +255,6 @@
                     <tr>
                         <th   style="text-align: center;">SURAT</th>
                         <th style="text-align: center;">ATAS NAMA</th>
-                        <th style="text-align: center;">LUAS M<sup>2</sup></th>
                         <th  style="text-align: center;">DAFTAR</th>
                         <th   style="text-align: center;">TERBIT</th>
                         <th style="text-align: center;">SELISIH</th>
@@ -292,8 +291,6 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
 
 
                     </tr>
@@ -318,20 +315,16 @@
                         <td>17</td>
                         <td>18</td>
                         <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
 
 
                     </tr>
                     <tr>
-                        <td colspan="21"></td>
+                        <td colspan="19"></td>
 
                     </tr>
                     <tr>
                         <td>-</td>
                         <td colspan="4">Jumlah A : </td>
-                        <td></td>
-                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -371,8 +364,6 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
 
 
                     </tr>
@@ -397,8 +388,6 @@
                         <td>17</td>
                         <td>18</td>
                         <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
 
                     </tr>
                     <tr>
@@ -418,18 +407,14 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
                     </tr>
                     <tr>
-                        <td colspan="21"></td>
+                        <td colspan="19"></td>
 
                     </tr>
                     <tr>
                         <td>-</td>
                         <td colspan="4"><b>Total :</b>: </td>
-                        <td></td>
-                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>

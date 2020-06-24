@@ -1267,34 +1267,35 @@ public function penjualhapus(){
     $data['token'] = $this->security->get_csrf_hash();
     echo json_encode($data); 
 }
-// serah_terima
-public function serah_terima()
+// proses_induk
+public function proses_induk($id_proses_induk)
 {
-    level_user('master','serah_terima',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
-    $this->load->view('member/master/serah_terima');
+    level_user('master','proses_induk',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
+    $data['id_proses_induk'] = $id_proses_induk;
+    $this->load->view('member/master/proses_induk',$data);
 }
 
-public function dataserah_terima()
+public function dataproses_induk()
 {
     cekajax();
     $get = $this->input->get();
-    $list = $this->master_model->get_serah_terima_datatable();
+    $list = $this->master_model->get_proses_induk_datatable();
     $data = array();
     foreach ($list as $r) {
         $row = array();
-        $tombolhapus = level_user('master','serah_terima',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->id_serah_terima).'">Hapus</a></li>':'';
-        $tomboledit = level_user('master','serah_terima',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id_serah_terima).'">Edit</a></li>':'';
+        // $tombolhapus = level_user('master','proses_induk',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->id_dtl_proses_induk).'">Hapus</a></li>':'';
+
+        $tomboledit = level_user('master','proses_induk',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id_dtl_proses_induk).'">Edit</a></li>':'';
         $row[] = '
         <div class="btn-group dropup">
         <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
         <ul class="dropdown-menu" role="menu">
-        <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($r->id_serah_terima).'">Detail</a></li>
+        <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($r->id_proses_induk).'">Detail</a></li>
         '.$tomboledit.'
-        '.$tombolhapus.'
         </ul>
         </div>
         ';
-        $row[] = $this->security->xss_clean(tgl_indo($r->tgl_serah_terima));
+        $row[] = $this->security->xss_clean(tgl_indo($r->tgl_proses_induk));
         $row[] = $this->security->xss_clean($r->nama_regional);
         $row[] = $this->security->xss_clean($r->luas_surat);
         $row[] = $this->security->xss_clean($r->luas_ukur);
@@ -1303,28 +1304,28 @@ public function dataserah_terima()
     }
     $result = array(
         "draw" => $get['draw'],
-        "recordsTotal" => $this->master_model->count_all_datatable_serah_terima(),
-        "recordsFiltered" => $this->master_model->count_filtered_datatable_serah_terima(),
+        "recordsTotal" => $this->master_model->count_all_datatable_proses_induk(),
+        "recordsFiltered" => $this->master_model->count_filtered_datatable_proses_induk(),
         "data" => $data,
     );
     echo json_encode($result);
 }
 
-public function serah_terimatambah(){
+public function proses_induktambah(){
     cekajax();
     $post = $this->input->post();
     $simpan = $this->master_model;
     $validation = $this->form_validation;
-    $validation->set_rules($simpan->rulesserah_terima());
+    $validation->set_rules($simpan->rulesproses_induk());
     if ($this->form_validation->run() == FALSE){
         $errors = $this->form_validation->error_array();
         $data['errors'] = $errors;
     }else{
-        $insert_id = $simpan->simpandataserah_terima();
+        $insert_id = $simpan->simpandataproses_induk();
         if($insert_id > 0) {
             $data['success']= true;
-            $data['serah_terima']= $post["keterangan"];
-            $data['id_serah_terima']= $insert_id;
+            $data['proses_induk']= $post["keterangan"];
+            $data['id_proses_induk']= $insert_id;
             $data['message']="Berhasil menyimpan data";
         }else{
             $errors['fail'] = "gagal melakukan update data";
@@ -1334,20 +1335,21 @@ public function serah_terimatambah(){
     $data['token'] = $this->security->get_csrf_hash();
     echo json_encode($data);
 }
-public function serah_terimadetail(){
+public function proses_indukdetail(){
     cekajax();
     $idd = intval($this->input->get("id"));
     $this->db->select("a.*,b.luas_surat,b.luas_ukur,c.nama_regional");
-    $this->db->from('master_serah_terima a');
-    $this->db->where('id_serah_terima' , $idd);
+    $this->db->from('master_proses_induk a');
+    $this->db->where('id_proses_induk' , $idd);
     $this->db->join('master_item b', 'b.kode_item = a.id_master_item', 'left');
     $this->db->join('master_regional c', 'b.id_perumahan = c.id', 'left');
     $query = $this->db->get();
 
     $result = array(
         "idd" => $this->security->xss_clean($idd),
-        "tgl_serah_terima" => $this->security->xss_clean($query->row()->tgl_serah_terima),
-        "tgl_serah_terima_indo" => $this->security->xss_clean(tgl_indo($query->row()->tgl_serah_terima)),
+        "tgl_proses_induk" => $this->security->xss_clean($query->row()->tgl_proses_induk),
+        "tgl_proses_induk_indo" => $this->security->xss_clean(tgl_indo($query->row()->tgl_proses_induk)),
+        "id_proses_induk" => $this->security->xss_clean($query->row()->id_proses_induk),
         "keterangan" => $this->security->xss_clean($query->row()->keterangan),
         "lokasi" => $this->security->xss_clean($query->row()->nama_regional),
         "luas_ukur" => $this->security->xss_clean($query->row()->luas_ukur),
@@ -1355,26 +1357,26 @@ public function serah_terimadetail(){
     );
     echo'['.json_encode($result).']';
 }
-public function serah_terimaedit(){
+public function proses_indukedit(){
     cekajax();
     $simpan = $this->master_model;
     $validation = $this->form_validation;
-    $validation->set_rules($simpan->rulesserah_terima());
+    $validation->set_rules($simpan->rulesproses_induk());
     if ($this->form_validation->run() == FALSE){
       $errors = $this->form_validation->error_array();
       $data['errors'] = $errors;
   }else{
-    $simpan->updatedataserah_terima();
+    $simpan->updatedataproses_induk();
     $data['success']= true;
     $data['message']="Berhasil menyimpan data";
 }
 $data['token'] = $this->security->get_csrf_hash();
 echo json_encode($data);
 }
-public function serah_terimahapus(){
+public function proses_indukhapus(){
     cekajax();
     $hapus = $this->master_model;
-    if($hapus->hapusdataserah_terima()){
+    if($hapus->hapusdataproses_induk()){
         $data['success']= true;
         $data['message']="Berhasil menghapus data";
     }else{
