@@ -44,10 +44,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <form action="" method="get">
             <div class="form-group mt-lg nama_target">
               <div class="col-sm-5">
-                <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
+                <select data-plugin-selectTwo class="form-control" onchange="refresh()" required id="id_perumahan" name="id_perumahan">  
                   <option value="">Pilih Lokasi</option>
                   <?php foreach ($perumahan as $aa): ?>
-                    <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?></option>
+                    <option value="<?php echo $aa->id;?>" ><?php echo $aa->nama_regional;?></option>
                   <?php endforeach; ?>
                 </select> 
               </div>
@@ -290,11 +290,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   e.preventDefault(); 
 }); 
   function refresh() { 
+            var id_perumahan = $('#id_perumahan').val();
 
     $.ajax({
       type: 'GET',
       url: '<?php echo base_url(); ?>laporan/pageevaluasishgbper/',
-      data: 'id_perumahan=<?php echo $id_perumahan ?>',
+      data: 'id_perumahan='+id_perumahan,
       success: function (html) { 
         $('#kontendata').html(html); 
       }

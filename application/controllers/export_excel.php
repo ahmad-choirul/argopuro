@@ -254,7 +254,35 @@ header('Cache-Control: max-age=1');
                     $harga_satuan = $data->total_harga_pengalihan/$data->luas_surat;            
                 }
 
-                $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi+$data->pematangan;
+                if ($data->lain=='') {
+                        $data->lain=0;
+                    }if ($data->pbb=='') {
+                        $data->pbb=0;
+                    }if ($data->ganti_rugi=='') {
+                        $data->ganti_rugi=0;
+                    }if ($data->pematangan=='') {
+                        $data->pematangan=0;
+                    }if ($data->pematangan=='') {
+                        $data->pematangan=0;
+                    }
+                    if ($data->nilai=='') {
+                        $data->nilai=0;
+                    }                 
+                    if ($data->lain=='') {
+                        $data->lain=0;
+                    }if ($data->pbb=='') {
+                        $data->pbb=0;
+                    }if ($data->ganti_rugi=='') {
+                        $data->ganti_rugi=0;
+                    }if ($data->pematangan=='') {
+                        $data->pematangan=0;
+                    }if ($data->pematangan=='') {
+                        $data->pematangan=0;
+                    }
+                    if ($data->nilai=='') {
+                        $data->nilai=0;
+                    }                 
+                    $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi+$data->pematangan;
                 $totalharga_biaya = $data->total_harga_pengalihan+$data->nilai+$totalbiayalain;
                 if ($totalharga_biaya==0) {
                     $harga_perm=0;
@@ -368,7 +396,35 @@ header('Cache-Control: max-age=1');
                 $harga_satuan = $data->total_harga_pengalihan/$data->luas_surat;            
             }
 
-            $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi+$data->pematangan;
+            if ($data->lain=='') {
+                        $data->lain=0;
+                    }if ($data->pbb=='') {
+                        $data->pbb=0;
+                    }if ($data->ganti_rugi=='') {
+                        $data->ganti_rugi=0;
+                    }if ($data->pematangan=='') {
+                        $data->pematangan=0;
+                    }if ($data->pematangan=='') {
+                        $data->pematangan=0;
+                    }
+                    if ($data->nilai=='') {
+                        $data->nilai=0;
+                    }                 
+                    if ($data->lain=='') {
+                        $data->lain=0;
+                    }if ($data->pbb=='') {
+                        $data->pbb=0;
+                    }if ($data->ganti_rugi=='') {
+                        $data->ganti_rugi=0;
+                    }if ($data->pematangan=='') {
+                        $data->pematangan=0;
+                    }if ($data->pematangan=='') {
+                        $data->pematangan=0;
+                    }
+                    if ($data->nilai=='') {
+                        $data->nilai=0;
+                    }                 
+                    $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi+$data->pematangan;
             $totalharga_biaya = $data->total_harga_pengalihan+$data->nilai+$totalbiayalain;
             if ($totalharga_biaya==0) {
                 $harga_perm=0;
@@ -483,7 +539,35 @@ foreach ($datarumah['perumahanlokasi'] as $per){
             $harga_satuan = $data->total_harga_pengalihan/$data->luas_surat;            
         }
 
-        $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi+$data->pematangan;
+        if ($data->lain=='') {
+                        $data->lain=0;
+                    }if ($data->pbb=='') {
+                        $data->pbb=0;
+                    }if ($data->ganti_rugi=='') {
+                        $data->ganti_rugi=0;
+                    }if ($data->pematangan=='') {
+                        $data->pematangan=0;
+                    }if ($data->pematangan=='') {
+                        $data->pematangan=0;
+                    }
+                    if ($data->nilai=='') {
+                        $data->nilai=0;
+                    }                 
+                    if ($data->lain=='') {
+                        $data->lain=0;
+                    }if ($data->pbb=='') {
+                        $data->pbb=0;
+                    }if ($data->ganti_rugi=='') {
+                        $data->ganti_rugi=0;
+                    }if ($data->pematangan=='') {
+                        $data->pematangan=0;
+                    }if ($data->pematangan=='') {
+                        $data->pematangan=0;
+                    }
+                    if ($data->nilai=='') {
+                        $data->nilai=0;
+                    }                 
+                    $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi+$data->pematangan;
         $totalharga_biaya = $data->total_harga_pengalihan+$data->nilai+$totalbiayalain;
         if ($totalharga_biaya==0) {
             $harga_perm=0;
