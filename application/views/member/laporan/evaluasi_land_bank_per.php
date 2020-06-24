@@ -43,13 +43,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <form action="" method="get">
                         <div class="form-group mt-lg nama_target">
                             <div class="col-sm-5">
-                                <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
+                                <select data-plugin-selectTwo class="form-control" onchange='refresh()' required id="id_perumahan" name="id_perumahan">  
                                     <option value="">Pilih Lokasi</option>
                                     <?php foreach ($perumahan as $aa): ?>
                                         <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?></option>
                                     <?php endforeach; ?>
                                 </select> 
-                            <a class="btn btn-primary" href="<?php echo site_url('export_excel/excel_laporan2rekap/').$id_perumahan ?>"> cetak </a>
+                            <a class="btn btn-primary" onclick="cetak()"> cetak </a>
                             </div>
                         </div>
                     </form>
@@ -393,16 +393,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 e.preventDefault(); 
 }); 
   function refresh() { 
+    var id_perumahan = $('#id_perumahan').val();
 
     $.ajax({
         type: 'GET',
         url: '<?php echo base_url(); ?>laporan/pageevaluasilandbankper/',
-        data: 'id_perumahan=<?php echo $id_perumahan ?>',
+        data: 'id_perumahan='+id_perumahan,
         success: function (html) { 
             $('#kontendata').html(html); 
         }
     }); 
 }
+ function cetak() {
+    var id_perumahan = $('#id_perumahan').val();
+    var link = "<?php echo site_url('export_excel/excel_laporan2rekap/') ?>"+id_perumahan;
+    window.open(link);
+  }
 </script>
 </body>
 </html>

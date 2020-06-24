@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <?php endforeach; ?>
                 </select> 
               </div>
-               <a class="btn btn-primary" href="<?php echo site_url('Export_excel/excellaporanbelumshgb/').$id_perumahan ?>"> cetak </a>
+              <a class="btn btn-primary" onclick="cetak()"> cetak </a>
             </div>
           </form>
         </div>
@@ -155,7 +155,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
           </div>
 
- 
+
           <div class="form-group keterangan">
             <label class="col-sm-3 control-label">Keterangan</label>
             <div class="col-sm-9">
@@ -290,7 +290,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   e.preventDefault(); 
 }); 
   function refresh() { 
-            var id_perumahan = $('#id_perumahan').val();
+    var id_perumahan = $('#id_perumahan').val();
 
     $.ajax({
       type: 'GET',
@@ -300,6 +300,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $('#kontendata').html(html); 
       }
     }); 
+  }
+  function cetak() {
+    var id_perumahan = $('#id_perumahan').val();
+    var link = "<?php echo site_url('Export_excel/excellaporanbelumshgb/') ?>"+id_perumahan;
+    window.open(link);
   }
 </script>
 </body>
