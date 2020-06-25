@@ -316,29 +316,48 @@
 
                     </tr>
 
+                <?php 
+                $no=1;
+                foreach ($terbitshgbseb as $r) { 
+                    $row = array();
+                    $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->id_proses_induk).'">Hapus</a></li>':'';
+                    $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id_proses_induk).'">Edit</a></li>':'';
+                    $tombol = ' 
+                    <div class="btn-group dropup">
+                    <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu"> 
+                    <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($r->id_proses_induk).'">Detail</a></li> 
+                    '.$tomboledit.'
+                    '.$tombolhapus.' 
+                    </ul>
+                    </div>
+                    ';
+
+                    ?>
                     <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
 
-
+                        <td><?php echo $no++;echo $tombol; ?></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                     <!--    <td><?php echo $r->nama_surat_tanah ?></td>
+                        <td><?php echo $r->no_surat_tanah ?></td> -->
+                        <td><?php echo $r->luas ?></td>
+                        <td></td>
+                        <td><?php echo tgl_indo($r->tanggal_daftar_sk_hak) ?></td>
+                        <td><?php echo $r->no_daftar_sk_hak ?></td>
+                        <td><?php echo tgl_indo($r->tanggal_terbit_sk_hak) ?></td>
+                        <td><?php echo $r->no_terbit_sk_hak ?></td>
+                        <td><?php echo tgl_indo($r->tanggal_daftar_shgb) ?></td>
+                        <td><?php echo $r->no_daftar_shgb ?></td>
+                        <td><?php echo tgl_indo($r->tanggal_terbit_shgb) ?></td>
+                        <td><?php echo $r->no_terbit_shgb ?></td>
+                        <td><?php echo tgl_indo($r->masa_berlaku_shgb) ?></td>
+                        <td><?php echo tgl_indo($r->target_penyelesaian) ?></td>
+                        <td><?php echo $r->keterangan ?></td>
                     </tr>
+                <?php } ?>
                     <tr>
                         <td colspan="19"></td>
 
@@ -389,28 +408,49 @@
 
                     </tr>
 
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
+                 
+                <?php 
+                $no=1;
+                foreach ($terbitshgbses as $r) { 
+                    $row = array();
+                    $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->id_proses_induk).'">Hapus</a></li>':'';
+                    $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id_proses_induk).'">Edit</a></li>':'';
+                    $tombol = ' 
+                    <div class="btn-group dropup">
+                    <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu"> 
+                    <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($r->id_proses_induk).'">Detail</a></li> 
+                    '.$tomboledit.'
+                    '.$tombolhapus.' 
+                    </ul>
+                    </div>
+                    ';
 
+                    ?>
+                    <tr>
+
+                        <td><?php echo $no++;echo $tombol; ?></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                     <!--    <td><?php echo $r->nama_surat_tanah ?></td>
+                        <td><?php echo $r->no_surat_tanah ?></td> -->
+                        <td><?php echo $r->luas ?></td>
+                        <td></td>
+                        <td><?php echo tgl_indo($r->tanggal_daftar_sk_hak) ?></td>
+                        <td><?php echo $r->no_daftar_sk_hak ?></td>
+                        <td><?php echo tgl_indo($r->tanggal_terbit_sk_hak) ?></td>
+                        <td><?php echo $r->no_terbit_sk_hak ?></td>
+                        <td><?php echo tgl_indo($r->tanggal_daftar_shgb) ?></td>
+                        <td><?php echo $r->no_daftar_shgb ?></td>
+                        <td><?php echo tgl_indo($r->tanggal_terbit_shgb) ?></td>
+                        <td><?php echo $r->no_terbit_shgb ?></td>
+                        <td><?php echo tgl_indo($r->masa_berlaku_shgb) ?></td>
+                        <td><?php echo tgl_indo($r->target_penyelesaian) ?></td>
+                        <td><?php echo $r->keterangan ?></td>
                     </tr>
+                <?php } ?>
                     <tr>
                         <td>-</td>
                         <td colspan="4">Jumlah B : </td>

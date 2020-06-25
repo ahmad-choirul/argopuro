@@ -803,12 +803,11 @@ public function getmaster_prosesinduk($firstdate='',$lastdate='',$sudah='')
     $this->db->where('a.tanggal_daftar_sk_hak BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
 }
 
-// if (!empty($shgb)) {
-//     $this->db->where('status_order_akta', 'selesai');
-// }else{
-//     $this->db->where('status_order_akta !=', 'selesai');
-
-// }
+if (!empty($sudah)) {
+    $this->db->where('status', 'terbit');
+}else{
+    $this->db->where('status', 'belum');
+}
 
 return $this->db->get()->result();
 }
@@ -1471,6 +1470,7 @@ function simpandatamasterproses_induk(){
        'no_terbit_shgb'=>$post["no_terbit_shgb"],
        'masa_berlaku_shgb'=>$post["masa_berlaku_shgb"],
        'target_penyelesaian'=>$post["target_penyelesaian"],
+       'status'=>$post["status"],
        'keterangan'=>$post["keterangan"],
    );
     $this->db->insert("master_proses_induk", $array);
@@ -1492,6 +1492,7 @@ public function updatedatamasterproses_induk()
     $this->no_terbit_shgb = $post["no_terbit_shgb"];
     $this->masa_berlaku_shgb = $post["masa_berlaku_shgb"];
     $this->target_penyelesaian = $post["target_penyelesaian"];
+    $this->status = $post["status"];
     $this->keterangan = $post["keterangan"];
     return $this->db->update("master_proses_induk", $this, array('id_proses_induk' => $post['idd']));
 }

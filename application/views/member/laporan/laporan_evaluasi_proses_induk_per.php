@@ -177,10 +177,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="target_penyelesaian" class="form-control tanggal"  />
                         </div>
                     </div>
+
+                    <div class="form-group mt-lg nama_target">
+                        <label class="col-sm-3 control-label">Status Proses Induk<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <select data-plugin-selectTwo class="form-control" name="status">  
+                                <option value="">Pilih status</option>
+                                <option value="belum">Belum</option>
+                                <option value="terbit">Terbit</option>
+                            </select> 
+                        </div>
+                    </div>
                     <div class="form-group keterangan">
                         <label class="col-sm-3 control-label">Keterangan</label>
                         <div class="col-sm-9">
                             <textarea rows="2" class="form-control" name="keterangan"></textarea>
+                        </div>
+                    </div>
+                    <div class="row" style="overflow-x: auto;white-space: nowrap;"> 
+                        <div class="col-md-12">
+                            <h3>Rincian Item Yang Dibeli</h3> 
+                            <a type="button" class="mb-xs mt-xs mr-xs btn btn-primary" id="tambahItem"><i class="fa fa-plus"></i> Tambah Item</a> 
+                            <div class="table-ressplitsingnsive" style="max-height:420px;"> 
+                                <table class="table table-bordered table-hover table-striped dataTable no-footer listitem">
+                                    <thead>
+                                        <tr>
+                                            <th style="min-width:200px;">Kode Item (Barcode)</th>
+                                            <th style="min-width:200px;">Nomor SKU</th>
+                                            <th style="min-width:400px;">Nama Item</th>
+                                            <th style="min-width:100px;">Satuan Besar</th>
+                                            <th style="min-width:100px;">Kuantiti</th> 
+                                        </tr>
+                                    </thead>
+                                    <tbody> 
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -275,24 +307,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="target_penyelesaian" id="target_penyelesaian" class="form-control tanggal"  />
                         </div>
                     </div>
-                    <div class="form-group keterangan">
-                        <label class="col-sm-3 control-label">Keterangan</label>
+
+                    <div class="form-group mt-lg nama_target">
+                        <label class="col-sm-3 control-label">Status Proses Induk<span class="required">*</span></label>
                         <div class="col-sm-9">
-                            <textarea rows="2" class="form-control" id="keterangan" name="keterangan"></textarea>
-                        </div>
+                          <select data-plugin-selectTwo class="form-control" required name="status" id="status">  
+                            <option value="">Pilih status</option>
+                            <option value="belum">Belum</option>
+                            <option value="terbit">Terbit</option>
+                        </select> 
                     </div>
                 </div>
-                <footer class="panel-footer">
-                    <div class="row">
-                        <div class="col-md-12 text-right">
-                            <button class="btn btn-primary modal-confirm" type="submit" id="submitformEdit">Submit</button>
-                            <button class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
+                <div class="form-group keterangan">
+                    <label class="col-sm-3 control-label">Keterangan</label>
+                    <div class="col-sm-9">
+                        <textarea rows="2" class="form-control" id="keterangan" name="keterangan"></textarea>
                     </div>
-                </footer>
-            </form>
-        </section>
-    </div>
+                </div>
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button class="btn btn-primary modal-confirm" type="submit" id="submitformEdit">Submit</button>
+                        <button class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </footer>
+        </form>
+    </section>
+</div>
 </div>
 </div>
 <div class="modal fade" data-keyboard="false" data-backdrop="static"  id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -498,6 +541,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                document.getElementById("masa_berlaku_shgb").setAttribute('value', item.masa_berlaku_shgb); 
                document.getElementById("target_penyelesaian").setAttribute('value', item.target_penyelesaian); 
+               document.getElementById("status").setAttribute('value', item.status); 
                document.getElementById("keterangan").setAttribute('value', item.keterangan);
            }); 
         }
