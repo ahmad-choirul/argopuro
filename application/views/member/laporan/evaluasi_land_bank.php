@@ -49,11 +49,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <thead>
                         <tr>
                             <th colspan="2"></th>
-                            <th colspan="3" style="text-align: center; color: black;">LAND BANK s/d 2019</th>
-                            <th colspan="3" style="text-align: center;color: black;">LAND BANK s/d 2020 </th>
-                            <th colspan="3" style="text-align: center;color: black;">TOTAL LAND BANK</th>
-                            <th colspan="3" style="text-align: center;color: black;">SERAH TERIMA TECHNIC</th>
-                            <th colspan="3" style="text-align: center;color: black;">SISA LAND BANK</th>
+                            <th colspan="3" style="text-align: center; ">LAND BANK s/d 2019</th>
+                            <th colspan="3" style="text-align: center;">LAND BANK s/d 2020 </th>
+                            <th colspan="3" style="text-align: center;">TOTAL LAND BANK</th>
+                            <th colspan="3" style="text-align: center;">SERAH TERIMA TECHNIC</th>
+                            <th colspan="3" style="text-align: center;">SISA LAND BANK</th>
                             <th colspan="3" style="text-align: center; background-color: green; color: white;">PROSES PERALIHAN BANK</th>
                             <th colspan="2" style="text-align: center;background-color: green; color: white;">S TERIMA FINANCE </th>
                         </tr>
