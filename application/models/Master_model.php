@@ -1,6 +1,6 @@
 <?php
 class Master_model extends CI_Model{   
-            public function getdetailprosesinduk($id_proses_induk)
+    public function getdetailprosesinduk($id_proses_induk)
     {
         $this->db->select('*');
         $this->db->from('tbl_dtl_proses_induk');
@@ -25,8 +25,8 @@ class Master_model extends CI_Model{
         $this->db->where("waktu BETWEEN '".date('Y-m-d')." 00:00:00' AND '".date('Y-m-d')." 23:59:59'");
         $hasil = $this->db->get();
         if ($hasil->num_rows()>0) {
-           return $hasil->result_array()[0];
-       }else{
+         return $hasil->result_array()[0];
+     }else{
         $hasil = array('status' =>'' ,
             'keterangan' =>'' );
         return $hasil;
@@ -45,20 +45,20 @@ public function absensiinput($data)
           $this->db->where("waktu BETWEEN '".date('Y-m-d')." 00:00:00' AND '".date('Y-m-d')." 23:59:59'");
           $this->db->update('tbl_absensi', $data);
       }else{
-         $this->db->insert('tbl_absensi', $data);
-     }
- }
+       $this->db->insert('tbl_absensi', $data);
+   }
+}
 }
 public function getlistabsensi($id='')
 {
     if (isset($id)) {
         $query = "SELECT * FROM tbl_absensi WHERE MONTH(waktu) = MONTH(CURDATE())";
     }else{
-     $query = "SELECT * FROM tbl_absensi WHERE MONTH(waktu) = MONTH(CURDATE()) and id_admin='".$id."'";
- }
- $hasil = $this->db->query($query)->result();
- $this->session->set_flashdata('query', $this->db->last_query());
- return $hasil;
+       $query = "SELECT * FROM tbl_absensi WHERE MONTH(waktu) = MONTH(CURDATE()) and id_admin='".$id."'";
+   }
+   $hasil = $this->db->query($query)->result();
+   $this->session->set_flashdata('query', $this->db->last_query());
+   return $hasil;
 }
 
     // datatable target start
@@ -666,8 +666,8 @@ public function get_rekaplandbank($id='',$firstdate='',$lastdate='',$teknik='')
     }
     $hasil = $this->db->get()->result_array()[0];
     if ($hasil['bid']!='') {
-     return $hasil;
- }else{
+       return $hasil;
+   }else{
     return array('bid' => '0','ukur' => '0','surat' => '0' );
 }
 }
@@ -690,19 +690,19 @@ public function get_rekapshgb($id='',$firstdate='',$lastdate='',$shgb='')
     }
     $hasil = $this->db->get()->result_array()[0];
     if ($hasil['bid']!='') {
-     return $hasil;
- }else{
+       return $hasil;
+   }else{
     return array('bid' => '0','ukur' => '0','surat' => '0' );
 }
 }
 	//CRUD merk end
 public function getperumahan($id='',$firstdate='',$lastdate='',$teknik='')
 {
- $this->db->select('a.*,b.nama_regional,c.*');
- $this->db->from('master_item a'); 
- $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
- $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
- if(!empty($firstdate) AND !empty($lastdate)){
+   $this->db->select('a.*,b.nama_regional,c.*');
+   $this->db->from('master_item a'); 
+   $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
+   $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
+   if(!empty($firstdate) AND !empty($lastdate)){
     $this->db->where('a.tanggal_pembelian BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
 }
 if (!empty($id)) {
@@ -718,19 +718,19 @@ return $this->db->get()->result();
 
 public function getdataperumahan($id='',$firstdate='',$lastdate='',$teknik='')
 {
- $this->db->select('*');
- $this->db->from('master_regional');
- $this->db->where('id', $id);
- return $this->db->get()->result_array()[0];
+   $this->db->select('*');
+   $this->db->from('master_regional');
+   $this->db->where('id', $id);
+   return $this->db->get()->result_array()[0];
 }
 
 public function getperumahanarray($id='',$firstdate='',$lastdate='',$teknik='')
 {
- $this->db->select('a.*,b.nama_regional,c.*');
- $this->db->from('master_item a'); 
- $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
- $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
- if(!empty($firstdate) AND !empty($lastdate)){
+   $this->db->select('a.*,b.nama_regional,c.*');
+   $this->db->from('master_item a'); 
+   $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
+   $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
+   if(!empty($firstdate) AND !empty($lastdate)){
     $this->db->where('a.tanggal_pembelian BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
 }
 if (!empty($id)) {
@@ -750,11 +750,11 @@ public function updatemasteritem($data)
 }
 public function getshgbperumahan($id='',$firstdate='',$lastdate='',$shgb='')
 {
- $this->db->select('a.*,b.nama_regional,c.*');
- $this->db->from('master_item a'); 
- $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
- $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
- if(!empty($firstdate) AND !empty($lastdate)){
+   $this->db->select('a.*,b.nama_regional,c.*');
+   $this->db->from('master_item a'); 
+   $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
+   $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
+   if(!empty($firstdate) AND !empty($lastdate)){
     $this->db->where('a.tanggal_pembelian BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
 }
 if (!empty($id)) {
@@ -773,11 +773,11 @@ return $this->db->get()->result();
 
 public function getshgbperumahanarray($id='',$firstdate='',$lastdate='',$shgb='')
 {
- $this->db->select('a.*,b.nama_regional,c.*');
- $this->db->from('master_item a'); 
- $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
- $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
- if(!empty($firstdate) AND !empty($lastdate)){
+   $this->db->select('a.*,b.nama_regional,c.*');
+   $this->db->from('master_item a'); 
+   $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
+   $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
+   if(!empty($firstdate) AND !empty($lastdate)){
     $this->db->where('a.tanggal_pembelian BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
 }
 if (!empty($id)) {
@@ -797,11 +797,11 @@ return $this->db->get()->result_array();
 
 public function getmaster_prosesinduk($firstdate='',$lastdate='',$sudah='')
 {
- $this->db->select('a.*');
- $this->db->from('master_proses_induk a'); 
-//    if(!empty($firstdate) AND !empty($lastdate)){
-//     $this->db->where('a.tanggal_pembelian BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
-// }
+   $this->db->select('a.*');
+   $this->db->from('master_proses_induk a'); 
+   if(!empty($firstdate) AND !empty($lastdate)){
+    $this->db->where('a.tanggal_daftar_sk_hak BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
+}
 
 // if (!empty($shgb)) {
 //     $this->db->where('status_order_akta', 'selesai');
@@ -810,7 +810,7 @@ public function getmaster_prosesinduk($firstdate='',$lastdate='',$sudah='')
 
 // }
 
- return $this->db->get()->result();
+return $this->db->get()->result();
 }
 
 public function getprosesinduk($id)
@@ -1030,61 +1030,61 @@ var $column_order_pilihanobat = array(null, 'kode_item','nama_item','nama_region
 var $order_pilihanobat = array('a.waktu_update' => 'DESC');
 private function _get_query_pilihanitem()
 { 
-   $get = $this->input->get();
-   $this->db->from('master_item a');
-   $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
-   $i = 0; 
-   foreach ($this->column_search_pilihanobat as $item)
-   {
-       if($get['search']['value'])
-       { 
-           if($i===0) 
-           {
-               $this->db->group_start(); 
-               $this->db->like($item, $get['search']['value']);
-           }
-           else
-           {
-               $this->db->or_like($item, $get['search']['value']);
-           }
+ $get = $this->input->get();
+ $this->db->from('master_item a');
+ $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
+ $i = 0; 
+ foreach ($this->column_search_pilihanobat as $item)
+ {
+     if($get['search']['value'])
+     { 
+         if($i===0) 
+         {
+             $this->db->group_start(); 
+             $this->db->like($item, $get['search']['value']);
+         }
+         else
+         {
+             $this->db->or_like($item, $get['search']['value']);
+         }
 
-           if(count($this->column_search_pilihanobat) - 1 == $i) 
-               $this->db->group_end(); 
-       }
-       $i++;
-   } 
-   if(isset($get['order'])) 
-   {
-       $this->db->order_by($this->column_order_pilihanobat[$get['order']['0']['column']], $get['order']['0']['dir']);
-   } 
-   else if(isset($this->order_pilihanobat))
-   {
-       $order = $this->order_pilihanobat;
-       $this->db->order_by(key($order), $order[key($order)]);
-   }
+         if(count($this->column_search_pilihanobat) - 1 == $i) 
+             $this->db->group_end(); 
+     }
+     $i++;
+ } 
+ if(isset($get['order'])) 
+ {
+     $this->db->order_by($this->column_order_pilihanobat[$get['order']['0']['column']], $get['order']['0']['dir']);
+ } 
+ else if(isset($this->order_pilihanobat))
+ {
+     $order = $this->order_pilihanobat;
+     $this->db->order_by(key($order), $order[key($order)]);
+ }
 }
 
 function get_pilihanitem_datatable()
 {
-   $get = $this->input->get();
-   $this->_get_query_pilihanitem();
-   if($get['length'] != -1)
-       $this->db->limit($get['length'], $get['start']);
-   $query = $this->db->get();
-   return $query->result();
+ $get = $this->input->get();
+ $this->_get_query_pilihanitem();
+ if($get['length'] != -1)
+     $this->db->limit($get['length'], $get['start']);
+ $query = $this->db->get();
+ return $query->result();
 }
 
 function count_filtered_datatable_pilihanitem()
 {
-   $this->_get_query_pilihanitem();
-   $query = $this->db->get();
-   return $query->num_rows();
+ $this->_get_query_pilihanitem();
+ $query = $this->db->get();
+ return $query->num_rows();
 }
 
 public function count_all_datatable_pilihanitem()
 {
-   $this->db->from('master_item');
-   return $this->db->count_all_results();
+ $this->db->from('master_item');
+ return $this->db->count_all_results();
 } 
      //datatable pilihan obat end
 
@@ -1458,28 +1458,27 @@ public function rulesdetailproses_induk()
 function simpandatamasterproses_induk(){
     $post = $this->input->post();
     $array = array(
-     'no_surat_tanah'=>$post["no_surat_tanah"],
-     'nama_surat_tanah'=>$post["nama_surat_tanah"],
-     'luas'=>$post["luas"],
-     'tanggal_daftar_sk_hak'=>$post["tanggal_daftar_sk_hak"],
-     'no_daftar_sk_hak'=>$post["no_daftar_sk_hak"],
-     'tanggal_terbit_sk_hak'=>$post["tanggal_terbit_sk_hak"],
-     'no_terbit_sk_hak'=>$post["no_terbit_sk_hak"],
-     'tanggal_daftar_shgb'=>$post["tanggal_daftar_shgb"],
-     'no_daftar_shgb'=>$post["no_daftar_shgb"],
-     'tanggal_terbit_shgb'=>$post["tanggal_terbit_shgb"],
-     'no_terbit_shgb'=>$post["no_terbit_shgb"],
-     'masa_berlaku_shgb'=>$post["masa_berlaku_shgb"],
-     'target_penyelesaian'=>$post["target_penyelesaian"],
-     'keterangan'=>$post["keterangan"],
- );
+       'no_surat_tanah'=>$post["no_surat_tanah"],
+       'nama_surat_tanah'=>$post["nama_surat_tanah"],
+       'luas'=>$post["luas"],
+       'tanggal_daftar_sk_hak'=>$post["tanggal_daftar_sk_hak"],
+       'no_daftar_sk_hak'=>$post["no_daftar_sk_hak"],
+       'tanggal_terbit_sk_hak'=>$post["tanggal_terbit_sk_hak"],
+       'no_terbit_sk_hak'=>$post["no_terbit_sk_hak"],
+       'tanggal_daftar_shgb'=>$post["tanggal_daftar_shgb"],
+       'no_daftar_shgb'=>$post["no_daftar_shgb"],
+       'tanggal_terbit_shgb'=>$post["tanggal_terbit_shgb"],
+       'no_terbit_shgb'=>$post["no_terbit_shgb"],
+       'masa_berlaku_shgb'=>$post["masa_berlaku_shgb"],
+       'target_penyelesaian'=>$post["target_penyelesaian"],
+       'keterangan'=>$post["keterangan"],
+   );
     $this->db->insert("master_proses_induk", $array);
     return $this->db->insert_id();
 }
 public function updatedatamasterproses_induk()
 {
     $post = $this->input->post();
-    $this->id_proses_induk = $post["id_proses_induk"];
     $this->no_surat_tanah = $post["no_surat_tanah"];
     $this->nama_surat_tanah = $post["nama_surat_tanah"];
     $this->luas = $post["luas"];

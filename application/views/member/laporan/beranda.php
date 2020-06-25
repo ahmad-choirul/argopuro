@@ -83,7 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </header>
                     <div class="panel-body">
                         <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Penyelesaian Induk</a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk_per" class="btn btn-warning"><i class="fa fa-folder"></i>Penyelesaian Induk Perumahan</a>
+                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk_per" class="btn btn-primary"><i class="fa fa-folder"></i>Penyelesaian Induk Perumahan</a>
                     </div>
                 </section>
             </div>  
