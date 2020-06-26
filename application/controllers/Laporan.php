@@ -1297,13 +1297,13 @@ public function splitsing()
     {   
         cekajax();
         header('Content-Type: application/json');
-        echo $this->pembelian_model->getallsplitsing(); 
+        echo $this->laporan_model->getallsplitsing(); 
     }  
     
     public function splitsingdetail(){  
         cekajax(); 
         $idd = $this->input->get("id");  
-        $query = $this->pembelian_model->get_splitsing($idd); 
+        $query = $this->laporan_model->get_splitsing($idd); 
             foreach ($query as $splitsing_data) {        
             if($splitsing_data['termin'] < 1){
                 $termin = "-";
@@ -1339,18 +1339,18 @@ public function splitsing()
     } 
     public function printsplitsing(){ 
         $idd = $this->security->xss_clean($this->uri->segment(3)); 
-        $data['splitsing_data'] = $this->pembelian_model->get_splitsing($idd); 
-        $data['detail_splitsing']  = $this->pembelian_model->detail_splitsing($idd);  
-        $data['profil'] = $this->pembelian_model->data_profil(); 
+        $data['splitsing_data'] = $this->laporan_model->get_splitsing($idd); 
+        $data['detail_splitsing']  = $this->laporan_model->detail_splitsing($idd);  
+        $data['profil'] = $this->laporan_model->data_profil(); 
         if($data['splitsing_data'] != TRUE) show_404(); 
         $this->load->view('member/pembelian/printsplitsing',$data);
     }
     public function pdfsplitsing()
     {
         $idd = $this->security->xss_clean($this->uri->segment(3)); 
-        $data['splitsing_data'] = $this->pembelian_model->get_splitsing($idd); 
-        $data['detail_splitsing']  = $this->pembelian_model->detail_splitsing($idd);  
-        $data['profil'] = $this->pembelian_model->data_profil(); 
+        $data['splitsing_data'] = $this->laporan_model->get_splitsing($idd); 
+        $data['detail_splitsing']  = $this->laporan_model->detail_splitsing($idd);  
+        $data['profil'] = $this->laporan_model->data_profil(); 
         if($data['splitsing_data'] != TRUE) show_404(); 
         $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'Legal']);
         $data = $this->load->view('member/pembelian/pdfsplitsing', $data, TRUE);
@@ -1358,42 +1358,10 @@ public function splitsing()
         $mpdf->WriteHTML($data);
         $mpdf->Output("Purchase Order ".$idd.".pdf", "D"); 
     }
-    
-    public function pilihanitem()
-    {   
-        cekajax(); 
-        $get = $this->input->get();
-        $list = $this->pembelian_model->get_pilihanitem_datatable();
-        $data = array(); 
-        foreach ($list as $r) { 
-            $row = array(); 
-            $row[] = $this->security->xss_clean($r->kode_item); 
-            $row[] = $this->security->xss_clean($r->nama_item); 
-            $row[] = $this->security->xss_clean($r->kategori);   
-            $row[] = $this->security->xss_clean($r->satuan);  
-            $row[] = ' 
-            <a onclick="pilihitem(this)"  data-hargajual="'.rupiah($r->harga_jual).'"   data-stok="'.$r->stok.'" data-satuan="'.$r->satuan.'"  data-namaitem="'.$r->nama_item.'" data-id="'.$r->kode_item.'" class="mt-xs mr-xs btn btn-info datarowobat" role="button"><i class="fa fa-check-square-o"></i></a>
-            
-                    '; 
-            $data[] = $row;
-        } 
-        $result = array(
-            "draw" => $get['draw'],
-            "recordsTotal" => $this->pembelian_model->count_all_datatable_pilihanitem(),
-            "recordsFiltered" => $this->pembelian_model->count_filtered_datatable_pilihanitem(),
-            "data" => $data,
-        ); 
-        echo json_encode($result);  
-    }
+  
     public function splitsingtambah(){ 
         cekajax(); 
-        $simpan = $this->pembelian_model;
-        $validation = $this->form_validation; 
-        $validation->set_rules($simpan->rulessplitsing());
-        if ($this->form_validation->run() == FALSE){
-            $errors = $this->form_validation->error_array();
-            $data['errors'] = $errors;
-        }else{            
+        $simpan = $this->laporan_model;       
             $kode_item = $this->input->post("kode_item"); 
             if(isset($kode_item) === TRUE AND $kode_item[0]!='')
             {                   
@@ -1409,13 +1377,12 @@ public function splitsing()
                 $errors['jumlah_obat'] = "Mohon pilih item";
                 $data['errors'] = $errors;
             }
-        }
         $data['token'] = $this->security->get_csrf_hash();
         echo json_encode($data); 
     }
     public function splitsingedit(){ 
         cekajax(); 
-        $simpan = $this->pembelian_model;
+        $simpan = $this->laporan_model;
         $validation = $this->form_validation; 
         $validation->set_rules($simpan->rulessplitsing());
         if ($this->form_validation->run() == FALSE){
@@ -1444,7 +1411,7 @@ public function splitsing()
     
     public function splitsinghapus(){ 
         cekajax(); 
-        $hapus = $this->pembelian_model;
+        $hapus = $this->laporan_model;
         if($hapus->hapusdatasplitsing()){ 
             $data['success']= true;
             $data['message']="Berhasil menghapus data"; 

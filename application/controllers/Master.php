@@ -1061,7 +1061,7 @@ public function pilihanitem()
         $row[] = $this->security->xss_clean($r->nama_item); 
         $row[] = $this->security->xss_clean($r->nama_regional);   
         $row[] = ' 
-        <a onclick="pilihitem(this)"  data-nama_regional="'.$r->nama_regional.'" data-kode_item="'.$r->kode_item.'" class="mt-xs mr-xs btn btn-info datarowobat" role="button"><i class="fa fa-check-square-o"></i></a>
+        <a onclick="pilihitem(this)"  data-nama_regional="'.$r->nama_regional.'" data-nama_penjual="'.$r->nama_penjual.'" data-no_gambar="'.$r->no_gambar.'" data-keterangan="'.$r->keterangan.'" data-no_pbb="'.$r->no_pbb.'"  data-kode_item="'.$r->kode_item.'" class="mt-xs mr-xs btn btn-info datarowobat" role="button"><i class="fa fa-check-square-o"></i></a>
         '; 
         $data[] = $row;
     } 
