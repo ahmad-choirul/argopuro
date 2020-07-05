@@ -1304,12 +1304,7 @@ public function splitsing()
         cekajax(); 
         $idd = $this->input->get("id");  
         $query = $this->laporan_model->get_splitsing($idd); 
-            foreach ($query as $splitsing_data) {        
-            if($splitsing_data['termin'] < 1){
-                $termin = "-";
-            }else{
-                $termin = $splitsing_data['termin']." hari";
-            }     
+            foreach ($query as $splitsing_data) {       
             $result = array(  
                 "nomor_splitsing" => $this->security->xss_clean($splitsing_data['nomor_splitsing']),
                 "tgl_splitsing" => $this->security->xss_clean(tgl_indo($splitsing_data['tgl_splitsing'])),

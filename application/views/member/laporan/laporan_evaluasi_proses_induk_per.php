@@ -677,9 +677,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             data: 'id=' + dataId,
             dataType    : 'json',
             success: function(response) {  
-                $.each(response.datarows, function(i, item) {                 
-                    $("#pembayaran").select2("val", item.pembayaran); 
-                    $("#supplier").select2("val", item.kode_supplier);                
+                $.each(response.datarows, function(i, item) {                   
                     document.getElementById("nomor_po").value = item.nomor_po;       
                     document.getElementById("nomor_po_view").value = item.nomor_po;
                     document.getElementById("tgl_po").value = item.tgl_po_ymd;    
