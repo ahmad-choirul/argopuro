@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2020 at 03:05 PM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.6.28
+-- Waktu pembuatan: 07 Agu 2020 pada 19.24
+-- Versi server: 10.4.13-MariaDB
+-- Versi PHP: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori_user`
+-- Struktur dari tabel `kategori_user`
 --
 
 CREATE TABLE `kategori_user` (
@@ -34,7 +35,7 @@ CREATE TABLE `kategori_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kategori_user`
+-- Dumping data untuk tabel `kategori_user`
 --
 
 INSERT INTO `kategori_user` (`id`, `kategori_user`, `beranda`, `insentif`) VALUES
@@ -45,7 +46,7 @@ INSERT INTO `kategori_user` (`id`, `kategori_user`, `beranda`, `insentif`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori_user_modul`
+-- Struktur dari tabel `kategori_user_modul`
 --
 
 CREATE TABLE `kategori_user_modul` (
@@ -56,7 +57,7 @@ CREATE TABLE `kategori_user_modul` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kategori_user_modul`
+-- Dumping data untuk tabel `kategori_user_modul`
 --
 
 INSERT INTO `kategori_user_modul` (`id`, `kategori_user`, `modul`, `akses`) VALUES
@@ -196,7 +197,7 @@ INSERT INTO `kategori_user_modul` (`id`, `kategori_user`, `modul`, `akses`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_admin`
+-- Struktur dari tabel `master_admin`
 --
 
 CREATE TABLE `master_admin` (
@@ -207,11 +208,11 @@ CREATE TABLE `master_admin` (
   `nama_admin` varchar(200) NOT NULL,
   `email` varchar(100) NOT NULL,
   `aktif` enum('0','1') NOT NULL DEFAULT '1',
-  `waktu_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `waktu_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `master_admin`
+-- Dumping data untuk tabel `master_admin`
 --
 
 INSERT INTO `master_admin` (`id`, `kategori`, `username`, `password`, `nama_admin`, `email`, `aktif`, `waktu_update`) VALUES
@@ -224,7 +225,7 @@ INSERT INTO `master_admin` (`id`, `kategori`, `username`, `password`, `nama_admi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_distributor`
+-- Struktur dari tabel `master_distributor`
 --
 
 CREATE TABLE `master_distributor` (
@@ -234,11 +235,11 @@ CREATE TABLE `master_distributor` (
   `telepon` varchar(15) NOT NULL,
   `id_regional` int(11) NOT NULL,
   `id_sales` int(11) NOT NULL,
-  `waktu_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `waktu_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `master_distributor`
+-- Dumping data untuk tabel `master_distributor`
 --
 
 INSERT INTO `master_distributor` (`id`, `nama_distributor`, `alamat`, `telepon`, `id_regional`, `id_sales`, `waktu_update`) VALUES
@@ -247,20 +248,20 @@ INSERT INTO `master_distributor` (`id`, `nama_distributor`, `alamat`, `telepon`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_item`
+-- Struktur dari tabel `master_item`
 --
 
 CREATE TABLE `master_item` (
-  `kode_item` varchar(100) NOT NULL,
+  `kode_item` int(11) NOT NULL,
   `nama_item` varchar(200) NOT NULL,
   `tanggal_pembelian` date NOT NULL,
   `nama_penjual` varchar(100) NOT NULL,
   `nama_surat_tanah` varchar(100) NOT NULL,
   `status_surat_tanah` int(11) NOT NULL,
   `no_gambar` int(11) NOT NULL,
-  `jumlah_bidang` int(11) DEFAULT '1',
-  `luas_surat` int(11) DEFAULT '1',
-  `luas_ukur` int(11) DEFAULT '1',
+  `jumlah_bidang` int(11) DEFAULT 1,
+  `luas_surat` int(11) DEFAULT 1,
+  `luas_ukur` int(11) DEFAULT 1,
   `no_pbb` varchar(100) NOT NULL,
   `luas_pbb` int(11) NOT NULL,
   `njop` varchar(100) NOT NULL,
@@ -274,28 +275,36 @@ CREATE TABLE `master_item` (
   `ganti_rugi` varchar(100) DEFAULT '0',
   `pbb` varchar(100) DEFAULT '0',
   `lain` varchar(100) DEFAULT '0',
-  `harga_perm` varchar(100) DEFAULT '0',
-  `waktu_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `waktu_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `keterangan` varchar(100) NOT NULL,
-  `id_perumahan` int(11) NOT NULL DEFAULT '0'
+  `id_perumahan` int(11) NOT NULL DEFAULT 0,
+  `id_posisi_surat` int(11) NOT NULL,
+  `status_order_akta` enum('belum','selesai','proses') NOT NULL DEFAULT 'belum',
+  `tanggal_proses` date DEFAULT NULL,
+  `jenis_pengalihan_hak` varchar(100) DEFAULT NULL,
+  `status_teknik` enum('belum','sudah') NOT NULL DEFAULT 'belum',
+  `terima_finance` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `master_item`
+-- Dumping data untuk tabel `master_item`
 --
 
-INSERT INTO `master_item` (`kode_item`, `nama_item`, `tanggal_pembelian`, `nama_penjual`, `nama_surat_tanah`, `status_surat_tanah`, `no_gambar`, `jumlah_bidang`, `luas_surat`, `luas_ukur`, `no_pbb`, `luas_pbb`, `njop`, `total_harga_pengalihan`, `nama_makelar`, `nilai`, `tanggal_pengalihan`, `akta_pengalihan`, `nama_pengalihan`, `pematangan`, `ganti_rugi`, `pbb`, `lain`, `harga_perm`, `waktu_update`, `keterangan`, `id_perumahan`) VALUES
-('1', '2', '2020-06-01', '3', '4', 5, 5, 6, 7, 8, '9', 10, '11', '13', '14', '15', '2020-06-20', '16', '17', '18', '19', '20', '21', '22', '2020-06-12 12:52:11', '23', 4),
-('11', '111', '0000-00-00', '', '', 5, 0, 1, 1, 1, '', 0, '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '2020-06-12 13:02:20', '', 1),
-('123', '134', '2020-06-12', '', '', 3, 0, 1, 1, 1, '', 0, '', '0', '', '0', '2020-06-12', '', '', '0', '0', '0', '0', '0', '2020-06-12 13:02:22', '', 4),
-('123123', '111', '0000-00-00', '', '', 1, 0, 1, 1, 1, '', 0, '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '2020-06-12 13:02:25', '', 4),
-('1241241', '1231', '0000-00-00', '', '', 1, 0, 1, 1, 1, '', 0, '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '2020-06-12 13:02:26', '', 3),
-('tanah1', 'tanah 1', '2020-02-05', 'ach saubari', 'ach saubari', 1, 45, 1, 220, 220, '123/51.2/34/1998', 220, '34578', '55000000', 'rahayu', '0', '2020-06-01', '', '', '1000', '0', '0', '0', '0', '2020-06-12 01:42:33', '', 1);
+INSERT INTO `master_item` (`kode_item`, `nama_item`, `tanggal_pembelian`, `nama_penjual`, `nama_surat_tanah`, `status_surat_tanah`, `no_gambar`, `jumlah_bidang`, `luas_surat`, `luas_ukur`, `no_pbb`, `luas_pbb`, `njop`, `total_harga_pengalihan`, `nama_makelar`, `nilai`, `tanggal_pengalihan`, `akta_pengalihan`, `nama_pengalihan`, `pematangan`, `ganti_rugi`, `pbb`, `lain`, `waktu_update`, `keterangan`, `id_perumahan`, `id_posisi_surat`, `status_order_akta`, `tanggal_proses`, `jenis_pengalihan_hak`, `status_teknik`, `terima_finance`) VALUES
+(1, 'Mahmudah', '2020-06-07', 'Mahmudah', 'mahmudah', 4, 45, 1, 400, 400, '123/51.2/34/1999', 400, '20000', '80000', 'rahayu', '', '0000-00-00', '', '', '', '', '', '', '2020-06-20 04:07:08', '', 1, 0, 'belum', NULL, 'pribadi', 'belum', '0000-00-00'),
+(2, 'Deni', '2020-01-01', 'Deni Yana', 'Deni Yana', 1, 76, 1, 220, 220, '78/56/2020', 2020, '98/235/23', '200000', 'buna', '100000', '2020-04-22', 'Un/34', 'yani', '12000', '200000', '150000', '50000', '2020-06-20 04:06:45', 'aaa', 1, 0, 'belum', NULL, 'pribadi', 'sudah', '0000-00-00'),
+(3, 'tanah 1', '2020-02-05', 'ach saubari', 'ach saubari', 1, 45, 1, 220, 220, '123/51.2/34/1998', 220, '34578', '55000000', 'rahayu', '0', '2020-06-01', '', '', '1000', '0', '0', '0', '2020-06-22 07:31:52', '', 1, 0, 'belum', NULL, 'pribadi', 'belum', '0000-00-00'),
+(4, 'Bosmini', '2020-02-28', 'Bosmini', 'bosmini', 5, 10, 1, 250, 250, '123/51.2/34/2004', 250, '788', '230000000', 'Toyo', '0', '2020-06-14', '', '', '0', '0', '0', '0', '2020-06-22 07:32:10', '-', 1, 0, 'belum', NULL, 'pribadi', 'belum', '0000-00-00'),
+(5, 'Pak Sukiran', '2020-02-22', 'Pak Sukiran', '', 1, 79, 1, 0, 0, '', 0, '', '', '', '', '0000-00-00', '', '', '', '', '', '', '2020-06-14 11:27:57', '', 1, 0, 'belum', NULL, 'pribadi', '', '0000-00-00'),
+(6, 'Pak Mamat', '2020-02-22', 'Pak Mamat', '', 1, 34, 1, 700, 700, '123/51.2/34/2002', 700, '300000', '100000000', 'Suprapto', '', '2020-06-01', '123', 'aaa', '', '', '', '', '2020-06-23 07:36:32', 'sudah dikirim ke pertanahan', 1, 0, 'proses', '2020-06-01', 'penetepan', '', '2020-06-30'),
+(7, 'Anggun', '2020-02-22', 'Anggun', '', 5, 18, 1, 900, 900, '123/51.2/34/2003', 900, '3455', '150000000', 'Yoyon', '', '0000-00-00', '', '', '', '', '', '', '2020-06-14 11:36:54', '', 1, 0, 'belum', NULL, 'pribadi', '', '0000-00-00'),
+(8, 'Yahya', '2020-02-29', 'Yahya', '21', 0, 1, 600, 600, 600, '123/51.2/34/2005', 600, '899', '55000000', 'Danis', '', '0000-00-00', '', '', '', '', '', '', '2020-06-14 11:39:23', '', 1, 0, 'belum', NULL, 'pribadi', '', '0000-00-00'),
+(9, 'Yumna', '2020-02-29', 'Yumna', '', 0, 56, 1, 400, 400, '123/51.2/34/2006', 400, '900', '73000000', 'Yudik', '', '2020-06-10', '123', 'ASD', '', '', '', '', '2020-06-23 07:46:16', 'AA', 1, 0, 'selesai', '2020-06-01', 'pribadiASD', '', '2020-06-30');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_pembeli`
+-- Struktur dari tabel `master_pembeli`
 --
 
 CREATE TABLE `master_pembeli` (
@@ -303,16 +312,16 @@ CREATE TABLE `master_pembeli` (
   `nama_pembeli` varchar(200) NOT NULL,
   `alamat` varchar(200) NOT NULL,
   `hp` varchar(20) NOT NULL,
-  `stok_awal` int(11) NOT NULL DEFAULT '0',
-  `total` int(11) NOT NULL DEFAULT '0',
-  `waktu_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `stok_awal` int(11) NOT NULL DEFAULT 0,
+  `total` int(11) NOT NULL DEFAULT 0,
+  `waktu_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `jenis_pembeli` int(11) NOT NULL,
   `luas_sawah` varchar(100) NOT NULL,
   `id_penjual` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `master_pembeli`
+-- Dumping data untuk tabel `master_pembeli`
 --
 
 INSERT INTO `master_pembeli` (`id`, `nama_pembeli`, `alamat`, `hp`, `stok_awal`, `total`, `waktu_update`, `jenis_pembeli`, `luas_sawah`, `id_penjual`) VALUES
@@ -333,23 +342,23 @@ INSERT INTO `master_pembeli` (`id`, `nama_pembeli`, `alamat`, `hp`, `stok_awal`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_penjual`
+-- Struktur dari tabel `master_penjual`
 --
 
 CREATE TABLE `master_penjual` (
   `id` int(11) NOT NULL,
-  `id_admin` int(11) NOT NULL DEFAULT '0',
+  `id_admin` int(11) NOT NULL DEFAULT 0,
   `nama_penjual` varchar(50) NOT NULL,
   `alamat` text NOT NULL,
   `nik` varchar(50) NOT NULL,
-  `target` int(11) NOT NULL DEFAULT '0',
+  `target` int(11) NOT NULL DEFAULT 0,
   `regional` int(11) NOT NULL,
   `kontak` varchar(20) NOT NULL,
-  `waktu_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `waktu_update` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `master_penjual`
+-- Dumping data untuk tabel `master_penjual`
 --
 
 INSERT INTO `master_penjual` (`id`, `id_admin`, `nama_penjual`, `alamat`, `nik`, `target`, `regional`, `kontak`, `waktu_update`) VALUES
@@ -359,7 +368,45 @@ INSERT INTO `master_penjual` (`id`, `id_admin`, `nama_penjual`, `alamat`, `nik`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_regional`
+-- Struktur dari tabel `master_proses_induk`
+--
+
+CREATE TABLE `master_proses_induk` (
+  `id_proses_induk` int(11) NOT NULL,
+  `no_surat_tanah` varchar(100) NOT NULL,
+  `nama_surat_tanah` varchar(100) NOT NULL,
+  `luas` varchar(100) NOT NULL,
+  `tanggal_daftar_sk_hak` date NOT NULL,
+  `no_daftar_sk_hak` varchar(100) NOT NULL,
+  `tanggal_terbit_sk_hak` date DEFAULT NULL,
+  `no_terbit_sk_hak` varchar(100) DEFAULT NULL,
+  `tanggal_daftar_shgb` date DEFAULT NULL,
+  `no_daftar_shgb` varchar(100) DEFAULT NULL,
+  `tanggal_terbit_shgb` date DEFAULT NULL,
+  `no_terbit_shgb` varchar(100) DEFAULT NULL,
+  `masa_berlaku_shgb` date DEFAULT NULL,
+  `target_penyelesaian` date DEFAULT NULL,
+  `status` enum('belum','terbit') NOT NULL DEFAULT 'belum',
+  `keterangan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `master_proses_induk`
+--
+
+INSERT INTO `master_proses_induk` (`id_proses_induk`, `no_surat_tanah`, `nama_surat_tanah`, `luas`, `tanggal_daftar_sk_hak`, `no_daftar_sk_hak`, `tanggal_terbit_sk_hak`, `no_terbit_sk_hak`, `tanggal_daftar_shgb`, `no_daftar_shgb`, `tanggal_terbit_shgb`, `no_terbit_shgb`, `masa_berlaku_shgb`, `target_penyelesaian`, `status`, `keterangan`) VALUES
+(5, 'no_surat', 'nama_surat', 'luas', '2020-06-04', 'no daftar', '0000-00-00', 'no terbit sk', '0000-00-00', 'no daftar shgb', '2020-06-03', 'sxas', '2020-06-29', '2020-06-30', 'terbit', ''),
+(6, 'no surat 2', 'nama surat 2', '123', '2020-06-01', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '0000-00-00', 'belum', ''),
+(7, '123', '123', '123', '2020-06-11', '123', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '0000-00-00', 'belum', 'asdasd'),
+(8, 'baru', 'baru', '123', '2020-06-24', '123', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '0000-00-00', 'belum', ''),
+(9, 'baru 2', 'baru 2', '123', '2020-06-24', '123', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '0000-00-00', '', ''),
+(10, 'baru 3', 'baru 3', '123', '2020-06-25', '123', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '0000-00-00', '', ''),
+(11, 'new', 'new', '1111', '2020-06-10', '123', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '0000-00-00', 'belum', '');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `master_regional`
 --
 
 CREATE TABLE `master_regional` (
@@ -367,36 +414,23 @@ CREATE TABLE `master_regional` (
   `nama_regional` varchar(100) NOT NULL,
   `lokasi` varchar(100) NOT NULL,
   `status_regional` int(11) NOT NULL,
-  `waktu_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `waktu_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `master_regional`
+-- Dumping data untuk tabel `master_regional`
 --
 
 INSERT INTO `master_regional` (`id`, `nama_regional`, `lokasi`, `status_regional`, `waktu_update`) VALUES
-(1, 'jember', 'jember', 1, '2020-06-11 08:23:26'),
-(3, 'indonesia', 'indonesia', 3, '2020-06-12 00:42:56'),
-(4, 'bojonegoro', 'aaa', 1, '2020-06-11 08:59:49');
+(1, 'Mangli Residence', 'Jember', 1, '2020-06-20 03:57:32'),
+(3, 'Bumi Mangli Permai 5', 'Mangli', 3, '2020-06-20 03:57:15'),
+(4, 'Bumi Mangli Permai 4', 'Mangli', 1, '2020-06-20 03:57:22'),
+(5, 'Argopurpo Land', 'Kaliwates', 2, '2020-06-20 03:58:33');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_serah_terima`
---
-
-CREATE TABLE `master_serah_terima` (
-  `id_serah_terima` int(11) NOT NULL,
-  `id_master_item` int(11) NOT NULL,
-  `tgl_serah_terima` date NOT NULL,
-  `keterangan` varchar(200) DEFAULT NULL,
-  `waktu_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `master_status_regional`
+-- Struktur dari tabel `master_status_regional`
 --
 
 CREATE TABLE `master_status_regional` (
@@ -405,7 +439,7 @@ CREATE TABLE `master_status_regional` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `master_status_regional`
+-- Dumping data untuk tabel `master_status_regional`
 --
 
 INSERT INTO `master_status_regional` (`id_status_regional`, `nama_status`) VALUES
@@ -416,19 +450,19 @@ INSERT INTO `master_status_regional` (`id_status_regional`, `nama_status`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_status_tanah`
+-- Struktur dari tabel `master_status_tanah`
 --
 
 CREATE TABLE `master_status_tanah` (
   `id_status_tanah` int(11) NOT NULL,
   `nama_status_tanah` varchar(100) NOT NULL,
-  `waktu_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `waktu_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_supplier`
+-- Struktur dari tabel `master_supplier`
 --
 
 CREATE TABLE `master_supplier` (
@@ -438,11 +472,11 @@ CREATE TABLE `master_supplier` (
   `telepon` varchar(15) NOT NULL,
   `id_regional` int(11) NOT NULL,
   `id_sales` int(11) NOT NULL,
-  `waktu_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `waktu_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `master_supplier`
+-- Dumping data untuk tabel `master_supplier`
 --
 
 INSERT INTO `master_supplier` (`id`, `nama_supplier`, `alamat`, `telepon`, `id_regional`, `id_sales`, `waktu_update`) VALUES
@@ -454,7 +488,7 @@ INSERT INTO `master_supplier` (`id`, `nama_supplier`, `alamat`, `telepon`, `id_r
 -- --------------------------------------------------------
 
 --
--- Table structure for table `modul`
+-- Struktur dari tabel `modul`
 --
 
 CREATE TABLE `modul` (
@@ -468,7 +502,7 @@ CREATE TABLE `modul` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `modul`
+-- Dumping data untuk tabel `modul`
 --
 
 INSERT INTO `modul` (`id`, `label`, `controller`, `nama_function`, `aksi_edit`, `aksi_hapus`, `aksi_tambah`) VALUES
@@ -483,7 +517,7 @@ INSERT INTO `modul` (`id`, `label`, `controller`, `nama_function`, `aksi_edit`, 
 (9, 'Master Data Obat dan Alkes', 'master', 'items', '1', '1', '1'),
 (10, 'Master Racikan', 'master', 'racikan', '1', '1', '1'),
 (11, 'Pembelian Beranda', 'pembelian', 'index', '0', '0', '0'),
-(12, 'Purchase Order', 'pembelian', 'po', '1', '1', '1'),
+(12, 'Purchase Order', 'laporan', 'splitsing', '1', '1', '1'),
 (13, 'Pembelian ke Supplier', 'pembelian', 'langsung', '1', '1', '1'),
 (14, 'Penerimaan Barang', 'pembelian', 'penerimaan', '0', '1', '1'),
 (15, 'Retur Pembelian', 'pembelian', 'retur', '1', '1', '1'),
@@ -502,7 +536,7 @@ INSERT INTO `modul` (`id`, `label`, `controller`, `nama_function`, `aksi_edit`, 
 (28, 'Hutang', 'keuangan', 'hutang', '0', '1', '1'),
 (29, 'Cash in Cash Out', 'keuangan', 'cashinout', '1', '1', '1'),
 (30, 'Laporan Beranda', 'laporan', 'index', '0', '0', '0'),
-(31, 'Laporan Purchase Order', 'laporan', 'po', '0', '0', '0'),
+(31, 'Laporan Purchase Order', 'laporan', 'splitsing', '1', '1', '1'),
 (32, 'Laporan Pembelian', 'laporan', 'pembelian', '0', '0', '0'),
 (33, 'Laporan Penerimaan Barang', 'laporan', 'penerimaan', '0', '0', '0'),
 (34, 'Laporan Stok', 'laporan', 'stok', '0', '0', '0'),
@@ -517,7 +551,7 @@ INSERT INTO `modul` (`id`, `label`, `controller`, `nama_function`, `aksi_edit`, 
 (43, 'Edit Password', 'password', 'index', '1', '0', '0'),
 (44, 'SPG', 'master', 'spg', '0', '0', '0'),
 (45, 'Laporan SPG', 'laporan', 'spg', '0', '0', '0'),
-(46, 'Master Biaya Operasional', 'master', 'serah_terima', '1', '1', '1'),
+(46, 'Master Biaya Operasional', 'master', 'proses_induk', '1', '1', '1'),
 (47, 'Stok Utility', 'stok', 'utility', '1', '0', '1'),
 (48, 'Target', 'penjualan', 'target', '1', '0', '1'),
 (49, 'Dashboard sales', 'dashboard_sales', 'index', '1', '0', '1');
@@ -525,17 +559,17 @@ INSERT INTO `modul` (`id`, `label`, `controller`, `nama_function`, `aksi_edit`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notes`
+-- Struktur dari tabel `notes`
 --
 
 CREATE TABLE `notes` (
   `id` int(11) NOT NULL,
-  `isi` text,
-  `waktu_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `isi` text DEFAULT NULL,
+  `waktu_update` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `notes`
+-- Dumping data untuk tabel `notes`
 --
 
 INSERT INTO `notes` (`id`, `isi`, `waktu_update`) VALUES
@@ -544,7 +578,7 @@ INSERT INTO `notes` (`id`, `isi`, `waktu_update`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `profil_apotek`
+-- Struktur dari tabel `profil_apotek`
 --
 
 CREATE TABLE `profil_apotek` (
@@ -572,7 +606,7 @@ CREATE TABLE `profil_apotek` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `profil_apotek`
+-- Dumping data untuk tabel `profil_apotek`
 --
 
 INSERT INTO `profil_apotek` (`id`, `nama_apotek`, `alamat`, `logo`, `telepon`, `hp`, `no_npwp`, `nama_npwp`, `alamat_npwp`, `bank`, `rekening`, `an`, `no_apoteker`, `tgl_masa`, `apoteker`, `alamat_ktp`, `alamat_tinggal`, `no_sipa`, `tgl_sipa`, `nama_ttk`, `footer_struk`) VALUES
@@ -581,7 +615,30 @@ INSERT INTO `profil_apotek` (`id`, `nama_apotek`, `alamat`, `logo`, `telepon`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_absensi`
+-- Struktur dari tabel `tabel_pembayaran`
+--
+
+CREATE TABLE `tabel_pembayaran` (
+  `id_pembayaran` int(11) NOT NULL,
+  `kode_item` int(11) NOT NULL,
+  `tanggal_pembayaran` date NOT NULL,
+  `total_bayar` varchar(100) NOT NULL,
+  `waktu_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `Keterangan` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tabel_pembayaran`
+--
+
+INSERT INTO `tabel_pembayaran` (`id_pembayaran`, `kode_item`, `tanggal_pembayaran`, `total_bayar`, `waktu_update`, `Keterangan`) VALUES
+(5, 2, '2020-06-01', '1000', '2020-06-20 07:24:06', '1'),
+(7, 1, '2020-06-01', '1000', '2020-06-22 02:18:24', 'abcd');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_absensi`
 --
 
 CREATE TABLE `tbl_absensi` (
@@ -589,11 +646,11 @@ CREATE TABLE `tbl_absensi` (
   `id_admin` int(11) NOT NULL,
   `status` tinyint(4) NOT NULL,
   `keterangan` varchar(200) NOT NULL,
-  `waktu` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `waktu` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_absensi`
+-- Dumping data untuk tabel `tbl_absensi`
 --
 
 INSERT INTO `tbl_absensi` (`id_absensi`, `id_admin`, `status`, `keterangan`, `waktu`) VALUES
@@ -604,7 +661,33 @@ INSERT INTO `tbl_absensi` (`id_absensi`, `id_admin`, `status`, `keterangan`, `wa
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_sertifikat_tanah`
+-- Struktur dari tabel `tbl_dtl_proses_induk`
+--
+
+CREATE TABLE `tbl_dtl_proses_induk` (
+  `id_dtl_proses_induk` int(11) NOT NULL,
+  `id_proses_induk` int(11) NOT NULL,
+  `id_master_item` int(11) NOT NULL,
+  `tgl_proses_induk` date NOT NULL,
+  `keterangan` varchar(200) DEFAULT NULL,
+  `waktu_update` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_dtl_proses_induk`
+--
+
+INSERT INTO `tbl_dtl_proses_induk` (`id_dtl_proses_induk`, `id_proses_induk`, `id_master_item`, `tgl_proses_induk`, `keterangan`, `waktu_update`) VALUES
+(3, 5, 9, '2020-06-01', 'aaa', '2020-06-24 16:28:09'),
+(4, 5, 4, '2020-06-10', 'aaa', '2020-06-24 16:28:12'),
+(5, 6, 4, '2020-06-05', 'qqq', '2020-06-24 16:28:25'),
+(6, 11, 9, '2020-06-25', 'AA', '2020-06-26 14:34:15'),
+(7, 11, 6, '2020-06-25', 'sudah dikirim ke pertanahan', '2020-06-26 14:34:15');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_sertifikat_tanah`
 --
 
 CREATE TABLE `tbl_sertifikat_tanah` (
@@ -614,7 +697,7 @@ CREATE TABLE `tbl_sertifikat_tanah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbl_sertifikat_tanah`
+-- Dumping data untuk tabel `tbl_sertifikat_tanah`
 --
 
 INSERT INTO `tbl_sertifikat_tanah` (`id_sertifikat_tanah`, `kode_sertifikat`, `nama_sertifikat`) VALUES
@@ -625,12 +708,33 @@ INSERT INTO `tbl_sertifikat_tanah` (`id_sertifikat_tanah`, `kode_sertifikat`, `n
 (4, 'Petok', 'Girik atau Petok'),
 (5, 'AJB', 'Akta Jual Beli');
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_target`
+--
+
+CREATE TABLE `tbl_target` (
+  `id_target` int(11) NOT NULL,
+  `id_perumahan` int(11) NOT NULL,
+  `tahun` date NOT NULL,
+  `target_bid` varchar(100) NOT NULL,
+  `target_luas` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tbl_target`
+--
+
+INSERT INTO `tbl_target` (`id_target`, `id_perumahan`, `tahun`, `target_bid`, `target_luas`) VALUES
+(1, 1, '2020-06-01', '1;2;3;4;5;6;7;8;9;10;11;12', 'A;B;C;D;E;F;G;H;I;J;K;L');
+
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `kategori_user`
+-- Indeks untuk tabel `kategori_user`
 --
 ALTER TABLE `kategori_user`
   ADD PRIMARY KEY (`id`),
@@ -638,7 +742,7 @@ ALTER TABLE `kategori_user`
   ADD KEY `beranda` (`beranda`);
 
 --
--- Indexes for table `kategori_user_modul`
+-- Indeks untuk tabel `kategori_user_modul`
 --
 ALTER TABLE `kategori_user_modul`
   ADD PRIMARY KEY (`id`),
@@ -646,7 +750,7 @@ ALTER TABLE `kategori_user_modul`
   ADD KEY `modul` (`modul`);
 
 --
--- Indexes for table `master_admin`
+-- Indeks untuk tabel `master_admin`
 --
 ALTER TABLE `master_admin`
   ADD PRIMARY KEY (`id`),
@@ -654,179 +758,236 @@ ALTER TABLE `master_admin`
   ADD KEY `kategori` (`kategori`);
 
 --
--- Indexes for table `master_distributor`
+-- Indeks untuk tabel `master_distributor`
 --
 ALTER TABLE `master_distributor`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `master_item`
+-- Indeks untuk tabel `master_item`
 --
 ALTER TABLE `master_item`
   ADD PRIMARY KEY (`kode_item`);
 
 --
--- Indexes for table `master_pembeli`
+-- Indeks untuk tabel `master_pembeli`
 --
 ALTER TABLE `master_pembeli`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `master_penjual`
+-- Indeks untuk tabel `master_penjual`
 --
 ALTER TABLE `master_penjual`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `master_regional`
+-- Indeks untuk tabel `master_proses_induk`
+--
+ALTER TABLE `master_proses_induk`
+  ADD PRIMARY KEY (`id_proses_induk`);
+
+--
+-- Indeks untuk tabel `master_regional`
 --
 ALTER TABLE `master_regional`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `master_serah_terima`
---
-ALTER TABLE `master_serah_terima`
-  ADD PRIMARY KEY (`id_serah_terima`);
-
---
--- Indexes for table `master_status_regional`
+-- Indeks untuk tabel `master_status_regional`
 --
 ALTER TABLE `master_status_regional`
   ADD PRIMARY KEY (`id_status_regional`);
 
 --
--- Indexes for table `master_supplier`
+-- Indeks untuk tabel `master_supplier`
 --
 ALTER TABLE `master_supplier`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `modul`
+-- Indeks untuk tabel `modul`
 --
 ALTER TABLE `modul`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `notes`
+-- Indeks untuk tabel `notes`
 --
 ALTER TABLE `notes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `profil_apotek`
+-- Indeks untuk tabel `profil_apotek`
 --
 ALTER TABLE `profil_apotek`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_absensi`
+-- Indeks untuk tabel `tabel_pembayaran`
+--
+ALTER TABLE `tabel_pembayaran`
+  ADD PRIMARY KEY (`id_pembayaran`);
+
+--
+-- Indeks untuk tabel `tbl_absensi`
 --
 ALTER TABLE `tbl_absensi`
   ADD PRIMARY KEY (`id_absensi`);
 
 --
--- Indexes for table `tbl_sertifikat_tanah`
+-- Indeks untuk tabel `tbl_dtl_proses_induk`
+--
+ALTER TABLE `tbl_dtl_proses_induk`
+  ADD PRIMARY KEY (`id_dtl_proses_induk`);
+
+--
+-- Indeks untuk tabel `tbl_sertifikat_tanah`
 --
 ALTER TABLE `tbl_sertifikat_tanah`
   ADD PRIMARY KEY (`id_sertifikat_tanah`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Indeks untuk tabel `tbl_target`
+--
+ALTER TABLE `tbl_target`
+  ADD PRIMARY KEY (`id_target`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `kategori_user`
+-- AUTO_INCREMENT untuk tabel `kategori_user`
 --
 ALTER TABLE `kategori_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
 --
--- AUTO_INCREMENT for table `kategori_user_modul`
+-- AUTO_INCREMENT untuk tabel `kategori_user_modul`
 --
 ALTER TABLE `kategori_user_modul`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12094;
+
 --
--- AUTO_INCREMENT for table `master_admin`
+-- AUTO_INCREMENT untuk tabel `master_admin`
 --
 ALTER TABLE `master_admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
--- AUTO_INCREMENT for table `master_distributor`
+-- AUTO_INCREMENT untuk tabel `master_distributor`
 --
 ALTER TABLE `master_distributor`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
--- AUTO_INCREMENT for table `master_pembeli`
+-- AUTO_INCREMENT untuk tabel `master_item`
+--
+ALTER TABLE `master_item`
+  MODIFY `kode_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT untuk tabel `master_pembeli`
 --
 ALTER TABLE `master_pembeli`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
 --
--- AUTO_INCREMENT for table `master_penjual`
+-- AUTO_INCREMENT untuk tabel `master_penjual`
 --
 ALTER TABLE `master_penjual`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT for table `master_regional`
+-- AUTO_INCREMENT untuk tabel `master_proses_induk`
+--
+ALTER TABLE `master_proses_induk`
+  MODIFY `id_proses_induk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT untuk tabel `master_regional`
 --
 ALTER TABLE `master_regional`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
--- AUTO_INCREMENT for table `master_serah_terima`
---
-ALTER TABLE `master_serah_terima`
-  MODIFY `id_serah_terima` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `master_status_regional`
+-- AUTO_INCREMENT untuk tabel `master_status_regional`
 --
 ALTER TABLE `master_status_regional`
   MODIFY `id_status_regional` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `master_supplier`
+-- AUTO_INCREMENT untuk tabel `master_supplier`
 --
 ALTER TABLE `master_supplier`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
--- AUTO_INCREMENT for table `modul`
+-- AUTO_INCREMENT untuk tabel `modul`
 --
 ALTER TABLE `modul`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
 --
--- AUTO_INCREMENT for table `notes`
+-- AUTO_INCREMENT untuk tabel `notes`
 --
 ALTER TABLE `notes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
--- AUTO_INCREMENT for table `tbl_absensi`
+-- AUTO_INCREMENT untuk tabel `tabel_pembayaran`
+--
+ALTER TABLE `tabel_pembayaran`
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_absensi`
 --
 ALTER TABLE `tbl_absensi`
   MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `tbl_sertifikat_tanah`
+-- AUTO_INCREMENT untuk tabel `tbl_dtl_proses_induk`
+--
+ALTER TABLE `tbl_dtl_proses_induk`
+  MODIFY `id_dtl_proses_induk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_sertifikat_tanah`
 --
 ALTER TABLE `tbl_sertifikat_tanah`
   MODIFY `id_sertifikat_tanah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT untuk tabel `tbl_target`
+--
+ALTER TABLE `tbl_target`
+  MODIFY `id_target` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `kategori_user`
+-- Ketidakleluasaan untuk tabel `kategori_user`
 --
 ALTER TABLE `kategori_user`
   ADD CONSTRAINT `kategori_user_ibfk_1` FOREIGN KEY (`beranda`) REFERENCES `modul` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `kategori_user_modul`
+-- Ketidakleluasaan untuk tabel `kategori_user_modul`
 --
 ALTER TABLE `kategori_user_modul`
   ADD CONSTRAINT `kategori_user_modul_ibfk_1` FOREIGN KEY (`kategori_user`) REFERENCES `kategori_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `kategori_user_modul_ibfk_2` FOREIGN KEY (`modul`) REFERENCES `modul` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `master_admin`
+-- Ketidakleluasaan untuk tabel `master_admin`
 --
 ALTER TABLE `master_admin`
   ADD CONSTRAINT `master_admin_ibfk_1` FOREIGN KEY (`kategori`) REFERENCES `kategori_user` (`id`) ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
