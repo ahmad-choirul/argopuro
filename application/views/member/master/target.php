@@ -134,7 +134,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-9">
                             <input type="text" name="tahun" class="form-control tanggal" />
                         </div>
-                    </div>  
+                    </div> 
+                     
                 </div>
                 <footer class="panel-footer">
                     <div class="row">
