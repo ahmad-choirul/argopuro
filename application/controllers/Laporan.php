@@ -98,10 +98,9 @@ class Laporan extends CI_Controller {
     }  
     public function datarekap_proses_ijin()
     {   
-        $this->load->model('Master_model');
         cekajax(); 
         $get = $this->input->get();
-        $list = $this->master_model->get_kategori_datatable();
+        $list = $this->laporan_model->get_kategori_datatable();
         $data = array(); 
         foreach ($list as $r) { 
             $row = array(); 
@@ -152,7 +151,7 @@ class Laporan extends CI_Controller {
     {
         cekajax(); 
     $get = $this->input->get();
-    $list = $this->master_model->get_perijinan_datatable($id);
+    $list = $this->laporan_model->get_perijinan_datatable($id);
     $data = array(); 
     foreach ($list as $r) { 
         $row = array();
@@ -196,12 +195,92 @@ class Laporan extends CI_Controller {
     }
     $result = array(
         "draw" => $get['draw'],
-        "recordsTotal" => $this->master_model->count_all_datatable_item($id),
-        "recordsFiltered" => $this->master_model->count_filtered_datatable_item($id),
+        "recordsTotal" => $this->laporan_model->count_all_datatable_perijinan($id),
+        "recordsFiltered" => $this->laporan_model->count_filtered_datatable_perijinan($id),
         "data" => $data,
     ); 
     echo json_encode($result);  
     }
+
+
+public function perijinantambah(){ 
+    cekajax(); 
+    $simpan = $this->laporan_model;
+    $validation = $this->form_validation; 
+    $validation->set_rules($simpan->rules_perijinan());
+    if ($this->form_validation->run() == FALSE){
+     $errors = $this->form_validation->error_array();
+     $data['errors'] = $errors;
+ }else{                 
+     if($simpan->simpandata_perijinan()){
+        $data['success']= true;
+        $data['message']="Berhasil menyimpan data";   
+    }else{
+        $errors['fail'] = "gagal melakukan update data";
+        $data['errors'] = $errors;
+    }  
+}
+$data['token'] = $this->security->get_csrf_hash();
+echo json_encode($data); 
+}
+
+public function perijinandetail(){  
+    cekajax(); 
+    $idd = $this->input->get("id"); 
+    $this->db->join('master_regional', 'master_penyelesaian_ijin.id_perumahan = master_regional.id', 'left');
+    $query = $this->db->get_where('master_penyelesaian_ijin', array('id_penyelesaian' => $idd),1);
+    $result = array(  
+"id_perumahan" => $this->security->xss_clean($query->row()->id_perumahan),
+        "titik_koordinat" => $this->security->xss_clean($query->row()->titik_koordinat), 
+        "luas_daftar" => $this->security->xss_clean($query->row()->luas_daftar),  
+        "luas_terbit" => $this->security->xss_clean($query->row()->luas_terbit),  
+        "daftar_online_oss" => $this->security->xss_clean(($query->row()->daftar_online_oss)),
+        "tgl_daftar_pertimbangan" => $this->security->xss_clean(($query->row()->tgl_daftar_pertimbangan)),
+        "setdaftar_online_oss" => $this->security->xss_clean(tgl_indo($query->row()->daftar_online_oss)),
+        "settgl_daftar_pertimbangan" => $this->security->xss_clean(tgl_indo($query->row()->tgl_daftar_pertimbangan)),
+        "no_berkas_pertimbangan" => $this->security->xss_clean($query->row()->no_berkas_pertimbangan),  
+        "tgl_terbit_pertimbangan" => $this->security->xss_clean(($query->row()->tgl_terbit_pertimbangan)),  
+        "settgl_terbit_pertimbangan" => $this->security->xss_clean(tgl_indo($query->row()->tgl_terbit_pertimbangan)),  
+        "nomor_sk_pertimbangan" => $this->security->xss_clean($query->row()->nomor_sk_pertimbangan),  
+        "tgl_daftar_tata_ruang" => $this->security->xss_clean(($query->row()->tgl_daftar_tata_ruang)),  
+        "tgl_terbit_tata_ruang" => $this->security->xss_clean(($query->row()->tgl_terbit_tata_ruang)),  
+         "settgl_daftar_tata_ruang" => $this->security->xss_clean(tgl_indo($query->row()->tgl_daftar_tata_ruang)),  
+        "settgl_terbit_tata_ruang" => $this->security->xss_clean(tgl_indo($query->row()->tgl_terbit_tata_ruang)),  
+        "nomor_surat_tata_ruang" => $this->security->xss_clean($query->row()->nomor_surat_tata_ruang),  
+        "tgl_daftar_ijin" => $this->security->xss_clean(($query->row()->tgl_daftar_ijin)),  
+        "tgl_terbit_ijin" => $this->security->xss_clean(($query->row()->tgl_terbit_ijin)),  
+        "settgl_daftar_ijin" => $this->security->xss_clean(tgl_indo($query->row()->tgl_daftar_ijin)),  
+        "settgl_terbit_ijin" => $this->security->xss_clean(tgl_indo($query->row()->tgl_terbit_ijin)), 
+        "nomor_ijin" => $this->security->xss_clean($query->row()->nomor_ijin),
+        "masa_berlaku_ijin" => $this->security->xss_clean(tgl_indo($query->row()->masa_berlaku_ijin)),
+        "setmasa_berlaku_ijin" => $this->security->xss_clean(tgl_indo($query->row()->masa_berlaku_ijin)),
+        "keterangan" => $this->security->xss_clean($query->row()->keterangan),
+ );    
+    echo'['.json_encode($result).']';
+}
+
+public function perijinanedit(){ 
+    cekajax(); 
+    $simpan = $this->laporan_model; 
+    $post = $this->input->post();
+    $validation = $this->form_validation; 
+    $validation->set_rules($simpan->rules_perijinan());
+    if ($this->form_validation->run() == FALSE){
+        $errors = $this->form_validation->error_array();
+        $data['errors'] = $errors;
+    }else{          
+        if($simpan->updatedata_perijinan()){
+            $data['success']= true;
+            $data['message']="Berhasil menyimpan data";   
+        }else{
+            $errors['fail'] = "gagal melakukan update data";
+            $data['errors'] = $errors;
+            
+        }
+    }
+    $data['token'] = $this->security->get_csrf_hash();
+    echo json_encode($data); 
+}
     public function laporan_evaluasi_land_bank()
     {
         level_user('master','items',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();

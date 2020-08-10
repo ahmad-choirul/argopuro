@@ -98,7 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <section class="panel panel-primary">
-                <?php echo form_open('master/itemstambah',' id="FormulirTambah" enctype="multipart/form-data"');?>  
+                <?php echo form_open('Laporan/perijinantambah',' id="FormulirTambah" enctype="multipart/form-data"');?>  
                 <header class="panel-heading">
                     <h2 class="panel-title">Tambah Item</h2>
                 </header>
@@ -202,193 +202,106 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 </div>
 </div>
-<div class="modal fade" data-keyboard="false" data-backdrop="static"  id="detailData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <section class="panel panel-primary">   
-                <header class="panel-heading">
-                    <h2 class="panel-title">Detail Obat / Alkes</h2>
-                </header>
-                <div class="panel-body" id="showdetail"> 
-                </div>
-                <footer class="panel-footer">
-                    <div class="row">
-                        <div class="col-md-12 text-right">
-                            <button class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </footer> 
-            </section>
-        </div>
-    </div>
-</div>
-
 <div class="modal fade" data-keyboard="false" data-backdrop="static"  id="editData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <section class="panel panel-primary">
-                <?php echo form_open('master/itemsedit',' id="FormulirEdit"  enctype="multipart/form-data"');?>  
-                <input type="hidden" name="idd" id="idd">
+                <?php echo form_open('Laporan/perijinanedit',' id="FormulirTambah" enctype="multipart/form-data"');?>  
                 <header class="panel-heading">
-                    <h2 class="panel-title">Edit Data Tanah/Aset</h2>
+                    <h2 class="panel-title">Tambah Item</h2>
                 </header>
                 <div class="panel-body">
+
 
                     <div class="form-group mt-lg nama_target">
                         <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
                         <div class="col-sm-9">
-                            <select data-plugin-selectTwo class="form-control" required id="id_perumahan" name="id_perumahan">  
+                            <select data-plugin-selectTwo class="form-control" required name="id_perumahan">  
                                 <option value="">Pilih Lokasi</option>
-                                <?php foreach ($perumahan as $supp): ?>
-                                    <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
+                                <?php foreach ($perumahan2 as $aa): ?>
+                                    <option value="<?php echo $aa->id;?>" <?php echo ($id_perumahan == $aa->id) ? 'selected' : ''; ?>><?php echo $aa->nama_regional;?></option>
                                 <?php endforeach; ?>
                             </select> 
                         </div>
                     </div>
                     <div class="form-group mt-lg titik_koordinat">
-                        <label class="col-sm-3 control-label">Nama tanah<span class="required">*</span></label>
+                        <label class="col-sm-3 control-label">Titik Koordinat<span class="required">*</span></label>
                         <div class="col-sm-9">
                             <input type="text" name="titik_koordinat" id="titik_koordinat" class="form-control" required/>
+                            <input type="hidden" name="idd" id="idd" class="form-control" required/>
+                        </div>
+                    </div>
+                    <div class="form-group luas_daftar">
+                        <label class="col-sm-3 control-label">Luas (m2)</span></label>
+                        <div class="col-sm-5">
+                            <input type="number" name="luas_daftar" id="luas_daftar" class="form-control" placeholder="Luas daftar"  />
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="number" name="luas_terbit" id="luas_terbit" class="form-control"  placeholder="Luas terbit" />
                         </div>
                     </div>
                     <div class="form-group daftar_online_oss">
-                        <label class="col-sm-3 control-label">Tanggal Pembelian</span></label>
+                        <label class="col-sm-3 control-label">Tanggal Daftar OSS</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="daftar_online_oss" id="daftar_online_oss" class="form-control tanggal"  />
+                            <input type="text" name="daftar_online_oss" id="daftar_online_oss" class="form-control tanggal" placeholder="Tanggal Daftar OSS" />
                         </div>
                     </div>
                     <div class="form-group tgl_daftar_pertimbangan">
-                        <label class="col-sm-3 control-label">Nama Penjual</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="tgl_daftar_pertimbangan" id="tgl_daftar_pertimbangan" class="form-control"  />
+                        <label class="col-sm-3 control-label">Daftar Pertimbangan</span></label>
+                        <div class="col-sm-2">
+                            <input type="text" name="tgl_daftar_pertimbangan" id="tgl_daftar_pertimbangan" class="form-control tanggal" placeholder="Tanggal Daftar"  />
+                        </div>
+                        <div class="col-sm-3">
+                             <input type="text" name="no_berkas_pertimbangan" id="no_berkas_pertimbangan" class="form-control" placeholder="No Berkas Pertimbangan"  />
+                        </div>
+                        <div class="col-sm-2">
+                             <input type="text" name="tgl_terbit_pertimbangan" id="tgl_terbit_pertimbangan" class="form-control tanggal" placeholder="tgl terbit Pertimbangan"  />
+                        </div>
+                        <div class="col-sm-2">
+                             <input type="text" name="nomor_sk_pertimbangan" id="nomor_sk_pertimbangan" class="form-control" placeholder="no Sk Pertimbangan"  />
                         </div>
                     </div>
-                    <div class="form-group tgl_daftar_tata_ruang">
-                        <label class="col-sm-3 control-label">Nama Surat</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="tgl_daftar_tata_ruang" id="tgl_daftar_tata_ruang" class="form-control"  />
+
+                      <div class="form-group tgl_daftar_tata_ruang">
+                        <label class="col-sm-3 control-label">Daftar Informasi Tata RUang</span></label>
+                        <div class="col-sm-3">
+                           <input type="text" name="tgl_daftar_tata_ruang" id="tgl_daftar_tata_ruang" class="form-control tanggal" placeholder="Tanggal daftar tata ruang" />
+                        </div>
+                        <div class="col-sm-3">
+                           <input type="text" name="tgl_terbit_tata_ruang" id="tgl_terbit_tata_ruang" class="form-control tanggal" placeholder="tanggal terbit tata ruang" />
+                        </div>
+                        <div class="col-sm-3">
+                             <input type="text" name="nomor_surat_tata_ruang" id="nomor_surat_tata_ruang" class="form-control" placeholder="nomor surat tata ruang" />
                         </div>
                     </div>
-                    <div class="form-group mt-lg nama_target">
-                        <label class="col-sm-3 control-label">Sertifikat<span class="required">*</span></label>
-                        <div class="col-sm-9">
-                            <select data-plugin-selectTwo class="form-control" required name="no_berkas_pertimbangan" id="no_berkas_pertimbangan">  
-                                <option value="">Pilih Lokasi</option>
-                                <?php foreach ($sertifikat_tanah as $aa): ?>
-                                    <option value="<?php echo $aa->id_sertifikat_tanah;?>"><?php echo $aa->nama_sertifikat;?> / <?php echo $aa->nama_sertifikat;?></option>
-                                <?php endforeach; ?>
-                            </select> 
+                    <div class="form-group tgl_daftar_ijin">
+                        <label class="col-sm-3 control-label">Ijin Lokasi</span></label>
+                        <div class="col-sm-2">
+                            <input type="text" name="tgl_daftar_ijin" id="tgl_daftar_ijin" class="form-control tanggal" placeholder="Tanggal Daftar"  />
                         </div>
+                        <div class="col-sm-2">
+                            <input type="text" name="tgl_terbit_ijin" id="tgl_terbit_ijin" class="form-control tanggal" placeholder="Tanggal Terbit"  />
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" name="nomor_ijin" id="nomor_ijin" class="form-control" placeholder="nomor ijin" />
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" name="masa_berlaku_ijin" id="masa_berlaku_ijin" class="form-control tanggal" placeholder="masa berlaku ijin" />
+                        </div>
+
                     </div>
-                    <div class="form-group tgl_terbit_tata_ruang">
-                        <label class="col-sm-3 control-label">No Gambar</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="tgl_terbit_tata_ruang" id="tgl_terbit_tata_ruang" class="form-control"  />
-                        </div>
-                    </div>
-                    <div class="form-group nomor_surat_tata_ruang">
-                        <label class="col-sm-3 control-label">Jumlah Bidang</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="nomor_surat_tata_ruang" id="nomor_surat_tata_ruang" class="form-control"  />
-                        </div>
-                    </div>
-                    <div class="form-group luas_surat">
-                        <label class="col-sm-3 control-label">Luas Surat</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="luas_surat" id="luas_surat" class="form-control"  />
-                        </div>
-                    </div>
-                    <div class="form-group luas_ukur">
-                        <label class="col-sm-3 control-label">Luas Ukur</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="luas_ukur" id="luas_ukur" class="form-control"  />
-                        </div>
-                    </div><div class="form-group no_pbb">
-                        <label class="col-sm-3 control-label">No PBB</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="no_pbb" id="no_pbb" class="form-control"  />
-                        </div>
-                    </div><div class="form-group tgl_terbit_ijin">
-                        <label class="col-sm-3 control-label">Luas PBB</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="tgl_terbit_ijin" id="tgl_terbit_ijin" class="form-control"  />
-                        </div>
-                    </div><div class="form-group nomor_ijin">
-                        <label class="col-sm-3 control-label">nomor_ijin</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="nomor_ijin" id="nomor_ijin" class="form-control"  />
-                        </div>
-                    </div>
-                    <div class="form-group total_harga_pengalihan">
-                        <label class="col-sm-3 control-label">Total Harga Pengalihan</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="total_harga_pengalihan" id="total_harga_pengalihan" class="form-control"  />
-                        </div>
-                    </div><div class="form-group nama_makelar">
-                        <label class="col-sm-3 control-label">Makelar</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="nama_makelar" id="nama_makelar" class="form-control"  />
-                        </div>
-                    </div><div class="form-group nilai">
-                        <label class="col-sm-3 control-label">Nilai</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="nilai" id="nilai" class="form-control"  />
-                        </div>
-                    </div><div class="form-group tanggal_pengalihan">
-                        <label class="col-sm-3 control-label">Tanggal Pengalihan</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="tanggal_pengalihan" id="tanggal_pengalihan" class="form-control tanggal"  />
-                        </div>
-                    </div><div class="form-group akta_pengalihan">
-                        <label class="col-sm-3 control-label">Akta Pengalihan</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="akta_pengalihan" id="akta_pengalihan" class="form-control"  />
-                        </div>
-                    </div>
-                    <div class="form-group nama_pengalihan">
-                        <label class="col-sm-3 control-label">Nama Pengalihan</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="nama_pengalihan" id="nama_pengalihan" class="form-control"  />
-                        </div>
-                    </div><div class="form-group pematangan">
-                        <label class="col-sm-3 control-label">Pematangan</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="pematangan" id="pematangan" class="form-control"  />
-                        </div>
-                    </div><div class="form-group ganti_rugi">
-                        <label class="col-sm-3 control-label">Ganti Rugi</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="ganti_rugi" id="ganti_rugi" class="form-control"  />
-                        </div>
-                    </div><div class="form-group pbb">
-                        <label class="col-sm-3 control-label">PBB</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="pbb" id="pbb" class="form-control"  />
-                        </div>
-                    </div>
-                    <div class="form-group lain">
-                        <label class="col-sm-3 control-label">Lain-lain</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="lain" id="lain" class="form-control"  />
-                        </div>
-                    </div><div class="form-group harga_perm">
-                        <label class="col-sm-3 control-label"></span>Harga / M^2</label>
-                        <div class="col-sm-9">
-                            <input type="text" name="harga_perm" id="harga_perm" class="form-control"  />
-                        </div>
-                    </div>
+                    
                     <div class="form-group keterangan">
                         <label class="col-sm-3 control-label">Keterangan</label>
                         <div class="col-sm-9">
-                            <textarea rows="2" class="form-control" name="keterangan" id="keterangan"></textarea>
+                            <textarea rows="2" class="form-control" id="keterangan" name="keterangan"></textarea>
                         </div>
                     </div>
-                    
                 </div>
                 <footer class="panel-footer">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <button class="btn btn-primary modal-confirm" type="submit" id="submitformEdit">Submit</button>
+                            <button class="btn btn-primary modal-confirm" type="submit" id="submitform">Submit</button>
                             <button class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>
@@ -579,7 +492,7 @@ function edit(elem){
   $('#editData').modal();        
   $.ajax({
     type: 'GET',
-    url: '<?php echo base_url()?>master/itemdetail',
+    url: '<?php echo base_url()?>laporan/perijinandetail',
     data: 'id=' + dataId,
     dataType 	: 'json',
     success: function(response) {  
@@ -591,24 +504,12 @@ function edit(elem){
            document.getElementById("tgl_daftar_tata_ruang").setAttribute('value', item.tgl_daftar_tata_ruang); 
            document.getElementById("tgl_terbit_tata_ruang").setAttribute('value', item.tgl_terbit_tata_ruang); 
            document.getElementById("nomor_surat_tata_ruang").setAttribute('value', item.nomor_surat_tata_ruang); 
-           document.getElementById("luas_surat").setAttribute('value', item.luas_surat); 
-           document.getElementById("luas_ukur").setAttribute('value', item.luas_ukur); 
+           document.getElementById("luas_daftar").setAttribute('value', item.luas_daftar); 
+           document.getElementById("luas_terbit").setAttribute('value', item.luas_terbit); 
            document.getElementById("no_pbb").setAttribute('value', item.no_pbb); 
            document.getElementById("tgl_terbit_ijin").setAttribute('value', item.tgl_terbit_ijin); 
            document.getElementById("nomor_ijin").setAttribute('value', item.nomor_ijin); 
-
-           document.getElementById("total_harga_pengalihan").setAttribute('value', item.total_harga_pengalihan); 
-           document.getElementById("nama_makelar").setAttribute('value', item.nama_makelar); 
-           document.getElementById("nilai").setAttribute('value', item.nilai); 
-           document.getElementById("tanggal_pengalihan").setAttribute('value', item.tanggal_pengalihan); 
-           document.getElementById("akta_pengalihan").setAttribute('value', item.akta_pengalihan); 
-           document.getElementById("nama_pengalihan").setAttribute('value', item.nama_pengalihan); 
-           document.getElementById("pematangan").setAttribute('value', item.pematangan); 
-           document.getElementById("ganti_rugi").setAttribute('value', item.ganti_rugi); 
-           document.getElementById("pbb").setAttribute('value', item.pbb); 
-           document.getElementById("lain").setAttribute('value', item.lain); 
-           document.getElementById("harga_perm").setAttribute('value', item.harga_perm); 
-           document.getElementById("keterangan").value = item.keterangan; 
+          
            $("#id_perumahan").select2("val", item.id_perumahan);   
            $("#no_berkas_pertimbangan").select2("val", item.no_berkas_pertimbangan);   
 
