@@ -93,16 +93,20 @@ class Laporan extends CI_Controller {
     public function rekap_proses_ijin_lokasi()
     {   
         level_user('master','perumahan',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
-        $data['status'] = $this->db->order_by("id_status_regional","DESC")->get('master_status_regional')->result();
-        $this->load->view('member/laporan/1/list_perumahan',$data);
+        // $data['status'] = $this->db->order_by("id_status_regional","DESC")->get('master_status_regional')->result();
+        $this->load->view('member/laporan/1/list_perumahan');
     }  
     public function datarekap_proses_ijin()
     {   
         cekajax(); 
         $get = $this->input->get();
-        $list = $this->laporan_model->get_kategori_datatable();
+        $list = $this->master_model->get_kategori_datatable();
         $data = array(); 
         foreach ($list as $r) { 
+            $dataseb = $this->laporan_model->get_rekapproses_perijinan($r->id,'1970-01-01',(date('Y')-1).'-12-31');
+            $datases = $this->laporan_model->get_rekapproses_perijinan($r->id,date('Y'.'-01-01'),date('Y').'-12-31');
+            $dataterbit = $this->laporan_model->get_rekapproses_perijinan($r->id,'1970-01-01',(date('Y')).'-12-31','sudah');
+            $query = $this->db->last_query();
             $row = array(); 
             $tomboledit = level_user('master','perumahan',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="'.site_url('Laporan/proses_ijin_per/').$this->security->xss_clean($r->id).'">Detail</a></li>':'';
             $row[] = ' 
@@ -116,18 +120,18 @@ class Laporan extends CI_Controller {
         // $row[] = $this->security->xss_clean($r->id); 
             $row[] = $this->security->xss_clean($r->nama_regional); 
             $row[] = $this->security->xss_clean($r->lokasi); 
-            $row[] = $this->security->xss_clean($r->nama_status); 
-            $row[] = $this->security->xss_clean($r->nama_status); 
-            $row[] = $this->security->xss_clean($r->nama_status); 
-            $row[] = $this->security->xss_clean($r->nama_status); 
-            $row[] = $this->security->xss_clean($r->nama_status); 
-            $row[] = $this->security->xss_clean($r->nama_status); 
-            $row[] = $this->security->xss_clean($r->nama_status); 
-            $row[] = $this->security->xss_clean($r->nama_status); 
-            $row[] = $this->security->xss_clean($r->nama_status); 
-            $row[] = $this->security->xss_clean($r->nama_status); 
-            $row[] = $this->security->xss_clean($r->nama_status); 
-            $row[] = $this->security->xss_clean($r->nama_status); 
+            $row[] = $this->security->xss_clean($dataseb['jumlah']); 
+            $row[] = $this->security->xss_clean($dataseb['luas']); 
+            $row[] = $this->security->xss_clean($datases['jumlah']); 
+            $row[] = $this->security->xss_clean($datases['luas']); 
+            $row[] = $this->security->xss_clean($dataseb['jumlah']+$datases['jumlah']); 
+            $row[] = $this->security->xss_clean($dataseb['luas']+$datases['luas']);  
+            $row[] = $this->security->xss_clean($dataterbit['jumlah']); 
+            $row[] = $this->security->xss_clean($dataterbit['luas']); 
+            $row[] = $this->security->xss_clean($dataterbit['luas_terbit']); 
+            $row[] = $this->security->xss_clean(($dataseb['jumlah']+$datases['jumlah'])-$dataterbit['jumlah']); 
+            $row[] = $this->security->xss_clean(($dataseb['luas']+$datases['luas'])-$dataterbit['luas_terbit']);  
+            $row[] = $this->security->xss_clean($r->keterangan); 
             $data[] = $row;
         } 
         $result = array(
@@ -135,6 +139,7 @@ class Laporan extends CI_Controller {
             "recordsTotal" => $this->master_model->count_all_datatable_kategori(),
             "recordsFiltered" => $this->master_model->count_filtered_datatable_kategori(),
             "data" => $data,
+            "query" => $query,
         ); 
         echo json_encode($result); 
     }
@@ -150,78 +155,78 @@ class Laporan extends CI_Controller {
     public function data_perijinan($id)
     {
         cekajax(); 
-    $get = $this->input->get();
-    $list = $this->laporan_model->get_perijinan_datatable($id);
-    $data = array(); 
-    foreach ($list as $r) { 
-        $row = array();
-        $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->id_penyelesaian).'">Hapus</a></li>':'';
-        $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id_penyelesaian).'">Edit</a></li>':'';
-        $row[] = ' 
-        <div class="btn-group dropup">
-        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
-        <ul class="dropdown-menu" role="menu"> 
-        <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($r->id_penyelesaian).'">Detail</a></li> 
-        '.$tomboledit.'
-        '.$tombolhapus.' 
-        </ul>
-        </div>
-        ';
-        if ($r->id_perumahan=='0') {
-            $perumahan = 'Tidak ada';
-        }else{
-            $perumahan = $r->nama_regional;
+        $get = $this->input->get();
+        $list = $this->laporan_model->get_perijinan_datatable($id);
+        $data = array(); 
+        foreach ($list as $r) { 
+            $row = array();
+            $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->id_penyelesaian).'">Hapus</a></li>':'';
+            $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id_penyelesaian).'">Edit</a></li>':'';
+            $row[] = ' 
+            <div class="btn-group dropup">
+            <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu"> 
+            <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($r->id_penyelesaian).'">Detail</a></li> 
+            '.$tomboledit.'
+            '.$tombolhapus.' 
+            </ul>
+            </div>
+            ';
+            if ($r->id_perumahan=='0') {
+                $perumahan = 'Tidak ada';
+            }else{
+                $perumahan = $r->nama_regional;
+            }
+
+            $row[] = $this->security->xss_clean($perumahan);
+            $row[] = $this->security->xss_clean($r->titik_koordinat); 
+            $row[] = $this->security->xss_clean($r->luas_daftar);  
+            $row[] = $this->security->xss_clean($r->luas_terbit);  
+            $row[] = $this->security->xss_clean($r->luas_daftar-$r->luas_terbit);  
+            $row[] = $this->security->xss_clean(tgl_indo($r->daftar_online_oss));
+            $row[] = $this->security->xss_clean(tgl_indo($r->tgl_daftar_pertimbangan));
+            $row[] = $this->security->xss_clean($r->no_berkas_pertimbangan);  
+            $row[] = $this->security->xss_clean(tgl_indo($r->tgl_terbit_pertimbangan));  
+            $row[] = $this->security->xss_clean($r->nomor_sk_pertimbangan);  
+            $row[] = $this->security->xss_clean(tgl_indo($r->tgl_daftar_tata_ruang));  
+            $row[] = $this->security->xss_clean(tgl_indo($r->tgl_terbit_tata_ruang));  
+            $row[] = $this->security->xss_clean($r->nomor_surat_tata_ruang);  
+            $row[] = $this->security->xss_clean(tgl_indo($r->tgl_daftar_ijin));  
+            $row[] = $this->security->xss_clean(tgl_indo($r->tgl_terbit_ijin)); 
+            $row[] = $this->security->xss_clean($r->nomor_ijin);
+            $row[] = $this->security->xss_clean(tgl_indo($r->masa_berlaku_ijin));
+            $row[] = $this->security->xss_clean($r->keterangan);
+            $data[] = $row;
         }
-       
-        $row[] = $this->security->xss_clean($perumahan);
-        $row[] = $this->security->xss_clean($r->titik_koordinat); 
-        $row[] = $this->security->xss_clean($r->luas_daftar);  
-        $row[] = $this->security->xss_clean($r->luas_terbit);  
-        $row[] = $this->security->xss_clean($r->luas_daftar-$r->luas_terbit);  
-        $row[] = $this->security->xss_clean(tgl_indo($r->daftar_online_oss));
-        $row[] = $this->security->xss_clean(tgl_indo($r->tgl_daftar_pertimbangan));
-        $row[] = $this->security->xss_clean($r->no_berkas_pertimbangan);  
-        $row[] = $this->security->xss_clean(tgl_indo($r->tgl_terbit_pertimbangan));  
-        $row[] = $this->security->xss_clean($r->nomor_sk_pertimbangan);  
-        $row[] = $this->security->xss_clean(tgl_indo($r->tgl_daftar_tata_ruang));  
-        $row[] = $this->security->xss_clean(tgl_indo($r->tgl_terbit_tata_ruang));  
-        $row[] = $this->security->xss_clean($r->nomor_surat_tata_ruang);  
-        $row[] = $this->security->xss_clean(tgl_indo($r->tgl_daftar_ijin));  
-        $row[] = $this->security->xss_clean(tgl_indo($r->tgl_terbit_ijin)); 
-        $row[] = $this->security->xss_clean($r->nomor_ijin);
-        $row[] = $this->security->xss_clean(tgl_indo($r->masa_berlaku_ijin));
-        $row[] = $this->security->xss_clean($r->keterangan);
-        $data[] = $row;
-    }
-    $result = array(
-        "draw" => $get['draw'],
-        "recordsTotal" => $this->laporan_model->count_all_datatable_perijinan($id),
-        "recordsFiltered" => $this->laporan_model->count_filtered_datatable_perijinan($id),
-        "data" => $data,
-    ); 
-    echo json_encode($result);  
+        $result = array(
+            "draw" => $get['draw'],
+            "recordsTotal" => $this->laporan_model->count_all_datatable_perijinan($id),
+            "recordsFiltered" => $this->laporan_model->count_filtered_datatable_perijinan($id),
+            "data" => $data,
+        ); 
+        echo json_encode($result);  
     }
 
 
-public function perijinantambah(){ 
-    cekajax(); 
-    $simpan = $this->laporan_model;
-    $validation = $this->form_validation; 
-    $validation->set_rules($simpan->rules_perijinan());
-    if ($this->form_validation->run() == FALSE){
-     $errors = $this->form_validation->error_array();
-     $data['errors'] = $errors;
- }else{                 
-     if($simpan->simpandata_perijinan()){
-        $data['success']= true;
-        $data['message']="Berhasil menyimpan data";   
-    }else{
-        $errors['fail'] = "gagal melakukan update data";
-        $data['errors'] = $errors;
-    }  
-}
-$data['token'] = $this->security->get_csrf_hash();
-echo json_encode($data); 
+    public function perijinantambah(){ 
+        cekajax(); 
+        $simpan = $this->laporan_model;
+        $validation = $this->form_validation; 
+        $validation->set_rules($simpan->rules_perijinan());
+        if ($this->form_validation->run() == FALSE){
+         $errors = $this->form_validation->error_array();
+         $data['errors'] = $errors;
+     }else{                 
+         if($simpan->simpandata_perijinan()){
+            $data['success']= true;
+            $data['message']="Berhasil menyimpan data";   
+        }else{
+            $errors['fail'] = "gagal melakukan update data";
+            $data['errors'] = $errors;
+        }  
+    }
+    $data['token'] = $this->security->get_csrf_hash();
+    echo json_encode($data); 
 }
 
 public function perijinandetail(){  
@@ -230,7 +235,7 @@ public function perijinandetail(){
     $this->db->join('master_regional', 'master_penyelesaian_ijin.id_perumahan = master_regional.id', 'left');
     $query = $this->db->get_where('master_penyelesaian_ijin', array('id_penyelesaian' => $idd),1);
     $result = array(  
-"id_perumahan" => $this->security->xss_clean($query->row()->id_perumahan),
+        "id_perumahan" => $this->security->xss_clean($query->row()->id_perumahan),
         "titik_koordinat" => $this->security->xss_clean($query->row()->titik_koordinat), 
         "luas_daftar" => $this->security->xss_clean($query->row()->luas_daftar),  
         "luas_terbit" => $this->security->xss_clean($query->row()->luas_terbit),  
@@ -244,10 +249,10 @@ public function perijinandetail(){
         "nomor_sk_pertimbangan" => $this->security->xss_clean($query->row()->nomor_sk_pertimbangan),  
         "tgl_daftar_tata_ruang" => $this->security->xss_clean(($query->row()->tgl_daftar_tata_ruang)),  
         "tgl_terbit_tata_ruang" => $this->security->xss_clean(($query->row()->tgl_terbit_tata_ruang)),  
-         "settgl_daftar_tata_ruang" => $this->security->xss_clean(tgl_indo($query->row()->tgl_daftar_tata_ruang)),  
+        "settgl_daftar_tata_ruang" => $this->security->xss_clean(tgl_indo($query->row()->tgl_daftar_tata_ruang)),  
         "settgl_terbit_tata_ruang" => $this->security->xss_clean(tgl_indo($query->row()->tgl_terbit_tata_ruang)),  
         "nomor_surat_tata_ruang" => $this->security->xss_clean($query->row()->nomor_surat_tata_ruang),  
-        "tgl_daftar_ijin" => $this->security->xss_clean(($query->row()->tgl_daftar_ijin)),  
+        "tgl_daftar_ijin" => $this->security->xss_clean($query->row()->tgl_daftar_ijin),  
         "tgl_terbit_ijin" => $this->security->xss_clean(($query->row()->tgl_terbit_ijin)),  
         "settgl_daftar_ijin" => $this->security->xss_clean(tgl_indo($query->row()->tgl_daftar_ijin)),  
         "settgl_terbit_ijin" => $this->security->xss_clean(tgl_indo($query->row()->tgl_terbit_ijin)), 
@@ -255,7 +260,7 @@ public function perijinandetail(){
         "masa_berlaku_ijin" => $this->security->xss_clean(tgl_indo($query->row()->masa_berlaku_ijin)),
         "setmasa_berlaku_ijin" => $this->security->xss_clean(tgl_indo($query->row()->masa_berlaku_ijin)),
         "keterangan" => $this->security->xss_clean($query->row()->keterangan),
- );    
+    );    
     echo'['.json_encode($result).']';
 }
 
@@ -281,67 +286,26 @@ public function perijinanedit(){
     $data['token'] = $this->security->get_csrf_hash();
     echo json_encode($data); 
 }
-    public function laporan_evaluasi_land_bank()
-    {
-        level_user('master','items',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
-        $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
-        $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
-        $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
-        $data['list'] = $this->dataevaluasilandbank();
-        $this->load->view('member/laporan/evaluasi_land_bank',$data);
-    }
-    public function dataevaluasilandbank()
-    {
-        $data['perumahandalamijin'] = $this->db->order_by("id","DESC")->where('status_regional','1')->get('master_regional')->result();
-        $data['perumahanluarijin'] = $this->db->order_by("id","DESC")->where('status_regional','2')->get('master_regional')->result();
-        $data['perumahanlokasi'] = $this->db->order_by("id","DESC")->where('status_regional','3')->get('master_regional')->result();
-        $data1 = array(); 
-        $data2 = array(); 
-        $data3 = array(); 
-        $no=1;
-        if ($data['perumahandalamijin']!=null) {
-         foreach ($data['perumahandalamijin'] as $key => $value) {
-            $list1 = $this->master_model->get_rekaplandbank($value->id,'1970-01-01',(date('Y')-1).'-12-31');
-            $list2 = $this->master_model->get_rekaplandbank($value->id,date('Y'.'-01-01'),date('Y').'-12-31');
-            $list3 = $this->master_model->get_rekaplandbank($value->id);
-            $list4 = $this->master_model->get_rekaplandbank($value->id,'','','sudah');
-            $row = array();
-
-            $row[] = $this->security->xss_clean($no++);
-            $row[] = $this->security->xss_clean($value->nama_regional); 
-
-            $row[] = $this->security->xss_clean($list1['bid']);
-            $row[] = $this->security->xss_clean($list1['surat']); 
-            $row[] = $this->security->xss_clean($list1['ukur']);  
-
-            $row[] = $this->security->xss_clean($list2['bid']);
-            $row[] = $this->security->xss_clean($list2['surat']); 
-            $row[] = $this->security->xss_clean($list2['ukur']);  
-
-            $row[] = $this->security->xss_clean($list3['bid']);
-            $row[] = $this->security->xss_clean($list3['surat']); 
-            $row[] = $this->security->xss_clean($list3['ukur']);
-
-            $row[] = $this->security->xss_clean($list4['bid']);
-            $row[] = $this->security->xss_clean($list4['surat']); 
-            $row[] = $this->security->xss_clean($list4['ukur']);  
-
-            $row[] = $this->security->xss_clean($list3['bid']-$list4['bid']);
-            $row[] = $this->security->xss_clean($list3['surat']-$list4['surat']); 
-            $row[] = $this->security->xss_clean($list3['ukur']-$list4['ukur']); 
-
-            $row[] = $this->security->xss_clean($list4['bid']);
-            $row[] = $this->security->xss_clean($list4['surat']); 
-            $row[] = $this->security->xss_clean($list4['ukur']);  
-
-            $row[] = $this->security->xss_clean($list4['bid']);
-            $row[] = $this->security->xss_clean($list4['surat']);
-            $data1[] = $row;
-        }
-    }
-
-    if ($data['perumahanluarijin']!=null) {
-     foreach ($data['perumahanluarijin'] as $key => $value) {
+public function laporan_evaluasi_land_bank()
+{
+    level_user('master','items',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
+    $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+    $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+    $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
+    $data['list'] = $this->dataevaluasilandbank();
+    $this->load->view('member/laporan/evaluasi_land_bank',$data);
+}
+public function dataevaluasilandbank()
+{
+    $data['perumahandalamijin'] = $this->db->order_by("id","DESC")->where('status_regional','1')->get('master_regional')->result();
+    $data['perumahanluarijin'] = $this->db->order_by("id","DESC")->where('status_regional','2')->get('master_regional')->result();
+    $data['perumahanlokasi'] = $this->db->order_by("id","DESC")->where('status_regional','3')->get('master_regional')->result();
+    $data1 = array(); 
+    $data2 = array(); 
+    $data3 = array(); 
+    $no=1;
+    if ($data['perumahandalamijin']!=null) {
+     foreach ($data['perumahandalamijin'] as $key => $value) {
         $list1 = $this->master_model->get_rekaplandbank($value->id,'1970-01-01',(date('Y')-1).'-12-31');
         $list2 = $this->master_model->get_rekaplandbank($value->id,date('Y'.'-01-01'),date('Y').'-12-31');
         $list3 = $this->master_model->get_rekaplandbank($value->id);
@@ -377,8 +341,49 @@ public function perijinanedit(){
 
         $row[] = $this->security->xss_clean($list4['bid']);
         $row[] = $this->security->xss_clean($list4['surat']);
-        $data2[] = $row;
+        $data1[] = $row;
     }
+}
+
+if ($data['perumahanluarijin']!=null) {
+ foreach ($data['perumahanluarijin'] as $key => $value) {
+    $list1 = $this->master_model->get_rekaplandbank($value->id,'1970-01-01',(date('Y')-1).'-12-31');
+    $list2 = $this->master_model->get_rekaplandbank($value->id,date('Y'.'-01-01'),date('Y').'-12-31');
+    $list3 = $this->master_model->get_rekaplandbank($value->id);
+    $list4 = $this->master_model->get_rekaplandbank($value->id,'','','sudah');
+    $row = array();
+
+    $row[] = $this->security->xss_clean($no++);
+    $row[] = $this->security->xss_clean($value->nama_regional); 
+
+    $row[] = $this->security->xss_clean($list1['bid']);
+    $row[] = $this->security->xss_clean($list1['surat']); 
+    $row[] = $this->security->xss_clean($list1['ukur']);  
+
+    $row[] = $this->security->xss_clean($list2['bid']);
+    $row[] = $this->security->xss_clean($list2['surat']); 
+    $row[] = $this->security->xss_clean($list2['ukur']);  
+
+    $row[] = $this->security->xss_clean($list3['bid']);
+    $row[] = $this->security->xss_clean($list3['surat']); 
+    $row[] = $this->security->xss_clean($list3['ukur']);
+
+    $row[] = $this->security->xss_clean($list4['bid']);
+    $row[] = $this->security->xss_clean($list4['surat']); 
+    $row[] = $this->security->xss_clean($list4['ukur']);  
+
+    $row[] = $this->security->xss_clean($list3['bid']-$list4['bid']);
+    $row[] = $this->security->xss_clean($list3['surat']-$list4['surat']); 
+    $row[] = $this->security->xss_clean($list3['ukur']-$list4['ukur']); 
+
+    $row[] = $this->security->xss_clean($list4['bid']);
+    $row[] = $this->security->xss_clean($list4['surat']); 
+    $row[] = $this->security->xss_clean($list4['ukur']);  
+
+    $row[] = $this->security->xss_clean($list4['bid']);
+    $row[] = $this->security->xss_clean($list4['surat']);
+    $data2[] = $row;
+}
 }
 
 if ($data['perumahanlokasi']!=null) {

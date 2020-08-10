@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th style="text-align: center;">Daftar</th>
                             <th style="text-align: center;">Terbit</th>
                             <th style="text-align: center;">Selisih</th>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
@@ -143,70 +143,70 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="tgl_daftar_pertimbangan" class="form-control tanggal" placeholder="Tanggal Daftar"  />
                         </div>
                         <div class="col-sm-3">
-                             <input type="text" name="no_berkas_pertimbangan" class="form-control" placeholder="No Berkas Pertimbangan"  />
-                        </div>
-                        <div class="col-sm-2">
-                             <input type="text" name="tgl_terbit_pertimbangan" class="form-control tanggal" placeholder="tgl terbit Pertimbangan"  />
-                        </div>
-                        <div class="col-sm-2">
-                             <input type="text" name="nomor_sk_pertimbangan" class="form-control" placeholder="no Sk Pertimbangan"  />
-                        </div>
-                    </div>
+                         <input type="text" name="no_berkas_pertimbangan" class="form-control" placeholder="No Berkas Pertimbangan"  />
+                     </div>
+                     <div class="col-sm-2">
+                         <input type="text" name="tgl_terbit_pertimbangan" class="form-control tanggal" placeholder="tgl terbit Pertimbangan"  />
+                     </div>
+                     <div class="col-sm-2">
+                         <input type="text" name="nomor_sk_pertimbangan" class="form-control" placeholder="no Sk Pertimbangan"  />
+                     </div>
+                 </div>
 
-                      <div class="form-group tgl_daftar_tata_ruang">
-                        <label class="col-sm-3 control-label">Daftar Informasi Tata RUang</span></label>
-                        <div class="col-sm-3">
-                           <input type="text" name="tgl_daftar_tata_ruang" class="form-control tanggal" placeholder="Tanggal daftar tata ruang" />
-                        </div>
-                        <div class="col-sm-3">
-                           <input type="text" name="tgl_terbit_tata_ruang" class="form-control tanggal" placeholder="tanggal terbit tata ruang" />
-                        </div>
-                        <div class="col-sm-3">
-                             <input type="text" name="nomor_surat_tata_ruang" class="form-control" placeholder="nomor surat tata ruang" />
-                        </div>
-                    </div>
-                    <div class="form-group tgl_daftar_ijin">
-                        <label class="col-sm-3 control-label">Ijin Lokasi</span></label>
-                        <div class="col-sm-2">
-                            <input type="text" name="tgl_daftar_ijin" class="form-control tanggal" placeholder="Tanggal Daftar"  />
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" name="tgl_terbit_ijin" class="form-control tanggal" placeholder="Tanggal Terbit"  />
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" name="nomor_ijin" class="form-control" placeholder="nomor ijin" />
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" name="masa_berlaku_ijin" class="form-control tanggal" placeholder="masa berlaku ijin" />
-                        </div>
-
-                    </div>
-                    
-                    <div class="form-group keterangan">
-                        <label class="col-sm-3 control-label">Keterangan</label>
-                        <div class="col-sm-9">
-                            <textarea rows="2" class="form-control" name="keterangan"></textarea>
-                        </div>
-                    </div>
+                 <div class="form-group tgl_daftar_tata_ruang">
+                    <label class="col-sm-3 control-label">Daftar Informasi Tata RUang</span></label>
+                    <div class="col-sm-3">
+                       <input type="text" name="tgl_daftar_tata_ruang" class="form-control tanggal" placeholder="Tanggal daftar tata ruang" />
+                   </div>
+                   <div class="col-sm-3">
+                       <input type="text" name="tgl_terbit_tata_ruang" class="form-control tanggal" placeholder="tanggal terbit tata ruang" />
+                   </div>
+                   <div class="col-sm-3">
+                     <input type="text" name="nomor_surat_tata_ruang" class="form-control" placeholder="nomor surat tata ruang" />
+                 </div>
+             </div>
+             <div class="form-group tgl_daftar_ijin">
+                <label class="col-sm-3 control-label">Ijin Lokasi</span></label>
+                <div class="col-sm-2">
+                    <input type="text" name="tgl_daftar_ijin" class="form-control tanggal" placeholder="Tanggal Daftar"  />
                 </div>
-                <footer class="panel-footer">
-                    <div class="row">
-                        <div class="col-md-12 text-right">
-                            <button class="btn btn-primary modal-confirm" type="submit" id="submitform">Submit</button>
-                            <button class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </footer>
-            </form>
-        </section>
-    </div>
+                <div class="col-sm-2">
+                    <input type="text" name="tgl_terbit_ijin" class="form-control tanggal" placeholder="Tanggal Terbit"  />
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" name="nomor_ijin" class="form-control" placeholder="nomor ijin" />
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" name="masa_berlaku_ijin" class="form-control tanggal" placeholder="masa berlaku ijin" />
+                </div>
+
+            </div>
+
+            <div class="form-group keterangan">
+                <label class="col-sm-3 control-label">Keterangan</label>
+                <div class="col-sm-9">
+                    <textarea rows="2" class="form-control" name="keterangan"></textarea>
+                </div>
+            </div>
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-primary modal-confirm" type="submit" id="submitform">Submit</button>
+                    <button class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </footer>
+    </form>
+</section>
+</div>
 </div>
 </div>
 <div class="modal fade" data-keyboard="false" data-backdrop="static"  id="editData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <section class="panel panel-primary">
-                <?php echo form_open('Laporan/perijinanedit',' id="FormulirTambah" enctype="multipart/form-data"');?>  
+                <?php echo form_open('Laporan/perijinanedit',' id="FormulirEdit" enctype="multipart/form-data"');?>  
                 <header class="panel-heading">
                     <h2 class="panel-title">Tambah Item</h2>
                 </header>
@@ -252,63 +252,63 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="tgl_daftar_pertimbangan" id="tgl_daftar_pertimbangan" class="form-control tanggal" placeholder="Tanggal Daftar"  />
                         </div>
                         <div class="col-sm-3">
-                             <input type="text" name="no_berkas_pertimbangan" id="no_berkas_pertimbangan" class="form-control" placeholder="No Berkas Pertimbangan"  />
-                        </div>
-                        <div class="col-sm-2">
-                             <input type="text" name="tgl_terbit_pertimbangan" id="tgl_terbit_pertimbangan" class="form-control tanggal" placeholder="tgl terbit Pertimbangan"  />
-                        </div>
-                        <div class="col-sm-2">
-                             <input type="text" name="nomor_sk_pertimbangan" id="nomor_sk_pertimbangan" class="form-control" placeholder="no Sk Pertimbangan"  />
-                        </div>
-                    </div>
+                         <input type="text" name="no_berkas_pertimbangan" id="no_berkas_pertimbangan" class="form-control" placeholder="No Berkas Pertimbangan"  />
+                     </div>
+                     <div class="col-sm-2">
+                         <input type="text" name="tgl_terbit_pertimbangan" id="tgl_terbit_pertimbangan" class="form-control tanggal" placeholder="tgl terbit Pertimbangan"  />
+                     </div>
+                     <div class="col-sm-2">
+                         <input type="text" name="nomor_sk_pertimbangan" id="nomor_sk_pertimbangan" class="form-control" placeholder="no Sk Pertimbangan"  />
+                     </div>
+                 </div>
 
-                      <div class="form-group tgl_daftar_tata_ruang">
-                        <label class="col-sm-3 control-label">Daftar Informasi Tata RUang</span></label>
-                        <div class="col-sm-3">
-                           <input type="text" name="tgl_daftar_tata_ruang" id="tgl_daftar_tata_ruang" class="form-control tanggal" placeholder="Tanggal daftar tata ruang" />
-                        </div>
-                        <div class="col-sm-3">
-                           <input type="text" name="tgl_terbit_tata_ruang" id="tgl_terbit_tata_ruang" class="form-control tanggal" placeholder="tanggal terbit tata ruang" />
-                        </div>
-                        <div class="col-sm-3">
-                             <input type="text" name="nomor_surat_tata_ruang" id="nomor_surat_tata_ruang" class="form-control" placeholder="nomor surat tata ruang" />
-                        </div>
-                    </div>
-                    <div class="form-group tgl_daftar_ijin">
-                        <label class="col-sm-3 control-label">Ijin Lokasi</span></label>
-                        <div class="col-sm-2">
-                            <input type="text" name="tgl_daftar_ijin" id="tgl_daftar_ijin" class="form-control tanggal" placeholder="Tanggal Daftar"  />
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" name="tgl_terbit_ijin" id="tgl_terbit_ijin" class="form-control tanggal" placeholder="Tanggal Terbit"  />
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" name="nomor_ijin" id="nomor_ijin" class="form-control" placeholder="nomor ijin" />
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" name="masa_berlaku_ijin" id="masa_berlaku_ijin" class="form-control tanggal" placeholder="masa berlaku ijin" />
-                        </div>
-
-                    </div>
-                    
-                    <div class="form-group keterangan">
-                        <label class="col-sm-3 control-label">Keterangan</label>
-                        <div class="col-sm-9">
-                            <textarea rows="2" class="form-control" id="keterangan" name="keterangan"></textarea>
-                        </div>
-                    </div>
+                 <div class="form-group tgl_daftar_tata_ruang">
+                    <label class="col-sm-3 control-label">Daftar Informasi Tata RUang</span></label>
+                    <div class="col-sm-3">
+                       <input type="text" name="tgl_daftar_tata_ruang" id="tgl_daftar_tata_ruang" class="form-control tanggal" placeholder="Tanggal daftar tata ruang" />
+                   </div>
+                   <div class="col-sm-3">
+                       <input type="text" name="tgl_terbit_tata_ruang" id="tgl_terbit_tata_ruang" class="form-control tanggal" placeholder="tanggal terbit tata ruang" />
+                   </div>
+                   <div class="col-sm-3">
+                     <input type="text" name="nomor_surat_tata_ruang" id="nomor_surat_tata_ruang" class="form-control" placeholder="nomor surat tata ruang" />
+                 </div>
+             </div>
+             <div class="form-group tgl_daftar_ijin">
+                <label class="col-sm-3 control-label">Ijin Lokasi</span></label>
+                <div class="col-sm-2">
+                    <input type="text" name="tgl_daftar_ijin" id="tgl_daftar_ijin" class="form-control tanggal" placeholder="Tanggal Daftar"  />
                 </div>
-                <footer class="panel-footer">
-                    <div class="row">
-                        <div class="col-md-12 text-right">
-                            <button class="btn btn-primary modal-confirm" type="submit" id="submitform">Submit</button>
-                            <button class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </footer>
-            </form>
-        </section>
-    </div>
+                <div class="col-sm-2">
+                    <input type="text" name="tgl_terbit_ijin" id="tgl_terbit_ijin" class="form-control tanggal" placeholder="Tanggal Terbit"  />
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" name="nomor_ijin" id="nomor_ijin" class="form-control" placeholder="nomor ijin" />
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" name="masa_berlaku_ijin" id="masa_berlaku_ijin" class="form-control tanggal" placeholder="masa berlaku ijin" />
+                </div>
+
+            </div>
+
+            <div class="form-group keterangan">
+                <label class="col-sm-3 control-label">Keterangan</label>
+                <div class="col-sm-9">
+                    <textarea rows="2" class="form-control" id="keterangan" name="keterangan"></textarea>
+                </div>
+            </div>
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-primary modal-confirm" type="submit" id="submitformEdit">Submit</button>
+                    <button class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </footer>
+    </form>
+</section>
+</div>
 </div>
 </div>
 <div class="modal fade" data-keyboard="false" data-backdrop="static"  id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -434,8 +434,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         text: "Request gagal, browser akan direload",
         type: 'danger'
     }); 
-                    //window.settimeout(function() {  location.reload();}, 2000);
-                }); 
+    window.settimeout(function() {  location.reload();}, 2000);
+}); 
    e.preventDefault(); 
 }); 
  function detail(elem){
@@ -501,17 +501,20 @@ function edit(elem){
            document.getElementById("titik_koordinat").setAttribute('value', item.titik_koordinat); 
            document.getElementById("daftar_online_oss").setAttribute('value', item.daftar_online_oss); 
            document.getElementById("tgl_daftar_pertimbangan").setAttribute('value', item.tgl_daftar_pertimbangan); 
+           document.getElementById("tgl_terbit_pertimbangan").setAttribute('value', item.tgl_terbit_pertimbangan); 
+           document.getElementById("nomor_sk_pertimbangan").setAttribute('value', item.nomor_sk_pertimbangan); 
            document.getElementById("tgl_daftar_tata_ruang").setAttribute('value', item.tgl_daftar_tata_ruang); 
            document.getElementById("tgl_terbit_tata_ruang").setAttribute('value', item.tgl_terbit_tata_ruang); 
            document.getElementById("nomor_surat_tata_ruang").setAttribute('value', item.nomor_surat_tata_ruang); 
            document.getElementById("luas_daftar").setAttribute('value', item.luas_daftar); 
            document.getElementById("luas_terbit").setAttribute('value', item.luas_terbit); 
-           document.getElementById("no_pbb").setAttribute('value', item.no_pbb); 
+           document.getElementById("tgl_daftar_ijin").setAttribute('value', item.tgl_daftar_ijin); 
            document.getElementById("tgl_terbit_ijin").setAttribute('value', item.tgl_terbit_ijin); 
            document.getElementById("nomor_ijin").setAttribute('value', item.nomor_ijin); 
-          
-           $("#id_perumahan").select2("val", item.id_perumahan);   
-           $("#no_berkas_pertimbangan").select2("val", item.no_berkas_pertimbangan);   
+           document.getElementById("masa_berlaku_ijin").setAttribute('value', item.masa_berlaku_ijin); 
+           document.getElementById("no_berkas_pertimbangan").setAttribute('value', item.no_berkas_pertimbangan); 
+           document.getElementById("keterangan").setAttribute('value', item.keterangan); 
+           $("#id_perumahan").select2("val", item.id_perumahan); 
 
        }); 
     }
@@ -574,8 +577,8 @@ document.getElementById("FormulirEdit").addEventListener("submit", function (e) 
         text: "Request gagal, browser akan direload",
         type: 'danger'
     }); 
-                    //window.settimeout(function() {  location.reload();}, 2000);
-                }); 
+    window.settimeout(function() {  location.reload();}, 2000);
+}); 
 e.preventDefault(); 
 }); 
 function hapus(elem){ 
