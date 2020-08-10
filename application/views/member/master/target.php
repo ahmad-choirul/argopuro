@@ -135,19 +135,92 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="tahun" class="form-control tanggal" />
                         </div>
                     </div> 
-                     
-                </div>
-                <footer class="panel-footer">
-                    <div class="row">
-                        <div class="col-md-12 text-right">
-                            <button class="btn btn-primary modal-confirm" type="submit" id="submitform">Submit</button>
-                            <button class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
+                    <div class="form-group">
+                        <label class="col-sm-3">Data Target</label>
+                        <div class="col-sm-9">
+                            <table class=" table table-bordered table-hover table-striped">
+                                <tr>
+                                    <td>Bulan</td>
+                                    <td>BID</td>
+                                    <td>LUAS</td>
+                                </tr>
+                                <tr>
+                                    <td>Januari</td>
+                                    <td><input type="text" name="bid1" id="bid1"  class="form-control " /></td>
+                                    <td><input type="text" name="luas1" id="luas1" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>Febuari</td>
+                                    <td><input type="text" name="bid2" id="bid2" class="form-control " /></td>
+                                    <td><input type="text" name="luas2" id="luas2" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>Maret</td>
+                                    <td><input type="text" name="bid3" id="bid3" class="form-control " /></td>
+                                    <td><input type="text" name="luas3" id="luas3" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>April</td>
+                                    <td><input type="text" name="bid4" id="bid4" class="form-control " /></td>
+                                    <td><input type="text" name="luas4" id="luas4" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>Mei</td>
+                                    <td><input type="text" name="bid5" id="bid5" class="form-control " /></td>
+                                    <td><input type="text" name="luas5" id="luas5" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>Juni</td>
+                                    <td><input type="text" name="bid6" id="bid6" class="form-control " /></td>
+                                    <td><input type="text" name="luas6" id="luas6" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>Juli</td>
+                                    <td><input type="text" name="bid7" id="bid7" class="form-control " /></td>
+                                    <td><input type="text" name="luas7" id="luas7" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>Agustus</td>
+                                    <td><input type="text" name="bid8" id="bid8" class="form-control " /></td>
+                                    <td><input type="text" name="luas8" id="luas8" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>September</td>
+                                    <td><input type="text" name="bid9" id="bid9" class="form-control " /></td>
+                                    <td><input type="text" name="luas9" id="luas9" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>Oktober</td>
+                                    <td><input type="text" name="bid10" id="bid10" class="form-control " /></td>
+                                    <td><input type="text" name="luas10" id="luas10" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>November</td>
+                                    <td><input type="text" name="bid11" id="bid11" class="form-control " /></td>
+                                    <td><input type="text" name="luas11" id="luas11" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>Desember</td>
+                                    <td><input type="text" name="bid12" id="bid12" class="form-control " /></td>
+                                    <td><input type="text" name="luas12" id="luas12" class="form-control " /></td>
+                                </tr>
+                            </tr>
+                        </table>
                     </div>
-                </footer>
-            </form>
-        </section>
-    </div>
+                </div>
+
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button class="btn btn-primary modal-confirm" type="submit" id="submitform">Submit</button>
+                        <button class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </footer>
+        </form>
+    </section>
+</div>
 </div>
 </div>
 
