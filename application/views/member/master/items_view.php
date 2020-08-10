@@ -90,7 +90,8 @@
                    <tr>
                      <?php 
                      $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Hapus</a></li>':'';
-                      $tombolbayar = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="bayar(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Pembayaran</a></li>':'';
+                      $tombolbayar = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="bayar(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Laporan Pembayaran</a></li>':'';
+                      $tomboldetailbayar = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="'.site_url('keuangan/bayar_tanah/').$this->security->xss_clean($data->kode_item).'">Daftar Pembayaran</a></li>':'';
                      $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Edit</a></li>':'';
                      $tombol='
                      <div class="btn-group dropup">
@@ -98,6 +99,7 @@
                      <ul class="dropdown-menu" role="menu"> 
                      <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Detail</a></li> 
                      '.$tombolbayar.'
+                     '.$tomboldetailbayar.'
                      '.$tomboledit.'
                      '.$tombolhapus.' 
                      </ul>

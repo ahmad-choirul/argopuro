@@ -39,12 +39,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         <div class="inner-body mg-main" style="margin-left: 0px;">  
-            <div class="row" style="margin-top:-20px;">  
+            <div class="row" style="margin-top:-25px;">  
 
                 <div class="col-md-4"> 
                     <section class="panel">
                         <header class="panel-heading"> 
-                            <p style="font-size: 13px; color: black;"><b>1. EVALUASI PEMBELIAN TANAH</b></p>
+                            <p style="font-size: 13px; color: black;"><b>1. EVALUASI PROSES DAN IJIN LOKASI TANAH</b></p>
+                        </header>
+                        <div class="panel-body">
+                            <a href="<?php echo base_url()?>laporan/rekap_proses_ijin_lokasi" class="btn btn-primary"><i class="fa fa-folder"></i> Rekap Proses Ijin Lokasi </a>
+                           <!--  <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian" class="btn btn-warning"><i class="fa fa-folder"></i> SISA PEMBAYARAN</a> -->
+                        </div>
+                    </section>
+                </div> 
+
+                <div class="col-md-4"> 
+                    <section class="panel">
+                        <header class="panel-heading"> 
+                            <p style="font-size: 13px; color: black;"><b>2. EVALUASI PEMBELIAN TANAH</b></p>
                         </header>
                         <div class="panel-body">
                             <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian_detail" class="btn btn-primary"><i class="fa fa-folder"></i> Detail Pembelian</a>
@@ -56,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="col-md-4"> 
                     <section class="panel">
                         <header class="panel-heading"> 
-                           <p style="font-size: 13px; color: black;"><b>2. EVALUASI LAND BANK</b></p>
+                           <p style="font-size: 13px; color: black;"><b>3. EVALUASI LAND BANK</b></p>
                        </header>
                        <div class="panel-body">
                         <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank" class="btn btn-primary"><i class="fa fa-folder"></i> Land Bank Rekap</a>
@@ -68,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-4"> 
                 <section class="panel">
                     <header class="panel-heading"> 
-                        <p style="font-size: 13px; color: black;"><b>3. EVALUASI TANAH BELUM SHGB</b></p>
+                        <p style="font-size: 13px; color: black;"><b>4. EVALUASI TANAH PROYEK BELUM SHGB</b></p>
                     </header>
                     <div class="panel-body">
                         <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="btn btn-primary"><i class="fa fa-folder"></i>  Rekap Tanah Belum SHGB</a>
@@ -79,7 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-4"> 
                 <section class="panel">
                     <header class="panel-heading"> 
-                        <p style="font-size: 13px; color: black;"><b>4. EVALUASI PROSES INDUK</b></p>
+                        <p style="font-size: 13px; color: black;"><b>5. EVALUASI PROSES INDUK</b></p>
                     </header>
                     <div class="panel-body">
                         <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Penyelesaian Induk</a>
@@ -90,7 +102,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-4"> 
                 <section class="panel">
                     <header class="panel-heading"> 
-                        <p style="font-size: 13px; color: black;"><b>5. EVALUASI PENGGABUNGAN</b></p>
+                        <p style="font-size: 13px; color: black;"><b>6. EVALUASI PENGGABUNGAN DAN REVISI SPLIT</b></p>
                     </header>
                     <div class="panel-body">
                         <a href="<?php echo base_url()?>laporan/laporan_evaluasi_penggabungan_split" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Penggabungan </a>
@@ -101,7 +113,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-4"> 
                 <section class="panel">
                     <header class="panel-heading"> 
-                        <p style="font-size: 13px; color: black;"><b>6. EVALUASI TANAH SUDAH SHGB</b></p>
+                        <p style="font-size: 13px; color: black;"><b>7. EVALUASI TANAH PROYEK SUDAH SHGB</b></p>
                     </header>
                     <div class="panel-body">
                         <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_shgb" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Tanah SHGB</a>
@@ -112,7 +124,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-4"> 
                 <section class="panel">
                     <header class="panel-heading"> 
-                        <p style="font-size: 13px; color: black;"><b>7. EVALUASI PROSES SPLITSING</b></p>
+                        <p style="font-size: 13px; color: black;"><b>8. EVALUASI PROSES SPLITSING</b></p>
                     </header>
                     <div class="panel-body">
                         <a href="<?php echo base_url()?>laporan/laporan_evaluasi_splitsing" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Splitsing</a>
@@ -123,7 +135,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-4"> 
                 <section class="panel">
                     <header class="panel-heading"> 
-                        <p style="font-size: 13px; color: black;"><b>8. EVALUASI HUTANG SERT </b></p>
+                        <p style="font-size: 13px; color: black;"><b>9. EVALUASI HUTANG SERT BELUM SPLIT </b></p>
                     </header>
                     <div class="panel-body">
                         <a href="<?php echo base_url()?>laporan/laporan_evaluasi_sert_belum_split" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Hutang Sertifikat </a>
@@ -134,7 +146,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-4"> 
                 <section class="panel">
                     <header class="panel-heading"> 
-                        <p style="font-size: 13px; color: black;"><b>9. STOK SPLITSING</b></p>
+                        <p style="font-size: 13px; color: black;"><b>10. EVALUASI STOK SPLITSING</b></p>
                     </header>
                     <div class="panel-body">
                         <a href="<?php echo base_url()?>laporan/laporan_evaluasi_stok_split" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Stok Splitsing</a>
@@ -145,7 +157,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-4"> 
                 <section class="panel">
                     <header class="panel-heading"> 
-                        <p style="font-size: 13px; color: black;"><b>10. EVALUASI BALIK NAMA</b></p>
+                        <p style="font-size: 13px; color: black;"><b>11. EVALUASI BALIK NAMA</b></p>
                     </header>
                     <div class="panel-body">
                         <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Balik Namak</a>
