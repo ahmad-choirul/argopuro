@@ -68,106 +68,112 @@ class Laporan_model extends CI_Model{
         return $this->db->count_all_results();
     } 
     //datatable perijinan end
-
-    //CRUD perijinan start
-    public function rules_perijinan()
+    public function getdataijinlokasi()
     {
-        return [
-            [
-                'field' => 'id_perumahan',
-                'label' => 'Nama perijinan',
-                'rules' => 'required',
-            ], 
-        ];
-    } 
-    public function rules_perijinanedit()
-    {
-        return [
-            [
-                'field' => 'id_perumahan',
-                'label' => 'Nama perijinan',
-                'rules' => 'required',
-            ], 
-        ];
-    } 
-    function simpandata_perijinan(){   
-        $post = $this->input->post();   
-        $array = array(
-            'id_perumahan'=>$post["id_perumahan"], 
-            'titik_koordinat'=>$post["titik_koordinat"], 
-            'luas_daftar'=>$post["luas_daftar"],  
-            'luas_terbit'=>$post["luas_terbit"],  
-            'daftar_online_oss'=>$post["daftar_online_oss"],  
-            'tgl_daftar_pertimbangan'=>$post["tgl_daftar_pertimbangan"],  
-            'no_berkas_pertimbangan'=>$post["no_berkas_pertimbangan"],  
-            'tgl_terbit_pertimbangan'=>$post["tgl_terbit_pertimbangan"],  
-            'nomor_sk_pertimbangan'=>$post["nomor_sk_pertimbangan"],  
-            'tgl_daftar_tata_ruang'=>$post["tgl_daftar_tata_ruang"],  
-            'tgl_terbit_tata_ruang'=>$post["tgl_terbit_tata_ruang"],  
-            'nomor_surat_tata_ruang'=>$post["nomor_surat_tata_ruang"],    
-            'tgl_daftar_ijin'=>$post["tgl_daftar_ijin"],  
-            'tgl_terbit_ijin'=>$post["tgl_terbit_ijin"],  
-            'nomor_ijin'=>$post["nomor_ijin"],  
-            'masa_berlaku_ijin'=>$post["masa_berlaku_ijin"],  
-            'keterangan'=>$post["keterangan"] 
-        );
-        return $this->db->insert("master_penyelesaian_ijin", $array);  
-    }    
-
-    public function updatedata_perijinan()
-    {
-        $post = $this->input->post();
-        $this->id_perumahan = ($post["id_perumahan"]); 
-        $this->titik_koordinat = ($post["titik_koordinat"]); 
-        $this->luas_daftar = ($post["luas_daftar"]); 
-        $this->luas_terbit = ($post["luas_terbit"]); 
-        $this->daftar_online_oss = ($post["daftar_online_oss"]); 
-        $this->tgl_daftar_pertimbangan = ($post["tgl_daftar_pertimbangan"]); 
-        $this->no_berkas_pertimbangan = bilanganbulat($post["no_berkas_pertimbangan"]); 
-        $this->tgl_terbit_pertimbangan = bilanganbulat($post["tgl_terbit_pertimbangan"]); 
-        $this->nomor_sk_pertimbangan = bilanganbulat($post["nomor_sk_pertimbangan"]); 
-        $this->tgl_daftar_tata_ruang = ($post["tgl_daftar_tata_ruang"]); 
-        $this->tgl_terbit_tata_ruang = bilanganbulat($post["tgl_terbit_tata_ruang"]); 
-        $this->nomor_surat_tata_ruang = ($post["nomor_surat_tata_ruang"]); 
-        $this->tgl_daftar_ijin = bilanganbulat($post["tgl_daftar_ijin"]); 
-        $this->tgl_terbit_ijin = ($post["tgl_terbit_ijin"]); 
-        $this->nomor_ijin = bilanganbulat($post["nomor_ijin"]); 
-        $this->masa_berlaku_ijin = ($post["masa_berlaku_ijin"]); 
-        $this->keterangan = ($post["keterangan"]); 
-        return $this->db->update("master_penyelesaian_ijin", $this, array('id_penyelesaian' => $post['idd']));
-    }
-    public function get_rekapproses_perijinan($id='',$firstdate='',$lastdate='',$terbit='')
-    {
-        $this->db->select('count(id_penyelesaian) as jumlah,sum(luas_daftar) as luas,sum(luas_terbit) as luas_terbit');
-        $this->db->from('master_penyelesaian_ijin a'); 
-        $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
-        if(!empty($firstdate) AND !empty($lastdate)){
-            $this->db->where('a.daftar_online_oss BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
-        }
-        if (!empty($id)) {
-            $this->db->where('id_perumahan', $id);
-        }
-        if (empty($terbit)) {
-            $this->db->where('nomor_ijin', null);
-        }else{
-            $this->db->where('nomor_ijin !=', null);
-        }
-        $jumlah=0;
-        $luas=0;
-        $luas_terbit=0;
-        $hasil = $this->db->get()->result_array()[0];
-        if ($hasil['jumlah']!='') {
-           $jumlah=$hasil['jumlah'];
-       }
-       if ($hasil['luas']!='') {
-           $luas=$hasil['luas'];
-       }
-       if ($hasil['luas_terbit']!='') {
-           $luas_terbit=$hasil['luas_terbit'];
-       }
-       return array('luas' => $luas,'jumlah' => $jumlah ,'luas_terbit' => $luas_terbit );
+       $this->db->from('master_penyelesaian_ijin a'); 
+       $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
+       $this->db->where('nomor_ijin != ""');
+       return $this->db->get()->result();
    }
-   function getrowspo($params = array()){ 
+    //CRUD perijinan start
+   public function rules_perijinan()
+   {
+    return [
+        [
+            'field' => 'id_perumahan',
+            'label' => 'Nama perijinan',
+            'rules' => 'required',
+        ], 
+    ];
+} 
+public function rules_perijinanedit()
+{
+    return [
+        [
+            'field' => 'id_perumahan',
+            'label' => 'Nama perijinan',
+            'rules' => 'required',
+        ], 
+    ];
+} 
+function simpandata_perijinan(){   
+    $post = $this->input->post();   
+    $array = array(
+        'id_perumahan'=>$post["id_perumahan"], 
+        'titik_koordinat'=>$post["titik_koordinat"], 
+        'luas_daftar'=>$post["luas_daftar"],  
+        'luas_terbit'=>$post["luas_terbit"],  
+        'daftar_online_oss'=>$post["daftar_online_oss"],  
+        'tgl_daftar_pertimbangan'=>$post["tgl_daftar_pertimbangan"],  
+        'no_berkas_pertimbangan'=>$post["no_berkas_pertimbangan"],  
+        'tgl_terbit_pertimbangan'=>$post["tgl_terbit_pertimbangan"],  
+        'nomor_sk_pertimbangan'=>$post["nomor_sk_pertimbangan"],  
+        'tgl_daftar_tata_ruang'=>$post["tgl_daftar_tata_ruang"],  
+        'tgl_terbit_tata_ruang'=>$post["tgl_terbit_tata_ruang"],  
+        'nomor_surat_tata_ruang'=>$post["nomor_surat_tata_ruang"],    
+        'tgl_daftar_ijin'=>$post["tgl_daftar_ijin"],  
+        'tgl_terbit_ijin'=>$post["tgl_terbit_ijin"],  
+        'nomor_ijin'=>$post["nomor_ijin"],  
+        'masa_berlaku_ijin'=>$post["masa_berlaku_ijin"],  
+        'keterangan'=>$post["keterangan"] 
+    );
+    return $this->db->insert("master_penyelesaian_ijin", $array);  
+}    
+
+public function updatedata_perijinan()
+{
+    $post = $this->input->post();
+    $this->id_perumahan = ($post["id_perumahan"]); 
+    $this->titik_koordinat = ($post["titik_koordinat"]); 
+    $this->luas_daftar = ($post["luas_daftar"]); 
+    $this->luas_terbit = ($post["luas_terbit"]); 
+    $this->daftar_online_oss = ($post["daftar_online_oss"]); 
+    $this->tgl_daftar_pertimbangan = ($post["tgl_daftar_pertimbangan"]); 
+    $this->no_berkas_pertimbangan = bilanganbulat($post["no_berkas_pertimbangan"]); 
+    $this->tgl_terbit_pertimbangan = bilanganbulat($post["tgl_terbit_pertimbangan"]); 
+    $this->nomor_sk_pertimbangan = bilanganbulat($post["nomor_sk_pertimbangan"]); 
+    $this->tgl_daftar_tata_ruang = ($post["tgl_daftar_tata_ruang"]); 
+    $this->tgl_terbit_tata_ruang = bilanganbulat($post["tgl_terbit_tata_ruang"]); 
+    $this->nomor_surat_tata_ruang = ($post["nomor_surat_tata_ruang"]); 
+    $this->tgl_daftar_ijin = bilanganbulat($post["tgl_daftar_ijin"]); 
+    $this->tgl_terbit_ijin = ($post["tgl_terbit_ijin"]); 
+    $this->nomor_ijin = bilanganbulat($post["nomor_ijin"]); 
+    $this->masa_berlaku_ijin = ($post["masa_berlaku_ijin"]); 
+    $this->keterangan = ($post["keterangan"]); 
+    return $this->db->update("master_penyelesaian_ijin", $this, array('id_penyelesaian' => $post['idd']));
+}
+public function get_rekapproses_perijinan($id='',$firstdate='',$lastdate='',$terbit='')
+{
+    $this->db->select('count(id_penyelesaian) as jumlah,sum(luas_daftar) as luas,sum(luas_terbit) as luas_terbit');
+    $this->db->from('master_penyelesaian_ijin a'); 
+    $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
+    if(!empty($firstdate) AND !empty($lastdate)){
+        $this->db->where('a.daftar_online_oss BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
+    }
+    if (!empty($id)) {
+        $this->db->where('id_perumahan', $id);
+    }
+    if (empty($terbit)) {
+        $this->db->where('tgl_terbit_ijin', '0000-00-00');
+    }else{
+        $this->db->where('tgl_terbit_ijin !=',  '0000-00-00');
+    }
+    $jumlah=0;
+    $luas=0;
+    $luas_terbit=0;
+    $hasil = $this->db->get()->result_array()[0];
+    if ($hasil['jumlah']!='') {
+       $jumlah=$hasil['jumlah'];
+   }
+   if ($hasil['luas']!='') {
+       $luas=$hasil['luas'];
+   }
+   if ($hasil['luas_terbit']!='') {
+       $luas_terbit=$hasil['luas_terbit'];
+   }
+   return array('luas' => $luas,'jumlah' => $jumlah ,'luas_terbit' => $luas_terbit );
+}
+function getrowspo($params = array()){ 
     $this->db->select("a.nomor_po, a.tgl_po, a.termin,
      a.pembayaran, a.target, a.total, a.keterangan, b.nama_target");
     $this->db->from("purchase_order a");

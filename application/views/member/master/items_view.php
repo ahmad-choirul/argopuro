@@ -37,7 +37,7 @@
        
            <div class="panel-body"> 
             <div class="table" style="overflow-x: auto;white-space: nowrap;">
-                <table class="table table-responsive table-bordered table-hover table-striped" >
+                <table class="table table-responsive table-bordered table-hover table-striped data" >
                    <thead>
                     <tr>
                         <th rowspan="2" style="text-align: center;"></th>

@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </header>
                         <div class="panel-body">
                             <a href="<?php echo base_url()?>laporan/rekap_proses_ijin_lokasi" class="btn btn-primary"><i class="fa fa-folder"></i> Rekap Proses Ijin Lokasi </a>
-                           <!--  <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian" class="btn btn-warning"><i class="fa fa-folder"></i> SISA PEMBAYARAN</a> -->
+                            <a href="<?php echo base_url()?>laporan/list_ijin" class="btn btn-primary"><i class="fa fa-folder"></i> Rincian Ijin Lokasi</a>
                         </div>
                     </section>
                 </div> 
@@ -59,8 +59,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <p style="font-size: 13px; color: black;"><b>2. EVALUASI PEMBELIAN TANAH</b></p>
                         </header>
                         <div class="panel-body">
-                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian_detail" class="btn btn-primary"><i class="fa fa-folder"></i> Detail Pembelian</a>
-                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian" class="btn btn-warning"><i class="fa fa-folder"></i> SISA PEMBAYARAN</a>
+                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian_detail" class="btn btn-primary"><i class="fa fa-folder"></i> Detail Evaluasi Pembelian</a>
+                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian" class="btn btn-warning"><i class="fa fa-folder"></i> Rekap Evaluasi Pembelian</a>
                         </div>
                     </section>
                 </div> 

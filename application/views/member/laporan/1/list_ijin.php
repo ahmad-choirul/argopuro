@@ -32,44 +32,86 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <div class="inner-wrapper"> 
     <?php $this->load->view("komponen/sidebar.php") ?>
     <section role="main" class="content-body">
-        <header class="page-header">  
-          <h2>Evaluasi Pembelian Tanah</h2>
-      </header>  
-      <!-- start: page -->
-      <form action="" method="get">
-        <div class="form-group mt-lg" >
-            <div class="row" style="background-color: #ffffff;width: 100%; padding: 4px;margin-left: 0%;">
-                <label class="col-sm-1 control-label">Lokasi<span class="required">*</span></label>
+     <header class="page-header">  
+      <h2>Evaluasi PROSES INDUK</h2>
+  </header>  
+  <!-- start: page -->
+  <div class="row">
+      <section class="panel col-md-12">
+        <header class="panel-heading">    
+            <div class="row show-grid">
+                <div class="col-md-8" align="left"><h2 class="panel-title"></h2></div>
+            </div>
+        </header>
+        <div class="panel-body"> 
+            <div class="table" style="overflow-x: auto;white-space: nowrap;">
+                <table class="table table-bordered table-hover table-striped data" >
+                    <thead>
+                        <tr>
 
-                <div class="col-sm-2">
-                   <div class="form-group nama_target">
-                    <select data-plugin-selectTwo class="form-control" onchange="refresh()" required id="id_perumahan" name="id_perumahan">  
-                        <option value="">Pilih Lokasi</option>
-                        <?php foreach ($perumahan as $aa): ?>
-                            <option value="<?php echo $aa->id;?>"><?php echo $aa->nama_regional;?></option>
-                        <?php endforeach; ?>
-                    </select> 
-                </div>
-            </div>
-            <label class="col-sm-1 control-label">Periode<span class="required">*</span></label>
+                            <th rowspan="3" style="text-align: center;">NO</th>
+                            <th rowspan="3" style="text-align: center;">PROYEK</th>
+                            <th colspan="4" style="text-align: center;;"> Data Ijin Lokasi </th>
+                            <th colspan="2" rowspan="2" style="text-align: center;">Tanah yang Dimiliki</th>
+                            <th rowspan="3" style="text-align: center;">KETERANGAN</th>
+                        </tr>
+                        <tr>
+                            <th rowspan="2"  style="text-align: center;">Luas</th>
+                            <th rowspan="2"  style="text-align: center;">No Ijin</th>
+                            <th colspan="2" style="text-align: center;">Tanggal</th>
+                        </tr>
+                        <tr>
+                            <th   style="text-align: center;">Terbit</th>
+                            <th style="text-align: center;">Masa Berlaku</th>
+                            <th   style="text-align: center;">Luas</th>
+                            <th style="text-align: center;">%</th>
 
-            <div class="col-sm-2">
-                <input type="text" name="firstdate" id="firstdate" class="form-control tanggal" onchange="refresh()" value="<?php echo $firstdate ?>" data-plugin-datepicker required/>
-            </div>
-            <div class="col-sm-2">
-                <input type="text" name="lastdate" id="lastdate" class="form-control tanggal" onchange="refresh()" value="<?php echo $lastdate ?>" data-plugin-datepicker required/>
-            </div>
-            <div class="col-sm-2">
-                <a class="btn btn-warning" href="<?php echo site_url('Export_excel/excel_laporan1_evaluasi_pembelian_detail/').$firstdate.'/'.$lastdate ?>"> cetak </a>
-            </div>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <?php
+                        $luas=0;
+                        $luas_dimiliki=0;
+                         $no=1; foreach ($getdataijinlokasi as $key => $value): ?>
+                           <tr>
+                            <td><?php echo $no++; ?></td>
+                            <td><?php echo $value->nama_regional ?></td>
+                            <td></td>
+                            <td><?php echo $value->nomor_ijin; ?></td>
+                            <td><?php echo tgl_indo($value->tgl_terbit_ijin); ?></td>
+                            <td><?php echo tgl_indo($value->masa_berlaku_ijin); ?></td>
+                            <td><?php echo $value->luas_terbit;$luas_dimiliki+=$value->luas_terbit; ?></td>
+                            <td>%</td>
+                            <td><?php echo $value->keterangan; ?></td>
+                        </tr>
+                    <?php endforeach ?>
+
+                </tbody>
+                <tfoot>
+                      <tr>
+                            <td></td>
+                            <td>Total</td>
+                            <td><?php echo $luas; ?></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><?php echo $luas_dimiliki; ?></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                </tfoot>
+            </table> 
         </div>
     </div>
-</form>
-<div id="kontendata"></div>
+</section>
+
+</div>
+
+<!-- end: page -->
 </section>
 </div>
 </section>
-
 
 
 <div class="modal fade" data-keyboard="false" data-backdrop="static"  id="tambahData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -88,14 +130,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-9">
                             <select data-plugin-selectTwo class="form-control" required name="id_perumahan">  
                                 <option value="">Pilih Lokasi</option>
-                                <?php foreach ($perumahan2 as $aa): ?>
-                                    <option value="<?php echo $aa->id;?>"><?php echo $aa->nama_regional;?></option>
+                                <?php foreach ($perumahan as $supp): ?>
+                                    <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
                                 <?php endforeach; ?>
                             </select> 
                         </div>
                     </div>
                     <div class="form-group mt-lg nama_item">
-                        <label class="col-sm-3 control-label">Nama Tanah<span class="required">*</span></label>
+                        <label class="col-sm-3 control-label">Nama Item<span class="required">*</span></label>
                         <div class="col-sm-9">
                             <input type="text" name="nama_item" class="form-control" required/>
                         </div>
@@ -107,23 +149,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                     <div class="form-group nama_penjual">
-                        <label class="col-sm-3 control-label">Data Surat Tanah</span></label>
-                        <div class="col-sm-4">
-                            <input type="text" name="nama_penjual" class="form-control" placeholder="Nama Penjual"  />
-                        </div>
-                        <div class="col-sm-5">
-                            <select data-plugin-selectTwo class="form-control" required name="status_surat_tanah">  
-                                <option value="">Pilih Jenis</option>
-                                <?php foreach ($sertifikat_tanah as $aa): ?>
-                                    <option value="<?php echo $aa->id_sertifikat_tanah;?>"><?php echo $aa->kode_sertifikat;?> / <?php echo $aa->nama_sertifikat;?></option>
-                                <?php endforeach; ?>
-                            </select> 
+                        <label class="col-sm-3 control-label">Nama Penjual</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nama_penjual" class="form-control"  />
                         </div>
                     </div>
                     <div class="form-group nama_surat_tanah">
                         <label class="col-sm-3 control-label">Nama Surat</span></label>
                         <div class="col-sm-9">
                             <input type="text" name="nama_surat_tanah" class="form-control"  />
+                        </div>
+                    </div>
+                    <div class="form-group mt-lg nama_target">
+                        <label class="col-sm-3 control-label">Sertifikat<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <select data-plugin-selectTwo class="form-control" required name="status_surat_tanah">  
+                                <option value="">Pilih Lokasi</option>
+                                <?php foreach ($sertifikat_tanah as $aa): ?>
+                                    <option value="<?php echo $aa->id_sertifikat_tanah;?>"><?php echo $aa->nama_sertifikat;?> / <?php echo $aa->nama_sertifikat;?></option>
+                                <?php endforeach; ?>
+                            </select> 
                         </div>
                     </div>
                     <div class="form-group no_gambar">
@@ -139,32 +184,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                     <div class="form-group luas_surat">
-                        <label class="col-sm-3 control-label">Luas (m2)</span></label>
-                        <div class="col-sm-5">
-                            <input type="number" name="luas_surat" class="form-control" placeholder="Luas surat"  />
-                        </div>
-                        <div class="col-sm-4">
-                            <input type="number" name="luas_ukur" class="form-control"  placeholder="Luas Ukur" />
+                        <label class="col-sm-3 control-label">Luas Surat</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="luas_surat" class="form-control"  />
                         </div>
                     </div>
-                    <div class="form-group no_pbb">
-                        <label class="col-sm-3 control-label">PBB</span></label>
-                        <div class="col-sm-3">
-                            <input type="text" name="no_pbb" class="form-control" placeholder="No PBB"  />
+                    <div class="form-group luas_ukur">
+                        <label class="col-sm-3 control-label">Luas Ukur</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="luas_ukur" class="form-control"  />
                         </div>
-                        <div class="col-sm-2">
-                            <input type="text" name="luas_pbb" class="form-control" placeholder="Luas PBB (m2)"  />
+                    </div><div class="form-group no_pbb">
+                        <label class="col-sm-3 control-label">No PBB</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="no_pbb" class="form-control"  />
                         </div>
-                        <div class="col-sm-3">
-                            <input type="text" name="njop" class="form-control" placeholder="NJOP" />
+                    </div><div class="form-group luas_pbb">
+                        <label class="col-sm-3 control-label">Luas PBB</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="luas_pbb" class="form-control"  />
                         </div>
-
+                    </div><div class="form-group njop">
+                        <label class="col-sm-3 control-label">njop</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="njop" class="form-control"  />
+                        </div>
                     </div>
-                    <div class="form-group satuan_harga_pengalihan">
-                        <label class="col-sm-3 control-label">Harga Pengalihan Hak</span></label>
-
-                        <div class="col-sm-4">
-                            <input type="text" name="total_harga_pengalihan" class="form-control" placeholder="Total Harga Pengalihan" />
+                    <div class="form-group total_harga_pengalihan">
+                        <label class="col-sm-3 control-label">Total Harga Pengalihan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="total_harga_pengalihan" class="form-control"  />
                         </div>
                     </div><div class="form-group nama_makelar">
                         <label class="col-sm-3 control-label">Makelar</span></label>
@@ -177,15 +226,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="nilai" class="form-control"  />
                         </div>
                     </div><div class="form-group tanggal_pengalihan">
-                        <label class="col-sm-3 control-label"> Detail Pengalihan </span></label>
-                        <div class="col-sm-3">
-                            <input type="text" name="tanggal_pengalihan" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Tanggal Pengalihan" title="Tanggal Pengalihan"  />
+                        <label class="col-sm-3 control-label">Tanggal Pengalihan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="tanggal_pengalihan" class="form-control tanggal"  />
                         </div>
-                        <div class="col-sm-2">
-                            <input type="text" name="akta_pengalihan" class="form-control" placeholder="Akta"  />
+                    </div><div class="form-group akta_pengalihan">
+                        <label class="col-sm-3 control-label">Akta Pengalihan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="akta_pengalihan" class="form-control"  />
                         </div>
-                        <div class="col-sm-4">
-                            <input type="text" name="nama_pengalihan" class="form-control" placeholder="Nama Pengalihan" />
+                    </div>
+                    <div class="form-group nama_pengalihan">
+                        <label class="col-sm-3 control-label">Nama Pengalihan</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nama_pengalihan" class="form-control"  />
                         </div>
                     </div><div class="form-group pematangan">
                         <label class="col-sm-3 control-label">Pematangan</span></label>
@@ -197,8 +251,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-9">
                             <input type="text" name="ganti_rugi" class="form-control"  />
                         </div>
-                    </div>
-                    <div class="form-group pbb">
+                    </div><div class="form-group pbb">
                         <label class="col-sm-3 control-label">PBB</span></label>
                         <div class="col-sm-9">
                             <input type="text" name="pbb" class="form-control"  />
@@ -241,7 +294,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="modal-content">
             <section class="panel panel-primary">   
                 <header class="panel-heading">
-                    <h2 class="panel-title">Detail Tanah / Asset</h2>
+                    <h2 class="panel-title">Detail Obat / Alkes</h2>
                 </header>
                 <div class="panel-body" id="showdetail"> 
                 </div>
@@ -273,7 +326,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-9">
                             <select data-plugin-selectTwo class="form-control" required id="id_perumahan" name="id_perumahan">  
                                 <option value="">Pilih Lokasi</option>
-                                <?php foreach ($perumahan2 as $supp): ?>
+                                <?php foreach ($perumahan as $supp): ?>
                                     <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
                                 <?php endforeach; ?>
                             </select> 
@@ -464,35 +517,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 </div>
 </div>  
-<div class="modal fade bd-example-modal-lg" id="detailpembayaran"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" style="width:90%">
-        <div class="modal-content">
-            <section class="panel panel-primary">   
-                <header class="panel-heading">
-                    <div class="row">
-                        <div class="col-md-3 text-left"> 
-                            <h2 class="panel-title">Detail Pembayaran</h2>  
-                        </div>
-                        <div class="col-md-9 text-right">
-                            <a class="btn btn-success" id="linkprint" target="_blank"><i class="fa fa-print"></i> Print</a>
-                            <a class="btn btn-success" id="linkpdf" target="_blank"><i class="fa fa-file-pdf-o"></i> PDF</a>
-                            <a class="btn btn-success" id="btnbayar" target="_blank"><i class="fa fa-money"></i> Bayar</a>
-                        </div>
-                    </div>
-                </header>
-                <div class="panel-body" id="showdetailpembayaran"> 
-                </div>
-                <footer class="panel-footer">
-                    <div class="row">
-                        <div class="col-md-12 text-right">
-                            <button class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </footer> 
-            </section>
-        </div>
-    </div>
-</div>
+
 <!-- Vendor -->
 <script src="<?php echo base_url()?>assets/vendor/jquery/jquery.min.js"></script>
 <script src="<?php echo base_url()?>assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
@@ -508,29 +533,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url()?>assets/javascripts/admin.min.js"></script>
 <script src="<?php echo base_url()?>assets/vendor/pnotify/pnotify.custom.js"></script>
 <script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script> 
-<script type="text/javascript"> 
-    $(document).ready(function(){
-     refresh();
-     $('.data').DataTable();
- }); 
-    $('.tanggal').datepicker({
-        format: 'yyyy-mm-dd' ,
-        autoClose:true
-    });   
-    function refresh() { 
-
-        var firstdate = $('#firstdate').val();
-        var lastdate = $('#lastdate').val();
-        var id_perumahan = $('#id_perumahan').val();
-        $.ajax({
-            type: 'GET',
-            url: '<?php echo base_url(); ?>Master/pageitem?',
-            data: 'firstdate='+firstdate+'&lastdate='+lastdate+'&id_perumahan='+id_perumahan,
-            success: function (html) { 
-                $('#kontendata').html(html); 
-            }
-        }); 
-    }
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.data').DataTable();
+	});
 </script>
 </body>
 </html>

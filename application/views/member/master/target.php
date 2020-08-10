@@ -27,84 +27,85 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="bgbody">
   <section class="body">
 
-   <?php $this->load->view("komponen/header.php") ?>
-   <div class="inner-wrapper"> 
-    <?php $this->load->view("komponen/sidebar.php") ?>
-    <section role="main" class="content-body">
-     <header class="page-header">  
-      <h2>Master Data Agen</h2>  
-  </header>  
-  <!-- start: page -->
-  <section class="panel">
-    <header class="panel-heading">    
-        <div class="row show-grid">
-            <div class="col-md-6" align="left"><h2 class="panel-title">Data Agen</h2></div>
-            <?php  
-            echo level_user('master','target',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
-            ?> 
+     <?php $this->load->view("komponen/header.php") ?>
+     <div class="inner-wrapper"> 
+        <?php $this->load->view("komponen/sidebar.php") ?>
+        <section role="main" class="content-body">
+           <header class="page-header">  
+              <h2>Master Data Agen</h2>  
+          </header>  
+          <!-- start: page -->
+          <section class="panel">
+            <header class="panel-heading">    
+                <div class="row show-grid">
+                    <div class="col-md-6" align="left"><h2 class="panel-title">Data Agen</h2></div>
+                    <?php  
+                    echo '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>';
+                    ?> 
+                </div>
+            </header>
+            <div class="panel-body"> 
+                <table class="table table-bordered table-hover table-striped" id="targetdata">
+                    <thead>
+                       <tr>
+                        <th>Aksi</th>
+                        <th>Perumahan</th>
+                        <th>Tahun</th>
+                        <th colspan="2"  style="text-align: center;">JAN</th>
+                        <th colspan="2" style="text-align: center;">FEB</th>
+                        <th colspan="2" style="text-align: center;">MAR</th>
+                        <th colspan="2"  style="text-align: center;">APR</th>
+                        <th colspan="2" style="text-align: center;">MEI</th>
+                        <th colspan="2" style="text-align: center;">JUN</th>
+                        <th colspan="2"  style="text-align: center;">JUL</th>
+                        <th colspan="2" style="text-align: center;">AGU</th>
+                        <th colspan="2" style="text-align: center;">SEP</th>
+                        <th colspan="2"  style="text-align: center;">OKT</th>
+                        <th colspan="2" style="text-align: center;">NOV</th>
+                        <th colspan="2" style="text-align: center;">DES</th>
+
+
+
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th   style="text-align: center;">BID </th>
+                        <th style="text-align: center;">LUAS</th>
+                        <th   style="text-align: center;">BID </th>
+                        <th style="text-align: center;">LUAS</th>
+                        <th   style="text-align: center;">BID </th>
+                        <th style="text-align: center;">LUAS</th>
+                        <th   style="text-align: center;">BID </th>
+                        <th style="text-align: center;">LUAS</th>
+                        <th   style="text-align: center;">BID </th>
+                        <th style="text-align: center;">LUAS</th>
+                        <th   style="text-align: center;">BID </th>
+                        <th style="text-align: center;">LUAS</th>
+                        <th   style="text-align: center;">BID </th>
+                        <th style="text-align: center;">LUAS</th>
+                        <th   style="text-align: center;">BID </th>
+                        <th style="text-align: center;">LUAS</th>
+                        <th   style="text-align: center;">BID </th>
+                        <th style="text-align: center;">LUAS</th>
+                        <th   style="text-align: center;">BID </th>
+                        <th style="text-align: center;">LUAS</th>
+                        <th   style="text-align: center;">BID </th>
+                        <th style="text-align: center;">LUAS</th>
+                        <th   style="text-align: center;">BID </th>
+                        <th style="text-align: center;">LUAS</th>
+
+
+
+                    </tr>
+
+                </thead>
+                <tbody>
+                </tbody>
+            </table> 
         </div>
-    </header>
-    <div class="panel-body"> 
-        <table class="table table-bordered table-hover table-striped" id="targetdata">
-            <thead>
-             <tr>
-                <th>Aksi</th>
-                <th>Tahun</th>
-                <th colspan="2"  style="text-align: center;">JAN</th>
-                <th colspan="2" style="text-align: center;">FEB</th>
-                <th colspan="2" style="text-align: center;">MAR</th>
-                <th colspan="2"  style="text-align: center;">APR</th>
-                <th colspan="2" style="text-align: center;">MEI</th>
-                <th colspan="2" style="text-align: center;">JUN</th>
-                <th colspan="2"  style="text-align: center;">JUL</th>
-                <th colspan="2" style="text-align: center;">AGU</th>
-                <th colspan="2" style="text-align: center;">SEP</th>
-                <th colspan="2"  style="text-align: center;">OKT</th>
-                <th colspan="2" style="text-align: center;">NOV</th>
-                <th colspan="2" style="text-align: center;">DES</th>
-                
-
-
-            </tr>
-            <tr>
-                <th></th>
-                <th></th>
-                <th   style="text-align: center;">BID </th>
-                <th style="text-align: center;">LUAS</th>
-                <th   style="text-align: center;">BID </th>
-                <th style="text-align: center;">LUAS</th>
-                <th   style="text-align: center;">BID </th>
-                <th style="text-align: center;">LUAS</th>
-                <th   style="text-align: center;">BID </th>
-                <th style="text-align: center;">LUAS</th>
-                <th   style="text-align: center;">BID </th>
-                <th style="text-align: center;">LUAS</th>
-                <th   style="text-align: center;">BID </th>
-                <th style="text-align: center;">LUAS</th>
-                <th   style="text-align: center;">BID </th>
-                <th style="text-align: center;">LUAS</th>
-                <th   style="text-align: center;">BID </th>
-                <th style="text-align: center;">LUAS</th>
-                <th   style="text-align: center;">BID </th>
-                <th style="text-align: center;">LUAS</th>
-                <th   style="text-align: center;">BID </th>
-                <th style="text-align: center;">LUAS</th>
-                <th   style="text-align: center;">BID </th>
-                <th style="text-align: center;">LUAS</th>
-                <th   style="text-align: center;">BID </th>
-                <th style="text-align: center;">LUAS</th>
-
-
-
-            </tr>
-
-        </thead>
-        <tbody>
-        </tbody>
-    </table> 
-</div>
-</section>
-<!-- end: page -->
+    </section>
+    <!-- end: page -->
 </section>
 </div>
 </section>
@@ -116,48 +117,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <section class="panel  panel-primary">
                 <?php echo form_open('master/targettambah',' id="FormulirTambah"');?>  
                 <header class="panel-heading">
-                    <h2 class="panel-title">Tambah Agen</h2>
+                    <h2 class="panel-title">Tambah Target</h2>
                 </header>
                 <div class="panel-body">
-                    <!-- apotek -->
-                    <div class="form-group mt-lg nama_target">
-                        <label class="col-sm-3 control-label">Nama Agen<span class="required">*</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="nama_target" class="form-control" required/>
-                        </div>
-                    </div> 
                     <div class="form-group mt-lg nama_target">
                         <label class="col-sm-3 control-label">Regional<span class="required">*</span></label>
                         <div class="col-sm-9">
-                            <select data-plugin-selectTwo class="form-control" required id="id_regional" name="id_regional">  
-                                <option value="">Pilih Regional</option>
-                                <?php foreach ($regional as $supp): ?>
-                                    <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
-                                <?php endforeach; ?>
-                            </select> 
-                        </div>
-                    </div>
-                    <div class="form-group alamat">
-                        <label class="col-sm-3 control-label">Alamat Agen<span class="required">*</span></label>
-                        <div class="col-sm-9">
-                            <textarea rows="2" class="form-control" name="alamat" required></textarea>
+                            <input type="hidden" name="id_regional" class="form-control" />
+                            <input type="text" readonly="" value="<?php echo $id_perumahan ?>" class="form-control" />
+                            
                         </div>
                     </div>
 
                     <div class="form-group telepon">
-                        <label class="col-sm-3 control-label">Telepon</label>
+                        <label class="col-sm-3 control-label">Tahun</label>
                         <div class="col-sm-9">
-                            <input type="text" name="telepon" class="form-control" />
+                            <input type="text" name="tahun" class="form-control tanggal" />
                         </div>
                     </div>  
-                    <!-- bank -->
-                    <div class="form-group mt-lg nama_target">
-                        <label class="col-sm-3 control-label">penjual<span class="required">*</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="penjual" class="form-control" readonly value="<?php echo $this->session->userdata('nama_admin'); ?>" required/>
-                            <input type="hidden" name="penjual" class="form-control" value="<?php echo $this->session->userdata('idadmin'); ?>" required/>
-                        </div>
-                    </div> 
                 </div>
                 <footer class="panel-footer">
                     <div class="row">
@@ -289,21 +266,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url()?>assets/vendor/pnotify/pnotify.custom.js"></script>
 <script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script> 
 <script type="text/javascript"> 
-    $('.tanggal_masa').datepicker({
-        format: 'yyyy-mm-dd' 
-    });
-    $('.tanggal_sipa').datepicker({
-        format: 'yyyy-mm-dd' 
-    });
-    $('.tanggal_sipaedit').datepicker({
-        format: 'yyyy-mm-dd' 
+    $('.tanggal').datepicker({
+        format: 'yyyy-mm-dd' ,
+        viewMode: "years", 
+        minViewMode: "years"
+
     });
     var tabletarget = $('#targetdata').DataTable({  
         "serverSide": true, 
         "order": [1],
         "searching": false,
         "ajax": {
-            "url": "<?php echo base_url()?>master/datatarget",
+            "url": "<?php echo base_url()?>master/datatarget/"+'<?php echo $id_perumahan ?>',
             data: function (data) {
               for (var i = 0, len = data.columns.length; i < len; i++) {
                 if (! data.columns[i].search.value) delete data.columns[i].search;
@@ -323,23 +297,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     ],  
 }); 
     document.getElementById("FormulirTambah").addEventListener("submit", function (e) {  
-       blurForm();       
-       $('.help-block').hide();
-       $('.form-group').removeClass('has-error');
-       document.getElementById("submitform").setAttribute('disabled','disabled');
-       $('#submitform').html('Loading ...');
-       var form = $('#FormulirTambah')[0];
-       var formData = new FormData(form);
-       var xhrAjax = $.ajax({
-           type 		: 'POST',
-           url 		: $(this).attr('action'),
-           data 		: formData, 
-           processData: false,
-           contentType: false,
-           cache: false, 
-           dataType 	: 'json'
-       }).done(function(data) { 
-           if ( ! data.success) {		 
+     blurForm();       
+     $('.help-block').hide();
+     $('.form-group').removeClass('has-error');
+     document.getElementById("submitform").setAttribute('disabled','disabled');
+     $('#submitform').html('Loading ...');
+     var form = $('#FormulirTambah')[0];
+     var formData = new FormData(form);
+     var xhrAjax = $.ajax({
+         type 		: 'POST',
+         url 		: $(this).attr('action'),
+         data 		: formData, 
+         processData: false,
+         contentType: false,
+         cache: false, 
+         dataType 	: 'json'
+     }).done(function(data) { 
+         if ( ! data.success) {		 
             $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
             document.getElementById("submitform").removeAttribute('disabled');  
             $('#submitform').html('Submit');    
@@ -406,64 +380,64 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       return false;
   }
   document.getElementById("FormulirEdit").addEventListener("submit", function (e) {  
-   blurForm();       
-   $('.help-block').hide();
-   $('.form-group').removeClass('has-error');
-   document.getElementById("submitformEdit").setAttribute('disabled','disabled');
-   $('#submitformEdit').html('Loading ...');
-   var form = $('#FormulirEdit')[0];
-   var formData = new FormData(form);
-   var xhrAjax = $.ajax({
-       type 		: 'POST',
-       url 		: $(this).attr('action'),
-       data 		: formData, 
-       processData: false,
-       contentType: false,
-       cache: false, 
-       dataType 	: 'json'
-   }).done(function(data) { 
-       if ( ! data.success) {		 
-        $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-        document.getElementById("submitformEdit").removeAttribute('disabled');  
-        $('#submitformEdit').html('Submit');    
-        var objek = Object.keys(data.errors);  
-        for (var key in data.errors) {
-            if (data.errors.hasOwnProperty(key)) { 
-                var msg = '<div class="help-block" for="'+key+'">'+data.errors[key]+'</span>';
-                $('.'+key).addClass('has-error');
-                $('input[name="' + key + '"]').after(msg);  
+     blurForm();       
+     $('.help-block').hide();
+     $('.form-group').removeClass('has-error');
+     document.getElementById("submitformEdit").setAttribute('disabled','disabled');
+     $('#submitformEdit').html('Loading ...');
+     var form = $('#FormulirEdit')[0];
+     var formData = new FormData(form);
+     var xhrAjax = $.ajax({
+         type 		: 'POST',
+         url 		: $(this).attr('action'),
+         data 		: formData, 
+         processData: false,
+         contentType: false,
+         cache: false, 
+         dataType 	: 'json'
+     }).done(function(data) { 
+         if ( ! data.success) {		 
+            $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+            document.getElementById("submitformEdit").removeAttribute('disabled');  
+            $('#submitformEdit').html('Submit');    
+            var objek = Object.keys(data.errors);  
+            for (var key in data.errors) {
+                if (data.errors.hasOwnProperty(key)) { 
+                    var msg = '<div class="help-block" for="'+key+'">'+data.errors[key]+'</span>';
+                    $('.'+key).addClass('has-error');
+                    $('input[name="' + key + '"]').after(msg);  
+                }
+                if (key == 'fail') {   
+                    new PNotify({
+                        title: 'Notifikasi',
+                        text: data.errors[key],
+                        type: 'danger'
+                    }); 
+                }
             }
-            if (key == 'fail') {   
-                new PNotify({
-                    title: 'Notifikasi',
-                    text: data.errors[key],
-                    type: 'danger'
-                }); 
-            }
+        } else { 
+            $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+            PNotify.removeAll();
+            tabletarget.ajax.reload();    
+            document.getElementById("submitformEdit").removeAttribute('disabled'); 
+            $('#editData').modal('hide');        
+            document.getElementById("FormulirEdit").reset();    
+            $('#submitformEdit').html('Submit');   
+            new PNotify({
+                title: 'Notifikasi',
+                text: data.message,
+                type: 'success'
+            });
         }
-    } else { 
-        $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-        PNotify.removeAll();
-        tabletarget.ajax.reload();    
-        document.getElementById("submitformEdit").removeAttribute('disabled'); 
-        $('#editData').modal('hide');        
-        document.getElementById("FormulirEdit").reset();    
-        $('#submitformEdit').html('Submit');   
+    }).fail(function(data) {    
         new PNotify({
             title: 'Notifikasi',
-            text: data.message,
-            type: 'success'
-        });
-    }
-}).fail(function(data) {    
-    new PNotify({
-        title: 'Notifikasi',
-        text: "Request gagal, browser akan direload",
-        type: 'danger'
+            text: "Request gagal, browser akan direload",
+            type: 'danger'
+        }); 
+        window.setTimeout(function() {  location.reload();}, 2000); 
     }); 
-    window.setTimeout(function() {  location.reload();}, 2000); 
-}); 
-e.preventDefault(); 
+    e.preventDefault(); 
 }); 
   function hapus(elem){ 
       var dataId = $(elem).data("id");
@@ -471,59 +445,59 @@ e.preventDefault();
       $('#modalHapus').modal();        
   }
   document.getElementById("FormulirHapus").addEventListener("submit", function (e) {  
-   blurForm();       
-   $('.help-block').hide();
-   $('.form-group').removeClass('has-error');
-   document.getElementById("submitformHapus").setAttribute('disabled','disabled');
-   $('#submitformHapus').html('Loading ...');
-   var form = $('#FormulirHapus')[0];
-   var formData = new FormData(form);
-   var xhrAjax = $.ajax({
-       type 		: 'POST',
-       url 		: $(this).attr('action'),
-       data 		: formData, 
-       processData: false,
-       contentType: false,
-       cache: false, 
-       dataType 	: 'json'
-   }).done(function(data) { 
-       if ( ! data.success) {		 
-        $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-        document.getElementById("submitformHapus").removeAttribute('disabled');  
-        $('#submitformHapus').html('Delete');     
-        var objek = Object.keys(data.errors);  
-        for (var key in data.errors) { 
-            if (key == 'fail') {   
-                new PNotify({
-                    title: 'Notifikasi',
-                    text: data.errors[key],
-                    type: 'danger'
-                }); 
+     blurForm();       
+     $('.help-block').hide();
+     $('.form-group').removeClass('has-error');
+     document.getElementById("submitformHapus").setAttribute('disabled','disabled');
+     $('#submitformHapus').html('Loading ...');
+     var form = $('#FormulirHapus')[0];
+     var formData = new FormData(form);
+     var xhrAjax = $.ajax({
+         type 		: 'POST',
+         url 		: $(this).attr('action'),
+         data 		: formData, 
+         processData: false,
+         contentType: false,
+         cache: false, 
+         dataType 	: 'json'
+     }).done(function(data) { 
+         if ( ! data.success) {		 
+            $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+            document.getElementById("submitformHapus").removeAttribute('disabled');  
+            $('#submitformHapus').html('Delete');     
+            var objek = Object.keys(data.errors);  
+            for (var key in data.errors) { 
+                if (key == 'fail') {   
+                    new PNotify({
+                        title: 'Notifikasi',
+                        text: data.errors[key],
+                        type: 'danger'
+                    }); 
+                }
             }
+        } else { 
+            $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+            PNotify.removeAll();   
+            tabletarget.ajax.reload();
+            document.getElementById("submitformHapus").removeAttribute('disabled'); 
+            $('#modalHapus').modal('hide');        
+            document.getElementById("FormulirHapus").reset();    
+            $('#submitformHapus').html('Delete'); 
+            new PNotify({
+                title: 'Notifikasi',
+                text: data.message,
+                type: 'success'
+            }); 
         }
-    } else { 
-        $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-        PNotify.removeAll();   
-        tabletarget.ajax.reload();
-        document.getElementById("submitformHapus").removeAttribute('disabled'); 
-        $('#modalHapus').modal('hide');        
-        document.getElementById("FormulirHapus").reset();    
-        $('#submitformHapus').html('Delete'); 
+    }).fail(function(data) {   
         new PNotify({
             title: 'Notifikasi',
-            text: data.message,
-            type: 'success'
+            text: "Request gagal, browser akan direload",
+            type: 'danger'
         }); 
-    }
-}).fail(function(data) {   
-    new PNotify({
-        title: 'Notifikasi',
-        text: "Request gagal, browser akan direload",
-        type: 'danger'
+        window.setTimeout(function() {  location.reload();}, 2000);
     }); 
-    window.setTimeout(function() {  location.reload();}, 2000);
-}); 
-e.preventDefault(); 
+    e.preventDefault(); 
 }); 
 
 </script>

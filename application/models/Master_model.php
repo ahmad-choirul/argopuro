@@ -65,11 +65,12 @@ public function getlistabsensi($id='')
 var $column_search_target = array('nama_regional','tahun'); 
 var $column_order_target = array(null, 'nama_regional','tahun');
 var $order_target = array('tbl_target.tahun' => 'DESC');
-private function _get_query_target()
+private function _get_query_target($id)
 { 
     $get = $this->input->get();
     $this->db->from('tbl_target'); 
     $this->db->join('master_regional', 'master_regional.id = tbl_target.id_perumahan');
+    $this->db->where('id_perumahan', $id);
     $i = 0; 
     foreach ($this->column_search_target as $item)
     {
@@ -92,26 +93,27 @@ private function _get_query_target()
     } 
 }
 
-function get_target_datatable()
+function get_target_datatable($id)
 {
     $get = $this->input->get();
-    $this->_get_query_target();
+    $this->_get_query_target($id);
     if($get['length'] != -1)
         $this->db->limit($get['length'], $get['start']);
     $query = $this->db->get();
     return $query->result();
 }
 
-function count_filtered_datatable_target()
+function count_filtered_datatable_target($id)
 {
-    $this->_get_query_target();
+    $this->_get_query_target($id);
     $query = $this->db->get();
     return $query->num_rows();
 }
 
-public function count_all_datatable_target()
+public function count_all_datatable_target($id)
 {
     $this->db->from('tbl_target');
+    $this->db->where('id_perumahan', $id);
     return $this->db->count_all_results();
 } 
     //datatable target end
@@ -130,22 +132,20 @@ public function rulestarget()
 function simpandatatarget(){   
     $post = $this->input->post();   
     $array = array(
-        'nama_target' =>$post["nama_target"],
-        'alamat'        =>$post["alamat"], 
-        'telepon'       =>$post["telepon"], 
-        'id_regional'      =>$post["id_regional"], 
-        'id_penjual'      =>$post["id_penjual"], 
+        'id_perumahan' =>$post["id_perumahan"],
+        'tahun'        =>$post["tahun"], 
+        'target_bid'        =>$post["target_bid"], 
+        'target_luas'       =>$post["target_luas"], 
     );
     return $this->db->insert("tbl_target", $array);   
 } 
 public function updatedatatarget()
 {
     $post = $this->input->post();
-    $this->nama_target    = $post["nama_target"];
-    $this->alamat           = $post["alamat"];
-    $this->telepon          = $post["telepon"];
-    $this->id_regional         = $post["id_regional"];
-    $this->id_penjual         = $post["id_penjual"];
+    $this->id_perumahan    = $post["id_perumahan"];
+    $this->tahun           = $post["tahun"];
+    $this->target_luas          = $post["target_luas"];
+    $this->target_bid         = $post["target_bid"];
     return $this->db->update("tbl_target", $this, array('id' => $post['idd']));
 }
 public function hapusdatatarget()
