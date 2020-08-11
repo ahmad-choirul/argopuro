@@ -7,7 +7,7 @@
 
                     <th rowspan="2" style="text-align: center; ">NO</th>
                     <th rowspan="2" style="text-align: center;">PENJUAL</th>
-                    <th colspan="2" style="text-align: center;">DATA TANAH</th>
+                    <th colspan="3" style="text-align: center;">DATA TANAH</th>
                     <th colspan="3" style="text-align: center;">LUAS M<SUP>2</SUP></th>
                     <th colspan="2" style="text-align: center;">DAFTAR SK HAK</th>
                     <th colspan="2" style="text-align: center;">TERBIT SK HAK</th>
@@ -23,6 +23,7 @@
                 <tr>
                     <th   style="text-align: center;">SURAT</th>
                     <th style="text-align: center;">ATAS NAMA</th>
+                    <th style="text-align: center;">Luas</th>
                     <th  style="text-align: center;">DAFTAR</th>
                     <th   style="text-align: center;">TERBIT</th>
                     <th style="text-align: center;">SELISIH</th>
@@ -85,16 +86,16 @@
 
                     ?>
                     <tr>
-
                         <td><?php echo $no++;echo $tombol; ?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo $r->penjual ?></td>
+                        <td><?php echo $r->no_surat_tanah ?></td>
+                        <td><?php echo $r->nama_surat_tanah ?></td>
                      <!--    <td><?php echo $r->nama_surat_tanah ?></td>
                         <td><?php echo $r->no_surat_tanah ?></td> -->
                         <td><?php echo $r->luas ?></td>
-                        <td></td>
+                        <td><?php echo $r->luas_daftar ?></td>
+                        <td><?php echo $r->luas_terbit ?></td>
+                        <td><?php echo $r->luas_daftar-$r->luas_terbit ?></td>
                         <td><?php echo tgl_indo($r->tanggal_daftar_sk_hak) ?></td>
                         <td><?php echo $r->no_daftar_sk_hak ?></td>
                         <td><?php echo tgl_indo($r->tanggal_terbit_sk_hak) ?></td>
@@ -173,15 +174,16 @@
                     ?>
                     <tr>
 
-                        <td><?php echo $no++;echo $tombol; ?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                      <td><?php echo $no++;echo $tombol; ?></td>
+                        <td><?php echo $r->penjual ?></td>
+                        <td><?php echo $r->no_surat_tanah ?></td>
+                        <td><?php echo $r->nama_surat_tanah ?></td>
                      <!--    <td><?php echo $r->nama_surat_tanah ?></td>
                         <td><?php echo $r->no_surat_tanah ?></td> -->
                         <td><?php echo $r->luas ?></td>
-                        <td></td>
+                        <td><?php echo $r->luas_daftar ?></td>
+                        <td><?php echo $r->luas_terbit ?></td>
+                        <td><?php echo $r->luas_daftar-$r->luas_terbit ?></td>
                         <td><?php echo tgl_indo($r->tanggal_daftar_sk_hak) ?></td>
                         <td><?php echo $r->no_daftar_sk_hak ?></td>
                         <td><?php echo tgl_indo($r->tanggal_terbit_sk_hak) ?></td>
@@ -336,15 +338,16 @@
                     ?>
                     <tr>
 
-                        <td><?php echo $no++;echo $tombol; ?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                         <td><?php echo $no++;echo $tombol; ?></td>
+                        <td><?php echo $r->penjual ?></td>
+                        <td><?php echo $r->no_surat_tanah ?></td>
+                        <td><?php echo $r->nama_surat_tanah ?></td>
                      <!--    <td><?php echo $r->nama_surat_tanah ?></td>
                         <td><?php echo $r->no_surat_tanah ?></td> -->
                         <td><?php echo $r->luas ?></td>
-                        <td></td>
+                        <td><?php echo $r->luas_daftar ?></td>
+                        <td><?php echo $r->luas_terbit ?></td>
+                        <td><?php echo $r->luas_daftar-$r->luas_terbit ?></td>
                         <td><?php echo tgl_indo($r->tanggal_daftar_sk_hak) ?></td>
                         <td><?php echo $r->no_daftar_sk_hak ?></td>
                         <td><?php echo tgl_indo($r->tanggal_terbit_sk_hak) ?></td>
@@ -429,15 +432,16 @@
                     ?>
                     <tr>
 
-                        <td><?php echo $no++;echo $tombol; ?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                       <td><?php echo $no++;echo $tombol; ?></td>
+                        <td><?php echo $r->penjual ?></td>
+                        <td><?php echo $r->no_surat_tanah ?></td>
+                        <td><?php echo $r->nama_surat_tanah ?></td>
                      <!--    <td><?php echo $r->nama_surat_tanah ?></td>
                         <td><?php echo $r->no_surat_tanah ?></td> -->
                         <td><?php echo $r->luas ?></td>
-                        <td></td>
+                        <td><?php echo $r->luas_daftar ?></td>
+                        <td><?php echo $r->luas_terbit ?></td>
+                        <td><?php echo $r->luas_daftar-$r->luas_terbit ?></td>
                         <td><?php echo tgl_indo($r->tanggal_daftar_sk_hak) ?></td>
                         <td><?php echo $r->no_daftar_sk_hak ?></td>
                         <td><?php echo tgl_indo($r->tanggal_terbit_sk_hak) ?></td>

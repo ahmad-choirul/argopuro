@@ -58,10 +58,9 @@ public function datatarget($id)
     $data = array(); 
     foreach ($list as $r) { 
         $row = array(); 
-        $tombolhapus = level_user('master','target',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->id).'">Hapus</a></li>':'';
-        $tomboledit = level_user('master','target',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id).'">Edit</a></li>':'';
-        $row[] = ' 
-        <div class="btn-group dropup">
+        $tombolhapus = '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->id).'">Hapus</a></li>';
+        $tomboledit = '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id).'">Edit</a></li>';
+        $row[] = ' <div class="btn-group dropup">
         <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
         <ul class="dropdown-menu" role="menu">   
         '.$tomboledit.'

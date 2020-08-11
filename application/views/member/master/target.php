@@ -48,9 +48,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <table class="table table-bordered table-hover table-striped" id="targetdata">
                     <thead>
                        <tr>
-                        <th>Aksi</th>
-                        <th>Perumahan</th>
-                        <th>Tahun</th>
+                        <th rowspan="2">Aksi</th>
+                        <th rowspan="2">Perumahan</th>
+                        <th rowspan="2">Tahun</th>
                         <th colspan="2"  style="text-align: center;">JAN</th>
                         <th colspan="2" style="text-align: center;">FEB</th>
                         <th colspan="2" style="text-align: center;">MAR</th>
@@ -68,8 +68,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     </tr>
                     <tr>
-                        <th></th>
-                        <th></th>
                         <th   style="text-align: center;">BID </th>
                         <th style="text-align: center;">LUAS</th>
                         <th   style="text-align: center;">BID </th>
@@ -123,7 +121,121 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="form-group mt-lg nama_target">
                         <label class="col-sm-3 control-label">Regional<span class="required">*</span></label>
                         <div class="col-sm-9">
-                            <input type="hidden" name="id_regional" class="form-control" />
+                            <input type="hidden" name="id_perumahan" value="<?php echo $id_perumahan ?>" class="form-control" />
+                            <input type="text" readonly="" value="<?php echo $id_perumahan ?>" class="form-control" />
+                            
+                        </div>
+                    </div>
+
+                    <div class="form-group telepon">
+                        <label class="col-sm-3 control-label">Tahun</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="tahun" class="form-control tanggal" />
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <label class="col-sm-3">Data Target</label>
+                        <div class="col-sm-9">
+                            <table class=" table table-bordered table-hover table-striped">
+                                <tr>
+                                    <td>Bulan</td>
+                                    <td>BID</td>
+                                    <td>LUAS</td>
+                                </tr>
+                                <tr>
+                                    <td>Januari</td>
+                                    <td><input type="text" name="bid1" class="form-control " /></td>
+                                    <td><input type="text" name="luas1" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>Febuari</td>
+                                    <td><input type="text" name="bid2" class="form-control " /></td>
+                                    <td><input type="text" name="luas2" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>Maret</td>
+                                    <td><input type="text" name="bid3" class="form-control " /></td>
+                                    <td><input type="text" name="luas3" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>April</td>
+                                    <td><input type="text" name="bid4" class="form-control " /></td>
+                                    <td><input type="text" name="luas4" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>Mei</td>
+                                    <td><input type="text" name="bid5" class="form-control " /></td>
+                                    <td><input type="text" name="luas5" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>Juni</td>
+                                    <td><input type="text" name="bid6" class="form-control " /></td>
+                                    <td><input type="text" name="luas6" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>Juli</td>
+                                    <td><input type="text" name="bid7" class="form-control " /></td>
+                                    <td><input type="text" name="luas7" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>Agustus</td>
+                                    <td><input type="text" name="bid8" class="form-control " /></td>
+                                    <td><input type="text" name="luas8" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>September</td>
+                                    <td><input type="text" name="bid9" class="form-control " /></td>
+                                    <td><input type="text" name="luas9" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>Oktober</td>
+                                    <td><input type="text" name="bid10" class="form-control " /></td>
+                                    <td><input type="text" name="luas10" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>November</td>
+                                    <td><input type="text" name="bid11" class="form-control " /></td>
+                                    <td><input type="text" name="luas11" class="form-control " /></td>
+                                </tr>
+                                  <tr>
+                                    <td>Desember</td>
+                                    <td><input type="text" name="bid12" class="form-control " /></td>
+                                    <td><input type="text" name="luas12" class="form-control " /></td>
+                                </tr>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button class="btn btn-primary modal-confirm" type="submit" id="submitform">Submit</button>
+                        <button class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </footer>
+        </form>
+    </section>
+</div>
+</div>
+</div>
+
+<div class="modal fade" data-keyboard="false" data-backdrop="static"  id="editData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <section class="panel  panel-primary">
+                <?php echo form_open('master/targetedit',' id="FormulirEdit"');?>  
+                <input type="hidden" name="idd" id="idd">
+                <header class="panel-heading">
+                    <h2 class="panel-title">Edit Data Agen</h2>
+                </header>
+                 <div class="panel-body">
+                    <div class="form-group mt-lg nama_target">
+                        <label class="col-sm-3 control-label">Regional<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <input type="hidden" name="id_perumahan" value="<?php echo $id_perumahan ?>" class="form-control" />
                             <input type="text" readonly="" value="<?php echo $id_perumahan ?>" class="form-control" />
                             
                         </div>
@@ -207,75 +319,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </tr>
                         </table>
                     </div>
-                </div>
-
-            </div>
-            <footer class="panel-footer">
-                <div class="row">
-                    <div class="col-md-12 text-right">
-                        <button class="btn btn-primary modal-confirm" type="submit" id="submitform">Submit</button>
-                        <button class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </footer>
-        </form>
-    </section>
-</div>
-</div>
-</div>
-
-<div class="modal fade" data-keyboard="false" data-backdrop="static"  id="editData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <section class="panel  panel-primary">
-                <?php echo form_open('master/targetedit',' id="FormulirEdit"');?>  
-                <input type="hidden" name="idd" id="idd">
-                <header class="panel-heading">
-                    <h2 class="panel-title">Edit Data Agen</h2>
-                </header>
-                <div class="panel-body">
-                    <!-- apotek -->
-                    <div class="form-group mt-lg nama_target">
-                        <label class="col-sm-3 control-label">Nama Agen<span class="required">*</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="nama_target" id="nama_target" class="form-control" required/>
-                        </div>
-                    </div> 
-                    <div class="form-group mt-lg id_regional_edit">
-                        <label class="col-sm-3 control-label">Regional<span class="required">*</span></label>
-                        <div class="col-sm-9">
-                            <select data-plugin-selectTwo class="form-control" required id="id_regional_edit" name="id_regional">  
-                                <option value="">Pilih Regional</option>
-                                <?php foreach ($regional as $supp): ?>
-                                    <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
-                                <?php endforeach; ?>
-                            </select> 
-                        </div>
-                    </div>
-                    <div class="form-group telepon">
-                        <label class="col-sm-3 control-label">Telepon</label>
-                        <div class="col-sm-9">
-                            <input type="text" name="telepon" id="telepon" class="form-control" />
-                        </div>
-                    </div> 
-                    <div class="form-group alamat">
-                        <label class="col-sm-3 control-label">Alamat Agen<span class="required">*</span></label>
-                        <div class="col-sm-9">
-                            <textarea rows="2" class="form-control" name="alamat" id="alamat" required></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group mt-lg nama_target">
-                        <label class="col-sm-3 control-label">penjual<span class="required">*</span></label>
-                        <div class="col-sm-9">
-                            <select data-plugin-selectTwo class="form-control" required id="id_penjual_edit" name="id_penjual">  
-                                <option value="">Pilih penjual</option>
-                                <?php foreach ($penjual as $supp): ?>
-                                    <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_penjual;?></option>
-                                <?php endforeach; ?>
-                            </select> 
-                        </div>
-                    </div> 
-
                 </div>
                 <footer class="panel-footer">
                     <div class="row">

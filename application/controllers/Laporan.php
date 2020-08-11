@@ -581,12 +581,12 @@ public function pageevaluasishgbper()
    $this->load->view('member/laporan/ajax/ajaxevaluasishgbper',$data);
 }
 
-public function pageevaluasiprosesinduk()
+public function pageevaluasiprosesinduk($id)
 {
- $data['prosesshgbses'] = $this->master_model->getmaster_prosesinduk(date('Y'.'-01-01'),date('Y').'-12-31');
- $data['prosesshgbseb'] = $this->master_model->getmaster_prosesinduk('1970-01-01',(date('Y')-1).'-12-31');
- $data['terbitshgbses'] = $this->master_model->getmaster_prosesinduk(date('Y'.'-01-01'),date('Y').'-12-31','terbit');
- $data['terbitshgbseb'] = $this->master_model->getmaster_prosesinduk('1970-01-01',(date('Y')-1).'-12-31','terbit');
+ $data['prosesshgbses'] = $this->master_model->getmaster_prosesinduk($id,date('Y'.'-01-01'),date('Y').'-12-31');
+ $data['prosesshgbseb'] = $this->master_model->getmaster_prosesinduk($id,'1970-01-01',(date('Y')-1).'-12-31');
+ $data['terbitshgbses'] = $this->master_model->getmaster_prosesinduk($id,date('Y'.'-01-01'),date('Y').'-12-31','terbit');
+ $data['terbitshgbseb'] = $this->master_model->getmaster_prosesinduk($id,'1970-01-01',(date('Y')-1).'-12-31','terbit');
  $this->load->view('member/laporan/ajax/ajaxpenyelesaianinduk',$data);
 }
 

@@ -874,7 +874,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         $.ajax({
             type: 'GET',
-            url: '<?php echo base_url(); ?>laporan/pageevaluasiprosesinduk/',
+            url: '<?php echo base_url(); ?>laporan/pageevaluasiprosesinduk/'+'<?php echo $id_perumahan ?>',
             data: 'id_perumahan=<?php echo $id_perumahan ?>',
             success: function (html) { 
                 $('#kontendata').html(html); 
