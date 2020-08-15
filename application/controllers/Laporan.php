@@ -89,7 +89,12 @@ class Laporan extends CI_Controller {
         $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
         $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
         $this->load->view('member/master/items',$data);
-    }  
+    }
+    public function laporan_evaluasi_pembelian()
+      {
+        $this->load->view('member/laporan/laporan2_rekap');
+          
+      }  
      public function list_ijin()
     {   
         level_user('master','perumahan',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
@@ -581,7 +586,7 @@ public function pageevaluasishgbper()
    $this->load->view('member/laporan/ajax/ajaxevaluasishgbper',$data);
 }
 
-public function pageevaluasiprosesinduk($id)
+public function pageevaluasiprosesinduk($id='')
 {
  $data['prosesshgbses'] = $this->master_model->getmaster_prosesinduk($id,date('Y'.'-01-01'),date('Y').'-12-31');
  $data['prosesshgbseb'] = $this->master_model->getmaster_prosesinduk($id,'1970-01-01',(date('Y')-1).'-12-31');
@@ -1595,7 +1600,36 @@ public function pdfsplitsing()
     $mpdf->WriteHTML($data);
     $mpdf->Output("Purchase Order ".$idd.".pdf", "D"); 
 }
-
+ public function proses_indukdetailsplit(){  
+        cekajax(); 
+        $idd = $this->input->get("id");  
+        $this->db->from('master_proses_induk');
+        $this->db->where('id_proses_induk', $idd);
+        $query = $this->db->get()->result_array();
+            foreach ($query as $po_data) {        
+            
+            $result = array(  
+                "no_gambar" => $this->security->xss_clean($po_data['no_gambar']),
+                "tanggal_daftar_sk_hak" => $this->security->xss_clean(tgl_indo($po_data['tanggal_daftar_sk_hak'])),
+                "no_daftar_sk_hak" => $this->security->xss_clean($po_data['no_daftar_sk_hak']),
+                "nama_surat_tanah" => $this->security->xss_clean($po_data['nama_surat_tanah']),
+                "no_surat_tanah" => $this->security->xss_clean($po_data['no_surat_tanah']),
+                "luas" => $this->security->xss_clean(rupiah($po_data['luas'])),
+                "keterangan" => $this->security->xss_clean($po_data['keterangan'])
+            );     
+        }
+        
+        $detailpo = $this->db->get_where('tbl_dtl_proses_induk', array('id_proses_induk' => $idd)); 
+        foreach($detailpo->result() as $r) {    
+            $subArray['id_master_item']=$this->security->xss_clean($r->id_master_item);
+            $subArray['tgl_proses_induk']=$this->security->xss_clean($r->tgl_proses_induk);
+            $subArray['keterangan']=$this->security->xss_clean($r->keterangan);  
+            $arraysub[] =  $subArray ; 
+        }  
+        $datasub = $arraysub;
+        $array[] =  $result ; 
+        echo'{"datarows":'.json_encode($array).',"datasub":'.json_encode($datasub).'}';
+    } 
 public function splitsingtambah(){ 
     cekajax(); 
     $simpan = $this->laporan_model;       

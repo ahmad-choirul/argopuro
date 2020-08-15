@@ -702,10 +702,11 @@ public function get_rekapshgb($id='',$firstdate='',$lastdate='',$shgb='')
 	//CRUD merk end
 public function getperumahan($id='',$firstdate='',$lastdate='',$teknik='')
 {
- $this->db->select('a.*,b.nama_regional,c.*');
+ $this->db->select('a.*,b.nama_regional,c.*,d.*');
  $this->db->from('master_item a'); 
  $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
  $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
+ $this->db->join('tbl_dtl_proses_induk d', 'd.id_master_item = a.kode_item','left');
  if(!empty($firstdate) AND !empty($lastdate)){
     $this->db->where('a.tanggal_pembelian BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
 }
@@ -1037,6 +1038,7 @@ private function _get_query_pilihanitem()
    $get = $this->input->get();
    $this->db->from('master_item a');
    $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
+   $this->db->where('kode_item not in (SELECT id_master_item from tbl_dtl_proses_induk)');
    $i = 0; 
    foreach ($this->column_search_pilihanobat as $item)
    {

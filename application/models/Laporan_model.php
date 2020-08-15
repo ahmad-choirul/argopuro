@@ -431,9 +431,14 @@ function simpandatasplitsing(){
     $post = $this->input->post();
     $this->db->trans_start();
     $array = array(
+       'no_gambar'=>$post["no_gambar2"],
+       'id_perumahan'=>$post["id_perumahan"],
+       'penjual'=>$post["penjual"],
        'no_surat_tanah'=>$post["no_surat_tanah"],
        'nama_surat_tanah'=>$post["nama_surat_tanah"],
        'luas'=>$post["luas"],
+       'luas_daftar'=>$post["luas_daftar"],
+       'luas_terbit'=>$post["luas_terbit"],
        'tanggal_daftar_sk_hak'=>$post["tanggal_daftar_sk_hak"],
        'no_daftar_sk_hak'=>$post["no_daftar_sk_hak"],
        'tanggal_terbit_sk_hak'=>$post["tanggal_terbit_sk_hak"],

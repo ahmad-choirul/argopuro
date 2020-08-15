@@ -40,7 +40,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div class="inner-body mg-main" style="margin-left: 0px;">  
             <div class="row" style="margin-top:-25px;">  
-
                 <div class="col-md-4"> 
                     <section class="panel">
                         <header class="panel-heading"> 

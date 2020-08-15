@@ -28,46 +28,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="bgbody">
   <section class="body">
 
-     <?php $this->load->view("komponen/header.php") ?>
-     <div class="inner-wrapper"> 
-        <?php $this->load->view("komponen/sidebar.php") ?>
-        <section role="main" class="content-body">
-           <header class="page-header">  
-              <h2>Evaluasi Proses Induk 12 </h2>
-          </header>  
-          <!-- start: page -->
-          <div class="row">
-              <section class="panel col-md-12">
-                <header class="panel-heading">    
-                    <div class="row show-grid">
-                        <div class="col-md-8" align="left"><h2 class="panel-title">PROSES PENYELESAIAN INDUK</h2>
-                        </div>
+   <?php $this->load->view("komponen/header.php") ?>
+   <div class="inner-wrapper"> 
+    <?php $this->load->view("komponen/sidebar.php") ?>
+    <section role="main" class="content-body">
+     <header class="page-header">  
+      <h2>Evaluasi Proses Induk 12 </h2>
+  </header>  
+  <!-- start: page -->
+  <div class="row">
+      <section class="panel col-md-12">
+        <header class="panel-heading">    
+            <div class="row show-grid">
+                <div class="col-md-8" align="left"><h2 class="panel-title">PROSES PENYELESAIAN INDUK</h2>
+                </div>
 
-                        <form action="" method="get">
-                            <div class="form-group mt-lg nama_target">
-                              <div class="col-sm-5">
-                                <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
-                                  <option value="">Pilih Lokasi</option>
-                                  <?php foreach ($perumahan as $aa): ?>
-                                    <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?></option>
-                                <?php endforeach; ?>
-                            </select> 
-                        </div>
-                        <div class="col-sm-2">
-                            <a class="btn btn-primary" href="<?php echo site_url('Export_excel/excellaporanbelumshgb/').$id_perumahan ?>"> cetak </a>
-                        </div>
-                        <div class="col-sm-5">
-                           <?php
-                           echo level_user('master','proses_induk',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6 pull-right" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
-                           ?>
-                       </div>
-                   </div>
-               </form>
-           </div>
-       </header>
-       <div id="kontendata"></div>
-       <!-- end: page -->
-   </section>
+                <form action="" method="get">
+                    <div class="form-group mt-lg nama_target">
+                      <div class="col-sm-5">
+                        <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
+                          <option value="">Pilih Lokasi</option>
+                          <?php foreach ($perumahan as $aa): ?>
+                            <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?></option>
+                        <?php endforeach; ?>
+                    </select> 
+                </div>
+                <div class="col-sm-2">
+                    <a class="btn btn-primary" href="<?php echo site_url('Export_excel/excellaporanbelumshgb/').$id_perumahan ?>"> cetak </a>
+                </div>
+                <div class="col-sm-5">
+                 <?php
+                 echo level_user('master','proses_induk',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6 pull-right" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
+                 ?>
+             </div>
+         </div>
+     </form>
+ </div>
+</header>
+<div id="kontendata"></div>
+<!-- end: page -->
+</section>
 </div>
 </section>
 <div class="modal fade bd-example-modal-lg" data-keyboard="false" data-backdrop="static"  id="tambahData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -79,6 +79,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <h2 class="panel-title">Tambah Item</h2>
                 </header>
                 <div class="panel-body">
+
+                    <div class="form-group Penjual">
+                        <label class="col-sm-3 control-label">Penjual</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="penjual" class="form-control"  required />
+                            <input type="hidden" name="id_perumahan" value="<?php echo $id_perumahan ?>" class="form-control"  required />
+                        </div>
+                    </div>
+                    <div class="form-group no_gambar2">
+                        <label class="col-sm-3 control-label">No Gambar</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="no_gambar2" class="form-control"  required />
+                        </div>
+                    </div>
                     <div class="form-group no_surat_tanah">
                         <label class="col-sm-3 control-label">No Surat</span></label>
                         <div class="col-sm-9">
@@ -86,7 +100,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                     <div class="form-group nama_surat_tanah">
-                        <label class="col-sm-3 control-label">Nama Surat</span></label>
+                        <label class="col-sm-3 control-label">Atas Nama</span></label>
                         <div class="col-sm-9">
                             <input type="text" name="nama_surat_tanah" class="form-control"  required />
                         </div>
@@ -97,6 +111,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="luas" class="form-control"  />
                         </div>
                     </div>
+                    <div class="form-group tanggal_pengalihan">
+                        <label class="col-sm-3 control-label"> Detail Luas </span></label>
+                        <div class="col-sm-4">
+                            <input type="text" name="luas_daftar" style="color: grey; text-align: center;" class="form-control" placeholder="Luas Daftar" title="Luas Daftar" required />
+                        </div>
+                        <div class="col-sm-5">
+                            <input type="text" name="luas_terbit" class="form-control" placeholder="Luas Terbit" required />
+                        </div>
+                    </div>
+
                     <div class="form-group tanggal_pengalihan">
                         <label class="col-sm-3 control-label"> Detail Daftar SK </span></label>
                         <div class="col-sm-4">
@@ -206,7 +230,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <header class="panel-heading">
                     <div class="row">
                         <div class="col-md-3 text-left"> 
-                            <h2 class="panel-title">Purchase Order</h2>  
+                            <h2 class="panel-title">Evaluasi Proses</h2>  
                         </div>
                         <div class="col-md-9 text-right">
                             <a class="btn btn-success" id="linkprint" target="_blank"><i class="fa fa-print"></i> Print</a>
@@ -231,129 +255,129 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="modal-dialog modal-lg" style="width:90%">
         <div class="modal-content">
           <section class="panel panel-primary">
-                <?php echo form_open('laporan/master_proses_indukedit',' id="FormulirEdit"  enctype="multipart/form-data"');?>  
-                <input type="hidden" name="idd" id="idd">
-                <header class="panel-heading">
-                    <h2 class="panel-title">Edit Data Tanah/Aset</h2>
-                </header>
-                <div class="panel-body">
-                    <div class="form-group no_surat_tanah">
-                        <label class="col-sm-3 control-label">No Surat</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="no_surat_tanah" id="no_surat_tanah" class="form-control"  />
-                        </div>
-                    </div>
-                    <div class="form-group nama_surat_tanah">
-                        <label class="col-sm-3 control-label">Nama Surat</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="nama_surat_tanah" id="nama_surat_tanah" class="form-control"  />
-                        </div>
-                    </div>
-                    <div class="form-group luas">
-                        <label class="col-sm-3 control-label">Luas (m2)</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="luas" id="luas" class="form-control"  />
-                        </div>
-                    </div>
-                    <div class="form-group tanggal_pengalihan">
-                        <label class="col-sm-3 control-label"> Detail Daftar SK </span></label>
-                        <div class="col-sm-4">
-                            <input type="text" name="tanggal_daftar_sk_hak" id="tanggal_daftar_sk_hak" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Tanggal Daftar SK Hak" title="Tanggal Daftar SK Hak"  />
-                        </div>
-                        <div class="col-sm-5">
-                            <input type="text" name="no_daftar_sk_hak" id="no_daftar_sk_hak" class="form-control" placeholder="No Daftar SK Hak"  />
-                        </div>
-                    </div>
-
-                    <div class="form-group tanggal_pengalihan">
-                        <label class="col-sm-3 control-label"> Detail Terbit SK </span></label>
-                        <div class="col-sm-4">
-                            <input type="text" name="tanggal_terbit_sk_hak" id="tanggal_terbit_sk_hak" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Tanggal Terbit SK Hak" title="Tanggal Terbit SK Hak"  />
-                        </div>
-                        <div class="col-sm-5">
-                            <input type="text" name="no_terbit_sk_hak" id="no_terbit_sk_hak" class="form-control" placeholder="No Terbit SK Hak"  />
-                        </div>
-                    </div>
-
-                    <div class="form-group tanggal_pengalihan">
-                        <label class="col-sm-3 control-label"> Detail Daftar SHGB </span></label>
-                        <div class="col-sm-4">
-                            <input type="text" name="tanggal_daftar_shgb" id="tanggal_daftar_shgb" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Tanggal Daftar SHGB" title="Tanggal Daftar SHGB"  />
-                        </div>
-                        <div class="col-sm-5">
-                            <input type="text" name="no_daftar_shgb" id="no_daftar_shgb" class="form-control" placeholder="No Daftar SHGB"  />
-                        </div>
-                    </div>
-
-                    <div class="form-group tanggal_pengalihan">
-                        <label class="col-sm-3 control-label"> Detail Terbit SHGB </span></label>
-                        <div class="col-sm-3">
-                            <input type="text" name="tanggal_terbit_shgb" id="tanggal_terbit_shgb" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Tanggal Terbit SHGB" title="Tanggal Terbit SHGB"  />
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" name="no_terbit_shgb" id="no_terbit_shgb" class="form-control" placeholder="No Terbit SHGB"  />
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" name="masa_berlaku_shgb" id="masa_berlaku_shgb" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Masa Berlaku SHGB" title="Masa Berlaku SHGB"  />
-                        </div>
-                    </div>
-                    
-                    <div class="form-group luas">
-                        <label class="col-sm-3 control-label">Target Penyelesaian</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="target_penyelesaian" id="target_penyelesaian" class="form-control tanggal"  />
-                        </div>
-                    </div>
-
-                    <div class="form-group mt-lg nama_target">
-                        <label class="col-sm-3 control-label">Status Proses Induk<span class="required">*</span></label>
-                        <div class="col-sm-9">
-                          <select data-plugin-selectTwo class="form-control" required name="status" id="status">  
-                            <option value="">Pilih status</option>
-                            <option value="belum">Belum</option>
-                            <option value="terbit">Terbit</option>
-                        </select> 
+            <?php echo form_open('laporan/master_proses_indukedit',' id="FormulirEdit"  enctype="multipart/form-data"');?>  
+            <input type="hidden" name="idd" id="idd">
+            <header class="panel-heading">
+                <h2 class="panel-title">Edit Data Tanah/Aset</h2>
+            </header>
+            <div class="panel-body">
+                <div class="form-group no_surat_tanah">
+                    <label class="col-sm-3 control-label">No Surat</span></label>
+                    <div class="col-sm-9">
+                        <input type="text" name="no_surat_tanah" id="no_surat_tanah" class="form-control"  />
                     </div>
                 </div>
-                  <div class="row" style="overflow-x: auto;white-space: nowrap;"> 
-                        <div class="col-md-12">
-                            <h3>Rincian Item Yang Dibeli</h3> 
-                            <a type="button" class="mb-xs mt-xs mr-xs btn btn-primary" id="tambahItemEdit"><i class="fa fa-plus"></i> Tambah Item</a> 
-                            <div class="table-ressplitsingnsive" style="max-height:420px;"> 
-                                <table class="table table-bordered table-hover table-striped dataTable no-footer listitemEdit">
-                                    <thead>
-                                        <tr>
-                                            <th style="min-width:200px;">Kode Tanah</th>
-                                            <th style="min-width:200px;">Nama Penjual</th>
-                                            <th style="min-width:400px;">NO Gambar</th>
-                                            <th style="min-width:100px;">No PBB</th>
-                                            <th style="min-width:100px;">Tanggal Proses</th> 
-                                            <th style="min-width:100px;">Keterangan</th> 
-                                        </tr>
-                                    </thead>
-                                    <tbody> 
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                <div class="form-group keterangan">
-                    <label class="col-sm-3 control-label">Keterangan</label>
+                <div class="form-group nama_surat_tanah">
+                    <label class="col-sm-3 control-label">Nama Surat</span></label>
                     <div class="col-sm-9">
-                        <textarea rows="2" class="form-control" id="keterangan" name="keterangan"></textarea>
+                        <input type="text" name="nama_surat_tanah" id="nama_surat_tanah" class="form-control"  />
+                    </div>
+                </div>
+                <div class="form-group luas">
+                    <label class="col-sm-3 control-label">Luas (m2)</span></label>
+                    <div class="col-sm-9">
+                        <input type="text" name="luas" id="luas" class="form-control"  />
+                    </div>
+                </div>
+                <div class="form-group tanggal_pengalihan">
+                    <label class="col-sm-3 control-label"> Detail Daftar SK </span></label>
+                    <div class="col-sm-4">
+                        <input type="text" name="tanggal_daftar_sk_hak" id="tanggal_daftar_sk_hak" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Tanggal Daftar SK Hak" title="Tanggal Daftar SK Hak"  />
+                    </div>
+                    <div class="col-sm-5">
+                        <input type="text" name="no_daftar_sk_hak" id="no_daftar_sk_hak" class="form-control" placeholder="No Daftar SK Hak"  />
+                    </div>
+                </div>
+
+                <div class="form-group tanggal_pengalihan">
+                    <label class="col-sm-3 control-label"> Detail Terbit SK </span></label>
+                    <div class="col-sm-4">
+                        <input type="text" name="tanggal_terbit_sk_hak" id="tanggal_terbit_sk_hak" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Tanggal Terbit SK Hak" title="Tanggal Terbit SK Hak"  />
+                    </div>
+                    <div class="col-sm-5">
+                        <input type="text" name="no_terbit_sk_hak" id="no_terbit_sk_hak" class="form-control" placeholder="No Terbit SK Hak"  />
+                    </div>
+                </div>
+
+                <div class="form-group tanggal_pengalihan">
+                    <label class="col-sm-3 control-label"> Detail Daftar SHGB </span></label>
+                    <div class="col-sm-4">
+                        <input type="text" name="tanggal_daftar_shgb" id="tanggal_daftar_shgb" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Tanggal Daftar SHGB" title="Tanggal Daftar SHGB"  />
+                    </div>
+                    <div class="col-sm-5">
+                        <input type="text" name="no_daftar_shgb" id="no_daftar_shgb" class="form-control" placeholder="No Daftar SHGB"  />
+                    </div>
+                </div>
+
+                <div class="form-group tanggal_pengalihan">
+                    <label class="col-sm-3 control-label"> Detail Terbit SHGB </span></label>
+                    <div class="col-sm-3">
+                        <input type="text" name="tanggal_terbit_shgb" id="tanggal_terbit_shgb" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Tanggal Terbit SHGB" title="Tanggal Terbit SHGB"  />
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" name="no_terbit_shgb" id="no_terbit_shgb" class="form-control" placeholder="No Terbit SHGB"  />
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" name="masa_berlaku_shgb" id="masa_berlaku_shgb" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Masa Berlaku SHGB" title="Masa Berlaku SHGB"  />
+                    </div>
+                </div>
+
+                <div class="form-group luas">
+                    <label class="col-sm-3 control-label">Target Penyelesaian</span></label>
+                    <div class="col-sm-9">
+                        <input type="text" name="target_penyelesaian" id="target_penyelesaian" class="form-control tanggal"  />
+                    </div>
+                </div>
+
+                <div class="form-group mt-lg nama_target">
+                    <label class="col-sm-3 control-label">Status Proses Induk<span class="required">*</span></label>
+                    <div class="col-sm-9">
+                      <select data-plugin-selectTwo class="form-control" required name="status" id="status">  
+                        <option value="">Pilih status</option>
+                        <option value="belum">Belum</option>
+                        <option value="terbit">Terbit</option>
+                    </select> 
+                </div>
+            </div>
+            <div class="row" style="overflow-x: auto;white-space: nowrap;"> 
+                <div class="col-md-12">
+                    <h3>Rincian Item Yang Dibeli</h3> 
+                    <a type="button" class="mb-xs mt-xs mr-xs btn btn-primary" id="tambahItemEdit"><i class="fa fa-plus"></i> Tambah Item</a> 
+                    <div class="table-ressplitsingnsive" style="max-height:420px;"> 
+                        <table class="table table-bordered table-hover table-striped dataTable no-footer listitemEdit">
+                            <thead>
+                                <tr>
+                                    <th style="min-width:200px;">Kode Tanah</th>
+                                    <th style="min-width:200px;">Nama Penjual</th>
+                                    <th style="min-width:400px;">NO Gambar</th>
+                                    <th style="min-width:100px;">No PBB</th>
+                                    <th style="min-width:100px;">Tanggal Proses</th> 
+                                    <th style="min-width:100px;">Keterangan</th> 
+                                </tr>
+                            </thead>
+                            <tbody> 
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            <footer class="panel-footer">
-                <div class="row">
-                    <div class="col-md-12 text-right">
-                        <button class="btn btn-primary modal-confirm" type="submit" id="submitformEdit">Submit</button>
-                        <button class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
+            <div class="form-group keterangan">
+                <label class="col-sm-3 control-label">Keterangan</label>
+                <div class="col-sm-9">
+                    <textarea rows="2" class="form-control" id="keterangan" name="keterangan"></textarea>
                 </div>
-            </footer>
-        </form>
-    </section>
+            </div>
+        </div>
+        <footer class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-primary modal-confirm" type="submit" id="submitformEdit">Submit</button>
+                    <button class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </footer>
+    </form>
+</section>
 </div>
 </div>
 </div>
@@ -365,8 +389,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <section class="panel">
         <header class="panel-heading">
           <h2 class="panel-title">Data Item</h2>
-        </header>
-        <div class="panel-body">
+      </header>
+      <div class="panel-body">
           <table class="table table-bordered table-hover table-striped data" id="itemsdata">
             <thead>
               <tr>
@@ -374,22 +398,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <th>Nama Item</th>
                 <th>Lokasi</th>
                 <th></th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
-        </div>
-        <footer class="panel-footer">
-          <div class="row">
-            <div class="col-md-12 text-right">
-              <button class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </footer>
-      </section>
-    </div>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<footer class="panel-footer">
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <button class="btn btn-default" data-dismiss="modal">Close</button>
   </div>
+</div>
+</footer>
+</section>
+</div>
+</div>
 </div>
 <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -488,7 +512,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $('#showdetail').html('Loading...'); 
         $.ajax({
             type: 'GET',
-            url: '<?php echo base_url()?>pembelian/podetail',
+            url: '<?php echo base_url()?>laporan/proses_indukdetailsplit',
             data: 'id=' + dataId,
             dataType    : 'json',
             success: function(response) { 
@@ -499,18 +523,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     datarow+='<div class="col-md-6">';
                     datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
-                    datarow+="<tr><td>Nomor PO</td><td>: "+item.nomor_po+"</td></tr>";
-                    datarow+="<tr><td>Tanggal PO</td><td>: "+item.tgl_po+"</td></tr>";
-                    datarow+="<tr><td>Total </td><td>: "+item.totalbiaya+"</td></tr>";
-                    datarow+="<tr><td>Pembayaran</td><td>: "+item.pembayaran+"</td></tr>";
-                    datarow+="<tr><td>Termin</td><td>: "+item.termin+"</td></tr>"; 
+                    datarow+="<tr><td>Tanggal Daftar SK</td><td>: "+item.tanggal_daftar_sk_hak+"</td></tr>";
+                    datarow+="<tr><td>No Daftar SK </td><td>: "+item.no_daftar_sk_hak+"</td></tr>";
+                    datarow+="<tr><td>Nama Surat</td><td>: "+item.nama_surat_tanah+"</td></tr>";
                     datarow+="</table>";
                     datarow+='</div>';
                     datarow+='<div class="col-md-6">';
                     datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
-                    datarow+="<tr><td>Kode Supplier</td><td>: "+item.kode_supplier+"</td></tr>";
-                    datarow+="<tr><td>Supplier</td><td>: "+item.supplier+"</td></tr>";
-                    datarow+="<tr><td>Keterangan</td><td>: "+item.keterangan+"</td></tr>";
+                    datarow+="<tr><td>Nomor Gambar</td><td>: "+item.no_gambar+"</td></tr>";
+                    datarow+="<tr><td>luas</td><td>: "+item.luas+"</td></tr>"; 
                     datarow+="</table>";
                     datarow+='</div>';
                 });
@@ -520,19 +541,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 datarow+='<div class="table-responsive" style="max-height:420px;">';  
                 datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
                 datarow+="<thead><tr>";
-                datarow+="<th>No nama_penjual</th>";
-                datarow+="<th>Nama Item</th>";
-                datarow+="<th>Satuan Besar</th>";
-                datarow+="<th>Kuantiti</th>";
+                datarow+="<th>ID Item</th>";
+                datarow+="<th>Tgl Proses</th>";
+                datarow+="<th>Keterangan</th>";
                 datarow+="</tr></thead>";
                 datarow+="<tbody>";
 
                 $.each(response.datasub, function(i, itemsub) {
                     datarow+="<tr>";
-                    datarow+="<td>"+itemsub.kode_item+"</td>"; 
-                    datarow+="<td>"+itemsub.nama_item+"</td>";
-                    datarow+="<td>"+itemsub.no_gambar+"</td>"; 
-                    datarow+="<td>"+itemsub.kuantiti+"</td>"; 
+                    datarow+="<td>"+itemsub.id_master_item+"</td>"; 
+                    datarow+="<td>"+itemsub.tgl_proses_induk+"</td>";
+                    datarow+="<td>"+itemsub.keterangan+"</td>"; 
                     datarow+="</tr>"; 
                 });  
                 datarow+="</tbody>";

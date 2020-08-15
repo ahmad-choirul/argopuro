@@ -531,6 +531,65 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
         }); 
     }
+    function bayar(elem){
+      var dataId = $(elem).data("id");   
+      $('#detailpembayaran').modal();    
+      $('#showdetailpembayaran').html('Loading...'); 
+      $.ajax({
+        type: 'GET',
+        url: '<?php echo base_url()?>keuangan/keuangandetail',
+        data: 'id=' + dataId,
+        dataType    : 'json',
+        success: function(response) { 
+          var datarow='<div class="row">';
+          $.each(response.datarows, function(i, item) {
+            // document.getElementById('linkprint').setAttribute('href', '<?php echo base_url()?>pembelian/printpenerimaan/'+item.nomor_rec);
+            // document.getElementById('linkpdf').setAttribute('href', '<?php echo base_url()?>pembelian/pdfpenerimaan/'+item.nomor_rec);
+
+            document.getElementById('btnbayar').setAttribute('href', '<?php echo base_url()?>keuangan/bayar_tanah/'+item.kode_item);
+            datarow+='<div class="col-md-6">';
+            datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
+            datarow+="<tr><td>Nama Penjual</td><td>: "+item.nama_penjual+"</td></tr>";
+            datarow+="<tr><td>status_surat_tanah</td><td>: "+item.status_surat_tanah+"</td></tr>"; 
+            datarow+="<tr><td>Tanggal Pembelian</td><td>: "+item.tanggal_pembelian+"</td></tr>";
+            datarow+="</table>";
+            datarow+='</div>';
+            datarow+='<div class="col-md-6">';
+            datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
+
+        // datarow+="<tr><td>Total Harga Item</td><td>: "+item.total_harga_item+"</td></tr>";
+        // datarow+="<tr><td>Jenis Penjualan</td><td>: "+item.jenis_penjualan+"</td></tr>"; 
+        datarow+="</table>";
+        datarow+='</div>';
+    });
+          datarow+='</div>';
+          datarow+='<div class="row"><div class="col-md-12">';
+          datarow+='<h3>Rincian Pembayaran</h3>';
+          datarow+='<div class="table-responsive" style="max-height:420px;">';  
+          datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
+          datarow+="<thead><tr>";
+          datarow+="<th>Id Pembayaran</th>";
+          datarow+="<th>Tanggal Pembayaran</th>";
+          datarow+="<th>Total Bayar</th>"; 
+          datarow+="</tr></thead>";
+          datarow+="<tbody>";
+
+          $.each(response.datasub, function(i, itemsub) {
+            datarow+="<tr>";
+            datarow+="<td>"+itemsub.id_pembayaran+"</td>"; 
+            datarow+="<td>"+itemsub.tanggal_pembayaran+"</td>"; 
+            datarow+="<td>"+itemsub.total_bayar+"</td>"; 
+            datarow+="</tr>"; 
+        });  
+          datarow+="</tbody>";
+          datarow+="</table>";
+          datarow+="</div>";
+          datarow+='</div></div>';
+          $('#showdetailpembayaran').html(datarow);
+      }
+  });  
+      return false;
+  }
 </script>
 </body>
 </html>

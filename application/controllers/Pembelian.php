@@ -34,34 +34,7 @@ class Pembelian extends CI_Controller {
 		echo $this->pembelian_model->getallpo($id_admin); 
     }  
     
-    public function podetail(){  
-        cekajax(); 
-        $idd = $this->input->get("id");  
-        $query = $this->pembelian_model->get_po($idd); 
-            foreach ($query as $po_data) {        
-            
-            $result = array(  
-                "nomor_po" => $this->security->xss_clean($po_data['nomor_po']),
-                "tgl_po" => $this->security->xss_clean(tgl_indo($po_data['tgl_po'])),
-                "tgl_po_ymd" => $this->security->xss_clean($po_data['tgl_po']),
-                "kode_target" => $this->security->xss_clean($po_data['target']),
-                "target" => $this->security->xss_clean($po_data['nama_target']),
-                "totalbiaya" => $this->security->xss_clean(rupiah($po_data['total'])),
-                "keterangan" => $this->security->xss_clean($po_data['keterangan'])
-            );     
-        }
-        
-        $detailpo = $this->db->get_where('purchase_order_detail', array('nomor_po' => $idd)); 
-        foreach($detailpo->result() as $r) {    
-			$subArray['kode_item']=$this->security->xss_clean($r->kode_item);
-			$subArray['nama_item']=$this->security->xss_clean($r->nama_item);
-			$subArray['kuantiti']=$this->security->xss_clean($r->kuantiti);  
-            $arraysub[] =  $subArray ; 
-        }  
-        $datasub = $arraysub;
-        $array[] =  $result ; 
-        echo'{"datarows":'.json_encode($array).',"datasub":'.json_encode($datasub).'}';
-    } 
+   
     public function printpo(){ 
         $idd = $this->security->xss_clean($this->uri->segment(3)); 
         $data['po_data'] = $this->pembelian_model->get_po($idd); 
