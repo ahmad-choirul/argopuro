@@ -388,6 +388,7 @@ public function pembelihapus(){
 public function perumahan()
 {   
     level_user('master','perumahan',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
+    $data['listkabupaten'] = $this->db->order_by("id_kabupaten","DESC")->get('kabupaten')->result();
     $data['status'] = $this->db->order_by("id_status_regional","DESC")->get('master_status_regional')->result();
     $this->load->view('member/master/perumahan',$data);
 }  
@@ -424,6 +425,16 @@ public function datakategori()
         "data" => $data,
     ); 
     echo json_encode($result); 
+}
+public function getkecamatan(){
+    $id=$this->input->post('id');
+    $data=$this->master_model->getkecamatan($id);
+    echo json_encode($data);
+}
+public function getdesa(){
+    $id=$this->input->post('id');
+    $data=$this->master_model->getdesa($id);
+    echo json_encode($data);
 }
 public function kategoritambah(){ 
     cekajax(); 

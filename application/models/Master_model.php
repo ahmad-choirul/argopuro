@@ -32,7 +32,14 @@ class Master_model extends CI_Model{
         return $hasil;
     }
 }
-
+ function getkecamatan($id){
+        $hasil=$this->db->query("SELECT * FROM kecamatan WHERE id_kabupaten='$id'");
+        return $hasil->result();
+    }
+     function getdesa($id){
+        $hasil=$this->db->query("SELECT * FROM desa WHERE id_kecamatan='$id'");
+        return $hasil->result();
+    }
 public function absensiinput($data)
 {
     if ($data['status']!='') {
