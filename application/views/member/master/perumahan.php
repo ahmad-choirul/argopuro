@@ -33,13 +33,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php $this->load->view("komponen/sidebar.php") ?>
     <section role="main" class="content-body">
      <header class="page-header">  
-      <h2>Master Data Regional</h2>  
+      <h2>Master Data Perumahan / Lokasi</h2>  
     </header> 
     <!-- start: page -->
     <section class="panel">
       <header class="panel-heading">    
         <div class="row show-grid">
-          <div class="col-md-6" align="left"><h2 class="panel-title">Data Regional</h2></div>
+          <div class="col-md-6" align="left"><h2 class="panel-title">Data Perumahan / Lokasi</h2></div>
           <?php  
           echo level_user('master','perumahan',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
           ?> 
@@ -51,9 +51,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <tr>
               <th></th>
               <th>id</th>
-              <th>Nama Regional</th>
-              <th>Lokasi</th>  
-              <th>Status</th>  
+              <th>Nama Proyek / Lokasi</th>
+              <th>Alamat</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
@@ -61,7 +61,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </table> 
       </div>
     </section>
-    <!-- end: page -->
   </section>
 </div>
 </section>
@@ -86,7 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <label class="col-sm-3 control-label">Kabupaten<span class="required">*</span></label>
             <div class="col-sm-9">
               <!-- <input type="text" name="kabupaten" id="kabupaten" class="form-control" required/> -->
-              <select name="kabupaten" id="kabupaten" class="form-control">
+              <select data-plugin-selectTwo name="id_kabupaten" id="kabupaten" class="form-control">
                 <option value="0">-PILIH-</option>
                 <?php foreach($listkabupaten as $row):?>
                   <option value="<?php echo $row->id_kabupaten;?>"><?php echo $row->nama_kabupaten;?></option>
@@ -97,7 +96,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="form-group mt-lg id">
             <label class="col-sm-3 control-label">Kecamatan<span class="required">*</span></label>
             <div class="col-sm-9">
-              <select name="kecamatan" id="kecamatan" class="kecamatan form-control">
+              <select data-plugin-selectTwo name="id_kecamatan" id="kecamatan" class="kecamatan form-control">
                 <option value="0">-PILIH-</option>
               </select>
             </div>
@@ -105,34 +104,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="form-group mt-lg id">
             <label class="col-sm-3 control-label">Kelurahan / Desa<span class="required">*</span></label>
             <div class="col-sm-9">
-              <select name="lokasi" class="desa form-control">
-              <option value="0">-PILIH-</option>
-            </select>
-          </div>
-        </div>  
-        <div class="form-group mt-lg nama_target">
-          <label class="col-sm-3 control-label">Status<span class="required">*</span></label>
-          <div class="col-sm-9">
-            <select data-plugin-selectTwo class="form-control" required name="status_regional">  
-              <option value="">Pilih Status</option>
-              <?php foreach ($status as $supp): ?>
-                <option value="<?php echo $supp->id_status_regional;?>"><?php echo $supp->nama_status;?></option>
-              <?php endforeach; ?>
-            </select> 
-          </div>
-        </div>
-      </div>
-      <footer class="panel-footer">
-        <div class="row">
-          <div class="col-md-12 text-right">
-            <button class="btn btn-primary modal-confirm" type="submit" id="submitform">Submit</button>
-            <button class="btn btn-default" data-dismiss="modal">Close</button>
+              <select data-plugin-selectTwo name="lokasi" class="desa form-control">
+                <option value="0">-PILIH-</option>
+              </select>
+            </div>
+          </div>  
+          <div class="form-group mt-lg nama_target">
+            <label class="col-sm-3 control-label">Status<span class="required">*</span></label>
+            <div class="col-sm-9">
+              <select data-plugin-selectTwo class="form-control" required name="status_regional">  
+                <option value="">Pilih Status</option>
+                <?php foreach ($status as $supp): ?>
+                  <option value="<?php echo $supp->id_status_regional;?>"><?php echo $supp->nama_status;?></option>
+                <?php endforeach; ?>
+              </select> 
+            </div>
           </div>
         </div>
-      </footer>
-    </form>
-  </section>
-</div>
+        <footer class="panel-footer">
+          <div class="row">
+            <div class="col-md-12 text-right">
+              <button class="btn btn-primary modal-confirm" type="submit" id="submitform">Submit</button>
+              <button class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </footer>
+      </form>
+    </section>
+  </div>
 </div>
 </div>
 
@@ -144,19 +143,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php echo form_open('master/kategoriedit',' id="FormulirEdit"');?>  
         <input type="hidden" name="id" id="id">
         <header class="panel-heading">
-          <h2 class="panel-title">Edit Data Kategori</h2>
+          <h2 class="panel-title">Edit Data</h2>
         </header>
         <div class="panel-body">
           <div class="form-group mt-lg id">
-            <label class="col-sm-3 control-label">Nama Kategori<span class="required">*</span></label>
+            <label class="col-sm-3 control-label">Nama Perumahan / Lokasi<span class="required">*</span></label>
             <div class="col-sm-9">
               <input type="text" name="nama_regional" id="nama_regional" class="form-control" required/>
             </div>
           </div> 
           <div class="form-group mt-lg id">
-            <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
+            <label data-plugin-selectTwo class="col-sm-3 control-label">Kabupaten<span class="required">*</span></label>
             <div class="col-sm-9">
-              <input type="text" name="lokasi" id="lokasi" class="form-control" required/>
+              <!-- <input type="text" name="kabupaten" id="kabupaten" class="form-control" required/> -->
+              <select name="id_kabupaten" id="kabupatenedit" class="form-control">
+                <option value="0">-PILIH-</option>
+                <?php foreach($listkabupaten as $row):?>
+                  <option value="<?php echo $row->id_kabupaten;?>"><?php echo $row->nama_kabupaten;?></option>
+                <?php endforeach;?>
+              </select>
+            </div>
+          </div>  
+          <div class="form-group mt-lg id">
+            <label data-plugin-selectTwo class="col-sm-3 control-label">Kecamatan<span class="required">*</span></label>
+            <div class="col-sm-9">
+              <select name="id_kecamatan" id="kecamatanedit" class="kecamatan form-control">
+              </select>
+            </div>
+          </div>  
+          <div class="form-group mt-lg id">
+            <label data-plugin-selectTwo class="col-sm-3 control-label">Kelurahan / Desa<span class="required">*</span></label>
+            <div class="col-sm-9">
+              <select name="lokasi" id="lokasi" class="desa form-control">
+              </select>
             </div>
           </div>  
           <div class="form-group mt-lg nama_target">
@@ -233,46 +252,84 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url()?>assets/vendor/pnotify/pnotify.custom.js"></script>
 <script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script> 
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('#kabupaten').change(function(){
-            var id=$(this).val();
-            $.ajax({
-                url : "<?php echo base_url();?>master/getkecamatan",
-                method : "POST",
-                data : {id: id},
-                async : false,
-                dataType : 'json',
-                success: function(data){
-                    var html = '';
-                    var i;
-                    for(i=0; i<data.length; i++){
-                        html += '<option value="'+data[i].id_kecamatan+'">'+data[i].nama_kecamatan+'</option>';
-                    }
-                    $('.kecamatan').html(html);
-                     
-                }
-            });
-        });
-         $('#kecamatan').change(function(){
-            var id=$(this).val();
-            $.ajax({
-                url : "<?php echo base_url();?>master/getdesa",
-                method : "POST",
-                data : {id: id},
-                async : false,
-                dataType : 'json',
-                success: function(data){
-                    var html = '';
-                    var i;
-                    for(i=0; i<data.length; i++){
-                        html += '<option value="'+data[i].id_desa+'">'+data[i].nama_desa+'</option>';
-                    }
-                    $('.desa').html(html);
-                     
-                }
-            });
-        });
+  $(document).ready(function(){
+    $('#kabupaten').change(function(){
+      var id=$(this).val();
+      $.ajax({
+        url : "<?php echo base_url();?>master/getkecamatan",
+        method : "POST",
+        data : {id: id},
+        async : false,
+        dataType : 'json',
+        success: function(data){
+          var html = '';
+          var i;
+          for(i=0; i<data.length; i++){
+            html += '<option value="'+data[i].id_kecamatan+'">'+data[i].nama_kecamatan+'</option>';
+          }
+          $('.kecamatan').html(html);
+
+        }
+      });
     });
+    $('#kabupatenedit').change(function(){
+      var id=$(this).val();
+      $.ajax({
+        url : "<?php echo base_url();?>master/getkecamatan",
+        method : "POST",
+        data : {id: id},
+        async : false,
+        dataType : 'json',
+        success: function(data){
+          var html = '';
+          var i;
+          for(i=0; i<data.length; i++){
+            html += '<option value="'+data[i].id_kecamatan+'">'+data[i].nama_kecamatan+'</option>';
+          }
+          $('.kecamatan').html(html);
+
+        }
+      });
+    });
+    $('#kecamatan').change(function(){
+      var id=$(this).val();
+      $.ajax({
+        url : "<?php echo base_url();?>master/getdesa",
+        method : "POST",
+        data : {id: id},
+        async : false,
+        dataType : 'json',
+        success: function(data){
+          var html = '';
+          var i;
+          for(i=0; i<data.length; i++){
+            html += '<option value="'+data[i].id_desa+'">'+data[i].nama_desa+'</option>';
+          }
+          $('.desa').html(html);
+
+        }
+      });
+    });
+    $('#kecamatanedit').change(function(){
+      var id=$(this).val();
+      $.ajax({
+        url : "<?php echo base_url();?>master/getdesa",
+        method : "POST",
+        data : {id: id},
+        async : false,
+        dataType : 'json',
+        success: function(data){
+          var html = '';
+          var i;
+          for(i=0; i<data.length; i++){
+            html += '<option value="'+data[i].id_desa+'">'+data[i].nama_desa+'</option>';
+          }
+          $('.desa').html(html);
+
+        }
+      });
+    });
+  });
 </script>
 <script type="text/javascript"> 
   var tablekategori = $('#kategoridata').DataTable({  
@@ -346,7 +403,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       text: "Request gagal, browser akan direload",
       type: 'danger'
     }); 
-    window.setTimeout(function() {  location.reload();}, 2000);
+    //window.setTimeout(function() {  location.reload();}, 2000);
   }); 
   e.preventDefault(); 
 }); 
@@ -364,10 +421,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $.each(response, function(i, item) { 
           document.getElementById("id").setAttribute('value', item.id);
           document.getElementById("nama_regional").setAttribute('value', item.nama_regional);
-          document.getElementById("lokasi").setAttribute('value', item.lokasi); 
                 // document.getElementById("status_kategori").setAttribute('value', item.status_kategori); 
-                // $("#status_regional").val(item.status_regional);
-                $("#status_regional").select2("val", item.status_regional);   
+                $("#status_regional").val(item.status_regional);
+                $("#kabupatenedit").val(item.id_kabupaten);
+                $("#kecamatanedit").append(new Option(item.nama_kecamatan, item.id_kecamatan));  
+                $("#lokasi").append(new Option(item.nama_desa, item.lokasi));  
               }); 
       }
     });  
@@ -429,7 +487,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       text: "Request gagal, browser akan direload",
       type: 'danger'
     }); 
-    window.setTimeout(function() {  location.reload();}, 2000);
+    //window.setTimeout(function() {  location.reload();}, 2000);
   }); 
   e.preventDefault(); 
 }); 
@@ -489,7 +547,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       text: "Request gagal, browser akan direload",
       type: 'danger'
     }); 
-    window.setTimeout(function() {  location.reload();}, 2000);
+    //window.setTimeout(function() {  location.reload();}, 2000);
   }); 
   e.preventDefault(); 
 }); 

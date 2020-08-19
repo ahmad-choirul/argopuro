@@ -289,6 +289,12 @@ class Keuangan_model extends CI_Model{
         }
         return TRUE;
     } 
+    function get_by_id($id)
+{
+    $this->db->where('id_pembayaran', $id);
+    return $this->db->get('tabel_pembayaran')->row();
+}
+
 
     public function get_bayar_tanah($idd){ 
         $this->db->select("a.id, a.id_penjualan, a.id_pembeli, a.judul, a.tanggal, a.tanggal_jatuh_tempo, a.nominal, a.nominal_dibayar, a.sudah_lunas, a.tanggal_lunas, a.keterangan, b.nama_pembeli, b.jenis_kelamin, b.alamat, b.telepon, b.handphone");
@@ -327,6 +333,7 @@ class Keuangan_model extends CI_Model{
         $array = array(
             'kode_item'=>$post["kode_item"], 
             'tanggal_pembayaran'=>$post["tanggal_pembayaran"], 
+            'status_bayar'=>$post["status_bayar"], 
             'total_bayar'=> $total_bayar,  
             'keterangan'=>$post["keterangan"],  
         );

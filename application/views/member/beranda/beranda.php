@@ -37,7 +37,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <h2>Dashboard</h2>
                 </header>
                 <!-- start: page -->
-              <!--   <section class="panel">
+                <section class="panel">
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 col-lg-12 col-xl-4">
@@ -45,99 +45,41 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <div class="col-md-12 col-xl-12">
                                         <section class="panel">
                                             <header class="panel-heading">
-                                                <h2 class="panel-title">Target Penjualan Bulan <?= bulan_indo(date('m')) ?></h2>
+                                                <h2 class="panel-title">Daftar Pembayaran Belum Terbayar</h2>
                                             </header>
                                             <div class="panel-body">
-                                                <div class="row">
-                                                    <div class="col-md-3 col-xl-12">
-                                                        <section class="panel">
-                                                            <div id="panelppn" class="panel-body bg-primary">
-                                                                <div class="widget-summary">
-                                                                    <div class="widget-summary-col">
-                                                                        <div class="summary">
-                                                                            <h4 class="title">Target Penjualan</h4>
-                                                                            <div class="info">
-                                                                                <strong class="amount" id="target1"></strong>
-                                                                                <h5 id="total_jual_ppn"></h5>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </section>
-                                                    </div>
+                                                <table class="table">
+                                                  <thead class="black white-text">
+                                                    <tr>
+                                                      <th scope="col">No</th>
+                                                      <th scope="col">Nama Penjual</th>
+                                                      <th scope="col">Tanggal bayar</th>
+                                                      <th scope="col">Jumlah Bayar</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                <?php
+                                                $no=1;
+                                                 foreach ($listbelum as $key => $value): ?>
+                                                <tr>
+                                                  <th scope="row"><?php echo $no++; ?></th>
+                                                  <td><?php echo $value->nama_penjual ?></td>
+                                                  <td><?php echo tgl_indo($value->tanggal_pembayaran) ?></td>
+                                                  <td><?php echo $value->total_bayar ?></td>
+                                              </tr>     
+                                                <?php endforeach ?>
+                                               
 
-                                                    <div class="col-md-3 col-xl-12">
-                                                        <section class="panel">
-                                                            <div class="panel-body bg-primary">
-                                                                <div class="widget-summary">
-                                                                    <div class="widget-summary-col">
-                                                                        <div class="summary">
-                                                                            <h4 class="title">
-                                                                                Jumlah Pembelian
-                                                                            </h4>
-                                                                            <div class="info">
-                                                                                <strong class="amount" id="total_pembelian"></strong>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </section>
-                                                    </div>
-
-                                                    <div class="col-md-3 col-xl-12">
-                                                        <section class="panel">
-                                                            <div class="panel-body bg-primary">
-                                                                <div class="widget-summary">
-                                                                    <div class="widget-summary-col">
-                                                                        <div class="summary">
-                                                                            <h4 class="title">
-                                                                                Jumlah Penerimaan
-                                                                            </h4>
-                                                                            <div class="info">
-                                                                                <strong class="amount" id="total_penerimaan"></strong>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </section>
-                                                    </div>
-                                                    <div class="col-md-3 col-xl-12">
-                                                        <section class="panel">
-                                                            <div class="panel-body bg-primary">
-                                                                <div class="widget-summary">
-                                                                    <div class="widget-summary-col">
-                                                                        <div class="summary">
-                                                                            <h4 class="title">
-                                                                                Jumlah Retur Pembelian
-                                                                            </h4>
-                                                                            <div class="info">
-                                                                                <strong class="amount" id="total_retur"></strong>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </section>
-                                                    </div>
-                                                    <div class="col-md-6 col-xl-12">
-                                                        <div class="widget-summary-col">
-                                                            <div class="summary">
-                                                                <h4 class="title">Total Target Bulan Ini adalah <strong id="total_target"></strong></h4>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </section>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section> -->
+                                  </tbody>
+                              </table>
+                          </div>
+                      </section>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
               <!--   <section class="panel">
                     <div class="panel-body">
                         <div class="row">
@@ -466,18 +408,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     $('#total_jual_oot').html(item.total_jual_oot);
                     $('#total_target').html(item.total_target);
                     if (item.stattarget1) {
-                     $("#panelppn").attr("class", "panel-body bg-success");
-                 }
-                 if (item.stattarget2) {
-                     $("#panelnonppn").attr("class", "panel-body bg-success");
-                 }
-                 if (item.stattarget4) {
-                     $("#panelprekusor").attr("class", "panel-body bg-success");
-                 }
-                 if (item.stattarget4) {
-                     $("#paneloot").attr("class", "panel-body bg-success");
-                 }
-             });
+                       $("#panelppn").attr("class", "panel-body bg-success");
+                   }
+                   if (item.stattarget2) {
+                       $("#panelnonppn").attr("class", "panel-body bg-success");
+                   }
+                   if (item.stattarget4) {
+                       $("#panelprekusor").attr("class", "panel-body bg-success");
+                   }
+                   if (item.stattarget4) {
+                       $("#paneloot").attr("class", "panel-body bg-success");
+                   }
+               });
             }
         });
 

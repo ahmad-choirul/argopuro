@@ -12,7 +12,8 @@ class Dashboard extends CI_Controller {
     public function index()
     {  
         level_user('dashboard','index',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
-        $this->load->view('member/beranda/beranda');  
+        $data['listbelum'] = $this->dashboard_model->listbelum();
+        $this->load->view('member/beranda/beranda',$data);  
     }
     public function logout()
     { 

@@ -106,6 +106,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 																</a> 
 															</div>
 														</li> 
+
+														<li>
+															<a href="<?php echo base_url()?>master/sertifikat_tanah" class="menu-item" style="color: white"><i class="fa fa-folder"></i> Master Surat</a>
+															<div class="item-options">
+																<a href="<?php echo base_url()?>master/sertifikat_tanah">
+																	<i class="fa fa-arrow-circle-o-left"></i>
+																</a> 
+															</div>
+														</li> 
+														<li>
+															<a href="<?php echo base_url()?>master/jenis_pengalihan" class="menu-item" style="color: white"><i class="fa fa-folder"></i> Master Jenis Pengalihan</a>
+															<div class="item-options">
+																<a href="<?php echo base_url()?>master/jenis_pengalihan">
+																	<i class="fa fa-arrow-circle-o-left"></i>
+																</a> 
+															</div>
+														</li> 
 														<?php
 													}?>
 

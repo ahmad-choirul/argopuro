@@ -76,11 +76,12 @@ public function total_piutang_belum_bayar()
  return $this->db->select('SUM(nominal - nominal_dibayar) as total')->from('piutang_history')->where('sudah_lunas ="0"')->get()->row(); 
 }
 
-public function get_produk_kadaluarsa(){ 
-  $this->db->select("a.tgl_expired, a.kode_item,  b.nama_item");
-  $this->db->from("kartu_stok a");
+public function listbelum(){ 
+  $this->db->select("a.kode_item, a.tanggal_pembayaran,a.total_bayar,  a.keterangan,b.nama_penjual");
+  $this->db->from("tabel_pembayaran a");
   $this->db->join('master_item b', 'a.kode_item = b.kode_item ');  
-  $this->db->where('a.tgl_expired <= ', date('Y-m-d',strtotime('+60 days')));  
+  $this->db->where('a.status_bayar', '0');
+  $this->db->where('a.tanggal_pembayaran <= ', date('Y-m-d',strtotime('+15 days')));  
   return $this->db->get()->result();
 }
 public function get_produk_terlaris(){ 

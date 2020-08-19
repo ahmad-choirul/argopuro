@@ -33,24 +33,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php $this->load->view("komponen/sidebar.php") ?>
         <section role="main" class="content-body">
            <header class="page-header">  
-              <h2>Master Data Merk</h2>  
+              <h2>Master Data jenis_pengalihan</h2>  
           </header>  
           <!-- start: page -->
           <section class="panel">
             <header class="panel-heading">    
                 <div class="row show-grid">
-                    <div class="col-md-6" align="left"><h2 class="panel-title">Data Merk</h2></div>
+                    <div class="col-md-6" align="left"><h2 class="panel-title">Data jenis_pengalihan</h2></div>
                     <?php  
-                    echo level_user('master','merk',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
+                    echo  '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>';
                     ?> 
                 </div>
             </header>
             <div class="panel-body"> 
-                <table class="table table-bordered table-hover table-striped" id="merkdata">
+                <table class="table table-bordered table-hover table-striped" id="jenis_pengalihandata">
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Nama Merk</th>  
+                            <th>id</th>
+                            <th>Kode pengalihan</th>
+                            <th>Nama pengalihan</th>  
                         </tr>
                     </thead>
                     <tbody>
@@ -68,17 +70,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="modal-dialog">
         <div class="modal-content">
             <section class="panel panel-primary">
-                <?php echo form_open('master/merktambah',' id="FormulirTambah"');?>  
+                <?php echo form_open('master/jenis_pengalihantambah',' id="FormulirTambah"');?>  
                 <header class="panel-heading">
-                    <h2 class="panel-title">Tambah Merk</h2>
+                    <h2 class="panel-title">Tambah pengalihan tanah</h2>
                 </header>
                 <div class="panel-body">
-                    <div class="form-group mt-lg nama_status_tanah">
-                        <label class="col-sm-3 control-label">Nama Merk<span class="required">*</span></label>
+                    <div class="form-group mt-lg kode_pengalihan">
+                        <label class="col-sm-3 control-label">Kode pengalihan<span class="required">*</span></label>
                         <div class="col-sm-9">
-
                             <input type="hidden" name="idd" id="idd">
-                            <input type="text" name="nama_status_tanah" class="form-control" required/>
+                            <input type="text" name="kode_pengalihan" class="form-control" required/>
+                        </div>
+                    </div>  
+                    <div class="form-group mt-lg nama_pengalihan">
+                        <label class="col-sm-3 control-label">Nama pengalihan<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nama_pengalihan" class="form-control" required/>
                         </div>
                     </div>  
                 </div>
@@ -100,16 +107,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="modal-dialog">
         <div class="modal-content">
             <section class="panel panel-primary">
-                <?php echo form_open('master/merkedit',' id="FormulirEdit"');?>  
-                <input type="hidden" name="idd" id="idd">
+                <?php echo form_open('master/jenis_pengalihanedit',' id="FormulirEdit"');?>  
+                <input type="hidden" name="idd" id="idedit">
                 <header class="panel-heading">
-                    <h2 class="panel-title">Edit Nama Merk</h2>
+                    <h2 class="panel-title">Edit jenis_pengalihan</h2>
                 </header>
                 <div class="panel-body">
-                    <div class="form-group mt-lg id">
-                        <label class="col-sm-3 control-label">Nama Merk<span class="required">*</span></label>
+                    <div class="form-group mt-lg kode_pengalihan">
+                        <label class="col-sm-3 control-label">Kode pengalihan<span class="required">*</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="nama_status_tanah" id="nama_status_tanah" class="form-control" required/>
+                            <input type="text" name="kode_pengalihan" id="kode_pengalihan" class="form-control" required/>
+                        </div>
+                    </div> 
+                    <div class="form-group mt-lg nama_pengalihan">
+                        <label class="col-sm-3 control-label">Nama pengalihan<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="nama_pengalihan" id="nama_pengalihan" class="form-control" required/>
                         </div>
                     </div>  
                 </div>
@@ -147,7 +160,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <footer class="panel-footer"> 
                     <div class="row">
                         <div class="col-md-12 text-right"> 
-                            <?php echo form_open('master/merkhapus',' id="FormulirHapus"');?>  
+                            <?php echo form_open('master/jenis_pengalihanhapus',' id="FormulirHapus"');?>  
                             <input type="hidden" name="idd" id="idddelete">
                             <button type="submit" class="btn btn-danger" id="submitformHapus">Delete</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -176,11 +189,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url()?>assets/vendor/pnotify/pnotify.custom.js"></script>
 <script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script> 
 <script type="text/javascript"> 
-    var tablemerk = $('#merkdata').DataTable({  
+    var tablejenis_pengalihan = $('#jenis_pengalihandata').DataTable({  
         "serverSide": true, 
         "order": [], 
         "ajax": {
-            "url": "<?php echo base_url()?>master/datamerk",
+            "url": "<?php echo base_url()?>master/datajenis_pengalihan",
             "type": "GET"
         }, 
         "columnDefs": [
@@ -230,7 +243,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         } else { 
             $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
             PNotify.removeAll(); 
-            tablemerk.ajax.reload();   
+            tablejenis_pengalihan.ajax.reload();   
             document.getElementById("submitform").removeAttribute('disabled'); 
             $('#tambahData').modal('hide'); 
             document.getElementById("FormulirTambah").reset();  
@@ -254,16 +267,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     function edit(elem){
       var dataId = $(elem).data("id");   
-      document.getElementById("idd").setAttribute('value', dataId);
+      document.getElementById("idedit").setAttribute('value', dataId);
       $('#editData').modal();        
       $.ajax({
         type: 'GET',
-        url: '<?php echo base_url()?>master/merkdetail',
+        url: '<?php echo base_url()?>master/jenis_pengalihandetail',
         data: 'id=' + dataId,
         dataType 	: 'json',
         success: function(response) {  
             $.each(response, function(i, item) { 
-                document.getElementById("namamerk").setAttribute('value', item.namamerk); 
+                document.getElementById("kode_pengalihan").setAttribute('value', item.kode_pengalihan); 
+                document.getElementById("nama_pengalihan").setAttribute('value', item.nama_pengalihan); 
             }); 
         }
     });  
@@ -308,7 +322,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         } else { 
             $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
             PNotify.removeAll();
-            tablemerk.ajax.reload();    
+            tablejenis_pengalihan.ajax.reload();    
             document.getElementById("submitformEdit").removeAttribute('disabled'); 
             $('#editData').modal('hide');        
             document.getElementById("FormulirEdit").reset();    
@@ -325,7 +339,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             text: "Request gagal, browser akan direload",
             type: 'danger'
         }); 
-        window.setTimeout(function() {  location.reload();}, 2000);
+        // window.setTimeout(function() {  location.reload();}, 2000);
     }); 
     e.preventDefault(); 
 }); 
@@ -368,7 +382,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         } else { 
             $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
             PNotify.removeAll();   
-            tablemerk.ajax.reload();
+            tablejenis_pengalihan.ajax.reload();
             document.getElementById("submitformHapus").removeAttribute('disabled'); 
             $('#modalHapus').modal('hide');        
             document.getElementById("FormulirHapus").reset();    

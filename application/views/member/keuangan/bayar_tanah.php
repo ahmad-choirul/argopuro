@@ -131,6 +131,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>ID Pembayaran</th>
                             <th>Tanggal Pembayaran</th>
                             <th>Nominal</th>
+                            <th>Status</th> 
                             <th>Keterangan</th> 
 
                         </tr>
@@ -167,6 +168,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <label class="col-sm-3 control-label">Total Bayar<span class="required">*</span></label>
                         <div class="col-sm-9">
                             <input type="text"  id="total_bayar" name="total_bayar"  class="form-control maskprice" />
+                        </div>
+                    </div>
+                    <div class="form-group mt-lg">
+                        <label class="col-sm-3 control-label">Status Bayar<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                              <select data-plugin-selectTwo class="form-control" required id="status_bayar" name="status_bayar">  
+                                    <option value="0">Belum Terbayar</option>
+                                    <option value="1">Sudah Terbayar</option>
+                                </select> 
                         </div>
                     </div>
                     <div class="form-group keterangan">

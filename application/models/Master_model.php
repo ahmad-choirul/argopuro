@@ -483,6 +483,8 @@ function simpandatakategori(){
     $post = $this->input->post();   
     $array = array(
         'nama_regional'=>$post["nama_regional"], 
+        'id_kecamatan'=>$post["id_kecamatan"], 
+        'id_kabupaten'=>$post["id_kabupaten"], 
         'lokasi'=>$post["lokasi"], 
         'status_regional'=>$post["status_regional"], 
     );
@@ -492,6 +494,8 @@ public function updatedatakategori()
 {
     $post = $this->input->post();
     $this->nama_regional = $post["nama_regional"]; 
+    $this->id_kabupaten = $post["id_kabupaten"]; 
+    $this->id_kecamatan = $post["id_kecamatan"]; 
     $this->lokasi = $post["lokasi"]; 
     $this->status_regional = $post["status_regional"]; 
     return $this->db->update("master_regional", $this, array('id' => $post['id']));
@@ -565,16 +569,16 @@ public function hapusdatasatuan()
 }
     //CRUD satuan end
 
-    // datatable merk start
-var $column_search_merk = array('id'); 
-var $column_order_merk = array(null, 'id');
-var $order_merk = array('waktu_update' => 'DESC');
-private function _get_query_merk()
+    // datatable sertifikat_tanah start
+var $column_search_sertifikat_tanah = array('id'); 
+var $column_order_sertifikat_tanah = array(null, 'id');
+var $order_sertifikat_tanah = array('id_sertifikat_tanah' => 'DESC');
+private function _get_query_sertifikat_tanah()
 { 
     $get = $this->input->get();
-    $this->db->from('master_merk'); 
+    $this->db->from('tbl_sertifikat_tanah'); 
     $i = 0; 
-    foreach ($this->column_search_merk as $item)
+    foreach ($this->column_search_sertifikat_tanah as $item)
     {
         if($get['search']['value'])
         { 
@@ -588,76 +592,176 @@ private function _get_query_merk()
                 $this->db->or_like($item, $get['search']['value']);
             }
 
-            if(count($this->column_search_merk) - 1 == $i) 
+            if(count($this->column_search_sertifikat_tanah) - 1 == $i) 
                 $this->db->group_end(); 
         }
         $i++;
     } 
     if(isset($get['order'])) 
     {
-        $this->db->order_by($this->column_order_merk[$get['order']['0']['column']], $get['order']['0']['dir']);
+        $this->db->order_by($this->column_order_sertifikat_tanah[$get['order']['0']['column']], $get['order']['0']['dir']);
     } 
-    else if(isset($this->order_merk))
+    else if(isset($this->order_sertifikat_tanah))
     {
-        $order = $this->order_merk;
+        $order = $this->order_sertifikat_tanah;
         $this->db->order_by(key($order), $order[key($order)]);
     }
 }
 
-function get_merk_datatable()
+function get_sertifikat_tanah_datatable()
 {
     $get = $this->input->get();
-    $this->_get_query_merk();
+    $this->_get_query_sertifikat_tanah();
     if($get['length'] != -1)
         $this->db->limit($get['length'], $get['start']);
     $query = $this->db->get();
     return $query->result();
 }
 
-function count_filtered_datatable_merk()
+function count_filtered_datatable_sertifikat_tanah()
 {
-    $this->_get_query_merk();
+    $this->_get_query_sertifikat_tanah();
     $query = $this->db->get();
     return $query->num_rows();
 }
 
-public function count_all_datatable_merk()
+public function count_all_datatable_sertifikat_tanah()
 {
-    $this->db->from('master_merk');
+    $this->db->from('tbl_sertifikat_tanah');
     return $this->db->count_all_results();
 } 
-    //datatable merk end
+    //datatable sertifikat_tanah end
 
-	//CRUD merk start
-public function rulesmerk()
+	//CRUD sertifikat_tanah start
+public function rulessertifikat_tanah()
 {
     return [
         [
-            'field' => 'nama_status_tanah',
-            'label' => 'Nama Satus Tanah',
-            'rules' => 'is_unique[master_status_tanah.nama_status_tanah]|required',
+            'field' => 'kode_sertifikat',
+            'label' => 'Kode Sertifikat Tanah',
+            'rules' => 'is_unique[tbl_sertifikat_tanah.kode_sertifikat]|required',
         ] 
     ];
 }  
-function simpandatamerk(){   
+function simpandatasertifikat_tanah(){   
     $post = $this->input->post();   
     $array = array(
-        'id'=>$post["id"], 
+        'kode_sertifikat'=>$post["kode_sertifikat"], 
+        'nama_sertifikat'=>$post["nama_sertifikat"], 
     );
-    return $this->db->insert("master_merk", $array);   
+    return $this->db->insert("tbl_sertifikat_tanah", $array);   
 } 
 
-public function hapusdatamerk()
+public function hapusdatasertifikat_tanah()
 {
     $post = $this->input->post(); 
-    $this->db->where('id', $post['idd']);
-    return $this->db->delete('master_merk');  
+    $this->db->where('id_sertifikat_tanah', $post['idd']);
+    return $this->db->delete('tbl_sertifikat_tanah');  
 }
-public function updatedatamerk()
+public function updatedatasertifikat_tanah()
 {
     $post = $this->input->post();
-    $this->id = $post["id"]; 
-    return $this->db->update("master_merk", $this, array('id' => $post['idd']));
+    $this->kode_sertifikat = $post["kode_sertifikat"]; 
+    $this->nama_sertifikat = $post["nama_sertifikat"]; 
+    return $this->db->update("tbl_sertifikat_tanah", $this, array('id_sertifikat_tanah' => $post['idd']));
+} 
+
+
+    // datatable jenis_pengalihan start
+var $column_search_jenis_pengalihan = array('id'); 
+var $column_order_jenis_pengalihan = array(null, 'id');
+var $order_jenis_pengalihan = array('id_pengalihan' => 'DESC');
+private function _get_query_jenis_pengalihan()
+{ 
+    $get = $this->input->get();
+    $this->db->from('tbl_jenis_pengalihan'); 
+    $i = 0; 
+    foreach ($this->column_search_jenis_pengalihan as $item)
+    {
+        if($get['search']['value'])
+        { 
+            if($i===0) 
+            {
+                $this->db->group_start(); 
+                $this->db->like($item, $get['search']['value']);
+            }
+            else
+            {
+                $this->db->or_like($item, $get['search']['value']);
+            }
+
+            if(count($this->column_search_jenis_pengalihan) - 1 == $i) 
+                $this->db->group_end(); 
+        }
+        $i++;
+    } 
+    if(isset($get['order'])) 
+    {
+        $this->db->order_by($this->column_order_jenis_pengalihan[$get['order']['0']['column']], $get['order']['0']['dir']);
+    } 
+    else if(isset($this->order_jenis_pengalihan))
+    {
+        $order = $this->order_jenis_pengalihan;
+        $this->db->order_by(key($order), $order[key($order)]);
+    }
+}
+
+function get_jenis_pengalihan_datatable()
+{
+    $get = $this->input->get();
+    $this->_get_query_jenis_pengalihan();
+    if($get['length'] != -1)
+        $this->db->limit($get['length'], $get['start']);
+    $query = $this->db->get();
+    return $query->result();
+}
+
+function count_filtered_datatable_jenis_pengalihan()
+{
+    $this->_get_query_jenis_pengalihan();
+    $query = $this->db->get();
+    return $query->num_rows();
+}
+
+public function count_all_datatable_jenis_pengalihan()
+{
+    $this->db->from('tbl_jenis_pengalihan');
+    return $this->db->count_all_results();
+} 
+    //datatable jenis_pengalihan end
+
+    //CRUD jenis_pengalihan start
+public function rulesjenis_pengalihan()
+{
+    return [
+        [
+            'field' => 'kode_pengalihan',
+            'label' => 'Kode pengalihan Tanah',
+            'rules' => 'is_unique[tbl_jenis_pengalihan.kode_pengalihan]|required',
+        ] 
+    ];
+}  
+function simpandatajenis_pengalihan(){   
+    $post = $this->input->post();   
+    $array = array(
+        'kode_pengalihan'=>$post["kode_pengalihan"], 
+        'nama_pengalihan'=>$post["nama_pengalihan"], 
+    );
+    return $this->db->insert("tbl_jenis_pengalihan", $array);   
+} 
+
+public function hapusdatajenis_pengalihan()
+{
+    $post = $this->input->post(); 
+    $this->db->where('id_pengalihan', $post['idd']);
+    return $this->db->delete('tbl_jenis_pengalihan');  
+}
+public function updatedatajenis_pengalihan()
+{
+    $post = $this->input->post();
+    $this->kode_pengalihan = $post["kode_pengalihan"]; 
+    $this->nama_pengalihan = $post["nama_pengalihan"]; 
+    return $this->db->update("tbl_jenis_pengalihan", $this, array('id_pengalihan' => $post['idd']));
 } 
 public function get_rekaplandbank($id='',$firstdate='',$lastdate='',$teknik='')
 {
@@ -706,7 +810,7 @@ public function get_rekapshgb($id='',$firstdate='',$lastdate='',$shgb='')
     return array('bid' => '0','ukur' => '0','surat' => '0' );
 }
 }
-	//CRUD merk end
+	//CRUD sertifikat_tanah end
 public function getperumahan($id='',$firstdate='',$lastdate='',$teknik='')
 {
  $this->db->select('a.*,b.nama_regional,c.*,d.*');
@@ -839,10 +943,11 @@ var $order_item = array('waktu_update' => 'DESC');
 private function _get_query_item()
 { 
     $get = $this->input->get();
-    $this->db->select('a.*,b.nama_regional,c.*');
+    $this->db->select('a.*,b.nama_regional,c.kode_sertifikat as kode_sertifikat1,c.nama_sertifikat as nama_surat_tanah1,d.nama_sertifikat as nama_surat_tanah2,d.kode_sertifikat as kode_sertifikat2');
     $this->db->from('master_item a'); 
     $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
-    $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
+    $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah1','left');
+    $this->db->join('tbl_sertifikat_tanah d', 'd.id_sertifikat_tanah = a.status_surat_tanah2','left');
     $i = 0; 
     foreach ($this->column_search_item as $item)
     {
@@ -903,7 +1008,7 @@ public function rulesitems()
 {
     return [
         [
-            'field' => 'nama_item',
+            'field' => 'nama_penjual',
             'label' => 'Nama Item',
             'rules' => 'required',
         ], 
@@ -913,7 +1018,7 @@ public function rulesitemsedit()
 {
     return [
         [
-            'field' => 'nama_item',
+            'field' => 'nama_penjual',
             'label' => 'Nama Item',
             'rules' => 'required',
         ], 
@@ -922,27 +1027,31 @@ public function rulesitemsedit()
 function simpandataitems(){   
     $post = $this->input->post();   
     $array = array(
-        'nama_item'=>$post["nama_item"], 
         'tanggal_pembelian'=>$post["tanggal_pembelian"], 
         'nama_penjual'=>$post["nama_penjual"],  
         'nama_surat_tanah'=>$post["nama_surat_tanah"],  
-        'status_surat_tanah'=>$post["status_surat_tanah"],  
+        'status_surat_tanah1'=>$post["status_surat_tanah1"],  
+        'status_surat_tanah2'=>$post["status_surat_tanah2"],  
+        'keterangan1'=>$post["keterangan1"],  
+        'keterangan1'=>$post["keterangan1"],  
         'no_gambar'=>$post["no_gambar"],  
         'jumlah_bidang'=>$post["jumlah_bidang"],  
         'luas_surat'=>$post["luas_surat"],  
         'luas_ukur'=>$post["luas_ukur"],  
         'no_pbb'=>$post["no_pbb"],  
+        'atas_nama_pbb'=>$post["atas_nama_pbb"],  
         'luas_pbb'=>$post["luas_pbb"],  
         'njop'=>$post["njop"],    
         'total_harga_pengalihan'=>$post["total_harga_pengalihan"],  
         'nama_makelar'=>$post["nama_makelar"],  
         'nilai'=>$post["nilai"],  
+        'jenis_pengalihan'=>$post["jenis_pengalihan"],  
         'tanggal_pengalihan'=>$post["tanggal_pengalihan"],  
         'akta_pengalihan'=>$post["akta_pengalihan"],  
         'nama_pengalihan'=>$post["nama_pengalihan"],  
-        'pematangan'=>$post["pematangan"],  
         'ganti_rugi'=>$post["ganti_rugi"],  
         'pbb'=>$post["pbb"],  
+        'jenis_pengalihan'=>$post["jenis_pengalihan"],  
         'lain'=>$post["lain"],
         'keterangan'=>$post["keterangan"],  
         'id_perumahan'=>$post["id_perumahan"]  
@@ -953,29 +1062,33 @@ function simpandataitems(){
 public function updatedataitems()
 {
     $post = $this->input->post();
-    $this->nama_item = ($post["nama_item"]); 
     $this->tanggal_pembelian = ($post["tanggal_pembelian"]); 
     $this->nama_penjual = ($post["nama_penjual"]); 
     $this->nama_surat_tanah = ($post["nama_surat_tanah"]); 
-    $this->status_surat_tanah = ($post["status_surat_tanah"]); 
+    $this->status_surat_tanah1 = ($post["status_surat_tanah1"]); 
+    $this->status_surat_tanah2 = ($post["status_surat_tanah2"]); 
+    $this->keterangan1 = ($post["keterangan1"]); 
+    $this->keterangan2 = ($post["keterangan2"]); 
     $this->no_gambar = ($post["no_gambar"]); 
     $this->jumlah_bidang = bilanganbulat($post["jumlah_bidang"]); 
     $this->luas_surat = bilanganbulat($post["luas_surat"]); 
     $this->luas_ukur = bilanganbulat($post["luas_ukur"]); 
+    $this->atas_nama_pbb = ($post["atas_nama_pbb"]); 
     $this->no_pbb = ($post["no_pbb"]); 
     $this->luas_pbb = bilanganbulat($post["luas_pbb"]); 
     $this->njop = ($post["njop"]); 
     $this->total_harga_pengalihan = bilanganbulat($post["total_harga_pengalihan"]); 
     $this->nama_makelar = ($post["nama_makelar"]); 
     $this->nilai = bilanganbulat($post["nilai"]); 
+    $this->jenis_pengalihan = ($post["jenis_pengalihan"]); 
     $this->tanggal_pengalihan = ($post["tanggal_pengalihan"]); 
     $this->akta_pengalihan = ($post["akta_pengalihan"]); 
     $this->nama_pengalihan = ($post["nama_pengalihan"]); 
-    $this->pematangan = bilanganbulat($post["pematangan"]); 
     $this->ganti_rugi = bilanganbulat($post["ganti_rugi"]); 
     $this->pbb = bilanganbulat($post["pbb"]); 
     $this->lain = bilanganbulat($post["lain"]);
     $this->keterangan = ($post["keterangan"]); 
+    $this->jenis_pengalihan = ($post["jenis_pengalihan"]); 
     $this->id_perumahan = ($post["id_perumahan"]); 
     return $this->db->update("master_item", $this, array('kode_item' => $post['idd']));
 }
