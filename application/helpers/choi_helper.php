@@ -25,10 +25,9 @@ function bilanganbulat($teks) {
 }
 
 function tgl_indo($date) {  
-    if ($date=='0000-00-00') {
+    if ($date=='0000-00-00'||$date==null) {
         return 'tgl tidak valid';
-    }
-    else{
+    }else{
         $BulanIndo = array("Januari", "Februari", "Maret",
 
             "April", "Mei", "Juni",

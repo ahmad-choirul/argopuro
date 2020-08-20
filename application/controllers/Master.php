@@ -1027,6 +1027,8 @@ $result = array(
  "status_teknik" => $this->security->xss_clean($query->row()->status_teknik),
  "jenis_pengalihan" => $this->security->xss_clean($query->row()->jenis_pengalihan),
  "terima_finance" => $this->security->xss_clean($query->row()->terima_finance),
+ "status_shgb" => $this->security->xss_clean($query->row()->status_shgb),
+ "no_shgb" => $this->security->xss_clean($query->row()->no_shgb),
 );    
 echo'['.json_encode($result).']';
 }
@@ -1082,6 +1084,8 @@ public function updatemasteritem(){
         'nama_pengalihan' => $post['nama_pengalihan'],
         'jenis_pengalihan_hak' => $post['jenis_pengalihan_hak'],
         'terima_finance' => $post['terima_finance'],
+        'status_shgb' => $post['status_shgb'],
+        'no_shgb' => $post['no_shgb'],
         'keterangan' => $post['keterangan']
     );      
     if($simpan->updatemasteritem($data)){
@@ -1195,7 +1199,7 @@ public function pilihanitem()
     foreach ($list as $r) { 
         $row = array(); 
         $row[] = $this->security->xss_clean($r->kode_item); 
-        $row[] = $this->security->xss_clean($r->nama_item); 
+        $row[] = $this->security->xss_clean($r->nama_penjual); 
         $row[] = $this->security->xss_clean($r->nama_regional);   
         $row[] = ' 
         <a onclick="pilihitem(this)"  data-nama_regional="'.$r->nama_regional.'" data-nama_penjual="'.$r->nama_penjual.'" data-no_gambar="'.$r->no_gambar.'" data-keterangan="'.$r->keterangan.'" data-no_pbb="'.$r->no_pbb.'"  data-kode_item="'.$r->kode_item.'" class="mt-xs mr-xs btn btn-info datarowobat" role="button"><i class="fa fa-check-square-o"></i></a>

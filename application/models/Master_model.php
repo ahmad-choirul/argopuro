@@ -14,7 +14,7 @@ class Master_model extends CI_Model{
         $this->db->from('master_item a'); 
         $this->db->where('a.kode_item', $kode_item);
         $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
-        $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
+        $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah1','left');
         return $this->db->get()->result();
     }
     public function getdataabsensibyid($id)
@@ -768,7 +768,7 @@ public function get_rekaplandbank($id='',$firstdate='',$lastdate='',$teknik='')
     $this->db->select('sum(jumlah_bidang) as bid,sum(luas_surat) as surat,sum(luas_ukur) as ukur');
     $this->db->from('master_item a'); 
     $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
-    $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
+    $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah1','left');
     if(!empty($firstdate) AND !empty($lastdate)){
         $this->db->where('a.tanggal_pembelian BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
     }
@@ -792,7 +792,7 @@ public function get_rekapshgb($id='',$firstdate='',$lastdate='',$shgb='')
     $this->db->select('sum(jumlah_bidang) as bid,sum(luas_surat) as surat,sum(luas_ukur) as ukur');
     $this->db->from('master_item a'); 
     $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
-    $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
+    $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah1','left');
     if(!empty($firstdate) AND !empty($lastdate)){
         $this->db->where('a.tanggal_pembelian BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
     }
@@ -801,7 +801,7 @@ public function get_rekapshgb($id='',$firstdate='',$lastdate='',$shgb='')
     }
 
     if (!empty($teknik)) {
-        $this->db->where('a.status_surat_tanah', $shgb);
+        $this->db->where('a.status_surat_tanah1', $shgb);
     }
     $hasil = $this->db->get()->result_array()[0];
     if ($hasil['bid']!='') {
@@ -816,7 +816,7 @@ public function getperumahan($id='',$firstdate='',$lastdate='',$teknik='')
  $this->db->select('a.*,b.nama_regional,c.*,d.*');
  $this->db->from('master_item a'); 
  $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
- $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
+ $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah1','left');
  $this->db->join('tbl_dtl_proses_induk d', 'd.id_master_item = a.kode_item','left');
  if(!empty($firstdate) AND !empty($lastdate)){
     $this->db->where('a.tanggal_pembelian BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
@@ -845,7 +845,7 @@ public function getperumahanarray($id='',$firstdate='',$lastdate='',$teknik='')
  $this->db->select('a.*,b.nama_regional,c.*');
  $this->db->from('master_item a'); 
  $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
- $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
+ $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah1','left');
  if(!empty($firstdate) AND !empty($lastdate)){
     $this->db->where('a.tanggal_pembelian BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
 }
@@ -869,7 +869,7 @@ public function getshgbperumahan($id='',$firstdate='',$lastdate='',$shgb='')
  $this->db->select('a.*,b.nama_regional,c.*');
  $this->db->from('master_item a'); 
  $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
- $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
+ $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah1','left');
  if(!empty($firstdate) AND !empty($lastdate)){
     $this->db->where('a.tanggal_pembelian BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
 }
@@ -878,9 +878,9 @@ if (!empty($id)) {
 }
 
 if (!empty($shgb)) {
-    $this->db->where('status_order_akta', 'selesai');
+    $this->db->where('status_shgb', $shgb);
 }else{
-    $this->db->where('status_order_akta !=', 'selesai');
+    $this->db->where('status_order_akta =', 'belum');
 
 }
 
@@ -892,7 +892,7 @@ public function getshgbperumahanarray($id='',$firstdate='',$lastdate='',$shgb=''
  $this->db->select('a.*,b.nama_regional,c.*');
  $this->db->from('master_item a'); 
  $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
- $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah','left');
+ $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah1','left');
  if(!empty($firstdate) AND !empty($lastdate)){
     $this->db->where('a.tanggal_pembelian BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
 }
