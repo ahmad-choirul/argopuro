@@ -256,7 +256,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="modal-dialog modal-lg" style="width:90%">
         <div class="modal-content">
           <section class="panel panel-primary">
-            <?php echo form_open('laporan/master_proses_indukedit',' id="FormulirEdit"  enctype="multipart/form-data"');?>  
+            <?php echo form_open('laporan/prosesindukedit',' id="FormulirEdit"  enctype="multipart/form-data"');?>  
             <input type="hidden" name="idd" id="idd">
             <header class="panel-heading">
                 <h2 class="panel-title">Edit Data Tanah/Aset</h2>
@@ -390,12 +390,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
-            <div class="form-group keterangan">
-                <label class="col-sm-3 control-label">Keterangan</label>
-                <div class="col-sm-9">
-                    <textarea rows="2" class="form-control" id="keterangan" name="keterangan"></textarea>
                 </div>
             </div>
         </div>
@@ -752,13 +746,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 var datarow='';
                 $.each(response.datasub, function(i, itemsub) {
                     x= x + 1;
-                    datarow+='<tr><td><div class="input-group input-group-icon" style="width:150px;"><input type="text" data-urutan="'+x+'" data-toggle="modal" data-target="#modal-listitems" value="'+itemsub.id_master_item+'"  class="form-control kode_item'+x+'" placeholder="Pilih Item"><span class="input-group-addon"><span class="icon"><i class="fa fa-search"></i></span></span></div></td>';
+                    datarow+='<tr><td><div class="input-group input-group-icon" style="width:150px;"><input type="text" data-urutan="'+x+'" data-toggle="modal" data-target="#modal-listitems" value="'+itemsub.id_master_item+'" name="kode_item[]"  class="form-control kode_item'+x+'" placeholder="Pilih Item"><span class="input-group-addon"><span class="icon"><i class="fa fa-search"></i></span></span></div></td>';
                     datarow+='<input type="hidden" value="'+itemsub.id_dtl_proses_induk+'" class="id_dtl_proses_induk'+x+'" name="id_dtl_proses_induk[]">';
                     datarow+='<td><input type="text" value="'+itemsub.nama_penjual+'"  class="form-control nama_penjual'+x+'"></td>';
                     datarow+='<td><input type="text" value="'+itemsub.no_gambar+'"  class="form-control no_gambar'+x+'"></td>';
                     datarow+='<td><input type="text"  value="'+itemsub.no_pbb+'"  name="no_pbb[]"  class="form-control no_pbb'+x+'"></td>';
                     datarow+='<td><input type="text"  value="'+itemsub.tgl_proses_induk+'"  name="tgl_proses_induk[]" class="form-control tanggal"></td>';
-                     datarow+='<td><input type="text"  value="'+itemsub.keterangan+'"  name="keterangan[]" class="form-control keterangan'+x+'"></td>';
+                     datarow+='<td><input type="text"  value="'+itemsub.keterangan+'"  name="keterangandetail[]" class="form-control keterangandetail'+x+'"></td>';
                     datarow+='<td><a href="javascript:void(0);" class="mb-xs mt-xs mr-xs btn btn-danger deleterowedit"><i class="fa fa-trash-o"></i></a></td></tr>';   
                 });
                 $('.listitemedit').append(datarow);    

@@ -1575,6 +1575,7 @@ public function prosesindukdetail(){
     }
 $this->db->join('master_item', 'tbl_dtl_proses_induk.id_master_item = master_item.kode_item');
     $detail_proses_induk = $this->db->get_where('tbl_dtl_proses_induk', array('id_proses_induk' => $idd)); 
+    $arraysub = array();
     foreach($detail_proses_induk->result() as $r) {    
         $subArray['id_dtl_proses_induk']=$this->security->xss_clean($r->id_dtl_proses_induk);
         $subArray['id_proses_induk']=$this->security->xss_clean($r->id_proses_induk);
@@ -1664,12 +1665,12 @@ public function prosesinduktambah(){
 public function prosesindukedit(){ 
     cekajax(); 
     $simpan = $this->laporan_model;
-    $validation = $this->form_validation; 
-    $validation->set_rules($simpan->rulessplitsing());
-    if ($this->form_validation->run() == FALSE){
-        $errors = $this->form_validation->error_array();
-        $data['errors'] = $errors;
-    }else{            
+    // $validation = $this->form_validation; 
+    // $validation->set_rules($simpan->rulessplitsing());
+    // if ($this->form_validation->run() == FALSE){
+    //     $errors = $this->form_validation->error_array();
+    //     $data['errors'] = $errors;
+    // }else{            
         $kode_item = $this->input->post("kode_item");   
         if(isset($kode_item) === TRUE AND $kode_item[0]!='')
         {       
@@ -1685,7 +1686,7 @@ public function prosesindukedit(){
             $errors['tambah'] = "Mohon pilih item";
             $data['errors'] = $errors;
         }
-    }
+    // }
     $data['token'] = $this->security->get_csrf_hash();
     echo json_encode($data); 
 }

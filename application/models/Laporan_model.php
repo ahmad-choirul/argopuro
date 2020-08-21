@@ -407,8 +407,8 @@ public function rulessplitsing()
 {
     return [
         [
-            'field' => 'tgl_splitsing',
-            'label' => 'Tanggal splitsing',
+            'field' => 'kode_item',
+            'label' => 'kode_item',
             'rules' => 'required',
         ] ,
         [
@@ -527,7 +527,7 @@ public function updatedataprosesinduk()
         $this->db->update('master_item', $update);
     } 
     $this->total = $total;
-    $this->db->update("purchase_order", $this, array('nomor_splitsing' => $post['nomor_splitsing']));
+    $this->db->update("tbl_dtl_proses_induk", $this, array('id_proses_induk' => $id_proses_induk));
     return TRUE;
 }
 
