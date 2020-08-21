@@ -427,7 +427,7 @@ function splitsingvalid($nomor_splitsing){
     ); 
 }   
 
-function simpandatasplitsing(){   
+function simpandataprosesinduk(){   
     $post = $this->input->post();
     $this->db->trans_start();
     $array = array(
@@ -468,6 +468,9 @@ function simpandatasplitsing(){
         );  
         $detail[] = $listitem;
         $this->db->insert("tbl_dtl_proses_induk", $listitem);  
+        $update = array('status_shgb' => 'proses','no_shgb' => $id_proses_induk );
+        $this->db->where('kode_item', $kode_item[$i]);
+        $this->db->update('master_item', $update);
     } 
     if($this->db->trans_status() === FALSE){
         return false;
@@ -478,41 +481,50 @@ function simpandatasplitsing(){
  }
 }    
 
-public function updatedatasplitsing()
+
+
+public function updatedataprosesinduk()
 {
     $post = $this->input->post();   
-    if($post['termin'] < 1 || $post["pembayaran"] == 'cash'){
-        $post['termin'] = 0; $post["pembayaran"] = 'cash';
-    }
-    if($post['termin'] > 0 && $post["pembayaran"] == 'cash'){
-        $post["pembayaran"] = 'hutang';
-    }
-    $this->nomor_splitsing = $post["nomor_splitsing"]; 
-    $this->tgl_splitsing = $post["tgl_splitsing"];
-    $this->termin = $post["termin"]; 
-    $this->pembayaran = $post["pembayaran"]; 
-    $this->supplier = $post["supplier"];    
-    $this->keterangan = $post["keterangan"];      
-    $this->termin = $post["termin"];         
-    $this->db->update("purchase_order", $this, array('nomor_splitsing' => $post['idd']));
-    $this->db->where('nomor_splitsing', $post['idd'])->delete('purchase_order_detail');  
-    $nomor_splitsing = $this->input->post("nomor_splitsing");   
+    $this->penjual = $post["penjual"];
+    $this->no_gambar = $post["no_gambar2"];
+    $this->no_surat_tanah = $post["no_surat_tanah"];
+    $this->nama_surat_tanah = $post["nama_surat_tanah"];
+    $this->luas = $post["luas"];
+    $this->luas_daftar = $post["luas_daftar"];
+    $this->luas_terbit = $post["luas_terbit"];
+    $this->tanggal_daftar_sk_hak = $post["tanggal_daftar_sk_hak"];
+    $this->no_daftar_sk_hak = $post["no_daftar_sk_hak"];
+    $this->tanggal_terbit_sk_hak = $post["tanggal_terbit_sk_hak"];
+    $this->no_terbit_sk_hak = $post["no_terbit_sk_hak"];
+    $this->tanggal_daftar_shgb = $post["tanggal_daftar_shgb"];
+    $this->no_daftar_shgb = $post["no_daftar_shgb"];
+    $this->tanggal_terbit_shgb = $post["tanggal_terbit_shgb"];
+    $this->no_terbit_shgb = $post["no_terbit_shgb"];
+    $this->masa_berlaku_shgb = $post["masa_berlaku_shgb"];
+    $this->target_penyelesaian = $post["target_penyelesaian"];
+    $this->status = $post["status"];
+    $this->keterangan = $post["keterangan"];
+    $this->db->update("master_proses_induk", $this, array('id_proses_induk' => $post['idd']));
+    $this->db->where('id_proses_induk', $post['idd'])->delete('tbl_dtl_proses_induk');  
+    $id_proses_induk =  $this->db->insert_id();
     $kode_item = $this->input->post("kode_item");    
-    $sku = $this->input->post("sku");    
-    $nama_item = $this->input->post("nama_item");   
-    $satuan_besar = $this->input->post("satuan_besar");    
-    $kuantiti = bilanganbulat($this->input->post("kuantiti"));    
+    $tgl_proses_induk = $this->input->post("tgl_proses_induk");    
+    $keterangandetail = $this->input->post("keterangandetail");    
     $total = 0;
-    for($i = 0; $i < count($kode_item); $i++){       
+    $detail = array();
+    for($i = 0; $i < count($kode_item); $i++){    
         $listitem = array(
-            'nomor_splitsing'=>$nomor_splitsing,  
-            'kode_item'=>$kode_item[$i],  
-            'sku'=>$sku[$i],  
-            'nama_item'=>$nama_item[$i], 
-            'satuan_besar'=>$satuan_besar[$i],  
-            'kuantiti'=>$kuantiti[$i],  
+            'id_proses_induk'=>$id_proses_induk,  
+            'id_master_item'=>$kode_item[$i],  
+            'tgl_proses_induk'=>$tgl_proses_induk[$i],  
+            'keterangan'=>$keterangandetail[$i],
         );  
-        $this->db->insert("purchase_order_detail", $listitem);  
+        $detail[] = $listitem;
+        $this->db->insert("tbl_dtl_proses_induk", $listitem);  
+        $update = array('status_shgb' => 'proses','no_shgb' => $id_proses_induk );
+        $this->db->where('kode_item', $kode_item[$i]);
+        $this->db->update('master_item', $update);
     } 
     $this->total = $total;
     $this->db->update("purchase_order", $this, array('nomor_splitsing' => $post['nomor_splitsing']));

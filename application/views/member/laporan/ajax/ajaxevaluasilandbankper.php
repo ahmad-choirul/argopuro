@@ -193,37 +193,39 @@
     <div class="panel-body"> 
         <div class="table" style="overflow-x: auto;white-space: nowrap;">
             <table class="table table-bordered table-hover table-striped data2" id="itemsdata2">
-                <thead>
-                    <tr>
+               <thead>
+                <tr>
 
-                        <th rowspan="2" style="text-align: center;">NO</th>
-                        <th rowspan="2"  style="text-align: center;">NO GBR </th>
-                        <th rowspan="2" style="text-align: center;">THN</th>
-                        <th rowspan="2" style="text-align: center;">PENJUAL</th>
-                        <th colspan="4" style="text-align: center;">DATA TANAH</th>
-                        <th rowspan="2" style="text-align: center;">POSISI SURAT</th>
-                        <th rowspan="2" style="text-align: center;">HARGA AKTA</th>
-                        <th colspan="7" style="text-align: center;">PENGALIHAN HAK</th>
-                        <th rowspan="2" style="text-align: center;">Status Teknik</th>
-                        <th rowspan="2" style="text-align: center;">Status Proses Induk</th>
-                        <th rowspan="2" style="text-align: center;">KET</th>
+                    <th rowspan="2" style="text-align: center;">NO</th>
+                    <th rowspan="2"  style="text-align: center;">Aksi</th>
+                    <th rowspan="2"  style="text-align: center;">Lokasi</th>
+                    <th rowspan="2"  style="text-align: center;">NO GBR </th>
+                    <th rowspan="2" style="text-align: center;">THN</th>
+                    <th rowspan="2" style="text-align: center;">PENJUAL</th>
+                    <th colspan="4" style="text-align: center;">DATA TANAH</th>
+                    <th rowspan="2" style="text-align: center;">POSISI SURAT</th>
+                    <th rowspan="2" style="text-align: center;">HARGA AKTA</th>
+                    <th colspan="6" style="text-align: center;">PENGALIHAN HAK</th>
+                    <th rowspan="2" style="text-align: center;">Status Teknik</th>
+                    <th rowspan="2" style="text-align: center;">Status Proses Induk</th>
+                    <th rowspan="2" style="text-align: center;">KET</th>
 
 
 
-                    </tr>
-                    <tr>
-                        <th  style="text-align: center;">SURAT</th>
-                        <th  style="text-align: center;">ATAS NAMA</th>
-                        <th style="text-align: center;">L SURAT </th>
-                        <th style="text-align: center;">L UKUR </th>
-                        <th style="text-align: center;">Status Order</th>
-                        <th style="text-align: center;">JENIS</th>
-                        <th style="text-align: center;">NO AKTA</th>
-                        <th style="text-align: center;">TANGGAL</th>
-                        <th style="text-align: center;">ATAS NAMA</th>
-                    </tr>
+                </tr>
+                <tr>
+                    <th  style="text-align: center;">SURAT</th>
+                    <th  style="text-align: center;">ATAS NAMA</th>
+                    <th style="text-align: center;">L SURAT </th>
+                    <th style="text-align: center;">L UKUR </th>
+                    <th style="text-align: center;">Status Order</th>
+                    <th style="text-align: center;">JENIS</th>
+                    <th style="text-align: center;">NO AKTA</th>
+                    <th style="text-align: center;">TANGGAL</th>
+                    <th style="text-align: center;">ATAS NAMA</th>
+                </tr>
 
-                </thead>
+            </thead>
                 <tbody>
                     <tr>
                         <td colspan="21" align="left"> sd. Tahun <?php echo date('Y')-1 ?></td>

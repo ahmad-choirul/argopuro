@@ -826,7 +826,7 @@ if (!empty($id)) {
 }
 
 if (!empty($teknik)) {
-    $this->db->where('status_teknik', 'sudah');
+    $this->db->where('status_teknik', $teknik);
 }
 
 return $this->db->get()->result();
@@ -1580,48 +1580,6 @@ public function rulesdetailproses_induk()
             'rules' => 'required',
         ]
     ];
-}
-function simpandatamasterproses_induk(){
-    $post = $this->input->post();
-    $array = array(
-     'no_surat_tanah'=>$post["no_surat_tanah"],
-     'nama_surat_tanah'=>$post["nama_surat_tanah"],
-     'luas'=>$post["luas"],
-     'tanggal_daftar_sk_hak'=>$post["tanggal_daftar_sk_hak"],
-     'no_daftar_sk_hak'=>$post["no_daftar_sk_hak"],
-     'tanggal_terbit_sk_hak'=>$post["tanggal_terbit_sk_hak"],
-     'no_terbit_sk_hak'=>$post["no_terbit_sk_hak"],
-     'tanggal_daftar_shgb'=>$post["tanggal_daftar_shgb"],
-     'no_daftar_shgb'=>$post["no_daftar_shgb"],
-     'tanggal_terbit_shgb'=>$post["tanggal_terbit_shgb"],
-     'no_terbit_shgb'=>$post["no_terbit_shgb"],
-     'masa_berlaku_shgb'=>$post["masa_berlaku_shgb"],
-     'target_penyelesaian'=>$post["target_penyelesaian"],
-     'status'=>$post["status"],
-     'keterangan'=>$post["keterangan"],
- );
-    $this->db->insert("master_proses_induk", $array);
-    return $this->db->insert_id();
-}
-public function updatedatamasterproses_induk()
-{
-    $post = $this->input->post();
-    $this->no_surat_tanah = $post["no_surat_tanah"];
-    $this->nama_surat_tanah = $post["nama_surat_tanah"];
-    $this->luas = $post["luas"];
-    $this->tanggal_daftar_sk_hak = $post["tanggal_daftar_sk_hak"];
-    $this->no_daftar_sk_hak = $post["no_daftar_sk_hak"];
-    $this->tanggal_terbit_sk_hak = $post["tanggal_terbit_sk_hak"];
-    $this->no_terbit_sk_hak = $post["no_terbit_sk_hak"];
-    $this->tanggal_daftar_shgb = $post["tanggal_daftar_shgb"];
-    $this->no_daftar_shgb = $post["no_daftar_shgb"];
-    $this->tanggal_terbit_shgb = $post["tanggal_terbit_shgb"];
-    $this->no_terbit_shgb = $post["no_terbit_shgb"];
-    $this->masa_berlaku_shgb = $post["masa_berlaku_shgb"];
-    $this->target_penyelesaian = $post["target_penyelesaian"];
-    $this->status = $post["status"];
-    $this->keterangan = $post["keterangan"];
-    return $this->db->update("master_proses_induk", $this, array('id_proses_induk' => $post['idd']));
 }
 
 }

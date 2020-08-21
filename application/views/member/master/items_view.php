@@ -22,7 +22,6 @@
            $totalhargatotal=0;
            $totalhargabiaya=0;
            $totalhargam=0;
-           $totalpematangan =0;
            $totalgantirugi =0;
            $totalpbb =0;
            $totallain=0;
@@ -43,7 +42,6 @@
                         <th rowspan="2" style="text-align: center;"></th>
                         <th rowspan="2" style="text-align: center;">Lokasi</th>
                         <th rowspan="2" style="text-align: center;">Kode Item </th>
-                        <th rowspan="2" style="text-align: center;">Nama Item</th>
                         <th rowspan="2" style="text-align: center;">Tanggal Pembelian</th>
                         <th rowspan="2" style="text-align: center;">Nama Penjual</th>
                         <th colspan="2" style="text-align: center;">Data Surat Tanah</th>
@@ -54,7 +52,7 @@
                         <th colspan="2" style="text-align: center;">Harga Pengalihan Hak</th>
                         <th colspan="2" style="text-align: center;">Makelar</th>
                         <th colspan="3" style="text-align: center;">Pengalihan Hak</th>
-                        <th colspan="5" style="text-align: center;">Biaya Lain-lain</th>
+                        <th colspan="4" style="text-align: center;">Biaya Lain-lain</th>
                         <th rowspan ="2" style="text-align: center;" >Total Harga + biaya</th>
                         <th rowspan="2" style="text-align: center;" >Harga / M^2</th>
                         <th rowspan="2" style="text-align: center;">Keterangan</th>
@@ -76,7 +74,6 @@
                         <th style="text-align: center;">Tanggal</th>
                         <th style="text-align: center;">Akte</th>
                         <th style="text-align: center;">Nama</th>
-                        <th style="text-align: center;">Pematangan</th>
                         <th style="text-align: center;">Ganti Rugi</th>
                         <th style="text-align: center;">PBB</th>
                         <th style="text-align: center;">Lain2</th>
@@ -128,10 +125,6 @@
                         $data->pbb=0;
                     }if ($data->ganti_rugi=='') {
                         $data->ganti_rugi=0;
-                    }if ($data->pematangan=='') {
-                        $data->pematangan=0;
-                    }if ($data->pematangan=='') {
-                        $data->pematangan=0;
                     }
                     if ($data->nilai=='') {
                         $data->nilai=0;
@@ -142,15 +135,11 @@
                         $data->pbb=0;
                     }if ($data->ganti_rugi=='') {
                         $data->ganti_rugi=0;
-                    }if ($data->pematangan=='') {
-                        $data->pematangan=0;
-                    }if ($data->pematangan=='') {
-                        $data->pematangan=0;
                     }
                     if ($data->nilai=='') {
                         $data->nilai=0;
                     }                 
-                    $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi+$data->pematangan;
+                    $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi;
                     $totalharga_biaya = $data->total_harga_pengalihan+$data->nilai+$totalbiayalain;
                     if ($totalharga_biaya==0) {
                         $harga_perm=0;
@@ -166,7 +155,6 @@
                     $totalnilaimakelar+=$data->nilai;
                     $totalhargabiaya+=$totalharga_biaya;
                     $totalhargam+=$harga_perm;
-                    $totalpematangan += $data->pematangan;
                     $totalgantirugi +=$data->ganti_rugi;
                     $totalpbb +=$data->pbb;
                     $totallain+=$data->lain;
@@ -175,7 +163,6 @@
                     <td><?= $tombol ?></td>
                     <td><?=$perumahan?></td>
                     <td><?=$data->kode_item?></td> 
-                    <td><?=$data->nama_item?></td>  
                     <td><?=tgl_indo($data->tanggal_pembelian)?></td>
                     <td><?=$data->nama_penjual?></td>  
                     <td><?=$data->nama_surat_tanah?></td>  
@@ -193,8 +180,7 @@
                     <td><?=rupiah($data->nilai)?></td>  
                     <td><?=$tgl_pengalihan?></td>  
                     <td><?=$data->akta_pengalihan?></td>  
-                    <td><?=$data->nama_pengalihan?></td>  
-                    <td><?=rupiah($data->pematangan)?></td>  
+                    <td><?=$data->nama_pengalihan?></td>   
                     <td><?=rupiah($data->ganti_rugi)?></td>  
                     <td><?=rupiah($data->pbb)?></td>  
                     <td><?=rupiah($data->lain)?></td>  
@@ -233,15 +219,12 @@
                 <td ></td>
                 <td ></td>
                 <td ></td>
-                <td ></td>
-                <td ></td>
 
 
             </tr>
             <tr>
                 <td colspan="4" align="right"><b style="color: black">Total  <?php echo $dataperumahan['nama_regional']; ?> </b></td>
 
-                <td ></td>
                 <td ></td>
                 <td ></td>
                 <td ></td>
@@ -255,11 +238,10 @@
                 <td ><?php echo rupiah($totalhargasatuan); ?></td>
                 <td ><?php echo rupiah($totalhargatotal); ?></td>
                 <td ></td>
+                <td ></td>
                 <td ><?php echo rupiah($totalnilaimakelar); ?></td>
                 <td ></td>
                 <td ></td>
-                <td ></td>
-                <td ><?php echo rupiah($totalpematangan); ?></td>
                 <td ><?php echo rupiah($totalgantirugi); ?></td>
                 <td ><?php echo rupiah($totalpbb); ?></td>
                 <td ><?php echo rupiah($totallain); ?></td>
