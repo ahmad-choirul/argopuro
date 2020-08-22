@@ -15,6 +15,7 @@
                     <th rowspan="2" style="text-align: center;">HARGA AKTA</th>
                     <th colspan="7" style="text-align: center;">PENGALIHAN HAK</th>
                     <th rowspan="2" style="text-align: center;">S TERIMA FINANCE</th>
+                    <th rowspan="2" style="text-align: center;">S SHGB</th>
                     <th rowspan="2" style="text-align: center;">KET</th>
 
 
@@ -85,6 +86,7 @@
                         <td><?=$data->nama_pengalihan?></td>  
                         <td></td>  
                         <td><?=tgl_indo($data->terima_finance)?></td>  
+                        <td><?=$data->status_shgb?></td>  
                         <td><?=$data->keterangan?></td>  
                     <?php endforeach ?>
                     <?php else: ?>
@@ -148,7 +150,8 @@
                             <td><?=$data->tanggal_pengalihan?></td>  
                             <td><?=$data->nama_pengalihan?></td>  
                             <td></td>  
-                            <td><?=tgl_indo($data->terima_finance)?></td>  
+                            <td><?=tgl_indo($data->terima_finance)?></td> 
+                            <td><?=$data->status_shgb?></td>  
                             <td><?=$data->keterangan?></td>  
                         <?php endforeach ?>
                         <?php else: ?>
@@ -207,6 +210,7 @@
                         <th rowspan="2" style="text-align: center;">HARGA AKTA</th>
                         <th colspan="7" style="text-align: center;">PENGALIHAN HAK</th>
                         <th rowspan="2" style="text-align: center;">S TERIMA FINANCE</th>
+                        <th rowspan="2" style="text-align: center;">S SHGB</th>
                         <th rowspan="2" style="text-align: center;">KET</th>
 
 
@@ -278,6 +282,7 @@
                             <td><?=$data->nama_pengalihan?></td>  
                             <td></td>  
                             <td><?=tgl_indo($data->terima_finance)?></td>  
+                            <td><?=$data->status_shgb?></td>  
                             <td><?=$data->keterangan?></td>  
                         <?php endforeach ?>
                         <?php else: ?>
@@ -342,6 +347,7 @@
                                 <td><?=$data->nama_pengalihan?></td>  
                                 <td></td>  
                                 <td><?=tgl_indo($data->terima_finance)?></td>  
+                                <td><?=$data->status_shgb?></td>  
                                 <td><?=$data->keterangan?></td>  
                             <?php endforeach ?>
                             <?php else: ?>

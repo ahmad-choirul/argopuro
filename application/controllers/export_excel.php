@@ -67,8 +67,6 @@ class Export_excel extends CI_Controller {
 
     $nama_perumahan = '';
     $no=1;
-    $nama_perumahan = '';
-    $no=1;
     foreach($datarumah['dataperumahanses'] as $data) { 
       if ($data['tanggal_pengalihan']!=null) {
         $tgl_pengalihan = tgl_indo($data['tanggal_pengalihan']);
@@ -82,7 +80,7 @@ class Export_excel extends CI_Controller {
     }
     $nama_perumahan = $perumahan;
     $spreadsheet->setActiveSheetIndex(0)
-    ->setCellValue('A'.$i, $no++)
+    ->setCellValue('A'.$i, $no)
     ->setCellValue('B'.$i, $perumahan)
     ->setCellValue('C'.$i, $data['no_gambar'])
     ->setCellValue('D'.$i, tgl_indo($data['tanggal_pembelian']))
@@ -101,6 +99,7 @@ class Export_excel extends CI_Controller {
     ->setCellValue('Q'.$i, $data['status_teknik'])
     ->setCellValue('R'.$i, $data['keterangan']);
     $i++;
+    $no++;
     $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
 }
 
@@ -229,7 +228,6 @@ header('Cache-Control: max-age=1');
                 $totalhargatotal=0;
                 $totalhargabiaya=0;
                 $totalhargam=0;
-                $totalpematangan =0;
                 $totalgantirugi =0;
                 $totalpbb =0;
                 $totallain=0;
@@ -249,41 +247,35 @@ header('Cache-Control: max-age=1');
                     $perumahan = $data->nama_regional;
                 }
                 if ($data->total_harga_pengalihan==0) {
+                    $total_harga_pengalihan=0;
                     $harga_satuan = 0;
                 }else{
                     $harga_satuan = $data->total_harga_pengalihan/$data->luas_surat;            
+                    $total_harga_pengalihan=$data->total_harga_pengalihan;                
                 }
 
                 if ($data->lain=='') {
-                        $data->lain=0;
-                    }if ($data->pbb=='') {
-                        $data->pbb=0;
-                    }if ($data->ganti_rugi=='') {
-                        $data->ganti_rugi=0;
-                    }if ($data->pematangan=='') {
-                        $data->pematangan=0;
-                    }if ($data->pematangan=='') {
-                        $data->pematangan=0;
-                    }
-                    if ($data->nilai=='') {
-                        $data->nilai=0;
-                    }                 
-                    if ($data->lain=='') {
-                        $data->lain=0;
-                    }if ($data->pbb=='') {
-                        $data->pbb=0;
-                    }if ($data->ganti_rugi=='') {
-                        $data->ganti_rugi=0;
-                    }if ($data->pematangan=='') {
-                        $data->pematangan=0;
-                    }if ($data->pematangan=='') {
-                        $data->pematangan=0;
-                    }
-                    if ($data->nilai=='') {
-                        $data->nilai=0;
-                    }                 
-                    $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi+$data->pematangan;
-                $totalharga_biaya = $data->total_harga_pengalihan+$data->nilai+$totalbiayalain;
+                    $data->lain=0;
+                }if ($data->pbb=='') {
+                    $data->pbb=0;
+                }if ($data->ganti_rugi=='') {
+                    $data->ganti_rugi=0;
+                }
+                if ($data->nilai=='') {
+                    $data->nilai=0;
+                }                 
+                if ($data->lain=='') {
+                    $data->lain=0;
+                }if ($data->pbb=='') {
+                    $data->pbb=0;
+                }if ($data->ganti_rugi=='') {
+                    $data->ganti_rugi=0;
+                }
+                if ($data->nilai=='') {
+                    $data->nilai=0;
+                }                 
+                $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi;
+                $totalharga_biaya = $total_harga_pengalihan+$data->nilai+$totalbiayalain;
                 if ($totalharga_biaya==0) {
                     $harga_perm=0;
                 }else{
@@ -294,11 +286,10 @@ header('Cache-Control: max-age=1');
                 $totalluassurat+=$data->luas_surat;
                 $totalluasukur+=$data->luas_ukur;
                 $totalhargasatuan+=$harga_satuan;
-                $totalhargatotal+=$data->total_harga_pengalihan;
+                $totalhargatotal+=$total_harga_pengalihan;
                 $totalnilaimakelar+=$data->nilai;
                 $totalhargabiaya+=$totalharga_biaya;
                 $totalhargam+=$harga_perm;
-                $totalpematangan += $data->pematangan;
                 $totalgantirugi +=$data->ganti_rugi;
                 $totalpbb +=$data->pbb;
                 $totallain+=$data->lain;
@@ -334,14 +325,13 @@ header('Cache-Control: max-age=1');
                 ->setCellValue('R'.$i,$tgl_pengalihan)  
                 ->setCellValue('S'.$i,$data->akta_pengalihan)  
                 ->setCellValue('T'.$i,$data->nama_pengalihan)  
-                ->setCellValue('U'.$i,rupiah($data->pematangan))  
-                ->setCellValue('V'.$i,rupiah($data->ganti_rugi))  
-                ->setCellValue('W'.$i,rupiah($data->pbb))  
-                ->setCellValue('Z'.$i,rupiah($data->lain))  
-                ->setCellValue('Y'.$i,rupiah($totalbiayalain))  
-                ->setCellValue('Z'.$i,rupiah($totalharga_biaya))  
-                ->setCellValue('AA'.$i,rupiah($harga_perm))  
-                ->setCellValue('AB'.$i,$data->keterangan);
+                ->setCellValue('U'.$i,rupiah($data->ganti_rugi))  
+                ->setCellValue('V'.$i,rupiah($data->pbb))  
+                ->setCellValue('W'.$i,rupiah($data->lain))  
+                ->setCellValue('X'.$i,rupiah($totalbiayalain))  
+                ->setCellValue('Y'.$i,rupiah($totalharga_biaya))  
+                ->setCellValue('Z'.$i,rupiah($harga_perm))  
+                ->setCellValue('AA'.$i,$data->keterangan);
                 $i++;
                 $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
             }
@@ -371,7 +361,6 @@ header('Cache-Control: max-age=1');
             $totalhargatotal=0;
             $totalhargabiaya=0;
             $totalhargam=0;
-            $totalpematangan =0;
             $totalgantirugi =0;
             $totalpbb =0;
             $totallain=0;
@@ -397,34 +386,26 @@ header('Cache-Control: max-age=1');
             }
 
             if ($data->lain=='') {
-                        $data->lain=0;
-                    }if ($data->pbb=='') {
-                        $data->pbb=0;
-                    }if ($data->ganti_rugi=='') {
-                        $data->ganti_rugi=0;
-                    }if ($data->pematangan=='') {
-                        $data->pematangan=0;
-                    }if ($data->pematangan=='') {
-                        $data->pematangan=0;
-                    }
-                    if ($data->nilai=='') {
-                        $data->nilai=0;
-                    }                 
-                    if ($data->lain=='') {
-                        $data->lain=0;
-                    }if ($data->pbb=='') {
-                        $data->pbb=0;
-                    }if ($data->ganti_rugi=='') {
-                        $data->ganti_rugi=0;
-                    }if ($data->pematangan=='') {
-                        $data->pematangan=0;
-                    }if ($data->pematangan=='') {
-                        $data->pematangan=0;
-                    }
-                    if ($data->nilai=='') {
-                        $data->nilai=0;
-                    }                 
-                    $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi+$data->pematangan;
+                $data->lain=0;
+            }if ($data->pbb=='') {
+                $data->pbb=0;
+            }if ($data->ganti_rugi=='') {
+                $data->ganti_rugi=0;
+            }
+            if ($data->nilai=='') {
+                $data->nilai=0;
+            }                 
+            if ($data->lain=='') {
+                $data->lain=0;
+            }if ($data->pbb=='') {
+                $data->pbb=0;
+            }if ($data->ganti_rugi=='') {
+                $data->ganti_rugi=0;
+            }
+            if ($data->nilai=='') {
+                $data->nilai=0;
+            }                 
+            $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi;
             $totalharga_biaya = $data->total_harga_pengalihan+$data->nilai+$totalbiayalain;
             if ($totalharga_biaya==0) {
                 $harga_perm=0;
@@ -440,7 +421,6 @@ header('Cache-Control: max-age=1');
             $totalnilaimakelar+=$data->nilai;
             $totalhargabiaya+=$totalharga_biaya;
             $totalhargam+=$harga_perm;
-            $totalpematangan += $data->pematangan;
             $totalgantirugi +=$data->ganti_rugi;
             $totalpbb +=$data->pbb;
             $totallain+=$data->lain;
@@ -476,14 +456,13 @@ header('Cache-Control: max-age=1');
             ->setCellValue('R'.$i,$tgl_pengalihan)  
             ->setCellValue('S'.$i,$data->akta_pengalihan)  
             ->setCellValue('T'.$i,$data->nama_pengalihan)  
-            ->setCellValue('U'.$i,rupiah($data->pematangan))  
-            ->setCellValue('V'.$i,rupiah($data->ganti_rugi))  
-            ->setCellValue('W'.$i,rupiah($data->pbb))  
-            ->setCellValue('Z'.$i,rupiah($data->lain))  
-            ->setCellValue('Y'.$i,rupiah($totalbiayalain))  
-            ->setCellValue('Z'.$i,rupiah($totalharga_biaya))  
-            ->setCellValue('AA'.$i,rupiah($harga_perm))  
-            ->setCellValue('AB'.$i,$data->keterangan);
+            ->setCellValue('U'.$i,rupiah($data->ganti_rugi))  
+            ->setCellValue('V'.$i,rupiah($data->pbb))  
+            ->setCellValue('W'.$i,rupiah($data->lain))  
+            ->setCellValue('X'.$i,rupiah($totalbiayalain))  
+            ->setCellValue('Y'.$i,rupiah($totalharga_biaya))  
+            ->setCellValue('Z'.$i,rupiah($harga_perm))  
+            ->setCellValue('AA'.$i,$data->keterangan);
             $i++;
             $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
         }
@@ -514,7 +493,6 @@ foreach ($datarumah['perumahanlokasi'] as $per){
         $totalhargatotal=0;
         $totalhargabiaya=0;
         $totalhargam=0;
-        $totalpematangan =0;
         $totalgantirugi =0;
         $totalpbb =0;
         $totallain=0;
@@ -540,34 +518,26 @@ foreach ($datarumah['perumahanlokasi'] as $per){
         }
 
         if ($data->lain=='') {
-                        $data->lain=0;
-                    }if ($data->pbb=='') {
-                        $data->pbb=0;
-                    }if ($data->ganti_rugi=='') {
-                        $data->ganti_rugi=0;
-                    }if ($data->pematangan=='') {
-                        $data->pematangan=0;
-                    }if ($data->pematangan=='') {
-                        $data->pematangan=0;
-                    }
-                    if ($data->nilai=='') {
-                        $data->nilai=0;
-                    }                 
-                    if ($data->lain=='') {
-                        $data->lain=0;
-                    }if ($data->pbb=='') {
-                        $data->pbb=0;
-                    }if ($data->ganti_rugi=='') {
-                        $data->ganti_rugi=0;
-                    }if ($data->pematangan=='') {
-                        $data->pematangan=0;
-                    }if ($data->pematangan=='') {
-                        $data->pematangan=0;
-                    }
-                    if ($data->nilai=='') {
-                        $data->nilai=0;
-                    }                 
-                    $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi+$data->pematangan;
+            $data->lain=0;
+        }if ($data->pbb=='') {
+            $data->pbb=0;
+        }if ($data->ganti_rugi=='') {
+            $data->ganti_rugi=0;
+        }
+        if ($data->nilai=='') {
+            $data->nilai=0;
+        }                 
+        if ($data->lain=='') {
+            $data->lain=0;
+        }if ($data->pbb=='') {
+            $data->pbb=0;
+        }if ($data->ganti_rugi=='') {
+            $data->ganti_rugi=0;
+        }
+        if ($data->nilai=='') {
+            $data->nilai=0;
+        }                 
+        $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi;
         $totalharga_biaya = $data->total_harga_pengalihan+$data->nilai+$totalbiayalain;
         if ($totalharga_biaya==0) {
             $harga_perm=0;
@@ -583,7 +553,6 @@ foreach ($datarumah['perumahanlokasi'] as $per){
         $totalnilaimakelar+=$data->nilai;
         $totalhargabiaya+=$totalharga_biaya;
         $totalhargam+=$harga_perm;
-        $totalpematangan += $data->pematangan;
         $totalgantirugi +=$data->ganti_rugi;
         $totalpbb +=$data->pbb;
         $totallain+=$data->lain;
@@ -618,15 +587,14 @@ foreach ($datarumah['perumahanlokasi'] as $per){
         ->setCellValue('Q'.$i,rupiah($data->nilai))  
         ->setCellValue('R'.$i,$tgl_pengalihan)  
         ->setCellValue('S'.$i,$data->akta_pengalihan)  
-        ->setCellValue('T'.$i,$data->nama_pengalihan)  
-        ->setCellValue('U'.$i,rupiah($data->pematangan))  
-        ->setCellValue('V'.$i,rupiah($data->ganti_rugi))  
-        ->setCellValue('W'.$i,rupiah($data->pbb))  
-        ->setCellValue('Z'.$i,rupiah($data->lain))  
-        ->setCellValue('Y'.$i,rupiah($totalbiayalain))  
-        ->setCellValue('Z'.$i,rupiah($totalharga_biaya))  
-        ->setCellValue('AA'.$i,rupiah($harga_perm))  
-        ->setCellValue('AB'.$i,$data->keterangan);
+        ->setCellValue('T'.$i,$data->nama_pengalihan)   
+        ->setCellValue('U'.$i,rupiah($data->ganti_rugi))  
+        ->setCellValue('V'.$i,rupiah($data->pbb))  
+        ->setCellValue('W'.$i,rupiah($data->lain))  
+        ->setCellValue('X'.$i,rupiah($totalbiayalain))  
+        ->setCellValue('Y'.$i,rupiah($totalharga_biaya))  
+        ->setCellValue('Z'.$i,rupiah($harga_perm))  
+        ->setCellValue('AA'.$i,$data->keterangan);
         $i++;
         $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
     }
@@ -732,24 +700,24 @@ if ($data['id_perumahan']=='0') {
 }
 $nama_perumahan = $perumahan;
 $spreadsheet->setActiveSheetIndex(0)
-  ->setCellValue('B'.$i, $no++.'')
-    ->setCellValue('C'.$i, $perumahan)
-    ->setCellValue('D'.$i, $data['no_gambar'])
-    ->setCellValue('E'.$i, tgl_indo($data['tanggal_pembelian']))
-    ->setCellValue('F'.$i, $data['nama_penjual'])
-    ->setCellValue('G'.$i, $data['kode_sertifikat'])
-    ->setCellValue('H'.$i, $data['nama_surat_tanah'])
-    ->setCellValue('I'.$i, $data['luas_surat'])
-    ->setCellValue('J'.$i, $data['luas_ukur'])
-    ->setCellValue('K'.$i, $data['id_posisi_surat'])
-    ->setCellValue('L'.$i, '')
-    ->setCellValue('M'.$i, $data['status_order_akta'])
-    ->setCellValue('N'.$i, $data['jenis_pengalihan_hak'])
-    ->setCellValue('O'.$i, $data['akta_pengalihan'])
-    ->setCellValue('P'.$i, $tgl_pengalihan)
-    ->setCellValue('Q'.$i, $data['nama_pengalihan'])
-    ->setCellValue('R'.$i, $data['terima_finance'])
-    ->setCellValue('S'.$i, $data['keterangan']);
+->setCellValue('B'.$i, $no++.'')
+->setCellValue('C'.$i, $perumahan)
+->setCellValue('D'.$i, $data['no_gambar'])
+->setCellValue('E'.$i, tgl_indo($data['tanggal_pembelian']))
+->setCellValue('F'.$i, $data['nama_penjual'])
+->setCellValue('G'.$i, $data['kode_sertifikat'])
+->setCellValue('H'.$i, $data['nama_surat_tanah'])
+->setCellValue('I'.$i, $data['luas_surat'])
+->setCellValue('J'.$i, $data['luas_ukur'])
+->setCellValue('K'.$i, $data['id_posisi_surat'])
+->setCellValue('L'.$i, '')
+->setCellValue('M'.$i, $data['status_order_akta'])
+->setCellValue('N'.$i, $data['jenis_pengalihan_hak'])
+->setCellValue('O'.$i, $data['akta_pengalihan'])
+->setCellValue('P'.$i, $tgl_pengalihan)
+->setCellValue('Q'.$i, $data['nama_pengalihan'])
+->setCellValue('R'.$i, $data['terima_finance'])
+->setCellValue('S'.$i, $data['keterangan']);
 $i++;
 $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
 }
@@ -771,24 +739,24 @@ if ($data['id_perumahan']=='0') {
 }
 $nama_perumahan = $perumahan;
 $spreadsheet->setActiveSheetIndex(0)
-  ->setCellValue('B'.$i, $no++.'')
-    ->setCellValue('C'.$i, $perumahan)
-    ->setCellValue('D'.$i, $data['no_gambar'])
-    ->setCellValue('E'.$i, tgl_indo($data['tanggal_pembelian']))
-    ->setCellValue('F'.$i, $data['nama_penjual'])
-    ->setCellValue('G'.$i, $data['kode_sertifikat'])
-    ->setCellValue('H'.$i, $data['nama_surat_tanah'])
-    ->setCellValue('I'.$i, $data['luas_surat'])
-    ->setCellValue('J'.$i, $data['luas_ukur'])
-    ->setCellValue('K'.$i, $data['id_posisi_surat'])
-    ->setCellValue('L'.$i, '')
-    ->setCellValue('M'.$i, $data['status_order_akta'])
-    ->setCellValue('N'.$i, $data['jenis_pengalihan_hak'])
-    ->setCellValue('O'.$i, $data['akta_pengalihan'])
-    ->setCellValue('P'.$i, $tgl_pengalihan)
-    ->setCellValue('Q'.$i, $data['nama_pengalihan'])
-    ->setCellValue('R'.$i, $data['terima_finance'])
-    ->setCellValue('S'.$i, $data['keterangan']);
+->setCellValue('B'.$i, $no++.'')
+->setCellValue('C'.$i, $perumahan)
+->setCellValue('D'.$i, $data['no_gambar'])
+->setCellValue('E'.$i, tgl_indo($data['tanggal_pembelian']))
+->setCellValue('F'.$i, $data['nama_penjual'])
+->setCellValue('G'.$i, $data['kode_sertifikat'])
+->setCellValue('H'.$i, $data['nama_surat_tanah'])
+->setCellValue('I'.$i, $data['luas_surat'])
+->setCellValue('J'.$i, $data['luas_ukur'])
+->setCellValue('K'.$i, $data['id_posisi_surat'])
+->setCellValue('L'.$i, '')
+->setCellValue('M'.$i, $data['status_order_akta'])
+->setCellValue('N'.$i, $data['jenis_pengalihan_hak'])
+->setCellValue('O'.$i, $data['akta_pengalihan'])
+->setCellValue('P'.$i, $tgl_pengalihan)
+->setCellValue('Q'.$i, $data['nama_pengalihan'])
+->setCellValue('R'.$i, $data['terima_finance'])
+->setCellValue('S'.$i, $data['keterangan']);
 $i++;
 $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
 }
@@ -811,24 +779,24 @@ if ($data['id_perumahan']=='0') {
 }
 $nama_perumahan = $perumahan;
 $spreadsheet->setActiveSheetIndex(0)
-  ->setCellValue('B'.$i, $no++.'')
-    ->setCellValue('C'.$i, $perumahan)
-    ->setCellValue('D'.$i, $data['no_gambar'])
-    ->setCellValue('E'.$i, tgl_indo($data['tanggal_pembelian']))
-    ->setCellValue('F'.$i, $data['nama_penjual'])
-    ->setCellValue('G'.$i, $data['kode_sertifikat'])
-    ->setCellValue('H'.$i, $data['nama_surat_tanah'])
-    ->setCellValue('I'.$i, $data['luas_surat'])
-    ->setCellValue('J'.$i, $data['luas_ukur'])
-    ->setCellValue('K'.$i, $data['id_posisi_surat'])
-    ->setCellValue('L'.$i, '')
-    ->setCellValue('M'.$i, $data['status_order_akta'])
-    ->setCellValue('N'.$i, $data['jenis_pengalihan_hak'])
-    ->setCellValue('O'.$i, $data['akta_pengalihan'])
-    ->setCellValue('P'.$i, $tgl_pengalihan)
-    ->setCellValue('Q'.$i, $data['nama_pengalihan'])
-    ->setCellValue('R'.$i, $data['terima_finance'])
-    ->setCellValue('S'.$i, $data['keterangan']);
+->setCellValue('B'.$i, $no++.'')
+->setCellValue('C'.$i, $perumahan)
+->setCellValue('D'.$i, $data['no_gambar'])
+->setCellValue('E'.$i, tgl_indo($data['tanggal_pembelian']))
+->setCellValue('F'.$i, $data['nama_penjual'])
+->setCellValue('G'.$i, $data['kode_sertifikat'])
+->setCellValue('H'.$i, $data['nama_surat_tanah'])
+->setCellValue('I'.$i, $data['luas_surat'])
+->setCellValue('J'.$i, $data['luas_ukur'])
+->setCellValue('K'.$i, $data['id_posisi_surat'])
+->setCellValue('L'.$i, '')
+->setCellValue('M'.$i, $data['status_order_akta'])
+->setCellValue('N'.$i, $data['jenis_pengalihan_hak'])
+->setCellValue('O'.$i, $data['akta_pengalihan'])
+->setCellValue('P'.$i, $tgl_pengalihan)
+->setCellValue('Q'.$i, $data['nama_pengalihan'])
+->setCellValue('R'.$i, $data['terima_finance'])
+->setCellValue('S'.$i, $data['keterangan']);
 $i++;
 $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
 }

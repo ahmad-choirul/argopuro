@@ -460,7 +460,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <footer class="panel-footer"> 
                     <div class="row">
                         <div class="col-md-12 text-right"> 
-                            <?php echo form_open('pembelian/pohapus',' id="FormulirHapus"');?>  
+                            <?php echo form_open('laporan/hapusdataprosesinduk',' id="FormulirHapus"');?>  
                             <input type="hidden" name="idd" id="idddelete">
                             <button type="submit" class="btn btn-danger" id="submitformHapus">Delete</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -773,20 +773,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $(add_button_mgEdit).click(function(e){
         e.preventDefault();
         if(x < max_fieldsEdit){
-            x=x+1;       
+         x=x+1;       
             var formtambah='<tr>';
             formtambah+='<td><div class="input-group input-group-icon" style="width:150px;"><input type="text" data-urutan="'+x+'" data-toggle="modal" data-target="#modal-listitems"  class="form-control kode_item'+x+'" placeholder="Pilih Item"><span class="input-group-addon"><span class="icon"><i class="fa fa-search"></i></span></span></div></td>';
-            formtambah+='<td><input type="hidden" class="kode_item'+x+'" name="kode_item[]"><input type="hidden" class="nama-item'+x+'" name="nama_item[]">';
-            formtambah+=' <input type="text" name="nama_penjual[]" class="form-control nama_penjual'+x+'"></td>';
-            formtambah+='<td><input type="text"  class="form-control nama-item'+x+'"></td>';
-            formtambah+='<td><input type="text" name="no_gambar[]" size="3" class="form-control satuan-besar'+x+'"></td>';
-            formtambah+='<td><input type="number" name="kuantiti[]" class="form-control"></td>';
-            formtambah+='<td><a href="javascript:void(0);" class="mb-xs mt-xs mr-xs btn btn-danger deleterowedit"><i class="fa fa-trash-o"></i></a></td></tr>'; 
+            formtambah+='<input type="hidden" class="kode_item'+x+'" name="kode_item[]">';
+            formtambah+='<td> <input type="text" name="nama_penjual[]" class="form-control nama_penjual'+x+' required"></td>';
+            formtambah+='<td><input type="text" name="no_gambar[]" size="3" class="form-control no_gambar'+x+' required"></td>';
+            formtambah+='<td><input type="text" name="no_pbb[]" size="3" class="form-control no_pbb'+x+'" required></td>';
+            formtambah+='<td><input type="text" name="tgl_proses_induk[]" class="form-control tanggal" required></td>';
+            formtambah+='<td><input type="text" name="keterangandetail[]" class="form-control keterangandetail'+x+' required"></td>';
+            formtambah+='<td><a href="javascript:void(0);" class="mb-xs mt-xs mr-xs btn btn-danger deleterow"><i class="fa fa-trash-o"></i></a></td></tr>'; 
             $(wrapperItemEdit).append(formtambah);  
-            $('.tgl_expired').datepicker({
+            $('.tanggal').datepicker({
                 format: 'yyyy-mm-dd' 
             });
-            $('.mask_price'+x).maskMoney();
         }
         else
         { 

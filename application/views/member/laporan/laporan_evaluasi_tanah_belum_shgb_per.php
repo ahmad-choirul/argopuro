@@ -99,23 +99,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </header>
         <div class="panel-body">
           <div class="form-group mt-lg nama_target">
-            <label class="col-sm-3 control-label">Status SHGB<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <select data-plugin-selectTwo class="form-control" required name="status_shgb" id="status_shgb">  
-                <option value="">Pilih status</option>
-                <option value="belum">Belum</option>
-                <option value="proses">Proses</option>
-                <option value="selesai">Selesai</option>
-              </select> 
-            </div>
-          </div>
-           <div class="form-group tanggal_pembelian">
-            <label class="col-sm-3 control-label">No SHGB</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="no_shgb" id="no_shgb" class="form-control tanggal"  />
-            </div>
-          </div>
-          <div class="form-group mt-lg nama_target">
             <label class="col-sm-3 control-label">Status Order Akta<span class="required">*</span></label>
             <div class="col-sm-9">
               <select data-plugin-selectTwo class="form-control" required name="status_order_akta" id="status_order_akta">  

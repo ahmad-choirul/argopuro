@@ -866,10 +866,12 @@ public function updatemasteritem($data)
 }
 public function getshgbperumahan($id='',$firstdate='',$lastdate='',$shgb='')
 {
- $this->db->select('a.*,b.nama_regional,c.*');
+ $this->db->select('a.*,b.nama_regional,c.*,e.status as status_shgb');
  $this->db->from('master_item a'); 
  $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
  $this->db->join('tbl_sertifikat_tanah c', 'c.id_sertifikat_tanah = a.status_surat_tanah1','left');
+ $this->db->join('tbl_dtl_proses_induk d', 'd.id_master_item = a.kode_item','left');
+ $this->db->join('master_proses_induk e', 'e.id_proses_induk = d.id_proses_induk','left');
  if(!empty($firstdate) AND !empty($lastdate)){
     $this->db->where('a.tanggal_pembelian BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
 }
@@ -877,10 +879,12 @@ if (!empty($id)) {
     $this->db->where('id_perumahan', $id);
 }
 
-if (!empty($shgb)) {
-    $this->db->where('status_shgb', $shgb);
+if ($shgb=='belum') {
+    
+    $this->db->or_where('e.status', $shgb);
+    $this->db->where('e.status', null);
 }else{
-    $this->db->where('status_order_akta =', 'belum');
+    $this->db->where('e.status', $shgb);
 
 }
 

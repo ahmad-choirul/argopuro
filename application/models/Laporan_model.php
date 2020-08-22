@@ -468,9 +468,6 @@ function simpandataprosesinduk(){
         );  
         $detail[] = $listitem;
         $this->db->insert("tbl_dtl_proses_induk", $listitem);  
-        $update = array('status_shgb' => 'proses','no_shgb' => $id_proses_induk );
-        $this->db->where('kode_item', $kode_item[$i]);
-        $this->db->update('master_item', $update);
     } 
     if($this->db->trans_status() === FALSE){
         return false;
@@ -507,7 +504,7 @@ public function updatedataprosesinduk()
     $this->keterangan = $post["keterangan"];
     $this->db->update("master_proses_induk", $this, array('id_proses_induk' => $post['idd']));
     $this->db->where('id_proses_induk', $post['idd'])->delete('tbl_dtl_proses_induk');  
-    $id_proses_induk =  $this->db->insert_id();
+    $id_proses_induk =   $post['idd'];
     $kode_item = $this->input->post("kode_item");    
     $tgl_proses_induk = $this->input->post("tgl_proses_induk");    
     $keterangandetail = $this->input->post("keterangandetail");    
@@ -522,20 +519,15 @@ public function updatedataprosesinduk()
         );  
         $detail[] = $listitem;
         $this->db->insert("tbl_dtl_proses_induk", $listitem);  
-        $update = array('status_shgb' => 'proses','no_shgb' => $id_proses_induk );
-        $this->db->where('kode_item', $kode_item[$i]);
-        $this->db->update('master_item', $update);
     } 
-    $this->total = $total;
-    $this->db->update("tbl_dtl_proses_induk", $this, array('id_proses_induk' => $id_proses_induk));
     return TRUE;
 }
 
-public function hapusdatasplitsing()
+public function hapusdataprosesinduk()
 {
     $post = $this->input->post();  
-    $this->db->where('nomor_splitsing', $post['idd']);
-    return $this->db->delete('purchase_order');  
+    $this->db->where('id_proses_induk', $post['idd']);
+    return $this->db->delete('master_proses_induk');  
 }
     // CRUD purchase order end
 

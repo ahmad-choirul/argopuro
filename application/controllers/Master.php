@@ -1026,9 +1026,7 @@ $result = array(
  "jenis_pengalihan_hak" => $this->security->xss_clean($query->row()->jenis_pengalihan_hak),
  "status_teknik" => $this->security->xss_clean($query->row()->status_teknik),
  "jenis_pengalihan" => $this->security->xss_clean($query->row()->jenis_pengalihan),
- "terima_finance" => $this->security->xss_clean($query->row()->terima_finance),
- "status_shgb" => $this->security->xss_clean($query->row()->status_shgb),
- "no_shgb" => $this->security->xss_clean($query->row()->no_shgb),
+ "terima_finance" => $this->security->xss_clean($query->row()->terima_finance)
 );    
 echo'['.json_encode($result).']';
 }
@@ -1084,8 +1082,6 @@ public function updatemasteritem(){
         'nama_pengalihan' => $post['nama_pengalihan'],
         'jenis_pengalihan_hak' => $post['jenis_pengalihan_hak'],
         'terima_finance' => $post['terima_finance'],
-        'status_shgb' => $post['status_shgb'],
-        'no_shgb' => $post['no_shgb'],
         'keterangan' => $post['keterangan']
     );      
     if($simpan->updatemasteritem($data)){
