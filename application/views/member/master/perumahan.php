@@ -85,7 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <label class="col-sm-3 control-label">Kabupaten<span class="required">*</span></label>
             <div class="col-sm-9">
               <!-- <input type="text" name="kabupaten" id="kabupaten" class="form-control" required/> -->
-              <select data-plugin-selectTwo name="id_kabupaten" id="kabupaten" class="form-control">
+              <select name="id_kabupaten" id="kabupaten" class="form-control">
                 <option value="0">-PILIH-</option>
                 <?php foreach($listkabupaten as $row):?>
                   <option value="<?php echo $row->id_kabupaten;?>"><?php echo $row->nama_kabupaten;?></option>
@@ -96,7 +96,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="form-group mt-lg id">
             <label class="col-sm-3 control-label">Kecamatan<span class="required">*</span></label>
             <div class="col-sm-9">
-              <select data-plugin-selectTwo name="id_kecamatan" id="kecamatan" class="kecamatan form-control">
+              <select name="id_kecamatan" id="kecamatan" class="kecamatan form-control">
                 <option value="0">-PILIH-</option>
               </select>
             </div>
@@ -104,7 +104,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="form-group mt-lg id">
             <label class="col-sm-3 control-label">Kelurahan / Desa<span class="required">*</span></label>
             <div class="col-sm-9">
-              <select data-plugin-selectTwo name="lokasi" class="desa form-control">
+              <select name="lokasi" class="desa form-control">
                 <option value="0">-PILIH-</option>
               </select>
             </div>
@@ -112,7 +112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="form-group mt-lg nama_target">
             <label class="col-sm-3 control-label">Status<span class="required">*</span></label>
             <div class="col-sm-9">
-              <select data-plugin-selectTwo class="form-control" required name="status_regional">  
+              <select class="form-control" required name="status_regional">  
                 <option value="">Pilih Status</option>
                 <?php foreach ($status as $supp): ?>
                   <option value="<?php echo $supp->id_status_regional;?>"><?php echo $supp->nama_status;?></option>

@@ -142,7 +142,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                      <div class="form-group tanggal_pembelian">
                         <label class="col-sm-3 control-label">Nama Pemilik</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="nama_surat_tanah" class="form-control tanggal"  />
+                            <input type="text" name="nama_surat_tanah" class="form-control"  />
                         </div>
                     </div>
                     <div class="form-group nama_penjual">
@@ -352,7 +352,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="form-group tanggal_pembelian">
                         <label class="col-sm-3 control-label">Nama Pemilik</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="nama_surat_tanah" id="nama_surat_tanah" class="form-control tanggal"  />
+                            <input type="text" name="nama_surat_tanah" id="nama_surat_tanah" class="form-control"  />
                         </div>
                     </div>
                 <div class="form-group nama_penjual">

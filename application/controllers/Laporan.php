@@ -678,7 +678,7 @@ public function pageevaluasiprosessplit($id='')
 }
 
 
-public function proses_indukdetail()
+public function splitdetail()
 {
     cekajax(); 
     $kode_item = $this->input->get('id');
