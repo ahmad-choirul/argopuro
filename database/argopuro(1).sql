@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2020 at 03:57 AM
+-- Generation Time: Aug 25, 2020 at 02:43 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -9556,25 +9556,23 @@ CREATE TABLE `master_item` (
   `tanggal_proses` date DEFAULT NULL,
   `jenis_pengalihan_hak` varchar(100) DEFAULT NULL,
   `status_teknik` enum('belum','sudah') NOT NULL DEFAULT 'belum',
-  `terima_finance` date DEFAULT NULL,
-  `status_shgb` enum('belum','proses','selesai') NOT NULL,
-  `no_shgb` varchar(100) DEFAULT NULL
+  `terima_finance` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `master_item`
 --
 
-INSERT INTO `master_item` (`kode_item`, `tanggal_pembelian`, `nama_penjual`, `nama_surat_tanah`, `status_surat_tanah1`, `keterangan1`, `status_surat_tanah2`, `keterangan2`, `no_gambar`, `jumlah_bidang`, `luas_surat`, `luas_ukur`, `no_pbb`, `atas_nama_pbb`, `luas_pbb`, `njop`, `total_harga_pengalihan`, `nama_makelar`, `nilai`, `jenis_pengalihan`, `tanggal_pengalihan`, `akta_pengalihan`, `nama_pengalihan`, `ganti_rugi`, `pbb`, `lain`, `waktu_update`, `keterangan`, `id_perumahan`, `id_posisi_surat`, `status_order_akta`, `tanggal_proses`, `jenis_pengalihan_hak`, `status_teknik`, `terima_finance`, `status_shgb`, `no_shgb`) VALUES
-(1, '2020-06-07', 'Mahmudah', 'mahmudah', 4, 'test keterangan 1', 1, 'test keterangan 2', 45, 1, 400, 400, '123/51.2/34/1999', '0', 400, '20000', '80000', 'rahayu', '0', 0, '2020-08-30', '123', 'aa', '0', '0', '0', '2020-08-20 05:28:39', 'a', 1, 0, 'belum', '2020-08-01', '123', 'belum', '2020-08-20', 'proses', '2'),
-(2, '2020-01-01', 'Deni Yana', 'Deni Yana', 1, 'test ket 1', 2, 'test key 2', 76, 1, 220, 220, '78/56/2020', 'atas nama nop', 2020, '98/235/23', '200000', 'buna', '100000', 1, '2020-04-22', 'Un/34', 'yani', '200000', '150000', '50000', '2020-08-20 05:43:19', '', 1, 0, 'belum', '0000-00-00', 'pribadi', 'sudah', '0000-00-00', 'belum', '2020-08-20'),
-(3, '2020-02-05', 'ach saubari', 'ach saubari', 1, '', 0, '', 45, 1, 220, 220, '123/51.2/34/1998', '0', 220, '34578', '55000000', 'rahayu', '0', 0, '2020-06-01', '', '', '0', '0', '0', '2020-06-22 07:31:52', '', 1, 0, 'belum', NULL, 'pribadi', 'belum', '0000-00-00', 'belum', NULL),
-(4, '2020-02-28', 'Bosmini', 'bosmini', 5, '', 0, '', 10, 1, 250, 250, '123/51.2/34/2004', '0', 250, '788', '230000000', 'Toyo', '0', 0, '2020-06-14', '', '', '0', '0', '0', '2020-06-22 07:32:10', '-', 1, 0, 'belum', NULL, 'pribadi', 'belum', '0000-00-00', 'belum', NULL),
-(5, '2020-02-22', 'Pak Sukiran', 'pak puk', 1, '', 0, '', 79, 1, 0, 0, '', '0', 0, '', '', '', '0', 0, '2020-08-01', '123', '123', '0', '0', '0', '2020-08-20 03:44:47', '123', 1, 0, 'selesai', '2020-08-01', 'pribadi', '', '2020-08-01', 'belum', NULL),
-(6, '2020-02-22', 'Pak Mamat', '', 1, '', 0, '', 34, 1, 700, 700, '123/51.2/34/2002', '0', 700, '300000', '100000000', 'Suprapto', '0', 0, '2020-06-01', '123', 'aaa', '0', '0', '0', '2020-08-20 03:44:48', 'sudah dikirim ke pertanahan', 1, 0, 'proses', '2020-06-01', 'pribadi', 'sudah', '2020-06-30', 'belum', NULL),
-(7, '2020-02-22', 'Anggun', '', 5, '', 0, '', 18, 1, 900, 900, '123/51.2/34/2003', '0', 900, '3455', '150000000', 'Yoyon', '0', 0, '0000-00-00', '', '', '0', '0', '0', '2020-08-20 03:44:50', '', 1, 0, 'belum', NULL, 'pribadi', '', '0000-00-00', 'belum', NULL),
-(8, '2020-02-29', 'Yahya', '21', 0, '', 0, '', 1, 600, 600, 600, '123/51.2/34/2005', '0', 600, '899', '55000000', 'Danis', '0', 0, '0000-00-00', '', '', '0', '0', '0', '2020-08-20 03:44:51', '', 3, 0, 'belum', NULL, 'pribadi', '', '0000-00-00', 'belum', NULL),
-(9, '2020-02-29', 'Yumna', '', 0, '', 0, '', 56, 1, 400, 400, '123/51.2/34/2006', '0', 400, '900', '73000000', 'Yudik', '0', 0, '2020-06-10', '123', 'ASD', '0', '0', '0', '2020-08-20 03:44:53', 'AA', 1, 0, 'selesai', '2020-06-01', 'pribadiASD', '', '2020-06-30', 'belum', NULL);
+INSERT INTO `master_item` (`kode_item`, `tanggal_pembelian`, `nama_penjual`, `nama_surat_tanah`, `status_surat_tanah1`, `keterangan1`, `status_surat_tanah2`, `keterangan2`, `no_gambar`, `jumlah_bidang`, `luas_surat`, `luas_ukur`, `no_pbb`, `atas_nama_pbb`, `luas_pbb`, `njop`, `total_harga_pengalihan`, `nama_makelar`, `nilai`, `jenis_pengalihan`, `tanggal_pengalihan`, `akta_pengalihan`, `nama_pengalihan`, `ganti_rugi`, `pbb`, `lain`, `waktu_update`, `keterangan`, `id_perumahan`, `id_posisi_surat`, `status_order_akta`, `tanggal_proses`, `jenis_pengalihan_hak`, `status_teknik`, `terima_finance`) VALUES
+(1, '2020-06-07', 'Mahmudah', 'mahmudah', 4, 'test keterangan 1', 1, 'test keterangan 2', 45, 1, 400, 400, '123/51.2/34/1999', '0', 400, '20000', '80000', 'rahayu', '0', 0, '2020-08-30', '123', 'aa', '0', '0', '0', '2020-08-20 05:28:39', 'a', 1, 0, 'belum', '2020-08-01', '123', 'belum', '2020-08-20'),
+(2, '2020-01-01', 'Deni Yana', 'Deni Yana', 1, 'test ket 1', 2, 'test key 2', 76, 1, 220, 220, '78/56/2020', 'atas nama nop', 2020, '98/235/23', '200000', 'buna', '100000', 1, '2020-04-22', 'Un/34', 'yani', '200000', '150000', '50000', '2020-08-21 13:02:45', '', 1, 0, 'belum', '0000-00-00', 'pribadi', 'sudah', '0000-00-00'),
+(3, '2020-02-05', 'ach saubari', 'ach saubari', 1, '', 0, '', 45, 1, 220, 220, '123/51.2/34/1998', '0', 220, '34578', '55000000', 'rahayu', '0', 0, '2020-06-01', '', '', '0', '0', '0', '2020-06-22 07:31:52', '', 1, 0, 'belum', NULL, 'pribadi', 'belum', '0000-00-00'),
+(4, '2020-02-28', 'Bosmini', 'bosmini', 5, '', 0, '', 10, 1, 250, 250, '123/51.2/34/2004', '0', 250, '788', '230000000', 'Toyo', '0', 0, '2020-06-14', '', '', '0', '0', '0', '2020-06-22 07:32:10', '-', 1, 0, 'belum', NULL, 'pribadi', 'belum', '0000-00-00'),
+(5, '2020-02-22', 'Pak Sukiran', 'pak puk', 1, '', 0, '', 79, 1, 0, 0, '', '0', 0, '', '', '', '0', 0, '2020-08-01', '123', '123', '0', '0', '0', '2020-08-21 13:02:55', '123', 1, 0, 'selesai', '2020-08-01', 'pribadi', '', '2020-08-01'),
+(6, '2020-02-22', 'Pak Mamat', '', 1, '', 0, '', 34, 1, 700, 700, '123/51.2/34/2002', '0', 700, '300000', '100000000', 'Suprapto', '0', 0, '2020-06-01', '123', 'aaa', '0', '0', '0', '2020-08-20 03:44:48', 'sudah dikirim ke pertanahan', 1, 0, 'proses', '2020-06-01', 'pribadi', 'sudah', '2020-06-30'),
+(7, '2020-02-22', 'Anggun', '', 5, '', 0, '', 18, 1, 900, 900, '123/51.2/34/2003', '0', 900, '3455', '150000000', 'Yoyon', '0', 0, '0000-00-00', '', '', '0', '0', '0', '2020-08-20 03:44:50', '', 1, 0, 'belum', NULL, 'pribadi', '', '0000-00-00'),
+(8, '2020-02-29', 'Yahya', '21', 0, '', 0, '', 1, 600, 600, 600, '123/51.2/34/2005', '0', 600, '899', '55000000', 'Danis', '0', 0, '0000-00-00', '', '', '0', '0', '0', '2020-08-20 03:44:51', '', 3, 0, 'belum', NULL, 'pribadi', '', '0000-00-00'),
+(9, '2020-02-29', 'Yumna', '', 0, '', 0, '', 56, 1, 400, 400, '123/51.2/34/2006', '0', 400, '900', '73000000', 'Yudik', '0', 0, '2020-06-10', '123', 'ASD', '0', '0', '0', '2020-08-20 03:44:53', 'AA', 1, 0, 'selesai', '2020-06-01', 'pribadiASD', '', '2020-06-30');
 
 -- --------------------------------------------------------
 
@@ -9700,7 +9698,7 @@ CREATE TABLE `master_proses_induk` (
   `no_terbit_shgb` varchar(100) DEFAULT NULL,
   `masa_berlaku_shgb` date DEFAULT NULL,
   `target_penyelesaian` date DEFAULT NULL,
-  `status` enum('belum','terbit') NOT NULL DEFAULT 'belum',
+  `status` enum('belum','proses','terbit') NOT NULL DEFAULT 'belum',
   `keterangan` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -9709,7 +9707,7 @@ CREATE TABLE `master_proses_induk` (
 --
 
 INSERT INTO `master_proses_induk` (`id_proses_induk`, `no_gambar`, `penjual`, `id_perumahan`, `no_surat_tanah`, `nama_surat_tanah`, `luas`, `luas_daftar`, `luas_terbit`, `tanggal_daftar_sk_hak`, `no_daftar_sk_hak`, `tanggal_terbit_sk_hak`, `no_terbit_sk_hak`, `tanggal_daftar_shgb`, `no_daftar_shgb`, `tanggal_terbit_shgb`, `no_terbit_shgb`, `masa_berlaku_shgb`, `target_penyelesaian`, `status`, `keterangan`) VALUES
-(2, '123', 'penjual', 1, 'no.asda1224', 'atas nama', '1000', '1000', '1000', '2020-08-24', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '', '0000-00-00', '0000-00-00', 'belum', '');
+(3, '100', 'penjual', 1, 'no.123', 'siapa', '100', '100', '100', '2020-08-21', '1111', '2020-08-28', '111111', '2020-08-08', '333333', '2020-08-29', '333333', '2020-08-27', '2020-08-29', 'terbit', 'test keterangan');
 
 -- --------------------------------------------------------
 
@@ -9733,12 +9731,33 @@ CREATE TABLE `master_regional` (
 --
 
 INSERT INTO `master_regional` (`id`, `nama_regional`, `id_kabupaten`, `id_kecamatan`, `lokasi`, `status_regional`, `keterangan`, `waktu_update`) VALUES
-(1, 'Mangli Residence', 0, 0, 'Jember', 1, NULL, '2020-06-20 03:57:32'),
-(3, 'Bumi Mangli Permai 5', 0, 0, 'Mangli', 3, NULL, '2020-06-20 03:57:15'),
-(4, 'Bumi Mangli Permai 4', 0, 0, 'Mangli', 1, NULL, '2020-06-20 03:57:22'),
-(5, 'Argopurpo Land', 0, 0, 'Kaliwates', 2, NULL, '2020-06-20 03:58:33'),
+(1, 'Mangli Residence', 3577, 357703, '3577031005', 1, NULL, '2020-08-23 05:29:42'),
+(3, 'Bumi Mangli Permai 5', 3577, 357703, '3577031004', 3, NULL, '2020-08-23 05:29:57'),
+(4, 'Bumi Mangli Permai 4', 3576, 357602, '3576021008', 1, NULL, '2020-08-23 05:29:49'),
+(5, 'Argopurpo Land', 3579, 357903, '3579031001', 2, NULL, '2020-08-23 05:29:34'),
 (6, 'test', 3509, 350902, '3509022001', 3, NULL, '2020-08-17 00:59:25'),
 (7, 'a', 3579, 357902, '3579022002', 3, NULL, '2020-08-17 00:01:41');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `master_split`
+--
+
+CREATE TABLE `master_split` (
+  `id_split` int(11) NOT NULL,
+  `id_proses_induk` int(11) NOT NULL,
+  `keterangan` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `master_split`
+--
+
+INSERT INTO `master_split` (`id_split`, `id_proses_induk`, `keterangan`) VALUES
+(1, 3, 'test keterangan'),
+(6, 3, 'test keterangan'),
+(7, 3, 'test keterangan');
 
 -- --------------------------------------------------------
 
@@ -9994,7 +10013,40 @@ CREATE TABLE `tbl_dtl_proses_induk` (
 --
 
 INSERT INTO `tbl_dtl_proses_induk` (`id_dtl_proses_induk`, `id_proses_induk`, `id_master_item`, `tgl_proses_induk`, `keterangan`, `waktu_update`) VALUES
-(3, 2, 1, '2020-08-10', '', '2020-08-20 12:28:39');
+(16, 3, 5, '2020-08-21', '123', '2020-08-22 07:46:36'),
+(17, 3, 2, '2020-08-27', '', '2020-08-22 07:46:36');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_dtl_split`
+--
+
+CREATE TABLE `tbl_dtl_split` (
+  `id_dtl_split` int(11) NOT NULL,
+  `id_split` int(11) NOT NULL,
+  `blok` varchar(20) NOT NULL,
+  `luas_daftar_blok` varchar(100) NOT NULL,
+  `luas_terbit_blok` varchar(100) NOT NULL,
+  `no_shgb_blok` varchar(100) NOT NULL,
+  `masa_berlaku_blok` date NOT NULL,
+  `no_daftar_blok` varchar(100) NOT NULL,
+  `tgl_daftar_blok` date NOT NULL,
+  `tgl_terbit_blok` date NOT NULL,
+  `keterangan` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_dtl_split`
+--
+
+INSERT INTO `tbl_dtl_split` (`id_dtl_split`, `id_split`, `blok`, `luas_daftar_blok`, `luas_terbit_blok`, `no_shgb_blok`, `masa_berlaku_blok`, `no_daftar_blok`, `tgl_daftar_blok`, `tgl_terbit_blok`, `keterangan`) VALUES
+(1, 1, 'blok a', '123', '123', '12', '2020-08-19', '123', '2020-08-20', '2020-08-19', '113'),
+(2, 1, 'blok c', '12', '12', '123', '2020-08-25', '1', '2020-08-25', '2020-08-25', '1'),
+(3, 6, 'test blok a', '1', '1', '1', '0000-00-00', '1', '2020-08-25', '2020-08-25', '1'),
+(4, 6, 'test blok b', '1', '1', '1', '0000-00-00', '1', '2020-08-25', '2020-08-25', '1'),
+(5, 6, 'test blok c', '1', '1', '1', '0000-00-00', '1', '2020-08-25', '2020-08-25', '1'),
+(6, 7, 'blok a', '100', '100', '123', '2020-08-25', '1', '2020-08-25', '2020-08-25', '1');
 
 -- --------------------------------------------------------
 
@@ -10150,6 +10202,12 @@ ALTER TABLE `master_regional`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `master_split`
+--
+ALTER TABLE `master_split`
+  ADD PRIMARY KEY (`id_split`);
+
+--
 -- Indexes for table `master_status_regional`
 --
 ALTER TABLE `master_status_regional`
@@ -10195,7 +10253,14 @@ ALTER TABLE `tbl_absensi`
 -- Indexes for table `tbl_dtl_proses_induk`
 --
 ALTER TABLE `tbl_dtl_proses_induk`
-  ADD PRIMARY KEY (`id_dtl_proses_induk`);
+  ADD PRIMARY KEY (`id_dtl_proses_induk`),
+  ADD KEY `id_proses_induk` (`id_proses_induk`);
+
+--
+-- Indexes for table `tbl_dtl_split`
+--
+ALTER TABLE `tbl_dtl_split`
+  ADD PRIMARY KEY (`id_dtl_split`);
 
 --
 -- Indexes for table `tbl_jenis_pengalihan`
@@ -10271,13 +10336,19 @@ ALTER TABLE `master_penyelesaian_ijin`
 -- AUTO_INCREMENT for table `master_proses_induk`
 --
 ALTER TABLE `master_proses_induk`
-  MODIFY `id_proses_induk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_proses_induk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `master_regional`
 --
 ALTER TABLE `master_regional`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `master_split`
+--
+ALTER TABLE `master_split`
+  MODIFY `id_split` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `master_status_regional`
@@ -10319,7 +10390,13 @@ ALTER TABLE `tbl_absensi`
 -- AUTO_INCREMENT for table `tbl_dtl_proses_induk`
 --
 ALTER TABLE `tbl_dtl_proses_induk`
-  MODIFY `id_dtl_proses_induk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_dtl_proses_induk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `tbl_dtl_split`
+--
+ALTER TABLE `tbl_dtl_split`
+  MODIFY `id_dtl_split` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_jenis_pengalihan`
@@ -10361,6 +10438,12 @@ ALTER TABLE `kategori_user_modul`
 --
 ALTER TABLE `master_admin`
   ADD CONSTRAINT `master_admin_ibfk_1` FOREIGN KEY (`kategori`) REFERENCES `kategori_user` (`id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_dtl_proses_induk`
+--
+ALTER TABLE `tbl_dtl_proses_induk`
+  ADD CONSTRAINT `tbl_dtl_proses_induk_ibfk_1` FOREIGN KEY (`id_proses_induk`) REFERENCES `master_proses_induk` (`id_proses_induk`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
