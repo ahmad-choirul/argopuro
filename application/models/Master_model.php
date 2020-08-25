@@ -1474,6 +1474,74 @@ public function hapusdatapenjual()
 }
     //CRUD penjual end 
 
+
+// datatable proses_induk start
+var $column_search_prosesinduk = array('tgl_proses_induk','id_master_item','keterangan');
+var $column_order_prosesinduk = array(null, 'tgl_proses_induk','keterangan');
+var $order_prosesinduk = array('a.id_proses_induk' => 'DESC');
+ function _get_query_prosesinduk()
+{
+    $this->db->select('a.*,c.nama_regional');
+    $this->db->from('master_proses_induk a');
+    $this->db->join('master_regional c', 'a.id_perumahan = c.id', 'left');
+    $get = $this->input->get();
+    $i = 0;
+    foreach ($this->column_search_prosesinduk as $item)
+    {
+        if($get['search']['value'])
+        {
+            if($i===0)
+            {
+                $this->db->group_start();
+                $this->db->like($item, $get['search']['value']);
+            }
+            else
+            {
+                $this->db->or_like($item, $get['search']['value']);
+            }
+
+            if(count($this->column_search_prosesinduk) - 1 == $i)
+                $this->db->group_end();
+        }
+        $i++;
+    }
+    if(isset($get['order']))
+    {
+        $this->db->order_by($this->column_order_prosesinduk[$get['order']['0']['column']], $get['order']['0']['dir']);
+    }
+    else if(isset($this->order_prosesinduk))
+    {
+        $order = $this->order_prosesinduk;
+        $this->db->order_by(key($order), $order[key($order)]);
+    }
+}
+
+function get_prosesindukdatatable()
+{
+    $get = $this->input->get();
+    $this->_get_query_prosesinduk();
+    // $this->db->where('jenis_pembeli','2');
+    if($get['length'] != -1)
+        $this->db->limit($get['length'], $get['start']);
+    $query = $this->db->get();
+    return $query->result();
+}
+
+function count_filtered_datatable_prosesinduk()
+{
+    $this->_get_query_prosesinduk();
+    $query = $this->db->get();
+    return $query->num_rows();
+}
+
+public function count_all_datatableproses_induk()
+{
+    $this->db->from('tbl_dtl_proses_induk');
+    return $this->db->count_all_results();
+}
+//datatable proses_induk end
+
+
 // datatable proses_induk start
 var $column_search_proses_induk = array('tgl_proses_induk','id_master_item','keterangan');
 var $column_order_proses_induk = array(null, 'tgl_proses_induk','keterangan');

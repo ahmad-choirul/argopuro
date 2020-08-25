@@ -1254,6 +1254,32 @@ public function pilihanitem()
     ); 
     echo json_encode($result);  
 }  
+
+
+public function pilihaninduk()
+{   
+    cekajax(); 
+    $get = $this->input->get();
+    $list = $this->master_model->get_prosesindukdatatable();
+    $data = array(); 
+    foreach ($list as $r) { 
+        $row = array(); 
+        $row[] = $this->security->xss_clean($r->id_proses_induk); 
+        $row[] = $this->security->xss_clean($r->nama_surat_tanah); 
+        $row[] = $this->security->xss_clean($r->nama_regional);   
+        $row[] = ' 
+        <a onclick="pilihinduk(this)"  data-nama_regional="'.$r->nama_regional.'" data-nama_penjual="'.$r->penjual.'" data-no_terbit_shgb="'.$r->no_terbit_shgb.'" data-keterangan="'.$r->keterangan.'" data-no_terbit_shgb="'.$r->no_terbit_shgb.'" data-luas_daftar="'.$r->luas_daftar.'" data-luas_terbit="'.$r->luas_terbit.'" data-no_daftar_shgb="'.$r->no_daftar_shgb.'" data-tanggal_daftar_shgb="'.$r->tanggal_daftar_shgb.'" data-no_terbit_shgb="'.$r->no_terbit_shgb.'" data-tanggal_terbit_shgb="'.$r->tanggal_terbit_shgb.'" data-masa_berlaku="'.$r->masa_berlaku_shgb.'" data-nama_surat_tanah="'.$r->nama_surat_tanah.'"  data-id_induk="'.$r->id_proses_induk.'" class="mt-xs mr-xs btn btn-info datarowobat" role="button"><i class="fa fa-check-square-o"></i></a>
+        '; 
+        $data[] = $row;
+    } 
+    $result = array(
+        "draw" => $get['draw'],
+        "recordsTotal" => $this->master_model->count_all_datatableproses_induk(),
+        "recordsFiltered" => $this->master_model->count_filtered_datatable_prosesinduk(),
+        "data" => $data,
+    ); 
+    echo json_encode($result);  
+}  
 public function racikantambah(){ 
     cekajax(); 
     $simpan = $this->master_model;
