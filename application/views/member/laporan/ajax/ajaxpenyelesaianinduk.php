@@ -70,7 +70,6 @@
                 <?php 
                 $no=1;
                 foreach ($prosesshgbseb as $r) { 
-                    $row = array();
                     $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->id_proses_induk).'">Hapus</a></li>':'';
                     $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id_proses_induk).'">Edit</a></li>':'';
                     $tombol = ' 

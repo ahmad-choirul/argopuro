@@ -8,6 +8,24 @@ class Master_model extends CI_Model{
         $this->db->order_by('waktu_update', 'desc');
         return $this->db->get()->result_array();
     }
+
+      public function getdetailsplit($id_split)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_dtl_split');
+        $this->db->where('id_split', $id_split);
+        // $this->db->order_by('waktu_update', 'desc');
+        return $this->db->get()->result_array();
+    }
+    public function getsplit($id)
+{
+      // $this->db->select('a.*,b*,c*');
+   $this->db->from('master_split a'); 
+   $this->db->join('master_proses_induk b', 'a.id_proses_induk = b.id_proses_induk', 'left');
+        $this->db->join('master_regional c', 'b.id_perumahan = c.id', 'left');
+   $this->db->where('id_split', $id);
+    return $this->db->get()->result_array();
+}
     public function getdatatanah($kode_item)
     {
         $this->db->select('a.*,b.nama_regional,c.*');
@@ -944,6 +962,7 @@ public function getprosesinduk($id)
     $this->db->where('id_proses_induk', $id);
     return $this->db->get()->result_array();
 }
+
 	// datatable item start
 var $column_search_item = array('kode_item','nama_item','nama_penjual','nama_surat_tanah','nama_makelar'); 
 var $column_order_item = array(null, 'kode_item','nama_item','nama_penjual','nama_surat_tanah','nama_makelar');

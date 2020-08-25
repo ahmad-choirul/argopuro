@@ -38,7 +38,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <section class="panel">
       <header class="panel-heading">    
         <div class="row show-grid">
-          <div class="col-md-6" align="left"><h2 class="panel-title">Nama Perumahan | Proses Tahun 2019</h2></div>
           <form action="" method="get">
             <div class="form-group mt-lg nama_target">
               <div class="col-sm-5">
@@ -59,107 +58,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
           </div>
         </header>
-        <div class="panel-body"> 
-          <div id="kontendata"></div>
-        </div>
       </section>
-      <section class="panel">
-        <header class="panel-heading">    
-          <div class="row show-grid">
-            <div class="col-md-6" align="left"><h2 class="panel-title">Nama Perumahan | Proses Tahun 2020</h2></div>
-            <?php  
-            echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
-            ?> 
-          </div>
-        </header>
-        <div class="panel-body"> 
-          <div class="table" style="overflow-x: auto;white-space: nowrap;">
-            <table class="table table-bordered table-hover table-striped" id="prosesbaru">
-              <thead>
 
-               <tr>
-                 <th style="text-align: center;">NO</th>
-                 <th style="text-align: center;">INDUK</th>
-                 <th style="text-align: center;">UNIT</th>
-                 <th style="text-align: center;">BLOK</th>
-                 <th style="text-align: center;">LUAS DAFTAR</th>
-                 <th style="text-align: center;">LUAS TERBIT</th>
-                 <th style="text-align: center;">SELISIH</th>
-                 <th style="text-align: center;">NO SHGB</th>
-                 <th style="text-align: center;">MASA BERLAKU</th>
-                 <th style="text-align: center;">NO DAFTAR</th>
-                 <th style="text-align: center;">TGL DAFTAR</th>
-                 <th style="text-align: center;">TGL TERBIT</th>
-                 <th style="text-align: center;">KET</th>
-
-               </tr>
-
-
-
-             </thead>
-             <tbody>
-              <tr>
-
-               <th >1</th>
-               <th>abc</th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-             </tr>
-             <tr>
-               <th colspan="13" bgcolor="grey"></th>
-
-             </tr>
-             <tr>
-
-               <th colspan="2">JUMLAH A</th>
-
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-             </tr>
-             <tr>
-
-               <th colspan="2">TOTAL </th>
-
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-               <th></th>
-             </tr>
-
-           </tbody>
-
-         </table> 
-       </div>
-     </div>
-   </section>
-
-   <!-- end: page -->
- </section>
+      
+          <div id="kontendata"></div>
 </div>
 </section>
 
@@ -167,7 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <section class="panel panel-primary">
-        <?php echo form_open('laporan/prosesinduktambah',' id="FormulirTambah" enctype="multipart/form-data"');?> 
+        <?php echo form_open('laporan/prosessplittambah',' id="FormulirTambah" enctype="multipart/form-data"');?> 
         <header class="panel-heading">
           <h2 class="panel-title">Tambah Item</h2>
         </header>
@@ -177,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <label class="col-sm-3 control-label">induk</span></label>
             <div class="col-sm-9">
               <!-- <input type="text" name="induk" class="form-control"  required /> -->
-              <div class="input-group input-group-icon" style="width:150px;"><input type="text"  data-toggle="modal" data-target="#modal-listitems"  class="form-control id_induk" placeholder="Pilih No Induk"><span class="input-group-addon"><span class="icon"><i class="fa fa-search"></i></span></span></div>
+              <div class="input-group input-group-icon" style="width:150px;"><input type="text"  data-toggle="modal" data-target="#modal-listitems" name="id_proses_induk" class="form-control id_induk" placeholder="Pilih No Induk"><span class="input-group-addon"><span class="icon"><i class="fa fa-search"></i></span></span></div>
             </div>
           </div>
           <div class="form-group no_terbit_shgb">
@@ -237,6 +139,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <tr>
                       <th style="min-width:200px;">Blok</th>
                       <th style="min-width:200px;">Luas Daftar</th> 
+                      <th style="min-width:200px;">Luas Terbit</th> 
+                      <th style="min-width:200px;">Selisih</th> 
+                      <th style="min-width:200px;">No SHGB</th> 
+                      <th style="min-width:200px;">Masa Berlaku</th> 
+                      <th style="min-width:200px;">No Daftar</th> 
+                      <th style="min-width:200px;">Tgl Daftar</th> 
+                      <th style="min-width:200px;">Tgl Terbit</th> 
                       <th style="min-width:100px;">Keterangan</th> 
                     </tr>
                   </thead>
@@ -574,7 +483,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $('#showdetail').html('Loading...'); 
       $.ajax({
         type: 'GET',
-        url: '<?php echo base_url()?>laporan/proses_indukdetailsplit',
+        url: '<?php echo base_url()?>laporan/splitdetail',
         data: 'id=' + dataId,
         dataType    : 'json',
         success: function(response) { 
@@ -582,18 +491,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           $.each(response.datarows, function(i, item) {
             document.getElementById('linkprint').setAttribute('href', '<?php echo base_url()?>pembelian/printpo/'+item.nomor_po);
             document.getElementById('linkpdf').setAttribute('href', '<?php echo base_url()?>pembelian/pdfpo/'+item.nomor_po);
-
             datarow+='<div class="col-md-6">';
             datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
-            datarow+="<tr><td>Tanggal Daftar SK</td><td>: "+item.tanggal_daftar_sk_hak+"</td></tr>";
-            datarow+="<tr><td>No Daftar SK </td><td>: "+item.no_daftar_sk_hak+"</td></tr>";
-            datarow+="<tr><td>Nama Surat</td><td>: "+item.no_terbit_shgb+"</td></tr>";
+            datarow+="<tr><td>No Induk</td><td>: "+item.id_proses_induk+"</td></tr>";
+            datarow+="<tr><td>No SHGB SK </td><td>: "+item.no_terbit_shgb+"</td></tr>";
+            datarow+="<tr><td>Nama Surat</td><td>: "+item.nama_surat_tanah+"</td></tr>";
             datarow+="</table>";
             datarow+='</div>';
             datarow+='<div class="col-md-6">';
             datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
-            datarow+="<tr><td>Nomor Gambar</td><td>: "+item.no_gambar+"</td></tr>";
-            datarow+="<tr><td>luas</td><td>: "+item.luas+"</td></tr>"; 
+            datarow+="<tr><td>Luas Daftar</td><td>: "+item.luas_daftar+"</td></tr>";
+            datarow+="<tr><td>luas Terbit</td><td>: "+item.luas_terbit+"</td></tr>"; 
             datarow+="</table>";
             datarow+='</div>';
           });
@@ -603,16 +511,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           datarow+='<div class="table-responsive" style="max-height:420px;">';  
           datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
           datarow+="<thead><tr>";
-          datarow+="<th>ID Item</th>";
-          datarow+="<th>Tgl Proses</th>";
+          datarow+="<th>Blok</th>";
+          datarow+="<th>Luas Daftar</th>";
+          datarow+="<th>Luas Terbit</th>";
+          datarow+="<th>Selisih</th>";
+          datarow+="<th>No SHGB</th>";
+          datarow+="<th>Masa Berlaku</th>";
+          datarow+="<th>No Daftar</th>";
+          datarow+="<th>Tgl Daftar</th>";
+          datarow+="<th>Tgl Terbit</th>";
           datarow+="<th>Keterangan</th>";
           datarow+="</tr></thead>";
           datarow+="<tbody>";
 
           $.each(response.datasub, function(i, itemsub) {
             datarow+="<tr>";
-            datarow+="<td>"+itemsub.id_master_item+"</td>"; 
-            datarow+="<td>"+itemsub.tgl_proses_induk+"</td>";
+            datarow+="<td>"+itemsub.blok+"</td>"; 
+            datarow+="<td>"+itemsub.luas_daftar_blok+"</td>";
+            datarow+="<td>"+itemsub.luas_terbit_blok+"</td>"; 
+            datarow+="<td></td>"; 
+            datarow+="<td>"+itemsub.no_shgb_blok+"</td>"; 
+            datarow+="<td>"+itemsub.masa_berlaku_bloktampil+"</td>"; 
+            datarow+="<td>"+itemsub.no_daftar_blok+"</td>"; 
+            datarow+="<td>"+itemsub.tgl_daftar_bloktampil+"</td>"; 
+            datarow+="<td>"+itemsub.tgl_terbit_bloktampil+"</td>"; 
             datarow+="<td>"+itemsub.keterangan+"</td>"; 
             datarow+="</tr>"; 
           });  
@@ -730,10 +652,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         x=x+1;       
         var formtambah='<tr>';
         formtambah+='<td> <input type="text" name="blok[]" class="form-control blok'+x+' required"></td>';
-        formtambah+='<td><input type="text" name="luas_blok[]"  class="form-control luas_blok'+x+' required"></td>';
+        formtambah+='<td><input type="text" name="luas_daftar_blok[]"  class="form-control luas_daftar_blok'+x+' required"></td>';
+        formtambah+='<td><input type="text" name="luas_terbit_blok[]"  class="form-control luas_terbit_blok'+x+' required"></td>';
+        formtambah+='<td><input type="text" name="selisih[]"  class="form-control selisih'+x+' required"></td>';
+        formtambah+='<td><input type="text" name="no_shgb_blok[]"  class="form-control no_shgb_blok'+x+' required"></td>';
+        formtambah+='<td><input type="text" name="masa_berlaku_blok[]"  class="form-control masa_berlaku_blok'+x+' tanggal required"></td>';
+        formtambah+='<td><input type="text" name="no_daftar_blok[]"  class="form-control no_daftar_blok'+x+' required"></td>';
+        formtambah+='<td><input type="text" name="tgl_daftar_blok[]"  class="form-control tgl_daftar_blok'+x+'  tanggal required"></td>';
+        formtambah+='<td><input type="text" name="tgl_terbit_blok[]"  class="form-control tgl_terbit_blok'+x+' tanggal required"></td>';
         formtambah+='<td><input type="text" name="keterangandetail[]" class="form-control keterangandetail'+x+' required"></td>';
         formtambah+='<td><a href="javascript:void(0);" class="mb-xs mt-xs mr-xs btn btn-danger deleterow"><i class="fa fa-trash-o"></i></a></td></tr>'; 
         $(wrapperItem).append(formtambah);  
+        $('.tanggal').datepicker({
+          format: 'yyyy-mm-dd' 
+        });
       }
       else
       { 
@@ -754,12 +686,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $('#editData').modal();        
       $.ajax({
         type: 'GET',
-        url: '<?php echo base_url()?>laporan/prosesindukdetail',
+        url: '<?php echo base_url()?>laporan/splitdetail',
         data: 'id=' + dataId,
         dataType    : 'json',
         success: function(response) {  
           $.each(response.datarows, function(i, item) {                   
-            document.getElementById("induk").value = item.induk;       
+            document.getElementById("id_induk").value = item.id_induk;       
             document.getElementById("selisih").value = item.no_gambar;
             document.getElementById("no_terbit_shgb").value = item.no_terbit_shgb;    
             document.getElementById("selisih").value = item.selisih;    
