@@ -595,45 +595,48 @@ function simpandataprosessplit(){
 }    
 public function updatedataprosessplit()
 {
-    $post = $this->input->post();   
-    $this->penjual = $post["penjual"];
-    $this->no_gambar = $post["no_gambar2"];
-    $this->no_surat_tanah = $post["no_surat_tanah"];
-    $this->nama_surat_tanah = $post["nama_surat_tanah"];
-    $this->luas = $post["luas"];
-    $this->luas_daftar = $post["luas_daftar"];
-    $this->luas_terbit = $post["luas_terbit"];
-    $this->tanggal_daftar_sk_hak = $post["tanggal_daftar_sk_hak"];
-    $this->no_daftar_sk_hak = $post["no_daftar_sk_hak"];
-    $this->tanggal_terbit_sk_hak = $post["tanggal_terbit_sk_hak"];
-    $this->no_terbit_sk_hak = $post["no_terbit_sk_hak"];
-    $this->tanggal_daftar_shgb = $post["tanggal_daftar_shgb"];
-    $this->no_daftar_shgb = $post["no_daftar_shgb"];
-    $this->tanggal_terbit_shgb = $post["tanggal_terbit_shgb"];
-    $this->no_terbit_shgb = $post["no_terbit_shgb"];
-    $this->masa_berlaku_shgb = $post["masa_berlaku_shgb"];
-    $this->target_penyelesaian = $post["target_penyelesaian"];
-    $this->status = $post["status"];
-    $this->keterangan = $post["keterangan"];
-    $this->db->update("master_proses_split", $this, array('id_proses_split' => $post['idd']));
-    $this->db->where('id_proses_split', $post['idd'])->delete('tbl_dtl_proses_split');  
-    $id_proses_split =   $post['idd'];
-    $kode_item = $this->input->post("kode_item");    
-    $tgl_proses_split = $this->input->post("tgl_proses_split");    
-    $keterangandetail = $this->input->post("keterangandetail");    
-    $total = 0;
+    $post = $this->input->post();
+    $this->db->trans_start();
+    $array = array(
+       'id_proses_induk'=>$post["id_proses_induk"],
+       'keterangan'=>$post["keterangan"],
+   );
+    $this->db->where('id_split', $post["idd"]);
+    $this->db->update("master_split", $array);
+    $id_split =  $this->db->insert_id();
+    $blok = $this->input->post("blok");    
+    $luas_daftar_blok = $this->input->post("luas_daftar_blok");    
+    $luas_terbit_blok = $this->input->post("luas_terbit_blok");
+    $no_shgb_blok = $this->input->post("no_shgb_blok");
+    $masa_berlaku_blok = $this->input->post("masa_berlaku_blok");    
+    $no_daftar_blok = $this->input->post("no_daftar_blok");    
+    $tgl_daftar_blok = $this->input->post("tgl_daftar_blok");    
+    $tgl_terbit_blok = $this->input->post("tgl_terbit_blok");   
+    $keterangandetail = $this->input->post("keterangandetail"); 
     $detail = array();
-    for($i = 0; $i < count($kode_item); $i++){    
+    for($i = 0; $i < count($blok); $i++){
         $listitem = array(
-            'id_proses_split'=>$id_proses_split,  
-            'id_master_item'=>$kode_item[$i],  
-            'tgl_proses_split'=>$tgl_proses_split[$i],  
+            'id_split'=>$id_split,  
+            'blok'=>$blok[$i],  
+            'luas_daftar_blok'=>$luas_daftar_blok[$i],  
+            'luas_terbit_blok'=>$luas_terbit_blok[$i],  
+            'no_shgb_blok'=>$no_shgb_blok[$i],  
+            'masa_berlaku_blok'=>$masa_berlaku_blok[$i],  
+            'no_daftar_blok'=>$no_daftar_blok[$i],  
+            'tgl_daftar_blok'=>$tgl_daftar_blok[$i],  
+            'tgl_terbit_blok'=>$tgl_terbit_blok[$i],  
             'keterangan'=>$keterangandetail[$i],
         );  
         $detail[] = $listitem;
-        $this->db->insert("tbl_dtl_proses_split", $listitem);  
+        $this->db->insert("tbl_dtl_split", $listitem);  
     } 
-    return TRUE;
+    if($this->db->trans_status() === FALSE){
+        return false;
+        $this->db->trans_rollback();
+    }else{
+     $this->db->trans_complete();
+     return true;
+ }
 }
 
 public function hapusdataprosessplit()
