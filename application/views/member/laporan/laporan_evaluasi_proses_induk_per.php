@@ -54,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </select> 
                         </div>
                         <div class="col-sm-2">
-                            <a class="btn btn-primary" href="<?php echo site_url('Export_excel/excellaporanbelumshgb/').$id_perumahan ?>"> cetak </a>
+                            <a class="btn btn-primary" href="<?php echo site_url('Export_excel/excellaporanprosesinduk  /').$id_perumahan ?>"> cetak </a>
                         </div>
                         <div class="col-sm-5">
                            <?php
@@ -66,7 +66,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
            </div>
        </header>
        <div id="kontendata"></div>
-       <!-- end: page -->
    </section>
 </div>
 </section>
@@ -373,7 +372,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="row" style="overflow-x: auto;white-space: nowrap;"> 
                 <div class="col-md-12">
                     <h3>Rincian Item Yang Dibeli</h3> 
-                    <a type="button" class="mb-xs mt-xs mr-xs btn btn-primary" id="tambahItemEdit"><i class="fa fa-plus"></i> Tambah Item</a> 
+                    <a type="button" class="mb-xs mt-xs mr-xs btn btn-primary" id="tambahItemedit"><i class="fa fa-plus"></i> Tambah Item</a> 
                     <div class="table-ressplitsingnsive" style="max-height:420px;"> 
                         <table class="table table-bordered table-hover table-striped dataTable no-footer listitemedit">
                             <thead>

@@ -135,7 +135,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <thead>
                     <tr>
                       <th style="min-width:200px;">Blok</th>
-                      <th style="min-width:200px;">Luas Daftar</th> 
+                      <th style="min-width:200px;">Panjang Daftar</th> 
+                      <th style="min-width:200px;">Lebar Daftar</th> 
                       <th style="min-width:200px;">Luas Terbit</th> 
                       <th style="min-width:200px;">Selisih</th> 
                       <th style="min-width:200px;">No SHGB</th> 
@@ -258,13 +259,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="row" style="overflow-x: auto;white-space: nowrap;"> 
             <div class="col-md-12">
               <h3>Rincian Data Splitsing</h3> 
-              <a type="button" class="mb-xs mt-xs mr-xs btn btn-primary" id="tambahItem"><i class="fa fa-plus"></i> Tambah Item</a> 
+              <a type="button" class="mb-xs mt-xs mr-xs btn btn-primary" id="tambahItemedit"><i class="fa fa-plus"></i> Tambah Item</a> 
               <div class="table-ressplitsingnsive" style="max-height:420px;"> 
                 <table class="table table-bordered table-hover table-striped dataTable no-footer listitemedit">
                   <thead>
                     <tr>
                       <th style="min-width:200px;">Blok</th>
-                      <th style="min-width:200px;">Luas Daftar</th> 
+                      <th style="min-width:200px;">Panjang Daftar</th> 
+                      <th style="min-width:200px;">Lebar Daftar</th> 
                       <th style="min-width:200px;">Luas Terbit</th> 
                       <th style="min-width:200px;">Selisih</th> 
                       <th style="min-width:200px;">No SHGB</th> 
@@ -455,7 +457,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
           datarow+="<thead><tr>";
           datarow+="<th>Blok</th>";
-          datarow+="<th>Luas Daftar</th>";
+          datarow+="<th>Panjang Daftar</th>";
+          datarow+="<th>Lebar Daftar</th>";
           datarow+="<th>Luas Terbit</th>";
           datarow+="<th>Selisih</th>";
           datarow+="<th>No SHGB</th>";
@@ -470,7 +473,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           $.each(response.datasub, function(i, itemsub) {
             datarow+="<tr>";
             datarow+="<td>"+itemsub.blok+"</td>"; 
-            datarow+="<td>"+itemsub.luas_daftar_blok+"</td>";
+            datarow+="<td>"+itemsub.panjang_daftar_blok+"</td>";
+            datarow+="<td>"+itemsub.lebar_daftar_blok+"</td>";
             datarow+="<td>"+itemsub.luas_terbit_blok+"</td>"; 
             datarow+="<td></td>"; 
             datarow+="<td>"+itemsub.no_shgb_blok+"</td>"; 
@@ -502,7 +506,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       var luas_terbit = $(elem).data("luas_terbit"); 
       var no_daftar_shgb = $(elem).data("no_daftar_shgb"); 
       var tanggal_daftar_shgb = $(elem).data("tanggal_daftar_shgb"); 
-      var no_terbit_shgb = $(elem).data("no_terbit_shgb"); 
       var tanggal_terbit_shgb = $(elem).data("tanggal_terbit_shgb"); 
       var masa_berlaku = $(elem).data("masa_berlaku"); 
       var keterangan = $(elem).data("keterangan");  
@@ -512,7 +515,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $('.luas_terbit').val(luas_terbit);
       $('.no_daftar_shgb').val(no_daftar_shgb);
       $('.tanggal_daftar_shgb').val(tanggal_daftar_shgb);
-      $('.no_terbit_shgb').val(no_terbit_shgb);
       $('.tanggal_terbit_shgb').val(tanggal_terbit_shgb);
       $('.masa_berlaku').val(masa_berlaku);
       $('.keterangan').val(keterangan);
@@ -595,7 +597,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         x=x+1;       
         var formtambah='<tr>';
         formtambah+='<td> <input type="text" name="blok[]" class="form-control blok'+x+' required"></td>';
-        formtambah+='<td><input type="text" name="luas_daftar_blok[]"  class="form-control luas_daftar_blok'+x+' required"></td>';
+        formtambah+='<td><input type="text" name="panjang_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+' required"></td>';
+        formtambah+='<td><input type="text" name="lebar_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+' required"></td>';
         formtambah+='<td><input type="text" name="luas_terbit_blok[]"  class="form-control luas_terbit_blok'+x+' required"></td>';
         formtambah+='<td><input type="text" name="selisih[]"  class="form-control selisih'+x+' required"></td>';
         formtambah+='<td><input type="text" name="no_shgb_blok[]"  class="form-control no_shgb_blok'+x+' required"></td>';
@@ -635,7 +638,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         success: function(response) {  
           $.each(response.datarows, function(i, item) {                   
             document.getElementById("id_induk").value = item.id_induk;       
-            document.getElementById("no_terbit_shgb").value = item.no_terbit_shgb;
             document.getElementById("luas_daftar").value = item.luas_daftar;    
             document.getElementById("luas_terbit").value = item.luas_terbit;    
             document.getElementById("tanggal_daftar_shgb").value = item.tanggal_daftar_shgb;    
@@ -649,8 +651,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           var datarow='';
           $.each(response.datasub, function(i, itemsub) {
             x= x + 1;
+            datarow+='<tr>';
             datarow+='<td><input type="text" value="'+itemsub.blok+'" name="blok[]" class="form-control blok'+x+'"></td>';
-            datarow+='<td><input type="text" value="'+itemsub.luas_daftar_blok+'" name="luas_terbit_blok[]"  class="form-control luas_daftar_blok'+x+'"></td>';
+            datarow+='<td><input type="text" value="'+itemsub.panjang_daftar_blok+'" name="panjang_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+'"></td>';
+            datarow+='<td><input type="text" value="'+itemsub.lebar_daftar_blok+'" name="lebar_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+'"></td>';
             datarow+='<td><input type="text"  value="'+itemsub.luas_terbit_blok+'"  name="luas_terbit_blok[]"  class="form-control luas_terbit_blok'+x+'"></td>';
             datarow+='<td><input type="text"  name="selisih[]"  class="form-control selisih'+x+'"></td>';
             datarow+='<td><input type="text"  value="'+itemsub.no_shgb_blok+'"  name="no_shgb_blok[]"  class="form-control no_shgb_blok'+x+'"></td>';
@@ -680,15 +684,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       e.preventDefault();
       if(x < max_fieldsEdit){
        x=x+1;       
-       var formtambah='<tr>';
-       formtambah+='<td><div class="input-group input-group-icon" style="width:150px;"><input type="text" data-urutan="'+x+'" data-toggle="modal" data-target="#modal-listitems"  class="form-control kode_item'+x+'" placeholder="Pilih Item"><span class="input-group-addon"><span class="icon"><i class="fa fa-search"></i></span></span></div></td>';
-       formtambah+='<input type="hidden" class="kode_item'+x+'" name="kode_item[]">';
-       formtambah+='<td> <input type="text" name="nama_induk[]" class="form-control nama_induk'+x+' required"></td>';
-       formtambah+='<td><input type="text" name="no_gambar[]" size="3" class="form-control no_gambar'+x+' required"></td>';
-       formtambah+='<td><input type="text" name="no_pbb[]" size="3" class="form-control no_pbb'+x+'" required></td>';
-       formtambah+='<td><input type="text" name="tgl_proses_induk[]" class="form-control tanggal" required></td>';
-       formtambah+='<td><input type="text" name="keterangandetail[]" class="form-control keterangandetail'+x+' required"></td>';
-       formtambah+='<td><a href="javascript:void(0);" class="mb-xs mt-xs mr-xs btn btn-danger deleterow"><i class="fa fa-trash-o"></i></a></td></tr>'; 
+        var formtambah='<tr>';
+        formtambah+='<td> <input type="text" name="blok[]" class="form-control blok'+x+' required"></td>';
+        formtambah+='<td><input type="text" name="panjang_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+' required"></td>';
+        formtambah+='<td><input type="text" name="lebar_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+' required"></td>';
+        formtambah+='<td><input type="text" name="luas_terbit_blok[]"  class="form-control luas_terbit_blok'+x+' required"></td>';
+        formtambah+='<td><input type="text" name="selisih[]"  class="form-control selisih'+x+' required"></td>';
+        formtambah+='<td><input type="text" name="no_shgb_blok[]"  class="form-control no_shgb_blok'+x+' required"></td>';
+        formtambah+='<td><input type="text" name="masa_berlaku_blok[]"  class="form-control masa_berlaku_blok'+x+' tanggal required"></td>';
+        formtambah+='<td><input type="text" name="no_daftar_blok[]"  class="form-control no_daftar_blok'+x+' required"></td>';
+        formtambah+='<td><input type="text" name="tgl_daftar_blok[]"  class="form-control tgl_daftar_blok'+x+'  tanggal required"></td>';
+        formtambah+='<td><input type="text" name="tgl_terbit_blok[]"  class="form-control tgl_terbit_blok'+x+' tanggal required"></td>';
+        formtambah+='<td><input type="text" name="keterangandetail[]" class="form-control keterangandetail'+x+' required"></td>';
+        formtambah+='<td><a href="javascript:void(0);" class="mb-xs mt-xs mr-xs btn btn-danger deleterow"><i class="fa fa-trash-o"></i></a></td></tr>'; 
        $(wrapperItemEdit).append(formtambah);  
        $('.tanggal').datepicker({
         format: 'yyyy-mm-dd' 

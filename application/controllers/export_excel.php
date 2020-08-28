@@ -821,6 +821,196 @@ header('Cache-Control: max-age=1');
         exit;  
     }
 
+public function excellaporanprosesinduk($id='')
+{
+    $spreadsheet = new Spreadsheet();
+
+    $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+    $datarumah['dataperumahanseb'] = $this->master_model->getshgbperumahanarray($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31');
+    $datarumah['dataperumahanses'] = $this->master_model->getshgbperumahanarray($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31');
+    $datarumah['dataperumahantekseb'] = $this->master_model->getshgbperumahanarray($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','selesai');
+    $datarumah['dataperumahantekses'] = $this->master_model->getshgbperumahanarray($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','selesai');
+    $datarumah['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+
+    $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load(__DIR__ . '/file/laporan_evaluasi_belum_shgb_per.xlsx');
+    $i=12;
+
+    $nama_perumahan = '';
+    $no=1;
+    foreach($datarumah['dataperumahanseb'] as $data) { 
+      if ($data['tanggal_pengalihan']!=null) {
+        $tgl_pengalihan = tgl_indo($data['tanggal_pengalihan']);
+    }else{
+        $tgl_pengalihan = '-';
+    }
+    if ($data['id_perumahan']=='0') {
+        $perumahan = 'Tidak ada';
+    }else{
+        $perumahan = $data['nama_regional'];
+    }
+    $nama_perumahan = $perumahan;
+    $spreadsheet->setActiveSheetIndex(0)
+    ->setCellValue('B'.$i, $no++.'')
+    ->setCellValue('C'.$i, $perumahan)
+    ->setCellValue('D'.$i, $data['no_gambar'])
+    ->setCellValue('E'.$i, tgl_indo($data['tanggal_pembelian']))
+    ->setCellValue('F'.$i, $data['nama_penjual'])
+    ->setCellValue('G'.$i, $data['kode_sertifikat'])
+    ->setCellValue('H'.$i, $data['nama_surat_tanah'])
+    ->setCellValue('I'.$i, $data['luas_surat'])
+    ->setCellValue('J'.$i, $data['luas_ukur'])
+    ->setCellValue('K'.$i, $data['id_posisi_surat'])
+    ->setCellValue('L'.$i, '')
+    ->setCellValue('M'.$i, $data['status_order_akta'])
+    ->setCellValue('N'.$i, $data['jenis_pengalihan_hak'])
+    ->setCellValue('O'.$i, $data['akta_pengalihan'])
+    ->setCellValue('P'.$i, $tgl_pengalihan)
+    ->setCellValue('Q'.$i, $data['nama_pengalihan'])
+    ->setCellValue('R'.$i, $data['terima_finance'])
+    ->setCellValue('S'.$i, $data['keterangan']);
+    $i++;
+    $spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
+}
+$i+=3;
+
+$nama_perumahan = '';
+$no=1;
+$nama_perumahan = '';
+$no=1;
+foreach($datarumah['dataperumahanses'] as $data) { 
+  if ($data['tanggal_pengalihan']!=null) {
+    $tgl_pengalihan = tgl_indo($data['tanggal_pengalihan']);
+}else{
+    $tgl_pengalihan = '-';
+}
+if ($data['id_perumahan']=='0') {
+    $perumahan = 'Tidak ada';
+}else{
+    $perumahan = $data['nama_regional'];
+}
+$nama_perumahan = $perumahan;
+$spreadsheet->setActiveSheetIndex(0)
+->setCellValue('B'.$i, $no++.'')
+->setCellValue('C'.$i, $perumahan)
+->setCellValue('D'.$i, $data['no_gambar'])
+->setCellValue('E'.$i, tgl_indo($data['tanggal_pembelian']))
+->setCellValue('F'.$i, $data['nama_penjual'])
+->setCellValue('G'.$i, $data['kode_sertifikat'])
+->setCellValue('H'.$i, $data['nama_surat_tanah'])
+->setCellValue('I'.$i, $data['luas_surat'])
+->setCellValue('J'.$i, $data['luas_ukur'])
+->setCellValue('K'.$i, $data['id_posisi_surat'])
+->setCellValue('L'.$i, '')
+->setCellValue('M'.$i, $data['status_order_akta'])
+->setCellValue('N'.$i, $data['jenis_pengalihan_hak'])
+->setCellValue('O'.$i, $data['akta_pengalihan'])
+->setCellValue('P'.$i, $tgl_pengalihan)
+->setCellValue('Q'.$i, $data['nama_pengalihan'])
+->setCellValue('R'.$i, $data['terima_finance'])
+->setCellValue('S'.$i, $data['keterangan']);
+$i++;
+$spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
+}
+
+$i+=10 ;
+
+$nama_perumahan = '';
+$no=1;
+foreach($datarumah['dataperumahantekseb'] as $data) { 
+  if ($data['tanggal_pengalihan']!=null) {
+    $tgl_pengalihan = tgl_indo($data['tanggal_pengalihan']);
+}else{
+    $tgl_pengalihan = '-';
+}
+if ($data['id_perumahan']=='0') {
+    $perumahan = 'Tidak ada';
+}else{
+    $perumahan = $data['nama_regional'];
+}
+$nama_perumahan = $perumahan;
+$spreadsheet->setActiveSheetIndex(0)
+->setCellValue('B'.$i, $no++.'')
+->setCellValue('C'.$i, $perumahan)
+->setCellValue('D'.$i, $data['no_gambar'])
+->setCellValue('E'.$i, tgl_indo($data['tanggal_pembelian']))
+->setCellValue('F'.$i, $data['nama_penjual'])
+->setCellValue('G'.$i, $data['kode_sertifikat'])
+->setCellValue('H'.$i, $data['nama_surat_tanah'])
+->setCellValue('I'.$i, $data['luas_surat'])
+->setCellValue('J'.$i, $data['luas_ukur'])
+->setCellValue('K'.$i, $data['id_posisi_surat'])
+->setCellValue('L'.$i, '')
+->setCellValue('M'.$i, $data['status_order_akta'])
+->setCellValue('N'.$i, $data['jenis_pengalihan_hak'])
+->setCellValue('O'.$i, $data['akta_pengalihan'])
+->setCellValue('P'.$i, $tgl_pengalihan)
+->setCellValue('Q'.$i, $data['nama_pengalihan'])
+->setCellValue('R'.$i, $data['terima_finance'])
+->setCellValue('S'.$i, $data['keterangan']);
+$i++;
+$spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
+}
+$i+=3;
+
+$nama_perumahan = '';
+$no=1;
+$nama_perumahan = '';
+$no=1;
+foreach($datarumah['dataperumahantekses'] as $data) { 
+  if ($data['tanggal_pengalihan']!=null) {
+    $tgl_pengalihan = tgl_indo($data['tanggal_pengalihan']);
+}else{
+    $tgl_pengalihan = '-';
+}
+if ($data['id_perumahan']=='0') {
+    $perumahan = 'Tidak ada';
+}else{
+    $perumahan = $data['nama_regional'];
+}
+$nama_perumahan = $perumahan;
+$spreadsheet->setActiveSheetIndex(0)
+->setCellValue('B'.$i, $no++.'')
+->setCellValue('C'.$i, $perumahan)
+->setCellValue('D'.$i, $data['no_gambar'])
+->setCellValue('E'.$i, tgl_indo($data['tanggal_pembelian']))
+->setCellValue('F'.$i, $data['nama_penjual'])
+->setCellValue('G'.$i, $data['kode_sertifikat'])
+->setCellValue('H'.$i, $data['nama_surat_tanah'])
+->setCellValue('I'.$i, $data['luas_surat'])
+->setCellValue('J'.$i, $data['luas_ukur'])
+->setCellValue('K'.$i, $data['id_posisi_surat'])
+->setCellValue('L'.$i, '')
+->setCellValue('M'.$i, $data['status_order_akta'])
+->setCellValue('N'.$i, $data['jenis_pengalihan_hak'])
+->setCellValue('O'.$i, $data['akta_pengalihan'])
+->setCellValue('P'.$i, $tgl_pengalihan)
+->setCellValue('Q'.$i, $data['nama_pengalihan'])
+->setCellValue('R'.$i, $data['terima_finance'])
+->setCellValue('S'.$i, $data['keterangan']);
+$i++;
+$spreadsheet->getActiveSheet()->insertNewRowBefore($i, 1);
+}
+        // Rename worksheet
+$spreadsheet->getActiveSheet()->setTitle('Laporan '.$nama_perumahan);
+        // Set active sheet index to the first sheet, so Excel opens this as the first sheet
+$spreadsheet->setActiveSheetIndex(0);
+        // Redirect output to a client’s web browser (Xlsx)
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment;filename="Laporan Land bank.xlsx"');
+header('Cache-Control: max-age=0');
+        // If you're serving to IE 9, then the following may be needed
+header('Cache-Control: max-age=1');
+        // If you're serving to IE over SSL, then the following may be needed
+        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT'); // always modified
+        header('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+        header('Pragma: public'); // HTTP/1.0
+
+        $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+        $writer->save('php://output');
+        exit;  
+    }
+
 }
 
 /* End of file  */

@@ -560,7 +560,8 @@ function simpandataprosessplit(){
     $this->db->insert("master_split", $array);
     $id_split =  $this->db->insert_id();
     $blok = $this->input->post("blok");    
-    $luas_daftar_blok = $this->input->post("luas_daftar_blok");    
+    $panjang_daftar_blok = $this->input->post("panjang_daftar_blok");    
+    $lebar_daftar_blok = $this->input->post("lebar_daftar_blok");    
     $luas_terbit_blok = $this->input->post("luas_terbit_blok");
     $no_shgb_blok = $this->input->post("no_shgb_blok");
     $masa_berlaku_blok = $this->input->post("masa_berlaku_blok");    
@@ -573,7 +574,8 @@ function simpandataprosessplit(){
         $listitem = array(
             'id_split'=>$id_split,  
             'blok'=>$blok[$i],  
-            'luas_daftar_blok'=>$luas_daftar_blok[$i],  
+            'panjang_daftar_blok'=>$panjang_daftar_blok[$i],  
+            'lebar_daftar_blok'=>$lebar_daftar_blok[$i],  
             'luas_terbit_blok'=>$luas_terbit_blok[$i],  
             'no_shgb_blok'=>$no_shgb_blok[$i],  
             'masa_berlaku_blok'=>$masa_berlaku_blok[$i],  
@@ -596,16 +598,19 @@ function simpandataprosessplit(){
 public function updatedataprosessplit()
 {
     $post = $this->input->post();
+    $id_split =  $post["idd"];
     $this->db->trans_start();
     $array = array(
        'id_proses_induk'=>$post["id_proses_induk"],
        'keterangan'=>$post["keterangan"],
    );
-    $this->db->where('id_split', $post["idd"]);
+    $this->db->where('id_split', $id_split);
     $this->db->update("master_split", $array);
-    $id_split =  $this->db->insert_id();
+    $this->db->where('id_split', $id_split);
+    $this->db->delete('tbl_dtl_split');
     $blok = $this->input->post("blok");    
-    $luas_daftar_blok = $this->input->post("luas_daftar_blok");    
+    $panjang_daftar_blok = $this->input->post("panjang_daftar_blok");    
+    $lebar_daftar_blok = $this->input->post("lebar_daftar_blok");    
     $luas_terbit_blok = $this->input->post("luas_terbit_blok");
     $no_shgb_blok = $this->input->post("no_shgb_blok");
     $masa_berlaku_blok = $this->input->post("masa_berlaku_blok");    
@@ -618,7 +623,8 @@ public function updatedataprosessplit()
         $listitem = array(
             'id_split'=>$id_split,  
             'blok'=>$blok[$i],  
-            'luas_daftar_blok'=>$luas_daftar_blok[$i],  
+            'panjang_daftar_blok'=>$panjang_daftar_blok[$i],  
+            'lebar_daftar_blok'=>$lebar_daftar_blok[$i],  
             'luas_terbit_blok'=>$luas_terbit_blok[$i],  
             'no_shgb_blok'=>$no_shgb_blok[$i],  
             'masa_berlaku_blok'=>$masa_berlaku_blok[$i],  
