@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 25, 2020 at 02:43 PM
+-- Generation Time: Aug 29, 2020 at 10:00 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -9707,7 +9707,7 @@ CREATE TABLE `master_proses_induk` (
 --
 
 INSERT INTO `master_proses_induk` (`id_proses_induk`, `no_gambar`, `penjual`, `id_perumahan`, `no_surat_tanah`, `nama_surat_tanah`, `luas`, `luas_daftar`, `luas_terbit`, `tanggal_daftar_sk_hak`, `no_daftar_sk_hak`, `tanggal_terbit_sk_hak`, `no_terbit_sk_hak`, `tanggal_daftar_shgb`, `no_daftar_shgb`, `tanggal_terbit_shgb`, `no_terbit_shgb`, `masa_berlaku_shgb`, `target_penyelesaian`, `status`, `keterangan`) VALUES
-(3, '100', 'penjual', 1, 'no.123', 'siapa', '100', '100', '100', '2020-08-21', '1111', '2020-08-28', '111111', '2020-08-08', '333333', '2020-08-29', '333333', '2020-08-27', '2020-08-29', 'terbit', 'test keterangan');
+(3, '100', 'penjual', 1, 'no.123', 'siapa', '100', '100', '100', '2020-08-21', '1111', '2020-08-28', '111111', '2020-08-08', '333333', '2020-08-29', '333333', '0000-00-00', '2020-08-29', 'terbit', 'test keterangan');
 
 -- --------------------------------------------------------
 
@@ -9755,9 +9755,9 @@ CREATE TABLE `master_split` (
 --
 
 INSERT INTO `master_split` (`id_split`, `id_proses_induk`, `keterangan`) VALUES
-(1, 3, 'test keterangan'),
-(6, 3, 'test keterangan'),
-(7, 3, 'test keterangan');
+(1, 3, ''),
+(6, 3, ''),
+(7, 3, '');
 
 -- --------------------------------------------------------
 
@@ -10013,8 +10013,11 @@ CREATE TABLE `tbl_dtl_proses_induk` (
 --
 
 INSERT INTO `tbl_dtl_proses_induk` (`id_dtl_proses_induk`, `id_proses_induk`, `id_master_item`, `tgl_proses_induk`, `keterangan`, `waktu_update`) VALUES
-(16, 3, 5, '2020-08-21', '123', '2020-08-22 07:46:36'),
-(17, 3, 2, '2020-08-27', '', '2020-08-22 07:46:36');
+(18, 3, 5, '2020-08-21', '123', '2020-08-28 11:12:25'),
+(19, 3, 2, '2020-08-27', '112', '2020-08-28 11:12:25'),
+(20, 3, 1, '2020-08-31', '143', '2020-08-28 11:12:25'),
+(21, 3, 9, '2020-08-26', '123', '2020-08-28 11:12:25'),
+(22, 3, 6, '2020-08-18', '412', '2020-08-28 11:12:25');
 
 -- --------------------------------------------------------
 
@@ -10027,6 +10030,7 @@ CREATE TABLE `tbl_dtl_split` (
   `id_split` int(11) NOT NULL,
   `blok` varchar(20) NOT NULL,
   `panjang_daftar_blok` varchar(100) NOT NULL,
+  `lebar_daftar_blok` varchar(100) NOT NULL,
   `luas_terbit_blok` varchar(100) NOT NULL,
   `no_shgb_blok` varchar(100) NOT NULL,
   `masa_berlaku_blok` date NOT NULL,
@@ -10040,13 +10044,11 @@ CREATE TABLE `tbl_dtl_split` (
 -- Dumping data for table `tbl_dtl_split`
 --
 
-INSERT INTO `tbl_dtl_split` (`id_dtl_split`, `id_split`, `blok`, `panjang_daftar_blok`, `luas_terbit_blok`, `no_shgb_blok`, `masa_berlaku_blok`, `no_daftar_blok`, `tgl_daftar_blok`, `tgl_terbit_blok`, `keterangan`) VALUES
-(1, 1, 'blok a', '123', '123', '12', '2020-08-19', '123', '2020-08-20', '2020-08-19', '113'),
-(2, 1, 'blok c', '12', '12', '123', '2020-08-25', '1', '2020-08-25', '2020-08-25', '1'),
-(3, 6, 'test blok a', '1', '1', '1', '0000-00-00', '1', '2020-08-25', '2020-08-25', '1'),
-(4, 6, 'test blok b', '1', '1', '1', '0000-00-00', '1', '2020-08-25', '2020-08-25', '1'),
-(5, 6, 'test blok c', '1', '1', '1', '0000-00-00', '1', '2020-08-25', '2020-08-25', '1'),
-(6, 7, 'blok a', '100', '100', '123', '2020-08-25', '1', '2020-08-25', '2020-08-25', '1');
+INSERT INTO `tbl_dtl_split` (`id_dtl_split`, `id_split`, `blok`, `panjang_daftar_blok`, `lebar_daftar_blok`, `luas_terbit_blok`, `no_shgb_blok`, `masa_berlaku_blok`, `no_daftar_blok`, `tgl_daftar_blok`, `tgl_terbit_blok`, `keterangan`) VALUES
+(12, 6, 'test blok', '1', '', '1', '1', '0000-00-00', '1', '2020-08-25', '2020-08-25', '1'),
+(13, 7, 'blok ajsdkajsh', '1000', '', '', '', '0000-00-00', '', '0000-00-00', '0000-00-00', ''),
+(14, 1, 'blok a', '123', '100', '123', '12', '2020-08-19', '123', '2020-08-20', '2020-08-19', '113'),
+(15, 1, 'blok c', '12', '100', '12', '123', '2020-08-25', '1', '2020-08-25', '2020-08-25', '1');
 
 -- --------------------------------------------------------
 
@@ -10390,13 +10392,13 @@ ALTER TABLE `tbl_absensi`
 -- AUTO_INCREMENT for table `tbl_dtl_proses_induk`
 --
 ALTER TABLE `tbl_dtl_proses_induk`
-  MODIFY `id_dtl_proses_induk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_dtl_proses_induk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `tbl_dtl_split`
 --
 ALTER TABLE `tbl_dtl_split`
-  MODIFY `id_dtl_split` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_dtl_split` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tbl_jenis_pengalihan`
