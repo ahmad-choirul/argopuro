@@ -143,4 +143,11 @@ public function catatantambah(){
 $data['token'] = $this->security->get_csrf_hash();
 echo json_encode($data);
 }
+public function cek()
+{
+    echo "<pre>";
+    print_r ($this->session->flashdata('cek'));
+    print_r ($this->session->userdata('cek1'));
+    echo "</pre>";
+}
 }

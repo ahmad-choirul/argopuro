@@ -385,18 +385,34 @@ public function pembelihapus(){
     echo json_encode($data); 
 }
 
-public function perumahan()
+public function perumahanlokasi()
 {   
     level_user('master','perumahan',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
     $data['listkabupaten'] = $this->db->order_by("id_kabupaten","DESC")->get('kabupaten')->result();
     $data['status'] = $this->db->order_by("id_status_regional","DESC")->get('master_status_regional')->result();
-    $this->load->view('member/master/perumahan',$data);
+    $this->load->view('member/master/perumahanlokasi',$data);
 }  
-public function datakategori()
+
+public function perumahanluarijin()
+{   
+    level_user('master','perumahan',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
+    $data['listkabupaten'] = $this->db->order_by("id_kabupaten","DESC")->get('kabupaten')->result();
+    $data['status'] = $this->db->order_by("id_status_regional","DESC")->get('master_status_regional')->result();
+    $this->load->view('member/master/perumahanluarijin',$data);
+}  
+
+public function perumahandalamijin()
+{   
+    level_user('master','perumahan',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
+    $data['listkabupaten'] = $this->db->order_by("id_kabupaten","DESC")->get('kabupaten')->result();
+    $data['status'] = $this->db->order_by("id_status_regional","DESC")->get('master_status_regional')->result();
+    $this->load->view('member/master/perumahandalamijin',$data);
+}  
+public function datakategori($status)
 {   
     cekajax(); 
     $get = $this->input->get();
-    $list = $this->master_model->get_kategori_datatable();
+    $list = $this->master_model->get_kategori_datatable($status);
     $data = array(); 
     foreach ($list as $r) { 
         $row = array(); 
@@ -420,8 +436,8 @@ public function datakategori()
     } 
     $result = array(
         "draw" => $get['draw'],
-        "recordsTotal" => $this->master_model->count_all_datatable_kategori(),
-        "recordsFiltered" => $this->master_model->count_filtered_datatable_kategori(),
+        "recordsTotal" => $this->master_model->count_all_datatable_kategori($status),
+        "recordsFiltered" => $this->master_model->count_filtered_datatable_kategori($status),
         "data" => $data,
     ); 
     echo json_encode($result); 
@@ -433,6 +449,7 @@ public function getkecamatan(){
 }
 public function getdesa(){
     $id=$this->input->post('id');
+    $hasil=$this->db->query("SELECT * FROM desa WHERE id_kecamatan='$id'")->result();
     $data=$this->master_model->getdesa($id);
     echo json_encode($data);
 }

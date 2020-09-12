@@ -173,6 +173,42 @@ public function get_rekapproses_perijinan($id='',$firstdate='',$lastdate='',$ter
    }
    return array('luas' => $luas,'jumlah' => $jumlah ,'luas_terbit' => $luas_terbit );
 }
+
+public function getdatatarget($id='',$tahun)
+{
+    $this->db->select('target_bid, target_luas');
+    $this->db->from('tbl_target a'); 
+    $this->db->join('master_regional b', 'a.id_perumahan = b.id', 'left');
+    $this->db->where('id_perumahan', $id);
+    $this->db->where('tahun', $tahun.'-01-01');
+
+    $get = $this->db->get();
+    if ($get->num_rows()>0) {
+        $hasil = $get->result_array()[0];
+        $stringbid = substr($hasil['target_bid'], 0, -1);
+        $stringluas = substr($hasil['target_luas'], 0, -1);
+        $bid=explode(';', $stringbid);
+        $luas=explode(';', $stringluas);
+        return array('luas' => $luas,'bid' => $bid);
+    }
+    else{
+        return array('luas' => 0,'bid' => 0);
+    }
+}
+
+public function getrealisasi($id,$sebelum,$sesudah)
+{
+    $this->db->select("count(kode_item) as bid,sum(luas_surat) as luas");
+    $this->db->where('id_perumahan', $id);
+    $this->db->where('tanggal_pembelian BETWEEN "'.$sebelum.'" and "'.$sesudah.'"');
+    $this->db->from('master_item');
+    $hasil = $this->db->get();
+    if ($hasil->num_rows()>0) {
+       return $hasil->result_array()[0];
+   }else{
+    return array('luas' => 0,'bid' => 0 );;
+}
+}
 function getrowspo($params = array()){ 
     $this->db->select("a.nomor_po, a.tgl_po, a.termin,
      a.pembayaran, a.target, a.total, a.keterangan, b.nama_target");

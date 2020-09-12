@@ -109,15 +109,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </select>
             </div>
           </div>  
-          <div class="form-group mt-lg nama_target">
+           <div class="form-group mt-lg nama_target">
             <label class="col-sm-3 control-label">Status<span class="required">*</span></label>
             <div class="col-sm-9">
-              <select class="form-control" required name="status_regional">  
-                <option value="">Pilih Status</option>
-                <?php foreach ($status as $supp): ?>
-                  <option value="<?php echo $supp->id_status_regional;?>"><?php echo $supp->nama_status;?></option>
-                <?php endforeach; ?>
-              </select> 
+              <input type="hidden" name="status_regional" value="2" class="form-control" required/>
+              <input type="text" readonly value="Luar Ijin" class="form-control" required/>
+              
             </div>
           </div>
         </div>
@@ -336,7 +333,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     "serverSide": true, 
     "order": [], 
     "ajax": {
-      "url": "<?php echo base_url()?>master/datakategori",
+      "url": "<?php echo base_url()?>master/datakategori/2",
       "type": "GET"
     }, 
     "columnDefs": [

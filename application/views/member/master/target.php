@@ -32,13 +32,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php $this->load->view("komponen/sidebar.php") ?>
         <section role="main" class="content-body">
            <header class="page-header">  
-              <h2>Master Data Agen</h2>  
+              <h2>Master Data Target</h2>  
           </header>  
           <!-- start: page -->
           <section class="panel">
             <header class="panel-heading">    
                 <div class="row show-grid">
-                    <div class="col-md-6" align="left"><h2 class="panel-title">Data Agen</h2></div>
+                    <div class="col-md-6" align="left"><h2 class="panel-title">Data Target</h2></div>
                     <?php  
                     echo '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>';
                     ?> 
@@ -229,7 +229,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <?php echo form_open('master/targetedit',' id="FormulirEdit"');?>  
                 <input type="hidden" name="idd" id="idd">
                 <header class="panel-heading">
-                    <h2 class="panel-title">Edit Data Agen</h2>
+                    <h2 class="panel-title">Edit Data Target</h2>
                 </header>
                  <div class="panel-body">
                     <div class="form-group mt-lg nama_target">

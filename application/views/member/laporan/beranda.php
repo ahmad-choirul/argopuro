@@ -59,7 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </header>
                         <div class="panel-body">
                             <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian_detail" class="btn btn-primary"><i class="fa fa-folder"></i> Detail Evaluasi Pembelian</a>
-                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian" class="btn btn-warning"><i class="fa fa-folder"></i> Rekap Evaluasi Pembelian</a>
+                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian" class="btn btn-primary"><i class="fa fa-folder"></i> Rekap Evaluasi Pembelian</a>
                         </div>
                     </section>
                 </div> 
@@ -127,7 +127,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </header>
                     <div class="panel-body">
                         <a href="<?php echo base_url()?>laporan/laporan_evaluasi_splitsing" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Splitsing</a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_splitsing_per" class="btn btn-warning"><i class="fa fa-folder"></i> Splitsing Perumahan</a>
+                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_splitsing_per" class="btn btn-primary"><i class="fa fa-folder"></i> Splitsing Perumahan</a>
                     </div>
                 </section>
             </div>  

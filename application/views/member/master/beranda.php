@@ -65,9 +65,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 													<?php if( $this->session->userdata('kategori')==31){?>
 														<li>
-															<a href="<?php echo base_url()?>master/perumahan" class="menu-item" style="color: white"><i class="fa fa-folder"></i> Master Perumahan</a>
+															<a href="<?php echo base_url()?>master/perumahandalamijin" class="menu-item" style="color: white"><i class="fa fa-folder"></i> Master Perumahan Dalam Ijin</a>
 															<div class="item-options">
-																<a href="<?php echo base_url()?>master/perumahan">
+																<a href="<?php echo base_url()?>master/perumahandalamijin">
+																	<i class="fa fa-arrow-circle-o-left"></i>
+																</a> 
+															</div>
+														</li> 
+														<li>
+															<a href="<?php echo base_url()?>master/perumahanluarijin" class="menu-item" style="color: white"><i class="fa fa-folder"></i> Master Perumahan luar ijin</a>
+															<div class="item-options">
+																<a href="<?php echo base_url()?>master/perumahanluarijin">
+																	<i class="fa fa-arrow-circle-o-left"></i>
+																</a> 
+															</div>
+														</li> 
+														<li>
+															<a href="<?php echo base_url()?>master/perumahanlokasi" class="menu-item" style="color: white"><i class="fa fa-folder"></i> Master Perumahan Lokasi</a>
+															<div class="item-options">
+																<a href="<?php echo base_url()?>master/perumahanlokasi">
 																	<i class="fa fa-arrow-circle-o-left"></i>
 																</a> 
 															</div>
