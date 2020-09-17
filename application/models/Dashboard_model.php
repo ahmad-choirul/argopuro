@@ -81,7 +81,7 @@ public function listbelum(){
   $this->db->from("tabel_pembayaran a");
   $this->db->join('master_item b', 'a.kode_item = b.kode_item ');  
   $this->db->where('a.status_bayar', '0');
-  $this->db->where('a.tanggal_pembayaran <= ', date('Y-m-d',strtotime('+15 days')));  
+  // $this->db->where('a.tanggal_pembayaran <= ', date('Y-m-d',strtotime('+15 days')));  
   return $this->db->get()->result();
 }
 public function get_produk_terlaris(){ 

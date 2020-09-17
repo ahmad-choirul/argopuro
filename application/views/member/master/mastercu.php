@@ -51,40 +51,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <thead>
                     <tr>
 
-                        <th colspan="3" style="text-align: center;">LAND BANK s/d 2019</th>
-                        <th colspan="3" style="text-align: center;">LAND BANK s/d 2020 </th>
-                        <th colspan="3" style="text-align: center;">TOTAL LAND BANK</th>
-                        <th colspan="3" style="text-align: center;">SERAH TERIMA TECHNIC</th>
-                        <th colspan="3" style="text-align: center;">SISA LAND BANK</th>
+                        <th colspan="3" style="text-align: center;vertical-align: middle;">LAND BANK s/d 2019</th>
+                        <th colspan="3" style="text-align: center;vertical-align: middle;">LAND BANK s/d 2020 </th>
+                        <th colspan="3" style="text-align: center;vertical-align: middle;">TOTAL LAND BANK</th>
+                        <th colspan="3" style="text-align: center;vertical-align: middle;">SERAH TERIMA TECHNIC</th>
+                        <th colspan="3" style="text-align: center;vertical-align: middle;">SISA LAND BANK</th>
 
 
 
                     </tr>
                     <tr>
-                        <th  rowspan="2" style="text-align: center;">BID</th>
-                        <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
-                        <th  rowspan="2" style="text-align: center;">BID</th>
-                        <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
-                        <th  rowspan="2" style="text-align: center;">BID</th>
-                        <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
-                        <th  rowspan="2" style="text-align: center;">BID</th>
-                        <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>                        
-                        <th  rowspan="2" style="text-align: center;">BID</th>
-                        <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
+                        <th  rowspan="2" style="text-align: center;vertical-align: middle;">BID</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">LUAS m<sup>2</sup></th>
+                        <th  rowspan="2" style="text-align: center;vertical-align: middle;">BID</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">LUAS m<sup>2</sup></th>
+                        <th  rowspan="2" style="text-align: center;vertical-align: middle;">BID</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">LUAS m<sup>2</sup></th>
+                        <th  rowspan="2" style="text-align: center;vertical-align: middle;">BID</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">LUAS m<sup>2</sup></th>                        
+                        <th  rowspan="2" style="text-align: center;vertical-align: middle;">BID</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">LUAS m<sup>2</sup></th>
 
 
                     </tr>
                     <tr>
-                        <th   style="text-align: center;">SURAT</th>
-                        <th   style="text-align: center;">UKUR</th>
-                        <th   style="text-align: center;">SURAT</th>
-                        <th   style="text-align: center;">UKUR</th>
-                        <th   style="text-align: center;">SURAT</th>
-                        <th   style="text-align: center;">UKUR</th>
-                        <th   style="text-align: center;">SURAT</th>
-                        <th   style="text-align: center;">UKUR</th>
-                        <th   style="text-align: center;">SURAT</th>
-                        <th   style="text-align: center;">UKUR</th>
+                        <th   style="text-align: center;vertical-align: middle;">SURAT</th>
+                        <th   style="text-align: center;vertical-align: middle;">UKUR</th>
+                        <th   style="text-align: center;vertical-align: middle;">SURAT</th>
+                        <th   style="text-align: center;vertical-align: middle;">UKUR</th>
+                        <th   style="text-align: center;vertical-align: middle;">SURAT</th>
+                        <th   style="text-align: center;vertical-align: middle;">UKUR</th>
+                        <th   style="text-align: center;vertical-align: middle;">SURAT</th>
+                        <th   style="text-align: center;vertical-align: middle;">UKUR</th>
+                        <th   style="text-align: center;vertical-align: middle;">SURAT</th>
+                        <th   style="text-align: center;vertical-align: middle;">UKUR</th>
 
 
 
@@ -187,15 +187,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-9">
                             <input type="text" name="no_pbb" class="form-control"  />
                         </div>
-                    </div><div class="form-group luas_pbb">
+                    </div><div class="form-group luas_pbb_bangunan">
                         <label class="col-sm-3 control-label">Luas PBB</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="luas_pbb" class="form-control"  />
+                            <input type="text" name="luas_pbb_bangunan" class="form-control"  />
                         </div>
-                    </div><div class="form-group njop">
-                        <label class="col-sm-3 control-label">njop</span></label>
+                    </div><div class="form-group njop_bangunan">
+                        <label class="col-sm-3 control-label">njop_bangunan</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="njop" class="form-control"  />
+                            <input type="text" name="njop_bangunan" class="form-control"  />
                         </div>
                     </div>
                    <div class="form-group total_harga_pengalihan">
@@ -383,15 +383,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-sm-9">
                         <input type="text" name="no_pbb" id="no_pbb" class="form-control"  />
                     </div>
-                </div><div class="form-group luas_pbb">
+                </div><div class="form-group luas_pbb_bangunan">
                     <label class="col-sm-3 control-label">Luas PBB</span></label>
                     <div class="col-sm-9">
-                        <input type="text" name="luas_pbb" id="luas_pbb" class="form-control"  />
+                        <input type="text" name="luas_pbb_bangunan" id="luas_pbb_bangunan" class="form-control"  />
                     </div>
-                </div><div class="form-group njop">
-                    <label class="col-sm-3 control-label">njop</span></label>
+                </div><div class="form-group njop_bangunan">
+                    <label class="col-sm-3 control-label">njop_bangunan</span></label>
                     <div class="col-sm-9">
-                        <input type="text" name="njop" id="njop" class="form-control"  />
+                        <input type="text" name="njop_bangunan" id="njop_bangunan" class="form-control"  />
                     </div>
                 </div>
                 <div class="form-group total_harga_pengalihan">

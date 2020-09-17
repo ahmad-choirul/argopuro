@@ -47,49 +47,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </header>
     <div class="panel-body"> 
       <div >
-          <table class="table table-bordered table-hover table-striped data" id="itemsdata">
+          <table class="table table-bordered table-hover table-striped data" id="itemsdata" style="overflow-x: auto;white-space: nowrap;">
             <thead>
                 <tr>
-                    <th rowspan="2" style="text-align: center;"></th>
-                    <th rowspan="2" style="text-align: center;">Lokasi</th>
-                    <th rowspan="2" style="text-align: center;">Kode Item </th>
-                    <th rowspan="2" style="text-align: center;">Tanggal Pembelian</th>
-                    <th rowspan="2" style="text-align: center;">Nama Penjual</th>
-                    <th colspan="3" style="text-align: center;">Data Surat Tanah</th>
-                    <th rowspan="2" style="text-align: center;">No Gambar</th>
-                    <th rowspan="2" style="text-align: center;">Jml Bidang</th>
-                    <th colspan="2" style="text-align: center;">Luas (m2)</th>
-                    <th colspan="3" style="text-align: center;">PBB</th>
-                    <th colspan="2" style="text-align: center;">Harga Pengalihan Hak</th>
-                    <th colspan="2" style="text-align: center;">Makelar</th>
-                    <th colspan="3" style="text-align: center;">Pengalihan Hak</th>
-                    <th colspan="4" style="text-align: center;">Biaya Lain-lain</th>
-                    <th rowspan ="2" style="text-align: center;" >Total Harga / M^2</th>
-                    <th rowspan="2" style="text-align: center;" >Harga / M^2</th>
-                    <th rowspan="2" style="text-align: center;">Keterangan</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;"></th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">Lokasi</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">Kode Item </th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">Tanggal Pembelian</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">Nama Penjual</th>
+                    <th colspan="3" style="text-align: center;vertical-align: middle;">Data Surat Tanah</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">No Gambar</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">Jml Bidang</th>
+                    <th colspan="2" style="text-align: center;vertical-align: middle;">Luas (m2)</th>
+                    <th colspan="3" style="text-align: center;vertical-align: middle;">PBB</th>
+                    <th colspan="2" style="text-align: center;vertical-align: middle;">Harga Pengalihan Hak</th>
+                    <th colspan="2" style="text-align: center;vertical-align: middle;">Makelar</th>
+                    <th colspan="3" style="text-align: center;vertical-align: middle;">Pengalihan Hak</th>
+                    <th colspan="2" style="text-align: center;vertical-align: middle;">Biaya Lain-lain</th>
+                    <th rowspan ="2" style="text-align: center;vertical-align: middle;" >Total Harga / M^2</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;" >Harga / M^2</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">Keterangan</th>
 
 
                 </tr>
                 <tr>
-                    <th style="text-align: center;">Nama</th>
-                    <th style="text-align: center;">Surat 1</th>
-                    <th style="text-align: center;">Surat 2</th>
-                    <th style="text-align: center;">Surat</th>
-                    <th style="text-align: center;">Ukur</th>
-                    <th style="text-align: center;">Nomor</th>
-                    <th style="text-align: center;">Luas</th>
-                    <th style="text-align: center;">NJOP</th>
-                    <th style="text-align: center;">Satuan</th>
-                    <th style="text-align: center;">Total</th>
-                    <th style="text-align: center;">Nama</th>
-                    <th style="text-align: center;">Nilai</th>
-                    <th style="text-align: center;">Tanggal</th>
-                    <th style="text-align: center;">Akte</th>
-                    <th style="text-align: center;">Nama</th>
-                    <th style="text-align: center;">Ganti Rugi</th>
-                    <th style="text-align: center;">PBB</th>
-                    <th style="text-align: center;">Lain2</th>
-                    <th style="text-align: center;">Total</th>
+                    <th style="text-align: center;vertical-align: middle;">Nama</th>
+                    <th style="text-align: center;vertical-align: middle;">Surat 1</th>
+                    <th style="text-align: center;vertical-align: middle;">Surat 2</th>
+                    <th style="text-align: center;vertical-align: middle;">Surat</th>
+                    <th style="text-align: center;vertical-align: middle;">Ukur</th>
+                    <th style="text-align: center;vertical-align: middle;">Nomor</th>
+                    <th style="text-align: center;vertical-align: middle;">Luas</th>
+                    <th style="text-align: center;vertical-align: middle;">njop_bangunan</th>
+                    <th style="text-align: center;vertical-align: middle;">Satuan</th>
+                    <th style="text-align: center;vertical-align: middle;">Total</th>
+                    <th style="text-align: center;vertical-align: middle;">Nama</th>
+                    <th style="text-align: center;vertical-align: middle;">Nilai</th>
+                    <th style="text-align: center;vertical-align: middle;">Tanggal</th>
+                    <th style="text-align: center;vertical-align: middle;">Akte</th>
+                    <th style="text-align: center;vertical-align: middle;">Nama</th>
+                    <th style="text-align: center;vertical-align: middle;">Lain2</th>
+                    <th style="text-align: center;vertical-align: middle;">Keterangan Lain</th>
 
                 </tr>
             </thead>
@@ -122,7 +120,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <select data-plugin-selectTwo class="form-control" required name="id_perumahan">  
                                 <option value="">Pilih Lokasi</option>
                                 <?php foreach ($perumahan2 as $aa): ?>
-                                    <option value="<?php echo $aa->id;?>"><?php echo $aa->nama_regional;?></option>
+                                    <option value="<?php echo $aa->id;?>"><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
                                 <?php endforeach; ?>
                             </select> 
                         </div>
@@ -139,8 +137,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="tanggal_pembelian" class="form-control tanggal"  />
                         </div>
                     </div>
-                     <div class="form-group tanggal_pembelian">
-                        <label class="col-sm-3 control-label">Nama Pemilik</span></label>
+                    <div class="form-group tanggal_pembelian">
+                        <label class="col-sm-3 control-label">Atas Nama Surat</span></label>
                         <div class="col-sm-9">
                             <input type="text" name="nama_surat_tanah" class="form-control"  />
                         </div>
@@ -197,22 +195,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                     <div class="form-group no_pbb">
-                        <label class="col-sm-3 control-label">NOP</span></label>
+                        <label class="col-sm-3 control-label">PBB</span></label>
                         <div class="col-sm-4">
-                            <input type="text" name="no_pbb" class="form-control" placeholder="No NOP"  />
+                            <input type="text" name="no_pbb" class="form-control" placeholder="No PBB"  />
                         </div>
                         <div class="col-sm-4">
-                            <input type="text" name="atas_nama_pbb" class="form-control" placeholder="Atas Nama NOP"  />
+                            <input type="text" name="atas_nama_pbb" class="form-control" placeholder="Atas Nama"  />
                         </div>
                     </div>
                     <div class="form-group no_pbb">
                         <label class="col-sm-3 control-label"></span></label>
-
                         <div class="col-sm-4">
-                            <input type="text" name="luas_pbb" class="form-control" placeholder="Luas NOP (m2)"  />
+                            <!-- <input type="text" name="luas_pbb_bangunan" class="form-control" placeholder="Luas PBB (m2)"  /> -->
+                            <input type="text" name="luas_pbb_bangunan" class="form-control" placeholder="Luas Bangunan PBB (m2)"  />
+                            <br>
+                            <input type="text" name="luas_pbb_bumi" class="form-control" placeholder="Luas Bumi PBB (m2)"  />
                         </div>
                         <div class="col-sm-4">
-                            <input type="text" name="njop" class="form-control" placeholder="NJOP" />
+                            <input type="text" name="njop_bangunan" class="form-control" placeholder="NJOP Bangunan" />
+                            <br>
+                            <input type="text" name="njop_bumi" class="form-control" placeholder="NJOP Bumi" />
                         </div>
 
                     </div>
@@ -223,7 +225,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="total_harga_pengalihan" class="form-control" placeholder="Total Harga Pengalihan" />
                         </div>
                     </div><div class="form-group nama_makelar">
-                        <label class="col-sm-3 control-label">Makelar</span></label>
+                        <label class="col-sm-3 control-label">Nama Makelar</span></label>
                         <div class="col-sm-9">
                             <input type="text" name="nama_makelar" class="form-control"  />
                         </div>
@@ -245,10 +247,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </select> 
                         </div>
                     </div>
-                    <div class="form-group tanggal_pengalihan">
+                    <!-- <div class="form-group tanggal_pengalihan">
                         <label class="col-sm-3 control-label"> Detail Pengalihan </span></label>
                         <div class="col-sm-3">
-                            <input type="text" name="tanggal_pengalihan" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Tanggal Pengalihan" title="Tanggal Pengalihan"  />
+                            <input type="text" name="tanggal_pengalihan" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal" placeholder="Tanggal Pengalihan" title="Tanggal Pengalihan"  />
                         </div>
                         <div class="col-sm-3">
                             <input type="text" name="akta_pengalihan" class="form-control" placeholder="No Akta"  />
@@ -256,8 +258,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-3">
                             <input type="text" name="nama_pengalihan" class="form-control" placeholder="Nama Pejabat" />
                         </div>
-                    </div>
-                    <div class="form-group ganti_rugi">
+                    </div> -->
+                    <!-- <div class="form-group ganti_rugi">
                         <label class="col-sm-3 control-label">Ganti Rugi</span></label>
                         <div class="col-sm-9">
                             <input type="text" name="ganti_rugi" class="form-control mask_price"  />
@@ -268,11 +270,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-9">
                             <input type="text" name="pbb" class="form-control mask_price"  />
                         </div>
-                    </div>
+                    </div> -->
                     <div class="form-group lain">
                         <label class="col-sm-3 control-label">Biaya Lain-lain</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="lain" class="form-control mask_price"  />
+                        <div class="col-sm-4">
+                            <input type="text" name="lain" placeholder="Nilai" class="form-control mask_price"  />
+                        </div>
+                        <div class="col-sm-5">
+
+                            <textarea rows="2" class="form-control" name="keterangan_lain" placeholder="Keterangan Lain-lain" ></textarea>
                         </div>
                     </div>
                     <div class="form-group keterangan">
@@ -350,11 +356,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
                 <div class="form-group tanggal_pembelian">
-                        <label class="col-sm-3 control-label">Nama Pemilik</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="nama_surat_tanah" id="nama_surat_tanah" class="form-control"  />
-                        </div>
+                    <label class="col-sm-3 control-label">Atas Nama Surat</span></label>
+                    <div class="col-sm-9">
+                        <input type="text" name="nama_surat_tanah" id="nama_surat_tanah" class="form-control"  />
                     </div>
+                </div>
                 <div class="form-group nama_penjual">
                     <label class="col-sm-3 control-label">Data Surat Tanah 1</span></label>
 
@@ -407,29 +413,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
                 <div class="form-group no_pbb">
-                    <label class="col-sm-3 control-label">NOP</span></label>
+                    <label class="col-sm-3 control-label">PBB</span></label>
                     <div class="col-sm-4">
-                        <input type="text" id="no_pbb" name="no_pbb" class="form-control" placeholder="No NOP"  />
+                        <input type="text" id="no_pbb" name="no_pbb" class="form-control" placeholder="PBB"  />
                     </div>
                     <div class="col-sm-4">
-                        <input type="text" id="atas_nama_pbb" name="atas_nama_pbb" class="form-control" placeholder="Atas Nama NOP"  />
+                        <input type="text" id="atas_nama_pbb" name="atas_nama_pbb" class="form-control" placeholder="Atas Nama PBB"  />
                     </div>
                 </div>
                 <div class="form-group no_pbb">
                     <label class="col-sm-3 control-label"></span></label>
 
-                    <div class="col-sm-4">
-                        <input type="text" id="luas_pbb" name="luas_pbb" class="form-control" placeholder="Luas NOP (m2)"  />
+                    <div class="col-sm-3">
+                        <input type="text" id="luas_pbb_bangunan" name="luas_pbb_bangunan" class="form-control" placeholder="Luas Bangunan PBB (m2)"  />
+                        <br>
+                        <input type="text" id="luas_pbb_bumi" name="luas_pbb_bumi" class="form-control" placeholder="Luas Bumi PBB (m2)"  />
                     </div>
-                    <div class="col-sm-4">
-                        <input type="text" id="njop" name="njop" class="form-control" placeholder="NJOP" />
+                    <div class="col-sm-3">
+                        <input type="text" id="njop_bangunan" name="njop_bangunan" class="form-control" placeholder="NJOP Bangunan" />
+                        <br>
+                        <input type="text" id="njop_bumi" name="njop_bumi" class="form-control" placeholder="NJOP Bumi" />
                     </div>
 
                 </div>
                 <div class="form-group satuan_harga_pengalihan">
                     <label class="col-sm-3 control-label">Harga Pengalihan Hak</span></label>
 
-                    <div class="col-sm-4">
+                    <div class="col-sm-9">
                         <input type="text" id="total_harga_pengalihan" name="total_harga_pengalihan" class="form-control" placeholder="Total Harga Pengalihan" />
                     </div>
                 </div><div class="form-group nama_makelar">
@@ -455,10 +465,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </select> 
                     </div>
                 </div>
-                <div class="form-group tanggal_pengalihan">
+                <!-- <div class="form-group tanggal_pengalihan">
                     <label class="col-sm-3 control-label"> Detail Pengalihan </span></label>
                     <div class="col-sm-3">
-                        <input type="text" id="tanggal_pengalihan" name="tanggal_pengalihan" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Tanggal Pengalihan" title="Tanggal Pengalihan"  />
+                        <input type="text" id="tanggal_pengalihan" name="tanggal_pengalihan" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal" placeholder="Tanggal Pengalihan" title="Tanggal Pengalihan"  />
                     </div>
                     <div class="col-sm-3">
                         <input type="text" id="akta_pengalihan" name="akta_pengalihan" class="form-control" placeholder="No Akta"  />
@@ -466,8 +476,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-sm-3">
                         <input type="text" id="nama_pengalihan" name="nama_pengalihan" class="form-control" placeholder="Nama Pejabat" />
                     </div>
-                </div>
-                <div class="form-group ganti_rugi">
+                </div> -->
+                <!-- <div class="form-group ganti_rugi">
                     <label class="col-sm-3 control-label">Ganti Rugi</span></label>
                     <div class="col-sm-9">
                         <input type="text" id="ganti_rugi" name="ganti_rugi" class="form-control mask_price"  />
@@ -478,11 +488,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-sm-9">
                         <input type="text" id="pbb" name="pbb" class="form-control mask_price"  />
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group lain">
                     <label class="col-sm-3 control-label">Biaya Lain-lain</span></label>
-                    <div class="col-sm-9">
+                    <div class="col-sm-5">
                         <input type="text" id="lain" name="lain" class="form-control mask_price"  />
+                    </div>
+                    <div class="col-sm-4">
+                        <textarea rows="2" class="form-control" name="keterangan_lain" id="keterangan_lain" placeholder="keterangan Lain-lain"></textarea>
+
                     </div>
                 </div>
                 <div class="form-group keterangan">
@@ -660,8 +674,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 datarow+="<tr><td>luas_surat</td><td>: "+item.luas_surat+"</td></tr>";
                 datarow+="<tr><td>luas_ukur</td><td>: "+item.luas_ukur+"</td></tr>";
                 datarow+="<tr><td>no_pbb</td><td>: "+item.no_pbb+"</td></tr>";
-                datarow+="<tr><td>luas_pbb</td><td>: "+item.luas_pbb+"</td></tr>";
-                datarow+="<tr><td>njop</td><td>: "+item.njop+"</td></tr>";
+                datarow+="<tr><td>luas_pbb_bangunan</td><td>: "+item.luas_pbb_bangunan+"</td></tr>";
+                datarow+="<tr><td>njop_bangunan</td><td>: "+item.njop_bangunan+"</td></tr>";
+                datarow+="<tr><td>luas_pbb_bumi</td><td>: "+item.luas_pbb_bumi+"</td></tr>";
+                datarow+="<tr><td>njop_bumi</td><td>: "+item.njop_bumi+"</td></tr>";
                 datarow+="<tr><td>satuan_harga_pengalihan</td><td>: "+item.satuan_harga_pengalihantampil+"</td></tr>";
                 datarow+="<tr><td>total_harga_pengalihan</td><td>: "+item.total_harga_pengalihantampil+"</td></tr>";
                 datarow+="<tr><td>nama_makelar</td><td>: "+item.nama_makelar+"</td></tr>";
@@ -669,9 +685,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 datarow+="<tr><td>tanggal_pengalihan</td><td>: "+item.tanggal_pengalihan+"</td></tr>";
                 datarow+="<tr><td>akta_pengalihan</td><td>: "+item.akta_pengalihan+"</td></tr>";
                 datarow+="<tr><td>nama_pengalihan</td><td>: "+item.nama_pengalihan+"</td></tr>";
-                datarow+="<tr><td>ganti_rugi</td><td>: "+item.ganti_rugitampil+"</td></tr>";
-                datarow+="<tr><td>pbb</td><td>: "+item.pbb+"</td></tr>";
                 datarow+="<tr><td>lain</td><td>: "+item.laintampil+"</td></tr>";
+                datarow+="<tr><td>keterangan lain</td><td>: "+item.keterangan_lain+"</td></tr>";
                 datarow+="<tr><td>harga_perm</td><td>: "+item.harga_permtampil+"</td></tr>";
                 datarow+="<tr><td>keterangan</td><td>: "+item.keterangan+"</td></tr>";
                 datarow+="<tr><td>Lokasi</td><td>: "+item.nama_regional+"</td></tr>";
@@ -703,19 +718,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
              document.getElementById("luas_surat").setAttribute('value', item.luas_surat); 
              document.getElementById("luas_ukur").setAttribute('value', item.luas_ukur); 
              document.getElementById("no_pbb").setAttribute('value', item.no_pbb); 
-             document.getElementById("luas_pbb").setAttribute('value', item.luas_pbb); 
-             document.getElementById("njop").setAttribute('value', item.njop); 
-
+             document.getElementById("luas_pbb_bangunan").setAttribute('value', item.luas_pbb_bangunan); 
+             document.getElementById("njop_bangunan").setAttribute('value', item.njop_bangunan); 
+  document.getElementById("luas_pbb_bumi").setAttribute('value', item.luas_pbb_bumi); 
+             document.getElementById("njop_bumi").setAttribute('value', item.njop_bumi); 
              document.getElementById("total_harga_pengalihan").setAttribute('value', item.total_harga_pengalihan); 
              document.getElementById("nama_makelar").setAttribute('value', item.nama_makelar); 
              document.getElementById("nilai").setAttribute('value', item.nilai); 
-             document.getElementById("tanggal_pengalihan").setAttribute('value', item.tanggal_pengalihan); 
-             document.getElementById("akta_pengalihan").setAttribute('value', item.akta_pengalihan); 
-             document.getElementById("nama_pengalihan").setAttribute('value', item.nama_pengalihan);
-             document.getElementById("ganti_rugi").setAttribute('value', item.ganti_rugi); 
-             document.getElementById("pbb").setAttribute('value', item.pbb); 
              document.getElementById("lain").setAttribute('value', item.lain); 
              document.getElementById("keterangan").value = item.keterangan; 
+             document.getElementById("keterangan_lain").value = item.keterangan_lain; 
              document.getElementById("atas_nama_pbb").value = item.atas_nama_pbb; 
              $("#id_perumahan").select2("val", item.id_perumahan);   
              $("#status_surat_tanah2").select2("val", item.status_surat_tanah2);   

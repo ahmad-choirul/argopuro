@@ -51,36 +51,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <thead>
                     <tr>
 
-                        <th rowspan="2" style="text-align: center;">NO</th>
-                        <th rowspan="2" style="text-align: center;">PERUMAHAN</th>
-                        <th  colspan="3" style="text-align: center;">ORDER MARKETING</th>
-                        <th colspan="12" style="text-align: center;">TERBIT BALIK NAMA 2020</th>
-                        <th rowspan="2" style="text-align: center;">BELUM TERBIT BN</th>
-                        <th colspan="4" style="text-align: center; ">EVALUASI BELUM TERBIT BN</th>
+                        <th rowspan="2" style="text-align: center;vertical-align: middle;">NO</th>
+                        <th rowspan="2" style="text-align: center;vertical-align: middle;">PERUMAHAN</th>
+                        <th  colspan="3" style="text-align: center;vertical-align: middle;">ORDER MARKETING</th>
+                        <th colspan="12" style="text-align: center;vertical-align: middle;">TERBIT BALIK NAMA 2020</th>
+                        <th rowspan="2" style="text-align: center;vertical-align: middle;">BELUM TERBIT BN</th>
+                        <th colspan="4" style="text-align: center;vertical-align: middle; ">EVALUASI BELUM TERBIT BN</th>
 
 
 
                     </tr>
                     <tr>
-                        <th  style="text-align: center;">SISA sd 2019</th>
-                        <th  style="text-align: center;">th 2020</th>
-                        <th  style="text-align: center;">TOTAL</th>
-                        <th  style="text-align: center;">Jan</th>
-                        <th  style="text-align: center;">Feb</th>
-                        <th  style="text-align: center;">Mar</th>
-                        <th  style="text-align: center;">Apr</th>
-                        <th  style="text-align: center;">Mei</th>
-                        <th  style="text-align: center;">Jun</th>
-                        <th  style="text-align: center;">Jul</th>
-                        <th  style="text-align: center;">Ags</th>
-                        <th  style="text-align: center;">Sep</th>
-                        <th  style="text-align: center;">Okt</th>
-                        <th  style="text-align: center;">Nov</th>
-                        <th  style="text-align: center;">Des</th>
-                        <th  style="text-align: center;">BELUM PROSES</th>
-                        <th  style="text-align: center;">PROSES AJB</th>
-                        <th  style="text-align: center;">TERBIT AJB</th>
-                        <th  style="text-align: center;">PROSES BN</th>
+                        <th  style="text-align: center;vertical-align: middle;">SISA sd 2019</th>
+                        <th  style="text-align: center;vertical-align: middle;">th 2020</th>
+                        <th  style="text-align: center;vertical-align: middle;">TOTAL</th>
+                        <th  style="text-align: center;vertical-align: middle;">Jan</th>
+                        <th  style="text-align: center;vertical-align: middle;">Feb</th>
+                        <th  style="text-align: center;vertical-align: middle;">Mar</th>
+                        <th  style="text-align: center;vertical-align: middle;">Apr</th>
+                        <th  style="text-align: center;vertical-align: middle;">Mei</th>
+                        <th  style="text-align: center;vertical-align: middle;">Jun</th>
+                        <th  style="text-align: center;vertical-align: middle;">Jul</th>
+                        <th  style="text-align: center;vertical-align: middle;">Ags</th>
+                        <th  style="text-align: center;vertical-align: middle;">Sep</th>
+                        <th  style="text-align: center;vertical-align: middle;">Okt</th>
+                        <th  style="text-align: center;vertical-align: middle;">Nov</th>
+                        <th  style="text-align: center;vertical-align: middle;">Des</th>
+                        <th  style="text-align: center;vertical-align: middle;">BELUM PROSES</th>
+                        <th  style="text-align: center;vertical-align: middle;">PROSES AJB</th>
+                        <th  style="text-align: center;vertical-align: middle;">TERBIT AJB</th>
+                        <th  style="text-align: center;vertical-align: middle;">PROSES BN</th>
 
                     </tr>
 
@@ -182,15 +182,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-9">
                             <input type="text" name="no_pbb" class="form-control"  />
                         </div>
-                    </div><div class="form-group luas_pbb">
+                    </div><div class="form-group luas_pbb_bangunan">
                         <label class="col-sm-3 control-label">Luas PBB</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="luas_pbb" class="form-control"  />
+                            <input type="text" name="luas_pbb_bangunan" class="form-control"  />
                         </div>
-                    </div><div class="form-group njop">
-                        <label class="col-sm-3 control-label">njop</span></label>
+                    </div><div class="form-group njop_bangunan">
+                        <label class="col-sm-3 control-label">njop_bangunan</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="njop" class="form-control"  />
+                            <input type="text" name="njop_bangunan" class="form-control"  />
                         </div>
                     </div>
                    <div class="form-group total_harga_pengalihan">
@@ -378,15 +378,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-sm-9">
                         <input type="text" name="no_pbb" id="no_pbb" class="form-control"  />
                     </div>
-                </div><div class="form-group luas_pbb">
+                </div><div class="form-group luas_pbb_bangunan">
                     <label class="col-sm-3 control-label">Luas PBB</span></label>
                     <div class="col-sm-9">
-                        <input type="text" name="luas_pbb" id="luas_pbb" class="form-control"  />
+                        <input type="text" name="luas_pbb_bangunan" id="luas_pbb_bangunan" class="form-control"  />
                     </div>
-                </div><div class="form-group njop">
-                    <label class="col-sm-3 control-label">njop</span></label>
+                </div><div class="form-group njop_bangunan">
+                    <label class="col-sm-3 control-label">njop_bangunan</span></label>
                     <div class="col-sm-9">
-                        <input type="text" name="njop" id="njop" class="form-control"  />
+                        <input type="text" name="njop_bangunan" id="njop_bangunan" class="form-control"  />
                     </div>
                 </div>
                 <div class="form-group total_harga_pengalihan">

@@ -91,7 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="form-group luas_terbit">
             <label class="col-sm-3 control-label"> Detail Luas </span></label>
             <div class="col-sm-4">
-              <input type="text" name="luas_terbit" style="color: grey; text-align: center;" class="form-control luas_daftar" placeholder="Luas Daftar" title="Luas Daftar" required />
+              <input type="text" name="luas_terbit" style="color: grey; text-align: center;vertical-align: middle;" class="form-control luas_daftar" placeholder="Luas Daftar" title="Luas Daftar" required />
             </div>
             <div class="col-sm-5">
               <input type="text" name="luas_terbit" class="form-control luas_terbit" placeholder="Luas Terbit" required />
@@ -101,7 +101,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="form-group tanggal_pengalihan">
             <label class="col-sm-3 control-label"> Detail Daftar SHGB </span></label>
             <div class="col-sm-4">
-              <input type="text" name="tanggal_daftar_shgb" style="color: grey; text-align: center;" class="form-control tanggal tanggal_daftar_shgb" placeholder="Tanggal Daftar SHGB" title="Tanggal Daftar SHGB"  />
+              <input type="text" name="tanggal_daftar_shgb" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal tanggal_daftar_shgb" placeholder="Tanggal Daftar SHGB" title="Tanggal Daftar SHGB"  />
             </div>
             <div class="col-sm-5">
               <input type="text" name="no_daftar_shgb" class="form-control no_daftar_shgb" placeholder="No Daftar SHGB"  />
@@ -111,10 +111,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="form-group tanggal_pengalihan">
             <label class="col-sm-3 control-label"> Detail Terbit SHGB </span></label>
             <div class="col-sm-5">
-              <input type="text" name="tanggal_terbit_shgb" style="color: grey; text-align: center;" class="form-control tanggal tanggal_terbit_shgb" placeholder="Tanggal Terbit SHGB" title="Tanggal Terbit SHGB"  />
+              <input type="text" name="tanggal_terbit_shgb" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal tanggal_terbit_shgb" placeholder="Tanggal Terbit SHGB" title="Tanggal Terbit SHGB"  />
             </div>
             <div class="col-sm-4">
-              <input type="text" name="masa_berlaku_shgb" style="color: grey; text-align: center;" class="form-control tanggal masa_berlaku" placeholder="Masa Berlaku SHGB" title="Masa Berlaku SHGB"  />
+              <input type="text" name="masa_berlaku_shgb" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal masa_berlaku" placeholder="Masa Berlaku SHGB" title="Masa Berlaku SHGB"  />
             </div>
           </div>
 
@@ -221,7 +221,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="form-group luas_terbit">
             <label class="col-sm-3 control-label"> Detail Luas </span></label>
             <div class="col-sm-4">
-              <input type="text" name="luas_terbit" style="color: grey; text-align: center;" class="form-control" placeholder="Luas Daftar" id="luas_daftar" title="Luas Daftar" required />
+              <input type="text" name="luas_terbit" style="color: grey; text-align: center;vertical-align: middle;" class="form-control" placeholder="Luas Daftar" id="luas_daftar" title="Luas Daftar" required />
             </div>
             <div class="col-sm-5">
               <input type="text" name="luas_terbit" class="form-control" id="luas_terbit" placeholder="Luas Terbit" required />
@@ -231,7 +231,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="form-group tanggal_pengalihan">
             <label class="col-sm-3 control-label"> Detail Daftar SHGB </span></label>
             <div class="col-sm-4">
-              <input type="text" name="tanggal_daftar_shgb" style="color: grey; text-align: center;" class="form-control tanggal" id="tanggal_daftar_shgb" placeholder="Tanggal Daftar SHGB" title="Tanggal Daftar SHGB"  />
+              <input type="text" name="tanggal_daftar_shgb" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal" id="tanggal_daftar_shgb" placeholder="Tanggal Daftar SHGB" title="Tanggal Daftar SHGB"  />
             </div>
             <div class="col-sm-5">
               <input type="text" name="no_daftar_shgb" class="form-control" id="no_daftar_shgb" placeholder="No Daftar SHGB"  />
@@ -241,10 +241,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="form-group tanggal_pengalihan">
             <label class="col-sm-3 control-label"> Detail Terbit SHGB </span></label>
             <div class="col-sm-5">
-              <input type="text" name="tanggal_terbit_shgb" style="color: grey; text-align: center;" class="form-control tanggal" id="tanggal_terbit_shgb" placeholder="Tanggal Terbit SHGB" title="Tanggal Terbit SHGB"  />
+              <input type="text" name="tanggal_terbit_shgb" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal" id="tanggal_terbit_shgb" placeholder="Tanggal Terbit SHGB" title="Tanggal Terbit SHGB"  />
             </div>
             <div class="col-sm-4">
-              <input type="text" name="masa_berlaku_shgb" style="color: grey; text-align: center;" class="form-control tanggal" id="masa_berlaku" placeholder="Masa Berlaku SHGB" title="Masa Berlaku SHGB"  />
+              <input type="text" name="masa_berlaku_shgb" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal" id="masa_berlaku" placeholder="Masa Berlaku SHGB" title="Masa Berlaku SHGB"  />
             </div>
           </div>
 

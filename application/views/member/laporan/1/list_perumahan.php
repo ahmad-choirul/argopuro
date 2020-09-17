@@ -47,18 +47,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <table class="table table-bordered table-hover table-striped" id="kategoridata">
             <thead>
                 <tr>
-                    <th rowspan="3" style="text-align: center;">no</th>
-                    <th rowspan="3" style="text-align: center;">Nama Proyek</th>
+                    <th rowspan="3" style="text-align: center;vertical-align: middle;">no</th>
+                    <th rowspan="3" style="text-align: center;vertical-align: middle;">Nama Proyek</th>
                     <th rowspan="3">Lokasi</th>
-                    <th colspan="6" style="text-align: center;">Proses Ijin Lokasi</th>  
-                    <th rowspan="2" colspan="3" style="text-align: center;">Terbit Tahun 2020</th>  
-                    <th rowspan="2" colspan="2" style="text-align: center;">Sisa Belum Terbit sd 2019</th>  
-                    <th rowspan="3" style="text-align: center;">Keterangan</th>
+                    <th colspan="6" style="text-align: center;vertical-align: middle;">Proses Ijin Lokasi</th>  
+                    <th rowspan="2" colspan="3" style="text-align: center;vertical-align: middle;">Terbit Tahun 2020</th>  
+                    <th rowspan="2" colspan="2" style="text-align: center;vertical-align: middle;">Sisa Belum Terbit sd 2019</th>  
+                    <th rowspan="3" style="text-align: center;vertical-align: middle;">Keterangan</th>
                 </tr>
                 <tr>
-                    <th colspan="2" style="text-align: center;">SISA sd TAHUN 2019</th>
-                    <th colspan="2" style="text-align: center;">TAHUN 2020</th>
-                    <th colspan="2" style="text-align: center;">TOTAL</th>
+                    <th colspan="2" style="text-align: center;vertical-align: middle;">SISA sd TAHUN 2019</th>
+                    <th colspan="2" style="text-align: center;vertical-align: middle;">TAHUN 2020</th>
+                    <th colspan="2" style="text-align: center;vertical-align: middle;">TOTAL</th>
                 </tr>
                 <tr>
                     <th>JML</th>

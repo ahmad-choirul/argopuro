@@ -90,7 +90,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <!-- Widget: user widget style 1 -->
                         <div class="box box-widget widget-user-2" style=" ">
                           <!-- Add the bg color to the header using any of the bg-* classes -->
-                          <div class="widget-user-header bg-yellow" style="background-color: #f39c12; color: white;padding:  2px; border-radius: 5px; text-align: center; font-size: 14px; ">
+                          <div class="widget-user-header bg-yellow" style="background-color: #f39c12; color: white;padding:  2px; border-radius: 5px; text-align: center;vertical-align: middle; font-size: 14px; ">
                             <div class="widget-user-image">
                               <!--   <img class="img-circle" src="../dist/img/user7-128x128.jpg" alt="User Avatar"> -->
                             </div>

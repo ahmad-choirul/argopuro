@@ -52,41 +52,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <thead>
                                 <tr>
 
-                                    <th rowspan="2" style="text-align: center; ">NO</th>
-                                    <th rowspan="2" style="text-align: center; ">PROYEK</th>
-                                    <th rowspan="2" colspan="2" style="text-align: center; ">TANGGAL PEMBELIAN</th>
-                                    <th  rowspan="2" style="text-align: center; ">NAMA PENJUAL</th>
-                                    <th  colspan="2" style="text-align: center;">DATA SURAT TANAH</th>
-                                    <th rowspan="2" style="text-align: center;">NO GBR</th>
-                                    <th  colspan="2" style="text-align: center;">LUAS M<sup>2</sup></th>
-                                    <th rowspan="2" style="text-align: center;">SALDO SISA PEMBAYARAN</th>
-                                    <th  colspan="13" style="text-align: center; ">SISTEM PEMBAYARAN 2020</th>
-                                    <th rowspan="2" style="text-align: center;">SALDO</th>
+                                    <th rowspan="2" style="text-align: center;vertical-align: middle; ">NO</th>
+                                    <th rowspan="2" style="text-align: center;vertical-align: middle; ">PROYEK</th>
+                                    <th rowspan="2" colspan="2" style="text-align: center;vertical-align: middle; ">TANGGAL PEMBELIAN</th>
+                                    <th  rowspan="2" style="text-align: center;vertical-align: middle; ">NAMA PENJUAL</th>
+                                    <th  colspan="2" style="text-align: center;vertical-align: middle;">DATA SURAT TANAH</th>
+                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">NO GBR</th>
+                                    <th  colspan="2" style="text-align: center;vertical-align: middle;">LUAS M<sup>2</sup></th>
+                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">SALDO SISA PEMBAYARAN</th>
+                                    <th  colspan="13" style="text-align: center;vertical-align: middle; ">SISTEM PEMBAYARAN 2020</th>
+                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">SALDO</th>
 
 
 
                                 </tr>
                                 <tr>
-                                    <th  style="text-align: center;">NAMA</th>
-                                    <th style="text-align: center;">STATUS </th>
-                                    <th style="text-align: center;">SURAT</th>
-                                    <th   style="text-align: center;">UKURAN</th>
+                                    <th  style="text-align: center;vertical-align: middle;">NAMA</th>
+                                    <th style="text-align: center;vertical-align: middle;">STATUS </th>
+                                    <th style="text-align: center;vertical-align: middle;">SURAT</th>
+                                    <th   style="text-align: center;vertical-align: middle;">UKURAN</th>
 
 
 
-                                    <th style="text-align: center;">JAN</th>
-                                    <th style="text-align: center;">FEB</th>
-                                    <th style="text-align: center;">MAR</th>
-                                    <th  style="text-align: center;">APR</th>
-                                    <th style="text-align: center;">MEI</th>
-                                    <th style="text-align: center;">JUN</th>
-                                    <th style="text-align: center;">JUL</th>
-                                    <th  style="text-align: center;">AGU</th>
-                                    <th  style="text-align: center;">SEP</th>
-                                    <th   style="text-align: center;">OKT</th>
-                                    <th style="text-align: center;">NOV</th>
-                                    <th style="text-align: center;">DES</th>
-                                    <th style="text-align: center;">TOTAL</th>
+                                    <th style="text-align: center;vertical-align: middle;">JAN</th>
+                                    <th style="text-align: center;vertical-align: middle;">FEB</th>
+                                    <th style="text-align: center;vertical-align: middle;">MAR</th>
+                                    <th  style="text-align: center;vertical-align: middle;">APR</th>
+                                    <th style="text-align: center;vertical-align: middle;">MEI</th>
+                                    <th style="text-align: center;vertical-align: middle;">JUN</th>
+                                    <th style="text-align: center;vertical-align: middle;">JUL</th>
+                                    <th  style="text-align: center;vertical-align: middle;">AGU</th>
+                                    <th  style="text-align: center;vertical-align: middle;">SEP</th>
+                                    <th   style="text-align: center;vertical-align: middle;">OKT</th>
+                                    <th style="text-align: center;vertical-align: middle;">NOV</th>
+                                    <th style="text-align: center;vertical-align: middle;">DES</th>
+                                    <th style="text-align: center;vertical-align: middle;">TOTAL</th>
 
 
                                 </tr>
@@ -263,15 +263,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-9">
                             <input type="text" name="no_pbb" class="form-control"  />
                         </div>
-                    </div><div class="form-group luas_pbb">
+                    </div><div class="form-group luas_pbb_bangunan">
                         <label class="col-sm-3 control-label">Luas PBB</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="luas_pbb" class="form-control"  />
+                            <input type="text" name="luas_pbb_bangunan" class="form-control"  />
                         </div>
-                    </div><div class="form-group njop">
-                        <label class="col-sm-3 control-label">njop</span></label>
+                    </div><div class="form-group njop_bangunan">
+                        <label class="col-sm-3 control-label">njop_bangunan</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="njop" class="form-control"  />
+                            <input type="text" name="njop_bangunan" class="form-control"  />
                         </div>
                     </div>
                     <div class="form-group satuan_harga_pengalihan">
@@ -469,15 +469,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-sm-9">
                         <input type="text" name="no_pbb" id="no_pbb" class="form-control"  />
                     </div>
-                </div><div class="form-group luas_pbb">
+                </div><div class="form-group luas_pbb_bangunan">
                     <label class="col-sm-3 control-label">Luas PBB</span></label>
                     <div class="col-sm-9">
-                        <input type="text" name="luas_pbb" id="luas_pbb" class="form-control"  />
+                        <input type="text" name="luas_pbb_bangunan" id="luas_pbb_bangunan" class="form-control"  />
                     </div>
-                </div><div class="form-group njop">
-                    <label class="col-sm-3 control-label">njop</span></label>
+                </div><div class="form-group njop_bangunan">
+                    <label class="col-sm-3 control-label">njop_bangunan</span></label>
                     <div class="col-sm-9">
-                        <input type="text" name="njop" id="njop" class="form-control"  />
+                        <input type="text" name="njop_bangunan" id="njop_bangunan" class="form-control"  />
                     </div>
                 </div>
                 <div class="form-group satuan_harga_pengalihan">

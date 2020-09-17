@@ -51,64 +51,64 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <thead>
                             <tr>
 
-                                <th rowspan="4" style="text-align: center;">NO</th>
-                                <th rowspan="4" style="text-align: center;">PROYEK</th>
-                                <th  colspan="10" style="text-align: center;">STOCK KAVLING EFEKTIF</th>
-                                <th colspan="6" style="text-align: center;">TERJUAL TAHUN 2020</th>
-                                <th colspan="10" style="text-align: center;">SISA STOCK KAVLING EFEKTIF</th>
+                                <th rowspan="4" style="text-align: center;vertical-align: middle;">NO</th>
+                                <th rowspan="4" style="text-align: center;vertical-align: middle;">PROYEK</th>
+                                <th  colspan="10" style="text-align: center;vertical-align: middle;">STOCK KAVLING EFEKTIF</th>
+                                <th colspan="6" style="text-align: center;vertical-align: middle;">TERJUAL TAHUN 2020</th>
+                                <th colspan="10" style="text-align: center;vertical-align: middle;">SISA STOCK KAVLING EFEKTIF</th>
 
 
 
 
                             </tr>
                             <tr>
-                                <th colspan="6" style="text-align: center;">TERBIT SPLITSING</th>
-                                <th colspan="2" rowspan="2" style="text-align: center;">BELUM TERBIT</th>
-                                <th colspan="2" rowspan="2" style="text-align: center;">TOTAL</th>
-                                <th colspan="2" rowspan="2" style="text-align: center;">STOCK TERBIT SPLIT</th>
-                                <th colspan="2" rowspan="2" style="text-align: center;">STOCK BELUM TERBIT SPLIT</th>
-                                <th colspan="2" rowspan="2" style="text-align: center;">TOTAL</th>
-                                <th colspan="2" rowspan="2" style="text-align: center;"> TERBIT SPLITSING</th>
-                                <th colspan="2" rowspan="2" style="text-align: center;">BELUM TERBIT SPLITSING</th>
-                                <th colspan="4" style="text-align: center;">EVALUASI BELUM TERBIT SPLIT</th>
-                                <th colspan="2" rowspan="2" style="text-align: center;">TOTAL</th>
+                                <th colspan="6" style="text-align: center;vertical-align: middle;">TERBIT SPLITSING</th>
+                                <th colspan="2" rowspan="2" style="text-align: center;vertical-align: middle;">BELUM TERBIT</th>
+                                <th colspan="2" rowspan="2" style="text-align: center;vertical-align: middle;">TOTAL</th>
+                                <th colspan="2" rowspan="2" style="text-align: center;vertical-align: middle;">STOCK TERBIT SPLIT</th>
+                                <th colspan="2" rowspan="2" style="text-align: center;vertical-align: middle;">STOCK BELUM TERBIT SPLIT</th>
+                                <th colspan="2" rowspan="2" style="text-align: center;vertical-align: middle;">TOTAL</th>
+                                <th colspan="2" rowspan="2" style="text-align: center;vertical-align: middle;"> TERBIT SPLITSING</th>
+                                <th colspan="2" rowspan="2" style="text-align: center;vertical-align: middle;">BELUM TERBIT SPLITSING</th>
+                                <th colspan="4" style="text-align: center;vertical-align: middle;">EVALUASI BELUM TERBIT SPLIT</th>
+                                <th colspan="2" rowspan="2" style="text-align: center;vertical-align: middle;">TOTAL</th>
 
                             </tr>
                             <tr>
-                                <th colspan="2"  style="text-align: center;">S/D 2019</th>
-                                <th colspan="2"  style="text-align: center;">TAHUN 2020</th>
-                                <th colspan="2"  style="text-align: center;">TOTAL</th>
-                                <th colspan="2"  style="text-align: center;">BELUM PROSES</th>
-                                <th colspan="2"  style="text-align: center;">PROSES</th>
+                                <th colspan="2"  style="text-align: center;vertical-align: middle;">S/D 2019</th>
+                                <th colspan="2"  style="text-align: center;vertical-align: middle;">TAHUN 2020</th>
+                                <th colspan="2"  style="text-align: center;vertical-align: middle;">TOTAL</th>
+                                <th colspan="2"  style="text-align: center;vertical-align: middle;">BELUM PROSES</th>
+                                <th colspan="2"  style="text-align: center;vertical-align: middle;">PROSES</th>
                             </tr>
                             <tr>
                               
-                                <th   style="text-align: center;">KAV</th>
-                                <th   style="text-align: center;">SERT</th>
-                                <th   style="text-align: center;">KAV</th>
-                                <th   style="text-align: center;">SERT</th>
-                                <th   style="text-align: center;">KAV</th>
-                                <th   style="text-align: center;">SERT</th>
-                                <th   style="text-align: center;">KAV</th>
-                                <th   style="text-align: center;">SERT</th>
-                                <th   style="text-align: center;">KAV</th>
-                                <th   style="text-align: center;">SERT</th>
-                                <th   style="text-align: center;">KAV</th>
-                                <th   style="text-align: center;">SERT</th>
-                                <th   style="text-align: center;">KAV</th>
-                                <th   style="text-align: center;">SERT</th>
-                                <th   style="text-align: center;">KAV</th>
-                                <th   style="text-align: center;">SERT</th>
-                                <th   style="text-align: center;">KAV</th>
-                                <th   style="text-align: center;">SERT</th>
-                                <th   style="text-align: center;">KAV</th>
-                                <th   style="text-align: center;">SERT</th>
-                                <th   style="text-align: center;">KAV</th>
-                                <th   style="text-align: center;">SERT</th>
-                                <th   style="text-align: center;">KAV</th>
-                                <th   style="text-align: center;">SERT</th>
-                                <th   style="text-align: center;">KAV</th>
-                                <th   style="text-align: center;">SERT</th>
+                                <th   style="text-align: center;vertical-align: middle;">KAV</th>
+                                <th   style="text-align: center;vertical-align: middle;">SERT</th>
+                                <th   style="text-align: center;vertical-align: middle;">KAV</th>
+                                <th   style="text-align: center;vertical-align: middle;">SERT</th>
+                                <th   style="text-align: center;vertical-align: middle;">KAV</th>
+                                <th   style="text-align: center;vertical-align: middle;">SERT</th>
+                                <th   style="text-align: center;vertical-align: middle;">KAV</th>
+                                <th   style="text-align: center;vertical-align: middle;">SERT</th>
+                                <th   style="text-align: center;vertical-align: middle;">KAV</th>
+                                <th   style="text-align: center;vertical-align: middle;">SERT</th>
+                                <th   style="text-align: center;vertical-align: middle;">KAV</th>
+                                <th   style="text-align: center;vertical-align: middle;">SERT</th>
+                                <th   style="text-align: center;vertical-align: middle;">KAV</th>
+                                <th   style="text-align: center;vertical-align: middle;">SERT</th>
+                                <th   style="text-align: center;vertical-align: middle;">KAV</th>
+                                <th   style="text-align: center;vertical-align: middle;">SERT</th>
+                                <th   style="text-align: center;vertical-align: middle;">KAV</th>
+                                <th   style="text-align: center;vertical-align: middle;">SERT</th>
+                                <th   style="text-align: center;vertical-align: middle;">KAV</th>
+                                <th   style="text-align: center;vertical-align: middle;">SERT</th>
+                                <th   style="text-align: center;vertical-align: middle;">KAV</th>
+                                <th   style="text-align: center;vertical-align: middle;">SERT</th>
+                                <th   style="text-align: center;vertical-align: middle;">KAV</th>
+                                <th   style="text-align: center;vertical-align: middle;">SERT</th>
+                                <th   style="text-align: center;vertical-align: middle;">KAV</th>
+                                <th   style="text-align: center;vertical-align: middle;">SERT</th>
 
 
                             </tr>
@@ -211,15 +211,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-9">
                             <input type="text" name="no_pbb" class="form-control"  />
                         </div>
-                    </div><div class="form-group luas_pbb">
+                    </div><div class="form-group luas_pbb_bangunan">
                         <label class="col-sm-3 control-label">Luas PBB</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="luas_pbb" class="form-control"  />
+                            <input type="text" name="luas_pbb_bangunan" class="form-control"  />
                         </div>
-                    </div><div class="form-group njop">
-                        <label class="col-sm-3 control-label">njop</span></label>
+                    </div><div class="form-group njop_bangunan">
+                        <label class="col-sm-3 control-label">njop_bangunan</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="njop" class="form-control"  />
+                            <input type="text" name="njop_bangunan" class="form-control"  />
                         </div>
                     </div>
                    <div class="form-group total_harga_pengalihan">
@@ -407,15 +407,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-sm-9">
                         <input type="text" name="no_pbb" id="no_pbb" class="form-control"  />
                     </div>
-                </div><div class="form-group luas_pbb">
+                </div><div class="form-group luas_pbb_bangunan">
                     <label class="col-sm-3 control-label">Luas PBB</span></label>
                     <div class="col-sm-9">
-                        <input type="text" name="luas_pbb" id="luas_pbb" class="form-control"  />
+                        <input type="text" name="luas_pbb_bangunan" id="luas_pbb_bangunan" class="form-control"  />
                     </div>
-                </div><div class="form-group njop">
-                    <label class="col-sm-3 control-label">njop</span></label>
+                </div><div class="form-group njop_bangunan">
+                    <label class="col-sm-3 control-label">njop_bangunan</span></label>
                     <div class="col-sm-9">
-                        <input type="text" name="njop" id="njop" class="form-control"  />
+                        <input type="text" name="njop_bangunan" id="njop_bangunan" class="form-control"  />
                     </div>
                 </div>
                 <div class="form-group total_harga_pengalihan">

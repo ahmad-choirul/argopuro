@@ -175,12 +175,12 @@ public function updatedatatarget()
     $this->tahun           = $post["tahun"];
     $this->target_luas          = $target_luas;
     $this->target_bid         = $target_bid;
-    return $this->db->update("tbl_target", $this, array('id' => $post['idd']));
+    return $this->db->update("tbl_target", $this, array('id_target' => $post['idd']));
 }
 public function hapusdatatarget()
 {
     $post = $this->input->post();
-    $this->db->where('id', $post['idd']);
+    $this->db->where('id_target', $post['idd']);
     return $this->db->delete('tbl_target');
 }
         // CRUD target end
@@ -1084,8 +1084,10 @@ function simpandataitems(){
         'luas_ukur'=>$post["luas_ukur"],  
         'no_pbb'=>$post["no_pbb"],  
         'atas_nama_pbb'=>$post["atas_nama_pbb"],  
-        'luas_pbb'=>$post["luas_pbb"],  
-        'njop'=>$post["njop"],    
+        'luas_pbb_bangunan'=>$post["luas_pbb_bangunan"],  
+        'njop_bangunan'=>$post["njop_bangunan"],  
+        'luas_pbb_bumi'=>$post["luas_pbb_bumi"],  
+        'njop_bumi'=>$post["njop_bumi"],    
         'total_harga_pengalihan'=>$post["total_harga_pengalihan"],  
         'nama_makelar'=>$post["nama_makelar"],  
         'nilai'=>$post["nilai"],  
@@ -1093,10 +1095,9 @@ function simpandataitems(){
         'tanggal_pengalihan'=>$post["tanggal_pengalihan"],  
         'akta_pengalihan'=>$post["akta_pengalihan"],  
         'nama_pengalihan'=>$post["nama_pengalihan"],  
-        'ganti_rugi'=>$post["ganti_rugi"],  
-        'pbb'=>$post["pbb"],  
         'jenis_pengalihan'=>$post["jenis_pengalihan"],  
         'lain'=>$post["lain"],
+        'keterangan_lain'=>$post["keterangan_lain"],
         'keterangan'=>$post["keterangan"],  
         'id_perumahan'=>$post["id_perumahan"]  
     );
@@ -1119,19 +1120,17 @@ public function updatedataitems()
     $this->luas_ukur = bilanganbulat($post["luas_ukur"]); 
     $this->atas_nama_pbb = ($post["atas_nama_pbb"]); 
     $this->no_pbb = ($post["no_pbb"]); 
-    $this->luas_pbb = bilanganbulat($post["luas_pbb"]); 
-    $this->njop = ($post["njop"]); 
+    $this->luas_pbb_bangunan = bilanganbulat($post["luas_pbb_bangunan"]); 
+    $this->njop_bangunan = ($post["njop_bangunan"]);
+        $this->luas_pbb_bumi = bilanganbulat($post["luas_pbb_bumi"]); 
+    $this->njop_bumi = ($post["njop_bumi"]); 
     $this->total_harga_pengalihan = bilanganbulat($post["total_harga_pengalihan"]); 
     $this->nama_makelar = ($post["nama_makelar"]); 
     $this->nilai = bilanganbulat($post["nilai"]); 
     $this->jenis_pengalihan = ($post["jenis_pengalihan"]); 
-    $this->tanggal_pengalihan = ($post["tanggal_pengalihan"]); 
-    $this->akta_pengalihan = ($post["akta_pengalihan"]); 
-    $this->nama_pengalihan = ($post["nama_pengalihan"]); 
-    $this->ganti_rugi = bilanganbulat($post["ganti_rugi"]); 
-    $this->pbb = bilanganbulat($post["pbb"]); 
     $this->lain = bilanganbulat($post["lain"]);
-    $this->keterangan = ($post["keterangan"]); 
+    $this->keterangan_lain = $post["keterangan_lain"]; 
+    $this->keterangan = $post["keterangan"]; 
     $this->jenis_pengalihan = ($post["jenis_pengalihan"]); 
     $this->id_perumahan = ($post["id_perumahan"]); 
     return $this->db->update("master_item", $this, array('kode_item' => $post['idd']));
@@ -1153,7 +1152,8 @@ public function updatedatalandbank()
     $this->ganti_rugi = bilanganbulat($post["ganti_rugi"]); 
     $this->pbb = bilanganbulat($post["pbb"]); 
     $this->lain = bilanganbulat($post["lain"]);
-    $this->keterangan = ($post["keterangan"]); 
+    $this->keterangan_lain = $post["keterangan_lain"]; 
+    $this->keterangan = $post["keterangan"]; 
     $this->id_posisi_surat = ($post["id_posisi_surat"]); 
     $this->status_order_akta = ($post["status_order_akta"]); 
     $this->jenis_pengalihan_hak = ($post["jenis_pengalihan_hak"]); 

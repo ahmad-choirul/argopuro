@@ -5,37 +5,37 @@
             <thead>
                 <tr>
 
-                    <th rowspan="2" style="text-align: center; ">NO</th>
-                    <th rowspan="2" style="text-align: center;">PENJUAL</th>
-                    <th colspan="3" style="text-align: center;">DATA TANAH</th>
-                    <th colspan="3" style="text-align: center;">LUAS M<SUP>2</SUP></th>
-                    <th colspan="2" style="text-align: center;">DAFTAR SK HAK</th>
-                    <th colspan="2" style="text-align: center;">TERBIT SK HAK</th>
-                    <th colspan="2" style="text-align: center;">DAFTAR SHGB</th>
-                    <th colspan="3" style="text-align: center;">TERBIT SHGB</th>
-                    <th rowspan="2" style="text-align: center;">TARGET PENYELESAIAN</th>
-                    <th rowspan="2" style="text-align: center;">KET</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle; ">NO</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">PENJUAL</th>
+                    <th colspan="3" style="text-align: center;vertical-align: middle;">DATA TANAH</th>
+                    <th colspan="3" style="text-align: center;vertical-align: middle;">LUAS M<SUP>2</SUP></th>
+                    <th colspan="2" style="text-align: center;vertical-align: middle;">DAFTAR SK HAK</th>
+                    <th colspan="2" style="text-align: center;vertical-align: middle;">TERBIT SK HAK</th>
+                    <th colspan="2" style="text-align: center;vertical-align: middle;">DAFTAR SHGB</th>
+                    <th colspan="3" style="text-align: center;vertical-align: middle;">TERBIT SHGB</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">TARGET PENYELESAIAN</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">KET</th>
 
 
 
 
                 </tr>
                 <tr>
-                    <th   style="text-align: center;">SURAT</th>
-                    <th style="text-align: center;">ATAS NAMA</th>
-                    <th style="text-align: center;">Luas</th>
-                    <th  style="text-align: center;">DAFTAR</th>
-                    <th   style="text-align: center;">TERBIT</th>
-                    <th style="text-align: center;">SELISIH</th>
-                    <th  style="text-align: center;">TGL</th>
-                    <th style="text-align: center;">NO BERKAS</th>
-                    <th   style="text-align: center;">TGL</th>
-                    <th style="text-align: center;">NO SK</th>
-                    <th   style="text-align: center;">TGL</th>
-                    <th style="text-align: center;">NO BERKAS</th>
-                    <th   style="text-align: center;">TGL</th>
-                    <th  style="text-align: center;">NO SHGB</th>
-                    <th style="text-align: center;">M BERLAKU</th>
+                    <th   style="text-align: center;vertical-align: middle;">SURAT</th>
+                    <th style="text-align: center;vertical-align: middle;">ATAS NAMA</th>
+                    <th style="text-align: center;vertical-align: middle;">Luas</th>
+                    <th  style="text-align: center;vertical-align: middle;">DAFTAR</th>
+                    <th   style="text-align: center;vertical-align: middle;">TERBIT</th>
+                    <th style="text-align: center;vertical-align: middle;">SELISIH</th>
+                    <th  style="text-align: center;vertical-align: middle;">TGL</th>
+                    <th style="text-align: center;vertical-align: middle;">NO BERKAS</th>
+                    <th   style="text-align: center;vertical-align: middle;">TGL</th>
+                    <th style="text-align: center;vertical-align: middle;">NO SK</th>
+                    <th   style="text-align: center;vertical-align: middle;">TGL</th>
+                    <th style="text-align: center;vertical-align: middle;">NO BERKAS</th>
+                    <th   style="text-align: center;vertical-align: middle;">TGL</th>
+                    <th  style="text-align: center;vertical-align: middle;">NO SHGB</th>
+                    <th style="text-align: center;vertical-align: middle;">M BERLAKU</th>
 
                 </tr>
 
@@ -259,36 +259,36 @@
                 <thead>
                     <tr>
 
-                        <th rowspan="2" style="text-align: center; ">NO</th>
-                        <th rowspan="2" style="text-align: center;">PENJUAL</th>
-                        <th colspan="2" style="text-align: center;">DATA TANAH</th>
-                        <th colspan="3" style="text-align: center;">LUAS M<SUP>2</SUP></th>
-                        <th colspan="2" style="text-align: center;">DAFTAR SK HAK</th>
-                        <th colspan="2" style="text-align: center;">TERBIT SK HAK</th>
-                        <th colspan="2" style="text-align: center;">DAFTAR SHGB</th>
-                        <th colspan="3" style="text-align: center;">TERBIT SHGB</th>
-                        <th rowspan="2" style="text-align: center;">TARGET PENYELESAIAN</th>
-                        <th rowspan="2" style="text-align: center;">KET</th>
+                        <th rowspan="2" style="text-align: center;vertical-align: middle; ">NO</th>
+                        <th rowspan="2" style="text-align: center;vertical-align: middle;">PENJUAL</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">DATA TANAH</th>
+                        <th colspan="3" style="text-align: center;vertical-align: middle;">LUAS M<SUP>2</SUP></th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">DAFTAR SK HAK</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">TERBIT SK HAK</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">DAFTAR SHGB</th>
+                        <th colspan="3" style="text-align: center;vertical-align: middle;">TERBIT SHGB</th>
+                        <th rowspan="2" style="text-align: center;vertical-align: middle;">TARGET PENYELESAIAN</th>
+                        <th rowspan="2" style="text-align: center;vertical-align: middle;">KET</th>
 
 
 
 
                     </tr>
                     <tr>
-                        <th   style="text-align: center;">SURAT</th>
-                        <th style="text-align: center;">ATAS NAMA</th>
-                        <th  style="text-align: center;">DAFTAR</th>
-                        <th   style="text-align: center;">TERBIT</th>
-                        <th style="text-align: center;">SELISIH</th>
-                        <th  style="text-align: center;">TGL</th>
-                        <th style="text-align: center;">NO BERKAS</th>
-                        <th   style="text-align: center;">TGL</th>
-                        <th style="text-align: center;">NO SK</th>
-                        <th   style="text-align: center;">TGL</th>
-                        <th style="text-align: center;">NO BERKAS</th>
-                        <th   style="text-align: center;">TGL</th>
-                        <th  style="text-align: center;">NO SHGB</th>
-                        <th style="text-align: center;">M BERLAKU</th>
+                        <th   style="text-align: center;vertical-align: middle;">SURAT</th>
+                        <th style="text-align: center;vertical-align: middle;">ATAS NAMA</th>
+                        <th  style="text-align: center;vertical-align: middle;">DAFTAR</th>
+                        <th   style="text-align: center;vertical-align: middle;">TERBIT</th>
+                        <th style="text-align: center;vertical-align: middle;">SELISIH</th>
+                        <th  style="text-align: center;vertical-align: middle;">TGL</th>
+                        <th style="text-align: center;vertical-align: middle;">NO BERKAS</th>
+                        <th   style="text-align: center;vertical-align: middle;">TGL</th>
+                        <th style="text-align: center;vertical-align: middle;">NO SK</th>
+                        <th   style="text-align: center;vertical-align: middle;">TGL</th>
+                        <th style="text-align: center;vertical-align: middle;">NO BERKAS</th>
+                        <th   style="text-align: center;vertical-align: middle;">TGL</th>
+                        <th  style="text-align: center;vertical-align: middle;">NO SHGB</th>
+                        <th style="text-align: center;vertical-align: middle;">M BERLAKU</th>
 
                     </tr>
 

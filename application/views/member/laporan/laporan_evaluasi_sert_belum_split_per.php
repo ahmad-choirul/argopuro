@@ -50,26 +50,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <thead>
 
            <tr>
-             <th rowspan="2" style="text-align: center;">NO</th>
-             <th rowspan="2" style="text-align: center;">TGL JUAL</th>
-             <th rowspan="2" style="text-align: center;">NAMA</th>
-             <th  rowspan="2"style="text-align: center;">TYPE</th>
-             <th rowspan="2" style="text-align: center;">BLOK</th>
-             <th rowspan="2" style="text-align: center;">JML KAVL</th>
-             <th style="text-align: center;"  colspan="3">LUAS</th>
-             <th rowspan="2" style="text-align: center;">TGL PROSES</th>
-             <th rowspan="2" style="text-align: center;">TGL TERBIT</th>
-             <th rowspan="2" style="text-align: center;">NO SERTIFIKAT</th>
-             <th rowspan="2" style="text-align: center;">MASA SHGB</th>
-             <th rowspan="2" style="text-align: center;">KET</th>
+             <th rowspan="2" style="text-align: center;vertical-align: middle;">NO</th>
+             <th rowspan="2" style="text-align: center;vertical-align: middle;">TGL JUAL</th>
+             <th rowspan="2" style="text-align: center;vertical-align: middle;">NAMA</th>
+             <th  rowspan="2"style="text-align: center;vertical-align: middle;">TYPE</th>
+             <th rowspan="2" style="text-align: center;vertical-align: middle;">BLOK</th>
+             <th rowspan="2" style="text-align: center;vertical-align: middle;">JML KAVL</th>
+             <th style="text-align: center;vertical-align: middle;"  colspan="3">LUAS</th>
+             <th rowspan="2" style="text-align: center;vertical-align: middle;">TGL PROSES</th>
+             <th rowspan="2" style="text-align: center;vertical-align: middle;">TGL TERBIT</th>
+             <th rowspan="2" style="text-align: center;vertical-align: middle;">NO SERTIFIKAT</th>
+             <th rowspan="2" style="text-align: center;vertical-align: middle;">MASA SHGB</th>
+             <th rowspan="2" style="text-align: center;vertical-align: middle;">KET</th>
 
 
            </tr>
 
            <tr>
-             <th style="text-align: center;">DAFTAR</th>
-             <th style="text-align: center;">SERTF</th>
-             <th style="text-align: center;">SELISIH</th>
+             <th style="text-align: center;vertical-align: middle;">DAFTAR</th>
+             <th style="text-align: center;vertical-align: middle;">SERTF</th>
+             <th style="text-align: center;vertical-align: middle;">SELISIH</th>
 
 
 
@@ -325,15 +325,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-sm-9">
               <input type="text" name="no_pbb" class="form-control"  />
             </div>
-          </div><div class="form-group luas_pbb">
+          </div><div class="form-group luas_pbb_bangunan">
             <label class="col-sm-3 control-label">Luas PBB</span></label>
             <div class="col-sm-9">
-              <input type="text" name="luas_pbb" class="form-control"  />
+              <input type="text" name="luas_pbb_bangunan" class="form-control"  />
             </div>
-          </div><div class="form-group njop">
-            <label class="col-sm-3 control-label">njop</span></label>
+          </div><div class="form-group njop_bangunan">
+            <label class="col-sm-3 control-label">njop_bangunan</span></label>
             <div class="col-sm-9">
-              <input type="text" name="njop" class="form-control"  />
+              <input type="text" name="njop_bangunan" class="form-control"  />
             </div>
           </div>
           <div class="form-group total_harga_pengalihan">
@@ -521,15 +521,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-sm-9">
               <input type="text" name="no_pbb" id="no_pbb" class="form-control"  />
             </div>
-          </div><div class="form-group luas_pbb">
+          </div><div class="form-group luas_pbb_bangunan">
             <label class="col-sm-3 control-label">Luas PBB</span></label>
             <div class="col-sm-9">
-              <input type="text" name="luas_pbb" id="luas_pbb" class="form-control"  />
+              <input type="text" name="luas_pbb_bangunan" id="luas_pbb_bangunan" class="form-control"  />
             </div>
-          </div><div class="form-group njop">
-            <label class="col-sm-3 control-label">njop</span></label>
+          </div><div class="form-group njop_bangunan">
+            <label class="col-sm-3 control-label">njop_bangunan</span></label>
             <div class="col-sm-9">
-              <input type="text" name="njop" id="njop" class="form-control"  />
+              <input type="text" name="njop_bangunan" id="njop_bangunan" class="form-control"  />
             </div>
           </div>
           <div class="form-group total_harga_pengalihan">

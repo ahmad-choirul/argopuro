@@ -97,7 +97,7 @@ class Laporan extends CI_Controller {
                 for ($i=0; $i <$bulan ; $i++) {
                     $target = (int) $datatarget['bid'][$i];
                     $bidtarget += $target;
-                    $luas = (int) $datatarget['bid'][$i];
+                    $luas = (int) $datatarget['luas'][$i];
                     $luastarget += $luas;
                 }
             }
@@ -121,7 +121,8 @@ class Laporan extends CI_Controller {
             $row['luasrealsesudah'] = $this->security->xss_clean($datarealisasisesudah['luas']);  
             }
             $row['datatarget'] = $this->security->xss_clean($datatarget);  
-            
+            $luastarget = 0;
+            $bidtarget = 0;
             $data[] = $row;
         }
         return $data;
@@ -591,6 +592,7 @@ public function master_proses_indukdetail(){
 public function laporan_evaluasi_land_bank_per()
 {
     $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+    $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
     $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
     $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
     $this->load->view('member/laporan/evaluasi_land_bank_per',$data);

@@ -51,38 +51,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <thead>
                             <tr>
 
-                                <th rowspan="3" style="text-align: center;">NO</th>
-                                <th rowspan="3" style="text-align: center;">LOKASI</th>
-                                <th  colspan="6" style="text-align: center;">TANAH PROYEK SUDAH SHGB</th>
-                                <th colspan="4" style="text-align: center;">PROSES SAMPAI 2020</th>
-                                <th colspan="2" rowspan="2" style="text-align: center;">SISA TANAH PROYEK SUDAH SHGB BELUM PROSES</th>
-                                <th colspan="2" rowspan="2" style="text-align: center; background-color: green; color: white;">JALAN & PASOS</th>
+                                <th rowspan="3" style="text-align: center;vertical-align: middle;">NO</th>
+                                <th rowspan="3" style="text-align: center;vertical-align: middle;">LOKASI</th>
+                                <th  colspan="6" style="text-align: center;vertical-align: middle;">TANAH PROYEK SUDAH SHGB</th>
+                                <th colspan="4" style="text-align: center;vertical-align: middle;">PROSES SAMPAI 2020</th>
+                                <th colspan="2" rowspan="2" style="text-align: center;vertical-align: middle;">SISA TANAH PROYEK SUDAH SHGB BELUM PROSES</th>
+                                <th colspan="2" rowspan="2" style="text-align: center;vertical-align: middle; background-color: green; color: white;">JALAN & PASOS</th>
 
 
 
                             </tr>
                             <tr>
-                                <th colspan="2" style="text-align: center;">SISA S/D 2019</th>
-                                <th colspan="2" style="text-align: center;">TAHUN 2020</th>
-                                <th colspan="2" style="text-align: center;">TOTAL</th>
-                                <th colspan="2" style="text-align: center;">SPLITSING</th>
-                                <th colspan="2" style="text-align: center;">PENGGABUNGAN</th>
+                                <th colspan="2" style="text-align: center;vertical-align: middle;">SISA S/D 2019</th>
+                                <th colspan="2" style="text-align: center;vertical-align: middle;">TAHUN 2020</th>
+                                <th colspan="2" style="text-align: center;vertical-align: middle;">TOTAL</th>
+                                <th colspan="2" style="text-align: center;vertical-align: middle;">SPLITSING</th>
+                                <th colspan="2" style="text-align: center;vertical-align: middle;">PENGGABUNGAN</th>
                             </tr>
                             <tr>
-                                <th  style="text-align: center;">SHGB</th>
-                                <th  style="text-align: center;">LUAS</th>
-                                <th  style="text-align: center;">SHGB</th>
-                                <th  style="text-align: center;">LUAS</th>
-                                <th  style="text-align: center;">SHGB</th>
-                                <th  style="text-align: center;">LUAS</th>
-                                <th  style="text-align: center;">SHGB</th>
-                                <th  style="text-align: center;">LUAS</th>
-                                <th  style="text-align: center;">SHGB</th>
-                                <th  style="text-align: center;">LUAS</th>
-                                <th  style="text-align: center;">SHGB</th>
-                                <th  style="text-align: center;">LUAS</th>
-                                <th  style="text-align: center;">SHGB</th>
-                                <th  style="text-align: center;">LUAS</th>
+                                <th  style="text-align: center;vertical-align: middle;">SHGB</th>
+                                <th  style="text-align: center;vertical-align: middle;">LUAS</th>
+                                <th  style="text-align: center;vertical-align: middle;">SHGB</th>
+                                <th  style="text-align: center;vertical-align: middle;">LUAS</th>
+                                <th  style="text-align: center;vertical-align: middle;">SHGB</th>
+                                <th  style="text-align: center;vertical-align: middle;">LUAS</th>
+                                <th  style="text-align: center;vertical-align: middle;">SHGB</th>
+                                <th  style="text-align: center;vertical-align: middle;">LUAS</th>
+                                <th  style="text-align: center;vertical-align: middle;">SHGB</th>
+                                <th  style="text-align: center;vertical-align: middle;">LUAS</th>
+                                <th  style="text-align: center;vertical-align: middle;">SHGB</th>
+                                <th  style="text-align: center;vertical-align: middle;">LUAS</th>
+                                <th  style="text-align: center;vertical-align: middle;">SHGB</th>
+                                <th  style="text-align: center;vertical-align: middle;">LUAS</th>
                             </tr>
 
                         </thead>
@@ -183,15 +183,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-9">
                             <input type="text" name="no_pbb" class="form-control"  />
                         </div>
-                    </div><div class="form-group luas_pbb">
+                    </div><div class="form-group luas_pbb_bangunan">
                         <label class="col-sm-3 control-label">Luas PBB</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="luas_pbb" class="form-control"  />
+                            <input type="text" name="luas_pbb_bangunan" class="form-control"  />
                         </div>
-                    </div><div class="form-group njop">
-                        <label class="col-sm-3 control-label">njop</span></label>
+                    </div><div class="form-group njop_bangunan">
+                        <label class="col-sm-3 control-label">njop_bangunan</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="njop" class="form-control"  />
+                            <input type="text" name="njop_bangunan" class="form-control"  />
                         </div>
                     </div>
                    <div class="form-group total_harga_pengalihan">
@@ -379,15 +379,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-sm-9">
                         <input type="text" name="no_pbb" id="no_pbb" class="form-control"  />
                     </div>
-                </div><div class="form-group luas_pbb">
+                </div><div class="form-group luas_pbb_bangunan">
                     <label class="col-sm-3 control-label">Luas PBB</span></label>
                     <div class="col-sm-9">
-                        <input type="text" name="luas_pbb" id="luas_pbb" class="form-control"  />
+                        <input type="text" name="luas_pbb_bangunan" id="luas_pbb_bangunan" class="form-control"  />
                     </div>
-                </div><div class="form-group njop">
-                    <label class="col-sm-3 control-label">njop</span></label>
+                </div><div class="form-group njop_bangunan">
+                    <label class="col-sm-3 control-label">njop_bangunan</span></label>
                     <div class="col-sm-9">
-                        <input type="text" name="njop" id="njop" class="form-control"  />
+                        <input type="text" name="njop_bangunan" id="njop_bangunan" class="form-control"  />
                     </div>
                 </div>
                 <div class="form-group total_harga_pengalihan">

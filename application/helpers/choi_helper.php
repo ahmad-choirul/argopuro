@@ -4,9 +4,9 @@ function rupiah($angka){
 
     if ($angka==''||$angka==null) {
 
-     $rupiah = 0;
+       $rupiah = 0;
 
- }else{
+   }else{
 
     $rupiah=number_format($angka,0,',','.');
 
@@ -17,7 +17,9 @@ return "Rp ".$rupiah;
 }
 
 function bilanganbulat($teks) { 
-
+    if ($teks==''||$teks==null) {
+        $teks=0;
+    }
     $teks=preg_replace("/[^0-9]/", "", $teks);
 
     return $teks;
@@ -192,17 +194,17 @@ function select2_dinamis($name,$table,$field,$pk,$selected=null,$order=null){
 
     foreach ($data as $d){
 
-       $select2 .="<option value='".$d->$pk."'";
+     $select2 .="<option value='".$d->$pk."'";
 
-       $select2 .= $selected==$d->$pk?" selected='selected'":'';
+     $select2 .= $selected==$d->$pk?" selected='selected'":'';
 
-       $select2 .=">".  strtoupper($d->$field)."</option>";
+     $select2 .=">".  strtoupper($d->$field)."</option>";
 
-   }
+ }
 
-   $select2 .='</select>';
+ $select2 .='</select>';
 
-   return $select2;
+ return $select2;
 
 }
 
@@ -292,9 +294,9 @@ function link_gambar_deposit($string)
 
 function link_gambar_produk($id,$string,$class='')
 {
-if ($class=='') {
-    $class='class="img-fluid"';
-}
+    if ($class=='') {
+        $class='class="img-fluid"';
+    }
     $gambar = '<img '.$class.' src="'.base_url().'file_upload/foto_item/'.$string.'" >';
 
     return '<a href="'.base_url().'Penjualanv2/produk_detail/'.$id.'"> '.$gambar.'</a>';
@@ -303,9 +305,9 @@ if ($class=='') {
 
 function gambar_produk($id,$string,$class='')
 {
-if ($class=='') {
-    $class='class="img-fluid"';
-}
+    if ($class=='') {
+        $class='class="img-fluid"';
+    }
     $gambar = '<img '.$class.' src="'.base_url().'file_upload/foto_item/'.$string.'" style="width:500px;height:500px;">';
 
     return $gambar;
@@ -469,5 +471,5 @@ function autocomplate_json($table,$field){
 
 function set_video($link)
 {
-   return anchor(site_url('Auth/play_video/'.$link.''),'Play', 'class="btn btn-success" target="_blank"');
+ return anchor(site_url('Auth/play_video/'.$link.''),'Play', 'class="btn btn-success" target="_blank"');
 }

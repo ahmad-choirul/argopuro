@@ -49,22 +49,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <thead>
                         <tr>
 
-                            <th rowspan="3" style="text-align: center;">NO</th>
-                            <th rowspan="3" style="text-align: center;">PROYEK</th>
-                            <th colspan="4" style="text-align: center;;"> Data Ijin Lokasi </th>
-                            <th colspan="2" rowspan="2" style="text-align: center;">Tanah yang Dimiliki</th>
-                            <th rowspan="3" style="text-align: center;">KETERANGAN</th>
+                            <th rowspan="3" style="text-align: center;vertical-align: middle;">NO</th>
+                            <th rowspan="3" style="text-align: center;vertical-align: middle;">PROYEK</th>
+                            <th colspan="4" style="text-align: center;vertical-align: middle;;"> Data Ijin Lokasi </th>
+                            <th colspan="2" rowspan="2" style="text-align: center;vertical-align: middle;">Tanah yang Dimiliki</th>
+                            <th rowspan="3" style="text-align: center;vertical-align: middle;">KETERANGAN</th>
                         </tr>
                         <tr>
-                            <th rowspan="2"  style="text-align: center;">Luas</th>
-                            <th rowspan="2"  style="text-align: center;">No Ijin</th>
-                            <th colspan="2" style="text-align: center;">Tanggal</th>
+                            <th rowspan="2"  style="text-align: center;vertical-align: middle;">Luas</th>
+                            <th rowspan="2"  style="text-align: center;vertical-align: middle;">No Ijin</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;">Tanggal</th>
                         </tr>
                         <tr>
-                            <th   style="text-align: center;">Terbit</th>
-                            <th style="text-align: center;">Masa Berlaku</th>
-                            <th   style="text-align: center;">Luas</th>
-                            <th style="text-align: center;">%</th>
+                            <th   style="text-align: center;vertical-align: middle;">Terbit</th>
+                            <th style="text-align: center;vertical-align: middle;">Masa Berlaku</th>
+                            <th   style="text-align: center;vertical-align: middle;">Luas</th>
+                            <th style="text-align: center;vertical-align: middle;">%</th>
 
                         </tr>
 
@@ -199,15 +199,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-9">
                             <input type="text" name="no_pbb" class="form-control"  />
                         </div>
-                    </div><div class="form-group luas_pbb">
+                    </div><div class="form-group luas_pbb_bangunan">
                         <label class="col-sm-3 control-label">Luas PBB</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="luas_pbb" class="form-control"  />
+                            <input type="text" name="luas_pbb_bangunan" class="form-control"  />
                         </div>
-                    </div><div class="form-group njop">
-                        <label class="col-sm-3 control-label">njop</span></label>
+                    </div><div class="form-group njop_bangunan">
+                        <label class="col-sm-3 control-label">njop_bangunan</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="njop" class="form-control"  />
+                            <input type="text" name="njop_bangunan" class="form-control"  />
                         </div>
                     </div>
                     <div class="form-group total_harga_pengalihan">
@@ -395,15 +395,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-9">
                             <input type="text" name="no_pbb" id="no_pbb" class="form-control"  />
                         </div>
-                    </div><div class="form-group luas_pbb">
+                    </div><div class="form-group luas_pbb_bangunan">
                         <label class="col-sm-3 control-label">Luas PBB</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="luas_pbb" id="luas_pbb" class="form-control"  />
+                            <input type="text" name="luas_pbb_bangunan" id="luas_pbb_bangunan" class="form-control"  />
                         </div>
-                    </div><div class="form-group njop">
-                        <label class="col-sm-3 control-label">njop</span></label>
+                    </div><div class="form-group njop_bangunan">
+                        <label class="col-sm-3 control-label">njop_bangunan</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="njop" id="njop" class="form-control"  />
+                            <input type="text" name="njop_bangunan" id="njop_bangunan" class="form-control"  />
                         </div>
                     </div>
                     <div class="form-group total_harga_pengalihan">

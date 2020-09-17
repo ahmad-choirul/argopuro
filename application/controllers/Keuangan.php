@@ -52,7 +52,7 @@
                     $harga_satuan = $r->total_harga_pengalihan/$r->luas_surat;            
                 }
 
-                $totalbiayalain = $r->lain+$r->pbb+$r->ganti_rugi+$r->pematangan;
+                $totalbiayalain = $r->lain+$r->pbb+$r->ganti_rugi;
                 $totalharga_biaya = $r->total_harga_pengalihan+$r->nilai+$totalbiayalain;
                 if ($totalharga_biaya==0) {
                     $harga_perm=0;
@@ -63,19 +63,19 @@
                 $result = array(  
 
                    "kode_item" => $this->security->xss_clean($r->kode_item),
-                   "nama_item" => $this->security->xss_clean($r->nama_item),
+                   // "nama_item" => $this->security->xss_clean($r->nama_item),
                    "tanggal_pembelian" => $this->security->xss_clean($r->tanggal_pembelian),
                    "nama_penjual" => $this->security->xss_clean($r->nama_penjual),
                    "nama_surat_tanah" => $this->security->xss_clean($r->nama_surat_tanah),
-                   "status_surat_tanah" => $this->security->xss_clean($r->status_surat_tanah),
+                   // "status_surat_tanah" => $this->security->xss_clean($r->status_surat_tanah),
                    "nama_status_surat_tanah" => $this->security->xss_clean($r->nama_sertifikat),
                    "no_gambar" => $this->security->xss_clean($r->no_gambar),
                    "jumlah_bidang" => $this->security->xss_clean($r->jumlah_bidang),
                    "luas_surat" => $this->security->xss_clean($r->luas_surat),
                    "luas_ukur" => $this->security->xss_clean($r->luas_ukur),
                    "no_pbb" => $this->security->xss_clean($r->no_pbb),
-                   "luas_pbb" => $this->security->xss_clean($r->luas_pbb),
-                   "njop" => $this->security->xss_clean($r->njop),
+                   "luas_pbb_bangunan" => $this->security->xss_clean($r->luas_pbb_bangunan),
+                   "njop_bangunan" => $this->security->xss_clean($r->njop_bangunan),
                    "total_harga_pengalihantampil" => $this->security->xss_clean(rupiah($r->total_harga_pengalihan)),
                    "total_harga_pengalihan" => $this->security->xss_clean($r->total_harga_pengalihan),
                    "satuan_harga_pengalihantampil" => $this->security->xss_clean(rupiah($harga_satuan)),
@@ -85,8 +85,6 @@
                    "tanggal_pengalihan" => $this->security->xss_clean($r->tanggal_pengalihan),
                    "akta_pengalihan" => $this->security->xss_clean($r->akta_pengalihan),
                    "nama_pengalihan" => $this->security->xss_clean($r->nama_pengalihan),
-                   "pematangantampil" => $this->security->xss_clean(rupiah($r->pematangan)),
-                   "pematangan" => $this->security->xss_clean($r->pematangan),
                    "ganti_rugitampil" => $this->security->xss_clean(rupiah($r->ganti_rugi)),
                    "ganti_rugi" => $this->security->xss_clean($r->ganti_rugi),
                    "pbbtampil" => $this->security->xss_clean(rupiah($r->pbb)),

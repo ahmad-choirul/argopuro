@@ -50,70 +50,70 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <thead>
                         <tr>
 
-                            <th rowspan="3" style="text-align: center; ">NO</th>
-                            <th rowspan="3" style="text-align: center; ">KETERANGAN</th>
-                            <th rowspan="2" colspan="2" style="text-align: center; ">TARGET s/d 2020</th>
-                            <th  colspan="8" style="text-align: center; ">REALISASI 2020</th>
-                            <th  rowspan="2" colspan="3" style="text-align: center;">EVALUASI</th>
-                            <th  colspan="24" style="text-align: center; color: white;background-color: green;">TARGET 2020</th>
+                            <th rowspan="3" style="text-align: center;vertical-align: middle; ">NO</th>
+                            <th rowspan="3" style="text-align: center;vertical-align: middle; ">KETERANGAN</th>
+                            <th rowspan="2" colspan="2" style="text-align: center;vertical-align: middle; ">TARGET s/d 2020</th>
+                            <th  colspan="6" style="text-align: center;vertical-align: middle; ">REALISASI 2020</th>
+                            <th  rowspan="2" colspan="3" style="text-align: center;vertical-align: middle;">EVALUASI</th>
+                            <th  colspan="24" style="text-align: center;vertical-align: middle; color: white;background-color: green;">TARGET 2020</th>
                         </tr>
                         <tr>
-                            <th colspan="2" style="text-align: center;">Jan - AGS</th>
-                            <th colspan="2" style="text-align: center;">SEP</th>
-                            <th colspan="2" style="text-align: center;">TOTAL</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;">Jan - AGS</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;">SEP</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;">TOTAL</th>
 
-                            <th colspan="2"  style="text-align: center;">JAN</th>
-                            <th colspan="2" style="text-align: center;">FEB</th>
-                            <th colspan="2" style="text-align: center;">MAR</th>
-                            <th colspan="2"  style="text-align: center;">APR</th>
-                            <th colspan="2" style="text-align: center;">MEI</th>
-                            <th colspan="2" style="text-align: center;">JUN</th>
-                            <th colspan="2"  style="text-align: center;">JUL</th>
-                            <th colspan="2" style="text-align: center;">AGU</th>
-                            <th colspan="2" style="text-align: center;">SEP</th>
-                            <th colspan="2"  style="text-align: center;">OKT</th>
-                            <th colspan="2" style="text-align: center;">NOV</th>
-                            <th colspan="2" style="text-align: center;">DES</th>
+                            <th colspan="2"  style="text-align: center;vertical-align: middle;">JAN</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;">FEB</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;">MAR</th>
+                            <th colspan="2"  style="text-align: center;vertical-align: middle;">APR</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;">MEI</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;">JUN</th>
+                            <th colspan="2"  style="text-align: center;vertical-align: middle;">JUL</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;">AGU</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;">SEP</th>
+                            <th colspan="2"  style="text-align: center;vertical-align: middle;">OKT</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;">NOV</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;">DES</th>
 
 
                         </tr>
                         <tr>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">% </th>
+                            <th   style="text-align: center;vertical-align: middle;">BID </th>
+                            <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                            <th   style="text-align: center;vertical-align: middle;">BID </th>
+                            <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                            <th   style="text-align: center;vertical-align: middle;">BID </th>
+                            <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                            <th   style="text-align: center;vertical-align: middle;">BID </th>
+                            <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                            <th   style="text-align: center;vertical-align: middle;">BID </th>
+                            <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                            <th   style="text-align: center;vertical-align: middle;">% </th>
 
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
-                            <th   style="text-align: center;">BID </th>
-                            <th style="text-align: center;">LUAS</th>
+                            <th   style="text-align: center;vertical-align: middle;">BID </th>
+                            <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                            <th   style="text-align: center;vertical-align: middle;">BID </th>
+                            <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                            <th   style="text-align: center;vertical-align: middle;">BID </th>
+                            <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                            <th   style="text-align: center;vertical-align: middle;">BID </th>
+                            <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                            <th   style="text-align: center;vertical-align: middle;">BID </th>
+                            <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                            <th   style="text-align: center;vertical-align: middle;">BID </th>
+                            <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                            <th   style="text-align: center;vertical-align: middle;">BID </th>
+                            <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                            <th   style="text-align: center;vertical-align: middle;">BID </th>
+                            <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                            <th   style="text-align: center;vertical-align: middle;">BID </th>
+                            <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                            <th   style="text-align: center;vertical-align: middle;">BID </th>
+                            <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                            <th   style="text-align: center;vertical-align: middle;">BID </th>
+                            <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                            <th   style="text-align: center;vertical-align: middle;">BID </th>
+                            <th style="text-align: center;vertical-align: middle;">LUAS</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -172,7 +172,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td><?php echo $data['luasrealsesudah']+$data['luasrealsebelum']; ?></td>
                             <td><?php echo ($data['bidrealsebelum']+$data['bidrealsesudah'])-$data['bidtarget']; ?></td>
                             <td><?php echo ($data['luasrealsesudah']+$data['luasrealsebelum'])-$data['luastarget']; ?></td>
-                            <td><?php $hasil = ((($data['bidrealsebelum']+$data['bidrealsesudah'])-$data['bidtarget'])/$data['luastarget'])*100; echo number_format((float)$hasil, 2, '.', ''); ?>%</td>
+                            <?php
+                            if  ($data['luastarget']==0||$data['bidtarget']==0){
+                                echo'<td> 0 </td>';
+                            }else{
+                            ?>
+                            <td><?php $hasil = ((($data['bidrealsebelum']+$data['bidrealsesudah'])-$data['bidtarget'])/$data['luastarget'])*100; echo number_format((float)$hasil, 2, '.', '');} ?>%</td>
                             <?php 
                             if ($data['datatarget']['luas']!=0) {
 
@@ -600,15 +605,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-9">
                             <input type="text" name="no_pbb" class="form-control"  />
                         </div>
-                    </div><div class="form-group luas_pbb">
+                    </div><div class="form-group luas_pbb_bangunan">
                         <label class="col-sm-3 control-label">Luas PBB</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="luas_pbb" class="form-control"  />
+                            <input type="text" name="luas_pbb_bangunan" class="form-control"  />
                         </div>
-                    </div><div class="form-group njop">
-                        <label class="col-sm-3 control-label">njop</span></label>
+                    </div><div class="form-group njop_bangunan">
+                        <label class="col-sm-3 control-label">njop_bangunan</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="njop" class="form-control"  />
+                            <input type="text" name="njop_bangunan" class="form-control"  />
                         </div>
                     </div>
                     <div class="form-group satuan_harga_pengalihan">
@@ -806,15 +811,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-sm-9">
                         <input type="text" name="no_pbb" id="no_pbb" class="form-control"  />
                     </div>
-                </div><div class="form-group luas_pbb">
+                </div><div class="form-group luas_pbb_bangunan">
                     <label class="col-sm-3 control-label">Luas PBB</span></label>
                     <div class="col-sm-9">
-                        <input type="text" name="luas_pbb" id="luas_pbb" class="form-control"  />
+                        <input type="text" name="luas_pbb_bangunan" id="luas_pbb_bangunan" class="form-control"  />
                     </div>
-                </div><div class="form-group njop">
-                    <label class="col-sm-3 control-label">njop</span></label>
+                </div><div class="form-group njop_bangunan">
+                    <label class="col-sm-3 control-label">njop_bangunan</span></label>
                     <div class="col-sm-9">
-                        <input type="text" name="njop" id="njop" class="form-control"  />
+                        <input type="text" name="njop_bangunan" id="njop_bangunan" class="form-control"  />
                     </div>
                 </div>
                 <div class="form-group satuan_harga_pengalihan">

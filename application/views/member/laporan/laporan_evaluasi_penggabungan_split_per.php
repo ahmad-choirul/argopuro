@@ -50,28 +50,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <thead>
                                 <tr>
 
-                                    <th rowspan="2" style="text-align: center; ">NO</th>
-                                    <th rowspan="2"style="text-align: center;"> NO SHGB</th>
-                                    <th colspan="4" style="text-align: center;">LUAS M<SUP>2</SUP></th>
-                                    <th colspan="2" style="text-align: center;">TANGGAL</th>
-                                    <th colspan="2" style="text-align: center;">NOMOR</th>
-                                    <th rowspan="2" style="text-align: center;">POSISI</th>
-                                    <th rowspan="2" style="text-align: center;">KET</th>
+                                    <th rowspan="2" style="text-align: center;vertical-align: middle; ">NO</th>
+                                    <th rowspan="2"style="text-align: center;vertical-align: middle;"> NO SHGB</th>
+                                    <th colspan="4" style="text-align: center;vertical-align: middle;">LUAS M<SUP>2</SUP></th>
+                                    <th colspan="2" style="text-align: center;vertical-align: middle;">TANGGAL</th>
+                                    <th colspan="2" style="text-align: center;vertical-align: middle;">NOMOR</th>
+                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">POSISI</th>
+                                    <th rowspan="2" style="text-align: center;vertical-align: middle;">KET</th>
 
 
 
 
                                 </tr>
                                 <tr>
-                                    <th   style="text-align: center;">SURAT</th>
+                                    <th   style="text-align: center;vertical-align: middle;">SURAT</th>
 
-                                    <th  style="text-align: center;">DAFTAR</th>
-                                    <th   style="text-align: center;">TERBIT</th>
-                                    <th style="text-align: center;">SELISIH</th>
-                                    <th  style="text-align: center;">DAFTAR</th>
-                                    <th   style="text-align: center;">TERBIT</th>
-                                    <th  style="text-align: center;">BERKAS</th>
-                                    <th style="text-align: center;">SHGB</th>
+                                    <th  style="text-align: center;vertical-align: middle;">DAFTAR</th>
+                                    <th   style="text-align: center;vertical-align: middle;">TERBIT</th>
+                                    <th style="text-align: center;vertical-align: middle;">SELISIH</th>
+                                    <th  style="text-align: center;vertical-align: middle;">DAFTAR</th>
+                                    <th   style="text-align: center;vertical-align: middle;">TERBIT</th>
+                                    <th  style="text-align: center;vertical-align: middle;">BERKAS</th>
+                                    <th style="text-align: center;vertical-align: middle;">SHGB</th>
 
 
                                 </tr>
@@ -282,15 +282,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-9">
                             <input type="text" name="no_pbb" class="form-control"  />
                         </div>
-                    </div><div class="form-group luas_pbb">
+                    </div><div class="form-group luas_pbb_bangunan">
                         <label class="col-sm-3 control-label">Luas PBB</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="luas_pbb" class="form-control"  />
+                            <input type="text" name="luas_pbb_bangunan" class="form-control"  />
                         </div>
-                    </div><div class="form-group njop">
-                        <label class="col-sm-3 control-label">njop</span></label>
+                    </div><div class="form-group njop_bangunan">
+                        <label class="col-sm-3 control-label">njop_bangunan</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="njop" class="form-control"  />
+                            <input type="text" name="njop_bangunan" class="form-control"  />
                         </div>
                     </div>
                    <div class="form-group total_harga_pengalihan">
@@ -478,15 +478,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-sm-9">
                         <input type="text" name="no_pbb" id="no_pbb" class="form-control"  />
                     </div>
-                </div><div class="form-group luas_pbb">
+                </div><div class="form-group luas_pbb_bangunan">
                     <label class="col-sm-3 control-label">Luas PBB</span></label>
                     <div class="col-sm-9">
-                        <input type="text" name="luas_pbb" id="luas_pbb" class="form-control"  />
+                        <input type="text" name="luas_pbb_bangunan" id="luas_pbb_bangunan" class="form-control"  />
                     </div>
-                </div><div class="form-group njop">
-                    <label class="col-sm-3 control-label">njop</span></label>
+                </div><div class="form-group njop_bangunan">
+                    <label class="col-sm-3 control-label">njop_bangunan</span></label>
                     <div class="col-sm-9">
-                        <input type="text" name="njop" id="njop" class="form-control"  />
+                        <input type="text" name="njop_bangunan" id="njop_bangunan" class="form-control"  />
                     </div>
                 </div>
                 <div class="form-group total_harga_pengalihan">

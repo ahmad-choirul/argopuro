@@ -50,35 +50,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <table class="table table-bordered table-hover table-striped data" style="overflow-x: auto;white-space: nowrap;" id="itemsdata">
                     <thead>
                         <tr>
-                            <th rowspan="3" style="text-align: center;"></th>
-                            <th rowspan="3" style="text-align: center;">Nama</th>
-                            <th rowspan="1" colspan="4" style="text-align: center;">Data Ijin Lokasi </th>
-                            <th rowspan="3" style="text-align: center;">Daftar Online OSS</th>
-                            <th colspan ="4" style="text-align: center;">Daftar Pertimbangan Teknis</th>
-                            <th colspan="3" style="text-align: center;">Daftar Informasi Tata Ruang</th>
-                            <th colspan="4" style="text-align: center;">Daftar Ijin Lokasi</th>
-                            <th rowspan ="3" style="text-align: center;">Keterangan</th>
+                            <th rowspan="3" style="text-align: center;vertical-align: middle;"></th>
+                            <th rowspan="3" style="text-align: center;vertical-align: middle;">Nama</th>
+                            <th rowspan="1" colspan="4" style="text-align: center;vertical-align: middle;">Data Ijin Lokasi </th>
+                            <th rowspan="3" style="text-align: center;vertical-align: middle;">Daftar Online OSS</th>
+                            <th colspan ="4" style="text-align: center;vertical-align: middle;">Daftar Pertimbangan Teknis</th>
+                            <th colspan="3" style="text-align: center;vertical-align: middle;">Daftar Informasi Tata Ruang</th>
+                            <th colspan="4" style="text-align: center;vertical-align: middle;">Daftar Ijin Lokasi</th>
+                            <th rowspan ="3" style="text-align: center;vertical-align: middle;">Keterangan</th>
 
                         </tr>
                         <tr>
-                            <th rowspan="2"style="text-align: center;">Letak Titik Koordinat</th>
-                            <th colspan="3" style="text-align: center;">luas (m2)</th>
-                            <th rowspan="2"style="text-align: center;">Tanggal Daftar</th>
-                            <th rowspan="2"style="text-align: center;">No Berkas</th>
-                            <th rowspan="2"style="text-align: center;">Tanggal Terbit</th>
-                            <th rowspan="2"style="text-align: center;">No SK</th>
-                            <th rowspan="2"style="text-align: center;">Tanggal Daftar</th>
-                            <th rowspan="2"style="text-align: center;">Tanggal Terbit</th>
-                            <th rowspan="2"style="text-align: center;">No Surat</th>
-                            <th rowspan="2"style="text-align: center;">Tanggal Daftar</th>
-                            <th rowspan="2"style="text-align: center;">Tanggal Terbit</th>
-                            <th rowspan="2"style="text-align: center;">No Ijin</th>
-                            <th rowspan="2"style="text-align: center;">Masa Berlaku</th>
+                            <th rowspan="2"style="text-align: center;vertical-align: middle;">Letak Titik Koordinat</th>
+                            <th colspan="3" style="text-align: center;vertical-align: middle;">luas (m2)</th>
+                            <th rowspan="2"style="text-align: center;vertical-align: middle;">Tanggal Daftar</th>
+                            <th rowspan="2"style="text-align: center;vertical-align: middle;">No Berkas</th>
+                            <th rowspan="2"style="text-align: center;vertical-align: middle;">Tanggal Terbit</th>
+                            <th rowspan="2"style="text-align: center;vertical-align: middle;">No SK</th>
+                            <th rowspan="2"style="text-align: center;vertical-align: middle;">Tanggal Daftar</th>
+                            <th rowspan="2"style="text-align: center;vertical-align: middle;">Tanggal Terbit</th>
+                            <th rowspan="2"style="text-align: center;vertical-align: middle;">No Surat</th>
+                            <th rowspan="2"style="text-align: center;vertical-align: middle;">Tanggal Daftar</th>
+                            <th rowspan="2"style="text-align: center;vertical-align: middle;">Tanggal Terbit</th>
+                            <th rowspan="2"style="text-align: center;vertical-align: middle;">No Ijin</th>
+                            <th rowspan="2"style="text-align: center;vertical-align: middle;">Masa Berlaku</th>
                         </tr>
                         <tr>
-                            <th style="text-align: center;">Daftar</th>
-                            <th style="text-align: center;">Terbit</th>
-                            <th style="text-align: center;">Selisih</th>
+                            <th style="text-align: center;vertical-align: middle;">Daftar</th>
+                            <th style="text-align: center;vertical-align: middle;">Terbit</th>
+                            <th style="text-align: center;vertical-align: middle;">Selisih</th>
 
                         </tr>
                     </thead>

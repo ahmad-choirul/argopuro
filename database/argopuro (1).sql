@@ -9536,8 +9536,8 @@ CREATE TABLE `master_item` (
   `luas_ukur` int(11) DEFAULT 1,
   `no_pbb` varchar(100) NOT NULL,
   `atas_nama_pbb` varchar(100) NOT NULL,
-  `luas_pbb` int(11) NOT NULL,
-  `njop` varchar(100) NOT NULL,
+  `luas_pbb_bangunan` int(11) NOT NULL,
+  `njop_bangunan` varchar(100) NOT NULL,
   `total_harga_pengalihan` varchar(100) DEFAULT '0',
   `nama_makelar` varchar(100) NOT NULL,
   `nilai` varchar(100) DEFAULT '0',
@@ -9563,7 +9563,7 @@ CREATE TABLE `master_item` (
 -- Dumping data for table `master_item`
 --
 
-INSERT INTO `master_item` (`kode_item`, `tanggal_pembelian`, `nama_penjual`, `nama_surat_tanah`, `status_surat_tanah1`, `keterangan1`, `status_surat_tanah2`, `keterangan2`, `no_gambar`, `jumlah_bidang`, `luas_surat`, `luas_ukur`, `no_pbb`, `atas_nama_pbb`, `luas_pbb`, `njop`, `total_harga_pengalihan`, `nama_makelar`, `nilai`, `jenis_pengalihan`, `tanggal_pengalihan`, `akta_pengalihan`, `nama_pengalihan`, `ganti_rugi`, `pbb`, `lain`, `waktu_update`, `keterangan`, `id_perumahan`, `id_posisi_surat`, `status_order_akta`, `tanggal_proses`, `jenis_pengalihan_hak`, `status_teknik`, `terima_finance`) VALUES
+INSERT INTO `master_item` (`kode_item`, `tanggal_pembelian`, `nama_penjual`, `nama_surat_tanah`, `status_surat_tanah1`, `keterangan1`, `status_surat_tanah2`, `keterangan2`, `no_gambar`, `jumlah_bidang`, `luas_surat`, `luas_ukur`, `no_pbb`, `atas_nama_pbb`, `luas_pbb_bangunan`, `njop_bangunan`, `total_harga_pengalihan`, `nama_makelar`, `nilai`, `jenis_pengalihan`, `tanggal_pengalihan`, `akta_pengalihan`, `nama_pengalihan`, `ganti_rugi`, `pbb`, `lain`, `waktu_update`, `keterangan`, `id_perumahan`, `id_posisi_surat`, `status_order_akta`, `tanggal_proses`, `jenis_pengalihan_hak`, `status_teknik`, `terima_finance`) VALUES
 (1, '2020-06-07', 'Mahmudah', 'mahmudah', 4, 'test keterangan 1', 1, 'test keterangan 2', 45, 1, 400, 400, '123/51.2/34/1999', '0', 400, '20000', '80000', 'rahayu', '0', 0, '2020-08-30', '123', 'aa', '0', '0', '0', '2020-08-20 05:28:39', 'a', 1, 0, 'belum', '2020-08-01', '123', 'belum', '2020-08-20'),
 (2, '2020-01-01', 'Deni Yana', 'Deni Yana', 1, 'test ket 1', 2, 'test key 2', 76, 1, 220, 220, '78/56/2020', 'atas nama nop', 2020, '98/235/23', '200000', 'buna', '100000', 1, '2020-04-22', 'Un/34', 'yani', '200000', '150000', '50000', '2020-08-21 13:02:45', '', 1, 0, 'belum', '0000-00-00', 'pribadi', 'sudah', '0000-00-00'),
 (3, '2020-02-05', 'ach saubari', 'ach saubari', 1, '', 0, '', 45, 1, 220, 220, '123/51.2/34/1998', '0', 220, '34578', '55000000', 'rahayu', '0', 0, '2020-06-01', '', '', '0', '0', '0', '2020-06-22 07:31:52', '', 1, 0, 'belum', NULL, 'pribadi', 'belum', '0000-00-00'),

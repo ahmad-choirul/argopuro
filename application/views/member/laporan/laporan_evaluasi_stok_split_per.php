@@ -50,70 +50,70 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <thead style="position: sticky;">
 
            <tr>
-             <th rowspan="4" style="text-align: center;">NO</th>
-             <th rowspan="4" style="text-align: center;">NAMA</th>
-             <th rowspan="4" style="text-align: center;">BLOK</th>
-             <th rowspan="4" style="text-align: center;">JML KAV</th>
-             <th colspan="3" rowspan="2" style="text-align: center;">L. TANAH</th>
-             <th rowspan="4" style="text-align: center;">NO INDUK</th>
-             <th rowspan="4" style="text-align: center;">NO SERT </th>
-             <th rowspan="4" style="text-align: center;">TGL DAFTAR</th>
-             <th rowspan="4" style="text-align: center;">TGL TERBIT</th>
-             <th rowspan="4" style="text-align: center;">BATAS WAKTU HGB</th>
-             <th colspan="6" rowspan="2" style="text-align: center;">BELUM TERBIT SPLIT</th>
-             <th colspan="6" rowspan="2" style="text-align: center;">TERBIT STOK</th>
-             <th colspan="12" style="text-align: center;">PENJUALAN 2020</th>
-             <th rowspan="4" style="text-align: center;">KETERANGAN</th>
+             <th rowspan="4" style="text-align: center;vertical-align: middle;">NO</th>
+             <th rowspan="4" style="text-align: center;vertical-align: middle;">NAMA</th>
+             <th rowspan="4" style="text-align: center;vertical-align: middle;">BLOK</th>
+             <th rowspan="4" style="text-align: center;vertical-align: middle;">JML KAV</th>
+             <th colspan="3" rowspan="2" style="text-align: center;vertical-align: middle;">L. TANAH</th>
+             <th rowspan="4" style="text-align: center;vertical-align: middle;">NO INDUK</th>
+             <th rowspan="4" style="text-align: center;vertical-align: middle;">NO SERT </th>
+             <th rowspan="4" style="text-align: center;vertical-align: middle;">TGL DAFTAR</th>
+             <th rowspan="4" style="text-align: center;vertical-align: middle;">TGL TERBIT</th>
+             <th rowspan="4" style="text-align: center;vertical-align: middle;">BATAS WAKTU HGB</th>
+             <th colspan="6" rowspan="2" style="text-align: center;vertical-align: middle;">BELUM TERBIT SPLIT</th>
+             <th colspan="6" rowspan="2" style="text-align: center;vertical-align: middle;">TERBIT STOK</th>
+             <th colspan="12" style="text-align: center;vertical-align: middle;">PENJUALAN 2020</th>
+             <th rowspan="4" style="text-align: center;vertical-align: middle;">KETERANGAN</th>
 
            </tr>
            <tr>
-             <th colspan="6"  style="text-align: center;">STOCK</th>
-             <th colspan="6" style="text-align: center;">BELUM TERBIT SPLIT</th>
+             <th colspan="6"  style="text-align: center;vertical-align: middle;">STOCK</th>
+             <th colspan="6" style="text-align: center;vertical-align: middle;">BELUM TERBIT SPLIT</th>
            </tr>
            <tr>
-             <th rowspan="2" style="text-align: center;">TECHNIC</th>
-             <th rowspan="2" style="text-align: center;">SERT</th>
-             <th rowspan="2" style="text-align: center;">SELISIH</th>
-             <th colspan="2" style="text-align: center;">BELUM PROSES</th>
-             <th colspan="2" style="text-align: center;">PROSES</th>
-             <th colspan="2" style="text-align: center;">TOTAL</th>
-             <th colspan="2" style="text-align: center;">sd 2019</th>
-             <th colspan="2" style="text-align: center;">2020L</th>
-             <th colspan="2" style="text-align: center;">TOTAL</th>
-             <th colspan="2" style="text-align: center;">sd 2019</th>
-             <th colspan="2" style="text-align: center;">2020L</th>
-             <th colspan="2" style="text-align: center;">TOTAL</th>
-             <th colspan="2" style="text-align: center;">BELUM PROSES</th>
-             <th colspan="2" style="text-align: center;">PROSESL</th>
-             <th colspan="2" style="text-align: center;">TOTAL</th>
+             <th rowspan="2" style="text-align: center;vertical-align: middle;">TECHNIC</th>
+             <th rowspan="2" style="text-align: center;vertical-align: middle;">SERT</th>
+             <th rowspan="2" style="text-align: center;vertical-align: middle;">SELISIH</th>
+             <th colspan="2" style="text-align: center;vertical-align: middle;">BELUM PROSES</th>
+             <th colspan="2" style="text-align: center;vertical-align: middle;">PROSES</th>
+             <th colspan="2" style="text-align: center;vertical-align: middle;">TOTAL</th>
+             <th colspan="2" style="text-align: center;vertical-align: middle;">sd 2019</th>
+             <th colspan="2" style="text-align: center;vertical-align: middle;">2020L</th>
+             <th colspan="2" style="text-align: center;vertical-align: middle;">TOTAL</th>
+             <th colspan="2" style="text-align: center;vertical-align: middle;">sd 2019</th>
+             <th colspan="2" style="text-align: center;vertical-align: middle;">2020L</th>
+             <th colspan="2" style="text-align: center;vertical-align: middle;">TOTAL</th>
+             <th colspan="2" style="text-align: center;vertical-align: middle;">BELUM PROSES</th>
+             <th colspan="2" style="text-align: center;vertical-align: middle;">PROSESL</th>
+             <th colspan="2" style="text-align: center;vertical-align: middle;">TOTAL</th>
 
 
            </tr>
            <tr>
-             <th style="text-align: center;">KAV</th>
-             <th style="text-align: center;">SERT</th>
-             <th style="text-align: center;">KAV</th>
-             <th style="text-align: center;">SERT</th>
-             <th style="text-align: center;">KAV</th>
-             <th style="text-align: center;">SERT</th>
-             <th style="text-align: center;">KAV</th>
-             <th style="text-align: center;">SERT</th>
-             <th style="text-align: center;">KAV</th>
-             <th style="text-align: center;">SERT</th>
-             <th style="text-align: center;">KAV</th>
-             <th style="text-align: center;">SERT</th>
-             <th style="text-align: center;">KAV</th>
-             <th style="text-align: center;">SERT</th>
-             <th style="text-align: center;">KAV</th>
-             <th style="text-align: center;">SERT</th>
-             <th style="text-align: center;">KAV</th>
-             <th style="text-align: center;">SERT</th>
-             <th style="text-align: center;">KAV</th>
-             <th style="text-align: center;">SERT</th>
-             <th style="text-align: center;">KAV</th>
-             <th style="text-align: center;">SERT</th>
-             <th style="text-align: center;">KAV</th>
-             <th style="text-align: center;">SERT</th>
+             <th style="text-align: center;vertical-align: middle;">KAV</th>
+             <th style="text-align: center;vertical-align: middle;">SERT</th>
+             <th style="text-align: center;vertical-align: middle;">KAV</th>
+             <th style="text-align: center;vertical-align: middle;">SERT</th>
+             <th style="text-align: center;vertical-align: middle;">KAV</th>
+             <th style="text-align: center;vertical-align: middle;">SERT</th>
+             <th style="text-align: center;vertical-align: middle;">KAV</th>
+             <th style="text-align: center;vertical-align: middle;">SERT</th>
+             <th style="text-align: center;vertical-align: middle;">KAV</th>
+             <th style="text-align: center;vertical-align: middle;">SERT</th>
+             <th style="text-align: center;vertical-align: middle;">KAV</th>
+             <th style="text-align: center;vertical-align: middle;">SERT</th>
+             <th style="text-align: center;vertical-align: middle;">KAV</th>
+             <th style="text-align: center;vertical-align: middle;">SERT</th>
+             <th style="text-align: center;vertical-align: middle;">KAV</th>
+             <th style="text-align: center;vertical-align: middle;">SERT</th>
+             <th style="text-align: center;vertical-align: middle;">KAV</th>
+             <th style="text-align: center;vertical-align: middle;">SERT</th>
+             <th style="text-align: center;vertical-align: middle;">KAV</th>
+             <th style="text-align: center;vertical-align: middle;">SERT</th>
+             <th style="text-align: center;vertical-align: middle;">KAV</th>
+             <th style="text-align: center;vertical-align: middle;">SERT</th>
+             <th style="text-align: center;vertical-align: middle;">KAV</th>
+             <th style="text-align: center;vertical-align: middle;">SERT</th>
 
 
            </tr>
@@ -309,15 +309,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-sm-9">
               <input type="text" name="no_pbb" class="form-control"  />
             </div>
-          </div><div class="form-group luas_pbb">
+          </div><div class="form-group luas_pbb_bangunan">
             <label class="col-sm-3 control-label">Luas PBB</span></label>
             <div class="col-sm-9">
-              <input type="text" name="luas_pbb" class="form-control"  />
+              <input type="text" name="luas_pbb_bangunan" class="form-control"  />
             </div>
-          </div><div class="form-group njop">
-            <label class="col-sm-3 control-label">njop</span></label>
+          </div><div class="form-group njop_bangunan">
+            <label class="col-sm-3 control-label">njop_bangunan</span></label>
             <div class="col-sm-9">
-              <input type="text" name="njop" class="form-control"  />
+              <input type="text" name="njop_bangunan" class="form-control"  />
             </div>
           </div>
           <div class="form-group total_harga_pengalihan">
@@ -505,15 +505,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-sm-9">
               <input type="text" name="no_pbb" id="no_pbb" class="form-control"  />
             </div>
-          </div><div class="form-group luas_pbb">
+          </div><div class="form-group luas_pbb_bangunan">
             <label class="col-sm-3 control-label">Luas PBB</span></label>
             <div class="col-sm-9">
-              <input type="text" name="luas_pbb" id="luas_pbb" class="form-control"  />
+              <input type="text" name="luas_pbb_bangunan" id="luas_pbb_bangunan" class="form-control"  />
             </div>
-          </div><div class="form-group njop">
-            <label class="col-sm-3 control-label">njop</span></label>
+          </div><div class="form-group njop_bangunan">
+            <label class="col-sm-3 control-label">njop_bangunan</span></label>
             <div class="col-sm-9">
-              <input type="text" name="njop" id="njop" class="form-control"  />
+              <input type="text" name="njop_bangunan" id="njop_bangunan" class="form-control"  />
             </div>
           </div>
           <div class="form-group total_harga_pengalihan">

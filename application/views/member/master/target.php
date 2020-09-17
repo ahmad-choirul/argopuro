@@ -51,47 +51,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th rowspan="2">Aksi</th>
                         <th rowspan="2">Perumahan</th>
                         <th rowspan="2">Tahun</th>
-                        <th colspan="2"  style="text-align: center;">JAN</th>
-                        <th colspan="2" style="text-align: center;">FEB</th>
-                        <th colspan="2" style="text-align: center;">MAR</th>
-                        <th colspan="2"  style="text-align: center;">APR</th>
-                        <th colspan="2" style="text-align: center;">MEI</th>
-                        <th colspan="2" style="text-align: center;">JUN</th>
-                        <th colspan="2"  style="text-align: center;">JUL</th>
-                        <th colspan="2" style="text-align: center;">AGU</th>
-                        <th colspan="2" style="text-align: center;">SEP</th>
-                        <th colspan="2"  style="text-align: center;">OKT</th>
-                        <th colspan="2" style="text-align: center;">NOV</th>
-                        <th colspan="2" style="text-align: center;">DES</th>
+                        <th colspan="2"  style="text-align: center;vertical-align: middle;">JAN</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">FEB</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">MAR</th>
+                        <th colspan="2"  style="text-align: center;vertical-align: middle;">APR</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">MEI</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">JUN</th>
+                        <th colspan="2"  style="text-align: center;vertical-align: middle;">JUL</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">AGU</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">SEP</th>
+                        <th colspan="2"  style="text-align: center;vertical-align: middle;">OKT</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">NOV</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">DES</th>
 
 
 
                     </tr>
                     <tr>
-                        <th   style="text-align: center;">BID </th>
-                        <th style="text-align: center;">LUAS</th>
-                        <th   style="text-align: center;">BID </th>
-                        <th style="text-align: center;">LUAS</th>
-                        <th   style="text-align: center;">BID </th>
-                        <th style="text-align: center;">LUAS</th>
-                        <th   style="text-align: center;">BID </th>
-                        <th style="text-align: center;">LUAS</th>
-                        <th   style="text-align: center;">BID </th>
-                        <th style="text-align: center;">LUAS</th>
-                        <th   style="text-align: center;">BID </th>
-                        <th style="text-align: center;">LUAS</th>
-                        <th   style="text-align: center;">BID </th>
-                        <th style="text-align: center;">LUAS</th>
-                        <th   style="text-align: center;">BID </th>
-                        <th style="text-align: center;">LUAS</th>
-                        <th   style="text-align: center;">BID </th>
-                        <th style="text-align: center;">LUAS</th>
-                        <th   style="text-align: center;">BID </th>
-                        <th style="text-align: center;">LUAS</th>
-                        <th   style="text-align: center;">BID </th>
-                        <th style="text-align: center;">LUAS</th>
-                        <th   style="text-align: center;">BID </th>
-                        <th style="text-align: center;">LUAS</th>
+                        <th   style="text-align: center;vertical-align: middle;">BID </th>
+                        <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                        <th   style="text-align: center;vertical-align: middle;">BID </th>
+                        <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                        <th   style="text-align: center;vertical-align: middle;">BID </th>
+                        <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                        <th   style="text-align: center;vertical-align: middle;">BID </th>
+                        <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                        <th   style="text-align: center;vertical-align: middle;">BID </th>
+                        <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                        <th   style="text-align: center;vertical-align: middle;">BID </th>
+                        <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                        <th   style="text-align: center;vertical-align: middle;">BID </th>
+                        <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                        <th   style="text-align: center;vertical-align: middle;">BID </th>
+                        <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                        <th   style="text-align: center;vertical-align: middle;">BID </th>
+                        <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                        <th   style="text-align: center;vertical-align: middle;">BID </th>
+                        <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                        <th   style="text-align: center;vertical-align: middle;">BID </th>
+                        <th style="text-align: center;vertical-align: middle;">LUAS</th>
+                        <th   style="text-align: center;vertical-align: middle;">BID </th>
+                        <th style="text-align: center;vertical-align: middle;">LUAS</th>
 
 
 
@@ -552,7 +552,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             text: "Request gagal, browser akan direload",
             type: 'danger'
         }); 
-        window.setTimeout(function() {  location.reload();}, 2000); 
+        // window.setTimeout(function() {  location.reload();}, 2000); 
     }); 
     e.preventDefault(); 
 }); 
@@ -612,7 +612,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             text: "Request gagal, browser akan direload",
             type: 'danger'
         }); 
-        window.setTimeout(function() {  location.reload();}, 2000);
+        // window.setTimeout(function() {  location.reload();}, 2000);
     }); 
     e.preventDefault(); 
 }); 

@@ -4,33 +4,33 @@
             <thead>
                 <tr>
 
-                    <th rowspan="2" style="text-align: center;">NO</th>
-                    <th rowspan="2"  style="text-align: center;">Aksi</th>
-                    <th rowspan="2"  style="text-align: center;">Lokasi</th>
-                    <th rowspan="2"  style="text-align: center;">NO GBR </th>
-                    <th rowspan="2" style="text-align: center;">THN</th>
-                    <th rowspan="2" style="text-align: center;">PENJUAL</th>
-                    <th colspan="4" style="text-align: center;">DATA TANAH</th>
-                    <th rowspan="2" style="text-align: center;">POSISI SURAT</th>
-                    <th rowspan="2" style="text-align: center;">HARGA AKTA</th>
-                    <th colspan="6" style="text-align: center;">PENGALIHAN HAK</th>
-                    <th rowspan="2" style="text-align: center;">Status Teknik</th>
-                    <th rowspan="2" style="text-align: center;">Status Proses Induk</th>
-                    <th rowspan="2" style="text-align: center;">KET</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">NO</th>
+                    <th rowspan="2"  style="text-align: center;vertical-align: middle;">Aksi</th>
+                    <th rowspan="2"  style="text-align: center;vertical-align: middle;">Lokasi</th>
+                    <th rowspan="2"  style="text-align: center;vertical-align: middle;">NO GBR </th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">THN</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">PENJUAL</th>
+                    <th colspan="4" style="text-align: center;vertical-align: middle;">DATA TANAH</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">POSISI SURAT</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">HARGA AKTA</th>
+                    <th colspan="6" style="text-align: center;vertical-align: middle;">PENGALIHAN HAK</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">Status Teknik</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">Status Proses Induk</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">KET</th>
 
 
 
                 </tr>
                 <tr>
-                    <th  style="text-align: center;">SURAT</th>
-                    <th  style="text-align: center;">ATAS NAMA</th>
-                    <th style="text-align: center;">L SURAT </th>
-                    <th style="text-align: center;">L UKUR </th>
-                    <th style="text-align: center;">Status Order</th>
-                    <th style="text-align: center;">JENIS</th>
-                    <th style="text-align: center;">NO AKTA</th>
-                    <th style="text-align: center;">TANGGAL</th>
-                    <th style="text-align: center;">ATAS NAMA</th>
+                    <th  style="text-align: center;vertical-align: middle;">SURAT</th>
+                    <th  style="text-align: center;vertical-align: middle;">ATAS NAMA</th>
+                    <th style="text-align: center;vertical-align: middle;">L SURAT </th>
+                    <th style="text-align: center;vertical-align: middle;">L UKUR </th>
+                    <th style="text-align: center;vertical-align: middle;">Status Order</th>
+                    <th style="text-align: center;vertical-align: middle;">JENIS</th>
+                    <th style="text-align: center;vertical-align: middle;">NO AKTA</th>
+                    <th style="text-align: center;vertical-align: middle;">TANGGAL</th>
+                    <th style="text-align: center;vertical-align: middle;">ATAS NAMA</th>
                 </tr>
 
             </thead>
@@ -196,33 +196,33 @@
                <thead>
                 <tr>
 
-                    <th rowspan="2" style="text-align: center;">NO</th>
-                    <th rowspan="2"  style="text-align: center;">Aksi</th>
-                    <th rowspan="2"  style="text-align: center;">Lokasi</th>
-                    <th rowspan="2"  style="text-align: center;">NO GBR </th>
-                    <th rowspan="2" style="text-align: center;">THN</th>
-                    <th rowspan="2" style="text-align: center;">PENJUAL</th>
-                    <th colspan="4" style="text-align: center;">DATA TANAH</th>
-                    <th rowspan="2" style="text-align: center;">POSISI SURAT</th>
-                    <th rowspan="2" style="text-align: center;">HARGA AKTA</th>
-                    <th colspan="6" style="text-align: center;">PENGALIHAN HAK</th>
-                    <th rowspan="2" style="text-align: center;">Status Teknik</th>
-                    <th rowspan="2" style="text-align: center;">Status Proses Induk</th>
-                    <th rowspan="2" style="text-align: center;">KET</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">NO</th>
+                    <th rowspan="2"  style="text-align: center;vertical-align: middle;">Aksi</th>
+                    <th rowspan="2"  style="text-align: center;vertical-align: middle;">Lokasi</th>
+                    <th rowspan="2"  style="text-align: center;vertical-align: middle;">NO GBR </th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">THN</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">PENJUAL</th>
+                    <th colspan="4" style="text-align: center;vertical-align: middle;">DATA TANAH</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">POSISI SURAT</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">HARGA AKTA</th>
+                    <th colspan="6" style="text-align: center;vertical-align: middle;">PENGALIHAN HAK</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">Status Teknik</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">Status Proses Induk</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;">KET</th>
 
 
 
                 </tr>
                 <tr>
-                    <th  style="text-align: center;">SURAT</th>
-                    <th  style="text-align: center;">ATAS NAMA</th>
-                    <th style="text-align: center;">L SURAT </th>
-                    <th style="text-align: center;">L UKUR </th>
-                    <th style="text-align: center;">Status Order</th>
-                    <th style="text-align: center;">JENIS</th>
-                    <th style="text-align: center;">NO AKTA</th>
-                    <th style="text-align: center;">TANGGAL</th>
-                    <th style="text-align: center;">ATAS NAMA</th>
+                    <th  style="text-align: center;vertical-align: middle;">SURAT</th>
+                    <th  style="text-align: center;vertical-align: middle;">ATAS NAMA</th>
+                    <th style="text-align: center;vertical-align: middle;">L SURAT </th>
+                    <th style="text-align: center;vertical-align: middle;">L UKUR </th>
+                    <th style="text-align: center;vertical-align: middle;">Status Order</th>
+                    <th style="text-align: center;vertical-align: middle;">JENIS</th>
+                    <th style="text-align: center;vertical-align: middle;">NO AKTA</th>
+                    <th style="text-align: center;vertical-align: middle;">TANGGAL</th>
+                    <th style="text-align: center;vertical-align: middle;">ATAS NAMA</th>
                 </tr>
 
             </thead>

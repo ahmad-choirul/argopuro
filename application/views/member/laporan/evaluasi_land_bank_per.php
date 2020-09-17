@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <select data-plugin-selectTwo class="form-control" onchange='refresh()' required id="id_perumahan" name="id_perumahan">  
                                     <option value="">Pilih Lokasi</option>
                                     <?php foreach ($perumahan as $aa): ?>
-                                        <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?></option>
+                                        <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?> (<?php echo $aa->nama_status;?>)</option>
                                     <?php endforeach; ?>
                                 </select> 
                             <a class="btn btn-primary" onclick="cetak()"> cetak </a>

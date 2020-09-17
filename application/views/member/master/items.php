@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <select data-plugin-selectTwo class="form-control" onchange="refresh()" required id="id_perumahan" name="id_perumahan">  
                         <option value="">Pilih Lokasi</option>
                         <?php foreach ($perumahan as $aa): ?>
-                            <option value="<?php echo $aa->id;?>"><?php echo $aa->nama_regional;?></option>
+                            <option value="<?php echo $aa->id;?>"><?php echo $aa->nama_regional;?> </option>
                         <?php endforeach; ?>
                     </select> 
                 </div>
@@ -153,10 +153,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="no_pbb" class="form-control" placeholder="No PBB"  />
                         </div>
                         <div class="col-sm-2">
-                            <input type="text" name="luas_pbb" class="form-control" placeholder="Luas PBB (m2)"  />
+                            <input type="text" name="luas_pbb_bangunan" class="form-control" placeholder="Luas PBB (m2)"  />
                         </div>
                         <div class="col-sm-3">
-                            <input type="text" name="njop" class="form-control" placeholder="NJOP" />
+                            <input type="text" name="njop_bangunan" class="form-control" placeholder="njop_bangunan" />
                         </div>
 
                     </div>
@@ -179,7 +179,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div><div class="form-group tanggal_pengalihan">
                         <label class="col-sm-3 control-label"> Detail Pengalihan </span></label>
                         <div class="col-sm-3">
-                            <input type="text" name="tanggal_pengalihan" style="color: grey; text-align: center;" class="form-control tanggal" placeholder="Tanggal Pengalihan" title="Tanggal Pengalihan"  />
+                            <input type="text" name="tanggal_pengalihan" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal" placeholder="Tanggal Pengalihan" title="Tanggal Pengalihan"  />
                         </div>
                         <div class="col-sm-2">
                             <input type="text" name="akta_pengalihan" class="form-control" placeholder="Akta"  />
@@ -342,15 +342,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-sm-9">
                             <input type="text" name="no_pbb" id="no_pbb" class="form-control"  />
                         </div>
-                    </div><div class="form-group luas_pbb">
+                    </div><div class="form-group luas_pbb_bangunan">
                         <label class="col-sm-3 control-label">Luas PBB</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="luas_pbb" id="luas_pbb" class="form-control"  />
+                            <input type="text" name="luas_pbb_bangunan" id="luas_pbb_bangunan" class="form-control"  />
                         </div>
-                    </div><div class="form-group njop">
-                        <label class="col-sm-3 control-label">njop</span></label>
+                    </div><div class="form-group njop_bangunan">
+                        <label class="col-sm-3 control-label">njop_bangunan</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="njop" id="njop" class="form-control"  />
+                            <input type="text" name="njop_bangunan" id="njop_bangunan" class="form-control"  />
                         </div>
                     </div>
                     <div class="form-group total_harga_pengalihan">

@@ -49,44 +49,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <thead>
                         <tr>
                             <th colspan="2"></th>
-                            <th colspan="3" style="text-align: center; ">LAND BANK s/d 2019</th>
-                            <th colspan="3" style="text-align: center;">LAND BANK s/d 2020 </th>
-                            <th colspan="3" style="text-align: center;">TOTAL LAND BANK</th>
-                            <th colspan="3" style="text-align: center;">SERAH TERIMA TECHNIC</th>
-                            <th colspan="3" style="text-align: center;">SISA LAND BANK</th>
-                            <th colspan="3" style="text-align: center; background-color: green; color: white;">PROSES PERALIHAN BANK</th>
-                            <th colspan="2" style="text-align: center;background-color: green; color: white;">S TERIMA FINANCE </th>
+                            <th colspan="3" style="text-align: center;vertical-align: middle; ">LAND BANK s/d 2019</th>
+                            <th colspan="3" style="text-align: center;vertical-align: middle;">LAND BANK s/d 2020 </th>
+                            <th colspan="3" style="text-align: center;vertical-align: middle;">TOTAL LAND BANK</th>
+                            <th colspan="3" style="text-align: center;vertical-align: middle;">SERAH TERIMA TECHNIC</th>
+                            <th colspan="3" style="text-align: center;vertical-align: middle;">SISA LAND BANK</th>
+                            <th colspan="3" style="text-align: center;vertical-align: middle; background-color: green; color: white;">PROSES PERALIHAN BANK</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;background-color: green; color: white;">S TERIMA FINANCE </th>
                         </tr>
                         <tr>
                             <th rowspan="3">No</th>
                             <th rowspan="3">Lokasi</th>
-                            <th  rowspan="2" style="text-align: center;">BID</th>
-                            <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
-                            <th  rowspan="2" style="text-align: center;">BID</th>
-                            <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
-                            <th  rowspan="2" style="text-align: center;">BID</th>
-                            <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
-                            <th  rowspan="2" style="text-align: center;">BID</th>
-                            <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>                        
-                            <th  rowspan="2" style="text-align: center;">BID</th>
-                            <th colspan="2" style="text-align: center;">LUAS m<sup>2</sup></th>
-                            <th rowspan="2" style="text-align: center;">ORDER </th>
-                            <th rowspan="2" style="text-align: center;">TERBIT </th>
-                            <th rowspan="2" style="text-align: center;">TOTAL </th>
-                            <th rowspan="2" style="text-align: center;">SUDAH </th>
-                            <th rowspan="2" style="text-align: center;">BELUM </th>
+                            <th  rowspan="2" style="text-align: center;vertical-align: middle;">BID</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;">LUAS m<sup>2</sup></th>
+                            <th  rowspan="2" style="text-align: center;vertical-align: middle;">BID</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;">LUAS m<sup>2</sup></th>
+                            <th  rowspan="2" style="text-align: center;vertical-align: middle;">BID</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;">LUAS m<sup>2</sup></th>
+                            <th  rowspan="2" style="text-align: center;vertical-align: middle;">BID</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;">LUAS m<sup>2</sup></th>                        
+                            <th  rowspan="2" style="text-align: center;vertical-align: middle;">BID</th>
+                            <th colspan="2" style="text-align: center;vertical-align: middle;">LUAS m<sup>2</sup></th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">ORDER </th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">TERBIT </th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">TOTAL </th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">SUDAH </th>
+                            <th rowspan="2" style="text-align: center;vertical-align: middle;">BELUM </th>
                         </tr>
                         <tr>
-                            <th   style="text-align: center;">SURAT</th>
-                            <th   style="text-align: center;">UKUR</th>
-                            <th   style="text-align: center;">SURAT</th>
-                            <th   style="text-align: center;">UKUR</th>
-                            <th   style="text-align: center;">SURAT</th>
-                            <th   style="text-align: center;">UKUR</th>
-                            <th   style="text-align: center;">SURAT</th>
-                            <th   style="text-align: center;">UKUR</th>
-                            <th   style="text-align: center;">SURAT</th>
-                            <th   style="text-align: center;">UKUR</th>
+                            <th   style="text-align: center;vertical-align: middle;">SURAT</th>
+                            <th   style="text-align: center;vertical-align: middle;">UKUR</th>
+                            <th   style="text-align: center;vertical-align: middle;">SURAT</th>
+                            <th   style="text-align: center;vertical-align: middle;">UKUR</th>
+                            <th   style="text-align: center;vertical-align: middle;">SURAT</th>
+                            <th   style="text-align: center;vertical-align: middle;">UKUR</th>
+                            <th   style="text-align: center;vertical-align: middle;">SURAT</th>
+                            <th   style="text-align: center;vertical-align: middle;">UKUR</th>
+                            <th   style="text-align: center;vertical-align: middle;">SURAT</th>
+                            <th   style="text-align: center;vertical-align: middle;">UKUR</th>
                         </tr>
                     </thead>
                     <tbody>

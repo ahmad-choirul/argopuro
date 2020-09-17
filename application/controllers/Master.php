@@ -385,12 +385,12 @@ public function pembelihapus(){
     echo json_encode($data); 
 }
 
-public function perumahanlokasi()
+public function perumahan()
 {   
     level_user('master','perumahan',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
     $data['listkabupaten'] = $this->db->order_by("id_kabupaten","DESC")->get('kabupaten')->result();
     $data['status'] = $this->db->order_by("id_status_regional","DESC")->get('master_status_regional')->result();
-    $this->load->view('member/master/perumahanlokasi',$data);
+    $this->load->view('member/master/perumahan',$data);
 }  
 
 public function perumahanluarijin()
@@ -408,7 +408,7 @@ public function perumahandalamijin()
     $data['status'] = $this->db->order_by("id_status_regional","DESC")->get('master_status_regional')->result();
     $this->load->view('member/master/perumahandalamijin',$data);
 }  
-public function datakategori($status)
+public function datakategori($status='')
 {   
     cekajax(); 
     $get = $this->input->get();
@@ -842,7 +842,10 @@ public function jenis_pengalihanhapus(){
 public function items()
 {  
     level_user('master','items',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
+    $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
     $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+    $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
+    
     $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
     $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
     $data['jenis_pengalihan'] = $this->db->order_by("id_pengalihan","DESC")->get('tbl_jenis_pengalihan')->result();
@@ -883,7 +886,7 @@ public function dataitems()
         $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->kode_item).'">Edit</a></li>':'';
         $row[] = ' 
         <div class="btn-group dropup">
-        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action</button>
         <ul class="dropdown-menu" role="menu"> 
         <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($r->kode_item).'">Detail</a></li> 
         '.$tomboldetailbayar.'
@@ -914,25 +917,15 @@ public function dataitems()
         }else{
          $nilai=$r->nilai;     
      }
-     if ($r->ganti_rugi==0||$r->ganti_rugi=='') {
-        $ganti_rugi = 0;
+     if ($r->lain==0||$r->lain=='') {
+        $lain = 0;
     }else{
-     $ganti_rugi=$r->ganti_rugi;     
+     $lain=$r->lain;     
  }
- if ($r->pbb==0||$r->pbb=='') {
-    $pbb = 0;
-}else{
- $pbb=$r->pbb;     
-}
-if ($r->lain==0||$r->lain=='') {
-    $lain = 0;
-}else{
- $lain=$r->lain;     
-}
 
-$totalbiayalain = $lain+$pbb+$ganti_rugi;
-$totalharga_biaya = $total_harga_pengalihan+$nilai+$totalbiayalain;
-if ($totalharga_biaya==0) {
+ $totalbiayalain = $lain;
+ $totalharga_biaya = $total_harga_pengalihan+$nilai+$totalbiayalain;
+ if ($totalharga_biaya==0) {
     $harga_perm=0;
 }else{
     $harga_perm = $totalharga_biaya/$r->luas_surat;
@@ -950,8 +943,8 @@ $row[] = $this->security->xss_clean($r->jumlah_bidang);
 $row[] = $this->security->xss_clean($r->luas_surat);  
 $row[] = $this->security->xss_clean($r->luas_ukur);  
 $row[] = $this->security->xss_clean($r->no_pbb);  
-$row[] = $this->security->xss_clean($r->luas_pbb);  
-$row[] = $this->security->xss_clean($r->njop);  
+$row[] = $this->security->xss_clean($r->luas_pbb_bangunan);  
+$row[] = $this->security->xss_clean($r->njop_bangunan);  
 $row[] = $this->security->xss_clean(rupiah($harga_satuan));  
 $row[] = $this->security->xss_clean(rupiah($r->total_harga_pengalihan));  
 $row[] = $this->security->xss_clean($r->nama_makelar);  
@@ -959,8 +952,6 @@ $row[] = $this->security->xss_clean(rupiah($r->nilai));
 $row[] = $this->security->xss_clean($tgl_pengalihan);  
 $row[] = $this->security->xss_clean($r->akta_pengalihan);  
 $row[] = $this->security->xss_clean($r->nama_pengalihan);  
-$row[] = $this->security->xss_clean(rupiah($ganti_rugi));  
-$row[] = $this->security->xss_clean(rupiah($pbb));  
 $row[] = $this->security->xss_clean(rupiah($lain));  
 $row[] = $this->security->xss_clean(rupiah($totalbiayalain));  
 $row[] = $this->security->xss_clean(rupiah($totalharga_biaya));  
@@ -1005,40 +996,31 @@ public function itemdetail(){
     $this->db->join('tbl_sertifikat_tanah b', 'master_item.status_surat_tanah2 = b.id_sertifikat_tanah', 'left');
     $this->db->select('master_item.*,master_regional.*,a.nama_sertifikat as nama_sertifikat1,a.nama_sertifikat as nama_sertifikat2');
     $query = $this->db->get_where('master_item', array('kode_item' => $idd),1);
-    if ($query->row()->total_harga_pengalihan==''||$query->row()->luas_surat) {
+    if ($query->row()->total_harga_pengalihan==''||$query->row()->luas_surat==''||$query->row()->luas_surat==0) {
         $harga_satuan=0;
     }else{
         $harga_satuan = $query->row()->total_harga_pengalihan/$query->row()->luas_surat;
 
     }
-    $totalbiayalain = $query->row()->lain+$query->row()->pbb+$query->row()->ganti_rugi;
-    $totalharga_biaya = $query->row()->total_harga_pengalihan+$query->row()->nilai+$totalbiayalain;
-    if ($query->row()->luas_surat==''||$totalharga_biaya==0) {
-       $harga_perm=0;
-   }else{
-    $harga_perm = $totalharga_biaya/$query->row()->luas_surat;
-}
-
-if ($query->row()->nilai==0||$query->row()->nilai=='') {
-    $nilai = 0;
-}else{
- $nilai=$query->row()->nilai;     
-}
-if ($query->row()->ganti_rugi==0||$query->row()->ganti_rugi=='') {
-    $ganti_rugi = 0;
-}else{
- $ganti_rugi=$query->row()->ganti_rugi;     
-}
-if ($query->row()->pbb==0||$query->row()->pbb=='') {
-    $pbb = 0;
-}else{
- $pbb=$query->row()->pbb;     
-}
-if ($query->row()->lain==0||$query->row()->lain=='') {
+    if ($query->row()->nilai==0||$query->row()->nilai=='') {
+        $nilai = 0;
+    }else{
+     $nilai=$query->row()->nilai;     
+ }
+ if ($query->row()->lain==0||$query->row()->lain=='') {
     $lain = 0;
 }else{
  $lain=$query->row()->lain;     
 }
+$totalbiayalain =$lain;
+$totalharga_biaya = $query->row()->total_harga_pengalihan+$nilai+$totalbiayalain;
+if ($query->row()->luas_surat==''||$totalharga_biaya==0) {
+   $harga_perm=0;
+}else{
+    $harga_perm = $totalharga_biaya/$query->row()->luas_surat;
+}
+
+
 
 $result = array(  
 
@@ -1057,8 +1039,10 @@ $result = array(
    "luas_surat" => $this->security->xss_clean($query->row()->luas_surat),
    "luas_ukur" => $this->security->xss_clean($query->row()->luas_ukur),
    "no_pbb" => $this->security->xss_clean($query->row()->no_pbb),
-   "luas_pbb" => $this->security->xss_clean($query->row()->luas_pbb),
-   "njop" => $this->security->xss_clean($query->row()->njop),
+   "luas_pbb_bangunan" => $this->security->xss_clean($query->row()->luas_pbb_bangunan),
+   "njop_bangunan" => $this->security->xss_clean($query->row()->njop_bangunan),
+   "luas_pbb_bumi" => $this->security->xss_clean($query->row()->luas_pbb_bumi),
+   "njop_bumi" => $this->security->xss_clean($query->row()->njop_bumi),
    "total_harga_pengalihantampil" => $this->security->xss_clean(rupiah($query->row()->total_harga_pengalihan)),
    "total_harga_pengalihan" => $this->security->xss_clean($query->row()->total_harga_pengalihan),
    "satuan_harga_pengalihantampil" => $this->security->xss_clean(rupiah($harga_satuan)),
@@ -1068,13 +1052,10 @@ $result = array(
    "tanggal_pengalihan" => $this->security->xss_clean($query->row()->tanggal_pengalihan),
    "akta_pengalihan" => $this->security->xss_clean($query->row()->akta_pengalihan),
    "nama_pengalihan" => $this->security->xss_clean($query->row()->nama_pengalihan),
-   "ganti_rugitampil" => $this->security->xss_clean(rupiah($ganti_rugi)),
-   "ganti_rugi" => $this->security->xss_clean($ganti_rugi),
-   "pbbtampil" => $this->security->xss_clean(rupiah($pbb)),
    "atas_nama_pbb" => $this->security->xss_clean($query->row()->atas_nama_pbb),
-   "pbb" => $this->security->xss_clean($pbb),
    "laintampil" => $this->security->xss_clean(rupiah($lain)),
    "lain" => $this->security->xss_clean($query->row()->lain),
+   "keterangan_lain" => $this->security->xss_clean($query->row()->keterangan_lain),
    "harga_permtampil" => $this->security->xss_clean(rupiah($harga_perm)),
    "harga_perm" => $this->security->xss_clean($harga_perm),
    "keterangan" => $this->security->xss_clean($query->row()->keterangan),
@@ -1087,6 +1068,8 @@ $result = array(
    "jenis_pengalihan_hak" => $this->security->xss_clean($query->row()->jenis_pengalihan_hak),
    "status_teknik" => $this->security->xss_clean($query->row()->status_teknik),
    "jenis_pengalihan" => $this->security->xss_clean($query->row()->jenis_pengalihan),
+   "tanggal_pengalihan" => $this->security->xss_clean(tgl_indo($query->row()->tanggal_pengalihan)),
+   "tanggal_pengalian_ymd" => $this->security->xss_clean($query->row()->tanggal_pengalihan),
    "terima_finance" => $this->security->xss_clean($query->row()->terima_finance)
 );    
 echo'['.json_encode($result).']';

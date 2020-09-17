@@ -157,7 +157,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <h2 class="panel-title">Form Pembayaran </h2>
                 </header>
                 <div class="panel-body"> 
-
+<div class="form-group mt-lg tanggal_pembayaran">
+                        <label class="col-sm-3 control-label">Tahapan Pembayaran<span class="required">*</span></label>
+                        <div class="col-sm-9">
+                            <input type="text"  id="tanggal_pembayaran"  name="tanggal_pembayaran" class="form-control" />
+                        </div>
+                    </div>
                     <div class="form-group mt-lg tanggal_pembayaran">
                         <label class="col-sm-3 control-label">Tanggal Pembayaran<span class="required">*</span></label>
                         <div class="col-sm-9">
@@ -165,7 +170,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                     <div class="form-group mt-lg">
-                        <label class="col-sm-3 control-label">Total Bayar<span class="required">*</span></label>
+                        <label class="col-sm-3 control-label">Nilai Bayar<span class="required">*</span></label>
                         <div class="col-sm-9">
                             <input type="text"  id="total_bayar" name="total_bayar"  class="form-control maskprice" />
                         </div>

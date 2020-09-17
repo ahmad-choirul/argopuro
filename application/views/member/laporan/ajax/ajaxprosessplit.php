@@ -16,11 +16,11 @@
           <thead>
 
            <tr>
-             <th style="text-align: center;">NO</th>
-             <th style="text-align: center;">Aksi</th>
-             <th style="text-align: center;">INDUK</th>
-             <th style="text-align: center;">Jumlah Unit</th>
-             <th style="text-align: center;">KETERANGAN</th>
+             <th style="text-align: center;vertical-align: middle;">NO</th>
+             <th style="text-align: center;vertical-align: middle;">Aksi</th>
+             <th style="text-align: center;vertical-align: middle;">INDUK</th>
+             <th style="text-align: center;vertical-align: middle;">Jumlah Unit</th>
+             <th style="text-align: center;vertical-align: middle;">KETERANGAN</th>
 
            </tr>
 
@@ -99,11 +99,11 @@
               <thead>
 
            <tr>
-             <th style="text-align: center;">NO</th>
-             <th style="text-align: center;">Aksi</th>
-             <th style="text-align: center;">INDUK</th>
-             <th style="text-align: center;">Jumlah Unit</th>
-             <th style="text-align: center;">KETERANGAN</th>
+             <th style="text-align: center;vertical-align: middle;">NO</th>
+             <th style="text-align: center;vertical-align: middle;">Aksi</th>
+             <th style="text-align: center;vertical-align: middle;">INDUK</th>
+             <th style="text-align: center;vertical-align: middle;">Jumlah Unit</th>
+             <th style="text-align: center;vertical-align: middle;">KETERANGAN</th>
 
            </tr>
 

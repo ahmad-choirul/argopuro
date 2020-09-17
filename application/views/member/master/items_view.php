@@ -39,45 +39,45 @@
                 <table class="table table-responsive table-bordered table-hover table-striped data" >
                    <thead>
                     <tr>
-                        <th rowspan="2" style="text-align: center;"></th>
-                        <th rowspan="2" style="text-align: center;">Lokasi</th>
-                        <th rowspan="2" style="text-align: center;">Kode Item </th>
-                        <th rowspan="2" style="text-align: center;">Tanggal Pembelian</th>
-                        <th rowspan="2" style="text-align: center;">Nama Penjual</th>
-                        <th colspan="2" style="text-align: center;">Data Surat Tanah</th>
-                        <th rowspan="2" style="text-align: center;">No Gambar</th>
-                        <th rowspan="2" style="text-align: center;">Jml Bidang</th>
-                        <th colspan="2" style="text-align: center;">Luas (m2)</th>
-                        <th colspan="3" style="text-align: center;">PBB</th>
-                        <th colspan="2" style="text-align: center;">Harga Pengalihan Hak</th>
-                        <th colspan="2" style="text-align: center;">Makelar</th>
-                        <th colspan="3" style="text-align: center;">Pengalihan Hak</th>
-                        <th colspan="4" style="text-align: center;">Biaya Lain-lain</th>
-                        <th rowspan ="2" style="text-align: center;" >Total Harga + biaya</th>
-                        <th rowspan="2" style="text-align: center;" >Harga / M^2</th>
-                        <th rowspan="2" style="text-align: center;">Keterangan</th>
+                        <th rowspan="2" style="text-align: center;vertical-align: middle;"></th>
+                        <th rowspan="2" style="text-align: center;vertical-align: middle;">Lokasi</th>
+                        <th rowspan="2" style="text-align: center;vertical-align: middle;">Kode Item </th>
+                        <th rowspan="2" style="text-align: center;vertical-align: middle;">Tanggal Pembelian</th>
+                        <th rowspan="2" style="text-align: center;vertical-align: middle;">Nama Penjual</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">Data Surat Tanah</th>
+                        <th rowspan="2" style="text-align: center;vertical-align: middle;">No Gambar</th>
+                        <th rowspan="2" style="text-align: center;vertical-align: middle;">Jml Bidang</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">Luas (m2)</th>
+                        <th colspan="3" style="text-align: center;vertical-align: middle;">PBB</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">Harga Pengalihan Hak</th>
+                        <th colspan="2" style="text-align: center;vertical-align: middle;">Makelar</th>
+                        <th colspan="3" style="text-align: center;vertical-align: middle;">Pengalihan Hak</th>
+                        <th colspan="4" style="text-align: center;vertical-align: middle;">Biaya Lain-lain</th>
+                        <th rowspan ="2" style="text-align: center;vertical-align: middle;" >Total Harga + biaya</th>
+                        <th rowspan="2" style="text-align: center;vertical-align: middle;" >Harga / M^2</th>
+                        <th rowspan="2" style="text-align: center;vertical-align: middle;">Keterangan</th>
 
 
                     </tr>
                     <tr>
-                        <th style="text-align: center;">Nama</th>
-                        <th style="text-align: center;">Status</th>
-                        <th style="text-align: center;">Surat</th>
-                        <th style="text-align: center;">Ukur</th>
-                        <th style="text-align: center;">Nomor</th>
-                        <th style="text-align: center;">Luas</th>
-                        <th style="text-align: center;">NJOP</th>
-                        <th style="text-align: center;">Satuan</th>
-                        <th style="text-align: center;">Total</th>
-                        <th style="text-align: center;">Nama</th>
-                        <th style="text-align: center;">Nilai</th>
-                        <th style="text-align: center;">Tanggal</th>
-                        <th style="text-align: center;">Akte</th>
-                        <th style="text-align: center;">Nama</th>
-                        <th style="text-align: center;">Ganti Rugi</th>
-                        <th style="text-align: center;">PBB</th>
-                        <th style="text-align: center;">Lain2</th>
-                        <th style="text-align: center;">Total</th>
+                        <th style="text-align: center;vertical-align: middle;">Nama</th>
+                        <th style="text-align: center;vertical-align: middle;">Status</th>
+                        <th style="text-align: center;vertical-align: middle;">Surat</th>
+                        <th style="text-align: center;vertical-align: middle;">Ukur</th>
+                        <th style="text-align: center;vertical-align: middle;">Nomor</th>
+                        <th style="text-align: center;vertical-align: middle;">Luas</th>
+                        <th style="text-align: center;vertical-align: middle;">njop_bangunan</th>
+                        <th style="text-align: center;vertical-align: middle;">Satuan</th>
+                        <th style="text-align: center;vertical-align: middle;">Total</th>
+                        <th style="text-align: center;vertical-align: middle;">Nama</th>
+                        <th style="text-align: center;vertical-align: middle;">Nilai</th>
+                        <th style="text-align: center;vertical-align: middle;">Tanggal</th>
+                        <th style="text-align: center;vertical-align: middle;">Akte</th>
+                        <th style="text-align: center;vertical-align: middle;">Nama</th>
+                        <th style="text-align: center;vertical-align: middle;">Ganti Rugi</th>
+                        <th style="text-align: center;vertical-align: middle;">PBB</th>
+                        <th style="text-align: center;vertical-align: middle;">Lain2</th>
+                        <th style="text-align: center;vertical-align: middle;">Total</th>
 
                     </tr>
 
@@ -172,8 +172,8 @@
                     <td><?=$data->luas_surat?></td>  
                     <td><?=$data->luas_ukur?></td>  
                     <td><?=$data->no_pbb?></td>  
-                    <td><?=$data->luas_pbb?></td>  
-                    <td><?=$data->njop?></td>  
+                    <td><?=$data->luas_pbb_bangunan?></td>  
+                    <td><?=$data->njop_bangunan?></td>  
                     <td><?=rupiah($harga_satuan)?></td>  
                     <td><?=rupiah($data->total_harga_pengalihan)?></td>  
                     <td><?=$data->nama_makelar?></td>  
