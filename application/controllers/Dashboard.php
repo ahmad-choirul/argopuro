@@ -146,8 +146,7 @@ echo json_encode($data);
 public function cek()
 {
     echo "<pre>";
-    print_r ($this->session->flashdata('cek'));
-    print_r ($this->session->userdata('cek1'));
+    print_r ($this->session->userdata('cek'));
     echo "</pre>";
 }
 }

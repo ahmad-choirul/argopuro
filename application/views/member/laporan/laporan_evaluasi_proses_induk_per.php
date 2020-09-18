@@ -28,45 +28,45 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="bgbody">
   <section class="body">
 
-     <?php $this->load->view("komponen/header.php") ?>
-     <div class="inner-wrapper"> 
-        <?php $this->load->view("komponen/sidebar.php") ?>
-        <section role="main" class="content-body">
-           <header class="page-header">  
-              <h2>Evaluasi Proses Induk 12 </h2>
-          </header>  
-          <!-- start: page -->
-          <div class="row">
-              <section class="panel col-md-12">
-                <header class="panel-heading">    
-                    <div class="row show-grid">
-                        <div class="col-md-8" align="left"><h2 class="panel-title">PROSES PENYELESAIAN INDUK</h2>
-                        </div>
+   <?php $this->load->view("komponen/header.php") ?>
+   <div class="inner-wrapper"> 
+    <?php $this->load->view("komponen/sidebar.php") ?>
+    <section role="main" class="content-body">
+     <header class="page-header">  
+      <h2>Evaluasi Proses Induk 12 </h2>
+  </header>  
+  <!-- start: page -->
+  <div class="row">
+      <section class="panel col-md-12">
+        <header class="panel-heading">    
+            <div class="row show-grid">
+                <div class="col-md-8" align="left"><h2 class="panel-title">PROSES PENYELESAIAN INDUK</h2>
+                </div>
 
-                        <form action="" method="get">
-                            <div class="form-group mt-lg nama_target">
-                              <div class="col-sm-5">
-                                <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
-                                  <option value="">Pilih Lokasi</option>
-                                  <?php foreach ($perumahan as $aa): ?>
-                                    <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?></option>
-                                <?php endforeach; ?>
-                            </select> 
-                        </div>
-                        <div class="col-sm-2">
-                            <a class="btn btn-primary" href="<?php echo site_url('Export_excel/excellaporanprosesinduk  /').$id_perumahan ?>"> cetak </a>
-                        </div>
-                        <div class="col-sm-5">
-                           <?php
-                           echo level_user('master','proses_induk',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6 pull-right" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
-                           ?>
-                       </div>
-                   </div>
-               </form>
-           </div>
-       </header>
-       <div id="kontendata"></div>
-   </section>
+                <form action="" method="get">
+                    <div class="form-group mt-lg nama_target">
+                      <div class="col-sm-5">
+                        <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
+                          <option value="">Pilih Lokasi</option>
+                          <?php foreach ($perumahan as $aa): ?>
+                             <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
+                        <?php endforeach; ?>
+                    </select> 
+                </div>
+                <div class="col-sm-2">
+                    <a class="btn btn-primary" href="<?php echo site_url('Export_excel/excellaporanprosesinduk  /').$id_perumahan ?>"> cetak </a>
+                </div>
+                <div class="col-sm-5">
+                 <?php
+                 echo level_user('master','proses_induk',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6 pull-right" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
+                 ?>
+             </div>
+         </div>
+     </form>
+ </div>
+</header>
+<div id="kontendata"></div>
+</section>
 </div>
 </section>
 <div class="modal fade bd-example-modal-lg" data-keyboard="false" data-backdrop="static"  id="tambahData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -262,7 +262,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </header>
             <div class="panel-body">
 
-               <div class="form-group Penjual">
+             <div class="form-group Penjual">
                 <label class="col-sm-3 control-label">Penjual</span></label>
                 <div class="col-sm-9">
                     <input type="text" name="penjual" id="penjual" class="form-control"  required />
@@ -503,15 +503,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         "order": [], 
         "ajax": {
             "url": "<?php echo base_url()?>master/pilihanitem",
-            "type": "GET"
-        }, 
-        "columnDefs": [
-        { 
-            "targets": [ 3 ], 
-            "orderable": false, 
-        },
-        ],  
-    });  
+            "type": "GET",
+            "data": function(data) {
+                data.id_perumahan = '<?php echo $id_perumahan ?>'
+          }
+      }, 
+      "columnDefs": [
+      { 
+        "targets": [ 3 ], 
+        "orderable": false, 
+    },
+    ],  
+});  
 
 
     function laporan_ringkas(){   
@@ -751,7 +754,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     datarow+='<td><input type="text" value="'+itemsub.no_gambar+'"  class="form-control no_gambar'+x+'"></td>';
                     datarow+='<td><input type="text"  value="'+itemsub.no_pbb+'"  name="no_pbb[]"  class="form-control no_pbb'+x+'"></td>';
                     datarow+='<td><input type="text"  value="'+itemsub.tgl_proses_induk+'"  name="tgl_proses_induk[]" class="form-control tanggal"></td>';
-                     datarow+='<td><input type="text"  value="'+itemsub.keterangan+'"  name="keterangandetail[]" class="form-control keterangandetail'+x+'"></td>';
+                    datarow+='<td><input type="text"  value="'+itemsub.keterangan+'"  name="keterangandetail[]" class="form-control keterangandetail'+x+'"></td>';
                     datarow+='<td><a href="javascript:void(0);" class="mb-xs mt-xs mr-xs btn btn-danger deleterowedit"><i class="fa fa-trash-o"></i></a></td></tr>';   
                 });
                 $('.listitemedit').append(datarow);    
@@ -772,27 +775,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $(add_button_mgEdit).click(function(e){
         e.preventDefault();
         if(x < max_fieldsEdit){
-         x=x+1;       
-            var formtambah='<tr>';
-            formtambah+='<td><div class="input-group input-group-icon" style="width:150px;"><input type="text" data-urutan="'+x+'" data-toggle="modal" data-target="#modal-listitems"  class="form-control kode_item'+x+'" placeholder="Pilih Item"><span class="input-group-addon"><span class="icon"><i class="fa fa-search"></i></span></span></div></td>';
-            formtambah+='<input type="hidden" class="kode_item'+x+'" name="kode_item[]">';
-            formtambah+='<td> <input type="text" name="nama_penjual[]" class="form-control nama_penjual'+x+' required"></td>';
-            formtambah+='<td><input type="text" name="no_gambar[]" size="3" class="form-control no_gambar'+x+' required"></td>';
-            formtambah+='<td><input type="text" name="no_pbb[]" size="3" class="form-control no_pbb'+x+'" required></td>';
-            formtambah+='<td><input type="text" name="tgl_proses_induk[]" class="form-control tanggal" required></td>';
-            formtambah+='<td><input type="text" name="keterangandetail[]" class="form-control keterangandetail'+x+' required"></td>';
-            formtambah+='<td><a href="javascript:void(0);" class="mb-xs mt-xs mr-xs btn btn-danger deleterow"><i class="fa fa-trash-o"></i></a></td></tr>'; 
-            $(wrapperItemEdit).append(formtambah);  
-            $('.tanggal').datepicker({
-                format: 'yyyy-mm-dd' 
-            });
-        }
-        else
-        { 
-            document.getElementById("tambahItemedit").setAttribute('disabled','disabled'); 
-            alert('Maksimal '+max_fields+' form')
-        }
-    });    
+           x=x+1;       
+           var formtambah='<tr>';
+           formtambah+='<td><div class="input-group input-group-icon" style="width:150px;"><input type="text" data-urutan="'+x+'" data-toggle="modal" data-target="#modal-listitems"  class="form-control kode_item'+x+'" placeholder="Pilih Item"><span class="input-group-addon"><span class="icon"><i class="fa fa-search"></i></span></span></div></td>';
+           formtambah+='<input type="hidden" class="kode_item'+x+'" name="kode_item[]">';
+           formtambah+='<td> <input type="text" name="nama_penjual[]" class="form-control nama_penjual'+x+' required"></td>';
+           formtambah+='<td><input type="text" name="no_gambar[]" size="3" class="form-control no_gambar'+x+' required"></td>';
+           formtambah+='<td><input type="text" name="no_pbb[]" size="3" class="form-control no_pbb'+x+'" required></td>';
+           formtambah+='<td><input type="text" name="tgl_proses_induk[]" class="form-control tanggal" required></td>';
+           formtambah+='<td><input type="text" name="keterangandetail[]" class="form-control keterangandetail'+x+' required"></td>';
+           formtambah+='<td><a href="javascript:void(0);" class="mb-xs mt-xs mr-xs btn btn-danger deleterow"><i class="fa fa-trash-o"></i></a></td></tr>'; 
+           $(wrapperItemEdit).append(formtambah);  
+           $('.tanggal').datepicker({
+            format: 'yyyy-mm-dd' 
+        });
+       }
+       else
+       { 
+        document.getElementById("tambahItemedit").setAttribute('disabled','disabled'); 
+        alert('Maksimal '+max_fields+' form')
+    }
+});    
     $(wrapperItemEdit).on("click",".deleterowedit", function(e){
         e.preventDefault(); $(this).parent().parent().remove();
         document.getElementById("tambahItemedit").removeAttribute('disabled');  

@@ -35,191 +35,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <h2>Evaluasi Stok Split </h2>
     </header>  
     <!-- start: page -->
-    <section class="panel">
-      <header class="panel-heading">    
-        <div class="row show-grid">
-          <div class="col-md-6" align="left"><h2 class="panel-title">Nama Perumahan </h2></div>
-          <?php  
-          echo level_user('master','items',$this->session->userdata('kategori'),'add') > 0 ? '<div class="col-md-6" align="right"><a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a></div>':'';
-          ?> 
-        </div>
-      </header>
-      <div class="panel-body"> 
-        <div class="table" style="overflow-x: auto;white-space: nowrap;">
-         <table class="table table-bordered table-hover table-striped" id="itemsdata">
-          <thead style="position: sticky;">
+    <div id="tampilstok">
 
-           <tr>
-             <th rowspan="4" style="text-align: center;vertical-align: middle;">NO</th>
-             <th rowspan="4" style="text-align: center;vertical-align: middle;">NAMA</th>
-             <th rowspan="4" style="text-align: center;vertical-align: middle;">BLOK</th>
-             <th rowspan="4" style="text-align: center;vertical-align: middle;">JML KAV</th>
-             <th colspan="3" rowspan="2" style="text-align: center;vertical-align: middle;">L. TANAH</th>
-             <th rowspan="4" style="text-align: center;vertical-align: middle;">NO INDUK</th>
-             <th rowspan="4" style="text-align: center;vertical-align: middle;">NO SERT </th>
-             <th rowspan="4" style="text-align: center;vertical-align: middle;">TGL DAFTAR</th>
-             <th rowspan="4" style="text-align: center;vertical-align: middle;">TGL TERBIT</th>
-             <th rowspan="4" style="text-align: center;vertical-align: middle;">BATAS WAKTU HGB</th>
-             <th colspan="6" rowspan="2" style="text-align: center;vertical-align: middle;">BELUM TERBIT SPLIT</th>
-             <th colspan="6" rowspan="2" style="text-align: center;vertical-align: middle;">TERBIT STOK</th>
-             <th colspan="12" style="text-align: center;vertical-align: middle;">PENJUALAN 2020</th>
-             <th rowspan="4" style="text-align: center;vertical-align: middle;">KETERANGAN</th>
+    </div>
 
-           </tr>
-           <tr>
-             <th colspan="6"  style="text-align: center;vertical-align: middle;">STOCK</th>
-             <th colspan="6" style="text-align: center;vertical-align: middle;">BELUM TERBIT SPLIT</th>
-           </tr>
-           <tr>
-             <th rowspan="2" style="text-align: center;vertical-align: middle;">TECHNIC</th>
-             <th rowspan="2" style="text-align: center;vertical-align: middle;">SERT</th>
-             <th rowspan="2" style="text-align: center;vertical-align: middle;">SELISIH</th>
-             <th colspan="2" style="text-align: center;vertical-align: middle;">BELUM PROSES</th>
-             <th colspan="2" style="text-align: center;vertical-align: middle;">PROSES</th>
-             <th colspan="2" style="text-align: center;vertical-align: middle;">TOTAL</th>
-             <th colspan="2" style="text-align: center;vertical-align: middle;">sd 2019</th>
-             <th colspan="2" style="text-align: center;vertical-align: middle;">2020L</th>
-             <th colspan="2" style="text-align: center;vertical-align: middle;">TOTAL</th>
-             <th colspan="2" style="text-align: center;vertical-align: middle;">sd 2019</th>
-             <th colspan="2" style="text-align: center;vertical-align: middle;">2020L</th>
-             <th colspan="2" style="text-align: center;vertical-align: middle;">TOTAL</th>
-             <th colspan="2" style="text-align: center;vertical-align: middle;">BELUM PROSES</th>
-             <th colspan="2" style="text-align: center;vertical-align: middle;">PROSESL</th>
-             <th colspan="2" style="text-align: center;vertical-align: middle;">TOTAL</th>
-
-
-           </tr>
-           <tr>
-             <th style="text-align: center;vertical-align: middle;">KAV</th>
-             <th style="text-align: center;vertical-align: middle;">SERT</th>
-             <th style="text-align: center;vertical-align: middle;">KAV</th>
-             <th style="text-align: center;vertical-align: middle;">SERT</th>
-             <th style="text-align: center;vertical-align: middle;">KAV</th>
-             <th style="text-align: center;vertical-align: middle;">SERT</th>
-             <th style="text-align: center;vertical-align: middle;">KAV</th>
-             <th style="text-align: center;vertical-align: middle;">SERT</th>
-             <th style="text-align: center;vertical-align: middle;">KAV</th>
-             <th style="text-align: center;vertical-align: middle;">SERT</th>
-             <th style="text-align: center;vertical-align: middle;">KAV</th>
-             <th style="text-align: center;vertical-align: middle;">SERT</th>
-             <th style="text-align: center;vertical-align: middle;">KAV</th>
-             <th style="text-align: center;vertical-align: middle;">SERT</th>
-             <th style="text-align: center;vertical-align: middle;">KAV</th>
-             <th style="text-align: center;vertical-align: middle;">SERT</th>
-             <th style="text-align: center;vertical-align: middle;">KAV</th>
-             <th style="text-align: center;vertical-align: middle;">SERT</th>
-             <th style="text-align: center;vertical-align: middle;">KAV</th>
-             <th style="text-align: center;vertical-align: middle;">SERT</th>
-             <th style="text-align: center;vertical-align: middle;">KAV</th>
-             <th style="text-align: center;vertical-align: middle;">SERT</th>
-             <th style="text-align: center;vertical-align: middle;">KAV</th>
-             <th style="text-align: center;vertical-align: middle;">SERT</th>
-
-
-           </tr>
-           
-
-         </thead>
-         <tbody>
-
-
-           <tr>
-            <td>1</td>
-            <td>aad</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-
-          </tr>
-
-          <tr>
-            <th colspan="37" bgcolor="grey"></th>
-
-          </tr>
-
-
-        </tbody>
-        <tfoot>
-         <tr>
-           <td colspan="2">TOTAL </td>
-           
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-         </tr>
-       </tfoot>
-     </table> 
-   </div>
- </div>
-</section>
-
-
-<!-- end: page -->
-</section>
+    <!-- end: page -->
+  </section>
 </div>
 </section>
 
@@ -234,14 +55,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </header>
         <div class="panel-body">
 
-
           <div class="form-group mt-lg nama_target">
             <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
             <div class="col-sm-9">
               <select data-plugin-selectTwo class="form-control" required name="id_perumahan">  
                 <option value="">Pilih Lokasi</option>
                 <?php foreach ($perumahan as $supp): ?>
-                  <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
+                  <option value="<?php echo $aa->id;?>"><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
                 <?php endforeach; ?>
               </select> 
             </div>
@@ -420,6 +240,52 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </div>
 
+<div class="modal fade" data-keyboard="false" data-backdrop="static"  id="uploaddata" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <section class="panel panel-primary">
+        <header class="panel-heading">
+          <h2 class="panel-title">Upload Stok Split Format Excel</h2>
+        </header>         
+        <?php  
+        if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') > 0){
+          ?>  
+          <?php echo form_open('tools/view_upload',' id="uploadform" enctype="multipart/form-data"');?>  
+        <?php } ?>
+        <div class="panel-body">  
+          <div class="form-group excelfile">
+            <label class="col-sm-3 control-label">Upload File Excel</label>
+            <div class="col-sm-9">
+              <input type="file" name="excelfile" class="form-control" required/>
+              <input type="hidden" name="id_perumahan" value="<?php echo $id_perumahan ?>" class="form-control" required/>
+            </div>
+          </div> 
+          <div class="form-group"> 
+            <div class="col-sm-9"> 
+              Catatan : 
+            </div>
+          </div>  
+        </div>  
+        <footer class="panel-footer">
+          <div class="row">
+            <div class="col-md-12 text-right">    
+              <?php  
+              if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') > 0){
+                ?>  
+                <button class="btn btn-primary modal-confirm" type="submit" id="submitform"><i class="fa fa-upload"></i>Upload</button>
+              <?php } ?>
+              <a class="btn btn-warning" href="<?php echo base_url()?>excel/formatupload.xlsx" target="_blank"><i class="fa fa-download"></i> Download Format</a>
+              <button class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+          </div>
+        </footer>
+      </form>
+    </section>  
+  </div>
+</div>
+</div>
+
 <div class="modal fade" data-keyboard="false" data-backdrop="static"  id="editData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -437,7 +303,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <select data-plugin-selectTwo class="form-control" required id="id_perumahan" name="id_perumahan">  
                 <option value="">Pilih Lokasi</option>
                 <?php foreach ($perumahan as $supp): ?>
-                  <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
+                  <option value="<?php echo $aa->id;?>"><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
                 <?php endforeach; ?>
               </select> 
             </div>
@@ -643,9 +509,237 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url()?>assets/javascripts/admin.min.js"></script>
 <script src="<?php echo base_url()?>assets/vendor/pnotify/pnotify.custom.js"></script>
 <script src="<?php echo base_url()?>assets/javascripts/theme.init.js"></script> 
-<script type="text/javascript">  
+<script type="text/javascript">
+  $(document).ready(function(){
+   refresh();    
+ });
+</script>
+<?php  
+if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') > 0){
+  ?>  
+  <script>
 
 
+  function edit(elem){
+    var dataId = $(elem).data("id");
+    document.getElementById("id").setAttribute('value', dataId);
+    $('#editData').modal();        
+    $.ajax({
+      type: 'GET',
+      url: '<?php echo base_url()?>master/kategoridetail',
+      data: 'id=' + dataId,
+      dataType  : 'json',
+      success: function(response) {  
+        $.each(response, function(i, item) { 
+          document.getElementById("id").setAttribute('value', item.id);
+          document.getElementById("nama_regional").setAttribute('value', item.nama_regional);
+                // document.getElementById("status_kategori").setAttribute('value', item.status_kategori); 
+                $("#status_regional").val(item.status_regional);
+                $("#kabupatenedit").val(item.id_kabupaten);
+                $("#kecamatanedit").append(new Option(item.nama_kecamatan, item.id_kecamatan));  
+                $("#lokasi").append(new Option(item.nama_desa, item.lokasi));  
+              }); 
+      }
+    });  
+    return false;
+  }
+  document.getElementById("FormulirEdit").addEventListener("submit", function (e) {  
+   blurForm();       
+   $('.help-block').hide();
+   $('.form-group').removeClass('has-error');
+   document.getElementById("submitformEdit").setAttribute('disabled','disabled');
+   $('#submitformEdit').html('Loading ...');
+   var form = $('#FormulirEdit')[0];
+   var formData = new FormData(form);
+   var xhrAjax = $.ajax({
+     type     : 'POST',
+     url    : $(this).attr('action'),
+     data     : formData, 
+     processData: false,
+     contentType: false,
+     cache: false, 
+     dataType   : 'json'
+   }).done(function(data) { 
+     if ( ! data.success) {    
+      $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+      document.getElementById("submitformEdit").removeAttribute('disabled');  
+      $('#submitformEdit').html('Submit');    
+      var objek = Object.keys(data.errors);  
+      for (var key in data.errors) {
+        if (data.errors.hasOwnProperty(key)) { 
+          var msg = '<div class="help-block" for="'+key+'">'+data.errors[key]+'</span>';
+          $('.'+key).addClass('has-error');
+          $('input[name="' + key + '"]').after(msg);  
+        }
+        if (key == 'fail') {   
+          new PNotify({
+            title: 'Notifikasi',
+            text: data.errors[key],
+            type: 'danger'
+          }); 
+        }
+      }
+    } else { 
+      $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+      PNotify.removeAll();
+      tablekategori.ajax.reload();    
+      document.getElementById("submitformEdit").removeAttribute('disabled'); 
+      $('#editData').modal('hide');        
+      document.getElementById("FormulirEdit").reset();    
+      $('#submitformEdit').html('Submit');   
+      new PNotify({
+        title: 'Notifikasi',
+        text: data.message,
+        type: 'success'
+      });
+    }
+  }).fail(function(data) {    
+    new PNotify({
+      title: 'Notifikasi',
+      text: "Request gagal, browser akan direload",
+      type: 'danger'
+    }); 
+    //window.setTimeout(function() {  location.reload();}, 2000);
+  }); 
+  e.preventDefault(); 
+}); 
+  function hapus(elem){ 
+    var dataId = $(elem).data("id");
+    document.getElementById("idelete").setAttribute('value', dataId);
+    $('#modalHapus').modal();        
+  }
+  document.getElementById("FormulirHapus").addEventListener("submit", function (e) {  
+   blurForm();       
+   $('.help-block').hide();
+   $('.form-group').removeClass('has-error');
+   document.getElementById("submitformHapus").setAttribute('disabled','disabled');
+   $('#submitformHapus').html('Loading ...');
+   var form = $('#FormulirHapus')[0];
+   var formData = new FormData(form);
+   var xhrAjax = $.ajax({
+     type     : 'POST',
+     url    : $(this).attr('action'),
+     data     : formData, 
+     processData: false,
+     contentType: false,
+     cache: false, 
+     dataType   : 'json'
+   }).done(function(data) { 
+     if ( ! data.success) {    
+      $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+      document.getElementById("submitformHapus").removeAttribute('disabled');  
+      $('#submitformHapus').html('Delete');     
+      var objek = Object.keys(data.errors);  
+      for (var key in data.errors) { 
+        if (key == 'fail') {   
+          new PNotify({
+            title: 'Notifikasi',
+            text: data.errors[key],
+            type: 'danger'
+          }); 
+        }
+      }
+    } else { 
+      $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+      PNotify.removeAll();   
+      tablekategori.ajax.reload();
+      document.getElementById("submitformHapus").removeAttribute('disabled'); 
+      $('#modalHapus').modal('hide');        
+      document.getElementById("FormulirHapus").reset();    
+      $('#submitformHapus').html('Delete'); 
+      new PNotify({
+        title: 'Notifikasi',
+        text: data.message,
+        type: 'success'
+      });  
+    }
+  }).fail(function(data) {   
+    new PNotify({
+      title: 'Notifikasi',
+      text: "Request gagal, browser akan direload",
+      type: 'danger'
+    }); 
+    //window.setTimeout(function() {  location.reload();}, 2000);
+  }); 
+  e.preventDefault(); 
+}); 
+
+    document.getElementById("uploadform").addEventListener("submit", function (e) {  
+      blurForm();       
+      PNotify.removeAll();   
+      $('.help-block').hide();
+      $('.form-group').removeClass('has-error');
+      document.getElementById("submitform").setAttribute('disabled','disabled');
+      $('#submitform').html('Loading ...');
+      var form = $('#uploadform')[0];
+      var formData = new FormData(form);
+      var xhrAjax = $.ajax({
+        type    : 'POST',
+        url     : $(this).attr('action'),
+        data    : formData, 
+        processData: false,
+        contentType: false,
+        cache: false, 
+        dataType  : 'json'
+      }).done(function(data) { 
+        if ( ! data.success) {     
+          $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+          document.getElementById("submitform").removeAttribute('disabled');  
+          $('#submitform').html('Submit');    
+          var objek = Object.keys(data.errors);  
+          for (var key in data.errors) {
+            if (data.errors.hasOwnProperty(key)) { 
+              var msg = '<div class="help-block" for="'+key+'">'+data.errors[key]+'</span>';
+              $('.'+key).addClass('has-error');
+              $('input[name="' + key + '"]').after(msg);     
+            }
+            if (key == 'fail') {   
+              new PNotify({
+                title: 'Notifikasi',
+                text: data.errors[key],
+                type: 'danger'
+              }); 
+            }
+          }
+        } else { 
+          $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+          document.getElementById("submitform").removeAttribute('disabled'); 
+          $('#uploaddata').modal('hide'); 
+          document.getElementById("uploadform").reset();  
+          $('#submitform').html('Submit');   
+          new PNotify({
+            title: 'Notifikasi',
+            text: data.message,
+            type: 'success'
+          });  
+          refresh();
+        }
+      }).fail(function(data) { 
+        new PNotify({
+          title: 'Notifikasi',
+          text: "Request gagal, browser akan direload",
+          type: 'danger'
+        }); 
+        // window.setTimeout(function() {  location.reload();}, 2000);
+      }); 
+      e.preventDefault(); 
+    }); 
+    
+  </script>
+<?php } ?>
+<script type="text/javascript">
+  function refresh() { 
+    var id_perumahan = '<?php echo $id_perumahan ?>';
+
+    $.ajax({
+      type: 'GET',
+      url: '<?php echo base_url(); ?>laporan/ajaxstoksplit/',
+      data: 'id_perumahan='+id_perumahan,
+      success: function (html) { 
+        $('#tampilstok').html(html); 
+      }
+    }); 
+  }
 </script>
 </body>
 </html>

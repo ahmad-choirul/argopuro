@@ -75,7 +75,7 @@ class Pembelian_model extends CI_Model{
         $this->datatables->join('tbl_target', 'target=id');
         $this->datatables->add_column('tombol', 
 		'	<div class="btn-group dropup">
-				<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+				<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="#" onclick="detail(this)"  data-id="$2">Detail</a></li>
                     
@@ -241,7 +241,7 @@ class Pembelian_model extends CI_Model{
         $this->datatables->join('tbl_target', 'target=id');
         $this->datatables->add_column('tombol', 
 		'	<div class="btn-group dropup">
-				<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+				<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="#" onclick="detail(this)"  data-id="$2">Detail</a></li>
                     '.$tombolhapus.'

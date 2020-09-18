@@ -48,11 +48,11 @@
                         <th rowspan="2" style="text-align: center;vertical-align: middle;">No Gambar</th>
                         <th rowspan="2" style="text-align: center;vertical-align: middle;">Jml Bidang</th>
                         <th colspan="2" style="text-align: center;vertical-align: middle;">Luas (m2)</th>
-                        <th colspan="3" style="text-align: center;vertical-align: middle;">PBB</th>
+                        <th colspan="5" style="text-align: center;vertical-align: middle;">PBB</th>
                         <th colspan="2" style="text-align: center;vertical-align: middle;">Harga Pengalihan Hak</th>
                         <th colspan="2" style="text-align: center;vertical-align: middle;">Makelar</th>
                         <th colspan="3" style="text-align: center;vertical-align: middle;">Pengalihan Hak</th>
-                        <th colspan="4" style="text-align: center;vertical-align: middle;">Biaya Lain-lain</th>
+                        <th colspan="3" style="text-align: center;vertical-align: middle;">Biaya Lain-lain</th>
                         <th rowspan ="2" style="text-align: center;vertical-align: middle;" >Total Harga + biaya</th>
                         <th rowspan="2" style="text-align: center;vertical-align: middle;" >Harga / M^2</th>
                         <th rowspan="2" style="text-align: center;vertical-align: middle;">Keterangan</th>
@@ -65,8 +65,10 @@
                         <th style="text-align: center;vertical-align: middle;">Surat</th>
                         <th style="text-align: center;vertical-align: middle;">Ukur</th>
                         <th style="text-align: center;vertical-align: middle;">Nomor</th>
-                        <th style="text-align: center;vertical-align: middle;">Luas</th>
-                        <th style="text-align: center;vertical-align: middle;">njop_bangunan</th>
+                        <th style="text-align: center;vertical-align: middle;">Luas Bangunan</th>
+                        <th style="text-align: center;vertical-align: middle;">NJOP Bangunan</th>
+                          <th style="text-align: center;vertical-align: middle;">Luas Bumi</th>
+                        <th style="text-align: center;vertical-align: middle;">NJOP Bumi</th>
                         <th style="text-align: center;vertical-align: middle;">Satuan</th>
                         <th style="text-align: center;vertical-align: middle;">Total</th>
                         <th style="text-align: center;vertical-align: middle;">Nama</th>
@@ -74,9 +76,8 @@
                         <th style="text-align: center;vertical-align: middle;">Tanggal</th>
                         <th style="text-align: center;vertical-align: middle;">Akte</th>
                         <th style="text-align: center;vertical-align: middle;">Nama</th>
-                        <th style="text-align: center;vertical-align: middle;">Ganti Rugi</th>
-                        <th style="text-align: center;vertical-align: middle;">PBB</th>
                         <th style="text-align: center;vertical-align: middle;">Lain2</th>
+                        <th style="text-align: center;vertical-align: middle;">Keterangan Lain2</th>
                         <th style="text-align: center;vertical-align: middle;">Total</th>
 
                     </tr>
@@ -92,7 +93,7 @@
                      $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Edit</a></li>':'';
                      $tombol='
                      <div class="btn-group dropup">
-                     <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+                     <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
                      <ul class="dropdown-menu" role="menu"> 
                      <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($data->kode_item).'">Detail</a></li> 
                      '.$tombolbayar.'
@@ -118,28 +119,14 @@
                         $data->total_harga_pengalihan=0;
                     }else{
                         $harga_satuan = $data->total_harga_pengalihan/$data->luas_surat;            
-                    }
+                    }              
                     if ($data->lain=='') {
                         $data->lain=0;
-                    }if ($data->pbb=='') {
-                        $data->pbb=0;
-                    }if ($data->ganti_rugi=='') {
-                        $data->ganti_rugi=0;
                     }
                     if ($data->nilai=='') {
                         $data->nilai=0;
                     }                 
-                    if ($data->lain=='') {
-                        $data->lain=0;
-                    }if ($data->pbb=='') {
-                        $data->pbb=0;
-                    }if ($data->ganti_rugi=='') {
-                        $data->ganti_rugi=0;
-                    }
-                    if ($data->nilai=='') {
-                        $data->nilai=0;
-                    }                 
-                    $totalbiayalain = $data->lain+$data->pbb+$data->ganti_rugi;
+                    $totalbiayalain = $data->lain;
                     $totalharga_biaya = $data->total_harga_pengalihan+$data->nilai+$totalbiayalain;
                     if ($totalharga_biaya==0) {
                         $harga_perm=0;
@@ -155,8 +142,6 @@
                     $totalnilaimakelar+=$data->nilai;
                     $totalhargabiaya+=$totalharga_biaya;
                     $totalhargam+=$harga_perm;
-                    $totalgantirugi +=$data->ganti_rugi;
-                    $totalpbb +=$data->pbb;
                     $totallain+=$data->lain;
                     $totalakhirbiayalain +=$totalbiayalain;
                     ?>
@@ -174,16 +159,17 @@
                     <td><?=$data->no_pbb?></td>  
                     <td><?=$data->luas_pbb_bangunan?></td>  
                     <td><?=$data->njop_bangunan?></td>  
+                    <td><?=$data->luas_pbb_bumi?></td>  
+                    <td><?=$data->njop_bumi?></td>  
                     <td><?=rupiah($harga_satuan)?></td>  
                     <td><?=rupiah($data->total_harga_pengalihan)?></td>  
                     <td><?=$data->nama_makelar?></td>  
                     <td><?=rupiah($data->nilai)?></td>  
                     <td><?=$tgl_pengalihan?></td>  
                     <td><?=$data->akta_pengalihan?></td>  
-                    <td><?=$data->nama_pengalihan?></td>   
-                    <td><?=rupiah($data->ganti_rugi)?></td>  
-                    <td><?=rupiah($data->pbb)?></td>  
+                    <td><?=$data->nama_pengalihan?></td>  
                     <td><?=rupiah($data->lain)?></td>  
+                    <td><?=$data->keterangan_lain?></td>  
                     <td><?=rupiah($totalbiayalain)?></td>  
                     <td><?=rupiah($totalharga_biaya)?></td>  
                     <td><?=rupiah($harga_perm)?></td>  
@@ -192,8 +178,6 @@
             </tr>
             <tr>
                 <td></td>
-                <td ></td>
-                <td ></td>
                 <td ></td>
                 <td ></td>
                 <td ></td>
@@ -242,8 +226,6 @@
                 <td ><?php echo rupiah($totalnilaimakelar); ?></td>
                 <td ></td>
                 <td ></td>
-                <td ><?php echo rupiah($totalgantirugi); ?></td>
-                <td ><?php echo rupiah($totalpbb); ?></td>
                 <td ><?php echo rupiah($totallain); ?></td>
                 <td ><?php echo rupiah($totalakhirbiayalain); ?></td>
                 <td ><?php echo rupiah($totalhargabiaya); ?></td>

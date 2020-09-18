@@ -357,7 +357,7 @@ class Pembelian extends CI_Controller {
                 
             $row[] = ' 
                  <div class="btn-group dropup">
-                        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+                        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#" onclick="detail(this)"  data-id="'.$this->security->xss_clean($r->nomor_rec).'">Detail</a></li> 
                             '.$tombolhapus.'
@@ -498,7 +498,7 @@ class Pembelian extends CI_Controller {
                 $tomboledit = level_user('pembelian','retur',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->nomor_retur).'">Edit</a></li>':''; 
             $row[] = '  
                  <div class="btn-group dropup">
-                        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+                        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#" onclick="detail(this)"  data-id="'.$this->security->xss_clean($r->nomor_retur).'">Detail</a></li>
                             '.$tomboledit.'

@@ -41,12 +41,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="row" style="background-color: #ffffff;width: 100%; padding: 4px;margin-left: 0%;">
                 <label class="col-sm-1 control-label">Lokasi<span class="required">*</span></label>
 
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                    <div class="form-group nama_target">
                     <select data-plugin-selectTwo class="form-control" onchange="refresh()" required id="id_perumahan" name="id_perumahan">  
                         <option value="">Pilih Lokasi</option>
                         <?php foreach ($perumahan as $aa): ?>
-                            <option value="<?php echo $aa->id;?>"><?php echo $aa->nama_regional;?> </option>
+                            <option value="<?php echo $aa->id;?>"><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
                         <?php endforeach; ?>
                     </select> 
                 </div>
@@ -274,7 +274,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <select data-plugin-selectTwo class="form-control" required id="id_perumahan" name="id_perumahan">  
                                 <option value="">Pilih Lokasi</option>
                                 <?php foreach ($perumahan2 as $supp): ?>
-                                    <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
+                                    <option value="<?php echo $aa->id;?>"><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
                                 <?php endforeach; ?>
                             </select> 
                         </div>

@@ -37,7 +37,7 @@ class Stok extends CI_Controller {
 
             $row[] = ' 
             <div class="btn-group dropup">
-            <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+            <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
             <ul class="dropdown-menu" role="menu">
             <li><a href="#" onclick="detail(this)" data-id="'.$r->id.'">Detail</a></li> 
             '.$tombolhapus.'
@@ -147,7 +147,7 @@ public function stokadjustment()
 
         $row[] = '  
         <div class="btn-group dropup">
-        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
         <ul class="dropdown-menu" role="menu">
         <li><a href="#" onclick="detail(this)" data-id="'.$r->id.'">Detail</a></li>
         '.$tombolhapus.'
@@ -271,7 +271,7 @@ public function stokopname()
         $tombolhapus = level_user('stok','opname',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)"data-kodeitem="'.$r->kode_item.'"  data-kuantiti="'.$r->kuantiti_berubah.'" data-id="'.$r->id.'">Hapus</a></li>':'';
         $row[] = '  
         <div class="btn-group dropup">
-        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
         <ul class="dropdown-menu" role="menu">
         <li><a href="#" onclick="detail(this)" data-id="'.$r->id.'">Detail</a></li> 
         '.$tombolhapus.' 
@@ -509,7 +509,7 @@ public function datakartustok()
         $row = array(); 
         $row[] = ' 
         <div class="btn-group dropup">
-        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
         <ul class="dropdown-menu" role="menu">
         <li><a href="#" onclick="detail(this)" data-id="'.$r->kode_item.'">Tampil</a></li>  
         </ul>
@@ -641,7 +641,7 @@ public function stokutility()
         $row = array(); 
         $row[] = '  
         <div class="btn-group dropup">
-        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
         <ul class="dropdown-menu" role="menu">
         '.$tombolhapus.'
 

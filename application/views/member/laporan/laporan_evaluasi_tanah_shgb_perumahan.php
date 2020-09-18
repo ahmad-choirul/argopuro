@@ -265,7 +265,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <select data-plugin-selectTwo class="form-control" required name="id_perumahan">  
                 <option value="">Pilih Lokasi</option>
                 <?php foreach ($perumahan as $supp): ?>
-                  <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
+                  <option value="<?php echo $aa->id;?>"><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
                 <?php endforeach; ?>
               </select> 
             </div>
@@ -461,7 +461,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <select data-plugin-selectTwo class="form-control" required id="id_perumahan" name="id_perumahan">  
                 <option value="">Pilih Lokasi</option>
                 <?php foreach ($perumahan as $supp): ?>
-                  <option value="<?php echo $supp->id;?>"><?php echo $supp->nama_regional;?></option>
+                  <option value="<?php echo $aa->id;?>"><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
                 <?php endforeach; ?>
               </select> 
             </div>

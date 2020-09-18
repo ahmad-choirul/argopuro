@@ -4,14 +4,14 @@ class Tools_model extends CI_Model{
     {
         return [
             [
-            'field' => 'nama_apotek',
-            'label' => 'Nama Apotek',
-            'rules' => 'required',
+                'field' => 'nama_apotek',
+                'label' => 'Nama Apotek',
+                'rules' => 'required',
             ],
             [
-            'field' => 'alamat',
-            'label' => 'Alamat',
-            'rules' => 'required',
+                'field' => 'alamat',
+                'label' => 'Alamat',
+                'rules' => 'required',
             ], 
         ];
     } 
@@ -58,21 +58,36 @@ class Tools_model extends CI_Model{
         return "logo.png";
     } 
     
-	public function upload_file($nama_file){
-		$this->load->library('upload');   
-		$config['upload_path'] = './excel/';
-		$config['allowed_types'] = 'xlsx';
-		$config['file_name'] = $nama_file;
-		$config['max_size']	= '2048';
-		$config['overwrite'] = true; 
-		$this->upload->initialize($config);  
-		if($this->upload->do_upload('excelfile')){   
-			return array('result' => 'success', 'file' => $this->upload->data(), 'error' => '');
-		}else{ 
-			return array('result' => 'failed', 'file' => '', 'error' => $this->upload->display_errors());
-		 }
+    public function upload_file($nama_file){
+      $this->load->library('upload');   
+      $config['upload_path'] = './excel/';
+      $config['allowed_types'] = 'xlsx';
+      $config['file_name'] = $nama_file;
+      $config['max_size']	= '2048';
+      $config['overwrite'] = true; 
+      $this->upload->initialize($config);  
+      if($this->upload->do_upload('excelfile')){   
+         return array('result' => 'success', 'file' => $this->upload->data(), 'error' => '');
+     }else{ 
+         return array('result' => 'failed', 'file' => '', 'error' => $this->upload->display_errors());
+     }
+ }
+ public function input_semua($data){
+    $this->db->select('*');
+    $this->db->from('tbl_stok_split');
+    $this->db->where('blok', $data['blok']);
+    $get = $this->db->get();
+    if ($get->num_rows()>0) {
+        $this->db->where('blok', $data['blok']);
+        $hasil = $this->db->update('tbl_stok_split', $data);
+        $this->session->set_userdata('cek', $this->db->last_query());
+        return $hasil;
+    }else{
+        $hasil = $this->db->insert('tbl_stok_split', $data);
+        $this->session->set_userdata('cek', $this->db->last_query());
+        return $hasil;
     }
-    public function input_semua($data){
-		return $this->db->insert_batch('master_item', $data);
-	}
+
+		// return $this->db->insert_batch('tbl_stok_split', $data);
+}
 }

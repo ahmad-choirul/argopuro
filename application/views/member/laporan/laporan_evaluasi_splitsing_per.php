@@ -61,111 +61,111 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </section>
 
       
-          <div id="kontendata"></div>
-</div>
-</section>
+      <div id="kontendata"></div>
+    </div>
+  </section>
 
-<div class="modal fade bd-example-modal-lg" id="tambahData"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" style="width:90%">
-    <div class="modal-content">
-      <section class="panel panel-primary">
-        <?php echo form_open('laporan/prosessplittambah',' id="FormulirTambah" enctype="multipart/form-data"');?> 
-        <header class="panel-heading">
-          <h2 class="panel-title">Tambah Item</h2>
-        </header>
-        <div class="panel-body">
+  <div class="modal fade bd-example-modal-lg" id="tambahData"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="width:90%">
+      <div class="modal-content">
+        <section class="panel panel-primary">
+          <?php echo form_open('laporan/prosessplittambah',' id="FormulirTambah" enctype="multipart/form-data"');?> 
+          <header class="panel-heading">
+            <h2 class="panel-title">Tambah Item</h2>
+          </header>
+          <div class="panel-body">
 
-          <div class="form-group induk">
-            <label class="col-sm-3 control-label">induk</span></label>
-            <div class="col-sm-9">
-              <!-- <input type="text" name="induk" class="form-control"  required /> -->
-              <div class="input-group input-group-icon" style="width:150px;"><input type="text"  data-toggle="modal" data-target="#modal-listitems" name="id_proses_induk" class="form-control id_induk" placeholder="Pilih No Induk"><span class="input-group-addon"><span class="icon"><i class="fa fa-search"></i></span></span></div>
+            <div class="form-group induk">
+              <label class="col-sm-3 control-label">induk</span></label>
+              <div class="col-sm-9">
+                <!-- <input type="text" name="induk" class="form-control"  required /> -->
+                <div class="input-group input-group-icon" style="width:150px;"><input type="text"  data-toggle="modal" data-target="#modal-listitems" name="id_proses_induk" class="form-control id_induk" placeholder="Pilih No Induk"><span class="input-group-addon"><span class="icon"><i class="fa fa-search"></i></span></span></div>
+              </div>
             </div>
-          </div>
-          <div class="form-group no_terbit_shgb">
-            <label class="col-sm-3 control-label">No SHGB</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="no_terbit_shgb" class="form-control no_terbit_shgb"  required />
+            <div class="form-group no_terbit_shgb">
+              <label class="col-sm-3 control-label">No SHGB</span></label>
+              <div class="col-sm-9">
+                <input type="text" name="no_terbit_shgb" class="form-control no_terbit_shgb"  required />
+              </div>
             </div>
-          </div>
-          <div class="form-group luas_terbit">
-            <label class="col-sm-3 control-label"> Detail Luas </span></label>
-            <div class="col-sm-4">
-              <input type="text" name="luas_terbit" style="color: grey; text-align: center;vertical-align: middle;" class="form-control luas_daftar" placeholder="Luas Daftar" title="Luas Daftar" required />
+            <div class="form-group luas_terbit">
+              <label class="col-sm-3 control-label"> Detail Luas </span></label>
+              <div class="col-sm-4">
+                <input type="text" name="luas_terbit" style="color: grey; text-align: center;vertical-align: middle;" class="form-control luas_daftar" placeholder="Luas Daftar" title="Luas Daftar" required />
+              </div>
+              <div class="col-sm-5">
+                <input type="text" name="luas_terbit" class="form-control luas_terbit" placeholder="Luas Terbit" required />
+              </div>
             </div>
-            <div class="col-sm-5">
-              <input type="text" name="luas_terbit" class="form-control luas_terbit" placeholder="Luas Terbit" required />
-            </div>
-          </div>
 
-          <div class="form-group tanggal_pengalihan">
-            <label class="col-sm-3 control-label"> Detail Daftar SHGB </span></label>
-            <div class="col-sm-4">
-              <input type="text" name="tanggal_daftar_shgb" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal tanggal_daftar_shgb" placeholder="Tanggal Daftar SHGB" title="Tanggal Daftar SHGB"  />
+            <div class="form-group tanggal_pengalihan">
+              <label class="col-sm-3 control-label"> Detail Daftar SHGB </span></label>
+              <div class="col-sm-4">
+                <input type="text" name="tanggal_daftar_shgb" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal tanggal_daftar_shgb" placeholder="Tanggal Daftar SHGB" title="Tanggal Daftar SHGB"  />
+              </div>
+              <div class="col-sm-5">
+                <input type="text" name="no_daftar_shgb" class="form-control no_daftar_shgb" placeholder="No Daftar SHGB"  />
+              </div>
             </div>
-            <div class="col-sm-5">
-              <input type="text" name="no_daftar_shgb" class="form-control no_daftar_shgb" placeholder="No Daftar SHGB"  />
-            </div>
-          </div>
 
-          <div class="form-group tanggal_pengalihan">
-            <label class="col-sm-3 control-label"> Detail Terbit SHGB </span></label>
-            <div class="col-sm-5">
-              <input type="text" name="tanggal_terbit_shgb" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal tanggal_terbit_shgb" placeholder="Tanggal Terbit SHGB" title="Tanggal Terbit SHGB"  />
+            <div class="form-group tanggal_pengalihan">
+              <label class="col-sm-3 control-label"> Detail Terbit SHGB </span></label>
+              <div class="col-sm-5">
+                <input type="text" name="tanggal_terbit_shgb" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal tanggal_terbit_shgb" placeholder="Tanggal Terbit SHGB" title="Tanggal Terbit SHGB"  />
+              </div>
+              <div class="col-sm-4">
+                <input type="text" name="masa_berlaku_shgb" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal masa_berlaku" placeholder="Masa Berlaku SHGB" title="Masa Berlaku SHGB"  />
+              </div>
             </div>
-            <div class="col-sm-4">
-              <input type="text" name="masa_berlaku_shgb" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal masa_berlaku" placeholder="Masa Berlaku SHGB" title="Masa Berlaku SHGB"  />
-            </div>
-          </div>
 
 
-          <div class="form-group keterangan">
-            <label class="col-sm-3 control-label">Keterangan</label>
-            <div class="col-sm-9">
-              <textarea rows="2" class="form-control keterangan" name="keterangan"></textarea>
+            <div class="form-group keterangan">
+              <label class="col-sm-3 control-label">Keterangan</label>
+              <div class="col-sm-9">
+                <textarea rows="2" class="form-control keterangan" name="keterangan"></textarea>
+              </div>
             </div>
-          </div>
 
-          <div class="row" style="overflow-x: auto;white-space: nowrap;"> 
-            <div class="col-md-12">
-              <h3>Rincian Data Splitsing</h3> 
-              <a type="button" class="mb-xs mt-xs mr-xs btn btn-primary" id="tambahItem"><i class="fa fa-plus"></i> Tambah Item</a> 
-              <div class="table-ressplitsingnsive" style="max-height:420px;"> 
-                <table class="table table-bordered table-hover table-striped dataTable no-footer listitem">
-                  <thead>
-                    <tr>
-                      <th style="min-width:200px;">Blok</th>
-                      <th style="min-width:200px;">Panjang Daftar</th> 
-                      <th style="min-width:200px;">Lebar Daftar</th> 
-                      <th style="min-width:200px;">Luas Terbit</th> 
-                      <th style="min-width:200px;">Selisih</th> 
-                      <th style="min-width:200px;">No SHGB</th> 
-                      <th style="min-width:200px;">Masa Berlaku</th> 
-                      <th style="min-width:200px;">No Daftar</th> 
-                      <th style="min-width:200px;">Tgl Daftar</th> 
-                      <th style="min-width:200px;">Tgl Terbit</th> 
-                      <th style="min-width:100px;">Keterangan</th> 
-                    </tr>
-                  </thead>
-                  <tbody> 
-                  </tbody>
-                </table>
+            <div class="row" style="overflow-x: auto;white-space: nowrap;"> 
+              <div class="col-md-12">
+                <h3>Rincian Data Splitsing</h3> 
+                <a type="button" class="mb-xs mt-xs mr-xs btn btn-primary" id="tambahItem"><i class="fa fa-plus"></i> Tambah Item</a> 
+                <div class="table-ressplitsingnsive" style="max-height:420px;"> 
+                  <table class="table table-bordered table-hover table-striped dataTable no-footer listitem">
+                    <thead>
+                      <tr>
+                        <th style="min-width:200px;">Blok</th>
+                        <th style="min-width:200px;">Panjang Daftar</th> 
+                        <th style="min-width:200px;">Lebar Daftar</th> 
+                        <th style="min-width:200px;">Luas Terbit</th> 
+                        <th style="min-width:200px;">Selisih</th> 
+                        <th style="min-width:200px;">No SHGB</th> 
+                        <th style="min-width:200px;">Masa Berlaku</th> 
+                        <th style="min-width:200px;">No Daftar</th> 
+                        <th style="min-width:200px;">Tgl Daftar</th> 
+                        <th style="min-width:200px;">Tgl Terbit</th> 
+                        <th style="min-width:100px;">Keterangan</th> 
+                      </tr>
+                    </thead>
+                    <tbody> 
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <footer class="panel-footer">
-          <div class="row">
-            <div class="col-md-12 text-right">
-              <button class="btn btn-primary modal-confirm" type="submit" id="submitform">Submit</button>
-              <button class="btn btn-default" data-dismiss="modal">Close</button>
+          <footer class="panel-footer">
+            <div class="row">
+              <div class="col-md-12 text-right">
+                <button class="btn btn-primary modal-confirm" type="submit" id="submitform">Submit</button>
+                <button class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
             </div>
-          </div>
-        </footer>
-      </form>
-    </section>
+          </footer>
+        </form>
+      </section>
+    </div>
   </div>
-</div>
 </div>
 <div class="modal fade bd-example-modal-lg" id="detailData"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" style="width:90%">
@@ -205,84 +205,84 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <h2 class="panel-title">Edit Data Tanah/Aset</h2>
         </header>
         <div class="panel-body">
-   <div class="form-group induk">
-            <label class="col-sm-3 control-label">induk</span></label>
-            <div class="col-sm-9">
-              <!-- <input type="text" name="induk" class="form-control"  required /> -->
-              <div class="input-group input-group-icon" style="width:150px;"><input type="text"  data-toggle="modal" data-target="#modal-listitems" name="id_proses_induk" class="form-control" id="id_induk" placeholder="Pilih No Induk"><span class="input-group-addon"><span class="icon"><i class="fa fa-search"></i></span></span></div>
-            </div>
+         <div class="form-group induk">
+          <label class="col-sm-3 control-label">induk</span></label>
+          <div class="col-sm-9">
+            <!-- <input type="text" name="induk" class="form-control"  required /> -->
+            <div class="input-group input-group-icon" style="width:150px;"><input type="text"  data-toggle="modal" data-target="#modal-listitems" name="id_proses_induk" class="form-control" id="id_induk" placeholder="Pilih No Induk"><span class="input-group-addon"><span class="icon"><i class="fa fa-search"></i></span></span></div>
           </div>
-          <div class="form-group no_terbit_shgb">
-            <label class="col-sm-3 control-label">No SHGB</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="no_terbit_shgb" class="form-control" id="no_terbit_shgb"  required />
-            </div>
+        </div>
+        <div class="form-group no_terbit_shgb">
+          <label class="col-sm-3 control-label">No SHGB</span></label>
+          <div class="col-sm-9">
+            <input type="text" name="no_terbit_shgb" class="form-control" id="no_terbit_shgb"  required />
           </div>
-          <div class="form-group luas_terbit">
-            <label class="col-sm-3 control-label"> Detail Luas </span></label>
-            <div class="col-sm-4">
-              <input type="text" name="luas_terbit" style="color: grey; text-align: center;vertical-align: middle;" class="form-control" placeholder="Luas Daftar" id="luas_daftar" title="Luas Daftar" required />
-            </div>
-            <div class="col-sm-5">
-              <input type="text" name="luas_terbit" class="form-control" id="luas_terbit" placeholder="Luas Terbit" required />
-            </div>
+        </div>
+        <div class="form-group luas_terbit">
+          <label class="col-sm-3 control-label"> Detail Luas </span></label>
+          <div class="col-sm-4">
+            <input type="text" name="luas_terbit" style="color: grey; text-align: center;vertical-align: middle;" class="form-control" placeholder="Luas Daftar" id="luas_daftar" title="Luas Daftar" required />
           </div>
+          <div class="col-sm-5">
+            <input type="text" name="luas_terbit" class="form-control" id="luas_terbit" placeholder="Luas Terbit" required />
+          </div>
+        </div>
 
-          <div class="form-group tanggal_pengalihan">
-            <label class="col-sm-3 control-label"> Detail Daftar SHGB </span></label>
-            <div class="col-sm-4">
-              <input type="text" name="tanggal_daftar_shgb" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal" id="tanggal_daftar_shgb" placeholder="Tanggal Daftar SHGB" title="Tanggal Daftar SHGB"  />
-            </div>
-            <div class="col-sm-5">
-              <input type="text" name="no_daftar_shgb" class="form-control" id="no_daftar_shgb" placeholder="No Daftar SHGB"  />
+        <div class="form-group tanggal_pengalihan">
+          <label class="col-sm-3 control-label"> Detail Daftar SHGB </span></label>
+          <div class="col-sm-4">
+            <input type="text" name="tanggal_daftar_shgb" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal" id="tanggal_daftar_shgb" placeholder="Tanggal Daftar SHGB" title="Tanggal Daftar SHGB"  />
+          </div>
+          <div class="col-sm-5">
+            <input type="text" name="no_daftar_shgb" class="form-control" id="no_daftar_shgb" placeholder="No Daftar SHGB"  />
+          </div>
+        </div>
+
+        <div class="form-group tanggal_pengalihan">
+          <label class="col-sm-3 control-label"> Detail Terbit SHGB </span></label>
+          <div class="col-sm-5">
+            <input type="text" name="tanggal_terbit_shgb" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal" id="tanggal_terbit_shgb" placeholder="Tanggal Terbit SHGB" title="Tanggal Terbit SHGB"  />
+          </div>
+          <div class="col-sm-4">
+            <input type="text" name="masa_berlaku_shgb" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal" id="masa_berlaku" placeholder="Masa Berlaku SHGB" title="Masa Berlaku SHGB"  />
+          </div>
+        </div>
+
+
+        <div class="form-group keterangan">
+          <label class="col-sm-3 control-label">Keterangan</label>
+          <div class="col-sm-9">
+            <textarea rows="2" class="form-control" id="keterangan" name="keterangan"></textarea>
+          </div>
+        </div>
+
+        <div class="row" style="overflow-x: auto;white-space: nowrap;"> 
+          <div class="col-md-12">
+            <h3>Rincian Data Splitsing</h3> 
+            <a type="button" class="mb-xs mt-xs mr-xs btn btn-primary" id="tambahItemedit"><i class="fa fa-plus"></i> Tambah Item</a> 
+            <div class="table-ressplitsingnsive" style="max-height:420px;"> 
+              <table class="table table-bordered table-hover table-striped dataTable no-footer listitemedit">
+                <thead>
+                  <tr>
+                    <th style="min-width:200px;">Blok</th>
+                    <th style="min-width:200px;">Panjang Daftar</th> 
+                    <th style="min-width:200px;">Lebar Daftar</th> 
+                    <th style="min-width:200px;">Luas Terbit</th> 
+                    <th style="min-width:200px;">Selisih</th> 
+                    <th style="min-width:200px;">No SHGB</th> 
+                    <th style="min-width:200px;">Masa Berlaku</th> 
+                    <th style="min-width:200px;">No Daftar</th> 
+                    <th style="min-width:200px;">Tgl Daftar</th> 
+                    <th style="min-width:200px;">Tgl Terbit</th> 
+                    <th style="min-width:100px;">Keterangan</th> 
+                  </tr>
+                </thead>
+                <tbody> 
+                </tbody>
+              </table>
             </div>
           </div>
-
-          <div class="form-group tanggal_pengalihan">
-            <label class="col-sm-3 control-label"> Detail Terbit SHGB </span></label>
-            <div class="col-sm-5">
-              <input type="text" name="tanggal_terbit_shgb" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal" id="tanggal_terbit_shgb" placeholder="Tanggal Terbit SHGB" title="Tanggal Terbit SHGB"  />
-            </div>
-            <div class="col-sm-4">
-              <input type="text" name="masa_berlaku_shgb" style="color: grey; text-align: center;vertical-align: middle;" class="form-control tanggal" id="masa_berlaku" placeholder="Masa Berlaku SHGB" title="Masa Berlaku SHGB"  />
-            </div>
-          </div>
-
-
-          <div class="form-group keterangan">
-            <label class="col-sm-3 control-label">Keterangan</label>
-            <div class="col-sm-9">
-              <textarea rows="2" class="form-control" id="keterangan" name="keterangan"></textarea>
-            </div>
-          </div>
-
-          <div class="row" style="overflow-x: auto;white-space: nowrap;"> 
-            <div class="col-md-12">
-              <h3>Rincian Data Splitsing</h3> 
-              <a type="button" class="mb-xs mt-xs mr-xs btn btn-primary" id="tambahItemedit"><i class="fa fa-plus"></i> Tambah Item</a> 
-              <div class="table-ressplitsingnsive" style="max-height:420px;"> 
-                <table class="table table-bordered table-hover table-striped dataTable no-footer listitemedit">
-                  <thead>
-                    <tr>
-                      <th style="min-width:200px;">Blok</th>
-                      <th style="min-width:200px;">Panjang Daftar</th> 
-                      <th style="min-width:200px;">Lebar Daftar</th> 
-                      <th style="min-width:200px;">Luas Terbit</th> 
-                      <th style="min-width:200px;">Selisih</th> 
-                      <th style="min-width:200px;">No SHGB</th> 
-                      <th style="min-width:200px;">Masa Berlaku</th> 
-                      <th style="min-width:200px;">No Daftar</th> 
-                      <th style="min-width:200px;">Tgl Daftar</th> 
-                      <th style="min-width:200px;">Tgl Terbit</th> 
-                      <th style="min-width:100px;">Keterangan</th> 
-                    </tr>
-                  </thead>
-                  <tbody> 
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+        </div>
       </div>
       <footer class="panel-footer">
         <div class="row">
@@ -299,19 +299,54 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 
+<div class="modal fade bd-example-modal-lg" id="modal-listitemsblok" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <section class="panel">
+        <header class="panel-heading">
+          <h2 class="panel-title">Data Stok SPlit</h2>
+        </header>
+        <div class="panel-body">
+          <table class="table table-bordered table-hover table-striped data" id="itemsdatablok">
+            <thead>
+              <tr>
+                <th>Kode Blok</th>
+                <th>Blok</th>
+                <th>Jumlah Kavling</th>
+                <th>Luas Teknik</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+        <footer class="panel-footer">
+          <div class="row">
+            <div class="col-md-12 text-right">
+              <button class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </footer>
+      </section>
+    </div>
+  </div>
+</div>
+
 <div class="modal fade bd-example-modal-lg" id="modal-listitems" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <section class="panel">
         <header class="panel-heading">
-          <h2 class="panel-title">Data Item</h2>
+          <h2 class="panel-title">Data Induk</h2>
         </header>
         <div class="panel-body">
           <table class="table table-bordered table-hover table-striped data" id="itemsdata">
             <thead>
               <tr>
-                <th>Kode Item</th>
-                <th>Nama Item</th>
+                <th>Kode Induk</th>
+                <th>No SHGB</th>
+                <th>Atas Nama</th>
                 <th>Lokasi</th>
                 <th></th>
               </tr>
@@ -395,7 +430,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     "order": [], 
     "ajax": {
       "url": "<?php echo base_url()?>master/pilihaninduk",
-      "type": "GET"
+      "type": "GET",
+      "data": function(data) {
+        data.id_perumahan = '<?php echo $id_perumahan ?>'
+      }
     }, 
     "columnDefs": [
     { 
@@ -405,22 +443,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     ],  
   });  
 
-
-  function laporan_ringkas(){   
-    $.ajax({
-      type: 'GET',
-      url: '<?php echo base_url()?>pembelian/po_data', 
-      dataType    : 'json',
-      success: function(response) {  
-        $.each(response, function(i, item) {  
-          $('#po_bulan_ini').html(item.po_bulan);  
-          $('#po_minggu_ini').html(item.po_minggu);  
-          $('#po_hari_ini').html(item.po_hari);   
-        }); 
+  var tableitemsblok = $('#itemsdatablok').DataTable({  
+    "serverSide": true, 
+    "order": [], 
+    "ajax": {
+      "url": "<?php echo base_url()?>master/pilihanblok",
+      "type": "GET",
+      "data": function(data) {
+        data.id_perumahan = '<?php echo $id_perumahan ?>'
       }
-    });  
-    return false;
-  }
+    }, 
+    "columnDefs": [
+    { 
+      "targets": [ 3 ], 
+      "orderable": false, 
+    },
+    ],  
+  });  
+
     //laporan_ringkas(); 
     function detail(elem){
       var dataId = $(elem).data("id");   
@@ -499,6 +539,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       var urutan = $(e.relatedTarget).data('urutan');  
       createCookie("urutan-row-item", urutan, 30);
     }); 
+    $(document).on('shown.bs.modal','#modal-listitemsblok', function (e) {
+      var urutan = $(e.relatedTarget).data('urutan');  
+      createCookie("urutan-row-item", urutan, 30);
+    }); 
     function pilihinduk(elem){ 
       var id_induk = $(elem).data("id_induk"); 
       var no_terbit_shgb = $(elem).data("no_terbit_shgb"); 
@@ -519,6 +563,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $('.masa_berlaku').val(masa_berlaku);
       $('.keterangan').val(keterangan);
       $('#modal-listitems').modal('hide');
+    }
+
+    function pilihblok(elem){ 
+        urutan = readCookie("urutan-row-item");
+      var blok = $(elem).data("blok"); 
+        var jml_kvl = $(elem).data("jml_kvl"); 
+        var luas_teknik = $(elem).data("luas_teknik");   
+        $('.luas_terbit_blok'+urutan).val(luas_teknik);    
+        $('.blok'+urutan).val(blok);    
+        $('#modal-listitemsblok').modal('hide');  
+        eraseCookie("urutan-row-item"); 
     }
 
     document.getElementById("FormulirTambah").addEventListener("submit", function (e) {  
@@ -596,7 +651,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       if(x < max_fields){
         x=x+1;       
         var formtambah='<tr>';
-        formtambah+='<td> <input type="text" name="blok[]" class="form-control blok'+x+' required"></td>';
+        formtambah+='<td><div class="input-group input-group-icon" style="width:150px;"><input type="text" data-urutan="'+x+'" data-toggle="modal" data-target="#modal-listitemsblok"  class="form-control blok'+x+'" placeholder="Pilih Blok"><span class="input-group-addon"><span class="icon"><i class="fa fa-search"></i></span></span></div></td>';
+        formtambah+='<input type="hidden" class="blok'+x+'" name="blok[]">';
+        // formtambah+='<td> <input type="text" name="blok[]" class="form-control blok'+x+' required"></td>';
         formtambah+='<td><input type="text" name="panjang_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+' required"></td>';
         formtambah+='<td><input type="text" name="lebar_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+' required"></td>';
         formtambah+='<td><input type="text" name="luas_terbit_blok[]"  class="form-control luas_terbit_blok'+x+' required"></td>';
@@ -651,8 +708,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           var datarow='';
           $.each(response.datasub, function(i, itemsub) {
             x= x + 1;
-            datarow+='<tr>';
-            datarow+='<td><input type="text" value="'+itemsub.blok+'" name="blok[]" class="form-control blok'+x+'"></td>';
+             datarow+='<tr><td><div class="input-group input-group-icon" style="width:150px;"><input type="text" data-urutan="'+x+'" data-toggle="modal" data-target="#modal-listitemsblok" value="'+itemsub.blok+'" name="blok[]"  class="form-control blok'+x+'" placeholder="Pilih Item"><span class="input-group-addon"><span class="icon"><i class="fa fa-search"></i></span></span></div></td>';
+            // datarow+='<tr>';
+            // datarow+='<td><input type="text" value="'+itemsub.blok+'" name="blok[]" class="form-control blok'+x+'"></td>';
             datarow+='<td><input type="text" value="'+itemsub.panjang_daftar_blok+'" name="panjang_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+'"></td>';
             datarow+='<td><input type="text" value="'+itemsub.lebar_daftar_blok+'" name="lebar_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+'"></td>';
             datarow+='<td><input type="text"  value="'+itemsub.luas_terbit_blok+'"  name="luas_terbit_blok[]"  class="form-control luas_terbit_blok'+x+'"></td>';
@@ -660,8 +718,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             datarow+='<td><input type="text"  value="'+itemsub.no_shgb_blok+'"  name="no_shgb_blok[]"  class="form-control no_shgb_blok'+x+'"></td>';
             datarow+='<td><input type="text"  value="'+itemsub.masa_berlaku_blok+'"  name="masa_berlaku_blok[]" class="form-control tanggal"></td>';
             datarow+='<td><input type="text"  value="'+itemsub.no_daftar_blok+'"  name="no_daftar_blok[]"  class="form-control no_daftar_blok'+x+'"></td>';
-             datarow+='<td><input type="text"  value="'+itemsub.tgl_daftar_blok+'"  name="tgl_daftar_blok[]" class="form-control tanggal"></td>';
-              datarow+='<td><input type="text"  value="'+itemsub.tgl_terbit_blok+'"  name="tgl_terbit_blok[]" class="form-control tanggal"></td>';
+            datarow+='<td><input type="text"  value="'+itemsub.tgl_daftar_blok+'"  name="tgl_daftar_blok[]" class="form-control tanggal"></td>';
+            datarow+='<td><input type="text"  value="'+itemsub.tgl_terbit_blok+'"  name="tgl_terbit_blok[]" class="form-control tanggal"></td>';
             datarow+='<td><input type="text"  value="'+itemsub.keterangan+'"  name="keterangandetail[]" class="form-control keterangandetail'+x+'"></td>';
             datarow+='<td><a href="javascript:void(0);" class="mb-xs mt-xs mr-xs btn btn-danger deleterowedit"><i class="fa fa-trash-o"></i></a></td></tr>';   
           });
@@ -684,19 +742,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       e.preventDefault();
       if(x < max_fieldsEdit){
        x=x+1;       
-        var formtambah='<tr>';
-        formtambah+='<td> <input type="text" name="blok[]" class="form-control blok'+x+' required"></td>';
-        formtambah+='<td><input type="text" name="panjang_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+' required"></td>';
-        formtambah+='<td><input type="text" name="lebar_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+' required"></td>';
-        formtambah+='<td><input type="text" name="luas_terbit_blok[]"  class="form-control luas_terbit_blok'+x+' required"></td>';
-        formtambah+='<td><input type="text" name="selisih[]"  class="form-control selisih'+x+' required"></td>';
-        formtambah+='<td><input type="text" name="no_shgb_blok[]"  class="form-control no_shgb_blok'+x+' required"></td>';
-        formtambah+='<td><input type="text" name="masa_berlaku_blok[]"  class="form-control masa_berlaku_blok'+x+' tanggal required"></td>';
-        formtambah+='<td><input type="text" name="no_daftar_blok[]"  class="form-control no_daftar_blok'+x+' required"></td>';
-        formtambah+='<td><input type="text" name="tgl_daftar_blok[]"  class="form-control tgl_daftar_blok'+x+'  tanggal required"></td>';
-        formtambah+='<td><input type="text" name="tgl_terbit_blok[]"  class="form-control tgl_terbit_blok'+x+' tanggal required"></td>';
-        formtambah+='<td><input type="text" name="keterangandetail[]" class="form-control keterangandetail'+x+' required"></td>';
-        formtambah+='<td><a href="javascript:void(0);" class="mb-xs mt-xs mr-xs btn btn-danger deleterow"><i class="fa fa-trash-o"></i></a></td></tr>'; 
+       var formtambah='<tr>';
+       formtambah+='<td> <input type="text" name="blok[]" class="form-control blok'+x+' required"></td>';
+       formtambah+='<td><input type="text" name="panjang_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+' required"></td>';
+       formtambah+='<td><input type="text" name="lebar_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+' required"></td>';
+       formtambah+='<td><input type="text" name="luas_terbit_blok[]"  class="form-control luas_terbit_blok'+x+' required"></td>';
+       formtambah+='<td><input type="text" name="selisih[]"  class="form-control selisih'+x+' required"></td>';
+       formtambah+='<td><input type="text" name="no_shgb_blok[]"  class="form-control no_shgb_blok'+x+' required"></td>';
+       formtambah+='<td><input type="text" name="masa_berlaku_blok[]"  class="form-control masa_berlaku_blok'+x+' tanggal required"></td>';
+       formtambah+='<td><input type="text" name="no_daftar_blok[]"  class="form-control no_daftar_blok'+x+' required"></td>';
+       formtambah+='<td><input type="text" name="tgl_daftar_blok[]"  class="form-control tgl_daftar_blok'+x+'  tanggal required"></td>';
+       formtambah+='<td><input type="text" name="tgl_terbit_blok[]"  class="form-control tgl_terbit_blok'+x+' tanggal required"></td>';
+       formtambah+='<td><input type="text" name="keterangandetail[]" class="form-control keterangandetail'+x+' required"></td>';
+       formtambah+='<td><a href="javascript:void(0);" class="mb-xs mt-xs mr-xs btn btn-danger deleterow"><i class="fa fa-trash-o"></i></a></td></tr>'; 
        $(wrapperItemEdit).append(formtambah);  
        $('.tanggal').datepicker({
         format: 'yyyy-mm-dd' 

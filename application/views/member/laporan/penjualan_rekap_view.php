@@ -17,7 +17,7 @@
 
          // $tombolaksi = ' 
          // <div class="btn-group dropup">
-         // <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+         // <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
          // <ul class="dropdown-menu" role="menu">
          // <li><a href="#" onclick="detail(this)"  data-id="'.$this->security->xss_clean($post['id']).'">Detail</a></li> 
          // '.$tombolhapus.'

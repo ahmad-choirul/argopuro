@@ -61,7 +61,7 @@ public function datatarget($id)
         $tombolhapus = '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->id).'">Hapus</a></li>';
         $tomboledit = '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id).'">Edit</a></li>';
         $row[] = ' <div class="btn-group dropup">
-        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
         <ul class="dropdown-menu" role="menu">   
         '.$tomboledit.'
         '.$tombolhapus.'
@@ -176,7 +176,7 @@ public function datadistributor()
         $tomboledit = level_user('master','target',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id).'">Edit</a></li>':'';
         $row[] = ' 
         <div class="btn-group dropup">
-        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
         <ul class="dropdown-menu" role="menu">   
         '.$tomboledit.'
         '.$tombolhapus.'
@@ -285,7 +285,7 @@ public function datapembeli()
         $tomboledit = level_user('master','pembeli',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id).'">Edit</a></li>':'';
         $row[] = ' 
         <div class="btn-group dropup">
-        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
         <ul class="dropdown-menu" role="menu"> 
         <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($r->id).'">Detail</a></li>
         '.$tomboledit.'
@@ -421,7 +421,7 @@ public function datakategori($status='')
         $tomboledit = level_user('master','perumahan',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id).'">Edit</a></li>':'';
         $row[] = ' 
         <div class="btn-group dropup">
-        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
         <ul class="dropdown-menu" role="menu"> 
         '.$tomboledit.'
         '.$tomboltarget.'
@@ -545,7 +545,7 @@ public function datasatuan()
         $tomboledit = level_user('master','satuan',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id).'">Edit</a></li>':'';
         $row[] = ' 
         <div class="btn-group dropup">
-        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
         <ul class="dropdown-menu" role="menu"> 
         '.$tomboledit.'
         '.$tombolhapus.'
@@ -643,7 +643,7 @@ public function datasertifikat_tanah()
         $tomboledit = level_user('master','satuan',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id_sertifikat_tanah).'">Edit</a></li>':'';
         $row[] = ' 
         <div class="btn-group dropup">
-        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
         <ul class="dropdown-menu" role="menu"> 
         '.$tomboledit.'
         '.$tombolhapus.'
@@ -749,7 +749,7 @@ public function datajenis_pengalihan()
         $tomboledit = level_user('master','satuan',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id_pengalihan).'">Edit</a></li>':'';
         $row[] = ' 
         <div class="btn-group dropup">
-        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
         <ul class="dropdown-menu" role="menu"> 
         '.$tomboledit.'
         '.$tombolhapus.'
@@ -1174,7 +1174,7 @@ public function dataracikan()
         $tombolhapus = level_user('master','racikan',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($r->kode_item).'">Hapus</a></li>':'';
         $tomboledit = level_user('master','racikan',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->kode_item).'">Edit</a></li>':'';
         $row[] = ' <div class="btn-group dropup">
-        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
         <ul class="dropdown-menu" role="menu">
         <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($r->kode_item).'">Detail</a></li> 
         '.$tomboledit.'
@@ -1234,7 +1234,8 @@ public function pilihanitem()
 {   
     cekajax(); 
     $get = $this->input->get();
-    $list = $this->master_model->get_pilihanitem_datatable();
+    $id_perumahan = $get['id_perumahan'];
+    $list = $this->master_model->get_pilihanitem_datatable($id_perumahan);
     $data = array(); 
     foreach ($list as $r) { 
         $row = array(); 
@@ -1248,8 +1249,8 @@ public function pilihanitem()
     } 
     $result = array(
         "draw" => $get['draw'],
-        "recordsTotal" => $this->master_model->count_all_datatable_pilihanitem(),
-        "recordsFiltered" => $this->master_model->count_filtered_datatable_pilihanitem(),
+        "recordsTotal" => $this->master_model->count_all_datatable_pilihanitem($id_perumahan),
+        "recordsFiltered" => $this->master_model->count_filtered_datatable_pilihanitem($id_perumahan),
         "data" => $data,
     ); 
     echo json_encode($result);  
@@ -1260,11 +1261,13 @@ public function pilihaninduk()
 {   
     cekajax(); 
     $get = $this->input->get();
-    $list = $this->master_model->get_prosesindukdatatable();
+    $id_perumahan = $get['id_perumahan'];
+    $list = $this->master_model->get_prosesindukdatatable($id_perumahan);
     $data = array(); 
     foreach ($list as $r) { 
         $row = array(); 
         $row[] = $this->security->xss_clean($r->id_proses_induk); 
+        $row[] = $this->security->xss_clean($r->no_terbit_shgb); 
         $row[] = $this->security->xss_clean($r->nama_surat_tanah); 
         $row[] = $this->security->xss_clean($r->nama_regional);   
         $row[] = ' 
@@ -1274,8 +1277,35 @@ public function pilihaninduk()
     } 
     $result = array(
         "draw" => $get['draw'],
-        "recordsTotal" => $this->master_model->count_all_datatableproses_induk(),
-        "recordsFiltered" => $this->master_model->count_filtered_datatable_prosesinduk(),
+        "recordsTotal" => $this->master_model->count_all_datatableproses_induk($id_perumahan),
+        "recordsFiltered" => $this->master_model->count_filtered_datatable_prosesinduk($id_perumahan),
+        "data" => $data,
+    ); 
+    echo json_encode($result);  
+}  
+
+public function pilihanblok()
+{   
+    cekajax(); 
+    $get = $this->input->get();
+    $id_perumahan = $get['id_perumahan'];
+    $list = $this->master_model->get_blokdatatable($id_perumahan);
+    $data = array(); 
+    foreach ($list as $r) { 
+        $row = array(); 
+        $row[] = $this->security->xss_clean($r->id_stok_split); 
+        $row[] = $this->security->xss_clean($r->blok); 
+        $row[] = $this->security->xss_clean($r->jml_kvl); 
+        $row[] = $this->security->xss_clean($r->luas_teknik);   
+        $row[] = ' 
+        <a onclick="pilihblok(this)"  data-id="'.$r->id_stok_split.'" data-blok="'.$r->blok.'" data-jml_kvl="'.$r->jml_kvl.'" data-luas_teknik="'.$r->luas_teknik.'" class="mt-xs mr-xs btn btn-info datarowobat" role="button"><i class="fa fa-check-square-o"></i></a>
+        '; 
+        $data[] = $row;
+    } 
+    $result = array(
+        "draw" => $get['draw'],
+        "recordsTotal" => $this->master_model->count_all_datatableblok($id_perumahan),
+        "recordsFiltered" => $this->master_model->count_filtered_datatable_blok($id_perumahan),
         "data" => $data,
     ); 
     echo json_encode($result);  
@@ -1378,7 +1408,7 @@ public function datapenjual()
         $tomboledit = '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id).'">Edit</a></li>';
         $row[] = ' 
         <div class="btn-group dropup">
-        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
         <ul class="dropdown-menu" role="menu"> 
         <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($r->id).'">Detail</a></li>
         '.$tomboledit.'
@@ -1495,7 +1525,7 @@ public function dataproses_induk()
         $tomboledit = level_user('master','proses_induk',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($r->id_dtl_proses_induk).'">Edit</a></li>':'';
         $row[] = '
         <div class="btn-group dropup">
-        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
         <ul class="dropdown-menu" role="menu">
         <li><a href="#" onclick="detail(this)" data-id="'.$this->security->xss_clean($r->id_proses_induk).'">Detail</a></li>
         '.$tomboledit.'

@@ -128,7 +128,7 @@
                 if($r->nomor_faktur != NULL){  
                     $tombol ='
                     <div class="btn-group dropup">
-                    <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+                    <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
                     <ul class="dropdown-menu" role="menu">
                     <li><a href="#" onclick="detail(this)" data-id="'.$r->id.'">Rincian</a></li> 
                     '.$tombolbayar.'
@@ -139,7 +139,7 @@
                     $tombolhapus = level_user('keuangan','hutang',$this->session->userdata('kategori'),'delete') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$r->id.'">Hapus</a></li>':'';
                     $tombol ='
                     <div class="btn-group dropup">
-                    <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+                    <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
                     <ul class="dropdown-menu" role="menu">
                     <li><a href="#" onclick="detail(this)" data-id="'.$r->id.'">Rincian</a></li> 
                     '.$tombolhapus.'
@@ -313,7 +313,7 @@ public function databayar_tanah($kode_item)
         $data[] = array(   
             ' 
             <div class="btn-group dropup">
-            <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+            <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
             <ul class="dropdown-menu" role="menu">
             <li><a href="#" onclick="hapus(this)" data-id="'.$r->id_pembayaran.'">Hapus</a></li>
             </ul>
@@ -420,7 +420,7 @@ public function datacashincashout()
         $data[] = array(   
             ' 
             <div class="btn-group dropup">
-            <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+            <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
             <ul class="dropdown-menu" role="menu">
             <li><a href="#" onclick="detail(this)" data-id="'.$r->id.'">Detail</a></li> 
             '.$tombol.'

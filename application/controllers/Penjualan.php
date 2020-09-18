@@ -58,7 +58,7 @@ class Penjualan extends CI_Controller {
 
             $row[] = ' 
             <div class="btn-group dropup">
-            <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+            <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
             <ul class="dropdown-menu" role="menu">  
             '.$tomboledit.'
             '.$tombolhapus.' 

@@ -40,7 +40,7 @@ class User extends CI_Controller {
             
             $row[] = ' 
             <div class="btn-group dropup">
-            <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+            <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
             <ul class="dropdown-menu" role="menu">  
             '.$tomboledit.'
             '.$tombolhapus.'
@@ -162,7 +162,7 @@ public function datausers()
         $data[] = array(   
             ' 
             <div class="btn-group dropup">
-            <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action <span class="caret"></span></button>
+            <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action </button>
             <ul class="dropdown-menu" role="menu">
             <li><a href="#" onclick="detail(this)" data-id="'.$r->id.'">Detail</a></li>  
             '.$tomboledit.'
