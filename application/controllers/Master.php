@@ -1298,7 +1298,7 @@ public function pilihanblok()
         $row[] = $this->security->xss_clean($r->jml_kvl); 
         $row[] = $this->security->xss_clean($r->luas_teknik);   
         $row[] = ' 
-        <a onclick="pilihblok(this)"  data-id="'.$r->id_stok_split.'" data-blok="'.$r->blok.'" data-jml_kvl="'.$r->jml_kvl.'" data-luas_teknik="'.$r->luas_teknik.'" class="mt-xs mr-xs btn btn-info datarowobat" role="button"><i class="fa fa-check-square-o"></i></a>
+        <a onclick="pilihblok(this)"  data-id_stok_split="'.$r->id_stok_split.'" data-blok="'.$r->blok.'" data-jml_kvl="'.$r->jml_kvl.'" data-luas_teknik="'.$r->luas_teknik.'" class="mt-xs mr-xs btn btn-info datarowobat" role="button"><i class="fa fa-check-square-o"></i></a>
         '; 
         $data[] = $row;
     } 

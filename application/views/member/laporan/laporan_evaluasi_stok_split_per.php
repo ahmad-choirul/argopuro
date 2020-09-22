@@ -220,11 +220,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <div class="modal fade" data-keyboard="false" data-backdrop="static"  id="detailData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <section class="panel panel-primary">   
         <header class="panel-heading">
-          <h2 class="panel-title">Detail Obat / Alkes</h2>
+          <h2 class="panel-title">Detail Stok Split</h2>
         </header>
         <div class="panel-body" id="showdetail"> 
         </div>
@@ -664,6 +664,82 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
   e.preventDefault(); 
 }); 
 
+    function detail(elem){
+      var dataId = $(elem).data("id");   
+      $('#detailData').modal();    
+      $('#showdetail').html('Loading...'); 
+      $.ajax({
+        type: 'GET',
+        url: '<?php echo base_url()?>laporan/stoksplitdetail',
+        data: 'id=' + dataId,
+        dataType    : 'json',
+        success: function(response) { 
+          var datarow='<div class="row">';
+          $.each(response.datarows, function(i, item) {
+            // document.getElementById('linkprint').setAttribute('href', '<?php echo base_url()?>pembelian/printpo/'+item.nomor_po);
+            // document.getElementById('linkpdf').setAttribute('href', '<?php echo base_url()?>pembelian/pdfpo/'+item.nomor_po);
+            datarow+='<div class="col-md-6">';
+            datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
+            datarow+="<tr><td>Lokasi</td><td>: "+item.nama_regional+"</td></tr>";
+            datarow+="<tr><td>Blok</td><td>: "+item.blok+"</td></tr>";
+            datarow+="<tr><td>Jumlah Kavling </td><td>: "+item.jml_kvl+"</td></tr>";
+            datarow+="</table>";
+            datarow+='</div>';
+            datarow+='<div class="col-md-6">';
+            datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
+            datarow+="<tr><td>Luas Teknik</td><td>: "+item.luas_teknik+"</td></tr>";
+            datarow+="<tr><td>luas Stok / Terbit</td><td>: "+item.luas_stok+"</td></tr>"; 
+            datarow+="<tr><td>luas Sisa</td><td>: "+item.sisa_luas+"</td></tr>"; 
+            datarow+="</table>";
+            datarow+='</div>';
+          });
+          datarow+='</div>';
+          datarow+='<div class="row"><div class="col-md-12">';
+          datarow+='<h3>Rincian</h3>';
+          datarow+='<div class="table-responsive" style="max-height:420px;">';  
+          datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
+          datarow+="<thead><tr>";
+          datarow+="<th>Blok</th>";
+          datarow+="<th>Panjang Daftar</th>";
+          datarow+="<th>Lebar Daftar</th>";
+          datarow+="<th>Luas Daftar</th>";
+          datarow+="<th>Luas Terbit</th>";
+          datarow+="<th>Sisa Luas</th>";
+          datarow+="<th>No SHGB</th>";
+          datarow+="<th>Masa Berlaku</th>";
+          datarow+="<th>No Daftar</th>";
+          datarow+="<th>Tgl Daftar</th>";
+          datarow+="<th>Tgl Terbit</th>";
+          datarow+="<th>Keterangan</th>";
+          datarow+="</tr></thead>";
+          datarow+="<tbody>";
+
+          $.each(response.datasub, function(i, itemsub) {
+            datarow+="<tr>";
+            datarow+="<td>"+itemsub.blok+"</td>"; 
+            datarow+="<td>"+itemsub.panjang_daftar_blok+"</td>";
+            datarow+="<td>"+itemsub.lebar_daftar_blok+"</td>";
+            datarow+="<td>"+itemsub.luas_daftar_blok+"</td>";
+            datarow+="<td>"+itemsub.luas_terbit_blok+"</td>"; 
+            datarow+="<td>"+itemsub.sisa_luas+"</td>"; 
+            datarow+="<td>"+itemsub.no_shgb_blok+"</td>"; 
+            datarow+="<td>"+itemsub.masa_berlaku_bloktampil+"</td>"; 
+            datarow+="<td>"+itemsub.no_daftar_blok+"</td>"; 
+            datarow+="<td>"+itemsub.tgl_daftar_bloktampil+"</td>"; 
+            datarow+="<td>"+itemsub.tgl_terbit_bloktampil+"</td>"; 
+            datarow+="<td>"+itemsub.keterangan+"</td>"; 
+            datarow+="</tr>"; 
+          });  
+          datarow+="</tbody>";
+          datarow+="</table>";
+          datarow+="</div>";
+          datarow+='</div></div>';
+          $('#showdetail').html(datarow);
+        }
+      });  
+      return false;
+    }
+
     document.getElementById("uploadform").addEventListener("submit", function (e) {  
       blurForm();       
       PNotify.removeAll();   
@@ -696,7 +772,7 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
             if (key == 'fail') {   
               new PNotify({
                 title: 'Notifikasi',
-                text: data.errors[key],
+                text: 'gagal mengupload semua data, pastikan data terisi dengan benar dan sudah memilih lokasi',
                 type: 'danger'
               }); 
             }

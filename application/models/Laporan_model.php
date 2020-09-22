@@ -595,7 +595,7 @@ function simpandataprosessplit(){
    );
     $this->db->insert("master_split", $array);
     $id_split =  $this->db->insert_id();
-    $blok = $this->input->post("blok");    
+    $id_stok_split = $this->input->post("id_stok_split");    
     $panjang_daftar_blok = $this->input->post("panjang_daftar_blok");    
     $lebar_daftar_blok = $this->input->post("lebar_daftar_blok");    
     $luas_terbit_blok = $this->input->post("luas_terbit_blok");
@@ -606,10 +606,10 @@ function simpandataprosessplit(){
     $tgl_terbit_blok = $this->input->post("tgl_terbit_blok");   
     $keterangandetail = $this->input->post("keterangandetail"); 
     $detail = array();
-    for($i = 0; $i < count($blok); $i++){
+    for($i = 0; $i < count($id_stok_split); $i++){
         $listitem = array(
             'id_split'=>$id_split,  
-            'blok'=>$blok[$i],  
+            'id_stok_split'=>$id_stok_split[$i],  
             'panjang_daftar_blok'=>$panjang_daftar_blok[$i],  
             'lebar_daftar_blok'=>$lebar_daftar_blok[$i],  
             'luas_terbit_blok'=>$luas_terbit_blok[$i],  
@@ -644,7 +644,7 @@ public function updatedataprosessplit()
     $this->db->update("master_split", $array);
     $this->db->where('id_split', $id_split);
     $this->db->delete('tbl_dtl_split');
-    $blok = $this->input->post("blok");    
+    $id_stok_split = $this->input->post("id_stok_split");    
     $panjang_daftar_blok = $this->input->post("panjang_daftar_blok");    
     $lebar_daftar_blok = $this->input->post("lebar_daftar_blok");    
     $luas_terbit_blok = $this->input->post("luas_terbit_blok");
@@ -655,10 +655,10 @@ public function updatedataprosessplit()
     $tgl_terbit_blok = $this->input->post("tgl_terbit_blok");   
     $keterangandetail = $this->input->post("keterangandetail"); 
     $detail = array();
-    for($i = 0; $i < count($blok); $i++){
+    for($i = 0; $i < count($id_stok_split); $i++){
         $listitem = array(
             'id_split'=>$id_split,  
-            'blok'=>$blok[$i],  
+            'id_stok_split'=>$id_stok_split[$i],  
             'panjang_daftar_blok'=>$panjang_daftar_blok[$i],  
             'lebar_daftar_blok'=>$lebar_daftar_blok[$i],  
             'luas_terbit_blok'=>$luas_terbit_blok[$i],  

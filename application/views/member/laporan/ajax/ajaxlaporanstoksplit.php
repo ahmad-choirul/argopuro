@@ -28,7 +28,6 @@
        <tr>
          <th rowspan="4" style="text-align: center;vertical-align: middle;">NO</th>
          <th rowspan="4" style="text-align: center;vertical-align: middle;">Aksi</th>
-         <th rowspan="4" style="text-align: center;vertical-align: middle;">NAMA</th>
          <th rowspan="4" style="text-align: center;vertical-align: middle;">BLOK</th>
          <th rowspan="4" style="text-align: center;vertical-align: middle;">JML KAV</th>
          <th colspan="3" rowspan="2" style="text-align: center;vertical-align: middle;">L. TANAH</th>
@@ -154,7 +153,6 @@
         <td></td>
         <td></td>
         <td></td>
-        <td></td>
 
       </tr>
     <?php endforeach ?>
@@ -163,7 +161,6 @@
    <tr>
      <td colspan="2">TOTAL </td>
 
-     <td></td>
      <td></td>
      <td></td>
      <td></td>

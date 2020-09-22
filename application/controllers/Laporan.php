@@ -749,13 +749,18 @@ public function splitdetail()
     $datasplit = $this->master_model->getdetailsplit($kode_item);
     $arraysub = array();
     foreach ($datasplit as $po_data) {
+        $totalluasstok = $this->master_model->gettotalluasstok($po_data['id_stok_split']);
         $subArray = array(  
           "id_dtl_split" => $this->security->xss_clean($po_data['id_dtl_split']),
           "id_split" => $this->security->xss_clean($po_data['id_split']),
           "blok" => $this->security->xss_clean($po_data['blok']),
+          "id_stok_split" => $this->security->xss_clean($po_data['id_stok_split']),
           "panjang_daftar_blok" => $this->security->xss_clean($po_data['panjang_daftar_blok']),
           "lebar_daftar_blok" => $this->security->xss_clean($po_data['lebar_daftar_blok']),
+          "luas_daftar_blok" => $this->security->xss_clean($po_data['panjang_daftar_blok']*$po_data['lebar_daftar_blok']),
           "luas_terbit_blok" => $this->security->xss_clean($po_data['luas_terbit_blok']),
+          "sisa_luas" => $this->security->xss_clean($po_data['luas_terbit_blok']-$totalluasstok),
+          // "selisih" => $this->security->xss_clean($po_data['luas_terbit_blok']-($po_data['panjang_daftar_blok']*$po_data['lebar_daftar_blok'])),
           "no_shgb_blok" => $this->security->xss_clean($po_data['no_shgb_blok']),
           "masa_berlaku_blok" => $this->security->xss_clean($po_data['masa_berlaku_blok']),
           "masa_berlaku_bloktampil" => $this->security->xss_clean(tgl_indo($po_data['masa_berlaku_blok'])),
@@ -840,13 +845,65 @@ public function laporan_evaluasi_stok_split_per()
 public function ajaxstoksplit()
 {
  $data['id_perumahan'] = $this->input->get('id_perumahan',true);
-  $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
+ $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
  $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
  $this->db->where('id_perumahan', $data['id_perumahan']);
  $data['datastok'] = $this->db->get('tbl_stok_split')->result();
  $this->load->view('member/laporan/ajax/ajaxlaporanstoksplit',$data);
 }
 
+public function stoksplitdetail()
+{
+    cekajax(); 
+    $id_stok_split = $this->input->get('id');
+    $dataitem = $this->master_model->getstoksplit($id_stok_split);
+    $datasplit = $this->master_model->getdetailstoksplit($id_stok_split);
+    $totalluasstok = $this->master_model->gettotalluasstok($id_stok_split);
+    $arraysub = array();
+    foreach ($datasplit as $po_data) {
+        $subArray = array(  
+          "id_dtl_split" => $this->security->xss_clean($po_data['id_dtl_split']),
+          "id_split" => $this->security->xss_clean($po_data['id_split']),
+          "blok" => $this->security->xss_clean($po_data['blok']),
+          "id_stok_split" => $this->security->xss_clean($po_data['id_stok_split']),
+          "panjang_daftar_blok" => $this->security->xss_clean($po_data['panjang_daftar_blok']),
+          "lebar_daftar_blok" => $this->security->xss_clean($po_data['lebar_daftar_blok']),
+          "luas_daftar_blok" => $this->security->xss_clean($po_data['panjang_daftar_blok']*$po_data['lebar_daftar_blok']),
+          "luas_terbit_blok" => $this->security->xss_clean($po_data['luas_terbit_blok']),
+          "sisa_luas" => $this->security->xss_clean($po_data['luas_terbit_blok']-$totalluasstok),
+          // "selisih" => $this->security->xss_clean($po_data['luas_terbit_blok']-($po_data['panjang_daftar_blok']*$po_data['lebar_daftar_blok'])),
+          "no_shgb_blok" => $this->security->xss_clean($po_data['no_shgb_blok']),
+          "masa_berlaku_blok" => $this->security->xss_clean($po_data['masa_berlaku_blok']),
+          "masa_berlaku_bloktampil" => $this->security->xss_clean(tgl_indo($po_data['masa_berlaku_blok'])),
+          "no_daftar_blok" => $this->security->xss_clean($po_data['no_daftar_blok']),
+          "tgl_daftar_blok" => $this->security->xss_clean($po_data['tgl_daftar_blok']),
+          "tgl_daftar_bloktampil" => $this->security->xss_clean(tgl_indo($po_data['tgl_daftar_blok'])),
+          "tgl_terbit_blok" => $this->security->xss_clean($po_data['tgl_terbit_blok']),
+          "tgl_terbit_bloktampil" => $this->security->xss_clean(tgl_indo($po_data['tgl_terbit_blok'])),
+          "keterangan" => $this->security->xss_clean($po_data['keterangan'])
+      );
+        $arraysub[] =  $subArray ; 
+
+    }
+
+    foreach($dataitem as $po_data) {
+
+        $result = array(  
+            "nama_regional" => $this->security->xss_clean($po_data['nama_regional']),
+            "luas_stok" => $this->security->xss_clean($totalluasstok),
+            "sisa_luas" => $this->security->xss_clean($po_data['luas_teknik']-$totalluasstok),
+            "id_stok_split" => $this->security->xss_clean($po_data['id_stok_split']),
+            "jml_kvl" => $this->security->xss_clean($po_data['jml_kvl']),
+            "blok" => $this->security->xss_clean($po_data['blok']),
+            "luas_teknik" => $this->security->xss_clean($po_data['luas_teknik'])            
+        ); 
+
+    }  
+    $datasub = $arraysub;
+    $array[] =  $result ; 
+    echo'{"datarows":'.json_encode($array).',"datasub":'.json_encode($datasub).'}';
+
+}
 public function po()
 {    
     level_user('laporan','po',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
@@ -1861,8 +1918,8 @@ public function hapusdataprosesinduk(){
 public function prosessplittambah(){ 
     cekajax(); 
     $simpan = $this->laporan_model;       
-    $blok = $this->input->post("blok"); 
-    if(isset($blok) === TRUE AND $blok[0]!='')
+    $id_stok_split = $this->input->post("id_stok_split"); 
+    if(isset($id_stok_split) === TRUE AND $id_stok_split[0]!='')
     {                   
         if($simpan->simpandataprosessplit()){ 
             $data['success']= true;
@@ -1888,8 +1945,8 @@ public function prosessplitedit(){
     //     $errors = $this->form_validation->error_array();
     //     $data['errors'] = $errors;
     // }else{            
-    $kode_item = $this->input->post("blok");   
-    if(isset($kode_item) === TRUE AND $kode_item[0]!='')
+    $id_stok_split = $this->input->post("id_stok_split");   
+    if(isset($id_stok_split) === TRUE AND $id_stok_split[0]!='')
     {       
         if($simpan->updatedataprosessplit()){ 
             $data['success']= true;

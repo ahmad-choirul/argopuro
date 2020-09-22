@@ -71,7 +71,7 @@ class Tools extends CI_Controller {
         $arraysub = array();
         // $id_gen = $this->gen_kode_stok_split();
         $stat = true;
-        if($aksi['result'] == "success"||$id_perumahan==''){  
+        if($aksi['result'] == "success"&&$id_perumahan!=''){  
             include APPPATH.'third_party/PHPExcel/PHPExcel.php'; 
             $excelreader = new PHPExcel_Reader_Excel2007();
             $loadexcel = $excelreader->load('excel/'.$nama_file.'.xlsx');
