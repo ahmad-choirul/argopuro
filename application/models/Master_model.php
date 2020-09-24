@@ -9,7 +9,7 @@ class Master_model extends CI_Model{
         return $this->db->get()->result_array();
     }
 
-   
+
     public function gettotalluasstok($id_stok_split)
     {
         $this->db->select('sum(panjang_daftar_blok*lebar_daftar_blok) as total_luas');
@@ -22,7 +22,7 @@ class Master_model extends CI_Model{
             return 0;
         }
     }
-     public function getdetailsplit($id_split)
+    public function getdetailsplit($id_split)
     {
         $this->db->select('*');
         $this->db->from('tbl_dtl_split');
@@ -42,23 +42,23 @@ class Master_model extends CI_Model{
  }
 
  public function getdetailstoksplit($id_split)
-    {
-        $this->db->select('*');
-        $this->db->from('tbl_stok_split');
-        $this->db->join('tbl_dtl_split', 'tbl_stok_split.id_stok_split = tbl_dtl_split.id_stok_split', 'left');
-        $this->db->where('tbl_stok_split.id_stok_split', $id_split);
-        return $this->db->get()->result_array();
-    }
-    public function getstoksplit($id)
-    {
-      // $this->db->select('a.*,b*,c*');
-     $this->db->from('tbl_stok_split a'); 
-     $this->db->join('master_regional c', 'a.id_perumahan = c.id', 'left');
-     $this->db->where('id_stok_split', $id);
-     return $this->db->get()->result_array();
- }
- public function getdatatanah($kode_item)
  {
+    $this->db->select('*');
+    $this->db->from('tbl_stok_split');
+    $this->db->join('tbl_dtl_split', 'tbl_stok_split.id_stok_split = tbl_dtl_split.id_stok_split');
+    $this->db->where('tbl_stok_split.id_stok_split', $id_split);
+    return $this->db->get()->result_array();
+}
+public function getstoksplit($id)
+{
+      // $this->db->select('a.*,b*,c*');
+ $this->db->from('tbl_stok_split a'); 
+ $this->db->join('master_regional c', 'a.id_perumahan = c.id');
+ $this->db->where('id_stok_split', $id);
+ return $this->db->get()->result_array();
+}
+public function getdatatanah($kode_item)
+{
     $this->db->select('a.*,b.nama_regional,c.*');
     $this->db->from('master_item a'); 
     $this->db->where('a.kode_item', $kode_item);
@@ -578,6 +578,43 @@ public function hapusdatakategori()
 }
     //CRUD kategori end
 
+ //CRUD stok_split start
+public function rulesstok_split()
+{
+    return [
+        [
+            'field' => 'blok',
+            'label' => 'Blok',
+            'rules' => 'required',
+        ] 
+    ];
+} 
+function simpandatastok_split(){   
+    $post = $this->input->post();   
+    $array = array(
+        'blok'=>$post["blok"], 
+        'jml_kvl'=>$post["jml_kvl"], 
+        'id_perumahan'=>$post["id_perumahan"], 
+        'luas_teknik'=>$post["luas_teknik"]);
+    return $this->db->insert("tbl_stok_split", $array);   
+} 
+public function updatedatastok_split()
+{
+    $post = $this->input->post();
+    $this->blok = $post["blok"]; 
+    $this->jml_kvl = $post["jml_kvl"]; 
+    $this->id_perumahan = $post["id_perumahan"]; 
+    $this->luas_teknik = $post["luas_teknik"]; 
+    return $this->db->update("tbl_stok_split", $this, array('id_stok_split' => $post['id_stok_split']));
+} 
+public function hapusdatastok_split()
+{
+    $post = $this->input->post(); 
+    $this->db->where('id_stok_split', $post['id_stok_split']);
+    return $this->db->delete('tbl_stok_split');  
+}
+    //CRUD stok_split end
+
 
 function get_satuan_datatable() 
 {
@@ -902,12 +939,14 @@ if (!empty($teknik)) {
 return $this->db->get()->result();
 }
 
-public function getdataperumahan($id='',$firstdate='',$lastdate='',$teknik='')
+public function getdataperumahan($id='')
 {
  $this->db->select('*');
  $this->db->from('master_regional');
+ $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
  $this->db->where('id', $id);
- return $this->db->get()->result_array()[0];
+ $hasil = $this->db->get();
+ return $hasil->result_array()[0];
 }
 
 public function getperumahanarray($id='',$firstdate='',$lastdate='',$teknik='')

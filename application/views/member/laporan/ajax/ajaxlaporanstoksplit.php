@@ -3,7 +3,7 @@
                         <form action="" method="get">
     <div class="row show-grid">
       <div class="col-md-2" align="left"><h2 class="panel-title">Nama Perumahan </h2></div>
-      <div class="col-sm-4">
+      <div class="col-sm-3">
         <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
           <option value="">Pilih Lokasi</option>
           <?php foreach ($perumahan as $aa): ?>
@@ -11,7 +11,16 @@
           <?php endforeach; ?>
         </select> 
       </div>
-      <div class="col-sm-2">
+
+        <div class="col-sm-2">
+        <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="status_surat">  
+          <option value="">Semua</option>
+          <option value="">Belum</option>
+          <option value="">Proses</option>
+          <option value="">Terbit</option>
+        </select> 
+      </div>
+      <div class="col-sm-1">
         <a class="btn btn-primary" href="<?php echo site_url('Export_excel/excellaporanprosesinduk  /').$id_perumahan ?>"> cetak </a>
       </div>
       <?php  
@@ -102,7 +111,7 @@
 
       <?php 
       $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->id_stok_split).'">Edit</a></li>':'';
-      $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->id_stok_split).'">Hapus</a></li>':'';
+      $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->id_stok_split).'">Hapus</a></li>':'';
       $tombol='
       <div class="btn-group dropup">
       <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action</button>

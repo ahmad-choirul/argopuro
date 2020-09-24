@@ -488,6 +488,63 @@ public function kategoridetail(){
     );    
     echo'['.json_encode($result).']';
 } 
+
+public function stok_splittambah(){ 
+    cekajax(); 
+    $simpan = $this->master_model;
+
+    if($simpan->simpandatastok_split()){
+        $data['success']= true;
+        $data['message']="Berhasil menyimpan data";   
+    }else{
+        $errors['fail'] = "gagal melakukan update data";
+        $data['errors'] = $errors;
+    }  
+
+    $data['token'] = $this->security->get_csrf_hash();
+    echo json_encode($data); 
+} 
+public function stoksplitdetail(){  
+    cekajax(); 
+    $query = $this->db->get_where('tbl_stok_split', array('id_stok_split' => $this->input->get("id_stok_split")),1);
+    $result = array(  
+        "id_stok_split" => $this->security->xss_clean($query->row()->id_stok_split), 
+        "blok" => $this->security->xss_clean($query->row()->blok), 
+        "jml_kvl" => $this->security->xss_clean($query->row()->jml_kvl), 
+        "luas_teknik" => $this->security->xss_clean($query->row()->luas_teknik), 
+    );    
+    echo'['.json_encode($result).']';
+}
+
+public function stok_splitedit(){ 
+    cekajax(); 
+    $simpan = $this->master_model;
+    $post = $this->input->post();
+    if($simpan->updatedatastok_split()){
+        $data['success']= true;
+        $data['message']="Berhasil menyimpan data";   
+    }else{
+        $errors['fail'] = "gagal melakukan update data";
+        $data['errors'] = $errors;
+    }
+    $data['token'] = $this->security->get_csrf_hash();
+    echo json_encode($data); 
+}
+
+public function stok_splithapus(){ 
+    cekajax(); 
+    $hapus = $this->master_model;
+    if($hapus->hapusdatastok_split()){ 
+        $data['success']= true;
+        $data['message']="Berhasil menghapus data"; 
+    }else{    
+        $errors['fail'] = "gagal menghapus data";
+        $data['errors'] = $errors;
+    }
+    $data['token'] = $this->security->get_csrf_hash();
+    echo json_encode($data); 
+}  
+
 public function kategoriedit(){ 
     cekajax(); 
     $simpan = $this->master_model;
@@ -856,20 +913,23 @@ public function pageitem()
     // $data['periode'] = $this->input->get('periode',true);
  $data['firstdate'] = $this->input->get('firstdate');
  $data['lastdate'] = $this->input->get('lastdate'); 
- $data['id_perumahan'] = $this->input->get('id_perumahan'); 
+ $data['id_perumahan'] = $this->input->get('id_perumahan',true); 
+ $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
+
  if ($data['id_perumahan']!='') {
      $data['perumahan'] = $this->master_model->getperumahan($data['id_perumahan'],$data['firstdate'],$data['lastdate']);
      $data['dataperumahan'] = $this->master_model->getdataperumahan($data['id_perumahan']);
- }else{
-    $data['perumahan']='';
-}
-   // $data['perumahandalamijin'] = $this->db->order_by("id","DESC")->where('status_regional','1')->get('master_regional')->result();
-   // $data['perumahanluarijin'] = $this->db->order_by("id","DESC")->where('status_regional','2')->get('master_regional')->result();
-   // $data['perumahanlokasi'] = $this->db->order_by("id","DESC")->where('status_regional','3')->get('master_regional')->result();
-   // $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
-$data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
+     $this->load->view('member/master/items_view',$data);
 
-$this->load->view('member/master/items_view',$data);
+ }else{
+    // $data['perumahan']='';
+    $data['perumahandalamijin'] = $this->db->order_by("id","DESC")->where('status_regional','1')->get('master_regional')->result();
+    $data['perumahanluarijin'] = $this->db->order_by("id","DESC")->where('status_regional','2')->get('master_regional')->result();
+    $data['perumahanlokasi'] = $this->db->order_by("id","DESC")->where('status_regional','3')->get('master_regional')->result();
+    $this->load->view('member/master/items_view_all',$data);
+
+   // $data['perumahan2'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+}
 } 
 
 public function dataitems()
@@ -1292,11 +1352,14 @@ public function pilihanblok()
     $list = $this->master_model->get_blokdatatable($id_perumahan);
     $data = array(); 
     foreach ($list as $r) { 
+        $totalluasstok = $this->master_model->gettotalluasstok($r->id_stok_split);
         $row = array(); 
         $row[] = $this->security->xss_clean($r->id_stok_split); 
         $row[] = $this->security->xss_clean($r->blok); 
         $row[] = $this->security->xss_clean($r->jml_kvl); 
         $row[] = $this->security->xss_clean($r->luas_teknik);   
+        $row[] = $this->security->xss_clean($totalluasstok);   
+        $row[] = $this->security->xss_clean($r->luas_teknik-$totalluasstok);   
         $row[] = ' 
         <a onclick="pilihblok(this)"  data-id_stok_split="'.$r->id_stok_split.'" data-blok="'.$r->blok.'" data-jml_kvl="'.$r->jml_kvl.'" data-luas_teknik="'.$r->luas_teknik.'" class="mt-xs mr-xs btn btn-info datarowobat" role="button"><i class="fa fa-check-square-o"></i></a>
         '; 

@@ -45,170 +45,84 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </section>
 
 
-<div class="modal fade" data-keyboard="false" data-backdrop="static"  id="tambahData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="tambahData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <section class="panel panel-primary">
-        <?php echo form_open('master/itemstambah',' id="FormulirTambah" enctype="multipart/form-data"');?>  
+      <section class="panel  panel-primary">
+        <?php echo form_open('master/stok_splittambah',' id="FormulirTambah"');?>  
         <header class="panel-heading">
-          <h2 class="panel-title">Tambah Item</h2>
+          <h2 class="panel-title">Tambah Stok Split</h2>
         </header>
         <div class="panel-body">
+          <div class="form-group mt-lg blok">
+            <label class="col-sm-3 control-label">Nama Blok<span class="required">*</span></label>
+            <div class="col-sm-9">
+              <input type="text" name="blok" class="form-control" required/>
+              <input type="hidden" name="id_perumahan" value="<?php echo $id_perumahan ?>" class="form-control" required/>
 
-          <div class="form-group mt-lg nama_target">
-            <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <select data-plugin-selectTwo class="form-control" required name="id_perumahan">  
-                <option value="">Pilih Lokasi</option>
-                <?php foreach ($perumahan as $supp): ?>
-                  <option value="<?php echo $aa->id;?>"><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
-                <?php endforeach; ?>
-              </select> 
             </div>
-          </div>
-          <div class="form-group mt-lg nama_item">
-            <label class="col-sm-3 control-label">Nama Item<span class="required">*</span></label>
+          </div>  
+          <div class="form-group mt-lg jml_kvl">
+            <label class="col-sm-3 control-label">Jumlah Kavling<span class="required">*</span></label>
             <div class="col-sm-9">
-              <input type="text" name="nama_item" class="form-control" required/>
+              <input type="text" name="jml_kvl" class="form-control" required/>
             </div>
-          </div>
-          <div class="form-group tanggal_pembelian">
-            <label class="col-sm-3 control-label">Tanggal Pembelian</span></label>
+          </div>  
+          <div class="form-group mt-lg luas_teknik">
+            <label class="col-sm-3 control-label">Luas Teknik<span class="required">*</span></label>
             <div class="col-sm-9">
-              <input type="text" name="tanggal_pembelian" class="form-control tanggal"  />
+              <input type="text" name="luas_teknik" class="form-control" required/>
             </div>
-          </div>
-          <div class="form-group nama_penjual">
-            <label class="col-sm-3 control-label">Nama Penjual</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="nama_penjual" class="form-control"  />
-            </div>
-          </div>
-          <div class="form-group nama_surat_tanah">
-            <label class="col-sm-3 control-label">Nama Surat</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="nama_surat_tanah" class="form-control"  />
-            </div>
-          </div>
-          <div class="form-group mt-lg nama_target">
-            <label class="col-sm-3 control-label">Sertifikat<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <select data-plugin-selectTwo class="form-control" required name="status_surat_tanah">  
-                <option value="">Pilih Lokasi</option>
-                <?php foreach ($sertifikat_tanah as $aa): ?>
-                  <option value="<?php echo $aa->id_sertifikat_tanah;?>"><?php echo $aa->nama_sertifikat;?> / <?php echo $aa->nama_sertifikat;?></option>
-                <?php endforeach; ?>
-              </select> 
-            </div>
-          </div>
-          <div class="form-group no_gambar">
-            <label class="col-sm-3 control-label">No Gambar</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="no_gambar" class="form-control"  />
-            </div>
-          </div>
-          <div class="form-group jumlah_bidang">
-            <label class="col-sm-3 control-label">Jumlah Bidang</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="jumlah_bidang" class="form-control"  />
-            </div>
-          </div>
-          <div class="form-group luas_surat">
-            <label class="col-sm-3 control-label">Luas Surat</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="luas_surat" class="form-control"  />
-            </div>
-          </div>
-          <div class="form-group luas_ukur">
-            <label class="col-sm-3 control-label">Luas Ukur</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="luas_ukur" class="form-control"  />
-            </div>
-          </div><div class="form-group no_pbb">
-            <label class="col-sm-3 control-label">No PBB</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="no_pbb" class="form-control"  />
-            </div>
-          </div><div class="form-group luas_pbb_bangunan">
-            <label class="col-sm-3 control-label">Luas PBB</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="luas_pbb_bangunan" class="form-control"  />
-            </div>
-          </div><div class="form-group njop_bangunan">
-            <label class="col-sm-3 control-label">njop_bangunan</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="njop_bangunan" class="form-control"  />
-            </div>
-          </div>
-          <div class="form-group total_harga_pengalihan">
-            <label class="col-sm-3 control-label">Total Harga Pengalihan</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="total_harga_pengalihan" class="form-control"  />
-            </div>
-          </div><div class="form-group nama_makelar">
-            <label class="col-sm-3 control-label">Makelar</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="nama_makelar" class="form-control"  />
-            </div>
-          </div><div class="form-group nilai">
-            <label class="col-sm-3 control-label">Nilai</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="nilai" class="form-control"  />
-            </div>
-          </div><div class="form-group tanggal_pengalihan">
-            <label class="col-sm-3 control-label">Tanggal Pengalihan</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="tanggal_pengalihan" class="form-control tanggal"  />
-            </div>
-          </div><div class="form-group akta_pengalihan">
-            <label class="col-sm-3 control-label">Akta Pengalihan</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="akta_pengalihan" class="form-control"  />
-            </div>
-          </div>
-          <div class="form-group nama_pengalihan">
-            <label class="col-sm-3 control-label">Nama Pengalihan</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="nama_pengalihan" class="form-control"  />
-            </div>
-          </div><div class="form-group pematangan">
-            <label class="col-sm-3 control-label">Pematangan</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="pematangan" class="form-control"  />
-            </div>
-          </div><div class="form-group ganti_rugi">
-            <label class="col-sm-3 control-label">Ganti Rugi</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="ganti_rugi" class="form-control"  />
-            </div>
-          </div><div class="form-group pbb">
-            <label class="col-sm-3 control-label">PBB</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="pbb" class="form-control"  />
-            </div>
-          </div>
-          <div class="form-group lain">
-            <label class="col-sm-3 control-label">Lain-lain</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="lain" class="form-control"  />
-            </div>
-          </div><div class="form-group harga_perm">
-            <label class="col-sm-3 control-label"></span>Harga / M^2</label>
-            <div class="col-sm-9">
-              <input type="text" name="harga_perm" class="form-control"  />
-            </div>
-          </div>
-          <div class="form-group keterangan">
-            <label class="col-sm-3 control-label">Keterangan</label>
-            <div class="col-sm-9">
-              <textarea rows="2" class="form-control" name="keterangan"></textarea>
-            </div>
-          </div>
+          </div>  
         </div>
         <footer class="panel-footer">
           <div class="row">
             <div class="col-md-12 text-right">
               <button class="btn btn-primary modal-confirm" type="submit" id="submitform">Submit</button>
+              <button class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </footer>
+      </form>
+    </section>
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="editData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <section class="panel  panel-primary">
+        <?php echo form_open('master/stok_splitedit',' id="FormulirEdit"');?>  
+        <input type="hidden" name="id_perumahan" value="<?php echo $id_perumahan ?>" class="form-control" required/>
+        <input type="hidden" name="id_stok_split" id="id_stok_split">
+        <header class="panel-heading">
+          <h2 class="panel-title">Edit Data Kategori</h2>
+        </header>
+        <div class="panel-body">
+          <div class="form-group mt-lg blok">
+            <label class="col-sm-3 control-label">Nama Blok<span class="required">*</span></label>
+            <div class="col-sm-9">
+              <input type="text" name="blok" id="blok" class="form-control" required/>
+            </div>
+          </div>  
+          <div class="form-group mt-lg jml_kvl">
+            <label class="col-sm-3 control-label">Jumlah Kavling<span class="required">*</span></label>
+            <div class="col-sm-9">
+              <input type="text" name="jml_kvl" id="jml_kvl" class="form-control" required/>
+            </div>
+          </div>  
+          <div class="form-group mt-lg luas_teknik">
+            <label class="col-sm-3 control-label">Luas Teknik<span class="required">*</span></label>
+            <div class="col-sm-9">
+              <input type="text" name="luas_teknik" id="luas_teknik" class="form-control" required/>
+            </div>
+          </div>  
+        </div>
+        <footer class="panel-footer">
+          <div class="row">
+            <div class="col-md-12 text-right">
+              <button class="btn btn-primary modal-confirm" type="submit" id="submitformEdit">Submit</button>
               <button class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
@@ -286,181 +200,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 </div>
 
-<div class="modal fade" data-keyboard="false" data-backdrop="static"  id="editData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <section class="panel panel-primary">
-        <?php echo form_open('master/itemsedit',' id="FormulirEdit"  enctype="multipart/form-data"');?>  
-        <input type="hidden" name="idd" id="idd">
-        <header class="panel-heading">
-          <h2 class="panel-title">Edit Data Tanah/Aset</h2>
-        </header>
-        <div class="panel-body">
-
-          <div class="form-group mt-lg nama_target">
-            <label class="col-sm-3 control-label">Lokasi<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <select data-plugin-selectTwo class="form-control" required id="id_perumahan" name="id_perumahan">  
-                <option value="">Pilih Lokasi</option>
-                <?php foreach ($perumahan as $supp): ?>
-                  <option value="<?php echo $aa->id;?>"><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
-                <?php endforeach; ?>
-              </select> 
-            </div>
-          </div>
-          <div class="form-group mt-lg nama_item">
-            <label class="col-sm-3 control-label">Nama tanah<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="nama_item" id="nama_item" class="form-control" required/>
-            </div>
-          </div>
-          <div class="form-group tanggal_pembelian">
-            <label class="col-sm-3 control-label">Tanggal Pembelian</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="tanggal_pembelian" id="tanggal_pembelian" class="form-control tanggal"  />
-            </div>
-          </div>
-          <div class="form-group nama_penjual">
-            <label class="col-sm-3 control-label">Nama Penjual</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="nama_penjual" id="nama_penjual" class="form-control"  />
-            </div>
-          </div>
-          <div class="form-group nama_surat_tanah">
-            <label class="col-sm-3 control-label">Nama Surat</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="nama_surat_tanah" id="nama_surat_tanah" class="form-control"  />
-            </div>
-          </div>
-          <div class="form-group mt-lg nama_target">
-            <label class="col-sm-3 control-label">Sertifikat<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <select data-plugin-selectTwo class="form-control" required name="status_surat_tanah" id="status_surat_tanah">  
-                <option value="">Pilih Lokasi</option>
-                <?php foreach ($sertifikat_tanah as $aa): ?>
-                  <option value="<?php echo $aa->id_sertifikat_tanah;?>"><?php echo $aa->nama_sertifikat;?> / <?php echo $aa->nama_sertifikat;?></option>
-                <?php endforeach; ?>
-              </select> 
-            </div>
-          </div>
-          <div class="form-group no_gambar">
-            <label class="col-sm-3 control-label">No Gambar</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="no_gambar" id="no_gambar" class="form-control"  />
-            </div>
-          </div>
-          <div class="form-group jumlah_bidang">
-            <label class="col-sm-3 control-label">Jumlah Bidang</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="jumlah_bidang" id="jumlah_bidang" class="form-control"  />
-            </div>
-          </div>
-          <div class="form-group luas_surat">
-            <label class="col-sm-3 control-label">Luas Surat</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="luas_surat" id="luas_surat" class="form-control"  />
-            </div>
-          </div>
-          <div class="form-group luas_ukur">
-            <label class="col-sm-3 control-label">Luas Ukur</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="luas_ukur" id="luas_ukur" class="form-control"  />
-            </div>
-          </div><div class="form-group no_pbb">
-            <label class="col-sm-3 control-label">No PBB</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="no_pbb" id="no_pbb" class="form-control"  />
-            </div>
-          </div><div class="form-group luas_pbb_bangunan">
-            <label class="col-sm-3 control-label">Luas PBB</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="luas_pbb_bangunan" id="luas_pbb_bangunan" class="form-control"  />
-            </div>
-          </div><div class="form-group njop_bangunan">
-            <label class="col-sm-3 control-label">njop_bangunan</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="njop_bangunan" id="njop_bangunan" class="form-control"  />
-            </div>
-          </div>
-          <div class="form-group total_harga_pengalihan">
-            <label class="col-sm-3 control-label">Total Harga Pengalihan</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="total_harga_pengalihan" id="total_harga_pengalihan" class="form-control"  />
-            </div>
-          </div><div class="form-group nama_makelar">
-            <label class="col-sm-3 control-label">Makelar</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="nama_makelar" id="nama_makelar" class="form-control"  />
-            </div>
-          </div><div class="form-group nilai">
-            <label class="col-sm-3 control-label">Nilai</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="nilai" id="nilai" class="form-control"  />
-            </div>
-          </div><div class="form-group tanggal_pengalihan">
-            <label class="col-sm-3 control-label">Tanggal Pengalihan</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="tanggal_pengalihan" id="tanggal_pengalihan" class="form-control tanggal"  />
-            </div>
-          </div><div class="form-group akta_pengalihan">
-            <label class="col-sm-3 control-label">Akta Pengalihan</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="akta_pengalihan" id="akta_pengalihan" class="form-control"  />
-            </div>
-          </div>
-          <div class="form-group nama_pengalihan">
-            <label class="col-sm-3 control-label">Nama Pengalihan</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="nama_pengalihan" id="nama_pengalihan" class="form-control"  />
-            </div>
-          </div><div class="form-group pematangan">
-            <label class="col-sm-3 control-label">Pematangan</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="pematangan" id="pematangan" class="form-control"  />
-            </div>
-          </div><div class="form-group ganti_rugi">
-            <label class="col-sm-3 control-label">Ganti Rugi</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="ganti_rugi" id="ganti_rugi" class="form-control"  />
-            </div>
-          </div><div class="form-group pbb">
-            <label class="col-sm-3 control-label">PBB</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="pbb" id="pbb" class="form-control"  />
-            </div>
-          </div>
-          <div class="form-group lain">
-            <label class="col-sm-3 control-label">Lain-lain</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="lain" id="lain" class="form-control"  />
-            </div>
-          </div><div class="form-group harga_perm">
-            <label class="col-sm-3 control-label"></span>Harga / M^2</label>
-            <div class="col-sm-9">
-              <input type="text" name="harga_perm" id="harga_perm" class="form-control"  />
-            </div>
-          </div>
-          <div class="form-group keterangan">
-            <label class="col-sm-3 control-label">Keterangan</label>
-            <div class="col-sm-9">
-              <textarea rows="2" class="form-control" name="keterangan" id="keterangan"></textarea>
-            </div>
-          </div>
-
-        </div>
-        <footer class="panel-footer">
-          <div class="row">
-            <div class="col-md-12 text-right">
-              <button class="btn btn-primary modal-confirm" type="submit" id="submitformEdit">Submit</button>
-              <button class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </footer>
-      </form>
-    </section>
-  </div>
-</div>
-</div>
 <div class="modal fade" data-keyboard="false" data-backdrop="static"  id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -481,8 +220,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <footer class="panel-footer"> 
           <div class="row">
             <div class="col-md-12 text-right"> 
-              <?php echo form_open('master/itemshapus',' id="FormulirHapus"');?>  
-              <input type="hidden" name="idd" id="idddelete">
+              <?php echo form_open('master/stok_splithapus',' id="FormulirHapus"');?>  
+              <input type="hidden" name="id_stok_split" id="idddelete">
               <button type="submit" class="btn btn-danger" id="submitformHapus">Delete</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </form>
@@ -519,150 +258,209 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
   ?>  
   <script>
 
-
-  function edit(elem){
-    var dataId = $(elem).data("id");
-    document.getElementById("id").setAttribute('value', dataId);
-    $('#editData').modal();        
-    $.ajax({
-      type: 'GET',
-      url: '<?php echo base_url()?>master/kategoridetail',
-      data: 'id=' + dataId,
-      dataType  : 'json',
-      success: function(response) {  
-        $.each(response, function(i, item) { 
-          document.getElementById("id").setAttribute('value', item.id);
-          document.getElementById("nama_regional").setAttribute('value', item.nama_regional);
-                // document.getElementById("status_kategori").setAttribute('value', item.status_kategori); 
-                $("#status_regional").val(item.status_regional);
-                $("#kabupatenedit").val(item.id_kabupaten);
-                $("#kecamatanedit").append(new Option(item.nama_kecamatan, item.id_kecamatan));  
-                $("#lokasi").append(new Option(item.nama_desa, item.lokasi));  
-              }); 
-      }
-    });  
-    return false;
-  }
-  document.getElementById("FormulirEdit").addEventListener("submit", function (e) {  
-   blurForm();       
-   $('.help-block').hide();
-   $('.form-group').removeClass('has-error');
-   document.getElementById("submitformEdit").setAttribute('disabled','disabled');
-   $('#submitformEdit').html('Loading ...');
-   var form = $('#FormulirEdit')[0];
-   var formData = new FormData(form);
-   var xhrAjax = $.ajax({
-     type     : 'POST',
-     url    : $(this).attr('action'),
-     data     : formData, 
-     processData: false,
-     contentType: false,
-     cache: false, 
-     dataType   : 'json'
-   }).done(function(data) { 
-     if ( ! data.success) {    
-      $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-      document.getElementById("submitformEdit").removeAttribute('disabled');  
-      $('#submitformEdit').html('Submit');    
-      var objek = Object.keys(data.errors);  
-      for (var key in data.errors) {
-        if (data.errors.hasOwnProperty(key)) { 
-          var msg = '<div class="help-block" for="'+key+'">'+data.errors[key]+'</span>';
-          $('.'+key).addClass('has-error');
-          $('input[name="' + key + '"]').after(msg);  
-        }
-        if (key == 'fail') {   
-          new PNotify({
-            title: 'Notifikasi',
-            text: data.errors[key],
-            type: 'danger'
+ document.getElementById("FormulirTambah").addEventListener("submit", function (e) {  
+      blurForm();       
+      $('.help-block').hide();
+      $('.form-group').removeClass('has-error');
+      document.getElementById("submitform").setAttribute('disabled','disabled');
+      $('#submitform').html('Loading ...');
+      var form = $('#FormulirTambah')[0];
+      var formData = new FormData(form);
+      var xhrAjax = $.ajax({
+      type    : 'POST',
+      url     : $(this).attr('action'),
+      data    : formData, 
+      processData: false,
+      contentType: false,
+      cache: false, 
+      dataType  : 'json'
+      }).done(function(data) { 
+      if ( ! data.success) {     
+                    $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+                    document.getElementById("submitform").removeAttribute('disabled');  
+                    $('#submitform').html('Submit');    
+                    var objek = Object.keys(data.errors);  
+                    for (var key in data.errors) {
+                        if (data.errors.hasOwnProperty(key)) { 
+                            var msg = '<div class="help-block" for="'+key+'">'+data.errors[key]+'</span>';
+                            $('.'+key).addClass('has-error');
+                            $('input[name="' + key + '"]').after(msg);  
+                            $('textarea[name="' + key + '"]').after(msg);  
+                        }
+                        if (key == 'fail') {   
+                            new PNotify({
+                                title: 'Notifikasi',
+                                text: data.errors[key],
+                                type: 'danger'
+                            }); 
+                        }
+                    }
+                } else { 
+                    $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+                    PNotify.removeAll(); 
+                    // tablekategori.ajax.reload();  
+                    refresh(); 
+                    document.getElementById("submitform").removeAttribute('disabled'); 
+                    $('#tambahData').modal('hide'); 
+                    document.getElementById("FormulirTambah").reset();  
+                    $('#submitform').html('Submit');   
+                    new PNotify({
+                        title: 'Notifikasi',
+                        text: data.message,
+                        type: 'success'
+                    });  
+                }
+                }).fail(function(data) {   
+                    new PNotify({
+                        title: 'Notifikasi',
+                        text: "Request gagal, browser akan direload",
+                        type: 'danger'
+                    }); 
+                    //window.setTimeout(function() {  location.reload();}, 2000);
+                }); 
+                e.preventDefault(); 
+            }); 
+    function edit(elem){
+      var dataId = $(elem).data("id");
+      document.getElementById("id_stok_split").setAttribute('value', dataId);
+      $('#editData').modal();        
+      $.ajax({
+        type: 'GET',
+        url: '<?php echo base_url()?>master/stoksplitdetail',
+        data: 'id_stok_split=' + dataId,
+        dataType  : 'json',
+        success: function(response) {  
+          $.each(response, function(i, item) { 
+            document.getElementById("blok").setAttribute('value', item.blok);
+            document.getElementById("jml_kvl").setAttribute('value', item.jml_kvl);
+            document.getElementById("luas_teknik").setAttribute('value', item.luas_teknik);
           }); 
         }
-      }
-    } else { 
-      $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-      PNotify.removeAll();
-      tablekategori.ajax.reload();    
-      document.getElementById("submitformEdit").removeAttribute('disabled'); 
-      $('#editData').modal('hide');        
-      document.getElementById("FormulirEdit").reset();    
-      $('#submitformEdit').html('Submit');   
-      new PNotify({
-        title: 'Notifikasi',
-        text: data.message,
-        type: 'success'
-      });
-    }
-  }).fail(function(data) {    
-    new PNotify({
-      title: 'Notifikasi',
-      text: "Request gagal, browser akan direload",
-      type: 'danger'
-    }); 
-    //window.setTimeout(function() {  location.reload();}, 2000);
-  }); 
-  e.preventDefault(); 
-}); 
-  function hapus(elem){ 
-    var dataId = $(elem).data("id");
-    document.getElementById("idelete").setAttribute('value', dataId);
-    $('#modalHapus').modal();        
-  }
-  document.getElementById("FormulirHapus").addEventListener("submit", function (e) {  
-   blurForm();       
-   $('.help-block').hide();
-   $('.form-group').removeClass('has-error');
-   document.getElementById("submitformHapus").setAttribute('disabled','disabled');
-   $('#submitformHapus').html('Loading ...');
-   var form = $('#FormulirHapus')[0];
-   var formData = new FormData(form);
-   var xhrAjax = $.ajax({
-     type     : 'POST',
-     url    : $(this).attr('action'),
-     data     : formData, 
-     processData: false,
-     contentType: false,
-     cache: false, 
-     dataType   : 'json'
-   }).done(function(data) { 
-     if ( ! data.success) {    
-      $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-      document.getElementById("submitformHapus").removeAttribute('disabled');  
-      $('#submitformHapus').html('Delete');     
-      var objek = Object.keys(data.errors);  
-      for (var key in data.errors) { 
-        if (key == 'fail') {   
-          new PNotify({
-            title: 'Notifikasi',
-            text: data.errors[key],
-            type: 'danger'
-          }); 
-        }
-      }
-    } else { 
-      $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-      PNotify.removeAll();   
-      tablekategori.ajax.reload();
-      document.getElementById("submitformHapus").removeAttribute('disabled'); 
-      $('#modalHapus').modal('hide');        
-      document.getElementById("FormulirHapus").reset();    
-      $('#submitformHapus').html('Delete'); 
-      new PNotify({
-        title: 'Notifikasi',
-        text: data.message,
-        type: 'success'
       });  
+      return false;
     }
-  }).fail(function(data) {   
-    new PNotify({
-      title: 'Notifikasi',
-      text: "Request gagal, browser akan direload",
-      type: 'danger'
-    }); 
-    //window.setTimeout(function() {  location.reload();}, 2000);
+    document.getElementById("FormulirEdit").addEventListener("submit", function (e) {  
+     blurForm();       
+     $('.help-block').hide();
+     $('.form-group').removeClass('has-error');
+     document.getElementById("submitformEdit").setAttribute('disabled','disabled');
+     $('#submitformEdit').html('Loading ...');
+     var form = $('#FormulirEdit')[0];
+     var formData = new FormData(form);
+     var xhrAjax = $.ajax({
+       type     : 'POST',
+       url    : $(this).attr('action'),
+       data     : formData, 
+       processData: false,
+       contentType: false,
+       cache: false, 
+       dataType   : 'json'
+     }).done(function(data) { 
+       if ( ! data.success) {    
+        $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+        document.getElementById("submitformEdit").removeAttribute('disabled');  
+        $('#submitformEdit').html('Submit');    
+        var objek = Object.keys(data.errors);  
+        for (var key in data.errors) {
+          if (data.errors.hasOwnProperty(key)) { 
+            var msg = '<div class="help-block" for="'+key+'">'+data.errors[key]+'</span>';
+            $('.'+key).addClass('has-error');
+            $('input[name="' + key + '"]').after(msg);  
+          }
+          if (key == 'fail') {   
+            new PNotify({
+              title: 'Notifikasi',
+              text: data.errors[key],
+              type: 'danger'
+            }); 
+          }
+        }
+      } else { 
+        $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+        PNotify.removeAll();
+        // tablekategori.ajax.reload();   
+        refresh(); 
+        document.getElementById("submitformEdit").removeAttribute('disabled'); 
+        $('#editData').modal('hide');        
+        document.getElementById("FormulirEdit").reset();    
+        $('#submitformEdit').html('Submit');   
+        new PNotify({
+          title: 'Notifikasi',
+          text: data.message,
+          type: 'success'
+        });
+      }
+    }).fail(function(data) {    
+      new PNotify({
+        title: 'Notifikasi',
+        text: "Request gagal, browser akan direload",
+        type: 'danger'
+      }); 
+    ////window.setTimeout(function() {  location.reload();}, 2000);
   }); 
-  e.preventDefault(); 
-}); 
+    e.preventDefault(); 
+  }); 
+    function hapus(elem){ 
+      var dataId = $(elem).data("id");
+      document.getElementById("idddelete").setAttribute('value', dataId);
+      $('#modalHapus').modal();        
+    }
+    document.getElementById("FormulirHapus").addEventListener("submit", function (e) {  
+     blurForm();       
+     $('.help-block').hide();
+     $('.form-group').removeClass('has-error');
+     document.getElementById("submitformHapus").setAttribute('disabled','disabled');
+     $('#submitformHapus').html('Loading ...');
+     var form = $('#FormulirHapus')[0];
+     var formData = new FormData(form);
+     var xhrAjax = $.ajax({
+       type     : 'POST',
+       url    : $(this).attr('action'),
+       data     : formData, 
+       processData: false,
+       contentType: false,
+       cache: false, 
+       dataType   : 'json'
+     }).done(function(data) { 
+       if ( ! data.success) {    
+        $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+        document.getElementById("submitformHapus").removeAttribute('disabled');  
+        $('#submitformHapus').html('Delete');     
+        var objek = Object.keys(data.errors);  
+        for (var key in data.errors) { 
+          if (key == 'fail') {   
+            new PNotify({
+              title: 'Notifikasi',
+              text: data.errors[key],
+              type: 'danger'
+            }); 
+          }
+        }
+      } else { 
+        $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+        PNotify.removeAll();   
+        // tablekategori.ajax.reload();
+        refresh();
+        document.getElementById("submitformHapus").removeAttribute('disabled'); 
+        $('#modalHapus').modal('hide');        
+        document.getElementById("FormulirHapus").reset();    
+        $('#submitformHapus').html('Delete'); 
+        new PNotify({
+          title: 'Notifikasi',
+          text: data.message,
+          type: 'success'
+        });  
+      }
+    }).fail(function(data) {   
+      new PNotify({
+        title: 'Notifikasi',
+        text: "Request gagal, browser akan direload",
+        type: 'danger'
+      }); 
+    ////window.setTimeout(function() {  location.reload();}, 2000);
+  }); 
+    e.preventDefault(); 
+  }); 
 
     function detail(elem){
       var dataId = $(elem).data("id");   
@@ -687,9 +485,9 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
             datarow+='</div>';
             datarow+='<div class="col-md-6">';
             datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
-            datarow+="<tr><td>Luas Teknik</td><td>: "+item.luas_teknik+"</td></tr>";
-            datarow+="<tr><td>luas Stok / Terbit</td><td>: "+item.luas_stok+"</td></tr>"; 
-            datarow+="<tr><td>luas Sisa</td><td>: "+item.sisa_luas+"</td></tr>"; 
+            datarow+="<tr><td>Luas Kavling</td><td>: "+item.luas_teknik+"</td></tr>";
+            datarow+="<tr><td>luas Sertipikat</td><td>: "+item.luas_stok+"</td></tr>"; 
+            datarow+="<tr><td>Luas Belum Terbit</td><td>: "+item.sisa_luas+"</td></tr>"; 
             datarow+="</table>";
             datarow+='</div>';
           });
@@ -796,7 +594,7 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
           text: "Request gagal, browser akan direload",
           type: 'danger'
         }); 
-        // window.setTimeout(function() {  location.reload();}, 2000);
+        // //window.setTimeout(function() {  location.reload();}, 2000);
       }); 
       e.preventDefault(); 
     }); 

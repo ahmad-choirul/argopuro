@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="col-sm-4">
                    <div class="form-group nama_target">
                     <select data-plugin-selectTwo class="form-control" onchange="refresh()" required id="id_perumahan" name="id_perumahan">  
-                        <option value="">Pilih Lokasi</option>
+                        <option value="">Semua Lokasi</option>
                         <?php foreach ($perumahan as $aa): ?>
                             <option value="<?php echo $aa->id;?>"><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
                         <?php endforeach; ?>
