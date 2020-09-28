@@ -498,8 +498,6 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
           datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
           datarow+="<thead><tr>";
           datarow+="<th>Blok</th>";
-          datarow+="<th>Panjang Daftar</th>";
-          datarow+="<th>Lebar Daftar</th>";
           datarow+="<th>Luas Daftar</th>";
           datarow+="<th>Luas Terbit</th>";
           datarow+="<th>Sisa Luas</th>";
@@ -515,8 +513,6 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
           $.each(response.datasub, function(i, itemsub) {
             datarow+="<tr>";
             datarow+="<td>"+itemsub.blok+"</td>"; 
-            datarow+="<td>"+itemsub.panjang_daftar_blok+"</td>";
-            datarow+="<td>"+itemsub.lebar_daftar_blok+"</td>";
             datarow+="<td>"+itemsub.luas_daftar_blok+"</td>";
             datarow+="<td>"+itemsub.luas_terbit_blok+"</td>"; 
             datarow+="<td>"+itemsub.sisa_luas+"</td>"; 

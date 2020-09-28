@@ -543,13 +543,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           $.each(response.datasub, function(i, itemsub) {
             datarow+="<tr>";
             datarow+="<td>"+itemsub.blok+"</td>"; 
-            datarow+="<td>"+itemsub.panjang_daftar_blok+"</td>";
-            // datarow+="<td>"+itemsub.lebar_daftar_blok+"</td>";
+            datarow+="<td>"+itemsub.luas_daftar_blok+"</td>";
             datarow+="<td>"+itemsub.luas_daftar_blok+"</td>";
             datarow+="<td>"+itemsub.no_shgb_blok+"</td>"; 
-            // datarow+="<td>"+itemsub.masa_berlaku_bloktampil+"</td>"; 
             datarow+="<td>"+itemsub.no_daftar_blok+"</td>"; 
-            // datarow+="<td>"+itemsub.tgl_daftar_bloktampil+"</td>"; 
             datarow+="<td>"+itemsub.tgl_terbit_bloktampil+"</td>"; 
             datarow+="<td>"+itemsub.keterangan+"</td>"; 
             datarow+="</tr>"; 
@@ -685,8 +682,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         formtambah+='<td><div class="input-group input-group-icon" style="width:150px;"><input type="text" data-urutan="'+x+'" data-toggle="modal" data-target="#modal-listitemsblok"  class="form-control blok'+x+'" placeholder="Pilih Blok"><span class="input-group-addon"><span class="icon"><i class="fa fa-search"></i></span></span></div></td>';
         formtambah+='<input type="hidden" class="id_stok_split'+x+'" name="id_stok_split[]" class="form-control id_stok_split'+x+'>';
         formtambah+='<td> <input type="text" name="blok[]" class="form-control blok'+x+' required"></td>';
-        formtambah+='<td><input type="text" name="panjang_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+' required"></td>';
-        // formtambah+='<td><input type="text" name="lebar_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+' required"></td>';
+        formtambah+='<td><input type="text" name="luas_daftar_blok[]"  class="form-control luas_daftar_blok'+x+' required"></td>';
         // formtambah+='<td><input type="text" name="luas_terbit_blok[]"  class="form-control luas_terbit_blok'+x+' required"></td>';
         // formtambah+='<td><input type="text" name="selisih[]"  class="form-control selisih'+x+' required"></td>';
         // formtambah+='<td><input type="text" name="no_shgb_blok[]"  class="form-control no_shgb_blok'+x+' required"></td>';
@@ -714,15 +710,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       e.preventDefault(); $(this).parent().parent().remove();
       document.getElementById("tambahItem").removeAttribute('disabled');  
     }) 
-    $(".itemsdatablok").keyup(function() {
-     $("tr").each(function() {
-      if ($(this).find(".panjang_daftar_blok")) {
-        var panjang_daftar_blok = parseInt($(this).find(".panjang_daftar_blok").val(), 10)
-        var lebar_daftar_blok = parseInt($(this).find(".lebar_daftar_blok").val(), 10)
-        $(this).find(".selisih").val(panjang_daftar_blok * lebar_daftar_blok)
-      }
-    })
-   });
     var x = 0; 
     function edit(elem){
       var dataId = $(elem).data("id");   
@@ -753,8 +740,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             datarow+='<tr><td><div class="input-group input-group-icon" style="width:150px;"><input type="text" data-urutan="'+x+'" data-toggle="modal" data-target="#modal-listitemsblok" value="'+itemsub.blok+'" name="blok[]"  class="form-control blok'+x+'" placeholder="Pilih Item"><span class="input-group-addon"><span class="icon"><i class="fa fa-search"></i></span></span></div></td>';
             // datarow+='<tr>';
             datarow+='<input type="hidden" value="'+itemsub.id_stok_split+'" name="id_stok_split[]" class="form-control id_stok_split'+x+'">';
-            datarow+='<td><input type="text" value="'+itemsub.panjang_daftar_blok+'" name="panjang_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+'"></td>';
-            // datarow+='<td><input type="text" value="'+itemsub.lebar_daftar_blok+'" name="lebar_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+'"></td>';
+            datarow+='<td><input type="text" value="'+itemsub.luas_daftar_blok+'" name="luas_daftar_blok[]"  class="form-control luas_daftar_blok'+x+'"></td>';
             datarow+='<td><input type="text"  value="'+itemsub.luas_terbit_blok+'"  name="luas_terbit_blok[]"  class="form-control luas_terbit_blok'+x+'"></td>';
             datarow+='<td><input type="text"  name="selisih[]"  class="form-control selisih'+x+'"></td>';
             datarow+='<td><input type="text"  value="'+itemsub.no_shgb_blok+'"  name="no_shgb_blok[]"  class="form-control no_shgb_blok'+x+'"></td>';
@@ -788,8 +774,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         formtambah+='<td><div class="input-group input-group-icon" style="width:150px;"><input type="text" data-urutan="'+x+'" data-toggle="modal" data-target="#modal-listitemsblok"  class="form-control blok'+x+'" placeholder="Pilih Blok"><span class="input-group-addon"><span class="icon"><i class="fa fa-search"></i></span></span></div></td>';
         formtambah+='<input type="hidden" class="id_stok_split'+x+'" name="id_stok_split[]" class="form-control id_stok_split'+x+'>';
     formtambah+='<td> <input type="text" name="blok[]" class="form-control blok'+x+' required"></td>';
-        formtambah+='<td><input type="text" name="panjang_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+' required"></td>';
-        formtambah+='<td><input type="text" name="lebar_daftar_blok[]"  class="form-control panjang_daftar_blok'+x+' required"></td>';
+        formtambah+='<td><input type="text" name="luas_daftar_blok[]"  class="form-control luas_daftar_blok'+x+' required"></td>';
         formtambah+='<td><input type="text" name="luas_terbit_blok[]"  class="form-control luas_terbit_blok'+x+' required"></td>';
         formtambah+='<td><input type="text" name="selisih[]"  class="form-control selisih'+x+' required"></td>';
         formtambah+='<td><input type="text" name="no_shgb_blok[]"  class="form-control no_shgb_blok'+x+' required"></td>';

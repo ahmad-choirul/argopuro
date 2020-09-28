@@ -596,8 +596,7 @@ function simpandataprosessplit(){
     $this->db->insert("master_split", $array);
     $id_split =  $this->db->insert_id();
     $id_stok_split = $this->input->post("id_stok_split");    
-    $panjang_daftar_blok = $this->input->post("panjang_daftar_blok");    
-    $lebar_daftar_blok = $this->input->post("lebar_daftar_blok");    
+    $luas_daftar_blok = $this->input->post("luas_daftar_blok");     
     $luas_terbit_blok = $this->input->post("luas_terbit_blok");
     $no_shgb_blok = $this->input->post("no_shgb_blok");
     $masa_berlaku_blok = $this->input->post("masa_berlaku_blok");    
@@ -610,8 +609,7 @@ function simpandataprosessplit(){
         $listitem = array(
             'id_split'=>$id_split,  
             'id_stok_split'=>$id_stok_split[$i],  
-            'panjang_daftar_blok'=>$panjang_daftar_blok[$i],  
-            'lebar_daftar_blok'=>$lebar_daftar_blok[$i],  
+            'luas_daftar_blok'=>$luas_daftar_blok[$i],  
             'luas_terbit_blok'=>$luas_terbit_blok[$i],  
             'no_shgb_blok'=>$no_shgb_blok[$i],  
             'masa_berlaku_blok'=>$masa_berlaku_blok[$i],  
@@ -645,8 +643,7 @@ public function updatedataprosessplit()
     $this->db->where('id_split', $id_split);
     $this->db->delete('tbl_dtl_split');
     $id_stok_split = $this->input->post("id_stok_split");    
-    $panjang_daftar_blok = $this->input->post("panjang_daftar_blok");    
-    $lebar_daftar_blok = $this->input->post("lebar_daftar_blok");    
+    $luas_daftar_blok = $this->input->post("luas_daftar_blok");     
     $luas_terbit_blok = $this->input->post("luas_terbit_blok");
     $no_shgb_blok = $this->input->post("no_shgb_blok");
     $masa_berlaku_blok = $this->input->post("masa_berlaku_blok");    
@@ -659,8 +656,7 @@ public function updatedataprosessplit()
         $listitem = array(
             'id_split'=>$id_split,  
             'id_stok_split'=>$id_stok_split[$i],  
-            'panjang_daftar_blok'=>$panjang_daftar_blok[$i],  
-            'lebar_daftar_blok'=>$lebar_daftar_blok[$i],  
+            'luas_daftar_blok'=>$luas_daftar_blok[$i],  
             'luas_terbit_blok'=>$luas_terbit_blok[$i],  
             'no_shgb_blok'=>$no_shgb_blok[$i],  
             'masa_berlaku_blok'=>$masa_berlaku_blok[$i],  

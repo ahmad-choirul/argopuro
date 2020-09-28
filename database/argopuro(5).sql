@@ -10028,7 +10028,7 @@ CREATE TABLE `tbl_dtl_split` (
   `id_dtl_split` int(11) NOT NULL,
   `id_split` int(11) NOT NULL,
   `blok` varchar(20) NOT NULL,
-  `panjang_daftar_blok` varchar(100) NOT NULL,
+  `luas_daftar_blok` varchar(100) NOT NULL,
   `lebar_daftar_blok` varchar(100) NOT NULL,
   `luas_terbit_blok` varchar(100) NOT NULL,
   `no_shgb_blok` varchar(100) NOT NULL,
@@ -10043,7 +10043,7 @@ CREATE TABLE `tbl_dtl_split` (
 -- Dumping data for table `tbl_dtl_split`
 --
 
-INSERT INTO `tbl_dtl_split` (`id_dtl_split`, `id_split`, `blok`, `panjang_daftar_blok`, `lebar_daftar_blok`, `luas_terbit_blok`, `no_shgb_blok`, `masa_berlaku_blok`, `no_daftar_blok`, `tgl_daftar_blok`, `tgl_terbit_blok`, `keterangan`) VALUES
+INSERT INTO `tbl_dtl_split` (`id_dtl_split`, `id_split`, `blok`, `luas_daftar_blok`, `lebar_daftar_blok`, `luas_terbit_blok`, `no_shgb_blok`, `masa_berlaku_blok`, `no_daftar_blok`, `tgl_daftar_blok`, `tgl_terbit_blok`, `keterangan`) VALUES
 (12, 6, 'test blok', '1', '', '1', '1', '0000-00-00', '1', '2020-08-25', '2020-08-25', '1'),
 (13, 7, 'blok ajsdkajsh', '1000', '', '', '', '0000-00-00', '', '0000-00-00', '0000-00-00', ''),
 (14, 1, 'blok a', '123', '100', '123', '12', '2020-08-19', '123', '2020-08-20', '2020-08-19', '113'),

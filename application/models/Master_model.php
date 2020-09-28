@@ -12,7 +12,7 @@ class Master_model extends CI_Model{
 
     public function gettotalluasstok($id_stok_split)
     {
-        $this->db->select('sum(panjang_daftar_blok*lebar_daftar_blok) as total_luas');
+        $this->db->select('sum(luas_daftar_blok) as total_luas');
         $this->db->from('tbl_dtl_split');
         $this->db->where('id_stok_split', $id_stok_split);
         $hasil = $this->db->get();
