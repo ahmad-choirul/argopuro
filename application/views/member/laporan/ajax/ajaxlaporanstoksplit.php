@@ -97,11 +97,15 @@
     </tr>
     <?php foreach ($dataitem as $key => $value): ?>
 
-      <?php if ($value['tgl_terbit_blok']=='0000-00-00'): ?>
-        <tr style="background-color:#ffbaba">
-          <?php else: ?>
-            <tr style="background-color:#c0ffba">
-            <?php endif ?>
+            <?php if ($value['tgl_terbit_blok']=='0000-00-00'): ?>
+          <?php if ($value['tgl_daftar_blok']=='0000-00-00'): ?>
+          <tr style="background-color:#ffbaba">
+            <?php else: ?>
+          <tr style="background-color:#ffd56b">
+           <?php endif ?>
+            <?php else: ?>
+              <tr style="background-color:#c0ffba">
+              <?php endif ?>
             <td></td>
             <td></td>
             <td></td>
@@ -115,7 +119,7 @@
             <td><?php echo tgl_indo($value['tgl_daftar_blok']); ?></td>
             <td><?php echo tgl_indo($value['tgl_terbit_blok']); ?></td>
             <td>ini dapat darimana</td>
-            <td></td>
+            <td><?php echo $value['keterangan']; ?></td>
           </tr>
         <?php endforeach ?>
       <?php endforeach ?>

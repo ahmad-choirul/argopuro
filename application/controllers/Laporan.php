@@ -28,7 +28,7 @@ class Laporan extends CI_Controller {
     public function index()
     {   
         level_user('laporan','index',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
-        $this->load->view('member/laporan/beranda');
+        $this->load->view('member/laporan/beranda2');
     }
 
     public function laba_rugi()

@@ -149,7 +149,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </header>
                     <div class="panel-body">
                         <a href="<?php echo base_url()?>laporan/laporan_evaluasi_stok_split" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Stok Splitsing</a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_stok_split_per" class="btn btn-warning"><i class="fa fa-folder"></i>Splitsing Per Perumahan</a>
+                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_stok_split_per" class="btn btn-primary"><i class="fa fa-folder"></i>Splitsing Per Perumahan</a>
                     </div>
                 </section>
             </div>  
@@ -164,7 +164,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </section>
             </div>  
-
+<div class="col-md-4"> 
+                <section class="panel">
+                    <header class="panel-heading"> 
+                        <p style="font-size: 13px; color: black;"><b>12. Laporan Penjualan</b></p>
+                    </header>
+                    <div class="panel-body">
+                        <a href="<?php echo base_url()?>laporan/laporan_penjualan" class="btn btn-primary"><i class="fa fa-folder"></i>  Laporan Penjualan</a>
+                       
+                    </div>
+                </section>
+            </div>
         </div>
 
     </div>
