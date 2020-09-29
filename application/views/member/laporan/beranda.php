@@ -23,153 +23,68 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body class="bgbody">
   <section class="body">
 
-   <!-- start: header -->
-   <?php $this->load->view("komponen/header.php") ?>
-   <!-- end: header -->
+     <!-- start: header -->
+     <?php $this->load->view("komponen/header.php") ?>
+     <!-- end: header -->
 
-   <div class="inner-wrapper">
-    <!-- start: sidebar -->
-    <?php $this->load->view("komponen/sidebar.php") ?>
-    <!-- end: sidebar -->
+     <div class="inner-wrapper">
+        <!-- start: sidebar -->
+        <?php $this->load->view("komponen/sidebar.php") ?>
+        <!-- end: sidebar -->
 
-    <section role="main" class="content-body">
-     <header class="page-header">  
-      <h2>Laporan</h2>  
-  </header>  
+        <section role="main" class="content-body">
+           <header class="page-header">  
+              <h2>Laporan</h2>  
+          </header>  
 
 
-        <div class="inner-body mg-main" style="margin-left: 0px;">  
-            <div class="row" style="margin-top:-25px;">  
-                <div class="col-md-4"> 
+          <div class="inner-body mg-main" style="margin-left: 0px;">  
+            <div class="row">
+                <div class="col-md-12"> 
                     <section class="panel">
-                        <header class="panel-heading"> 
-                            <p style="font-size: 13px; color: black;"><b>1. EVALUASI PROSES DAN IJIN LOKASI TANAH</b></p>
-                        </header>
+                
                         <div class="panel-body">
-                            <a href="<?php echo base_url()?>laporan/rekap_proses_ijin_lokasi" class="btn btn-primary"><i class="fa fa-folder"></i> Rekap Proses Ijin Lokasi </a>
-                            <a href="<?php echo base_url()?>laporan/list_ijin" class="btn btn-primary"><i class="fa fa-folder"></i> Rincian Ijin Lokasi</a>
+                            <div class="form-group col-md-10">
+                                <select class="form-control select2">
+                                    <option>MENU 1</option>
+                                    <option>MENU 2</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2"> <input type="submit" class="btn btn-block btn-primary" value="SUBMIT"> </div>
                         </div>
                     </section>
                 </div> 
-
-                <div class="col-md-4"> 
+            </div>
+            <div class="row">
+                 <div class="col-md-6"> 
                     <section class="panel">
-                        <header class="panel-heading"> 
-                            <p style="font-size: 13px; color: black;"><b>2. EVALUASI PEMBELIAN TANAH</b></p>
-                        </header>
+                
                         <div class="panel-body">
-                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian_detail" class="btn btn-primary"><i class="fa fa-folder"></i> Detail Evaluasi Pembelian</a>
-                            <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian" class="btn btn-primary"><i class="fa fa-folder"></i> Rekap Evaluasi Pembelian</a>
+                             
+                           <div class=" col-md-8" style="font-size: 30px;float: left;line-height: 30px;color: #4287f5;"><br><b>Rekap Proses Ijin Lokasi</b> </div>
+                           <div class=" col-md-4">
+                               <img src="<?php echo base_url()?>assets/icon/1-02.png" style="width: 50%;height: 50%;float: right;" class="">
+                             </div>
                         </div>
                     </section>
                 </div> 
-
-                <div class="col-md-4"> 
+                  <div class="col-md-6"> 
                     <section class="panel">
-                        <header class="panel-heading"> 
-                           <p style="font-size: 13px; color: black;"><b>3. EVALUASI LAND BANK</b></p>
-                       </header>
-                       <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank" class="btn btn-primary"><i class="fa fa-folder"></i> Land Bank Rekap</a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank_per" class="btn btn-primary"><i class="fa fa-folder"></i> Land Bank Perumahan</a>
-                    </div>
-                </section>
+                
+                        <div class="panel-body">
+                             
+                           <div class=" col-md-8" style="font-size: 30px;float: left;line-height: 30px;color: #4287f5;"><br><b>Rincian Ijin Lokasi</b> </div>
+                           <div class=" col-md-4">
+                               <img src="<?php echo base_url()?>assets/icon/1-02.png" style="width: 50%;height: 50%;float: right;" class="">
+                             </div>
+                        </div>
+                    </section>
+                </div> 
             </div>
 
-            <div class="col-md-4"> 
-                <section class="panel">
-                    <header class="panel-heading"> 
-                        <p style="font-size: 13px; color: black;"><b>4. EVALUASI TANAH PROYEK BELUM SHGB</b></p>
-                    </header>
-                    <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="btn btn-primary"><i class="fa fa-folder"></i>  Rekap Tanah Belum SHGB</a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb_per" class="btn btn-primary"><i class="fa fa-folder"></i>Tanah Belum SHGB Perumahan</a>
-                    </div>
-                </section>
-            </div>  
-            <div class="col-md-4"> 
-                <section class="panel">
-                    <header class="panel-heading"> 
-                        <p style="font-size: 13px; color: black;"><b>5. EVALUASI PROSES INDUK</b></p>
-                    </header>
-                    <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Penyelesaian Induk</a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk_per" class="btn btn-primary"><i class="fa fa-folder"></i>Penyelesaian Induk Perumahan</a>
-                    </div>
-                </section>
-            </div>  
-            <div class="col-md-4"> 
-                <section class="panel">
-                    <header class="panel-heading"> 
-                        <p style="font-size: 13px; color: black;"><b>6. EVALUASI PENGGABUNGAN DAN REVISI SPLIT</b></p>
-                    </header>
-                    <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_penggabungan_split" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Penggabungan </a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_penggabungan_split_per" class="btn btn-warning"><i class="fa fa-folder"></i>Penggabungan Perumahan</a>
-                    </div>
-                </section>
-            </div>  
-            <div class="col-md-4"> 
-                <section class="panel">
-                    <header class="panel-heading"> 
-                        <p style="font-size: 13px; color: black;"><b>7. EVALUASI TANAH PROYEK SUDAH SHGB</b></p>
-                    </header>
-                    <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_shgb" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Tanah SHGB</a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_shgb_per" class="btn btn-warning"><i class="fa fa-folder"></i>Tanah SHGB Perumahan</a>
-                    </div>
-                </section>
-            </div>  
-            <div class="col-md-4"> 
-                <section class="panel">
-                    <header class="panel-heading"> 
-                        <p style="font-size: 13px; color: black;"><b>8. EVALUASI PROSES SPLITSING</b></p>
-                    </header>
-                    <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_splitsing" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Splitsing</a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_splitsing_per" class="btn btn-primary"><i class="fa fa-folder"></i> Splitsing Perumahan</a>
-                    </div>
-                </section>
-            </div>  
-            <div class="col-md-4"> 
-                <section class="panel">
-                    <header class="panel-heading"> 
-                        <p style="font-size: 13px; color: black;"><b>9. EVALUASI HUTANG SERT BELUM SPLIT </b></p>
-                    </header>
-                    <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_sert_belum_split" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Hutang Sertifikat </a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_sert_belum_split_per" class="btn btn-warning"><i class="fa fa-folder"></i>Hutang Sertifikat Perumahan</a>
-                    </div>
-                </section>
-            </div>  
-            <div class="col-md-4"> 
-                <section class="panel">
-                    <header class="panel-heading"> 
-                        <p style="font-size: 13px; color: black;"><b>10. EVALUASI STOK SPLITSING</b></p>
-                    </header>
-                    <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_stok_split" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Stok Splitsing</a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_stok_split_per" class="btn btn-warning"><i class="fa fa-folder"></i>Splitsing Per Perumahan</a>
-                    </div>
-                </section>
-            </div>  
-            <div class="col-md-4"> 
-                <section class="panel">
-                    <header class="panel-heading"> 
-                        <p style="font-size: 13px; color: black;"><b>11. EVALUASI BALIK NAMA</b></p>
-                    </header>
-                    <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Balik Namak</a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb_per" class="btn btn-warning"><i class="fa fa-folder"></i>Balik Nama Per Perumahan</a>
-                    </div>
-                </section>
-            </div>  
-
-        </div>
-
-    </div>
-</section>
-</div>
+          </div>
+      </section>
+  </div>
 
 </section>
 
@@ -191,111 +106,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
- $.ajax({
-        url: '<?php echo base_url()?>dashboard/cash_2_minggu', // getchart.php
-        dataType: 'JSON',
-        type: 'GET', 
-        success: function(response) {
 
-           Morris.Line({
-            resize: true,
-            element: 'GrafikCash',
-            data: response,
-            xkey: 'tanggal',
-            ykeys: ['masuk','keluar'],
-            labels: ['Uang Masuk (Rp) ','Uang Keluar (Rp) '],
-            hideHover: true,
-            lineColors: ['#0088cc', '#734ba9'],
-            xLabelFormat: function (d) {
-                return ("0" + d.getDate()).slice(-2) + '-' + ("0" + (d.getMonth() + 1)).slice(-2) + '-' + d.getFullYear();
-            },
-            xLabelAngle: 45,
-        });
-       }
-   });
-
-
- $.ajax({
-        url: '<?php echo base_url()?>dashboard/laporan_ringkas', // getchart.php
-        dataType: 'JSON',
-        type: 'GET', 
-        success: function(response) {
-            $.each(response, function(i, item) {  
-                $('#akan_jatuh_tempo').html(item.akan_jatuh_tempo);  
-                $('#dibayar_minggu_ini').html(item.dibayar_minggu);  
-                $('#total_hutang_belum_bayar').html(item.total_hutang_belum_bayar);   
-                $('#sudah_jatuh_tempo').html(item.sudah_jatuh_tempo);  
-            }); 
-        }
-    });
- $.ajax({
-    type: 'GET',
-    url: '<?php echo base_url()?>dashboard/produk_kadaluarsa', 
-    dataType 	: 'json',
-    success: function(response) { 
-        var i = 0; 
-        var datarow =''; 
-        $.each(response.datasub, function(i, itemsub) {
-            i = i + 1;
-            datarow+="<tr><td>"+i+"</td>"; 
-            datarow+="<td>"+itemsub.kode_item+"</td>"; 
-            datarow+="<td>"+itemsub.nama_item+"</td>"; 
-            datarow+="<td>"+itemsub.tgl_expired+"</td>";   
-            datarow+="</tr>"; 
-        });   
-        if(datarow == '' ){ 
-            $('#kadaluarsa').append('<tr><td colspan="4" align="center"> Tidak ada produk akan kadaluarsa</td></tr>');
-        }else{
-            $('#kadaluarsa').append(datarow);
-        }
-    }
-}); 
-
- $.ajax({
-    type: 'GET',
-    url: '<?php echo base_url()?>dashboard/produk_terlaris', 
-    dataType 	: 'json',
-    success: function(response) { 
-        var i = 0; 
-        var datarow =''; 
-        $.each(response.datasub, function(i, itemsub) {
-            i = i + 1;
-            datarow+="<tr><td>"+i+"</td>"; 
-            datarow+="<td>"+itemsub.kode_item+"</td>"; 
-            datarow+="<td>"+itemsub.nama_item+"</td>"; 
-            datarow+="<td>"+itemsub.total+"</td>";   
-            datarow+="</tr>"; 
-        });   
-        if(datarow == '' ){ 
-            $('#produk_terlaris').append('<tr><td colspan="4" align="center"> Tidak ada produk data</td></tr>');
-        }else{
-            $('#produk_terlaris').append(datarow);
-        }
-    }
-}); 
-
- $.ajax({
-        url: '<?php echo base_url()?>dashboard/penjualan_2_minggu', // getchart.php
-        dataType: 'JSON',
-        type: 'GET',
-        data: {get_values: true},
-        success: function(response) { 
-           Morris.Line({
-            resize: true,
-            element: 'GrafikPenjualan',
-            data: response,
-            xkey: 'tanggal',
-            ykeys: ['jumlah'],
-            labels: ['Jumlah Transaksi'],
-            hideHover: true,
-            lineColors: ['#0088cc'],
-            xLabelFormat: function (d) {
-                return ("0" + d.getDate()).slice(-2) + '-' + ("0" + (d.getMonth() + 1)).slice(-2) + '-' + d.getFullYear();
-            },
-            xLabelAngle: 45,
-        });
-       }
-   });
 </script>
 
 </body>
