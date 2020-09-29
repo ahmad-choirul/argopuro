@@ -287,7 +287,7 @@ function getrowsstok($params = array()){
     if(!empty($params['search']['firstdate']) AND !empty($params['search']['lastdate'])){
         $this->db->where('a.tanggal BETWEEN "'.$params['search']['firstdate']. '" and "'. $params['search']['lastdate'].'"');
     }
-    $this->db->order_by('a.tanggal','ASC'); 
+    $this->db->order_by('a.jumlah_keluar','desc'); 
     if(empty($params['kategori']['excel']) OR $params['kategori']['excel'] != 'excel'){
         if(array_key_exists("start",$params) && array_key_exists("limit",$params)){
             $this->db->limit($params['limit'],$params['start']);

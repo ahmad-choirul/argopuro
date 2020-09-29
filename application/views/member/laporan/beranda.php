@@ -59,25 +59,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  <div class="col-md-6"> 
                     <section class="panel">
                 
-                        <div class="panel-body">
+                        <button class="panel-body btn btn-primary btn-lg">
                              
-                           <div class=" col-md-8" style="font-size: 30px;float: left;line-height: 30px;color: #4287f5;"><br><b>Rekap Proses Ijin Lokasi</b> </div>
+                           <div class=" col-md-8 " ><b style="font-size: 30px;float: left;line-height: 30px;"><br>Rekap Proses Ijin Lokasi</b></div>
                            <div class=" col-md-4">
                                <img src="<?php echo base_url()?>assets/icon/1-02.png" style="width: 50%;height: 50%;float: right;" class="">
                              </div>
-                        </div>
+                        </button>
                     </section>
                 </div> 
                   <div class="col-md-6"> 
                     <section class="panel">
                 
-                        <div class="panel-body">
+                        <button class="panel-body btn btn-warning btn-lg">
                              
-                           <div class=" col-md-8" style="font-size: 30px;float: left;line-height: 30px;color: #4287f5;"><br><b>Rincian Ijin Lokasi</b> </div>
+                           <div class=" col-md-8 " ><b style="font-size: 30px;float: left;line-height: 30px;"><br>Rincian Ijin Lokasi</b></div>
                            <div class=" col-md-4">
                                <img src="<?php echo base_url()?>assets/icon/1-02.png" style="width: 50%;height: 50%;float: right;" class="">
                              </div>
-                        </div>
+                        </button>
                     </section>
                 </div> 
             </div>
