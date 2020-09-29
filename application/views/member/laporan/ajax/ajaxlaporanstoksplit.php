@@ -35,72 +35,22 @@
    <table class="table table-bordered table-hover table-striped tableitem" id="itemsdata">
     <thead style="position: sticky;">
      <tr>
-       <th rowspan="4" style="text-align: center;vertical-align: middle;">NO</th>
-       <th rowspan="4" style="text-align: center;vertical-align: middle;">Aksi</th>
-       <th rowspan="4" style="text-align: center;vertical-align: middle;">BLOK</th>
-       <th rowspan="4" style="text-align: center;vertical-align: middle;">JML KAV</th>
-       <th colspan="3" rowspan="2" style="text-align: center;vertical-align: middle;">L. TANAH</th>
-       <th rowspan="4" style="text-align: center;vertical-align: middle;">NO INDUK</th>
-       <th rowspan="4" style="text-align: center;vertical-align: middle;">NO SERT </th>
-       <th rowspan="4" style="text-align: center;vertical-align: middle;">TGL DAFTAR</th>
-       <th rowspan="4" style="text-align: center;vertical-align: middle;">TGL TERBIT</th>
-       <th rowspan="4" style="text-align: center;vertical-align: middle;">BATAS WAKTU HGB</th>
-       <th colspan="6" rowspan="2" style="text-align: center;vertical-align: middle;">BELUM TERBIT SPLIT</th>
-       <th colspan="6" rowspan="2" style="text-align: center;vertical-align: middle;">TERBIT STOK</th>
-       <th colspan="12" style="text-align: center;vertical-align: middle;">PENJUALAN 2020</th>
-       <th rowspan="4" style="text-align: center;vertical-align: middle;">KETERANGAN</th>
-
-     </tr>
-     <tr>
-       <th colspan="6"  style="text-align: center;vertical-align: middle;">STOCK</th>
-       <th colspan="6" style="text-align: center;vertical-align: middle;">BELUM TERBIT SPLIT</th>
+       <th rowspan="2" style="text-align: center;vertical-align: middle;">NO</th>
+       <th rowspan="2" style="text-align: center;vertical-align: middle;">Aksi</th>
+       <th rowspan="2" style="text-align: center;vertical-align: middle;">BLOK</th>
+       <th rowspan="2" style="text-align: center;vertical-align: middle;">JML KAV</th>
+       <th colspan="3" rowspan="1" style="text-align: center;vertical-align: middle;">L. TANAH</th>
+       <th rowspan="2" style="text-align: center;vertical-align: middle;">NO INDUK</th>
+       <th rowspan="2" style="text-align: center;vertical-align: middle;">NO SERT </th>
+       <th rowspan="2" style="text-align: center;vertical-align: middle;">TGL DAFTAR</th>
+       <th rowspan="2" style="text-align: center;vertical-align: middle;">TGL TERBIT</th>
+       <th rowspan="2" style="text-align: center;vertical-align: middle;">BATAS WAKTU HGB</th>
+       <th rowspan="2" style="text-align: center;vertical-align: middle;">KETERANGAN</th>
      </tr>
      <tr>
        <th rowspan="2" style="text-align: center;vertical-align: middle;">TECHNIC</th>
        <th rowspan="2" style="text-align: center;vertical-align: middle;">SERT</th>
        <th rowspan="2" style="text-align: center;vertical-align: middle;">SELISIH</th>
-       <th colspan="2" style="text-align: center;vertical-align: middle;">BELUM PROSES</th>
-       <th colspan="2" style="text-align: center;vertical-align: middle;">PROSES</th>
-       <th colspan="2" style="text-align: center;vertical-align: middle;">TOTAL</th>
-       <th colspan="2" style="text-align: center;vertical-align: middle;">sd 2019</th>
-       <th colspan="2" style="text-align: center;vertical-align: middle;">2020L</th>
-       <th colspan="2" style="text-align: center;vertical-align: middle;">TOTAL</th>
-       <th colspan="2" style="text-align: center;vertical-align: middle;">sd 2019</th>
-       <th colspan="2" style="text-align: center;vertical-align: middle;">2020L</th>
-       <th colspan="2" style="text-align: center;vertical-align: middle;">TOTAL</th>
-       <th colspan="2" style="text-align: center;vertical-align: middle;">BELUM PROSES</th>
-       <th colspan="2" style="text-align: center;vertical-align: middle;">PROSESL</th>
-       <th colspan="2" style="text-align: center;vertical-align: middle;">TOTAL</th>
-
-
-     </tr>
-     <tr>
-       <th style="text-align: center;vertical-align: middle;">KAV</th>
-       <th style="text-align: center;vertical-align: middle;">SERT</th>
-       <th style="text-align: center;vertical-align: middle;">KAV</th>
-       <th style="text-align: center;vertical-align: middle;">SERT</th>
-       <th style="text-align: center;vertical-align: middle;">KAV</th>
-       <th style="text-align: center;vertical-align: middle;">SERT</th>
-       <th style="text-align: center;vertical-align: middle;">KAV</th>
-       <th style="text-align: center;vertical-align: middle;">SERT</th>
-       <th style="text-align: center;vertical-align: middle;">KAV</th>
-       <th style="text-align: center;vertical-align: middle;">SERT</th>
-       <th style="text-align: center;vertical-align: middle;">KAV</th>
-       <th style="text-align: center;vertical-align: middle;">SERT</th>
-       <th style="text-align: center;vertical-align: middle;">KAV</th>
-       <th style="text-align: center;vertical-align: middle;">SERT</th>
-       <th style="text-align: center;vertical-align: middle;">KAV</th>
-       <th style="text-align: center;vertical-align: middle;">SERT</th>
-       <th style="text-align: center;vertical-align: middle;">KAV</th>
-       <th style="text-align: center;vertical-align: middle;">SERT</th>
-       <th style="text-align: center;vertical-align: middle;">KAV</th>
-       <th style="text-align: center;vertical-align: middle;">SERT</th>
-       <th style="text-align: center;vertical-align: middle;">KAV</th>
-       <th style="text-align: center;vertical-align: middle;">SERT</th>
-       <th style="text-align: center;vertical-align: middle;">KAV</th>
-       <th style="text-align: center;vertical-align: middle;">SERT</th>
-
-
      </tr>
 
 
@@ -110,6 +60,7 @@
     <?php $no=1; foreach ($datastok as $data): ?>
 
     <?php 
+     $tomboljual = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<a href="#" class="mb-xs mt-xs mr-xs btn btn-success" onclick="jual(this)" data-id="'.$this->security->xss_clean($data->id_stok_split).'">Jual</a>':'';
     $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->id_stok_split).'">Edit</a></li>':'';
     $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->id_stok_split).'">Hapus</a></li>':'';
     $tombol='
@@ -123,13 +74,14 @@
     </div>
     ';
     $luas_teknik = $data->luas_teknik;
-    $dataitem = $this->master_model->getdetailstoksplit($data->id_stok_split);
+    $dataitem = $this->master_model->getfullstoksplit($data->id_stok_split);
 
     ?>
 
     <tr>
       <td><?php echo $no++; ?></td>
       <td><?php echo $tombol; ?></td>
+      <td><?php echo $tomboljual; ?></td>
       <td><?php echo $data->blok; ?></td>
       <td><?php echo $data->jml_kvl; ?></td>
       <td><?php echo  $luas_teknik ?></td>
@@ -141,118 +93,52 @@
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
     </tr>
-
     <?php foreach ($dataitem as $key => $value): ?>
-      
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><?php echo $luas_teknik ?></td>
-      <td><?php echo $value['luas_terbit_blok']; ?></td>
-      <td><?php echo $luas_teknik -= $value['luas_terbit_blok']; ?></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <?php endforeach ?>
-  <?php endforeach ?>
-</tbody>
-<tfoot>
- <tr>
-   <td colspan="2">TOTAL </td>
 
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
- </tr>
-</tfoot>
-</table> 
+      <?php if ($value['tgl_terbit_blok']=='0000-00-00'): ?>
+        <tr style="background-color:#ffbaba">
+          <?php else: ?>
+            <tr style="background-color:#c0ffba">
+            <?php endif ?>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><?php echo $luas_teknik ?></td>
+            <td><?php echo $value['luas_terbit_blok']; ?></td>
+            <td><?php echo $luas_teknik -= $value['luas_terbit_blok']; ?></td>
+            <td><?php echo $value['no_terbit_shgb']; ?></td>
+            <td><?php echo $value['no_shgb_blok']; ?></td>
+            <td><?php echo tgl_indo($value['tgl_daftar_blok']); ?></td>
+            <td><?php echo tgl_indo($value['tgl_terbit_blok']); ?></td>
+            <td>ini dapat darimana</td>
+            <td></td>
+          </tr>
+        <?php endforeach ?>
+      <?php endforeach ?>
+    </tbody>
+    <tfoot>
+     <tr>
+       <td colspan="2">TOTAL </td>
+
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+     </tr>
+   </tfoot>
+ </table> 
 </div>
 </div>
 </section>

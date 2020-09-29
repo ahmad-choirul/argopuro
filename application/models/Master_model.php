@@ -40,7 +40,16 @@ class Master_model extends CI_Model{
      $this->db->where('id_split', $id);
      return $this->db->get()->result_array();
  }
-
+ public function getfullstoksplit($id_split)
+ {
+    $this->db->select('*');
+    $this->db->from('tbl_stok_split a');
+    $this->db->join('tbl_dtl_split b', 'a.id_stok_split = b.id_stok_split');
+    $this->db->join('master_split c', 'c.id_split = b.id_split');
+    $this->db->join('master_proses_induk d', 'c.id_proses_induk = d.id_proses_induk');
+    $this->db->where('a.id_stok_split', $id_split);
+    return $this->db->get()->result_array();
+}
  public function getdetailstoksplit($id_split)
  {
     $this->db->select('*');
