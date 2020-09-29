@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2020 at 07:43 AM
+-- Generation Time: Sep 29, 2020 at 02:24 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -9754,9 +9754,8 @@ CREATE TABLE `master_split` (
 --
 
 INSERT INTO `master_split` (`id_split`, `id_proses_induk`, `keterangan`) VALUES
-(1, 3, ''),
-(6, 3, ''),
-(7, 3, '');
+(9, 3, ''),
+(10, 3, 'test keterangan');
 
 -- --------------------------------------------------------
 
@@ -10027,9 +10026,8 @@ INSERT INTO `tbl_dtl_proses_induk` (`id_dtl_proses_induk`, `id_proses_induk`, `i
 CREATE TABLE `tbl_dtl_split` (
   `id_dtl_split` int(11) NOT NULL,
   `id_split` int(11) NOT NULL,
-  `blok` varchar(20) NOT NULL,
+  `id_stok_split` int(11) NOT NULL,
   `luas_daftar_blok` varchar(100) NOT NULL,
-  `lebar_daftar_blok` varchar(100) NOT NULL,
   `luas_terbit_blok` varchar(100) NOT NULL,
   `no_shgb_blok` varchar(100) NOT NULL,
   `masa_berlaku_blok` date NOT NULL,
@@ -10043,11 +10041,13 @@ CREATE TABLE `tbl_dtl_split` (
 -- Dumping data for table `tbl_dtl_split`
 --
 
-INSERT INTO `tbl_dtl_split` (`id_dtl_split`, `id_split`, `blok`, `luas_daftar_blok`, `lebar_daftar_blok`, `luas_terbit_blok`, `no_shgb_blok`, `masa_berlaku_blok`, `no_daftar_blok`, `tgl_daftar_blok`, `tgl_terbit_blok`, `keterangan`) VALUES
-(12, 6, 'test blok', '1', '', '1', '1', '0000-00-00', '1', '2020-08-25', '2020-08-25', '1'),
-(13, 7, 'blok ajsdkajsh', '1000', '', '', '', '0000-00-00', '', '0000-00-00', '0000-00-00', ''),
-(14, 1, 'blok a', '123', '100', '123', '12', '2020-08-19', '123', '2020-08-20', '2020-08-19', '113'),
-(15, 1, 'blok c', '12', '100', '12', '123', '2020-08-25', '1', '2020-08-25', '2020-08-25', '1');
+INSERT INTO `tbl_dtl_split` (`id_dtl_split`, `id_split`, `id_stok_split`, `luas_daftar_blok`, `luas_terbit_blok`, `no_shgb_blok`, `masa_berlaku_blok`, `no_daftar_blok`, `tgl_daftar_blok`, `tgl_terbit_blok`, `keterangan`) VALUES
+(26, 9, 74, '2', '2', '', '0000-00-00', '', '0000-00-00', '0000-00-00', ''),
+(27, 9, 73, '3', '3', '', '0000-00-00', '', '0000-00-00', '0000-00-00', ''),
+(28, 9, 72, '3', '3', '', '0000-00-00', '', '0000-00-00', '0000-00-00', ''),
+(29, 9, 70, '1', '1', '', '0000-00-00', '', '0000-00-00', '2020-09-28', ''),
+(30, 10, 70, '10', '10', '', '0000-00-00', '', '0000-00-00', '0000-00-00', ''),
+(31, 10, 71, '20', '20', '', '0000-00-00', '', '0000-00-00', '0000-00-00', '');
 
 -- --------------------------------------------------------
 
@@ -10111,9 +10111,28 @@ CREATE TABLE `tbl_stok_split` (
 --
 
 INSERT INTO `tbl_stok_split` (`id_stok_split`, `blok`, `jml_kvl`, `luas_teknik`, `id_perumahan`) VALUES
-(25, 'blok a', 10, 324, 1),
-(26, 'blok b', 20, 239476, 1),
-(27, 'blok c', 10, 23592, 1);
+(66, 'blok 1', 1, 100, 1),
+(67, 'blok 2', 1, 200, 1),
+(68, 'blok 3', 1, 300, 1),
+(69, 'blok 4', 1, 400, 1),
+(70, 'blok 5', 1, 500, 1),
+(71, 'blok 6', 1, 600, 1),
+(72, 'blok 7', 1, 700, 1),
+(73, 'blok 8', 1, 800, 1),
+(74, 'blok 9', 1, 900, 1),
+(75, 'blok 10', 1, 1000, 1),
+(76, 'blok 11', 1, 1100, 1),
+(77, 'blok 12', 1, 1200, 1),
+(78, 'blok 13', 1, 1300, 1),
+(79, 'blok 14', 1, 1400, 1),
+(80, 'blok 15', 1, 1500, 1),
+(81, 'blok 16', 1, 1600, 1),
+(82, 'blok 17', 1, 1700, 1),
+(83, 'blok 18', 1, 1800, 1),
+(84, 'blok 19', 1, 1900, 1),
+(86, 'blok a', 1, 200, 3),
+(87, 'blok b', 1, 100, 3),
+(88, 'blok c', 1, 150, 3);
 
 -- --------------------------------------------------------
 
@@ -10379,7 +10398,7 @@ ALTER TABLE `master_regional`
 -- AUTO_INCREMENT for table `master_split`
 --
 ALTER TABLE `master_split`
-  MODIFY `id_split` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_split` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `master_status_regional`
@@ -10427,7 +10446,7 @@ ALTER TABLE `tbl_dtl_proses_induk`
 -- AUTO_INCREMENT for table `tbl_dtl_split`
 --
 ALTER TABLE `tbl_dtl_split`
-  MODIFY `id_dtl_split` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_dtl_split` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `tbl_jenis_pengalihan`
@@ -10445,7 +10464,7 @@ ALTER TABLE `tbl_sertifikat_tanah`
 -- AUTO_INCREMENT for table `tbl_stok_split`
 --
 ALTER TABLE `tbl_stok_split`
-  MODIFY `id_stok_split` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_stok_split` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `tbl_target`
