@@ -50,8 +50,15 @@ class Master_model extends CI_Model{
     $this->db->where('a.id_stok_split', $id_split);
     return $this->db->get()->result_array();
 }
- public function getdetailstoksplit($id_split)
- {
+public function getdatapenjualan($id_jual)
+{
+    $this->db->select('*');
+    $this->db->from('master_penjualan a');
+    $this->db->where('a.id_jual', $id_jual);
+    return $this->db->get()->result_array()[0];
+}
+public function getdetailstoksplit($id_split)
+{
     $this->db->select('*');
     $this->db->from('tbl_stok_split');
     $this->db->join('tbl_dtl_split', 'tbl_stok_split.id_stok_split = tbl_dtl_split.id_stok_split');
@@ -607,6 +614,28 @@ function simpandatastok_split(){
         'luas_teknik'=>$post["luas_teknik"]);
     return $this->db->insert("tbl_stok_split", $array);   
 } 
+
+function simpandatajual_stok(){   
+    $post = $this->input->post();   
+    $array = array(
+        'nama_pembeli'=>$post["nama_pembeli"], 
+        'nik'=>$post["nik"], 
+        'pekerjaan'=>$post["pekerjaan"], 
+        'tgl_terima_nego'=>$post["tgl_terima_nego"],
+        'tgl_penjualan'=>$post["tgl_penjualan"],
+        'sistem_pembayaran'=>$post["sistem_pembayaran"],
+        'harga'=>bilanganbulat($post["harga"]));
+    $insertpenjualan =  $this->db->insert("master_penjualan", $array);   
+    if ($insertpenjualan) {
+        $id = $this->db->insert_id();
+        $this->db->where('id_stok_split', $post['id_stok_split']);
+        $update = array('id_jual' => $id );
+        $this->db->update('tbl_stok_split', $update);
+        return true;
+    }else{
+        return false;
+    }
+} 
 public function updatedatastok_split()
 {
     $post = $this->input->post();
@@ -621,6 +650,17 @@ public function hapusdatastok_split()
     $post = $this->input->post(); 
     $this->db->where('id_stok_split', $post['id_stok_split']);
     return $this->db->delete('tbl_stok_split');  
+}
+
+public function hapusdatajual()
+{
+    $post = $this->input->post(); 
+    $update = array('id_jual' => 0 );
+    $this->db->where('id_jual', $post['id_jual']);
+    $this->db->update('tbl_stok_split', $update);
+
+    $this->db->where('id_jual', $post['id_jual']);
+    return $this->db->delete('master_penjualan');  
 }
     //CRUD stok_split end
 

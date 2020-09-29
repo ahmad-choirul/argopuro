@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php $this->load->view("komponen/sidebar.php") ?>
     <section role="main" class="content-body">
      <header class="page-header">  
-      <h2>Evaluasi Stok Split </h2>
+      <h2>Laporan Penjualan </h2>
     </header>  
     <!-- start: page -->
     <div id="tampilstok">
@@ -74,87 +74,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <input type="text" name="luas_teknik" class="form-control" required/>
             </div>
           </div>  
-        </div>
-        <footer class="panel-footer">
-          <div class="row">
-            <div class="col-md-12 text-right">
-              <button class="btn btn-primary modal-confirm" type="submit" id="submitform">Submit</button>
-              <button class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </footer>
-      </form>
-    </section>
-  </div>
-</div>
-</div>
-
-<div class="modal fade" id="tambahjual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <section class="panel  panel-primary">
-        <?php echo form_open('master/jual_stok',' id="Formulirjual"');?>  
-        <header class="panel-heading">
-          <h2 class="panel-title">Tambah Data Penjualan Stok</h2>
-        </header>
-        <div class="panel-body">
-           <div class="form-group mt-lg blok">
-            <label class="col-sm-3 control-label">Blok<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="blokjuala" id="blokjual" class="form-control" readonly />
-            </div>
-          </div>  
-          <div class="form-group mt-lg nama_pembeli">
-            <label class="col-sm-3 control-label">Nama Pembeli<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="hidden" name="id_stok_split" id="idjual">
-
-              <input type="text" name="nama_pembeli" class="form-control" required/>
-            </div>
-          </div>  
-          <div class="form-group mt-lg nik">
-            <label class="col-sm-3 control-label">NIK Pembeli<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="nik" class="form-control" required/>
-            </div>
-          </div>  
-          <div class="form-group mt-lg pekerjaan">
-            <label class="col-sm-3 control-label">Pekerjaan Pembeli<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="pekerjaan" class="form-control" required/>
-            </div>
-          </div>  
-          <div class="form-group mt-lg tgl_terima_nego">
-            <label class="col-sm-3 control-label">Tanggal Terima Nego <span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="tgl_terima_nego" class="form-control tanggal" required/>
-            </div>
-          </div>  
-          <div class="form-group mt-lg tgl_penjualan">
-            <label class="col-sm-3 control-label">Tanggal Penjualan <span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="tgl_penjualan" class="form-control tanggal" required/>
-            </div>
-          </div>  
-
-          <div class="form-group mt-lg harga">
-            <label class="col-sm-3 control-label">Harga Penjualan <span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="harga" class="form-control mask_price" required/>
-            </div>
-          </div>  
-          <div class="form-group mt-lg sistem_pembayaran">
-            <label class="col-sm-3 control-label">Sistem Pembayaran<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <select data-plugin-selectTwo class="form-control" required name="sistem_pembayaran">  
-                <option value="in house">In House</option>
-                <option value="cash">Cash</option>
-                <option value="kpr subsidi">KPR Subsidi</option>
-                <option value="kpr komersil">KPR Komersil</option>
-
-              </select> 
-            </div>
-          </div>
         </div>
         <footer class="panel-footer">
           <div class="row">
@@ -301,8 +220,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <footer class="panel-footer"> 
           <div class="row">
             <div class="col-md-12 text-right"> 
-              <?php echo form_open('master/stok_splithapus',' id="FormulirHapus"');?>  
-              <input type="hidden" name="id_stok_split" id="idddelete">
+              <?php echo form_open('master/hapus_jual',' id="FormulirHapus"');?>  
+              <input type="hidden" name="id_jual" id="idddelete">
               <button type="submit" class="btn btn-danger" id="submitformHapus">Delete</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </form>
@@ -332,9 +251,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript">
   $(document).ready(function(){
    refresh();    
-   $('.tanggal').datepicker({
-    format: 'yyyy-mm-dd'
-  });
  });
 </script>
 <?php  
@@ -404,78 +320,6 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
                 }); 
                 e.preventDefault(); 
             }); 
-
-function jual(elem){ 
-      var dataId = $(elem).data("id");
-      var dataBlok = $(elem).data("blok_jual");
-      document.getElementById("idjual").setAttribute('value', dataId);
-      document.getElementById("blokjual").setAttribute('value', dataBlok);
-      $('#tambahjual').modal();        
-    }
-
- document.getElementById("Formulirjual").addEventListener("submit", function (e) {  
-      blurForm();       
-      $('.help-block').hide();
-      $('.form-group').removeClass('has-error');
-      document.getElementById("submitform").setAttribute('disabled','disabled');
-      $('#submitform').html('Loading ...');
-      var form = $('#Formulirjual')[0];
-      var formData = new FormData(form);
-      var xhrAjax = $.ajax({
-      type    : 'POST',
-      url     : $(this).attr('action'),
-      data    : formData, 
-      processData: false,
-      contentType: false,
-      cache: false, 
-      dataType  : 'json'
-      }).done(function(data) { 
-      if ( ! data.success) {     
-                    $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-                    document.getElementById("submitform").removeAttribute('disabled');  
-                    $('#submitform').html('Submit');    
-                    var objek = Object.keys(data.errors);  
-                    for (var key in data.errors) {
-                        if (data.errors.hasOwnProperty(key)) { 
-                            var msg = '<div class="help-block" for="'+key+'">'+data.errors[key]+'</span>';
-                            $('.'+key).addClass('has-error');
-                            $('input[name="' + key + '"]').after(msg);  
-                            $('textarea[name="' + key + '"]').after(msg);  
-                        }
-                        if (key == 'fail') {   
-                            new PNotify({
-                                title: 'Notifikasi',
-                                text: data.errors[key],
-                                type: 'danger'
-                            }); 
-                        }
-                    }
-                } else { 
-                    $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-                    PNotify.removeAll(); 
-                    // tablekategori.ajax.reload();  
-                    refresh(); 
-                    document.getElementById("submitform").removeAttribute('disabled'); 
-                    $('#tambahjual').modal('hide'); 
-                    document.getElementById("Formulirjual").reset();  
-                    $('#submitform').html('Submit');   
-                    new PNotify({
-                        title: 'Notifikasi',
-                        text: data.message,
-                        type: 'success'
-                    });  
-                }
-                }).fail(function(data) {   
-                    new PNotify({
-                        title: 'Notifikasi',
-                        text: "Request gagal, browser akan direload",
-                        type: 'danger'
-                    }); 
-                    //window.setTimeout(function() {  location.reload();}, 2000);
-                }); 
-                e.preventDefault(); 
-            }); 
-
     function edit(elem){
       var dataId = $(elem).data("id");
       document.getElementById("id_stok_split").setAttribute('value', dataId);
@@ -759,8 +603,9 @@ function jual(elem){
 
     $.ajax({
       type: 'GET',
-      url: '<?php echo base_url(); ?>laporan/ajaxstoksplit/',
+      url: '<?php echo base_url(); ?>laporan/ajaxdatajual/',
       data: 'id_perumahan='+id_perumahan,
+      // data: 'id_perumahan='+id_perumahan+'&statjual=1',
       success: function (html) { 
         $('#tampilstok').html(html); 
       }

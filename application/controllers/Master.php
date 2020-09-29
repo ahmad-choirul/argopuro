@@ -504,6 +504,22 @@ public function stok_splittambah(){
     $data['token'] = $this->security->get_csrf_hash();
     echo json_encode($data); 
 } 
+
+public function jual_stok(){ 
+    cekajax(); 
+    $simpan = $this->master_model;
+
+    if($simpan->simpandatajual_stok()){
+        $data['success']= true;
+        $data['message']="Berhasil menyimpan data";   
+    }else{
+        $errors['fail'] = "gagal melakukan update data";
+        $data['errors'] = $errors;
+    }  
+
+    $data['token'] = $this->security->get_csrf_hash();
+    echo json_encode($data); 
+} 
 public function stoksplitdetail(){  
     cekajax(); 
     $query = $this->db->get_where('tbl_stok_split', array('id_stok_split' => $this->input->get("id_stok_split")),1);
@@ -539,6 +555,33 @@ public function stok_splithapus(){
         $data['message']="Berhasil menghapus data"; 
     }else{    
         $errors['fail'] = "gagal menghapus data";
+        $data['errors'] = $errors;
+    }
+    $data['token'] = $this->security->get_csrf_hash();
+    echo json_encode($data); 
+}  
+public function hapus_jual(){ 
+    cekajax(); 
+    $hapus = $this->master_model;
+    if($hapus->hapusdatajual()){ 
+        $data['success']= true;
+        $data['message']="Berhasil menghapus data"; 
+    }else{    
+        $errors['fail'] = "gagal menghapus data";
+        $data['errors'] = $errors;
+    }
+    $data['token'] = $this->security->get_csrf_hash();
+    echo json_encode($data); 
+}  
+
+public function stok_splitjual(){ 
+    cekajax(); 
+    $hapus = $this->master_model;
+    if($hapus->jualdatastok_split()){ 
+        $data['success']= true;
+        $data['message']="Berhasil menjual stok"; 
+    }else{    
+        $errors['fail'] = "gagal menjual stok";
         $data['errors'] = $errors;
     }
     $data['token'] = $this->security->get_csrf_hash();

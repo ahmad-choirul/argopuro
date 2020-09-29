@@ -37,6 +37,7 @@
      <tr>
        <th rowspan="2" style="text-align: center;vertical-align: middle;">NO</th>
        <th rowspan="2" style="text-align: center;vertical-align: middle;">Aksi</th>
+       <th rowspan="2" style="text-align: center;vertical-align: middle;">Jual</th>
        <th rowspan="2" style="text-align: center;vertical-align: middle;">BLOK</th>
        <th rowspan="2" style="text-align: center;vertical-align: middle;">JML KAV</th>
        <th colspan="3" rowspan="1" style="text-align: center;vertical-align: middle;">L. TANAH</th>
@@ -60,7 +61,7 @@
     <?php $no=1; foreach ($datastok as $data): ?>
 
     <?php 
-     $tomboljual = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<a href="#" class="mb-xs mt-xs mr-xs btn btn-success" onclick="jual(this)" data-id="'.$this->security->xss_clean($data->id_stok_split).'">Jual</a>':'';
+     $tomboljual = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<a href="#" class="mb-xs mt-xs mr-xs btn btn-success" onclick="jual(this)" data-id="'.$this->security->xss_clean($data->id_stok_split).'" data-blok_jual="'.$this->security->xss_clean($data->blok).'">Jual</a>':'';
     $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->id_stok_split).'">Edit</a></li>':'';
     $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->id_stok_split).'">Hapus</a></li>':'';
     $tombol='
