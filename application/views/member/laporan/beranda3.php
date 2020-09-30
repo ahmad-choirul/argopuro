@@ -44,33 +44,62 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="inner-body mg-main" style="margin-left: 0px;">  
 
      <div class="row">
-        <div class="col-md-3 card justify-content-center text-center" style="margin-right: 2%;">
-          <div class="card-body">
+      <div class="col-md-3 card justify-content-center text-center" style="margin-right: 2%;">
+        <div class="card-body">
           <h3 class="card-title">Evaluasi proses dan Ijin Lokasi Tanah</h3>
           <img class="img-fluid mb-3" src="<?php echo base_url()?>assets/beranda/images/pic.png" alt="Card image cap" style="height: 150px; widht: 150px;">
-           <a href="#" class="btn btn-primary col-md-12"><i class="fa fa-sign-in"></i> Rekap Proses Ijin Lokasi</a>
-          <a href="#" class="btn  col-md-12"><i class="fa fa-sign-in"></i> Rincian Ijin Lokasi</a>
+          <a href="<?php echo base_url()?>laporan/rekap_proses_ijin_lokasi" class="btn btn-primary col-md-12"><i class="fa fa-sign-in"></i> Rekap Proses Ijin Lokasi</a>
+          <a href="<?php echo base_url()?>laporan/list_ijin" class="btn " class="btn  col-md-12"><i class="fa fa-sign-in"></i> Rincian Ijin Lokasi</a>
         </div>
-        </div>
-         <div class="col-md-3 card justify-content-center text-center" style="margin-right: 2%;">
-          <div class="card-body">
+      </div>
+      <div class="col-md-3 card justify-content-center text-center" style="margin-right: 2%;">
+        <div class="card-body">
           <h3 class="card-title">Evaluasi Pembelian Tanah</h3><br>
-         <img class="img-fluid mb-3" src="<?php echo base_url()?>assets/beranda/images/pic.png" alt="Card image cap" style="height: 150px; widht: 150px;">
-           <a href="#" class="btn btn-primary col-md-12"><i class="fa fa-sign-in"></i> Detail Evaluasi Pembelian</a>
-          <a href="#" class="btn  col-md-12"><i class="fa fa-sign-in"></i> Rekap Evaluasi Pembelian</a>
+          <img class="img-fluid mb-3" src="<?php echo base_url()?>assets/beranda/images/pic.png" alt="Card image cap" style="height: 150px; widht: 150px;">
+          <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian_detail" class="btn btn-primary col-md-12"><i class="fa fa-sign-in"></i> Detail Evaluasi Pembelian</a>
+          <a href="<?php echo base_url()?>laporan/laporan_evaluasi_pembelian" class="btn  col-md-12"><i class="fa fa-sign-in"></i> Rekap Evaluasi Pembelian</a>
         </div>
-        </div>
-         <div class="col-md-3 card justify-content-center text-center" >
-          <div class="card-body">
+      </div>
+      <div class="col-md-3 card justify-content-center text-center" >
+        <div class="card-body">
           <h3 class="card-title">Evaluasi Land Bank</h3><br>
           <img class="img-fluid mb-3" src="<?php echo base_url()?>assets/beranda/images/pic.png" alt="Card image cap" style="height: 150px; widht: 150px;">
-        <a href="#" class="btn btn-primary"><i class="fa fa-sign-in"></i> Land Bank Rekap</a><br>
-          <a href="#" class="btn "><i class="fa fa-sign-in"></i> Land Bank Perumahan</a>
+          <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_banK" class="btn btn-primary"><i class="fa fa-sign-in"></i> Land Bank Rekap</a><br>
+          <a href="<?php echo base_url()?>laporan/laporan_evaluasi_land_bank_per" class="btn "><i class="fa fa-sign-in"></i> Land Bank Perumahan</a>
         </div>
+      </div>
+
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-3 card justify-content-center text-center" style="margin-right: 2%;">
+        <div class="card-body">
+          <h3 class="card-title">Evaluasi Tanah Proyek Belum SHGB</h3>
+          <img class="img-fluid mb-3" src="<?php echo base_url()?>assets/beranda/images/pic.png" alt="Card image cap" style="height: 150px; widht: 150px;">
+          <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="btn btn-primary col-md-12"><i class="fa fa-sign-in"></i> Rekap Tanah Belum SHGB</a>
+          <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb_per" class="btn  col-md-12"><i class="fa fa-sign-in"></i> Tanah Belum SHGB Perumahan</a>
         </div>
-     </div>
-   </div>
- </section>
+      </div>
+      <div class="col-md-3 card justify-content-center text-center" style="margin-right: 2%;">
+        <div class="card-body">
+          <h3 class="card-title">Evaluasi Proses Induk</h3><br>
+          <img class="img-fluid mb-3" src="<?php echo base_url()?>assets/beranda/images/pic.png" alt="Card image cap" style="height: 150px; widht: 150px;">
+          <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk" class="btn btn-primary col-md-12"><i class="fa fa-sign-in"></i>Rekap Penyelesaian Induk</a>
+          <a href="<?php echo base_url()?>laporan/laporan_evaluasi_proses_induk_per" class="btn  col-md-12"><i class="fa fa-sign-in"></i>Penyelesaian Induk Perumahan</a>
+        </div>
+      </div>
+      <div class="col-md-3 card justify-content-center text-center" >
+        <div class="card-body">
+          <h3 class="card-title">Evaluasi Penggabungan dan revisi Split</h3>
+          <img class="img-fluid mb-3" src="<?php echo base_url()?>assets/beranda/images/pic.png" alt="Card image cap" style="height: 150px; widht: 150px;">
+          <a href="<?php echo base_url()?>laporan/laporan_evaluasi_penggabungan_split" class="btn btn-primary"><i class="fa fa-sign-in"></i> Rekap Penggabungan</a><br>
+          <a href="<?php echo base_url()?>laporan/laporan_evaluasi_penggabungan_split" class="btn "><i class="fa fa-sign-in"></i> Penggabungan Perumahan</a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
 </div>
 
 </section>
