@@ -472,8 +472,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				type: 'GET',
 				url: '<?php echo base_url()?>laporan/splitsing_data', 
 				dataType    : 'json',
-				success: function(ressplitsingnse) {  
-					$.each(ressplitsingnse, function(i, item) {  
+				success: function(response) {  
+					$.each(response, function(i, item) {  
 					$('#splitsing_bulan_ini').html(item.splitsing_bulan);  
 					$('#splitsing_minggu_ini').html(item.splitsing_minggu);  
 					$('#splitsing_hari_ini').html(item.splitsing_hari);   
@@ -492,9 +492,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 url: '<?php echo base_url()?>laporan/splitsingdetail',
                 data: 'id=' + dataId,
                 dataType 	: 'json',
-                success: function(ressplitsingnse) { 
+                success: function(response) { 
                     var datarow='<div class="row">';
-                    $.each(ressplitsingnse.datarows, function(i, item) {
+                    $.each(response.datarows, function(i, item) {
                         document.getElementById('linkprint').setAttribute('href', '<?php echo base_url()?>laporan/printsplitsing/'+item.nomor_splitsing);
                         document.getElementById('linkpdf').setAttribute('href', '<?php echo base_url()?>laporan/pdfsplitsing/'+item.nomor_splitsing);
                         
@@ -528,7 +528,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     datarow+="</tr></thead>";
                     datarow+="<tbody>";
                     
-                    $.each(ressplitsingnse.datasub, function(i, itemsub) {
+                    $.each(response.datasub, function(i, itemsub) {
                         datarow+="<tr>";
                         datarow+="<td>"+itemsub.kode_item+"</td>"; 
                         datarow+="<td>"+itemsub.nama_item+"</td>";
@@ -673,8 +673,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     url: '<?php echo base_url()?>laporan/splitsingdetail',
                     data: 'id=' + dataId,
                     dataType 	: 'json',
-                    success: function(ressplitsingnse) {  
-                        $.each(ressplitsingnse.datarows, function(i, item) {                 
+                    success: function(response) {  
+                        $.each(response.datarows, function(i, item) {                 
                             $("#pembayaran").select2("val", item.pembayaran); 
                             $("#supplier").select2("val", item.kode_supplier);                
                             document.getElementById("nomor_splitsing").value = item.nomor_splitsing;       
@@ -685,7 +685,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         });  
 
                         var datarow='';
-                        $.each(ressplitsingnse.datasub, function(i, itemsub) {
+                        $.each(response.datasub, function(i, itemsub) {
                             x= x + 1;
                             datarow+='<tr><td><div class="input-group input-group-icon" style="width:150px;"><input type="text" data-urutan="'+x+'" data-toggle="modal" data-target="#modal-listitems" value="'+itemsub.kode_item+'"  class="form-control kode-item'+x+'" placeholder="Pilih Item"><span class="input-group-addon"><span class="icon"><i class="fa fa-search"></i></span></span></div></td>';
                             datarow+='<td><input type="hidden" value="'+itemsub.kode_item+'" class="kode-item'+x+'" name="kode_item[]"><input type="hidden" class="nama-item'+x+'"  value="'+itemsub.nama_item+'" name="nama_item[]">';

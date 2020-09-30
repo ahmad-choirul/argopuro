@@ -591,18 +591,18 @@ function simpandataprosessplit(){
     $this->db->trans_start();
     $array = array(
        'id_proses_induk'=>$post["id_proses_induk"],
+       'masa_berlaku_split'=>$post["masa_berlaku_blok"],
+       'tgl_daftar_split'=>$post["tgl_daftar_blok"],
+       'no_berkas_split'=>$post["no_berkas"],
        'keterangan'=>$post["keterangan"],
    );
     $this->db->insert("master_split", $array);
     $id_split =  $this->db->insert_id();
     $id_stok_split = $this->input->post("id_stok_split");    
-    $luas_daftar_blok = $this->input->post("luas_daftar_blok");     
-    $luas_terbit_blok = $this->input->post("luas_terbit_blok");
-    $no_shgb_blok = $this->input->post("no_shgb_blok");
+    $luas_daftar_blok = $this->input->post("luas_daftar_blok"); 
+    $no_shgb_blok = $this->input->post("no_terbit_shgb");
     $masa_berlaku_blok = $this->input->post("masa_berlaku_blok");    
-    $no_daftar_blok = $this->input->post("no_daftar_blok");    
     $tgl_daftar_blok = $this->input->post("tgl_daftar_blok");    
-    $tgl_terbit_blok = $this->input->post("tgl_terbit_blok");   
     $keterangandetail = $this->input->post("keterangandetail"); 
     $detail = array();
     for($i = 0; $i < count($id_stok_split); $i++){
@@ -610,12 +610,10 @@ function simpandataprosessplit(){
             'id_split'=>$id_split,  
             'id_stok_split'=>$id_stok_split[$i],  
             'luas_daftar_blok'=>$luas_daftar_blok[$i],  
-            'luas_terbit_blok'=>$luas_terbit_blok[$i],  
-            'no_shgb_blok'=>$no_shgb_blok[$i],  
-            'masa_berlaku_blok'=>$masa_berlaku_blok[$i],  
-            'no_daftar_blok'=>$no_daftar_blok[$i],  
-            'tgl_daftar_blok'=>$tgl_daftar_blok[$i],  
-            'tgl_terbit_blok'=>$tgl_terbit_blok[$i],  
+            'no_shgb_blok'=>$no_shgb_blok,  
+            'masa_berlaku_blok'=>$masa_berlaku_blok,    
+            'tgl_daftar_blok'=>$tgl_daftar_blok,  
+            'no_daftar_blok'=>$post['no_berkas'],  
             'keterangan'=>$keterangandetail[$i],
         );  
         $detail[] = $listitem;
@@ -634,35 +632,34 @@ public function updatedataprosessplit()
     $post = $this->input->post();
     $id_split =  $post["idd"];
     $this->db->trans_start();
+    $id_stok_split = $this->input->post("id_stok_split");    
+    $luas_daftar_blok = $this->input->post("luas_daftar_blok"); 
+    $no_shgb_blok = $this->input->post("no_terbit_shgb");
+    $masa_berlaku_blok = $this->input->post("masa_berlaku_blok");    
+    $tgl_daftar_blok = $this->input->post("tgl_daftar_blok");    
+    $keterangandetail = $this->input->post("keterangandetail"); 
     $array = array(
-       'id_proses_induk'=>$post["id_proses_induk"],
-       'keterangan'=>$post["keterangan"],
-   );
+        'id_proses_induk'=>$post["id_proses_induk"],
+        'masa_berlaku_split'=>$post["masa_berlaku_blok"],
+        'tgl_daftar_split'=>$post["tgl_daftar_blok"],
+        'no_berkas_split'=>$post["no_berkas"],
+        'keterangan'=>$post["keterangan"],
+    );
     $this->db->where('id_split', $id_split);
     $this->db->update("master_split", $array);
     $this->db->where('id_split', $id_split);
     $this->db->delete('tbl_dtl_split');
-    $id_stok_split = $this->input->post("id_stok_split");    
-    $luas_daftar_blok = $this->input->post("luas_daftar_blok");     
-    $luas_terbit_blok = $this->input->post("luas_terbit_blok");
-    $no_shgb_blok = $this->input->post("no_shgb_blok");
-    $masa_berlaku_blok = $this->input->post("masa_berlaku_blok");    
-    $no_daftar_blok = $this->input->post("no_daftar_blok");    
-    $tgl_daftar_blok = $this->input->post("tgl_daftar_blok");    
-    $tgl_terbit_blok = $this->input->post("tgl_terbit_blok");   
-    $keterangandetail = $this->input->post("keterangandetail"); 
+    
     $detail = array();
     for($i = 0; $i < count($id_stok_split); $i++){
         $listitem = array(
             'id_split'=>$id_split,  
             'id_stok_split'=>$id_stok_split[$i],  
             'luas_daftar_blok'=>$luas_daftar_blok[$i],  
-            'luas_terbit_blok'=>$luas_terbit_blok[$i],  
-            'no_shgb_blok'=>$no_shgb_blok[$i],  
-            'masa_berlaku_blok'=>$masa_berlaku_blok[$i],  
-            'no_daftar_blok'=>$no_daftar_blok[$i],  
-            'tgl_daftar_blok'=>$tgl_daftar_blok[$i],  
-            'tgl_terbit_blok'=>$tgl_terbit_blok[$i],  
+            'no_shgb_blok'=>$no_shgb_blok,  
+            'masa_berlaku_blok'=>$masa_berlaku_blok,    
+            'tgl_daftar_blok'=>$tgl_daftar_blok,  
+            'no_daftar_blok'=>$post['no_berkas'],  
             'keterangan'=>$keterangandetail[$i],
         );  
         $detail[] = $listitem;

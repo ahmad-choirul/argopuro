@@ -33,7 +33,6 @@ class Master_model extends CI_Model{
     }
     public function getsplit($id)
     {
-      // $this->db->select('a.*,b*,c*');
      $this->db->from('master_split a'); 
      $this->db->join('master_proses_induk b', 'a.id_proses_induk = b.id_proses_induk', 'left');
      $this->db->join('master_regional c', 'b.id_perumahan = c.id', 'left');
