@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php $this->load->view("komponen/sidebar.php") ?>
     <section role="main" class="content-body">
      <header class="page-header">  
-      <h2>Evaluasi Stok Split </h2>
+      <h2>Evaluasi Kavling Efektif </h2>
     </header>  
     <!-- start: page -->
      <section class="panel">
@@ -130,33 +130,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <h2 class="panel-title">Tambah Data Penjualan Stok</h2>
         </header>
         <div class="panel-body">
-           <div class="form-group mt-lg blok">
-            <label class="col-sm-3 control-label">Blok<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="blokjuala" id="blokjual" class="form-control" readonly />
-            </div>
-          </div>  
-          <div class="form-group mt-lg nama_pembeli">
-            <label class="col-sm-3 control-label">Nama Pembeli<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="hidden" name="id_stok_split" id="idjual">
-
-              <input type="text" name="nama_pembeli" class="form-control" required/>
-            </div>
-          </div>  
-          <div class="form-group mt-lg nik">
-            <label class="col-sm-3 control-label">NIK Pembeli<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="nik" class="form-control" required/>
-            </div>
-          </div>  
-          <div class="form-group mt-lg pekerjaan">
-            <label class="col-sm-3 control-label">Pekerjaan Pembeli<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="pekerjaan" class="form-control" required/>
-            </div>
-          </div>  
-          <div class="form-group mt-lg tgl_terima_nego">
+           <div class="form-group mt-lg tgl_terima_nego">
             <label class="col-sm-3 control-label">Tanggal Terima Nego <span class="required">*</span></label>
             <div class="col-sm-9">
               <input type="text" name="tgl_terima_nego" class="form-control tanggal" required/>
@@ -168,13 +142,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <input type="text" name="tgl_penjualan" class="form-control tanggal" required/>
             </div>
           </div>  
+            
+          <div class="form-group mt-lg nama_pembeli">
+            <label class="col-sm-3 control-label">Nama Pembeli<span class="required">*</span></label>
+            <div class="col-sm-9">
+              <input type="hidden" name="id_stok_split" id="idjual">
 
+              <input type="text" name="nama_pembeli" class="form-control" required/>
+            </div>
+          </div>  
+          <div class="form-group mt-lg nik">
+            <label class="col-sm-3 control-label">NIK Pembeli<span class="required">*</span></label>
+            <div class="col-sm-9">
+              <input type="number" name="nik" class="form-control" required/>
+            </div>
+          </div> 
+           <div class="form-group mt-lg nik">
+            <label class="col-sm-3 control-label">Alamat Pembeli<span class="required">*</span></label>
+            <div class="col-sm-9">
+              <input type="text" name="nik" class="form-control" required/>
+            </div>
+          </div>  
+          <div class="form-group mt-lg pekerjaan">
+            <label class="col-sm-3 control-label">Pekerjaan Pembeli<span class="required">*</span></label>
+            <div class="col-sm-9">
+              <input type="text" name="pekerjaan" class="form-control" required/>
+            </div>
+          </div>  
+         
+<div class="form-group mt-lg harga">
+            <label class="col-sm-3 control-label">Tipe <span class="required">*</span></label>
+            <div class="col-sm-9">
+              <input type="text" name="harga" class="form-control" required/>
+            </div>
+          </div>  
+          <div class="form-group mt-lg blok">
+            <label class="col-sm-3 control-label">Blok<span class="required">*</span></label>
+            <div class="col-sm-9">
+              <input type="text" name="blokjuala" id="blokjual" class="form-control" readonly />
+            </div>
+          </div> 
           <div class="form-group mt-lg harga">
             <label class="col-sm-3 control-label">Harga Penjualan <span class="required">*</span></label>
             <div class="col-sm-9">
               <input type="text" name="harga" class="form-control mask_price" required/>
             </div>
           </div>  
+
           <div class="form-group mt-lg sistem_pembayaran">
             <label class="col-sm-3 control-label">Sistem Pembayaran<span class="required">*</span></label>
             <div class="col-sm-9">
@@ -183,7 +197,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <option value="cash">Cash</option>
                 <option value="kpr subsidi">KPR Subsidi</option>
                 <option value="kpr komersil">KPR Komersil</option>
-
               </select> 
             </div>
           </div>

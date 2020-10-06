@@ -32,9 +32,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php $this->load->view("komponen/sidebar.php") ?>
     <section role="main" class="content-body">
      <header class="page-header">  
-      <h2>Laporan Penjualan </h2>
+      <h2>Laporan Hutang Penjualan </h2>
     </header>  
     <!-- start: page -->
+     <section class="panel">
+  <header class="panel-heading">    
+    <form action="" method="get">
+      <div class="row show-grid">
+        <div class="col-md-2" align="left"><h2 class="panel-title">Nama Perumahan </h2></div>
+        <div class="col-sm-3">
+          <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
+            <option value="">Pilih Lokasi</option>
+            <?php foreach ($perumahan as $aa): ?>
+             <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
+           <?php endforeach; ?>
+         </select> 
+       </div>
+       <div class="col-sm-2">
+        <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="status_surat">  
+        <option  value="semua" <?php if ($status_surat == 'semua') echo 'selected' ; ?>>Semua</option>
+          <option value="belum" <?php if ($status_surat == 'belum') echo 'selected' ; ?>>Belum</option>
+          <option value="proses" <?php if ($status_surat == 'proses') echo 'selected' ; ?>>Proses</option>
+          <option value="terbit" <?php if ($status_surat == 'terbit') echo 'selected' ; ?>>Terbit</option>
+        </select> 
+      </div>
+     </form>
+   </header>
     <div id="tampilstok">
 
     </div>
@@ -600,12 +623,13 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
 <script type="text/javascript">
   function refresh() { 
     var id_perumahan = '<?php echo $id_perumahan ?>';
+    var status_surat = '<?php echo $status_surat ?>';
 
     $.ajax({
       type: 'GET',
       url: '<?php echo base_url(); ?>laporan/ajaxdatajual/',
-      data: 'id_perumahan='+id_perumahan,
-      // data: 'id_perumahan='+id_perumahan+'&statjual=1',
+      // data: 'id_perumahan='+id_perumahan,
+      data: 'id_perumahan='+id_perumahan+'&status_surat='+status_surat,
       success: function (html) { 
         $('#tampilstok').html(html); 
       }

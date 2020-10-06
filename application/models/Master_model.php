@@ -1033,7 +1033,7 @@ public function getshgbperumahan($id='',$firstdate='',$lastdate='',$shgb='')
     $this->db->where('a.tanggal_pembelian BETWEEN "'.$firstdate. '" and "'. $lastdate.'"');
 }
 if (!empty($id)) {
-    $this->db->where('id_perumahan', $id);
+    $this->db->where('a.id_perumahan', $id);
 }
 
 if ($shgb=='belum') {

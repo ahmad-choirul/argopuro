@@ -28,7 +28,7 @@ class Laporan extends CI_Controller {
     public function index()
     {   
         level_user('laporan','index',$this->session->userdata('kategori'),'read') > 0 ? '': show_404();
-        $this->load->view('member/laporan/beranda3');
+        $this->load->view('member/laporan/beranda2');
     }
 
     public function laba_rugi()
@@ -859,13 +859,16 @@ public function ajaxstoksplit()
 public function laporan_penjualan()
 {
   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+  $data['status_surat'] = $this->input->get('status_surat',true);
+  $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
+ $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
   $this->load->view('member/laporan/laporan_penjualan',$data);
 }  
 public function ajaxdatajual()
 {
  $data['id_perumahan'] = $this->input->get('id_perumahan',true);
- $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
- $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+ $data['status_surat'] = $this->input->get('status_surat',true);
+ 
  $this->db->where('id_perumahan', $data['id_perumahan']);
  $this->db->join('master_penjualan', 'tbl_stok_split.id_jual = master_penjualan.id_jual', 'left');
  $this->db->where("tbl_stok_split.id_jual !=0 ");
