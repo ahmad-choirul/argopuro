@@ -866,14 +866,50 @@ public function laporan_penjualan()
 }  
 public function ajaxdatajual()
 {
- $data['id_perumahan'] = $this->input->get('id_perumahan',true);
- $data['status_surat'] = $this->input->get('status_surat',true);
- 
+ $data['id_perumahan'] = $this->input->get('id_perumahan',true); 
  $this->db->where('id_perumahan', $data['id_perumahan']);
  $this->db->join('master_penjualan', 'tbl_stok_split.id_jual = master_penjualan.id_jual', 'left');
  $this->db->where("tbl_stok_split.id_jual !=0 ");
  $data['datastok'] = $this->db->get('tbl_stok_split')->result();
  $this->load->view('member/laporan/ajax/ajaxlaporanstokjual',$data);
+}
+
+public function laporan_baliknama()
+{
+  $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+  $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
+ $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+  $this->load->view('member/laporan/laporan_baliknama',$data);
+}  
+public function ajaxbaliknama()
+{
+ $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+  $data['status_surat'] = 'terbit';
+
+ $this->db->where('id_perumahan', $data['id_perumahan']);
+ $this->db->join('master_penjualan', 'tbl_stok_split.id_jual = master_penjualan.id_jual', 'left');
+ $this->db->where("tbl_stok_split.id_jual !=0 ");
+ $data['datastok'] = $this->db->get('tbl_stok_split')->result();
+ $this->load->view('member/laporan/ajax/ajaxbaliknama',$data);
+}
+
+public function laporan_hutangsertifikat()
+{
+  $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+  $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
+ $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+  $this->load->view('member/laporan/laporan_hutangsertifikat',$data);
+}  
+public function ajaxhutangsertifkat()
+{
+ $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+  $data['status_surat'] = 'belum_terbit';
+
+ $this->db->where('id_perumahan', $data['id_perumahan']);
+ $this->db->join('master_penjualan', 'tbl_stok_split.id_jual = master_penjualan.id_jual', 'left');
+ $this->db->where("tbl_stok_split.id_jual !=0 ");
+ $data['datastok'] = $this->db->get('tbl_stok_split')->result();
+ $this->load->view('member/laporan/ajax/ajaxhutangsertifkat',$data);
 }
 public function stoksplitdetail()
 {

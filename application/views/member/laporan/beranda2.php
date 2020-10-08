@@ -159,8 +159,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p style="font-size: 13px; color: black;"><b>11. EVALUASI BALIK NAMA</b></p>
                     </header>
                     <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Balik Namak</a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_tanah_belum_shgb_per" class="btn btn-warning"><i class="fa fa-folder"></i>Balik Nama Per Perumahan</a>
+                        <a href="<?php echo base_url()?>laporan/rekap_baliknama" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Balik Namak</a>
+                        <a href="<?php echo base_url()?>laporan/laporan_baliknama" class="btn btn-warning"><i class="fa fa-folder"></i>Balik Nama Per Perumahan</a>
                     </div>
                 </section>
             </div>  
