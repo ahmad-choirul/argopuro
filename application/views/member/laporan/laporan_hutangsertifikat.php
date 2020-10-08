@@ -618,7 +618,7 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
 
     $.ajax({
       type: 'GET',
-      url: '<?php echo base_url(); ?>laporan/ajax hutangsertifikat/',
+      url: '<?php echo base_url(); ?>laporan/ajaxhutangsertifikat/',
       // data: 'id_perumahan='+id_perumahan,
       data: 'id_perumahan='+id_perumahan,
       success: function (html) { 

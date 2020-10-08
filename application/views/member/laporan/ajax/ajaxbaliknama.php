@@ -114,12 +114,8 @@
               <td></td>
         <td>'. $value['keterangan'].'</td>
         </tr>';
-         if ($status_surat=='semua') {
+         if ($stat=='terbit') {
           echo $kolom;
-        }else{
-          if ($status_surat==$stat) {
-            echo $kolom;
-          }
         }
       }
     } ?>

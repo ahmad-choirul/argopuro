@@ -212,12 +212,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <input type="text" name="nama_pengalihan" id="nama_pengalihan" class="form-control"  />
                         </div>
                     </div>
-                    <div class="form-group lain">
-                        <label class="col-sm-3 control-label">Lain-lain</span></label>
-                        <div class="col-sm-9">
-                            <input type="text" name="lain" id="lain" class="form-control"  />
+                   <div class="form-group lain">
+                        <label class="col-sm-3 control-label">Biaya Lain-lain</span></label>
+                        <div class="col-sm-4">
+                            <input type="text" name="lain" id="lain" placeholder="Nilai" class="form-control mask_price"  />
                         </div>
-                    </div><div class="form-group harga_perm">
+                        <div class="col-sm-5">
+
+                            <textarea rows="2" class="form-control" id="keterangan_lain" name="keterangan_lain" placeholder="Keterangan Lain-lain" ></textarea>
+                        </div>
+                    </div>
+                  <div class="form-group harga_perm">
                         <label class="col-sm-3 control-label"></span>Harga / M^2</label>
                         <div class="col-sm-9">
                             <input type="text" name="harga_perm" readonly id="harga_perm" class="form-control"  />

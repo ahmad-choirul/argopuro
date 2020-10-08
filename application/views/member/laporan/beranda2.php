@@ -137,8 +137,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p style="font-size: 13px; color: black;"><b>9. EVALUASI HUTANG SERT BELUM SPLIT </b></p>
                     </header>
                     <div class="panel-body">
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_sert_belum_split" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Hutang Sertifikat </a>
-                        <a href="<?php echo base_url()?>laporan/laporan_evaluasi_sert_belum_split_per" class="btn btn-warning"><i class="fa fa-folder"></i>Hutang Sertifikat Perumahan</a>
+                        <a href="<?php echo base_url()?>laporan/rekap_hutangsertifikat" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Hutang Sertifikat </a>
+                        <a href="<?php echo base_url()?>laporan/laporan_hutangsertifikat" class="btn btn-warning"><i class="fa fa-folder"></i>Hutang Sertifikat Perumahan</a>
                     </div>
                 </section>
             </div>  

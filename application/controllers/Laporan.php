@@ -884,8 +884,6 @@ public function laporan_baliknama()
 public function ajaxbaliknama()
 {
  $data['id_perumahan'] = $this->input->get('id_perumahan',true);
-  $data['status_surat'] = 'terbit';
-
  $this->db->where('id_perumahan', $data['id_perumahan']);
  $this->db->join('master_penjualan', 'tbl_stok_split.id_jual = master_penjualan.id_jual', 'left');
  $this->db->where("tbl_stok_split.id_jual !=0 ");
@@ -900,16 +898,14 @@ public function laporan_hutangsertifikat()
  $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
   $this->load->view('member/laporan/laporan_hutangsertifikat',$data);
 }  
-public function ajaxhutangsertifkat()
+public function ajaxhutangsertifikat()
 {
  $data['id_perumahan'] = $this->input->get('id_perumahan',true);
-  $data['status_surat'] = 'belum_terbit';
-
  $this->db->where('id_perumahan', $data['id_perumahan']);
  $this->db->join('master_penjualan', 'tbl_stok_split.id_jual = master_penjualan.id_jual', 'left');
  $this->db->where("tbl_stok_split.id_jual !=0 ");
  $data['datastok'] = $this->db->get('tbl_stok_split')->result();
- $this->load->view('member/laporan/ajax/ajaxhutangsertifkat',$data);
+ $this->load->view('member/laporan/ajax/ajaxhutangsertifikat',$data);
 }
 public function stoksplitdetail()
 {

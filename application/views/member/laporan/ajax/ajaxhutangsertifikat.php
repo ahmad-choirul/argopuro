@@ -49,13 +49,13 @@
       $dataitem = $this->master_model->getfullstoksplit($data->id_stok_split);
       $datajual = $this->master_model->getdatapenjualan($data->id_jual);
       ?>
-
+<?php $kolomjual=' 
       <tr>
-        <td><?php echo $no++; ?></td>
-        <td><?php echo $tombol; ?></td>
-        <td><?php echo $datajual['nama_pembeli']; ?></td>
-        <td><?php echo $data->blok; ?></td>
-        <td><?php echo  $luas_teknik ?></td>
+        <td>'.$no++.'</td>
+        <td>'.$tombol.'</td>
+        <td>'.$datajual['nama_pembeli'].'</td>
+        <td>'.$data->blok.'</td>
+        <td>'. $luas_teknik.'</td>
         <td></td>
         <td></td>
         <td></td>
@@ -63,16 +63,17 @@
         <td></td>
         <td></td>
         <td></td>
-        <td><?php echo $datajual['nik']; ?></td>
-        <td><?php echo $datajual['pekerjaan']; ?></td>
-        <td><?php echo tgl_indo($datajual['tgl_terima_nego']) ?></td>
-        <td><?php echo tgl_indo($datajual['tgl_penjualan']) ?></td>
-        <td><?php echo $datajual['sistem_pembayaran']; ?></td>
-        <td><?php echo rupiah($datajual['harga']) ?></td>
+        <td>'.$datajual['nik'].'</td>
+        <td>'.$datajual['pekerjaan'].'</td>
+        <td>'.tgl_indo($datajual['tgl_terima_nego']).'</td>
+        <td>'.tgl_indo($datajual['tgl_penjualan']).'</td>
+        <td>'.$datajual['sistem_pembayaran'].'</td>
+        <td>'.rupiah($datajual['harga']).'</td>
         <td></td>
-      </tr>
-   
+      </tr>';
+   ?>
         <?php 
+        echo $kolomjual;
          foreach ($dataitem as $key => $value){ 
         $kolom = '';
         $stat = '';
@@ -114,12 +115,8 @@
               <td></td>
         <td>'. $value['keterangan'].'</td>
         </tr>';
-         if ($status_surat=='semua') {
+         if ($stat!='terbit') {
           echo $kolom;
-        }else{
-          if ($status_surat==$stat) {
-            echo $kolom;
-          }
         }
       }
     } ?>
