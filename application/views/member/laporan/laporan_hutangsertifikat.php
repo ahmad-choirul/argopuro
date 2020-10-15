@@ -36,20 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </header>  
     <!-- start: page -->
      <section class="panel">
-  <header class="panel-heading">    
-    <form action="" method="get">
-      <div class="row show-grid">
-        <div class="col-md-2" align="left"><h2 class="panel-title">Nama Perumahan </h2></div>
-        <div class="col-sm-3">
-          <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
-            <option value="">Pilih Lokasi</option>
-            <?php foreach ($perumahan as $aa): ?>
-             <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
-           <?php endforeach; ?>
-         </select> 
-       </div>
-     </form>
-   </header>
+
     <div id="tampilstok">
 
     </div>

@@ -634,9 +634,11 @@ public function updatedataprosessplit()
     $this->db->trans_start();
     $id_stok_split = $this->input->post("id_stok_split");    
     $luas_daftar_blok = $this->input->post("luas_daftar_blok"); 
+    $luas_terbit_blok = $this->input->post("luas_terbit_blok"); 
     $no_shgb_blok = $this->input->post("no_terbit_shgb");
     $masa_berlaku_blok = $this->input->post("masa_berlaku_blok");    
     $tgl_daftar_blok = $this->input->post("tgl_daftar_blok");    
+    $tgl_terbit_blok = $this->input->post("tgl_terbit_blok");    
     $keterangandetail = $this->input->post("keterangandetail"); 
     $array = array(
         'id_proses_induk'=>$post["id_proses_induk"],
@@ -656,10 +658,12 @@ public function updatedataprosessplit()
             'id_split'=>$id_split,  
             'id_stok_split'=>$id_stok_split[$i],  
             'luas_daftar_blok'=>$luas_daftar_blok[$i],  
+            'luas_terbit_blok'=>$luas_terbit_blok[$i],  
             'no_shgb_blok'=>$no_shgb_blok,  
             'masa_berlaku_blok'=>$masa_berlaku_blok,    
             'tgl_daftar_blok'=>$tgl_daftar_blok,  
             'no_daftar_blok'=>$post['no_berkas'],  
+            'tgl_terbit_blok'=>$tgl_terbit_blok[$i],  
             'keterangan'=>$keterangandetail[$i],
         );  
         $detail[] = $listitem;

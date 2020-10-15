@@ -128,13 +128,11 @@
      <td></td>
      <td></td>
      <td></td>
-     <td></td>
    </tr>
  </tfoot>
 </table> 
 </div>
 </div>
-</section>
 <script type="text/javascript">
   var tableitems = $('#itemsdata').DataTable({  
     "serverSide": false, 

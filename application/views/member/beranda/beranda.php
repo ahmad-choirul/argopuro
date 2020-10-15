@@ -65,7 +65,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                                   <th scope="row"><?php echo $no++; ?></th>
                                                   <td><?php echo $value->nama_penjual ?></td>
                                                   <td><?php echo tgl_indo($value->tanggal_pembayaran) ?></td>
-                                                  <td><?php echo $value->total_bayar ?></td>
+                                                  <td><?php echo rupiah($value->total_bayar) ?></td>
                                               </tr>     
                                                 <?php endforeach ?>
                                                

@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php $this->load->view("komponen/sidebar.php") ?>
     <section role="main" class="content-body">
      <header class="page-header">  
-      <h2>Laporan Hutang Penjualan </h2>
+      <h2>Laporan Penjualan </h2>
     </header>  
     <!-- start: page -->
      <section class="panel">
