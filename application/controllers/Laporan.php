@@ -842,15 +842,14 @@ public function laporan_evaluasi_stok_split_per()
 {
   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
   $data['status_surat'] = $this->input->get('status_surat',true);
- $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
- $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
   $this->load->view('member/laporan/laporan_evaluasi_stok_split_per',$data);
 }  
 public function ajaxstoksplit()
 {
  $data['id_perumahan'] = $this->input->get('id_perumahan',true);
   $data['status_surat'] = $this->input->get('status_surat',true);
-
+ $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
+ $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
  $this->db->where('id_perumahan', $data['id_perumahan']);
  $this->db->where('id_jual', 0);
  $data['datastok'] = $this->db->get('tbl_stok_split')->result();

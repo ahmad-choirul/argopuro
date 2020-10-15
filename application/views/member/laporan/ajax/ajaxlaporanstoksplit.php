@@ -1,4 +1,44 @@
+  <header class="panel-heading">    
+        <form action="" method="get">
+          <div class="row show-grid">
+            <div class="col-md-1" align="left"><h2 class="panel-title">Nama Lokasi</h2></div>
+            <div class="col-sm-3">
+              <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
+                <option value="">Pilih Lokasi</option>
+                <?php foreach ($perumahan as $aa): ?>
+                 <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?>><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
+               <?php endforeach; ?>
+             </select> 
+           </div>
 
+           <div class="col-sm-2">
+            <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="status_surat">  
+              <option  value="semua" <?php if ($status_surat == 'semua') echo 'selected' ; ?>>Semua</option>
+              <option value="belum" <?php if ($status_surat == 'belum') echo 'selected' ; ?>>Belum</option>
+              <option value="proses" <?php if ($status_surat == 'proses') echo 'selected' ; ?>>Proses</option>
+              <option value="terbit" <?php if ($status_surat == 'terbit') echo 'selected' ; ?>>Terbit</option>
+            </select> 
+          </div>
+          <div class="col-sm-1">
+            <a class="btn btn-primary" href="<?php echo site_url('Export_excel/excellaporanprosesinduk/').$id_perumahan ?>"> cetak </a>
+          </div>
+          <div class="col-sm-2">
+            <div class="row">
+              <a class="btn btn-primary">Kavling efektif <div id="total_penjualan"></div></a>
+              <a class="btn btn-primary">kavling terbit split <div id="total_sertifikat"></div></a>   
+              <a class="btn btn-primary">kavling belum terbit <div id="total_sertifikat"></div></a>   
+            </div>
+
+          </div>
+          <div class="col-md-2" align="right">
+            <div class="row"> <a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a>
+              <a class="btn btn-success" href="#"  data-toggle="modal" data-target="#uploaddata"><i class="fa fa-plus"></i> Upload Data</a>
+            </div>
+
+          </div>
+        </div>
+      </form>
+    </header>
 <div class="panel-body"> 
   <div class="table" style="white-space: nowrap;">
    <table class="table table-bordered table-hover table-striped tableitem" id="itemsdata">
@@ -27,9 +67,15 @@
    </thead>
    <tbody>
 
-    <?php $no=1; foreach ($datastok as $data){ ?>
+    <?php 
+$total_stok=0;
+$total_stok_efektif=0;
+$total_stok_terbit_split=0;
+$total_stok_belum_terbit=0;
+     $no=1; foreach ($datastok as $data){ ?>
 
       <?php 
+      $total_stok++;
       $tomboljual = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<a href="#" class="mb-xs mt-xs mr-xs btn btn-success" onclick="jual(this)" data-id="'.$this->security->xss_clean($data->id_stok_split).'" data-blok_jual="'.$this->security->xss_clean($data->blok).'">Jual</a>':'';
       $tomboledit = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="edit(this)" data-id="'.$this->security->xss_clean($data->id_stok_split).'">Edit</a></li>':'';
       $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->id_stok_split).'">Hapus</a></li>':'';
@@ -74,15 +120,18 @@
 
         <?php if ($value['tgl_terbit_blok']=='0000-00-00') {
           if ($value['tgl_daftar_blok']=='0000-00-00'){
+            $total_stok_belum_terbit++;
             $stat = 'belum';
             $kolom.='<tr style="background-color:#ffbaba">';
           }
           else{
+            $total_stok_belum_terbit++;
             $stat = 'proses';
             $kolom.='<tr style="background-color:#ffd56b">';
           }
         }
         else{ 
+            $total_stok_terbit_split++;
           $stat = 'selesai';
           $kolom.='<tr style="background-color:#c0ffba">';
         }
