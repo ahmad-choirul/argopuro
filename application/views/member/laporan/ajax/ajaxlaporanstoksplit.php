@@ -6,12 +6,15 @@
       <div class="col-md-5">
 
         <div class="row" >
-          <div class="col-md-5"> <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
+          <div class="col-md-5">
+           <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
             <option value="">Pilih Lokasi</option>
             <?php foreach ($perumahan as $aa): ?>
              <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?>><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
            <?php endforeach; ?>
          </select> 
+        <input type="text" name="tgl_awal" class="form-control tanggal" placeholder="Tanggal Awal">
+
        </div>
        <div class="col-md-4" >
          <select data-plugin-selectTwo class="form-control " onchange='this.form.submit()' required name="status_surat">  
@@ -20,20 +23,22 @@
           <option value="proses" <?php if ($status_surat == 'proses') echo 'selected' ; ?>>Proses</option>
           <option value="terbit" <?php if ($status_surat == 'terbit') echo 'selected' ; ?>>Terbit</option>
         </select> 
+        <input type="text" name="tgl_akhir" class="form-control tanggal" placeholder="Tanggal Akhir">
       </div>
       <div class="col-md-3"> 
        <a class="btn btn-primary btn-block btn-hover " href="<?php echo site_url('Export_excel/excellaporanprosesinduk/').$id_perumahan ?>"><i class="fa fa-print"></i>  cetak </a>
      </div>
    </div>
  </div>
- <div class="col-md-3">
+ <div class="col-md-2">
    <a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a>
    <a class="btn btn-warning" href="#"  data-toggle="modal" data-target="#uploaddata"><i class="fa fa-upload"></i> Upload Data</a>
  </div>
- <div class="col-md-4">
-  <a class="btn btn-primary">Kavling efektif <div id="total_penjualan"> <b>10</b></div></a>
-  <a class="btn btn-success">Kavling terbit split <div id="total_sertifikat"><b>8</b></div></a>   
-  <a class="btn btn-warning">Kavling belum terbit <div id="total_sertifikat"><b>7</b></div></a> 
+ <div class="col-md-5">
+  <a class="btn btn-primary">Stok Kavling <b><div id="total_stok"> </b></div></a>
+  <a class="btn btn-primary">Kavling efektif <b><div id="total_stok_efektif"> </b></div></a>
+  <a class="btn btn-success">Kavling terbit split <b> <div id="total_stok_terbit_split"></b></div></a>   
+  <a class="btn btn-warning">Kavling belum terbit <b><div id="total_stok_belum_terbit"></b></div></a> 
 </div>
 </div>
 </form>
@@ -182,15 +187,15 @@
 </div>
 </div>
 <script type="text/javascript">
-  var tableitems = $('#itemsdata').DataTable({  
-    "serverSide": false, 
-    "order": [], 
-
-    "columnDefs": [
-    { 
-      "targets": [0], 
-      "orderable": false, 
-    },
-    ],  
-  }); 
+  $(document).ready(function(){
+   $('.tanggal').datepicker({
+    format: 'yyyy-mm-dd'
+  });
+ });
+</script>
+<script type="text/javascript">
+    $('#total_stok').html("<?php echo $total_stok ?>");
+    $('#total_stok_efektif').html("<?php echo $total_stok_efektif ?>");
+    $('#total_stok_belum_terbit').html("<?php echo $total_stok_belum_terbit ?>");
+    $('#total_stok_terbit_split').html("<?php echo $total_stok_terbit_split ?>");
 </script>
