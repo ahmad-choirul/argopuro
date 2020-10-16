@@ -122,8 +122,8 @@
 
         ?>
 
-        <?php if ($value['tgl_terbit_blok']=='0000-00-00') {
-          if ($value['tgl_daftar_blok']=='0000-00-00'){
+        <?php if ($value['tgl_terbit_blok']=='0000-00-00'||$value['tgl_terbit_blok']=='') {
+          if ($value['tgl_daftar_blok']=='0000-00-00'||$value['tgl_daftar_blok']==''){
             $total_stok_belum_terbit++;
             $stat = 'belum';
             $kolom.='<tr style="background-color:#ffbaba">';
@@ -155,6 +155,9 @@
         <td>ini dapat darimana</td>
         <td>'. $value['keterangan'].'</td>
         </tr>';
+        if ($luas_teknik=='0') {
+          $total_stok_efektif++;
+        }
         if ($status_surat=='semua') {
           echo $kolom;
         }else{
