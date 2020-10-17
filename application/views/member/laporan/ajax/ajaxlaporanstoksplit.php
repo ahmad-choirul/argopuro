@@ -3,7 +3,7 @@
      Pilih Lokasi dan Jenis Evaluasi <br>
      <div class="row show-grid">
 
-      <div class="col-md-5">
+      <div class="col-md-4">
 
         <div class="row" >
           <div class="col-md-5">
@@ -31,11 +31,11 @@
    </div>
  </div>
  <div class="col-md-2">
-   <a class="btn btn-success" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> Tambah</a>
-   <a class="btn btn-warning" href="#"  data-toggle="modal" data-target="#uploaddata"><i class="fa fa-upload"></i> Upload Data</a>
+   <a class="btn btn-danger" href="#"  data-toggle="modal" data-target="#tambahData"><i class="fa fa-plus"></i> </a>
+   <a class="btn btn-primary" href="#"  data-toggle="modal" data-target="#uploaddata"><i class="fa fa-upload"></i> </a>
  </div>
- <div class="col-md-5">
-  <a class="btn btn-primary">Stok Kavling <b><div id="total_stok"> </b></div></a>
+ <div class="col-md-6">
+  <a class="btn btn-info">Stok Kavling <b><div id="total_stok"> </b></div></a>
   <a class="btn btn-primary">Kavling efektif <b><div id="total_stok_efektif"> </b></div></a>
   <a class="btn btn-success">Kavling terbit split <b> <div id="total_stok_terbit_split"></b></div></a>   
   <a class="btn btn-warning">Kavling belum terbit <b><div id="total_stok_belum_terbit"></b></div></a> 
