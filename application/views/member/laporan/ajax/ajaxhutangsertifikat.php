@@ -10,13 +10,25 @@
            <?php endforeach; ?>
          </select> 
        </div>
-        <div class="col-sm-6">
-        <a class="btn btn-primary">jumlah penjualan <div id="total_penjualan"></div></a>
-        <a class="btn btn-primary">jumlah sertifikat <div id="total_sertifikat"></div></a>
+       <div class="col-sm-2">
+        <h2 class="panel-title">Tanggal Awal</h2>
+        <input type="text" name="tgl_awal" onchange="this.form.submit()" value="<?php echo $tgl_awal ?>" class="form-control tanggal">
       </div>
-     </form>
-   </header>
-   <div class="panel-body"> 
+      <div class="col-sm-2">
+        <h2 class="panel-title">Tanggal Akhir</h2>
+        <input type="text" name="tgl_akhir" onchange="this.form.submit()" value="<?php echo $tgl_akhir ?>" class="form-control tanggal">
+
+      </div>
+      <div class="col-sm-2">
+
+      </div>
+      <div class="col-sm-3" style="text-align: right;">
+        <a class="btn btn-success">jumlah penjualan <div id="total_penjualan"></div></a>
+        <a class="btn btn-warning">jumlah sertifikat <div id="total_sertifikat"></div></a>
+      </div>
+    </form>
+  </header>
+  <div class="panel-body"> 
     <div class="table-responsive" style="white-space: nowrap;">
      <table class="table table-bordered table-hover table-striped tableitem" id="itemsdata">
       <thead style="position: sticky;">
@@ -52,23 +64,23 @@
 
       <?php $total_sertifikat=0;$total_penjualan=0;; $no=1; foreach ($datastok as $data){ ?>
 
-      <?php 
-      $total_penjualan++;
-      $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->id_jual).'">Hapus</a></li>':'';
-      $tombol='
-      <div class="btn-group dropup">
-      <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action</button>
-      <ul class="dropdown-menu" role="menu"> 
-      '.$tombolhapus.'
-      </ul>
-      </div>
-      ';
-      $luas_teknik = $data->luas_teknik;
-      $dataitem = $this->master_model->getfullstoksplit($data->id_stok_split);
-      $datajual = $this->master_model->getdatapenjualan($data->id_jual);
-      ?>
-<?php $kolomjual=' 
-      <tr>
+        <?php 
+        $total_penjualan++;
+        $tombolhapus = level_user('master','items',$this->session->userdata('kategori'),'edit') > 0 ? '<li><a href="#" onclick="hapus(this)" data-id="'.$this->security->xss_clean($data->id_jual).'">Hapus</a></li>':'';
+        $tombol='
+        <div class="btn-group dropup">
+        <button type="button" class="mb-xs mt-xs mr-xs btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action</button>
+        <ul class="dropdown-menu" role="menu"> 
+        '.$tombolhapus.'
+        </ul>
+        </div>
+        ';
+        $luas_teknik = $data->luas_teknik;
+        $dataitem = $this->master_model->getfullstoksplit($data->id_stok_split);
+        $datajual = $this->master_model->getdatapenjualan($data->id_jual);
+        ?>
+        <?php $kolomjual=' 
+        <tr>
         <td>'.$no++.'</td>
         <td>'.$tombol.'</td>
         <td>'.$datajual['nama_pembeli'].'</td>
@@ -88,87 +100,92 @@
         <td>'.$datajual['sistem_pembayaran'].'</td>
         <td>'.rupiah($datajual['harga']).'</td>
         <td></td>
-      </tr>';
-   ?>
+        </tr>';
+        ?>
         <?php 
         echo $kolomjual;
-         foreach ($dataitem as $key => $value){ 
-        $kolom = '';
-        $stat = '';
+        foreach ($dataitem as $key => $value){ 
+          $kolom = '';
+          $stat = '';
 
-        ?>
+          ?>
 
-        <?php if ($value['tgl_terbit_blok']=='0000-00-00') {
-          if ($value['tgl_daftar_blok']=='0000-00-00'){
-            $stat = 'belum';
-            $kolom.='<tr style="background-color:#ffbaba">';
+          <?php if ($value['tgl_terbit_blok']=='0000-00-00') {
+            if ($value['tgl_daftar_blok']=='0000-00-00'){
+              $stat = 'belum';
+              $kolom.='<tr style="background-color:#ffbaba">';
+            }
+            else{
+              $stat = 'proses';
+              $kolom.='<tr style="background-color:#ffd56b">';
+            }
           }
-          else{
-            $stat = 'proses';
-            $kolom.='<tr style="background-color:#ffd56b">';
+          else{ 
+            $stat = 'terbit';
+            $kolom.='<tr style="background-color:#c0ffba">';
+          }
+          $kolom.='<td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>'. $luas_teknik.'</td>
+          <td>'.$value["luas_terbit_blok"].'</td>';
+          $luas_teknik -= $value['luas_terbit_blok'];
+          $kolom.='<td>'. $luas_teknik.'</td>
+          <td>'. $value["no_terbit_shgb"].'</td>
+          <td>'. $value["no_shgb_blok"].'</td>
+          <td>'. tgl_indo($value["tgl_daftar_blok"]).'</td>
+          <td>'. tgl_indo($value["tgl_terbit_blok"]).'</td>
+          <td>ini dapat darimana</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>'. $value['keterangan'].'</td>
+          </tr>';
+          if ($stat!='terbit') {
+            $total_sertifikat++;
+            echo $kolom;
           }
         }
-        else{ 
-          $stat = 'terbit';
-          $kolom.='<tr style="background-color:#c0ffba">';
-        }
-        $kolom.='<td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>'. $luas_teknik.'</td>
-        <td>'.$value["luas_terbit_blok"].'</td>';
-        $luas_teknik -= $value['luas_terbit_blok'];
-        $kolom.='<td>'. $luas_teknik.'</td>
-        <td>'. $value["no_terbit_shgb"].'</td>
-        <td>'. $value["no_shgb_blok"].'</td>
-        <td>'. tgl_indo($value["tgl_daftar_blok"]).'</td>
-        <td>'. tgl_indo($value["tgl_terbit_blok"]).'</td>
-         <td>ini dapat darimana</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-        <td>'. $value['keterangan'].'</td>
-        </tr>';
-         if ($stat!='terbit') {
-          $total_sertifikat++;
-          echo $kolom;
-        }
-      }
-    } ?>
-      </tbody>
-      <tfoot>
-       <tr>
-         <td colspan="2">TOTAL </td>
+      } ?>
+    </tbody>
+    <tfoot>
+     <tr>
+       <td colspan="2">TOTAL </td>
 
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-       </tr>
-     </tfoot>
-   </table> 
- </div>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+       <td></td>
+     </tr>
+   </tfoot>
+ </table> 
+</div>
 </div>
 </section>
 <script type="text/javascript">
-    $('#total_penjualan').html("<?php echo $total_penjualan ?>");
-    $('#total_sertifikat').html("<?php echo $total_sertifikat ?>");
+  $('.tanggal').datepicker({
+    format: 'yyyy-mm-dd'
+  });
+</script>
+<script type="text/javascript">
+  $('#total_penjualan').html("<?php echo $total_penjualan ?>");
+  $('#total_sertifikat').html("<?php echo $total_sertifikat ?>");
 </script>

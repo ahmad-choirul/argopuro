@@ -597,8 +597,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     function pilihblok(elem){ 
       urutan = readCookie("urutan-row-item");
       var blok = $(elem).data("blok"); 
-      var id_stok_split = $(elem).data("id_stok_split"); 
-      var jml_kvl = $(elem).data("jml_kvl"); 
+      var id_stok_split = $(elem).data("id_stok_split");
       var luas_teknik = $(elem).data("luas_teknik");   
       $('.luas_terbit_blok'+urutan).val(luas_teknik);    
       $('.blok'+urutan).val(blok);    

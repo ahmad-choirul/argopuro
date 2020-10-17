@@ -851,7 +851,7 @@ public function ajaxstoksplit()
  $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
  $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
  $this->db->where('id_perumahan', $data['id_perumahan']);
- $this->db->where('id_jual', 0);
+ $this->db->where('id_jual', '0');
  $data['datastok'] = $this->db->get('tbl_stok_split')->result();
  $this->load->view('member/laporan/ajax/ajaxlaporanstoksplit',$data);
 }
@@ -859,6 +859,8 @@ public function laporan_penjualan()
 {
   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
   $data['status_surat'] = $this->input->get('status_surat',true);
+      $data['tgl_awal'] = $this->input->get('tgl_awal',true);
+  $data['tgl_akhir'] = $this->input->get('tgl_akhir',true);
   $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
  $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
   $this->load->view('member/laporan/laporan_penjualan',$data);
@@ -867,9 +869,14 @@ public function ajaxdatajual()
 {
  $data['id_perumahan'] = $this->input->get('id_perumahan',true); 
  $data['status_surat'] = $this->input->get('status_surat',true); 
+     $data['tgl_awal'] = $this->input->get('tgl_awal',true);
+  $data['tgl_akhir'] = $this->input->get('tgl_akhir',true);
  $this->db->where('id_perumahan', $data['id_perumahan']);
  $this->db->join('master_penjualan', 'tbl_stok_split.id_jual = master_penjualan.id_jual', 'left');
- $this->db->where("tbl_stok_split.id_jual !=0 ");
+ $this->db->where("tbl_stok_split.id_jual !=0");
+  if ($data['tgl_awal']!=''&&$data['tgl_akhir']!='') {
+       $this->db->where('tgl_penjualan BETWEEN "'.$data['tgl_awal']. '" and "'. $data['tgl_akhir'].'"');
+ }
  $data['datastok'] = $this->db->get('tbl_stok_split')->result();
  $this->load->view('member/laporan/ajax/ajaxlaporanstokjual',$data);
 }
@@ -877,13 +884,21 @@ public function ajaxdatajual()
 public function laporan_baliknama()
 {
   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+  $data['tgl_awal'] = $this->input->get('tgl_awal',true);
+  $data['tgl_akhir'] = $this->input->get('tgl_akhir',true);
   $this->load->view('member/laporan/laporan_baliknama',$data);
 }  
 public function ajaxbaliknama()
 {
  $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+
+  $data['tgl_awal'] = $this->input->get('tgl_awal',true);
+  $data['tgl_akhir'] = $this->input->get('tgl_akhir',true);
   $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
  $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+ if ($data['tgl_awal']!=''&&$data['tgl_akhir']!='') {
+       $this->db->where('tgl_penjualan BETWEEN "'.$data['tgl_awal']. '" and "'. $data['tgl_akhir'].'"');
+ }
  $this->db->where('id_perumahan', $data['id_perumahan']);
  $this->db->join('master_penjualan', 'tbl_stok_split.id_jual = master_penjualan.id_jual', 'left');
  $this->db->where("tbl_stok_split.id_jual !=0 ");
@@ -894,14 +909,21 @@ public function ajaxbaliknama()
 public function laporan_hutangsertifikat()
 {
   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+    $data['tgl_awal'] = $this->input->get('tgl_awal',true);
+  $data['tgl_akhir'] = $this->input->get('tgl_akhir',true);
   $this->load->view('member/laporan/laporan_hutangsertifikat',$data);
 }  
 public function ajaxhutangsertifikat()
 {
  $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+   $data['tgl_awal'] = $this->input->get('tgl_awal',true);
+  $data['tgl_akhir'] = $this->input->get('tgl_akhir',true);
  $this->db->where('id_perumahan', $data['id_perumahan']);
  $this->db->join('master_penjualan', 'tbl_stok_split.id_jual = master_penjualan.id_jual', 'left');
  $this->db->where("tbl_stok_split.id_jual !=0 ");
+  if ($data['tgl_awal']!=''&&$data['tgl_akhir']!='') {
+       $this->db->where('tgl_penjualan BETWEEN "'.$data['tgl_awal']. '" and "'. $data['tgl_akhir'].'"');
+ }
  $data['datastok'] = $this->db->get('tbl_stok_split')->result();
    $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
  $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
@@ -945,7 +967,6 @@ public function stoksplitdetail()
             "luas_stok" => $this->security->xss_clean($totalluasstok),
             "sisa_luas" => $this->security->xss_clean($po_data['luas_teknik']-$totalluasstok),
             "id_stok_split" => $this->security->xss_clean($po_data['id_stok_split']),
-            "jml_kvl" => $this->security->xss_clean($po_data['jml_kvl']),
             "blok" => $this->security->xss_clean($po_data['blok']),
             "luas_teknik" => $this->security->xss_clean($po_data['luas_teknik'])            
         ); 

@@ -13,7 +13,6 @@
              <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?>><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
            <?php endforeach; ?>
          </select> 
-        <input type="text" name="tgl_awal" class="form-control tanggal" placeholder="Tanggal Awal">
 
        </div>
        <div class="col-md-4" >
@@ -23,7 +22,6 @@
           <option value="proses" <?php if ($status_surat == 'proses') echo 'selected' ; ?>>Proses</option>
           <option value="terbit" <?php if ($status_surat == 'terbit') echo 'selected' ; ?>>Terbit</option>
         </select> 
-        <input type="text" name="tgl_akhir" class="form-control tanggal" placeholder="Tanggal Akhir">
       </div>
       <div class="col-md-3"> 
        <a class="btn btn-primary btn-block btn-hover " href="<?php echo site_url('Export_excel/excellaporanprosesinduk/').$id_perumahan ?>"><i class="fa fa-print"></i>  cetak </a>
@@ -52,7 +50,6 @@
        <th rowspan="2" style="text-align: center;vertical-align: middle;">Aksi</th>
        <th rowspan="2" style="text-align: center;vertical-align: middle;">Jual</th>
        <th rowspan="2" style="text-align: center;vertical-align: middle;">BLOK</th>
-       <th rowspan="2" style="text-align: center;vertical-align: middle;">JML KAV</th>
        <th colspan="3" rowspan="1" style="text-align: center;vertical-align: middle;">L. TANAH</th>
        <th rowspan="2" style="text-align: center;vertical-align: middle;">NO INDUK</th>
        <th rowspan="2" style="text-align: center;vertical-align: middle;">NO SERT </th>
@@ -103,7 +100,6 @@
         <td><?php echo $tombol; ?></td>
         <td><?php echo $tomboljual; ?></td>
         <td><?php echo $data->blok; ?></td>
-        <td><?php echo $data->jml_kvl; ?></td>
         <td><?php echo  $luas_teknik ?></td>
         <td></td>
         <td></td>
@@ -140,7 +136,6 @@
           $kolom.='<tr style="background-color:#c0ffba">';
         }
         $kolom.='<td></td>
-        <td></td>
         <td></td>
         <td></td>
         <td></td>
@@ -183,19 +178,12 @@
      <td></td>
      <td></td>
      <td></td>
-     <td></td>
    </tr>
  </tfoot>
 </table> 
 </div>
 </div>
-<script type="text/javascript">
-  $(document).ready(function(){
-   $('.tanggal').datepicker({
-    format: 'yyyy-mm-dd'
-  });
- });
-</script>
+
 <script type="text/javascript">
     $('#total_stok').html("<?php echo $total_stok ?>");
     $('#total_stok_efektif').html("<?php echo $total_stok_efektif ?>");

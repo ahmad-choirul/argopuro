@@ -64,12 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             </div>
           </div>  
-          <div class="form-group mt-lg jml_kvl">
-            <label class="col-sm-3 control-label">Jumlah Kavling<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="jml_kvl" class="form-control" required/>
-            </div>
-          </div>  
+          
           <div class="form-group mt-lg luas_teknik">
             <label class="col-sm-3 control-label">Luas Teknik<span class="required">*</span></label>
             <div class="col-sm-9">
@@ -108,12 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <input type="text" name="blok" id="blok" class="form-control" required/>
             </div>
           </div>  
-          <div class="form-group mt-lg jml_kvl">
-            <label class="col-sm-3 control-label">Jumlah Kavling<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="jml_kvl" id="jml_kvl" class="form-control" required/>
-            </div>
-          </div>  
+        
           <div class="form-group mt-lg luas_teknik">
             <label class="col-sm-3 control-label">Luas Teknik<span class="required">*</span></label>
             <div class="col-sm-9">
@@ -334,7 +324,6 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
         success: function(response) {  
           $.each(response, function(i, item) { 
             document.getElementById("blok").setAttribute('value', item.blok);
-            document.getElementById("jml_kvl").setAttribute('value', item.jml_kvl);
             document.getElementById("luas_teknik").setAttribute('value', item.luas_teknik);
           }); 
         }
@@ -482,7 +471,6 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
             datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
             datarow+="<tr><td>Lokasi</td><td>: "+item.nama_regional+"</td></tr>";
             datarow+="<tr><td>Blok</td><td>: "+item.blok+"</td></tr>";
-            datarow+="<tr><td>Jumlah Kavling </td><td>: "+item.jml_kvl+"</td></tr>";
             datarow+="</table>";
             datarow+='</div>';
             datarow+='<div class="col-md-6">';
@@ -602,12 +590,13 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
 <script type="text/javascript">
   function refresh() { 
     var id_perumahan = '<?php echo $id_perumahan ?>';
-
+    var tgl_awal = '<?php echo $tgl_awal ?>';
+    var tgl_akhir = '<?php echo $tgl_akhir ?>';
     $.ajax({
       type: 'GET',
       url: '<?php echo base_url(); ?>laporan/ajaxhutangsertifikat/',
       // data: 'id_perumahan='+id_perumahan,
-      data: 'id_perumahan='+id_perumahan,
+      data: 'id_perumahan='+id_perumahan+'&tgl_awal='+tgl_awal+'&tgl_akhir='+tgl_akhir,
       success: function (html) { 
         $('#tampilstok').html(html); 
       }

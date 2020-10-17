@@ -526,7 +526,6 @@ public function stoksplitdetail(){
     $result = array(  
         "id_stok_split" => $this->security->xss_clean($query->row()->id_stok_split), 
         "blok" => $this->security->xss_clean($query->row()->blok), 
-        "jml_kvl" => $this->security->xss_clean($query->row()->jml_kvl), 
         "luas_teknik" => $this->security->xss_clean($query->row()->luas_teknik), 
     );    
     echo'['.json_encode($result).']';
@@ -1399,12 +1398,11 @@ public function pilihanblok()
         $row = array(); 
         $row[] = $this->security->xss_clean($r->id_stok_split); 
         $row[] = $this->security->xss_clean($r->blok); 
-        $row[] = $this->security->xss_clean($r->jml_kvl); 
         $row[] = $this->security->xss_clean($r->luas_teknik);   
         $row[] = $this->security->xss_clean($totalluasstok);   
         $row[] = $this->security->xss_clean($r->luas_teknik-$totalluasstok);   
         $row[] = ' 
-        <a onclick="pilihblok(this)"  data-id_stok_split="'.$r->id_stok_split.'" data-blok="'.$r->blok.'" data-jml_kvl="'.$r->jml_kvl.'" data-luas_teknik="'.$r->luas_teknik.'" class="mt-xs mr-xs btn btn-info datarowobat" role="button"><i class="fa fa-check-square-o"></i></a>
+        <a onclick="pilihblok(this)"  data-id_stok_split="'.$r->id_stok_split.'" data-blok="'.$r->blok.'" data-luas_teknik="'.$r->luas_teknik.'" class="mt-xs mr-xs btn btn-info datarowobat" role="button"><i class="fa fa-check-square-o"></i></a>
         '; 
         $data[] = $row;
     } 

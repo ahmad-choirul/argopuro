@@ -63,13 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <input type="hidden" name="id_perumahan" value="<?php echo $id_perumahan ?>" class="form-control" required/>
 
             </div>
-          </div>  
-          <div class="form-group mt-lg jml_kvl">
-            <label class="col-sm-3 control-label">Jumlah Kavling<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="jml_kvl" class="form-control" required/>
-            </div>
-          </div>  
+          </div>   
           <div class="form-group mt-lg luas_teknik">
             <label class="col-sm-3 control-label">Luas Teknik<span class="required">*</span></label>
             <div class="col-sm-9">
@@ -157,6 +151,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="col-sm-9">
             <input type="text" name="harga" class="form-control mask_price" required/>
           </div>
+        </div> 
+
+         <div class="form-group mt-lg tipe">
+          <label class="col-sm-3 control-label">Tipe Penjualan <span class="required">*</span></label>
+          <div class="col-sm-9">
+            <input type="text" name="tipe" class="form-control" required/>
+          </div>
         </div>  
 
         <div class="form-group mt-lg sistem_pembayaran">
@@ -200,12 +201,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <label class="col-sm-3 control-label">Nama Blok<span class="required">*</span></label>
             <div class="col-sm-9">
               <input type="text" name="blok" id="blok" class="form-control" required/>
-            </div>
-          </div>  
-          <div class="form-group mt-lg jml_kvl">
-            <label class="col-sm-3 control-label">Jumlah Kavling<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="jml_kvl" id="jml_kvl" class="form-control" required/>
             </div>
           </div>  
           <div class="form-group mt-lg luas_teknik">
@@ -503,7 +498,6 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
       success: function(response) {  
         $.each(response, function(i, item) { 
           document.getElementById("blok").setAttribute('value', item.blok);
-          document.getElementById("jml_kvl").setAttribute('value', item.jml_kvl);
           document.getElementById("luas_teknik").setAttribute('value', item.luas_teknik);
         }); 
       }
@@ -651,7 +645,6 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
             datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
             datarow+="<tr><td>Lokasi</td><td>: "+item.nama_regional+"</td></tr>";
             datarow+="<tr><td>Blok</td><td>: "+item.blok+"</td></tr>";
-            datarow+="<tr><td>Jumlah Kavling </td><td>: "+item.jml_kvl+"</td></tr>";
             datarow+="</table>";
             datarow+='</div>';
             datarow+='<div class="col-md-6">';

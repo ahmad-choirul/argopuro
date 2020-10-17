@@ -1,4 +1,42 @@
+ <header class="panel-heading">    
+        <form action="" method="get">
+          <div class="row show-grid">
+            <div class="col-sm-3">
+              <h2 class="panel-title">Nama Perumahan </h2>
+              <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
+                <option value="">Pilih Lokasi</option>
+                <?php foreach ($perumahan as $aa): ?>
+                 <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
+               <?php endforeach; ?>
+             </select> 
+           </div>
+           <div class="col-sm-2">
+            <h2 class="panel-title">Status Surat </h2>
+            <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="status_surat">  
+              <option  value="semua" <?php if ($status_surat == 'semua') echo 'selected' ; ?>>Semua</option>
+              <option value="belum" <?php if ($status_surat == 'belum') echo 'selected' ; ?>>Belum</option>
+              <option value="proses" <?php if ($status_surat == 'proses') echo 'selected' ; ?>>Proses</option>
+              <option value="terbit" <?php if ($status_surat == 'terbit') echo 'selected' ; ?>>Terbit</option>
+            </select> 
+          </div>
+          <div class="col-sm-2">
+            <h2 class="panel-title">Tanggal Awal</h2>
+            <input type="text" name="tgl_awal" onchange="this.form.submit()" value="<?php echo $tgl_awal ?>" class="form-control tanggal">
+          </div>
+          <div class="col-sm-2">
+            <h2 class="panel-title">Tanggal Akhir</h2>
+            <input type="text" name="tgl_akhir" onchange="this.form.submit()" value="<?php echo $tgl_akhir ?>" class="form-control tanggal">
 
+          </div>
+          <div class="col-sm-2">
+
+          </div>
+          <div class="col-sm-3" style="text-align: right;">
+            <a class="btn btn-success">jumlah Penjualan <div id="total_penjualan"></div></a>
+          </div>
+        </form>
+      </form>
+    </header>
    <div class="panel-body"> 
     <div class="table-responsive" style="white-space: nowrap;">
      <table class="table table-bordered table-hover table-striped tableitem" id="itemsdata">
@@ -83,3 +121,6 @@
  </div>
 </div>
 </section>
+<script type="text/javascript">
+    $('#total_penjualan').html("<?php echo $no-1 ?>");
+</script>

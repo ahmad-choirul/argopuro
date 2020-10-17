@@ -35,29 +35,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <h2>Laporan Penjualan </h2>
     </header>  
     <!-- start: page -->
-     <section class="panel">
-  <header class="panel-heading">    
-    <form action="" method="get">
-      <div class="row show-grid">
-        <div class="col-md-2" align="left"><h2 class="panel-title">Nama Perumahan </h2></div>
-        <div class="col-sm-3">
-          <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
-            <option value="">Pilih Lokasi</option>
-            <?php foreach ($perumahan as $aa): ?>
-             <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
-           <?php endforeach; ?>
-         </select> 
-       </div>
-       <div class="col-sm-2">
-        <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="status_surat">  
-        <option  value="semua" <?php if ($status_surat == 'semua') echo 'selected' ; ?>>Semua</option>
-          <option value="belum" <?php if ($status_surat == 'belum') echo 'selected' ; ?>>Belum</option>
-          <option value="proses" <?php if ($status_surat == 'proses') echo 'selected' ; ?>>Proses</option>
-          <option value="terbit" <?php if ($status_surat == 'terbit') echo 'selected' ; ?>>Terbit</option>
-        </select> 
-      </div>
-     </form>
-   </header>
+    <section class="panel">
+     
     <div id="tampilstok">
 
     </div>
@@ -84,13 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <input type="hidden" name="id_perumahan" value="<?php echo $id_perumahan ?>" class="form-control" required/>
 
             </div>
-          </div>  
-          <div class="form-group mt-lg jml_kvl">
-            <label class="col-sm-3 control-label">Jumlah Kavling<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="jml_kvl" class="form-control" required/>
-            </div>
-          </div>  
+          </div>   
           <div class="form-group mt-lg luas_teknik">
             <label class="col-sm-3 control-label">Luas Teknik<span class="required">*</span></label>
             <div class="col-sm-9">
@@ -128,13 +101,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-sm-9">
               <input type="text" name="blok" id="blok" class="form-control" required/>
             </div>
-          </div>  
-          <div class="form-group mt-lg jml_kvl">
-            <label class="col-sm-3 control-label">Jumlah Kavling<span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" name="jml_kvl" id="jml_kvl" class="form-control" required/>
-            </div>
-          </div>  
+          </div>   
           <div class="form-group mt-lg luas_teknik">
             <label class="col-sm-3 control-label">Luas Teknik<span class="required">*</span></label>
             <div class="col-sm-9">
@@ -281,15 +248,15 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
   ?>  
   <script>
 
- document.getElementById("FormulirTambah").addEventListener("submit", function (e) {  
-      blurForm();       
-      $('.help-block').hide();
-      $('.form-group').removeClass('has-error');
-      document.getElementById("submitform").setAttribute('disabled','disabled');
-      $('#submitform').html('Loading ...');
-      var form = $('#FormulirTambah')[0];
-      var formData = new FormData(form);
-      var xhrAjax = $.ajax({
+   document.getElementById("FormulirTambah").addEventListener("submit", function (e) {  
+    blurForm();       
+    $('.help-block').hide();
+    $('.form-group').removeClass('has-error');
+    document.getElementById("submitform").setAttribute('disabled','disabled');
+    $('#submitform').html('Loading ...');
+    var form = $('#FormulirTambah')[0];
+    var formData = new FormData(form);
+    var xhrAjax = $.ajax({
       type    : 'POST',
       url     : $(this).attr('action'),
       data    : formData, 
@@ -297,98 +264,18 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
       contentType: false,
       cache: false, 
       dataType  : 'json'
-      }).done(function(data) { 
+    }).done(function(data) { 
       if ( ! data.success) {     
-                    $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-                    document.getElementById("submitform").removeAttribute('disabled');  
-                    $('#submitform').html('Submit');    
-                    var objek = Object.keys(data.errors);  
-                    for (var key in data.errors) {
-                        if (data.errors.hasOwnProperty(key)) { 
-                            var msg = '<div class="help-block" for="'+key+'">'+data.errors[key]+'</span>';
-                            $('.'+key).addClass('has-error');
-                            $('input[name="' + key + '"]').after(msg);  
-                            $('textarea[name="' + key + '"]').after(msg);  
-                        }
-                        if (key == 'fail') {   
-                            new PNotify({
-                                title: 'Notifikasi',
-                                text: data.errors[key],
-                                type: 'danger'
-                            }); 
-                        }
-                    }
-                } else { 
-                    $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-                    PNotify.removeAll(); 
-                    // tablekategori.ajax.reload();  
-                    refresh(); 
-                    document.getElementById("submitform").removeAttribute('disabled'); 
-                    $('#tambahData').modal('hide'); 
-                    document.getElementById("FormulirTambah").reset();  
-                    $('#submitform').html('Submit');   
-                    new PNotify({
-                        title: 'Notifikasi',
-                        text: data.message,
-                        type: 'success'
-                    });  
-                }
-                }).fail(function(data) {   
-                    new PNotify({
-                        title: 'Notifikasi',
-                        text: "Request gagal, browser akan direload",
-                        type: 'danger'
-                    }); 
-                    //window.setTimeout(function() {  location.reload();}, 2000);
-                }); 
-                e.preventDefault(); 
-            }); 
-    function edit(elem){
-      var dataId = $(elem).data("id");
-      document.getElementById("id_stok_split").setAttribute('value', dataId);
-      $('#editData').modal();        
-      $.ajax({
-        type: 'GET',
-        url: '<?php echo base_url()?>master/stoksplitdetail',
-        data: 'id_stok_split=' + dataId,
-        dataType  : 'json',
-        success: function(response) {  
-          $.each(response, function(i, item) { 
-            document.getElementById("blok").setAttribute('value', item.blok);
-            document.getElementById("jml_kvl").setAttribute('value', item.jml_kvl);
-            document.getElementById("luas_teknik").setAttribute('value', item.luas_teknik);
-          }); 
-        }
-      });  
-      return false;
-    }
-    document.getElementById("FormulirEdit").addEventListener("submit", function (e) {  
-     blurForm();       
-     $('.help-block').hide();
-     $('.form-group').removeClass('has-error');
-     document.getElementById("submitformEdit").setAttribute('disabled','disabled');
-     $('#submitformEdit').html('Loading ...');
-     var form = $('#FormulirEdit')[0];
-     var formData = new FormData(form);
-     var xhrAjax = $.ajax({
-       type     : 'POST',
-       url    : $(this).attr('action'),
-       data     : formData, 
-       processData: false,
-       contentType: false,
-       cache: false, 
-       dataType   : 'json'
-     }).done(function(data) { 
-       if ( ! data.success) {    
         $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-        document.getElementById("submitformEdit").removeAttribute('disabled');  
-        $('#submitformEdit').html('Submit');    
+        document.getElementById("submitform").removeAttribute('disabled');  
+        $('#submitform').html('Submit');    
         var objek = Object.keys(data.errors);  
         for (var key in data.errors) {
           if (data.errors.hasOwnProperty(key)) { 
             var msg = '<div class="help-block" for="'+key+'">'+data.errors[key]+'</span>';
             $('.'+key).addClass('has-error');
             $('input[name="' + key + '"]').after(msg);  
+            $('textarea[name="' + key + '"]').after(msg);  
           }
           if (key == 'fail') {   
             new PNotify({
@@ -400,7 +287,86 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
         }
       } else { 
         $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-        PNotify.removeAll();
+        PNotify.removeAll(); 
+                    // tablekategori.ajax.reload();  
+                    refresh(); 
+                    document.getElementById("submitform").removeAttribute('disabled'); 
+                    $('#tambahData').modal('hide'); 
+                    document.getElementById("FormulirTambah").reset();  
+                    $('#submitform').html('Submit');   
+                    new PNotify({
+                      title: 'Notifikasi',
+                      text: data.message,
+                      type: 'success'
+                    });  
+                  }
+                }).fail(function(data) {   
+                  new PNotify({
+                    title: 'Notifikasi',
+                    text: "Request gagal, browser akan direload",
+                    type: 'danger'
+                  }); 
+                    //window.setTimeout(function() {  location.reload();}, 2000);
+                  }); 
+                e.preventDefault(); 
+              }); 
+   function edit(elem){
+    var dataId = $(elem).data("id");
+    document.getElementById("id_stok_split").setAttribute('value', dataId);
+    $('#editData').modal();        
+    $.ajax({
+      type: 'GET',
+      url: '<?php echo base_url()?>master/stoksplitdetail',
+      data: 'id_stok_split=' + dataId,
+      dataType  : 'json',
+      success: function(response) {  
+        $.each(response, function(i, item) { 
+          document.getElementById("blok").setAttribute('value', item.blok);
+          document.getElementById("luas_teknik").setAttribute('value', item.luas_teknik);
+        }); 
+      }
+    });  
+    return false;
+  }
+  document.getElementById("FormulirEdit").addEventListener("submit", function (e) {  
+   blurForm();       
+   $('.help-block').hide();
+   $('.form-group').removeClass('has-error');
+   document.getElementById("submitformEdit").setAttribute('disabled','disabled');
+   $('#submitformEdit').html('Loading ...');
+   var form = $('#FormulirEdit')[0];
+   var formData = new FormData(form);
+   var xhrAjax = $.ajax({
+     type     : 'POST',
+     url    : $(this).attr('action'),
+     data     : formData, 
+     processData: false,
+     contentType: false,
+     cache: false, 
+     dataType   : 'json'
+   }).done(function(data) { 
+     if ( ! data.success) {    
+      $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+      document.getElementById("submitformEdit").removeAttribute('disabled');  
+      $('#submitformEdit').html('Submit');    
+      var objek = Object.keys(data.errors);  
+      for (var key in data.errors) {
+        if (data.errors.hasOwnProperty(key)) { 
+          var msg = '<div class="help-block" for="'+key+'">'+data.errors[key]+'</span>';
+          $('.'+key).addClass('has-error');
+          $('input[name="' + key + '"]').after(msg);  
+        }
+        if (key == 'fail') {   
+          new PNotify({
+            title: 'Notifikasi',
+            text: data.errors[key],
+            type: 'danger'
+          }); 
+        }
+      }
+    } else { 
+      $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+      PNotify.removeAll();
         // tablekategori.ajax.reload();   
         refresh(); 
         document.getElementById("submitformEdit").removeAttribute('disabled'); 
@@ -423,45 +389,45 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
   }); 
     e.preventDefault(); 
   }); 
-    function hapus(elem){ 
-      var dataId = $(elem).data("id");
-      document.getElementById("idddelete").setAttribute('value', dataId);
-      $('#modalHapus').modal();        
-    }
-    document.getElementById("FormulirHapus").addEventListener("submit", function (e) {  
-     blurForm();       
-     $('.help-block').hide();
-     $('.form-group').removeClass('has-error');
-     document.getElementById("submitformHapus").setAttribute('disabled','disabled');
-     $('#submitformHapus').html('Loading ...');
-     var form = $('#FormulirHapus')[0];
-     var formData = new FormData(form);
-     var xhrAjax = $.ajax({
-       type     : 'POST',
-       url    : $(this).attr('action'),
-       data     : formData, 
-       processData: false,
-       contentType: false,
-       cache: false, 
-       dataType   : 'json'
-     }).done(function(data) { 
-       if ( ! data.success) {    
-        $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-        document.getElementById("submitformHapus").removeAttribute('disabled');  
-        $('#submitformHapus').html('Delete');     
-        var objek = Object.keys(data.errors);  
-        for (var key in data.errors) { 
-          if (key == 'fail') {   
-            new PNotify({
-              title: 'Notifikasi',
-              text: data.errors[key],
-              type: 'danger'
-            }); 
-          }
+  function hapus(elem){ 
+    var dataId = $(elem).data("id");
+    document.getElementById("idddelete").setAttribute('value', dataId);
+    $('#modalHapus').modal();        
+  }
+  document.getElementById("FormulirHapus").addEventListener("submit", function (e) {  
+   blurForm();       
+   $('.help-block').hide();
+   $('.form-group').removeClass('has-error');
+   document.getElementById("submitformHapus").setAttribute('disabled','disabled');
+   $('#submitformHapus').html('Loading ...');
+   var form = $('#FormulirHapus')[0];
+   var formData = new FormData(form);
+   var xhrAjax = $.ajax({
+     type     : 'POST',
+     url    : $(this).attr('action'),
+     data     : formData, 
+     processData: false,
+     contentType: false,
+     cache: false, 
+     dataType   : 'json'
+   }).done(function(data) { 
+     if ( ! data.success) {    
+      $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+      document.getElementById("submitformHapus").removeAttribute('disabled');  
+      $('#submitformHapus').html('Delete');     
+      var objek = Object.keys(data.errors);  
+      for (var key in data.errors) { 
+        if (key == 'fail') {   
+          new PNotify({
+            title: 'Notifikasi',
+            text: data.errors[key],
+            type: 'danger'
+          }); 
         }
-      } else { 
-        $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-        PNotify.removeAll();   
+      }
+    } else { 
+      $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+      PNotify.removeAll();   
         // tablekategori.ajax.reload();
         refresh();
         document.getElementById("submitformHapus").removeAttribute('disabled'); 
@@ -485,25 +451,24 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
     e.preventDefault(); 
   }); 
 
-    function detail(elem){
-      var dataId = $(elem).data("id");   
-      $('#detailData').modal();    
-      $('#showdetail').html('Loading...'); 
-      $.ajax({
-        type: 'GET',
-        url: '<?php echo base_url()?>laporan/stoksplitdetail',
-        data: 'id=' + dataId,
-        dataType    : 'json',
-        success: function(response) { 
-          var datarow='<div class="row">';
-          $.each(response.datarows, function(i, item) {
+  function detail(elem){
+    var dataId = $(elem).data("id");   
+    $('#detailData').modal();    
+    $('#showdetail').html('Loading...'); 
+    $.ajax({
+      type: 'GET',
+      url: '<?php echo base_url()?>laporan/stoksplitdetail',
+      data: 'id=' + dataId,
+      dataType    : 'json',
+      success: function(response) { 
+        var datarow='<div class="row">';
+        $.each(response.datarows, function(i, item) {
             // document.getElementById('linkprint').setAttribute('href', '<?php echo base_url()?>pembelian/printpo/'+item.nomor_po);
             // document.getElementById('linkpdf').setAttribute('href', '<?php echo base_url()?>pembelian/pdfpo/'+item.nomor_po);
             datarow+='<div class="col-md-6">';
             datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
             datarow+="<tr><td>Lokasi</td><td>: "+item.nama_regional+"</td></tr>";
             datarow+="<tr><td>Blok</td><td>: "+item.blok+"</td></tr>";
-            datarow+="<tr><td>Jumlah Kavling </td><td>: "+item.jml_kvl+"</td></tr>";
             datarow+="</table>";
             datarow+='</div>';
             datarow+='<div class="col-md-6">';
@@ -514,122 +479,124 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
             datarow+="</table>";
             datarow+='</div>';
           });
-          datarow+='</div>';
-          datarow+='<div class="row"><div class="col-md-12">';
-          datarow+='<h3>Rincian</h3>';
-          datarow+='<div class="table-responsive" style="max-height:420px;">';  
-          datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
-          datarow+="<thead><tr>";
-          datarow+="<th>Blok</th>";
-          datarow+="<th>Luas Daftar</th>";
-          datarow+="<th>Luas Terbit</th>";
-          datarow+="<th>Sisa Luas</th>";
-          datarow+="<th>No SHGB</th>";
-          datarow+="<th>Masa Berlaku</th>";
-          datarow+="<th>No Daftar</th>";
-          datarow+="<th>Tgl Daftar</th>";
-          datarow+="<th>Tgl Terbit</th>";
-          datarow+="<th>Keterangan</th>";
-          datarow+="</tr></thead>";
-          datarow+="<tbody>";
+        datarow+='</div>';
+        datarow+='<div class="row"><div class="col-md-12">';
+        datarow+='<h3>Rincian</h3>';
+        datarow+='<div class="table-responsive" style="max-height:420px;">';  
+        datarow+='<table class="table table-bordered table-hover table-striped dataTable no-footer">';
+        datarow+="<thead><tr>";
+        datarow+="<th>Blok</th>";
+        datarow+="<th>Luas Daftar</th>";
+        datarow+="<th>Luas Terbit</th>";
+        datarow+="<th>Sisa Luas</th>";
+        datarow+="<th>No SHGB</th>";
+        datarow+="<th>Masa Berlaku</th>";
+        datarow+="<th>No Daftar</th>";
+        datarow+="<th>Tgl Daftar</th>";
+        datarow+="<th>Tgl Terbit</th>";
+        datarow+="<th>Keterangan</th>";
+        datarow+="</tr></thead>";
+        datarow+="<tbody>";
 
-          $.each(response.datasub, function(i, itemsub) {
-            datarow+="<tr>";
-            datarow+="<td>"+itemsub.blok+"</td>"; 
-            datarow+="<td>"+itemsub.luas_daftar_blok+"</td>";
-            datarow+="<td>"+itemsub.luas_terbit_blok+"</td>"; 
-            datarow+="<td>"+itemsub.sisa_luas+"</td>"; 
-            datarow+="<td>"+itemsub.no_shgb_blok+"</td>"; 
-            datarow+="<td>"+itemsub.masa_berlaku_bloktampil+"</td>"; 
-            datarow+="<td>"+itemsub.no_daftar_blok+"</td>"; 
-            datarow+="<td>"+itemsub.tgl_daftar_bloktampil+"</td>"; 
-            datarow+="<td>"+itemsub.tgl_terbit_bloktampil+"</td>"; 
-            datarow+="<td>"+itemsub.keterangan+"</td>"; 
-            datarow+="</tr>"; 
-          });  
-          datarow+="</tbody>";
-          datarow+="</table>";
-          datarow+="</div>";
-          datarow+='</div></div>';
-          $('#showdetail').html(datarow);
-        }
-      });  
-      return false;
-    }
+        $.each(response.datasub, function(i, itemsub) {
+          datarow+="<tr>";
+          datarow+="<td>"+itemsub.blok+"</td>"; 
+          datarow+="<td>"+itemsub.luas_daftar_blok+"</td>";
+          datarow+="<td>"+itemsub.luas_terbit_blok+"</td>"; 
+          datarow+="<td>"+itemsub.sisa_luas+"</td>"; 
+          datarow+="<td>"+itemsub.no_shgb_blok+"</td>"; 
+          datarow+="<td>"+itemsub.masa_berlaku_bloktampil+"</td>"; 
+          datarow+="<td>"+itemsub.no_daftar_blok+"</td>"; 
+          datarow+="<td>"+itemsub.tgl_daftar_bloktampil+"</td>"; 
+          datarow+="<td>"+itemsub.tgl_terbit_bloktampil+"</td>"; 
+          datarow+="<td>"+itemsub.keterangan+"</td>"; 
+          datarow+="</tr>"; 
+        });  
+        datarow+="</tbody>";
+        datarow+="</table>";
+        datarow+="</div>";
+        datarow+='</div></div>';
+        $('#showdetail').html(datarow);
+      }
+    });  
+    return false;
+  }
 
-    document.getElementById("uploadform").addEventListener("submit", function (e) {  
-      blurForm();       
-      PNotify.removeAll();   
-      $('.help-block').hide();
-      $('.form-group').removeClass('has-error');
-      document.getElementById("submitform").setAttribute('disabled','disabled');
-      $('#submitform').html('Loading ...');
-      var form = $('#uploadform')[0];
-      var formData = new FormData(form);
-      var xhrAjax = $.ajax({
-        type    : 'POST',
-        url     : $(this).attr('action'),
-        data    : formData, 
-        processData: false,
-        contentType: false,
-        cache: false, 
-        dataType  : 'json'
-      }).done(function(data) { 
-        if ( ! data.success) {     
-          $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-          document.getElementById("submitform").removeAttribute('disabled');  
-          $('#submitform').html('Submit');    
-          var objek = Object.keys(data.errors);  
-          for (var key in data.errors) {
-            if (data.errors.hasOwnProperty(key)) { 
-              var msg = '<div class="help-block" for="'+key+'">'+data.errors[key]+'</span>';
-              $('.'+key).addClass('has-error');
-              $('input[name="' + key + '"]').after(msg);     
-            }
-            if (key == 'fail') {   
-              new PNotify({
-                title: 'Notifikasi',
-                text: 'gagal mengupload semua data, pastikan data terisi dengan benar dan sudah memilih lokasi',
-                type: 'danger'
-              }); 
-            }
+  document.getElementById("uploadform").addEventListener("submit", function (e) {  
+    blurForm();       
+    PNotify.removeAll();   
+    $('.help-block').hide();
+    $('.form-group').removeClass('has-error');
+    document.getElementById("submitform").setAttribute('disabled','disabled');
+    $('#submitform').html('Loading ...');
+    var form = $('#uploadform')[0];
+    var formData = new FormData(form);
+    var xhrAjax = $.ajax({
+      type    : 'POST',
+      url     : $(this).attr('action'),
+      data    : formData, 
+      processData: false,
+      contentType: false,
+      cache: false, 
+      dataType  : 'json'
+    }).done(function(data) { 
+      if ( ! data.success) {     
+        $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+        document.getElementById("submitform").removeAttribute('disabled');  
+        $('#submitform').html('Submit');    
+        var objek = Object.keys(data.errors);  
+        for (var key in data.errors) {
+          if (data.errors.hasOwnProperty(key)) { 
+            var msg = '<div class="help-block" for="'+key+'">'+data.errors[key]+'</span>';
+            $('.'+key).addClass('has-error');
+            $('input[name="' + key + '"]').after(msg);     
           }
-        } else { 
-          $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
-          document.getElementById("submitform").removeAttribute('disabled'); 
-          $('#uploaddata').modal('hide'); 
-          document.getElementById("uploadform").reset();  
-          $('#submitform').html('Submit');   
-          new PNotify({
-            title: 'Notifikasi',
-            text: data.message,
-            type: 'success'
-          });  
-          refresh();
+          if (key == 'fail') {   
+            new PNotify({
+              title: 'Notifikasi',
+              text: 'gagal mengupload semua data, pastikan data terisi dengan benar dan sudah memilih lokasi',
+              type: 'danger'
+            }); 
+          }
         }
-      }).fail(function(data) { 
+      } else { 
+        $('input[name=<?php echo $this->security->get_csrf_token_name();?>]').val(data.token);
+        document.getElementById("submitform").removeAttribute('disabled'); 
+        $('#uploaddata').modal('hide'); 
+        document.getElementById("uploadform").reset();  
+        $('#submitform').html('Submit');   
         new PNotify({
           title: 'Notifikasi',
-          text: "Request gagal, browser akan direload",
-          type: 'danger'
-        }); 
+          text: data.message,
+          type: 'success'
+        });  
+        refresh();
+      }
+    }).fail(function(data) { 
+      new PNotify({
+        title: 'Notifikasi',
+        text: "Request gagal, browser akan direload",
+        type: 'danger'
+      }); 
         // //window.setTimeout(function() {  location.reload();}, 2000);
       }); 
-      e.preventDefault(); 
-    }); 
-    
-  </script>
+    e.preventDefault(); 
+  }); 
+
+</script>
 <?php } ?>
 <script type="text/javascript">
   function refresh() { 
     var id_perumahan = '<?php echo $id_perumahan ?>';
     var status_surat = '<?php echo $status_surat ?>';
+    var tgl_awal = '<?php echo $tgl_awal ?>';
+    var tgl_akhir = '<?php echo $tgl_akhir ?>';
 
     $.ajax({
       type: 'GET',
       url: '<?php echo base_url(); ?>laporan/ajaxdatajual/',
       // data: 'id_perumahan='+id_perumahan,
-      data: 'id_perumahan='+id_perumahan+'&status_surat='+status_surat,
+      data: 'id_perumahan='+id_perumahan+'&status_surat='+status_surat+'&tgl_awal='+tgl_awal+'&tgl_akhir='+tgl_akhir,
       success: function (html) { 
         $('#tampilstok').html(html); 
       }

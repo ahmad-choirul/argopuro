@@ -81,11 +81,9 @@ class Tools extends CI_Controller {
             $this->db->trans_begin();
             foreach($sheet as $row){    
                 if($baris > 1){ 
-                    $jml_kvl = bilanganbulat($row['B']);
-                    $luas_teknik = bilanganbulat($row['C']);
+                    $luas_teknik = bilanganbulat($row['B']);
                     $data = array(
                         'blok'=>$row['A'],  
-                        'jml_kvl'=>$jml_kvl,    
                         'luas_teknik'=>$luas_teknik,  
                         'id_perumahan'=> $id_perumahan
                     );

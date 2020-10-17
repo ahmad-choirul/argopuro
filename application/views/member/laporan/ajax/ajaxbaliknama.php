@@ -1,22 +1,35 @@
   <header class="panel-heading">    
       <div class="row show-grid">
-        <div class="col-md-2" align="left"><h2 class="panel-title">Nama Perumahan </h2></div>
-        <div class="col-sm-3">
     <form action="" method="get">
 
+        <div class="col-sm-3">
+<h2 class="panel-title">Nama Perumahan </h2>
           <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="id_perumahan">  
             <option value="">Pilih Lokasi</option>
             <?php foreach ($perumahan as $aa): ?>
              <option value="<?php echo $aa->id;?>" <?php if ($id_perumahan == $aa->id ) echo 'selected' ; ?> ><?php echo $aa->nama_regional;?> ( <?php echo $aa->nama_status;?> )</option>
            <?php endforeach; ?>
          </select> 
-    </form>
 
        </div>
-       <div class="col-sm-6">
-        <a class="btn btn-primary">jumlah penjualan <div id="total_penjualan"></div></a>
-        <a class="btn btn-primary">jumlah sertifikat <div id="total_sertifikat"></div></a>
+       <div class="col-sm-2">
+<h2 class="panel-title">Tanggal Awal</h2>
+<input type="text" name="tgl_awal" onchange="this.form.submit()" value="<?php echo $tgl_awal ?>" class="form-control tanggal">
       </div>
+      <div class="col-sm-2">
+<h2 class="panel-title">Tanggal Akhir</h2>
+<input type="text" name="tgl_akhir" onchange="this.form.submit()" value="<?php echo $tgl_akhir ?>" class="form-control tanggal">
+
+      </div>
+      <div class="col-sm-2">
+
+      </div>
+       <div class="col-sm-3" style="text-align: right;">
+        <a class="btn btn-success">jumlah penjualan <div id="total_penjualan"></div></a>
+        <a class="btn btn-warning">jumlah sertifikat <div id="total_sertifikat"></div></a>
+      </div>
+    </form>
+
   </header>
   <div class="panel-body"> 
     <div class="table-responsive" style="white-space: nowrap;">
@@ -173,6 +186,11 @@
 </div>
 </div>
 </section>
+<script type="text/javascript">
+  $('.tanggal').datepicker({
+    format: 'yyyy-mm-dd'
+  });
+</script>
 <script type="text/javascript">
     $('#total_penjualan').html("<?php echo $total_penjualan ?>");
     $('#total_sertifikat').html("<?php echo $total_sertifikat ?>");

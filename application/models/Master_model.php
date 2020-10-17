@@ -608,7 +608,6 @@ function simpandatastok_split(){
     $post = $this->input->post();   
     $array = array(
         'blok'=>$post["blok"], 
-        'jml_kvl'=>$post["jml_kvl"], 
         'id_perumahan'=>$post["id_perumahan"], 
         'luas_teknik'=>$post["luas_teknik"]);
     return $this->db->insert("tbl_stok_split", $array);   
@@ -623,6 +622,8 @@ function simpandatajual_stok(){
         'tgl_terima_nego'=>$post["tgl_terima_nego"],
         'tgl_penjualan'=>$post["tgl_penjualan"],
         'sistem_pembayaran'=>$post["sistem_pembayaran"],
+        'tipe'=>$post["tipe"],
+        'status_jual'=>'1',
         'harga'=>bilanganbulat($post["harga"]));
     $insertpenjualan =  $this->db->insert("master_penjualan", $array);   
     if ($insertpenjualan) {
@@ -639,7 +640,6 @@ public function updatedatastok_split()
 {
     $post = $this->input->post();
     $this->blok = $post["blok"]; 
-    $this->jml_kvl = $post["jml_kvl"]; 
     $this->id_perumahan = $post["id_perumahan"]; 
     $this->luas_teknik = $post["luas_teknik"]; 
     return $this->db->update("tbl_stok_split", $this, array('id_stok_split' => $post['id_stok_split']));
@@ -649,6 +649,7 @@ public function hapusdatastok_split()
     $post = $this->input->post(); 
     $this->db->where('id_stok_split', $post['id_stok_split']);
     return $this->db->delete('tbl_stok_split');  
+
 }
 
 public function hapusdatajual()
@@ -657,9 +658,10 @@ public function hapusdatajual()
     $update = array('id_jual' => 0 );
     $this->db->where('id_jual', $post['id_jual']);
     $this->db->update('tbl_stok_split', $update);
-
+    
+    $update = array('status_jual' => '0' );
     $this->db->where('id_jual', $post['id_jual']);
-    return $this->db->delete('master_penjualan');  
+    return $this->db->update('master_penjualan', $update);
 }
     //CRUD stok_split end
 
@@ -1632,8 +1634,8 @@ public function hapusdatapenjual()
 
 
 // datatable blok start
-var $column_search_blok = array('id_stok_split','blok','jml_kvl','luas_teknik');
-var $column_order_blok = array(null, 'id_stok_split','blok','jml_kvl','luas_teknik');
+var $column_search_blok = array('id_stok_split','blok','luas_teknik');
+var $column_order_blok = array(null, 'id_stok_split','blok','luas_teknik');
 var $order_blok = array('blok' => 'DESC');
 function _get_query_blok($id_perumahan='')
 {
