@@ -122,5 +122,10 @@
 </div>
 </section>
 <script type="text/javascript">
+  $('.tanggal').datepicker({
+    format: 'yyyy-mm-dd'
+  });
+</script>
+<script type="text/javascript">
     $('#total_penjualan').html("<?php echo $no-1 ?>");
 </script>

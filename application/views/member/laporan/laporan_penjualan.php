@@ -389,7 +389,7 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
   }); 
     e.preventDefault(); 
   }); 
-  function hapus(elem){ 
+  function hapus(elem){
     var dataId = $(elem).data("id");
     document.getElementById("idddelete").setAttribute('value', dataId);
     $('#modalHapus').modal();        

@@ -300,10 +300,10 @@ class Laporan extends CI_Controller {
         $validation = $this->form_validation; 
         $validation->set_rules($simpan->rules_perijinan());
         if ($this->form_validation->run() == FALSE){
-           $errors = $this->form_validation->error_array();
-           $data['errors'] = $errors;
-       }else{                 
-           if($simpan->simpandata_perijinan()){
+         $errors = $this->form_validation->error_array();
+         $data['errors'] = $errors;
+     }else{                 
+         if($simpan->simpandata_perijinan()){
             $data['success']= true;
             $data['message']="Berhasil menyimpan data";   
         }else{
@@ -393,7 +393,7 @@ public function dataevaluasilandbank()
     $data3 = array(); 
     $no=1;
     if ($data['perumahandalamijin']!=null) {
-       foreach ($data['perumahandalamijin'] as $key => $value) {
+     foreach ($data['perumahandalamijin'] as $key => $value) {
         $list1 = $this->master_model->get_rekaplandbank($value->id,'1970-01-01',(date('Y')-1).'-12-31');
         $list2 = $this->master_model->get_rekaplandbank($value->id,date('Y'.'-01-01'),date('Y').'-12-31');
         $list3 = $this->master_model->get_rekaplandbank($value->id);
@@ -434,7 +434,7 @@ public function dataevaluasilandbank()
 }
 
 if ($data['perumahanluarijin']!=null) {
-   foreach ($data['perumahanluarijin'] as $key => $value) {
+ foreach ($data['perumahanluarijin'] as $key => $value) {
     $list1 = $this->master_model->get_rekaplandbank($value->id,'1970-01-01',(date('Y')-1).'-12-31');
     $list2 = $this->master_model->get_rekaplandbank($value->id,date('Y'.'-01-01'),date('Y').'-12-31');
     $list3 = $this->master_model->get_rekaplandbank($value->id);
@@ -475,7 +475,7 @@ if ($data['perumahanluarijin']!=null) {
 }
 
 if ($data['perumahanlokasi']!=null) {
-   foreach ($data['perumahanlokasi'] as $key => $value) {
+ foreach ($data['perumahanlokasi'] as $key => $value) {
     $list1 = $this->master_model->get_rekaplandbank($value->id,'1970-01-01',(date('Y')-1).'-12-31');
     $list2 = $this->master_model->get_rekaplandbank($value->id,date('Y'.'-01-01'),date('Y').'-12-31');
     $list3 = $this->master_model->get_rekaplandbank($value->id);
@@ -523,7 +523,7 @@ public function dataevaliasishgb()
     $data2 = array(); 
     $no=1;
     if ($data['perumahan']!=null) {
-       foreach ($data['perumahan'] as $key => $value) {
+     foreach ($data['perumahan'] as $key => $value) {
         $list1 = $this->master_model->get_rekapshgb($value->id,'1970-01-01',(date('Y')-1).'-12-31');
         $list2 = $this->master_model->get_rekapshgb($value->id,date('Y'.'-01-01'),date('Y').'-12-31');
         $list3 = $this->master_model->get_rekapshgb($value->id);
@@ -603,45 +603,45 @@ public function laporan_evaluasi_land_bank_per()
 }  
 public function pageevaluasilandbankper()
 {
-   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
-   $data['dataperumahanseb'] = $this->master_model->getperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','belum');
-   $data['dataperumahanses'] = $this->master_model->getperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','belum');
-   $data['dataperumahantekseb'] = $this->master_model->getperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','sudah');
-   $data['dataperumahantekses'] = $this->master_model->getperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','sudah');
-   $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
-   $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
-   $this->load->view('member/laporan/ajax/ajaxevaluasilandbankper',$data);
+ $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+ $data['dataperumahanseb'] = $this->master_model->getperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','belum');
+ $data['dataperumahanses'] = $this->master_model->getperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','belum');
+ $data['dataperumahantekseb'] = $this->master_model->getperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','sudah');
+ $data['dataperumahantekses'] = $this->master_model->getperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','sudah');
+ $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
+ $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+ $this->load->view('member/laporan/ajax/ajaxevaluasilandbankper',$data);
 }
 
 public function pageevaluasishgbper()
 {
-   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
-   $data['dataperumahanseb'] = $this->master_model->getshgbperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','belum');
-   $data['dataperumahanses'] = $this->master_model->getshgbperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','belum');
-   $data['dataperumahantekseb'] = $this->master_model->getshgbperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','proses');
-   $data['dataperumahantekses'] = $this->master_model->getshgbperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','proses');
-   $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
-   $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
-   $this->load->view('member/laporan/ajax/ajaxevaluasishgbper',$data);
+ $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+ $data['dataperumahanseb'] = $this->master_model->getshgbperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','belum');
+ $data['dataperumahanses'] = $this->master_model->getshgbperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','belum');
+ $data['dataperumahantekseb'] = $this->master_model->getshgbperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','proses');
+ $data['dataperumahantekses'] = $this->master_model->getshgbperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','proses');
+ $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
+ $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+ $this->load->view('member/laporan/ajax/ajaxevaluasishgbper',$data);
 }
 
 public function pageevaluasisudahshgbper()
 {
-   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
-   $data['dataperumahantekseb'] = $this->master_model->getshgbperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','selesai');
-   $data['dataperumahantekses'] = $this->master_model->getshgbperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','selesai');
-   $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
-   $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
-   $this->load->view('member/laporan/ajax/ajaxevaluasisudahshgbper',$data);
+ $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+ $data['dataperumahantekseb'] = $this->master_model->getshgbperumahan($data['id_perumahan'],'1970-01-01',(date('Y')-1).'-12-31','selesai');
+ $data['dataperumahantekses'] = $this->master_model->getshgbperumahan($data['id_perumahan'],date('Y'.'-01-01'),date('Y').'-12-31','selesai');
+ $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
+ $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+ $this->load->view('member/laporan/ajax/ajaxevaluasisudahshgbper',$data);
 }
 
 public function pageevaluasiprosesinduk($id='')
 {
- $data['prosesshgbses'] = $this->master_model->getmaster_prosesinduk($id,date('Y'.'-01-01'),date('Y').'-12-31');
- $data['prosesshgbseb'] = $this->master_model->getmaster_prosesinduk($id,'1970-01-01',(date('Y')-1).'-12-31');
- $data['terbitshgbses'] = $this->master_model->getmaster_prosesinduk($id,date('Y'.'-01-01'),date('Y').'-12-31','terbit');
- $data['terbitshgbseb'] = $this->master_model->getmaster_prosesinduk($id,'1970-01-01',(date('Y')-1).'-12-31','terbit');
- $this->load->view('member/laporan/ajax/ajaxpenyelesaianinduk',$data);
+   $data['prosesshgbses'] = $this->master_model->getmaster_prosesinduk($id,date('Y'.'-01-01'),date('Y').'-12-31');
+   $data['prosesshgbseb'] = $this->master_model->getmaster_prosesinduk($id,'1970-01-01',(date('Y')-1).'-12-31');
+   $data['terbitshgbses'] = $this->master_model->getmaster_prosesinduk($id,date('Y'.'-01-01'),date('Y').'-12-31','terbit');
+   $data['terbitshgbseb'] = $this->master_model->getmaster_prosesinduk($id,'1970-01-01',(date('Y')-1).'-12-31','terbit');
+   $this->load->view('member/laporan/ajax/ajaxpenyelesaianinduk',$data);
 }
 
 
@@ -654,11 +654,11 @@ public function proses_indukdetail()
     $arraysub = array();
     foreach ($datapembayaran as $po_data) {
         $subArray = array(  
-           "id_dtl_proses_induk" => $this->security->xss_clean($po_data['id_dtl_proses_induk']),
-           "id_master_item" => $this->security->xss_clean($po_data['id_master_item']),
-           "tgl_proses_induk" => $this->security->xss_clean(tgl_indo($po_data['tgl_proses_induk'])),
-           "keterangan" => $this->security->xss_clean($po_data['keterangan'])
-       );
+         "id_dtl_proses_induk" => $this->security->xss_clean($po_data['id_dtl_proses_induk']),
+         "id_master_item" => $this->security->xss_clean($po_data['id_master_item']),
+         "tgl_proses_induk" => $this->security->xss_clean(tgl_indo($po_data['tgl_proses_induk'])),
+         "keterangan" => $this->security->xss_clean($po_data['keterangan'])
+     );
         $arraysub[] =  $subArray ; 
 
     }
@@ -666,29 +666,29 @@ public function proses_indukdetail()
     foreach($dataitem as $po_data) {
 
         $result = array(  
-         "id_proses_induk" => $this->security->xss_clean($po_data['id_proses_induk']),
-         "no_surat_tanah" => $this->security->xss_clean($po_data['no_surat_tanah']),
-         "nama_surat_tanah" => $this->security->xss_clean($po_data['nama_surat_tanah']),
-         "luas" => $this->security->xss_clean($po_data['luas']),
-         "tanggal_daftar_sk_hak" => $this->security->xss_clean($po_data['tanggal_daftar_sk_hak']),
-         "tanggal_daftar_sk_haktampil" => $this->security->xss_clean(tgl_indo($po_data['tanggal_daftar_sk_hak'])),
-         "no_daftar_sk_hak" => $this->security->xss_clean($po_data['no_daftar_sk_hak']),
-         "tanggal_terbit_sk_hak" => $this->security->xss_clean($po_data['tanggal_terbit_sk_hak']),
-         "tanggal_terbit_sk_haktampil" => $this->security->xss_clean(tgl_indo($po_data['tanggal_terbit_sk_hak'])),
-         "no_terbit_sk_hak" => $this->security->xss_clean($po_data['no_terbit_sk_hak']),
-         "tanggal_daftar_shgb" => $this->security->xss_clean($po_data['tanggal_daftar_shgb']),
-         "tanggal_daftar_shgbtampil" => $this->security->xss_clean(tgl_indo($po_data['tanggal_daftar_shgb'])),
-         "no_daftar_shgb" => $this->security->xss_clean($po_data['no_daftar_shgb']),
-         "tanggal_terbit_shgb" => $this->security->xss_clean($po_data['tanggal_terbit_shgb']),
-         "tanggal_terbit_shgbtampil" => $this->security->xss_clean(tgl_indo($po_data['tanggal_terbit_shgb'])),
-         "no_terbit_shgb" => $this->security->xss_clean($po_data['no_terbit_shgb']),
-         "masa_berlaku_shgb" => $this->security->xss_clean($po_data['masa_berlaku_shgb']),
-         "masa_berlaku_shgbtampil" => $this->security->xss_clean(tgl_indo($po_data['masa_berlaku_shgb'])),
-         "target_penyelesaian" => $this->security->xss_clean($po_data['target_penyelesaian']),
-         "target_penyelesaiantampil" => $this->security->xss_clean(tgl_indo($po_data['target_penyelesaian'])),
-         "keterangan" => $this->security->xss_clean($po_data['keterangan']),
-         "status" => $this->security->xss_clean($po_data['status']),
-     ); 
+           "id_proses_induk" => $this->security->xss_clean($po_data['id_proses_induk']),
+           "no_surat_tanah" => $this->security->xss_clean($po_data['no_surat_tanah']),
+           "nama_surat_tanah" => $this->security->xss_clean($po_data['nama_surat_tanah']),
+           "luas" => $this->security->xss_clean($po_data['luas']),
+           "tanggal_daftar_sk_hak" => $this->security->xss_clean($po_data['tanggal_daftar_sk_hak']),
+           "tanggal_daftar_sk_haktampil" => $this->security->xss_clean(tgl_indo($po_data['tanggal_daftar_sk_hak'])),
+           "no_daftar_sk_hak" => $this->security->xss_clean($po_data['no_daftar_sk_hak']),
+           "tanggal_terbit_sk_hak" => $this->security->xss_clean($po_data['tanggal_terbit_sk_hak']),
+           "tanggal_terbit_sk_haktampil" => $this->security->xss_clean(tgl_indo($po_data['tanggal_terbit_sk_hak'])),
+           "no_terbit_sk_hak" => $this->security->xss_clean($po_data['no_terbit_sk_hak']),
+           "tanggal_daftar_shgb" => $this->security->xss_clean($po_data['tanggal_daftar_shgb']),
+           "tanggal_daftar_shgbtampil" => $this->security->xss_clean(tgl_indo($po_data['tanggal_daftar_shgb'])),
+           "no_daftar_shgb" => $this->security->xss_clean($po_data['no_daftar_shgb']),
+           "tanggal_terbit_shgb" => $this->security->xss_clean($po_data['tanggal_terbit_shgb']),
+           "tanggal_terbit_shgbtampil" => $this->security->xss_clean(tgl_indo($po_data['tanggal_terbit_shgb'])),
+           "no_terbit_shgb" => $this->security->xss_clean($po_data['no_terbit_shgb']),
+           "masa_berlaku_shgb" => $this->security->xss_clean($po_data['masa_berlaku_shgb']),
+           "masa_berlaku_shgbtampil" => $this->security->xss_clean(tgl_indo($po_data['masa_berlaku_shgb'])),
+           "target_penyelesaian" => $this->security->xss_clean($po_data['target_penyelesaian']),
+           "target_penyelesaiantampil" => $this->security->xss_clean(tgl_indo($po_data['target_penyelesaian'])),
+           "keterangan" => $this->security->xss_clean($po_data['keterangan']),
+           "status" => $this->security->xss_clean($po_data['status']),
+       ); 
 
     }  
     $datasub = $arraysub;
@@ -698,21 +698,21 @@ public function proses_indukdetail()
 }
 public function laporan_evaluasi_tanah_belum_shgb()
 {
- $data['list'] = $this->dataevaliasishgb();
- $this->load->view('member/laporan/laporan_evaluasi_tanah_belum_shgb',$data);
+   $data['list'] = $this->dataevaliasishgb();
+   $this->load->view('member/laporan/laporan_evaluasi_tanah_belum_shgb',$data);
 }  
 
 public function laporan_evaluasi_tanah_belum_shgb_per()
 {
-   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
-   $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
-   $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
-   $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
-   $this->load->view('member/laporan/laporan_evaluasi_tanah_belum_shgb_per',$data);
+ $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+ $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
+ $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+ $data['sertifikat_tanah'] = $this->db->order_by("id_sertifikat_tanah","DESC")->get('tbl_sertifikat_tanah')->result();
+ $this->load->view('member/laporan/laporan_evaluasi_tanah_belum_shgb_per',$data);
 }  
 public function laporan_evaluasi_proses_induk()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_proses_induk');
+ $this->load->view('member/laporan/laporan_evaluasi_proses_induk');
 }  
 public function laporan_evaluasi_proses_induk_per()
 {
@@ -723,19 +723,19 @@ public function laporan_evaluasi_proses_induk_per()
 }  
 public function laporan_evaluasi_penggabungan_split()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_penggabungan_split');
+ $this->load->view('member/laporan/laporan_evaluasi_penggabungan_split');
 }  
 public function laporan_evaluasi_penggabungan_split_per()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_penggabungan_split_per');
+ $this->load->view('member/laporan/laporan_evaluasi_penggabungan_split_per');
 }  
 
 
 public function pageevaluasiprosessplit($id='')
 {
- $data['splitseb'] = $this->laporan_model->getmaster_split($id,date('Y'.'-01-01'),date('Y').'-12-31');
- $data['splitses'] = $this->laporan_model->getmaster_split($id,'1970-01-01',(date('Y')-1).'-12-31');
- $this->load->view('member/laporan/ajax/ajaxprosessplit',$data);
+   $data['splitseb'] = $this->laporan_model->getmaster_split($id,date('Y'.'-01-01'),date('Y').'-12-31');
+   $data['splitses'] = $this->laporan_model->getmaster_split($id,'1970-01-01',(date('Y')-1).'-12-31');
+   $this->load->view('member/laporan/ajax/ajaxprosessplit',$data);
 }
 
 
@@ -804,7 +804,7 @@ public function splitdetail()
 }
 public function laporan_evaluasi_tanah_shgb()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_tanah_shgb');
+ $this->load->view('member/laporan/laporan_evaluasi_tanah_shgb');
 }  
 public function laporan_evaluasi_tanah_shgb_per()
 {
@@ -815,7 +815,7 @@ public function laporan_evaluasi_tanah_shgb_per()
 }  
 public function laporan_evaluasi_splitsing()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_splitsing');
+ $this->load->view('member/laporan/laporan_evaluasi_splitsing');
 }  
 public function laporan_evaluasi_splitsing_per()
 {
@@ -827,16 +827,16 @@ public function laporan_evaluasi_splitsing_per()
 
 public function laporan_evaluasi_sert_belum_split()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_sert_belum_split');
+ $this->load->view('member/laporan/laporan_evaluasi_sert_belum_split');
 }  
 public function laporan_evaluasi_sert_belum_split_per()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_sert_belum_split_per');
+ $this->load->view('member/laporan/laporan_evaluasi_sert_belum_split_per');
 }  
 
 public function laporan_evaluasi_stok_split()
 {
-   $this->load->view('member/laporan/laporan_evaluasi_stok_split');
+ $this->load->view('member/laporan/laporan_evaluasi_stok_split');
 }  
 public function laporan_evaluasi_stok_split_per()
 {
@@ -846,36 +846,36 @@ public function laporan_evaluasi_stok_split_per()
 }  
 public function ajaxstoksplit()
 {
- $data['id_perumahan'] = $this->input->get('id_perumahan',true);
-  $data['status_surat'] = $this->input->get('status_surat',true);
- $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
- $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
- $this->db->where('id_perumahan', $data['id_perumahan']);
- $this->db->where('id_jual', '0');
- $data['datastok'] = $this->db->get('tbl_stok_split')->result();
- $this->load->view('member/laporan/ajax/ajaxlaporanstoksplit',$data);
+   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+   $data['status_surat'] = $this->input->get('status_surat',true);
+   $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
+   $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+   $this->db->where('id_perumahan', $data['id_perumahan']);
+   $this->db->where('id_jual', '0');
+   $data['datastok'] = $this->db->get('tbl_stok_split')->result();
+   $this->load->view('member/laporan/ajax/ajaxlaporanstoksplit',$data);
 }
 public function laporan_penjualan()
 {
   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
   $data['status_surat'] = $this->input->get('status_surat',true);
-      $data['tgl_awal'] = $this->input->get('tgl_awal',true);
+  $data['tgl_awal'] = $this->input->get('tgl_awal',true);
   $data['tgl_akhir'] = $this->input->get('tgl_akhir',true);
-  $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
- $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
   $this->load->view('member/laporan/laporan_penjualan',$data);
 }  
 public function ajaxdatajual()
 {
- $data['id_perumahan'] = $this->input->get('id_perumahan',true); 
- $data['status_surat'] = $this->input->get('status_surat',true); 
-     $data['tgl_awal'] = $this->input->get('tgl_awal',true);
-  $data['tgl_akhir'] = $this->input->get('tgl_akhir',true);
- $this->db->where('id_perumahan', $data['id_perumahan']);
- $this->db->join('master_penjualan', 'tbl_stok_split.id_jual = master_penjualan.id_jual', 'left');
- $this->db->where("tbl_stok_split.id_jual !=0");
-  if ($data['tgl_awal']!=''&&$data['tgl_akhir']!='') {
-       $this->db->where('tgl_penjualan BETWEEN "'.$data['tgl_awal']. '" and "'. $data['tgl_akhir'].'"');
+   $data['id_perumahan'] = $this->input->get('id_perumahan',true); 
+   $data['status_surat'] = $this->input->get('status_surat',true); 
+   $data['tgl_awal'] = $this->input->get('tgl_awal',true);
+   $data['tgl_akhir'] = $this->input->get('tgl_akhir',true);
+   $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
+   $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+   $this->db->where('id_perumahan', $data['id_perumahan']);
+   $this->db->join('master_penjualan', 'tbl_stok_split.id_jual = master_penjualan.id_jual', 'left');
+   $this->db->where("tbl_stok_split.id_jual !=0");
+   if ($data['tgl_awal']!=''&&$data['tgl_akhir']!='') {
+     $this->db->where('tgl_penjualan BETWEEN "'.$data['tgl_awal']. '" and "'. $data['tgl_akhir'].'"');
  }
  $data['datastok'] = $this->db->get('tbl_stok_split')->result();
  $this->load->view('member/laporan/ajax/ajaxlaporanstokjual',$data);
@@ -890,14 +890,14 @@ public function laporan_baliknama()
 }  
 public function ajaxbaliknama()
 {
- $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
 
-  $data['tgl_awal'] = $this->input->get('tgl_awal',true);
-  $data['tgl_akhir'] = $this->input->get('tgl_akhir',true);
-  $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
- $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
- if ($data['tgl_awal']!=''&&$data['tgl_akhir']!='') {
-       $this->db->where('tgl_penjualan BETWEEN "'.$data['tgl_awal']. '" and "'. $data['tgl_akhir'].'"');
+   $data['tgl_awal'] = $this->input->get('tgl_awal',true);
+   $data['tgl_akhir'] = $this->input->get('tgl_akhir',true);
+   $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
+   $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
+   if ($data['tgl_awal']!=''&&$data['tgl_akhir']!='') {
+     $this->db->where('tgl_penjualan BETWEEN "'.$data['tgl_awal']. '" and "'. $data['tgl_akhir'].'"');
  }
  $this->db->where('id_perumahan', $data['id_perumahan']);
  $this->db->join('master_penjualan', 'tbl_stok_split.id_jual = master_penjualan.id_jual', 'left');
@@ -909,23 +909,23 @@ public function ajaxbaliknama()
 public function laporan_hutangsertifikat()
 {
   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
-    $data['tgl_awal'] = $this->input->get('tgl_awal',true);
+  $data['tgl_awal'] = $this->input->get('tgl_awal',true);
   $data['tgl_akhir'] = $this->input->get('tgl_akhir',true);
   $this->load->view('member/laporan/laporan_hutangsertifikat',$data);
 }  
 public function ajaxhutangsertifikat()
 {
- $data['id_perumahan'] = $this->input->get('id_perumahan',true);
+   $data['id_perumahan'] = $this->input->get('id_perumahan',true);
    $data['tgl_awal'] = $this->input->get('tgl_awal',true);
-  $data['tgl_akhir'] = $this->input->get('tgl_akhir',true);
- $this->db->where('id_perumahan', $data['id_perumahan']);
- $this->db->join('master_penjualan', 'tbl_stok_split.id_jual = master_penjualan.id_jual', 'left');
- $this->db->where("tbl_stok_split.id_jual !=0 ");
-  if ($data['tgl_awal']!=''&&$data['tgl_akhir']!='') {
-       $this->db->where('tgl_penjualan BETWEEN "'.$data['tgl_awal']. '" and "'. $data['tgl_akhir'].'"');
+   $data['tgl_akhir'] = $this->input->get('tgl_akhir',true);
+   $this->db->where('id_perumahan', $data['id_perumahan']);
+   $this->db->join('master_penjualan', 'tbl_stok_split.id_jual = master_penjualan.id_jual', 'left');
+   $this->db->where("tbl_stok_split.id_jual !=0 ");
+   if ($data['tgl_awal']!=''&&$data['tgl_akhir']!='') {
+     $this->db->where('tgl_penjualan BETWEEN "'.$data['tgl_awal']. '" and "'. $data['tgl_akhir'].'"');
  }
  $data['datastok'] = $this->db->get('tbl_stok_split')->result();
-   $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
+ $this->db->join('master_status_regional', 'master_regional.status_regional = master_status_regional.id_status_regional', 'left');
  $data['perumahan'] = $this->db->order_by("id","DESC")->get('master_regional')->result();
  $this->load->view('member/laporan/ajax/ajaxhutangsertifikat',$data);
 }
