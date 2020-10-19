@@ -317,7 +317,7 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
                         text: "Request gagal, browser akan direload",
                         type: 'danger'
                     }); 
-                    //window.setTimeout(function() {  location.reload();}, 2000);
+                    window.setTimeout(function() {  location.reload();}, 2000);
                 }); 
                 e.preventDefault(); 
             }); 
@@ -397,7 +397,7 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
         text: "Request gagal, browser akan direload",
         type: 'danger'
       }); 
-    ////window.setTimeout(function() {  location.reload();}, 2000);
+    window.setTimeout(function() {  location.reload();}, 2000);
   }); 
     e.preventDefault(); 
   }); 
@@ -458,7 +458,7 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
         text: "Request gagal, browser akan direload",
         type: 'danger'
       }); 
-    ////window.setTimeout(function() {  location.reload();}, 2000);
+    window.setTimeout(function() {  location.reload();}, 2000);
   }); 
     e.preventDefault(); 
   }); 
@@ -591,7 +591,7 @@ if(level_user('tools','import_item',$this->session->userdata('kategori'),'add') 
           text: "Request gagal, browser akan direload",
           type: 'danger'
         }); 
-        // //window.setTimeout(function() {  location.reload();}, 2000);
+        // window.setTimeout(function() {  location.reload();}, 2000);
       }); 
       e.preventDefault(); 
     }); 

@@ -637,7 +637,7 @@ document.getElementById("FormulirHapus").addEventListener("submit", function (e)
         text: "Request gagal, browser akan direload",
         type: 'danger'
     }); 
-                    //window.settimeout(function() {  location.reload();}, 2000);
+                    window.setTimeout(function() {  location.reload();}, 2000);
                 }); 
 e.preventDefault(); 
 }); 

@@ -286,7 +286,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       text: "Request gagal, browser akan direload",
       type: 'danger'
     }); 
-                    //window.settimeout(function() {  location.reload();}, 2000);
+                    window.setTimeout(function() {  location.reload();}, 2000);
                   }); 
   e.preventDefault(); 
 }); 

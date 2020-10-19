@@ -138,7 +138,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </header>
                     <div class="panel-body">
                         <a href="<?php echo base_url()?>laporan/rekap_hutangsertifikat" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Hutang Sertifikat </a>
-                        <a href="<?php echo base_url()?>laporan/laporan_hutangsertifikat" class="btn btn-warning"><i class="fa fa-folder"></i>Hutang Sertifikat Perumahan</a>
+                        <a href="<?php echo base_url()?>laporan/laporan_hutangsertifikat" class="btn btn-primary"><i class="fa fa-folder"></i>Hutang Sertifikat Perumahan</a>
                     </div>
                 </section>
             </div>  
@@ -160,7 +160,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </header>
                     <div class="panel-body">
                         <a href="<?php echo base_url()?>laporan/rekap_baliknama" class="btn btn-warning"><i class="fa fa-folder"></i>  Rekap Balik Namak</a>
-                        <a href="<?php echo base_url()?>laporan/laporan_baliknama" class="btn btn-warning"><i class="fa fa-folder"></i>Balik Nama Per Perumahan</a>
+                        <a href="<?php echo base_url()?>laporan/laporan_baliknama" class="btn btn-primary"><i class="fa fa-folder"></i>Balik Nama Per Perumahan</a>
                     </div>
                 </section>
             </div>  
