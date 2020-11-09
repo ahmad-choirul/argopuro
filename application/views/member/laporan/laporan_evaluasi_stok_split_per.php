@@ -111,7 +111,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <label class="col-sm-3 control-label">Nama Pembeli<span class="required">*</span></label>
           <div class="col-sm-9">
             <input type="hidden" name="id_stok_split" id="idjual">
-
             <input type="text" name="nama_pembeli" class="form-control" required/>
           </div>
         </div>  
@@ -144,6 +143,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <label class="col-sm-3 control-label">Blok<span class="required">*</span></label>
           <div class="col-sm-9">
             <input type="text" name="blokjuala" id="blokjual" class="form-control" readonly />
+
           </div>
         </div> 
         <div class="form-group mt-lg harga">

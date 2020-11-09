@@ -14,9 +14,8 @@
             <h2 class="panel-title">Status Surat </h2>
             <select data-plugin-selectTwo class="form-control" onchange='this.form.submit()' required name="status_surat">  
               <option  value="semua" <?php if ($status_surat == 'semua') echo 'selected' ; ?>>Semua</option>
-              <option value="belum" <?php if ($status_surat == 'belum') echo 'selected' ; ?>>Belum</option>
-              <option value="proses" <?php if ($status_surat == 'proses') echo 'selected' ; ?>>Proses</option>
-              <option value="terbit" <?php if ($status_surat == 'terbit') echo 'selected' ; ?>>Terbit</option>
+              <option value="jual" <?php if ($status_surat == 'jual') echo 'selected' ; ?>>Jual</option>
+              <option value="batal" <?php if ($status_surat == 'batal') echo 'selected' ; ?>>Batal</option>
             </select> 
           </div>
           <div class="col-sm-2">
@@ -26,7 +25,6 @@
           <div class="col-sm-2">
             <h2 class="panel-title">Tanggal Akhir</h2>
             <input type="text" name="tgl_akhir" onchange="this.form.submit()" value="<?php echo $tgl_akhir ?>" class="form-control tanggal">
-
           </div>
           <div class="col-sm-2">
 
@@ -53,6 +51,7 @@
          <th rowspan="2" style="text-align: center;vertical-align: middle;">Tanggal Penjualan</th>
          <th rowspan="2" style="text-align: center;vertical-align: middle;">Sistem Pembayaran</th>
          <th rowspan="2" style="text-align: center;vertical-align: middle;">Harga</th>
+         <th rowspan="2" style="text-align: center;vertical-align: middle;">Tanggal Batal</th>
          <th rowspan="2" style="text-align: center;vertical-align: middle;">KETERANGAN</th>
        </tr>
 
@@ -72,6 +71,11 @@
       </ul>
       </div>
       ';
+       $tombolbatal='
+      <div class="btn-group dropup">
+      <button type="button" class="mb-xs mt-xs mr-xs btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Batal</button>
+      </div>
+      ';
       $luas_teknik = $data->luas_teknik;
       // $dataitem = $this->master_model->getfullstoksplit($data->id_stok_split);
       $datajual = $this->master_model->getdatapenjualan($data->id_jual);
@@ -79,7 +83,12 @@
 
       <tr>
         <td><?php echo $no++; ?></td>
+<?php if ($datajual['status_jual']=='1'): ?>
         <td><?php echo $tombol; ?></td>
+  <?php else: ?>
+        <td><?php echo $tombolbatal; ?></td>
+
+<?php endif ?>
         <td><?php echo $datajual['nama_pembeli']; ?></td>
         <td><?php echo $data->blok; ?></td>
         <!-- <td><?php echo  $luas_teknik ?></td>
@@ -96,13 +105,14 @@
         <td><?php echo tgl_indo($datajual['tgl_penjualan']) ?></td>
         <td><?php echo $datajual['sistem_pembayaran']; ?></td>
         <td><?php echo rupiah($datajual['harga']) ?></td>
+        <td><?php echo tgl_indo($datajual['tgl_batal']) ?></td>
         <td></td>
       </tr>
    
         <?php 
     } ?> 
       </tbody>
-      <tfoot>
+     <!--  <tfoot>
        <tr>
          <td colspan="2">TOTAL </td>
 
@@ -115,8 +125,9 @@
          <td></td>
          <td></td>
          <td></td>
+         <td></td>
        </tr>
-     </tfoot>
+     </tfoot> -->
    </table> 
  </div>
 </div>

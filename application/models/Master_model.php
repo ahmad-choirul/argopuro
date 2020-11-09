@@ -617,6 +617,7 @@ function simpandatajual_stok(){
     $post = $this->input->post();   
     $array = array(
         'nama_pembeli'=>$post["nama_pembeli"], 
+        'id_stok_split'=>$post["id_stok_split"], 
         'nik'=>$post["nik"], 
         'pekerjaan'=>$post["pekerjaan"], 
         'tgl_terima_nego'=>$post["tgl_terima_nego"],
@@ -626,11 +627,12 @@ function simpandatajual_stok(){
         'status_jual'=>'1',
         'harga'=>bilanganbulat($post["harga"]));
     $insertpenjualan =  $this->db->insert("master_penjualan", $array);   
+
     if ($insertpenjualan) {
-        $id = $this->db->insert_id();
-        $this->db->where('id_stok_split', $post['id_stok_split']);
-        $update = array('id_jual' => $id );
-        $this->db->update('tbl_stok_split', $update);
+        // $id = $this->db->insert_id();
+        // $this->db->where('id_stok_split', $post['id_stok_split']);
+        // $update = array('id_jual' => $id );
+        // $this->db->update('tbl_stok_split', $update);
         return true;
     }else{
         return false;
@@ -655,11 +657,14 @@ public function hapusdatastok_split()
 public function hapusdatajual()
 {
     $post = $this->input->post(); 
-    $update = array('id_jual' => 0 );
-    $this->db->where('id_jual', $post['id_jual']);
-    $this->db->update('tbl_stok_split', $update);
+    // $update = array('id_jual' => 0 );
+    // $this->db->where('id_jual', $post['id_jual']);
+    // $this->db->update('tbl_stok_split', $update);
     
-    $update = array('status_jual' => '0' );
+    $update = array('status_jual' => '0',
+        'tgl_batal' =>  date('Y-m-d'),
+        'oleh' =>$this->session->userdata('idadmin')
+    );
     $this->db->where('id_jual', $post['id_jual']);
     return $this->db->update('master_penjualan', $update);
 }
